@@ -1,0 +1,35 @@
+---
+title: HTML-Code der Business/Social-Network-Icons von Kontaktpersonen (Filter)
+search: 1
+---
+
+# inx_team_agent_network_icons_output (Filter)
+
+Dieser Filter-Hook bietet die Möglichkeit, den bereits gerenderten HTML-Code von **Icon-Listen** mit verlinkten Netzwerk-Profilseiten von Kontaktpersonen vor der Ausgabe zu verändern. Die Icon-Listen kommen – sofern entsprechende URLs vorhanden sind – in den Detailansichten und Widgets der Kontaktpersonen zum Einsatz.)
+
+![Netwerk-Icons in Kontakt-Widgets](../assets/scst-network-icons-1.gif)
+
+## Parameter
+
+| Name (Typ) | Beschreibung |
+| ---------- | ------------ |
+| `$html` (string) | gerenderter HTML-Code für die Ausgabe der Netzwerk-Icons/Links |
+
+## Rückgabewert
+
+angepasster HTML-Code
+
+## Rahmenfunktion
+
+Eine Funktion zur Nutzung des Filters wird typischerweise in der folgenden Form in die Datei **functions.php** des **Child-Themes** eingebunden.
+
+```php
+add_filter( 'inx_team_agent_networks', 'mysite_modify_agent_network_icons_output' );
+
+function mysite_modify_agent_network_icons_output( $html ) {
+	// HTML-Code vor der Ausgabe anpassen.
+	// $html = str_replace( 'xxx', 'yyy', $html );
+
+	return $html;
+} // mysite_modify_agent_network_icons_output
+```

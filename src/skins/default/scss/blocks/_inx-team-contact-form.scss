@@ -1,0 +1,126 @@
+.inx-team-contact-form {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	width: 100%;
+}
+
+.inx-team-contact-form__spinner {
+	display: none;
+}
+
+.inx-team-contact-form__input {
+	padding-right: .5em;
+	margin-bottom: .5em;
+	box-sizing: border-box;
+}
+
+.inx-team-contact-form__input:not(.inx-team-contact-form__input--type--full) {
+	flex: 1 1 16em;
+}
+
+.inx-team-contact-form__input--type--full {
+	flex: 0 0 100%;
+}
+
+.inx-team-contact-form__input--name--consent {
+	display: flex;
+	margin: 1em 0;
+}
+
+.inx-team-contact-form__consent-checkbox {
+	margin-right: .5em;
+}
+
+.inx-team-contact-form__consent-text {
+	font-size: 85%;
+
+	p:last-child {
+		margin: 0;
+	}
+
+	p:not(:last-child) {
+		margin: 0 0 .5em 0;
+	}
+}
+
+.inx-team-contact-form__input--name--submit {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	div:first-child {
+		font-size: 85%;
+		text-transform: uppercase;
+
+		span.uk-icon {
+			vertical-align: text-bottom;
+		}
+	}
+}
+
+.inx-team-contact-form__input-error {
+	display: none;
+	margin-top: .25em;
+	color: #F0506E;
+	font-size: 85%;
+}
+
+.inx-team-contact-form__input--has-error {
+	input[type=text],
+	input[type=email],
+	input[type=checkbox],
+	input[type=select],
+	textarea {
+		border: 1px solid #F0506E;
+	}
+
+	.inx-team-contact-form__input-error {
+		display: block;
+	}
+}
+
+.inx-team-contact-form__result {
+	display: none;
+}
+
+.inx-team-contact-form__result--type--success,
+.inx-team-contact-form__result--type--error,
+.inx-team-contact-form__demo-notice {
+	display: flex;
+	flex: 0 0 100%;
+	margin-bottom: 1em;
+	padding: .5em;
+	border: 1px solid;
+
+	span:first-child {
+		flex: 0 0 20px;
+		padding-top: 2px;
+		padding-right: .5em;
+		box-sizing: content-box;
+	}
+}
+
+.inx-team-contact-form__result--type--success,
+.inx-team-contact-form__result--type--error {
+	align-items: center;
+}
+
+.inx-team-contact-form__result--type--success {
+	color: #32D296;
+	border-color: #32D296;
+}
+
+.inx-team-contact-form__result--type--error {
+	color: #F0506E;
+	border-color: #F0506E;
+}
+
+.inx-team-contact-form__demo-notice {
+	margin-bottom: .5em;
+	border-color: $color-demo;
+	box-sizing: border-box;
+	color: #FFF;
+	@include gradient($color-demo);
+}
+

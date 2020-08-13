@@ -1,0 +1,1400 @@
+# Copyright (C) 2020 immonex
+# This file is distributed under the same license as the immonex Kickstart Team package.
+msgid ""
+msgstr ""
+"Project-Id-Version: immonex Kickstart Team 1.0.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/immonex-kickstart-team\n"
+"POT-Creation-Date: 2020-07-28 12:17:21+00:00\n"
+"PO-Revision-Date: 2020-08-08 16:16+0200\n"
+"Last-Translator: \n"
+"Language-Team: Carsten Scheuer <scheuer@inveris.de>\n"
+"Language: de_DE@formal\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: includes/class-agency-backend-form.php:72
+#: includes/class-agent-backend-form.php:127
+msgid "Contact Data"
+msgstr "Kontaktdaten"
+
+#: includes/class-agency-backend-form.php:89 includes/class-agency.php:402
+#: includes/class-agent-backend-form.php:137 includes/class-agent.php:591
+msgid "Email"
+msgstr "E-Mail"
+
+#: includes/class-agency-backend-form.php:95
+#: includes/class-agency-backend-form.php:214 includes/class-agency.php:412
+#: includes/class-agent.php:641 includes/class-contact-form.php:264
+#: includes/class-contact-form.php:265
+msgid "Phone"
+msgstr "Telefon"
+
+#: includes/class-agency-backend-form.php:101 includes/class-agency.php:422
+#: includes/class-agent-backend-form.php:185 includes/class-agent.php:701
+msgid "Fax"
+msgstr "Fax"
+
+#: includes/class-agency-backend-form.php:113 includes/class-agency.php:439
+#: includes/class-agent-backend-form.php:203 includes/class-agent.php:736
+msgid "Street"
+msgstr "Straße"
+
+#: includes/class-agency-backend-form.php:119 includes/class-agency.php:447
+#: includes/class-agent-backend-form.php:209 includes/class-agent.php:745
+msgid "House Number"
+msgstr "Hausnummer"
+
+#: includes/class-agency-backend-form.php:125 includes/class-agency.php:455
+#: includes/class-agent-backend-form.php:215 includes/class-agent.php:754
+msgid "ZIP Code"
+msgstr "PLZ"
+
+#: includes/class-agency-backend-form.php:131 includes/class-agency.php:463
+#: includes/class-agent-backend-form.php:221 includes/class-agent.php:763
+msgid "City"
+msgstr "Ort"
+
+#: includes/class-agency-backend-form.php:137 includes/class-agency.php:471
+#: includes/class-agent-backend-form.php:227 includes/class-agent.php:772
+msgid "P.O. Box"
+msgstr "Postfach"
+
+#: includes/class-agency-backend-form.php:143 includes/class-agency.php:479
+#: includes/class-agent-backend-form.php:233 includes/class-agent.php:780
+msgid "P.O. Box ZIP Code"
+msgstr "Postfach-PLZ"
+
+#: includes/class-agency-backend-form.php:149 includes/class-agency.php:487
+#: includes/class-agent-backend-form.php:239 includes/class-agent.php:788
+msgid "P.O. Box City"
+msgstr "Postfach-Ort"
+
+#: includes/class-agency-backend-form.php:155
+#: includes/class-agent-backend-form.php:245
+msgid "Country code (ISO3)"
+msgstr "Ländercode (ISO3)"
+
+#: includes/class-agency-backend-form.php:156
+#: includes/class-agent-backend-form.php:246
+msgid ""
+"Code according to <a href=\"https://en.wikipedia.org/wiki/ISO_3166-1\" "
+"target=\"_blank\">ISO-3166-1 Alpha-3</a>"
+msgstr ""
+"Code gemäß <a href=\"https://en.wikipedia.org/wiki/ISO_3166-1\" target="
+"\"_blank\">ISO-3166-1 Alpha-3</a>"
+
+#: includes/class-agency-backend-form.php:171 includes/class-agency.php:607
+#: includes/class-agent-backend-form.php:251
+#: includes/class-agent-backend-form.php:266 includes/class-agent.php:858
+msgid "Business/Social Networks"
+msgstr "Netzwerke (Business/Social)"
+
+#: includes/class-agency-backend-form.php:192
+msgid "Legal Information"
+msgstr "Rechtliche Informationen"
+
+#: includes/class-agency-backend-form.php:202 includes/class-agency.php:388
+#: includes/class-agent.php:720
+msgid "Company"
+msgstr "Firma"
+
+#: includes/class-agency-backend-form.php:208
+msgid "Address"
+msgstr "Adresse"
+
+#: includes/class-agency-backend-form.php:220 includes/class-agency.php:559
+msgid "Representative"
+msgstr "Vertretungsberechtigte Person"
+
+#: includes/class-agency-backend-form.php:226 includes/class-agency.php:567
+msgid "Supervisory Authority"
+msgstr "Aufsichtsbehörde"
+
+#: includes/class-agency-backend-form.php:232 includes/class-agency.php:575
+msgid "Registry Court"
+msgstr "Registergericht"
+
+#: includes/class-agency-backend-form.php:238 includes/class-agency.php:583
+msgid "Trade Register Number"
+msgstr "Handelsregister-Nr."
+
+#: includes/class-agency-backend-form.php:244 includes/class-agency.php:591
+msgid "VATIN"
+msgstr "USt-ID"
+
+#: includes/class-agency-backend-form.php:250
+#: includes/class-agent-backend-form.php:341
+msgid "Other"
+msgstr "Weiteres"
+
+#: includes/class-agency-backend-form.php:256 includes/class-agency.php:527
+msgid "Legal Notice"
+msgstr "Impressum"
+
+#: includes/class-agency-backend-form.php:270
+#: includes/class-agent-backend-form.php:287 includes/class-agent.php:851
+msgid "Miscellaneous"
+msgstr "Sonstiges"
+
+#: includes/class-agency-backend-form.php:280
+#: includes/class-agent-backend-form.php:305
+msgid "Auto Update"
+msgstr "Auto-Update"
+
+#: includes/class-agency-backend-form.php:286 includes/class-agency.php:503
+#: includes/class-agent.php:805
+msgid "Address Publishing Approval"
+msgstr "Adressveröffentlichung"
+
+#: includes/class-agency-backend-form.php:292
+msgid "Import Folder"
+msgstr "Importordner"
+
+#: includes/class-agency-backend-form.php:298
+msgid "OpenImmo ANID"
+msgstr "OpenImmo ANID"
+
+#: includes/class-agency-backend-form.php:304
+msgid "Demo Agency"
+msgstr "Demo-Agentur"
+
+#: includes/class-agency-backend-form.php:305
+msgid ""
+"Activate if this agency record only consists of example data. Related "
+"contact form data will <strong>not</strong> be submitted in this case."
+msgstr ""
+"Aktivieren, wenn es sich bei diesem Agentur-Datensatz nur um Beispieldaten "
+"handelt. Zugehörige Kontaktformulardaten werden in diesem Fall "
+"<strong>nicht</strong> übermittelt."
+
+#: includes/class-agency.php:381
+msgid "Logo"
+msgstr "Logo"
+
+#: includes/class-agency.php:395
+msgid "About"
+msgstr "Über"
+
+#: includes/class-agency.php:432 includes/class-agent.php:712
+msgid "URL (Company)"
+msgstr "URL (Unternehmen)"
+
+#: includes/class-agency.php:495 includes/class-agent.php:796
+msgid "Country (ISO3)"
+msgstr "Land (ISO3)"
+
+#: includes/class-agency.php:510 includes/class-agent.php:812
+msgid "Full Address"
+msgstr "Vollständige Adresse"
+
+#: includes/class-agency.php:512 includes/class-agent.php:814
+msgid "Disables &quot;City&quot; if set."
+msgstr "Deaktiviert &quot;Ort&quot;, sofern markiert."
+
+#: includes/class-agency.php:519 includes/class-agent.php:821
+msgid "Address (single line)"
+msgstr "Adresse (einzelne Zeile)"
+
+#: includes/class-agency.php:535
+msgid "Company (Legal)"
+msgstr "Firma (Impressum)"
+
+#: includes/class-agency.php:543
+msgid "Address (Legal)"
+msgstr "Adresse (Impressum)"
+
+#: includes/class-agency.php:551
+msgid "Phone (Legal)"
+msgstr "Telefon (Impressum)"
+
+#: includes/class-agency.php:599
+msgid "Legal (Miscellaneous)"
+msgstr "Impressum (Sonstiges)"
+
+#: includes/class-agency.php:613 includes/class-agent.php:864
+msgid "Business/Social Network Icons"
+msgstr "Netzwerk-Icons (Business/Social)"
+
+#: includes/class-agency.php:620 includes/class-agent.php:871
+#: includes/class-kickstart-team.php:267
+msgid "Contact Form"
+msgstr "Kontaktformular"
+
+#: includes/class-agent-backend-form.php:72
+msgid "About..."
+msgstr "Über..."
+
+#: includes/class-agent-backend-form.php:82 includes/class-agent.php:525
+msgid "Gender"
+msgstr "Geschlecht"
+
+#: includes/class-agent-backend-form.php:89
+msgid "male"
+msgstr "männlich"
+
+#: includes/class-agent-backend-form.php:90
+msgid "female"
+msgstr "weiblich"
+
+#: includes/class-agent-backend-form.php:91
+msgid "diverse"
+msgstr "divers"
+
+#: includes/class-agent-backend-form.php:95 includes/class-agent.php:532
+#: includes/widgets/class-agency-widget.php:121
+#: includes/widgets/class-agent-widget.php:114
+msgid "Title"
+msgstr "Titel"
+
+#: includes/class-agent-backend-form.php:101 includes/class-agent.php:539
+msgid "First Name"
+msgstr "Vorname"
+
+#: includes/class-agent-backend-form.php:107 includes/class-agent.php:546
+msgid "Last Name"
+msgstr "Nachname"
+
+#: includes/class-agent-backend-form.php:113 includes/class-agent.php:568
+msgid "Position"
+msgstr "Position"
+
+#: includes/class-agent-backend-form.php:143
+msgid "Email (main office)"
+msgstr "E-Mail (Zentrale)"
+
+#: includes/class-agent-backend-form.php:149
+msgid "Email (feedback)"
+msgstr "E-Mail (Feedback)"
+
+#: includes/class-agent-backend-form.php:155 includes/class-agent.php:631
+msgid "Email (private)"
+msgstr "E-Mail (privat)"
+
+#: includes/class-agent-backend-form.php:161 includes/class-agent.php:650
+msgid "Phone (call-through)"
+msgstr "Telefon (Durchwahl)"
+
+#: includes/class-agent-backend-form.php:167 includes/class-agent.php:671
+msgid "Phone (mobile)"
+msgstr "Telefon (mobil)"
+
+#: includes/class-agent-backend-form.php:173
+msgid "Phone (main office)"
+msgstr "Telefon (Zentrale)"
+
+#: includes/class-agent-backend-form.php:179 includes/class-agent.php:681
+msgid "Phone (private)"
+msgstr "Telefon (privat)"
+
+#: includes/class-agent-backend-form.php:297 includes/class-wp-bootstrap.php:72
+#: includes/widgets/class-agency-widget.php:27
+msgid "Agency"
+msgstr "Agentur"
+
+#: includes/class-agent-backend-form.php:301
+#: includes/class-agent-backend-form.php:375
+msgid "n/a"
+msgstr "k. A."
+
+#: includes/class-agent-backend-form.php:311
+msgid "Address Publishing"
+msgstr "Addressveröffentlichung"
+
+#: includes/class-agent-backend-form.php:317
+msgid "Import folder"
+msgstr "Importordner"
+
+#: includes/class-agent-backend-form.php:323 includes/class-agent.php:829
+msgid "Personal Number"
+msgstr "Personennummer"
+
+#: includes/class-agent-backend-form.php:329 includes/class-agent.php:836
+msgid "Property Trustee ID"
+msgstr "Immobilien-Treuhänder-ID"
+
+#: includes/class-agent-backend-form.php:335 includes/class-agent.php:844
+msgid "Reference ID"
+msgstr "Referenz-ID"
+
+#: includes/class-agent-backend-form.php:347
+msgid "Demo Agent"
+msgstr "Demo-Kontaktperson"
+
+#: includes/class-agent-backend-form.php:348
+msgid ""
+"Activate if this agent record only consists of example data. Related contact "
+"form data will <strong>not</strong> be submitted in this case."
+msgstr ""
+"Aktivieren, wenn es sich bei diesem Kontaktpersonen-Datensatz nur um "
+"Beispieldaten handelt. Zugehörige Kontaktformulardaten werden in diesem Fall "
+"<strong>nicht</strong> übermittelt."
+
+#: includes/class-agent-backend-form.php:361
+msgid "Contact"
+msgstr "Kontakt"
+
+#: includes/class-agent-backend-form.php:371
+msgid "Agent (primary)"
+msgstr "Kontaktperson (primär)"
+
+#: includes/class-agent-backend-form.php:379 includes/class-wp-bootstrap.php:95
+msgid "Agents"
+msgstr "Kontaktpersonen"
+
+#: includes/class-agent.php:518
+msgid "Photo"
+msgstr "Foto"
+
+#: includes/class-agent.php:553
+msgid "Full Name"
+msgstr "Name"
+
+#: includes/class-agent.php:560
+msgid "Full Name incl. Title"
+msgstr "Name inkl. Titel"
+
+#: includes/class-agent.php:561
+msgid "Disables &quot;Full Name&quot; if set."
+msgstr "Deaktiviert &quot;Name&quot;, sofern markiert."
+
+#: includes/class-agent.php:576
+msgid "Position incl. Company"
+msgstr "Position inkl. Unternehmen"
+
+#: includes/class-agent.php:577
+msgid ""
+"Position plus Company link <strong>if more than one agency exists</strong>. "
+"Disables &quot;Position&quot; if set."
+msgstr ""
+"Position + Link zum Unternehmen <strong>bei mehr als einer Agentur</strong>. "
+"Deaktiviert &quot;Position&quot;, sofern markiert."
+
+#: includes/class-agent.php:584
+msgid "Short Biography"
+msgstr "Kurzbeschreibung/Biographie"
+
+#: includes/class-agent.php:600
+msgid "Email (direct)"
+msgstr "E-Mail (direkt)"
+
+#: includes/class-agent.php:610
+msgid "Email (Main Office)"
+msgstr "E-Mail (Zentrale)"
+
+#: includes/class-agent.php:621
+msgid "Email (Feedback)"
+msgstr "E-Mail (Feedback)"
+
+#: includes/class-agent.php:660
+msgid "Phone (Main Office)"
+msgstr "Telefon (Zentrale)"
+
+#: includes/class-agent.php:691
+msgid "Phone (other)"
+msgstr "Telefon (weitere)"
+
+#: includes/class-agent.php:729
+msgid "Company (Link)"
+msgstr "Firma (Link)"
+
+#: includes/class-agent.php:1104 includes/class-agent.php:1115
+#: includes/class-agent.php:1123
+msgid "at"
+msgstr "bei"
+
+#. translators: %1$s = property title, %2$s = property ID
+#: includes/class-contact-form.php:73
+msgid "I am interested in the property &quot;%1$s&quot; (%2$s)."
+msgstr "Ich interessiere mich für die Immobilie &quot;%1$s&quot; (%2$s)."
+
+#: includes/class-contact-form.php:166
+msgid "Inquiry"
+msgstr "Anfrage"
+
+#: includes/class-contact-form.php:168
+msgid "for"
+msgstr "für"
+
+#: includes/class-contact-form.php:232
+msgid ""
+"Uh-oh! A problem occured while sending your data. Please try again later!"
+msgstr ""
+"Hoppla! Bei Versenden Ihrer Angaben ist leider ein Problem aufgetreten - "
+"bitte versuchen Sie es etwas später erneut!"
+
+#: includes/class-contact-form.php:256 includes/class-contact-form.php:258
+msgid "Name"
+msgstr "Name"
+
+#: includes/class-contact-form.php:257
+msgid "Prospect"
+msgstr "Interessent/in"
+
+#: includes/class-contact-form.php:271 includes/class-contact-form.php:272
+msgid "Email Address"
+msgstr "E-Mail-Adresse"
+
+#: includes/class-contact-form.php:277 includes/class-contact-form.php:278
+msgid "Message"
+msgstr "Nachricht"
+
+#: includes/class-contact-form.php:316
+msgid "This is a required field!"
+msgstr "Dies ist ein Pflichtfeld!"
+
+#. translators: %s = caption of a required field
+#: includes/class-contact-form.php:324
+msgid "Please provide this information <strong>or: %s</strong>"
+msgstr "Bitte dieses Feld ausfüllen <strong>oder: %s</strong>"
+
+#: includes/class-contact-form.php:335
+msgid "Your data could not be submitted. Please check your inputs!"
+msgstr ""
+"Ihre Daten konnten nicht übermittelt werden. Bitte prüfen Sie Ihre Eingaben!"
+
+#: includes/class-contact-form.php:341
+msgid "Your data could not be submitted. Please reload the page and try again!"
+msgstr ""
+"Ihre Angaben konnten nicht übermittelt werden. Bitte laden Sie die Seite neu "
+"und versuchen Sie es noch einmal!"
+
+#: includes/class-contact-form.php:388
+msgid "Privacy Policy"
+msgstr "Datenschutzerklärung"
+
+#: includes/class-contact-form.php:400
+msgid "Cancellation Policy"
+msgstr "Widerrufsbelehrung"
+
+#: includes/class-kickstart-team.php:108
+msgid "Real Estate Agencies"
+msgstr "Immobilien-Agenturen"
+
+#: includes/class-kickstart-team.php:112
+msgid "Real Estate Agents"
+msgstr "Immobilienmakler/innen"
+
+#: includes/class-kickstart-team.php:116
+msgid ""
+"I have read the [cancellation_policy] and confirm that I have been informed "
+"about its legal effects. I agree that the real estate agency services may be "
+"provided before the cancellation period expires."
+msgstr ""
+"Ich habe die [cancellation_policy] gelesen und bestätige, dass ich über die "
+"rechtlichen Auswirkungen informiert wurde. Ich bin damit einverstanden, dass "
+"die Dienstleistungen der Immobilienmakler-Agentur bereits vor Ablauf der "
+"Stornierungsfrist erbracht werden können."
+
+#: includes/class-kickstart-team.php:120
+msgid ""
+"I agree that my data will be processed and stored in accordance with the "
+"[privacy_policy] in order to answer my request. This consent can be revoked "
+"at any time."
+msgstr ""
+"Ich stimme der Verarbeitung und Speicherung meiner Daten gemäß der "
+"[privacy_policy] zwecks Beantwortung meiner Anfrage zu. Diese Einwilligung "
+"kann jederzeit widerrufen werden."
+
+#: includes/class-kickstart-team.php:124
+msgid "Thank you for your inquiry!"
+msgstr "Vielen Dank für Ihre Anfrage!"
+
+#: includes/class-kickstart-team.php:262
+msgid "Layout & Design"
+msgstr "Layout & Design"
+
+#: includes/class-kickstart-team.php:291
+#: includes/widgets/class-agency-widget.php:129
+#: includes/widgets/class-agent-widget.php:123
+msgid "none"
+msgstr "keine"
+
+#: includes/class-kickstart-team.php:297
+msgid "Skin"
+msgstr "Skin"
+
+#: includes/class-kickstart-team.php:302
+msgid ""
+"A skin is a set of connected templates for plugin related pages and elements."
+msgstr ""
+"Als Skin wird ein Reihe zusammengehöriger Plugin-Vorlagen (Templates) "
+"bezeichnet."
+
+#: includes/class-kickstart-team.php:310
+msgid "Agency Archive Title"
+msgstr "Agentur-Archiv-Titel"
+
+#: includes/class-kickstart-team.php:315
+msgid "default title for the agency post type archive pages"
+msgstr "Standardtitel für Archivseiten des Agentur-Beitragstyps"
+
+#: includes/class-kickstart-team.php:322
+msgid "Agent Archive Title"
+msgstr "Kontaktpersonen-Archiv-Titel"
+
+#: includes/class-kickstart-team.php:327
+msgid "default title for the agent post type archive pages"
+msgstr "Standardtitel für Archivseiten des Kontaktpersonen-Beitragstyps"
+
+#: includes/class-kickstart-team.php:334
+msgid "Default Contact Section Adaptation"
+msgstr "Anpassung des Standard-Kontaktabschnitts"
+
+#: includes/class-kickstart-team.php:339
+msgid ""
+"The default contact data section in <strong>property detail pages</strong> "
+"can optionally be disabled or replaced by the related primary agent contact "
+"data and form supplied by this add-on."
+msgstr ""
+"Der Standard-Kontaktdaten-Abschnitt in <strong>Immobilien-Detailseiten</"
+"strong> kann optional deaktiviert oder durch die zugehörigen primären "
+"Kontaktdaten (inkl. Formular) ersetzt werden, die von diesem Add-on "
+"bereitgestellt werden."
+
+#: includes/class-kickstart-team.php:341
+msgid "no change"
+msgstr "keine Änderung"
+
+#: includes/class-kickstart-team.php:342
+msgid "replace"
+msgstr "ersetzen"
+
+#: includes/class-kickstart-team.php:343
+msgid "disable"
+msgstr "ausblenden"
+
+#: includes/class-kickstart-team.php:351
+msgid "Fallback Recipient Mail Addresses"
+msgstr "Fallback-Empfänger-Mailadressen"
+
+#: includes/class-kickstart-team.php:356
+msgid ""
+"comma-separated list of <strong>fallback</strong> recipient addresses used "
+"if no property related agent/agency address is determinable (default: main "
+"site admin address)"
+msgstr ""
+"kommagetrennte Liste von <strong>Fallback</strong>-Empfänger-Mailadressen, "
+"die verwendet werden, wenn keine objektbezogene Kontaktpersonen-/"
+"Agenturenadresse ermittelbar ist (Standard: Haupt-Admin-Mailadresse der "
+"Website)"
+
+#: includes/class-kickstart-team.php:363
+msgid "CC Mail Addresses"
+msgstr "CC-Mailadressen"
+
+#: includes/class-kickstart-team.php:368
+msgid ""
+"comma-separated list of addresses to which <strong>copies of all inquiry "
+"mails</strong> should be sent"
+msgstr ""
+"kommagetrennte Liste von Mailadressen, an die <strong>Kopien aller Anfrage-"
+"Mails</strong> gesendet werden sollen"
+
+#: includes/class-kickstart-team.php:375
+msgid "Cancellation Policy Page"
+msgstr "Seite der Widerrufsbelehrung"
+
+#: includes/class-kickstart-team.php:380
+msgid ""
+"If a cancellation policy page is selected, the following consent text will "
+"be added to the form."
+msgstr ""
+"Wenn eine Seite ausgewählt ist, die Infos und Bedingungen zum Widerrufsrecht "
+"enthält, wird der folgende Einwilligungstext zum Formular hinzugefügt."
+
+#: includes/class-kickstart-team.php:388
+msgid "Cancellation Consent Text"
+msgstr "Einwilligungstext zum Widerrufsrecht"
+
+#: includes/class-kickstart-team.php:393
+msgid ""
+"The <strong>cancellation policy part</strong> (optional) of the form consent "
+"text - use [cancellation_policy] to add a link to the page selected above."
+msgstr ""
+"Der <strong>Abschnitt zum Widerrufsrecht</strong> (optional) des Formular-"
+"Einwilligungstextes - mit [cancellation_policy] kann ein Link zur oben "
+"ausgewählten Seite ergänzt werden."
+
+#: includes/class-kickstart-team.php:400
+msgid "Privacy Consent Text"
+msgstr "Einwilligungstext zum Datenschutz"
+
+#. translators: %s = privacy options page URL
+#: includes/class-kickstart-team.php:407
+msgid ""
+"The <strong>privacy policy part</strong> (mandatory) of the form consent "
+"text - use [privacy_policy] to add a link to the privacy policy page defined "
+"in the <a href=\"%s\">site options</a>."
+msgstr ""
+"Der <strong>Abschnitt zur Verarbeitung personenbezogener Daten</strong> "
+"(verpflichtend) des Formular-Einwilligungstextes - mit [privacy_policy] kann "
+"ein Link zur Datenschutzerklärungsseite eingefügt werden, die in den <a href="
+"\"%s\">Website-Einstellungen</a> definiert werden kann."
+
+#: includes/class-kickstart-team.php:416
+msgid "Confirmation Message"
+msgstr "Bestätigungsmeldung"
+
+#: includes/class-kickstart-team.php:421
+msgid ""
+"This message is being displayed when the form data have been successfully "
+"submitted."
+msgstr ""
+"Diese Meldung wird angezeigt, wenn die Formulardaten erfolgreich übermittelt "
+"wurden."
+
+#: includes/class-kickstart-team.php:428
+msgid "Hide form after submit"
+msgstr "Formular nach Absenden ausblenden"
+
+#: includes/class-kickstart-team.php:507
+msgid "Withdrawal"
+msgstr "Widerruf"
+
+#: includes/class-kickstart-team.php:508
+msgid "Cancellation"
+msgstr "Widerruf"
+
+#: includes/class-wp-bootstrap.php:71
+msgid "Agencies"
+msgstr "Agenturen"
+
+#: includes/class-wp-bootstrap.php:73
+msgid "Add New Agency"
+msgstr "Neue Agentur hinzufügen"
+
+#: includes/class-wp-bootstrap.php:74
+msgid "Edit Agency"
+msgstr "Agentur bearbeiten"
+
+#: includes/class-wp-bootstrap.php:75
+msgid "New Agency"
+msgstr "Neue Agentur"
+
+#: includes/class-wp-bootstrap.php:76
+msgid "View Agency"
+msgstr "Agentur anzeigen"
+
+#: includes/class-wp-bootstrap.php:77
+msgid "Search Agencies"
+msgstr "Agenturen durchsuchen"
+
+#: includes/class-wp-bootstrap.php:78
+msgid "No agencies found"
+msgstr "Keine Agenturen gefunden"
+
+#: includes/class-wp-bootstrap.php:79
+msgid "No agencies found in Trash"
+msgstr "Keine Agenturen im Papierkorb gefunden"
+
+#: includes/class-wp-bootstrap.php:90
+msgctxt "Custom Post Type Slug (plural only!)"
+msgid "realtors"
+msgstr "immobilienmakler-agenturen"
+
+#: includes/class-wp-bootstrap.php:96
+#: includes/widgets/class-agent-widget.php:26
+msgid "Agent"
+msgstr "Kontaktperson"
+
+#: includes/class-wp-bootstrap.php:97
+msgid "Add New Agent"
+msgstr "Neue Kontaktperson hinzufügen"
+
+#: includes/class-wp-bootstrap.php:98
+msgid "Edit Agent"
+msgstr "Kontaktperson bearbeiten"
+
+#: includes/class-wp-bootstrap.php:99
+msgid "New Agent"
+msgstr "Neue Kontaktperson"
+
+#: includes/class-wp-bootstrap.php:100
+msgid "View Agent"
+msgstr "Kontaktperson anzeigen"
+
+#: includes/class-wp-bootstrap.php:101
+msgid "Search Agents"
+msgstr "Kontaktpersonen durchsuchen"
+
+#: includes/class-wp-bootstrap.php:102
+msgid "No agents found"
+msgstr "Keine Kontaktpersonen gefunden"
+
+#: includes/class-wp-bootstrap.php:103
+msgid "No agents found in Trash"
+msgstr "Keine Kontaktpersonen im Papierkorb gefunden"
+
+#: includes/class-wp-bootstrap.php:114
+msgctxt "Custom Post Type Slug (plural only!)"
+msgid "agents"
+msgstr "immobilienmakler"
+
+#: includes/class-wp-bootstrap.php:145
+msgid "Agency ID"
+msgstr "Agentur-ID"
+
+#: includes/class-wp-bootstrap.php:149
+msgid "Agent ID"
+msgstr "Kontaktpersonen-ID"
+
+#: includes/third_party/class-tgm-plugin-activation.php:334 tgmpa.php:40
+msgid "Install Required Plugins"
+msgstr "Erforderliche Plugins installieren"
+
+#: includes/third_party/class-tgm-plugin-activation.php:335 tgmpa.php:41
+msgid "Install Plugins"
+msgstr "Plugins installieren"
+
+#. translators: %s: plugin name.
+#: includes/third_party/class-tgm-plugin-activation.php:337 tgmpa.php:43
+msgid "Installing Plugin: %s"
+msgstr "Installiere Plugin: %s"
+
+#. translators: %s: plugin name.
+#: includes/third_party/class-tgm-plugin-activation.php:339 tgmpa.php:45
+msgid "Updating Plugin: %s"
+msgstr "Aktualisiere Plugin: %s"
+
+#: includes/third_party/class-tgm-plugin-activation.php:340 tgmpa.php:46
+msgid "Something went wrong with the plugin API."
+msgstr "Ein Problem mit der Plugin-API ist aufgetreten."
+
+#. translators: 1: plugin name(s).
+#: includes/third_party/class-tgm-plugin-activation.php:377 tgmpa.php:83
+msgid "Begin installing plugin"
+msgid_plural "Begin installing plugins"
+msgstr[0] "Installation des Plugins starten"
+msgstr[1] "Installation der Plugins starten"
+
+#: includes/third_party/class-tgm-plugin-activation.php:382 tgmpa.php:88
+msgid "Begin updating plugin"
+msgid_plural "Begin updating plugins"
+msgstr[0] "Aktualisierung des Plugins starten"
+msgstr[1] "Aktualisierung der Plugins starten"
+
+#: includes/third_party/class-tgm-plugin-activation.php:387 tgmpa.php:93
+msgid "Begin activating plugin"
+msgid_plural "Begin activating plugins"
+msgstr[0] "Aktivierung des Plugins starten"
+msgstr[1] "Aktivierung der Plugins starten"
+
+#: includes/third_party/class-tgm-plugin-activation.php:392 tgmpa.php:98
+msgid "Return to Required Plugins Installer"
+msgstr "Zurück zum Installer für erforderliche Plugins"
+
+#: includes/third_party/class-tgm-plugin-activation.php:393
+#: includes/third_party/class-tgm-plugin-activation.php:920
+#: includes/third_party/class-tgm-plugin-activation.php:2626
+#: includes/third_party/class-tgm-plugin-activation.php:3673
+msgid "Return to the Dashboard"
+msgstr "Zurück zum Dashboard"
+
+#: includes/third_party/class-tgm-plugin-activation.php:394
+#: includes/third_party/class-tgm-plugin-activation.php:3252 tgmpa.php:99
+msgid "Plugin activated successfully."
+msgstr "Plugin erfolgreich aktiviert."
+
+#: includes/third_party/class-tgm-plugin-activation.php:395
+#: includes/third_party/class-tgm-plugin-activation.php:3045 tgmpa.php:100
+msgid "The following plugin was activated successfully:"
+msgstr "Das folgende Plugin wurde erfolgreich aktiviert:"
+
+#. translators: 1: plugin name.
+#: includes/third_party/class-tgm-plugin-activation.php:397 tgmpa.php:102
+msgid "No action taken. Plugin %1$s was already active."
+msgstr "Nichts zu tun… Plugin %1$s war bereits aktiv."
+
+#. translators: 1: plugin name.
+#: includes/third_party/class-tgm-plugin-activation.php:399 tgmpa.php:104
+msgid ""
+"Plugin not activated. A higher version of %s is needed for this theme. "
+"Please update the plugin."
+msgstr ""
+"Plugin nicht aktiviert. Eine aktuellere Version von %s wird für dieses Theme "
+"benötigt. Bitte aktualisieren Sie das Plugin."
+
+#. translators: 1: dashboard link.
+#: includes/third_party/class-tgm-plugin-activation.php:401 tgmpa.php:106
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr "Alle Plugins wurden erfolgreich installiert und aktiviert. %1$s"
+
+#: includes/third_party/class-tgm-plugin-activation.php:402 tgmpa.php:107
+msgid "Dismiss this notice"
+msgstr "Diesen Hinweis ausblenden"
+
+#: includes/third_party/class-tgm-plugin-activation.php:403 tgmpa.php:108
+msgid ""
+"There are one or more required or recommended plugins to install, update or "
+"activate."
+msgstr ""
+"Es sind ein oder mehrere erforderliche oder empfohlene Plugins zu "
+"installieren, aktualisieren oder aktivieren."
+
+#: includes/third_party/class-tgm-plugin-activation.php:404 tgmpa.php:109
+msgid "Please contact the administrator of this site for help."
+msgstr ""
+"Bitte wenden Sie sich zwecks Unterstützung an den Administrator dieser "
+"Website."
+
+#: includes/third_party/class-tgm-plugin-activation.php:607
+msgid "This plugin needs to be updated to be compatible with your theme."
+msgstr ""
+"Dieses Plugin muss aktualisiert werden, um kompatibel mit dem Theme zu sein."
+
+#: includes/third_party/class-tgm-plugin-activation.php:608
+msgid "Update Required"
+msgstr "Aktualisierung erforderlich"
+
+#: includes/third_party/class-tgm-plugin-activation.php:725
+msgid "Set the parent_slug config variable instead."
+msgstr "Verwenden Sie stattdessen die Konfigurations-Variable parent_slug."
+
+#: includes/third_party/class-tgm-plugin-activation.php:1027
+msgid ""
+"The remote plugin package does not contain a folder with the desired slug "
+"and renaming did not work."
+msgstr ""
+"Das Remote-Plugin-Paket enthält keinen Ordner mit dem gewünschten Slug und "
+"Umbenennen hat nicht funktioniert."
+
+#: includes/third_party/class-tgm-plugin-activation.php:1027
+#: includes/third_party/class-tgm-plugin-activation.php:1030
+msgid ""
+"Please contact the plugin provider and ask them to package their plugin "
+"according to the WordPress guidelines."
+msgstr ""
+"Kontaktieren Sie den Plugin-Anbieter und bitten Sie ihn um die "
+"Bereitstellung eines regulären Plugin-Pakets gemäß den WordPress-Richtlinien."
+
+#: includes/third_party/class-tgm-plugin-activation.php:1030
+msgid ""
+"The remote plugin package consists of more than one file, but the files are "
+"not packaged in a folder."
+msgstr ""
+"Das Remote-Plugin-Paket enthält mehr als eine Datei, die aber nicht in einem "
+"Ordner zusammengefasst sind."
+
+#: includes/third_party/class-tgm-plugin-activation.php:1214
+#: includes/third_party/class-tgm-plugin-activation.php:3041
+msgctxt "plugin A *and* plugin B"
+msgid "and"
+msgstr "und"
+
+#. translators: %s: version number
+#: includes/third_party/class-tgm-plugin-activation.php:2075
+msgid "TGMPA v%s"
+msgstr "TGMPA v%s"
+
+#: includes/third_party/class-tgm-plugin-activation.php:2366
+msgid "Required"
+msgstr "Erforderlich"
+
+#: includes/third_party/class-tgm-plugin-activation.php:2369
+msgid "Recommended"
+msgstr "Empfohlen"
+
+#: includes/third_party/class-tgm-plugin-activation.php:2385
+msgid "WordPress Repository"
+msgstr "WordPress-Repository"
+
+#: includes/third_party/class-tgm-plugin-activation.php:2388
+msgid "External Source"
+msgstr "Externe Quelle"
+
+#: includes/third_party/class-tgm-plugin-activation.php:2391
+msgid "Pre-Packaged"
+msgstr "Enthalten"
+
+#: includes/third_party/class-tgm-plugin-activation.php:2408
+msgid "Not Installed"
+msgstr "Nicht installiert"
+
+#: includes/third_party/class-tgm-plugin-activation.php:2412
+msgid "Installed But Not Activated"
+msgstr "Installiert, aber nicht aktiviert"
+
+#: includes/third_party/class-tgm-plugin-activation.php:2414
+msgid "Active"
+msgstr "Aktiv"
+
+#: includes/third_party/class-tgm-plugin-activation.php:2420
+msgid "Required Update not Available"
+msgstr "Erforderliche Aktualisierung nicht verfügbar"
+
+#: includes/third_party/class-tgm-plugin-activation.php:2423
+msgid "Requires Update"
+msgstr "Aktualisierung erforderlich"
+
+#: includes/third_party/class-tgm-plugin-activation.php:2426
+msgid "Update recommended"
+msgstr "Aktualisierung empfohlen"
+
+#. translators: 1: install status, 2: update status
+#: includes/third_party/class-tgm-plugin-activation.php:2435
+msgctxt "Install/Update Status"
+msgid "%1$s, %2$s"
+msgstr "%1$s, %2$s"
+
+#. translators: 1: number of plugins.
+#: includes/third_party/class-tgm-plugin-activation.php:2481
+msgctxt "plugins"
+msgid "All <span class=\"count\">(%s)</span>"
+msgid_plural "All <span class=\"count\">(%s)</span>"
+msgstr[0] "Alle <span class=\"count\">(%s)</span>"
+msgstr[1] "Alle <span class=\"count\">(%s)</span>"
+
+#. translators: 1: number of plugins.
+#: includes/third_party/class-tgm-plugin-activation.php:2485
+msgid "To Install <span class=\"count\">(%s)</span>"
+msgid_plural "To Install <span class=\"count\">(%s)</span>"
+msgstr[0] "Zu installieren <span class=\"count\">(%s)</span>"
+msgstr[1] "Zu installieren <span class=\"count\">(%s)</span>"
+
+#. translators: 1: number of plugins.
+#: includes/third_party/class-tgm-plugin-activation.php:2489
+msgid "Update Available <span class=\"count\">(%s)</span>"
+msgid_plural "Update Available <span class=\"count\">(%s)</span>"
+msgstr[0] "Aktualisierung verfügbar <span class=\"count\">(%s)</span>"
+msgstr[1] "Aktualisierung verfügbar <span class=\"count\">(%s)</span>"
+
+#. translators: 1: number of plugins.
+#: includes/third_party/class-tgm-plugin-activation.php:2493
+msgid "To Activate <span class=\"count\">(%s)</span>"
+msgid_plural "To Activate <span class=\"count\">(%s)</span>"
+msgstr[0] "Zu aktivieren <span class=\"count\">(%s)</span>"
+msgstr[1] "Zu aktivieren <span class=\"count\">(%s)</span>"
+
+#: includes/third_party/class-tgm-plugin-activation.php:2575
+msgctxt "as in: \"version nr unknown\""
+msgid "unknown"
+msgstr "unbekannt"
+
+#: includes/third_party/class-tgm-plugin-activation.php:2583
+msgid "Installed version:"
+msgstr "Installierte Version:"
+
+#: includes/third_party/class-tgm-plugin-activation.php:2591
+msgid "Minimum required version:"
+msgstr "Erforderliche Mindestversion:"
+
+#: includes/third_party/class-tgm-plugin-activation.php:2603
+msgid "Available version:"
+msgstr "Verfügbare Version:"
+
+#: includes/third_party/class-tgm-plugin-activation.php:2626
+msgid "No plugins to install, update or activate."
+msgstr "Keine Plugins zu installieren, aktualisieren oder aktivieren."
+
+#: includes/third_party/class-tgm-plugin-activation.php:2640
+msgid "Plugin"
+msgstr "Plugin"
+
+#: includes/third_party/class-tgm-plugin-activation.php:2641
+msgid "Source"
+msgstr "Quelle"
+
+#: includes/third_party/class-tgm-plugin-activation.php:2642
+msgid "Type"
+msgstr "Typ"
+
+#: includes/third_party/class-tgm-plugin-activation.php:2646
+msgid "Version"
+msgstr "Version"
+
+#: includes/third_party/class-tgm-plugin-activation.php:2647
+msgid "Status"
+msgstr "Status"
+
+#. translators: %2$s: plugin name in screen reader markup
+#: includes/third_party/class-tgm-plugin-activation.php:2696
+msgid "Install %2$s"
+msgstr "Installiere %2$s"
+
+#. translators: %2$s: plugin name in screen reader markup
+#: includes/third_party/class-tgm-plugin-activation.php:2701
+msgid "Update %2$s"
+msgstr "Aktualisiere %2$s"
+
+#. translators: %2$s: plugin name in screen reader markup
+#: includes/third_party/class-tgm-plugin-activation.php:2707
+msgid "Activate %2$s"
+msgstr "Aktivieren %2$s"
+
+#: includes/third_party/class-tgm-plugin-activation.php:2777
+msgid "Upgrade message from the plugin author:"
+msgstr "Aktualisierungshinweis des Plugin-Autors:"
+
+#: includes/third_party/class-tgm-plugin-activation.php:2810
+msgid "Install"
+msgstr "Installieren"
+
+#: includes/third_party/class-tgm-plugin-activation.php:2816
+msgid "Update"
+msgstr "Aktualisieren"
+
+#: includes/third_party/class-tgm-plugin-activation.php:2819
+msgid "Activate"
+msgstr "Aktivieren"
+
+#: includes/third_party/class-tgm-plugin-activation.php:2850
+msgid "No plugins were selected to be installed. No action taken."
+msgstr "Keine zu installierenden Plugins ausgewählt. Nichts zu tun…"
+
+#: includes/third_party/class-tgm-plugin-activation.php:2852
+msgid "No plugins were selected to be updated. No action taken."
+msgstr "Keine zu aktualisierenden Plugins ausgewählt. Nichts zu tun…"
+
+#: includes/third_party/class-tgm-plugin-activation.php:2893
+msgid "No plugins are available to be installed at this time."
+msgstr "Aktuell sind keine zu installierenden Plugins verfügbar."
+
+#: includes/third_party/class-tgm-plugin-activation.php:2895
+msgid "No plugins are available to be updated at this time."
+msgstr "Aktuell sind keine zu aktualisierenden Plugins verfügbar."
+
+#: includes/third_party/class-tgm-plugin-activation.php:3001
+msgid "No plugins were selected to be activated. No action taken."
+msgstr "Keine zu aktivierenden Plugins ausgewählt. Nichts zu tun…"
+
+#: includes/third_party/class-tgm-plugin-activation.php:3027
+msgid "No plugins are available to be activated at this time."
+msgstr "Aktuell sind keine zu aktivierenden Plugins verfügbar."
+
+#: includes/third_party/class-tgm-plugin-activation.php:3251
+msgid "Plugin activation failed."
+msgstr "Plugin-Aktivierung fehlgeschlagen."
+
+#. translators: 1: plugin name, 2: action number 3: total number of actions.
+#: includes/third_party/class-tgm-plugin-activation.php:3591
+msgid "Updating Plugin %1$s (%2$d/%3$d)"
+msgstr "Aktualisiere Plugin %1$s (%2$d/%3$d)"
+
+#. translators: 1: plugin name, 2: error message.
+#: includes/third_party/class-tgm-plugin-activation.php:3594
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr ""
+"Ein Fehler ist bei der Installation von %1$s aufgetreten: <strong>%2$s</"
+"strong>."
+
+#. translators: 1: plugin name.
+#: includes/third_party/class-tgm-plugin-activation.php:3596
+msgid "The installation of %1$s failed."
+msgstr "Die Installation von %1$s ist fehlgeschlagen."
+
+#: includes/third_party/class-tgm-plugin-activation.php:3600
+msgid ""
+"The installation and activation process is starting. This process may take a "
+"while on some hosts, so please be patient."
+msgstr ""
+"Der Installations- und Aktivierungsprozess startet. Dieser kann je nach "
+"Hosting-Umgebung einige Zeit dauern, haben Sie daher bitte Geduld."
+
+#. translators: 1: plugin name.
+#: includes/third_party/class-tgm-plugin-activation.php:3602
+msgid "%1$s installed and activated successfully."
+msgstr "%1$s erfolgreich installiert und aktiviert."
+
+#: includes/third_party/class-tgm-plugin-activation.php:3602
+#: includes/third_party/class-tgm-plugin-activation.php:3610
+msgid "Show Details"
+msgstr "Details anzeigen"
+
+#: includes/third_party/class-tgm-plugin-activation.php:3602
+#: includes/third_party/class-tgm-plugin-activation.php:3610
+msgid "Hide Details"
+msgstr "Details ausblenden"
+
+#: includes/third_party/class-tgm-plugin-activation.php:3603
+msgid "All installations and activations have been completed."
+msgstr "Alle Installationen und Aktivierungen wurden abgeschlossen."
+
+#. translators: 1: plugin name, 2: action number 3: total number of actions.
+#: includes/third_party/class-tgm-plugin-activation.php:3605
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr "Installiere und aktiviere Plugin %1$s (%2$d/%3$d)"
+
+#: includes/third_party/class-tgm-plugin-activation.php:3608
+msgid ""
+"The installation process is starting. This process may take a while on some "
+"hosts, so please be patient."
+msgstr ""
+"Der Installationsprozess startet. Dieser kann je nach Hosting-Umgebung eine "
+"Weile dauern, bitte haben Sie etwas Geduld."
+
+#. translators: 1: plugin name.
+#: includes/third_party/class-tgm-plugin-activation.php:3610
+msgid "%1$s installed successfully."
+msgstr "%1$s erfolgreich installiert."
+
+#: includes/third_party/class-tgm-plugin-activation.php:3611
+msgid "All installations have been completed."
+msgstr "Alle Installationen wurden abgeschlossen."
+
+#. translators: 1: plugin name, 2: action number 3: total number of actions.
+#: includes/third_party/class-tgm-plugin-activation.php:3613
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr "Installiere Plugin %1$s (%2$d/%3$d)"
+
+#: includes/widgets/class-agency-widget.php:29
+msgid "Property related agency information and contact data/form"
+msgstr "Objektbezogene Agentur-Infos und Kontaktdaten/Formular"
+
+#: includes/widgets/class-agency-widget.php:126
+msgid "Agency Link Type"
+msgstr "Agentur-Linktyp"
+
+#: includes/widgets/class-agency-widget.php:127
+msgid "internal (agency details page)"
+msgstr "intern (Agentur-Detailseite)"
+
+#: includes/widgets/class-agency-widget.php:128
+msgid "external (if URL is available)"
+msgstr "extern (wenn URL verfügbar)"
+
+#: includes/widgets/class-agency-widget.php:134
+#: includes/widgets/class-agent-widget.php:129
+msgid "Convert mail addresses and phone numbers to links"
+msgstr "Mailadressen und Telefonnummern in Links konvertieren"
+
+#: includes/widgets/class-agency-widget.php:140
+#: includes/widgets/class-agent-widget.php:135
+msgid "Elements to display:"
+msgstr "Anzuzeigende Elemente:"
+
+#: includes/widgets/class-agent-widget.php:28
+msgid "Property related agent information and contact data/form"
+msgstr "Objektbezogene Kontaktpersonen-Infos und Kontaktdaten/Formular"
+
+#: includes/widgets/class-agent-widget.php:117
+msgid "Use \"auto\" for a gender-related default title."
+msgstr "Für einen genderkonformen Standardtitel \"auto\" hinterlegen."
+
+#: includes/widgets/class-agent-widget.php:120
+msgid "Link Type"
+msgstr "Linktyp"
+
+#: includes/widgets/class-agent-widget.php:121
+msgid "internal agent/agency details pages"
+msgstr "interne Kontaktperson/Agentur-Detailseiten"
+
+#: includes/widgets/class-agent-widget.php:122
+msgid "external agency URL (if available)"
+msgstr "externe Agentur-URL (sofern verfügbar)"
+
+#: includes/widgets/class-agent-widget.php:125
+msgid "Add links to agent photo/name and the company name."
+msgstr "Kontaktpersonen-Foto/Name und Firma mit Links versehen."
+
+#: skins/default/agency-list/index.php:39
+msgid "No agencies found."
+msgstr "Keine Agenturen gefunden."
+
+#: skins/default/agency-list/item.php:124
+msgid "Team & Offers"
+msgstr "Team & Angebote"
+
+#: skins/default/agent-list/index.php:39
+msgid "No agents found."
+msgstr "Keine Kontaktpersonen gefunden."
+
+#: skins/default/agent-list/item.php:160
+#: skins/default/single-agent/index.php:129
+msgid "My Offers"
+msgstr "Meine Angebote"
+
+#: skins/default/agent-list/item.php:162
+msgid "About Me"
+msgstr "Über mich"
+
+#: skins/default/contact-form.php:66
+msgid ""
+"Heads up! This is only sample data, the form data will <strong>not</strong> "
+"be submitted."
+msgstr ""
+"Achtung! Dies sind nur Beispieldaten, die Angaben im Formular werden "
+"<strong>nicht</strong> übermittelt."
+
+#: skins/default/contact-form.php:74
+msgid "Secure submission"
+msgstr "Sichere Übermittlung"
+
+#: skins/default/contact-form.php:78
+msgid "Send"
+msgstr "Senden"
+
+#: skins/default/single-agency/index.php:117
+msgid "Our Team"
+msgstr "Unser Team"
+
+#: skins/default/single-agency/index.php:137
+msgid "Our Offers"
+msgstr "Unsere Immobilien-Angebote"
+
+#: skins/default/single-agent/default-contact-element-replacement.php:21
+msgctxt "male"
+msgid "Your contact with us"
+msgstr "Ihr Ansprechpartner bei uns"
+
+#: skins/default/single-agent/default-contact-element-replacement.php:24
+msgctxt "female"
+msgid "Your contact with us"
+msgstr "Ihre Ansprechpartnerin bei uns"
+
+#: skins/default/single-agent/default-contact-element-replacement.php:27
+msgctxt "gender neutral"
+msgid "Your contact with us"
+msgstr "Ihre Kontaktperson bei uns"
+
+#: skins/default/single-agent/index.php:169
+msgid "More about"
+msgstr "Mehr über"
+
+#: skins/default/single-agent/widget.php:15
+msgctxt "male"
+msgid "Your contact"
+msgstr "Ihr Ansprechpartner"
+
+#: skins/default/single-agent/widget.php:18
+msgctxt "female"
+msgid "Your contact"
+msgstr "Ihre Ansprechpartnerin"
+
+#: skins/default/single-agent/widget.php:21
+msgctxt "gender neutral"
+msgid "Your contact"
+msgstr "Ihre Kontaktperson"
+
+#. Plugin Name of the plugin/theme
+msgid "immonex Kickstart Team"
+msgstr "immonex Kickstart Team"
+
+#. Plugin URI of the plugin/theme
+#. Author URI of the plugin/theme
+msgid "https://immonex.dev/"
+msgstr "https://immonex.dev/"
+
+#. Description of the plugin/theme
+msgid ""
+"immonex Kickstart add-on for handling and integrating real estate "
+"(OpenImmo®) related agent/agency information and contact forms"
+msgstr ""
+"immonex Kickstart Add-on für die Verarbeitung und Einbindung von "
+"immobilienbezogenen (OpenImmo®) Immobilienmakler-Informationen und "
+"Kontaktformularen"
+
+#. Author of the plugin/theme
+msgid "inveris OHG / immonex"
+msgstr "inveris OHG / immonex"
+
+#~ msgid "I am interested in the property &quot;%s&quot; (%s)."
+#~ msgstr "Ich interessiere mich für die Immobilie &quot;%s&quot; (%s)."
+
+#~ msgid ""
+#~ "immonex Kickstart add-on for handling and displaying property related "
+#~ "contact data and forms"
+#~ msgstr ""
+#~ "immonex Kickstart Add-on für die Verarbeitung und Darstellung von "
+#~ "objektbezogenen Kontaktdaten und -formularen"
+
+#~ msgid "Your contact person with us"
+#~ msgstr "Deine Kontaktperson bei uns"
+
+#~ msgid "Your Contact Person with us"
+#~ msgstr "Deine Kontaktperson bei uns"
+
+#~ msgid "Your Contact Person"
+#~ msgstr "Dein Kontakt bei uns"
+
+#~ msgid "..."
+#~ msgstr "…"
+
+#~ msgid "replace by related primary agent contact data and form"
+#~ msgstr ""
+#~ "ersetzen durch Daten der zugehörigen primären Kontaktperson und Formular"
+
+#~ msgid "Email Address (main office)"
+#~ msgstr "E-Mail-Adresse (Zentrale)"
+
+#~ msgid "Email Address (feedback)"
+#~ msgstr "E-Mail-Adresse (Feedback)"
+
+#~ msgid "Email Address (private)"
+#~ msgstr "E-Mail-Adresse (privat)"
+
+#~ msgid "Options"
+#~ msgstr "Optionen"
+
+#~ msgid "Example Custom Field (Select)"
+#~ msgstr "Beispiel-Custom-Field (Select)"
+
+#~ msgid "Example description..."
+#~ msgstr "Beispiel-Beschreibung..."
+
+#~ msgid "not specified"
+#~ msgstr "keine Angabe"
+
+#~ msgid "Option 1"
+#~ msgstr "Option 1"
+
+#~ msgid "Option 2"
+#~ msgstr "Option 2"
+
+#~ msgid "Option 3"
+#~ msgstr "Option 3"
+
+#~ msgid "Example Custom Field (Number)"
+#~ msgstr "Beispiel-Custom-Field (Zahl)"
+
+#~ msgid "Example Custom Field (Text)"
+#~ msgstr "Beispiel-Custom-Field (Text)"
+
+#~ msgid "Example CPT Items"
+#~ msgstr "Beispiel-CPT-Elemente"
+
+#~ msgid "Example CPT Item"
+#~ msgstr "Beispiel-CPT-Element"
+
+#~ msgid "Add New Example CPT Item"
+#~ msgstr "Neues Beispiel-CPT-Element hinzufügen"
+
+#~ msgid "Edit Example CPT Item"
+#~ msgstr "Beispiel-CPT-Element bearbeiten"
+
+#~ msgid "New Example CPT Item"
+#~ msgstr "Neues Beispiel-CPT-Element"
+
+#~ msgid "View Example CPT Item"
+#~ msgstr "Beispiel-CPT-Element anzeigen"
+
+#~ msgid "Search Example CPT Items"
+#~ msgstr "Beispiel-CPT-Elemente suchen"
+
+#~ msgctxt "Custom Post Type Slug (plural only!)"
+#~ msgid "examplecpt-items"
+#~ msgstr "beispielcpt-elemente"
+
+#~ msgid "Currently there are no examples that match the search criteria."
+#~ msgstr ""
+#~ "Aktuell sind keine Beispiele vorhanden, die den Suchkriterien entsprechen."
+
+#~ msgid "more"
+#~ msgstr "mehr"
+
+#~ msgid "Example Select"
+#~ msgstr "Beispiel-Auswahl"
+
+#~ msgid "Example Text"
+#~ msgstr "Beispiel-Text"
+
+#~ msgid "Overview"
+#~ msgstr "Übersicht"
+
+#~ msgid "immonex Kickstart add-on for ..."
+#~ msgstr "immonex Kickstart Add-on für ..."
+
+#~ msgid "Default (Plugin Options)"
+#~ msgstr "Standard (Plugin-Optionen)"

@@ -1,0 +1,17 @@
+// Skin/Template config
+@import "_config.scss";
+
+// Mixins
+@import "_mixins.scss";
+
+// Base styles
+// @import "_base.scss";
+
+// Blocks (Modules)
+@import "blocks/_inx-team-agency-list-item";
+@import "blocks/_inx-team-agent-list-item";
+@import "blocks/_inx-team-contact-form";
+@import "blocks/_inx-team-label";
+@import "blocks/_inx-team-network-icons";
+@import "blocks/_inx-team-single-agency";
+@import "blocks/_inx-team-single-agent";

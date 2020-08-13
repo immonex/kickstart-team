@@ -1,0 +1,9 @@
+.inx-team-network-icons {
+	margin: 1.5em 0;
+	list-style-type: none;
+
+	li:not(last-child) {
+		float: left;
+		margin-right: 1em;
+	}
+}

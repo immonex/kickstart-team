@@ -1,0 +1,19 @@
+.inx-team-label {
+	display: inline-block;
+	padding: 0 10px;
+	border-radius: 2px;
+	border-bottom-right-radius: 0;
+	font-size: 1em;
+	text-transform: uppercase;
+	color: #FFF;
+	@include gradient($color-default-label);
+}
+
+.uk-position-top-left .inx-team-label {
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 2px;
+}
+
+.inx-team-label--type--demo {
+	@include gradient($color-demo);
+}

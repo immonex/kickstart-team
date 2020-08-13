@@ -1,0 +1,20 @@
+// Skin/Template mixins
+
+@function highlight($color, $lightening-pct: $color-default-lightening-pct) {
+	@return lighten($color, $lightening-pct)
+}
+
+@mixin gradient($base-color) {
+	background-color: $base-color;
+	background: linear-gradient(60deg, lighten($base-color, 5%) 50%, darken($base-color, 10%) 100%);
+}
+
+@mixin hyphenate($value) {
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+
+	-webkit-hyphens: $value;
+	-moz-hyphens: $value;
+	-ms-hyphens: $value;
+	hyphens: $value;
+}

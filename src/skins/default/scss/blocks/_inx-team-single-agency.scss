@@ -1,0 +1,84 @@
+.inx-team-single-agency__logo {
+	position: relative;
+	padding: 1em;
+}
+
+.inx-team-single-agency__logo img {
+	width: 100%;
+	max-width: 16em;
+}
+
+.inx-team-single-agency__logo-placeholder {
+	text-align: center;
+}
+
+.inx-team-single-agency__company {
+	margin-top: 1em;
+}
+
+.inx-team-single-agency__element {
+	display: flex;
+	align-items: stretch;
+
+	a {
+		color: $color-link;
+		text-decoration: none;
+		box-shadow: none;
+	}
+
+	a:hover,
+	a:hover {
+		color: $color-link-highlighted;
+	}
+}
+
+.inx-team-single-agency__element-icon {
+	padding-top: .15em;
+	margin-right: .5em;
+}
+
+.inx-team-single-agency--type--single {
+	.inx-team-contact-form-wrap {
+		margin-top: 1em;
+	}
+}
+
+.inx-team-single-agency--type--widget {
+	.inx-team-single-agency__section:not(:last-child) {
+		margin-bottom: .75em;
+	}
+
+	.inx-team-single-agency__element--type--logo {
+		padding: 1em;
+
+		a {
+			box-shadow: none;
+		}
+
+		img {
+			width: 100%;
+			max-width: 16em;
+		}
+	}
+
+	.inx-team-network-icons {
+		margin: 0;
+	}
+
+	.inx-team-contact-form-wrap {
+		margin-top: 1.5em;
+	}
+}
+
+.inx-team-agency-list-item__labels {
+	left: -.15rem !important;
+	padding-top: .2em;
+	font-size: .85em;
+	text-align: right;
+}
+
+@media screen and (min-width: $screen-s) {
+	.inx-team-single-agency__logo {
+		margin-right: 2em;
+	}
+}

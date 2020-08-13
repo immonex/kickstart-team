@@ -1,0 +1,34 @@
+// Skin/Template configuration variables
+
+// Colors
+
+$color-default-lightening-pct: 15%;
+
+$color-action-element: #0A65CC;
+$color-action-element-highlighted: lighten($color-action-element, $color-default-lightening-pct);
+$color-link: $color-action-element;
+$color-link-highlighted: $color-action-element-highlighted;
+$color-default-label: #D1AB78;
+$color-demo: #6D115F;
+$color-demo-highlighted: lighten($color-demo, $color-default-lightening-pct);;
+
+$bgcolor-quiet: rgba(220, 220, 220, .35);
+
+// Font sizes
+$font-size-base: 16px;
+$font-size-large: 1.5em;
+$font-size-medium: 1.2em;
+$font-size-standard: 1em;
+
+// Distances
+
+$distance-standard: 1.5em;
+$distance-double: 3em;
+
+// Screen sizes (currently based on UIkit, except XS)
+
+$screen-xs: 320px;
+$screen-s: 640px;
+$screen-m: 960px;
+$screen-l: 1200px;
+$screen-xl: 1600px;
