@@ -3,8 +3,7 @@ jQuery(document).ready(function($) {
 	$('.inx-team-contact-form input[name=consent]').change(function (e) {
 		const el = $(this);
 		const submitEl = el.parentsUntil('.inx-team-contact-form').parent().find('.inx-team-contact-form__submit');
-
-		submitEl.attr('disabled', !el.attr('checked'));
+		submitEl.attr('disabled', !el.prop('checked'));
 	});
 
 	$('.inx-team-contact-form').on('submit', function (e) {
