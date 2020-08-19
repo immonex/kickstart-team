@@ -27,6 +27,13 @@ foreach ( $template_data['fields'] as $inx_skin_field_name => $inx_skin_field ) 
 		<input type="hidden" name="cc_enc" value="<?php echo $template_data['cc_enc']; ?>">
 		<?php wp_nonce_field( $inx_skin_action, "{$inx_skin_action}_nonce" ); ?>
 
+		<?php // Honeypot. ?>
+		<div class="inx-team-contact-form__input inx-team-contact-form__input--name--<?php echo $template_data['honeypot_field_name']; ?>">
+			<input type="text" name="<?php echo $template_data['honeypot_field_name']; ?>" placeholder="First Name" class="uk-input">
+			<div class="inx-team-contact-form__input-error"></div>
+		</div>
+		<?php // /Honeypot. ?>
+
 		<div class="inx-team-contact-form__input inx-team-contact-form__input--name--name">
 			<input type="text" name="name" placeholder="<?php echo $template_data['fields']['name']['placeholder']; ?>" class="uk-input"<?php echo $inx_skin_required['name']; ?>>
 			<div class="inx-team-contact-form__input-error"></div>

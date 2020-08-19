@@ -18,7 +18,7 @@ Das Team-Add-on stellt folgende Elemente bereit, die im Website-Frontend auf unt
 
 ### Archivseite (Standard-Listenansicht)
 
-`https://[WEBSITE.TLD]/immobilienmakler-agenturen/`<sup>1</sup> bzw. `https://[WEBSITE.TLD]/realtors/`<sup>1</sup>
+`https://[WEBSITE.TLD]/immobilienmakler-agenturen/`<sup>1</sup> bzw. `https://[WEBSITE.TLD]/real-estate-agencies/`<sup>1</sup>
 
 ### Shortcode
 
@@ -37,7 +37,7 @@ Details: [Komponenten → Agentur-Listen](../komponenten/index.html)
 
 ### Standard-Einzelansicht (Vollansicht)
 
-`https://[WEBSITE.TLD]/immobilienmakler-agenturen/[AGENTUR-SLUG]/`<sup>1</sup> bzw. `https://[WEBSITE.TLD]/realtors/[AGENTUR-SLUG]/`<sup>1</sup>
+`https://[WEBSITE.TLD]/immobilienmakler-agenturen/[AGENTUR-SLUG]/`<sup>1</sup> bzw. `https://[WEBSITE.TLD]/real-estate-agencies/[AGENTUR-SLUG]/`<sup>1</sup>
 
 Hierbei handelt es sich um eine **komplette Seite**, die folgende Abschnitte umfasst:
 

@@ -37,7 +37,7 @@ $args = [
 		'supports'     => [ 'title', 'editor', 'author', 'thumbnail' ],
 		'map_meta_cap' => true,
 		'rewrite'      => [
-			'slug' => _x( 'realtors', 'Custom Post Type Slug (plural only!)', 'immonex-kickstart-team' ),
+			'slug' => _x( 'real-estate-agencies', 'Custom Post Type Slug (plural only!)', 'immonex-kickstart-team' ),
 		],
 	],
 	'agent'  => [

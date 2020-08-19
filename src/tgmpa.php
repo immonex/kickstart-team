@@ -21,6 +21,7 @@ if ( ! is_callable( __NAMESPACE__ . '\register_required_plugins' ) ) {
 				'name'        => 'immonex Kickstart',
 				'slug'        => 'immonex-kickstart',
 				'is_callable' => array( '\immonex\Kickstart\Kickstart', 'init_plugin' ),
+				'required'    => true,
 			),
 		);
 

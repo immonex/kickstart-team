@@ -87,8 +87,8 @@ class Agency_Widget extends \WP_Widget {
 				'before_title'  => isset( $args['before_title'] ) ? $args['before_title'] : '',
 				'title'         => apply_filters( 'widget_title', isset( $instance['title'] ) ? $instance['title'] : '' ),
 				'after_title'   => isset( $args['after_title'] ) ? $args['after_title'] : '',
-				'link_type'     => $instance['link_type'],
-				'convert_links' => ! empty( $instance['convert_links'] ),
+				'link_type'     => ! empty( $instance['link_type'] ) ? $instance['link_type'] : 'internal',
+				'convert_links' => isset( $instance['convert_links'] ) ? ! empty( $instance['convert_links'] ) : true,
 				'elements'      => $elements,
 			)
 		);

@@ -87,7 +87,7 @@ class WP_Bootstrap {
 					'supports'     => array( 'title', 'editor', 'author', 'thumbnail' ),
 					'map_meta_cap' => true,
 					'rewrite'      => array(
-						'slug' => _x( 'realtors', 'Custom Post Type Slug (plural only!)', 'immonex-kickstart-team' ),
+						'slug' => _x( 'real-estate-agencies', 'Custom Post Type Slug (plural only!)', 'immonex-kickstart-team' ),
 					),
 				),
 				'agent'  => array(
@@ -162,10 +162,10 @@ class WP_Bootstrap {
 	 */
 	public function save_extended_user_contents( $user_id ) {
 		if ( isset( $_POST['inx_team_agency_id'] ) ) {
-			update_user_meta( $user_id, 'inx_team_agency_id', (int) $_POST['inx_team_agency_id'] );
+			update_user_meta( $user_id, 'inx_team_agency_id', (int) sanitize_key( $_POST['inx_team_agency_id'] ) );
 		}
 		if ( isset( $_POST['inx_team_agent_id'] ) ) {
-			update_user_meta( $user_id, 'inx_team_agent_id', (int) $_POST['inx_team_agent_id'] );
+			update_user_meta( $user_id, 'inx_team_agent_id', (int) sanitize_key( $_POST['inx_team_agent_id'] ) );
 		}
 	} // save_extended_user_contents
 

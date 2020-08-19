@@ -9,9 +9,9 @@ search: 1
 
 Die Listendarstellung von Beiträgen des Typs **Agentur** (CPT *inx_agency*) ist für Internet-Angebote relevant, die Inhalte und Angebote mehrerer Maklerbüros enthalten, dazu gehören bspw. klassische Immobilienportale oder Kooperations-Websites. Sie findet sowohl in den Archivseiten als auch in beliebigen anderen Seiten oder Inhaltselementen (per Shortcode) Verwendung.
 
-## Archivseite
+## Archiv
 
-Die Standard-Archivseiten der Agenturbeiträge sind unter `https://[DOMAIN.TLD]/immobilienmakler-agenturen/`<sup>1</sup> bzw. `.../realtors/`<sup>1</sup> abrufbar.
+Die Standard-Archivseiten der Agenturbeiträge sind unter `https://[DOMAIN.TLD]/immobilienmakler-agenturen/`<sup>1</sup> bzw. `.../real-estate-agencies/`<sup>1</sup> abrufbar.
 
 So sieht die Agentur-Archivseite im Website-Frontend mit dem im Plugin enthaltenen Standard-Skin <i>TeamQuiwi</i> und dem WordPress-Theme <i>Twenty Twenty</i> **ohne individuelle Anpassungen** aus:
 

@@ -99,15 +99,15 @@ class Contact_Form_Hooks {
 				'nonce'            => array(
 					'context' => $nonce_context,
 					'value'   => ! empty( $_POST[ "{$nonce_context}_nonce" ] ) ?
-						$_POST[ "{$nonce_context}_nonce" ] :
+						santize_text_field( $_POST[ "{$nonce_context}_nonce" ] ) :
 						false,
 				),
-				'post_type'        => isset( $_POST['post_type'] ) ? $_POST['post_type'] : '',
-				'origin_post_id'   => isset( $_POST['origin_post_id'] ) ? $_POST['origin_post_id'] : 0,
-				'post_id'          => isset( $_POST['post_id'] ) ? $_POST['post_id'] : 0,
-				'property_post_id' => isset( $_POST['property_post_id'] ) ? $_POST['property_post_id'] : 0,
-				'recipients_enc'   => isset( $_POST['recipients_enc'] ) ? trim( $_POST['recipients_enc'] ) : '',
-				'cc_enc'           => isset( $_POST['cc_enc'] ) ? trim( $_POST['cc_enc'] ) : '',
+				'post_type'        => isset( $_POST['post_type'] ) ? sanitize_key( $_POST['post_type'] ) : '',
+				'origin_post_id'   => isset( $_POST['origin_post_id'] ) ? (int) sanitize_key( $_POST['origin_post_id'] ) : 0,
+				'post_id'          => isset( $_POST['post_id'] ) ? (int) sanitize_key( $_POST['post_id'] ) : 0,
+				'property_post_id' => isset( $_POST['property_post_id'] ) ? (int) sanitize_key( $_POST['property_post_id'] ) : 0,
+				'recipients_enc'   => isset( $_POST['recipients_enc'] ) ? sanitize_text_field( $_POST['recipients_enc'] ) : '',
+				'cc_enc'           => isset( $_POST['cc_enc'] ) ? sanitize_text_field( $_POST['cc_enc'] ) : '',
 			),
 			$form->get_user_form_data()
 		);

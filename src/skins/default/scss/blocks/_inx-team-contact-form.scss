@@ -59,6 +59,11 @@
 	}
 }
 
+/* Honeypot */
+.inx-team-contact-form__input--name--fname {
+	display: none;
+}
+
 .inx-team-contact-form__input-error {
 	display: none;
 	margin-top: .25em;

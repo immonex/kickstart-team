@@ -1,10 +1,10 @@
-<img src="assets/immonex-kickstart-team-logo.png" width="286" height="286" align="right" alt="immonex Kickstart Team">
+<img src="assets/immonex-kickstart-team-logo.png" width="286" height="286" align="right" alt="immonex Kickstart Team Logo">
 
 # immonex Kickstart Team
 
 Kickstart Team is an **add-on plugin** that extends real-estate websites based on **WordPress**, [immonex Kickstart](https://de.wordpress.org/plugins/immonex-kickstart/) and [immonex OpenImmo2WP](https://immonex.dev/).
 
-It adds functionality for automated creating, updating, linking and integrating information and **contact data on real estate agents and agencies**. All relevant data are collected on **importing OpenImmo-XML-based real estate objects** and assigned to the related property, realtor and real estate agent posts automatically.
+It adds functionality for automated creating, updating, linking and integrating information and **contact data on real estate agents and agencies**. All relevant data are collected on **importing OpenImmo-XML-based real estate offers** and assigned to the related property, real estate agency and agent posts automatically.
 
 **immonex**® is an umbrella brand for various real estate related software solutions and services with a focus on german-speaking countries/users.
 
@@ -117,7 +117,7 @@ $ npm run test
 
 The **regular translations** for this plugin are provided via [translate.wordpress.org (GlotPress)](https://translate.wordpress.org/projects/wp-plugins/immonex-kickstart-team/).
 
-Additionally, translations (PO/MO files) are also available in the [src/languages](src/languages) folder. This directory also contains a current POT file (as base for custom/local translations) that can be updated with the following command:
+Additionally, formal and informal German translations (PO/MO files) are available in the [src/languages](src/languages) folder, too. This directory also contains a current POT file (as base for custom/local translations) that can be updated with the following command:
 
 ```bash
 $ npm run pot

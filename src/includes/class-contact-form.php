@@ -12,7 +12,8 @@ namespace immonex\Kickstart\Team;
  */
 class Contact_Form {
 
-	const OBFUSCATION_KEY = 'yu9$K';
+	const OBFUSCATION_KEY     = 'yu9$K';
+	const HONEYPOT_FIELD_NAME = 'fname';
 
 	/**
 	 * Various component configuration data
@@ -82,16 +83,17 @@ class Contact_Form {
 			$this->config,
 			$atts,
 			array(
-				'instance'         => $this,
-				'is_demo'          => $is_demo,
-				'post_type'        => get_post_type(),
-				'origin_post_id'   => $origin_post_id,
-				'post_id'          => $post_id,
-				'property_post_id' => $property_post_id ? $property_post_id : 0,
-				'fields'           => $fields,
-				'consent_text'     => $this->get_consent_text(),
-				'recipients_enc'   => $recipients_enc['recipients'],
-				'cc_enc'           => $recipients_enc['cc'],
+				'instance'            => $this,
+				'is_demo'             => $is_demo,
+				'post_type'           => get_post_type(),
+				'origin_post_id'      => $origin_post_id,
+				'post_id'             => $post_id,
+				'property_post_id'    => $property_post_id ? $property_post_id : 0,
+				'fields'              => $fields,
+				'consent_text'        => $this->get_consent_text(),
+				'recipients_enc'      => $recipients_enc['recipients'],
+				'cc_enc'              => $recipients_enc['cc'],
+				'honeypot_field_name' => self::HONEYPOT_FIELD_NAME,
 			)
 		);
 
@@ -126,8 +128,11 @@ class Contact_Form {
 			(int) $form_data['property_post_id'] :
 			false;
 
-		if ( $this->is_demo_context( $origin_post_id, $property_post_id ) ) {
-			// Don't submit data when in demo context.
+		if (
+			$this->is_demo_context( $origin_post_id, $property_post_id )
+			|| ! empty( $form_data[ self::HONEYPOT_FIELD_NAME ] )
+		) {
+			// Don't submit data when in demo context or if honeypot field is filled.
 			return $result;
 		}
 
@@ -355,16 +360,23 @@ class Contact_Form {
 		$form_data   = array();
 		$field_names = $this->get_fields( true );
 
+		if ( ! in_array( self::HONEYPOT_FIELD_NAME, $field_names ) ) {
+			// Add a honeypot field name.
+			$field_names[] = self::HONEYPOT_FIELD_NAME;
+		}
+
 		if ( count( $field_names ) > 0 ) {
 			foreach ( $field_names as $field ) {
 				$value = isset( $_POST[ $field ] ) ? $_POST[ $field ] : '';
 
-				if ( false !== strpos( $value, PHP_EOL ) ) {
-					$value = sanitize_textarea_field( $value );
-				} elseif ( 'email' === $field ) {
-					$value = sanitize_email( $value );
-				} else {
-					$value = sanitize_text_field( $value );
+				if ( self::HONEYPOT_FIELD_NAME !== $field ) {
+					if ( false !== strpos( $value, PHP_EOL ) ) {
+						$value = sanitize_textarea_field( $value );
+					} elseif ( 'email' === $field ) {
+						$value = sanitize_email( $value );
+					} else {
+						$value = sanitize_text_field( $value );
+					}
 				}
 
 				$form_data[ $field ] = $value;
