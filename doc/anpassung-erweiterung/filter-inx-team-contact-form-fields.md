@@ -86,7 +86,7 @@ angepasstes Felddaten-Array, wobei das Format abhängig vom Parameter `$names_on
 
 ## Rahmenfunktion
 
-Eine Funktion zur Nutzung des Filters wird typischerweise in der folgenden Form in die Datei **functions.php** des **Child-Themes** eingebunden.
+Eine Funktion zur Nutzung des Filters wird typischerweise in der folgenden Form in der Datei **functions.php** des **Child-Themes** oder per Code-Snippets-Plugin eingebunden.
 
 ```php
 add_filter( 'inx_team_contact_form_fields', 'mysite_modify_contact_form_fields', 10, 2 );

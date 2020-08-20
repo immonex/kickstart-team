@@ -310,12 +310,12 @@ class Agency extends Base_CPT_Post {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param \SimpleXMLElement $anbieter Offerer XML object.
-	 * @param \SimpleXMLElement $immobilie Property XML object.
+	 * @param \SimpleXMLElement|null $anbieter Offerer XML object.
+	 * @param \SimpleXMLElement      $immobilie Property XML object.
 	 *
 	 * @return string Company name.
 	 */
-	public function get_company_from_xml( $anbieter, $immobilie ) {
+	public function get_company_from_xml( $anbieter = null, $immobilie ) {
 		$company = (string) $immobilie->kontaktperson->firma;
 		if ( $anbieter ) {
 			$company = (string) $anbieter->firma;

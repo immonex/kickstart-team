@@ -76,7 +76,6 @@ Agency Single View (Contact data/form, related agents & properties): `[inx-team-
 
 (See documentation mentioned below for attributes and further details.)
 
-
 [1] Alternative: Unzip the plugin ZIP archive, copy it to the folder `wp-content/plugins` and activate the plugin in the WordPress backend under *Plugins > Installed Plugins* afterwards.
 
 [2] Current and fully functional versions of premium immonex plugins as well as OpenImmo demo data are available **free of charge** at the [immonex Developer Portal](https://immonex.dev/) for testing/development purposes.
@@ -107,5 +106,5 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 == Changelog ==
 
 = 1.0.0 =
-* Release date: 2020-08-31
+* Release date: 2020-08-20
 * Initial release.

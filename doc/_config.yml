@@ -112,3 +112,7 @@ toc:
 ## von docs.immonex.de dabei können die Felder filterCategories und filterNames die auszugebenden Dokumentationen
 ## mittels RegExp filtern. (siehe Menü)[https://docs.immonex.de/doc-gen/guide/#Menuleiste]
 main_menu:
+  - caption: Ökosystem
+    dropdown:
+    - caption: Kickstart-Basisplugin
+      url: https://docs.immonex.de/kickstart/

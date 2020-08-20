@@ -33,7 +33,7 @@ class Agent_Hooks extends Base_CPT_Hooks {
 	 *
 	 * @var \SimpleXMLElement
 	 */
-	private $anbieter = false;
+	private $anbieter;
 
 	/**
 	 * Constructor
@@ -478,10 +478,7 @@ class Agent_Hooks extends Base_CPT_Hooks {
 			return $agency_id;
 		}
 
-		if ( $agency->post && $this->anbieter ) {
-			// Update an existing agency post.
-			$agency->update_by_openimmo_xml( $this->anbieter, $immobilie );
-		} else {
+		if ( ! $agency->post ) {
 			/**
 			 * Create a new agency post.
 			 */
@@ -500,6 +497,15 @@ class Agent_Hooks extends Base_CPT_Hooks {
 				$initial_agency_post_data,
 				$initial_agency_meta
 			);
+
+			if ( $agency_id ) {
+				$agency->set_post( $agency_id );
+			}
+		}
+
+		if ( $agency->post ) {
+			// Update an existing or newly created agency post.
+			$agency->update_by_openimmo_xml( $this->anbieter, $immobilie );
 		}
 
 		return $agency_id;
