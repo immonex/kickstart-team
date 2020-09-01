@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the immonex Kickstart Team package.
 msgid ""
 msgstr ""
-"Project-Id-Version: immonex Kickstart Team 1.0.0\n"
+"Project-Id-Version: immonex Kickstart Team 1.0.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/immonex-kickstart-team\n"
-"POT-Creation-Date: 2020-08-19 07:10:24+00:00\n"
-"PO-Revision-Date: 2020-08-19 09:19+0200\n"
+"POT-Creation-Date: 2020-09-01 07:45:41+00:00\n"
+"PO-Revision-Date: 2020-09-01 09:53+0200\n"
 "Last-Translator: \n"
 "Language-Team: Carsten Scheuer <scheuer@inveris.de>\n"
 "Language: de_DE@formal\n"
@@ -767,17 +767,19 @@ msgstr "Ein Problem mit der Plugin-API ist aufgetreten."
 #: includes/third_party/class-tgm-plugin-activation.php:342
 msgid "This theme requires the following plugin: %1$s."
 msgid_plural "This theme requires the following plugins: %1$s."
-msgstr[0] "Dieses Theme setzt das folgende Plugin voraus: %1$s."
-msgstr[1] "Dieses Theme setzt die folgenden Plugins voraus: %1$s."
+msgstr[0] "Dieses Plugin setzt das folgende Zusatzplugin voraus: %1$s."
+msgstr[1] "Dieses Plugin setzt die folgenden Zusatzplugins voraus: %1$s."
 
 #. translators: 1: plugin name(s).
 #: includes/third_party/class-tgm-plugin-activation.php:344
 msgid "This theme recommends the following plugin: %1$s."
 msgid_plural "This theme recommends the following plugins: %1$s."
 msgstr[0] ""
-"Bei diesem Theme wird die Nutzung des folgenden Plugins empfohlen: %1$s."
+"Bei diesem Plugin wird die Nutzung des folgenden Zusatzplugins empfohlen: "
+"%1$s."
 msgstr[1] ""
-"Bei diesem Theme wird die Nutzung der folgenden Plugins empfohlen: %1$s."
+"Bei diesem Plugin wird die Nutzung der folgenden Zusatzplugins empfohlen: "
+"%1$s."
 
 #. translators: 1: plugin name(s).
 #: includes/third_party/class-tgm-plugin-activation.php:346
@@ -789,11 +791,12 @@ msgid_plural ""
 "maximum compatibility with this theme: %1$s."
 msgstr[0] ""
 "Das folgende Plugin muss auf die neuste Version aktualisiert werden, um eine "
-"maximale Kompatibilität mit diesem Theme zu gewährleisten: %1$s."
+"maximale Kompatibilität in Kombination mit diesem Plugin zu gewährleisten: "
+"%1$s."
 msgstr[1] ""
 "Die folgenden Plugins müssen auf die jeweils neuste Version aktualisiert "
-"werden, um eine maximale Kompatibilität mit diesem Theme zu gewährleisten: "
-"%1$s."
+"werden, um eine maximale Kompatibilität in Kombination mit diesem Plugin zu "
+"gewährleisten: %1$s."
 
 #. translators: 1: plugin name(s).
 #: includes/third_party/class-tgm-plugin-activation.php:348
@@ -867,8 +870,8 @@ msgid ""
 "Plugin not activated. A higher version of %s is needed for this theme. "
 "Please update the plugin."
 msgstr ""
-"Plugin nicht aktiviert. Eine aktuellere Version von %s wird für dieses Theme "
-"benötigt. Bitte aktualisieren Sie das Plugin."
+"Plugin nicht aktiviert. Eine aktuellere Version von %s wird für die Nutzung "
+"in Kombination mit diesem Plugin benötigt. Bitte das Plugin aktualisieren."
 
 #. translators: 1: dashboard link.
 #: includes/third_party/class-tgm-plugin-activation.php:365
@@ -1331,11 +1334,12 @@ msgstr "https://de.wordpress.org/plugins/immonex-kickstart-team/"
 
 #. Description of the plugin/theme
 msgid ""
-"immonex Kickstart add-on for handling, linking and integrating OpenImmo-XML "
+"immonex Kickstart add-on for handling, linking and embedding OpenImmo-XML-"
 "based real estate agent/agency information and contact forms"
 msgstr ""
 "immonex Kickstart Add-on für die Verarbeitung, Verknüpfung und Einbindung "
-"von OpenImmo-XML-basierten Immobilienmakler-Infos und Kontaktformularen"
+"von OpenImmo-XML-basierten Immobilienmakler-Informationen und "
+"Kontaktformularen"
 
 #. Author of the plugin/theme
 msgid "inveris OHG / immonex"

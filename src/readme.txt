@@ -1,14 +1,14 @@
 === immonex Kickstart Team ===
 Contributors: immonex
-Tags: realestate, agent, agency, openimmo, immomakler
+Tags: immobilien, openimmo, immobilienmakler, immomakler, realestate, agent, agency, team, immonex
 Requires at least: 4.7
 Tested up to: 5.5
-Stable Tag: 1.0.0
+Stable Tag: 1.0.1
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-immonex Kickstart add-on for handling, linking and integrating OpenImmo-XML-based real estate agent/agency information and contact forms
+immonex Kickstart add-on for handling, linking and embedding OpenImmo-XML-based real estate agent/agency information and contact forms
 
 == Description ==
 
@@ -104,6 +104,11 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 10. Add-on options
 
 == Changelog ==
+
+= 1.0.1 =
+* Release date: 2020-09-01
+* External libraries updated.
+* Plugin description and tags updated.
 
 = 1.0.0 =
 * Release date: 2020-08-20

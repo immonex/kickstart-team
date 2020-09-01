@@ -1,6 +1,6 @@
 {
   "name": "@immonex/kickstart-team",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "immonex Kickstart add-on for handling, linking and integrating OpenImmo-XML based real estate agent/agency information and contact forms",
   "private": true,
   "config": {
@@ -10,9 +10,9 @@
     "@babel/runtime": "^7.11.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.11.1",
-    "@babel/plugin-transform-runtime": "^7.11.0",
-    "@babel/preset-env": "^7.11.0",
+    "@babel/core": "^7.11.5",
+    "@babel/plugin-transform-runtime": "^7.11.5",
+    "@babel/preset-env": "^7.11.5",
     "@kaliber/mo-compiler": "0.0.2",
     "babel-loader": "^8.1.0",
     "browser-sync": "^2.26.12",
@@ -26,7 +26,7 @@
     "lws-static": "^2.0.0",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.14.1",
-    "optimize-css-assets-webpack-plugin": "^5.0.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.4",
     "rimraf": "^3.0.0",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.2.1",

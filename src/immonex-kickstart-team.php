@@ -2,8 +2,8 @@
 /**
  * Plugin Name:       immonex Kickstart Team
  * Plugin URI:        https://wordpress.org/plugins/immonex-kickstart-team/
- * Description:       immonex Kickstart add-on for handling, linking and integrating OpenImmo-XML based real estate agent/agency information and contact forms
- * Version:           1.0.0
+ * Description:       immonex Kickstart add-on for handling, linking and embedding OpenImmo-XML-based real estate agent/agency information and contact forms
+ * Version:           1.0.1
  * Requires at least: 4.7
  * Requires PHP:      5.6
  * Author:            inveris OHG / immonex
@@ -11,7 +11,6 @@
  * License:           GPLv2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       immonex-kickstart-team
- * Domain Path:       /languages
  *
  * @codingStandardsIgnoreLine
  * immonex Kickstart Team is free software: you can redistribute it and/ormodify it under
