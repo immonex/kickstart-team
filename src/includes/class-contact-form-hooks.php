@@ -99,7 +99,7 @@ class Contact_Form_Hooks {
 				'nonce'            => array(
 					'context' => $nonce_context,
 					'value'   => ! empty( $_POST[ "{$nonce_context}_nonce" ] ) ?
-						santize_text_field( $_POST[ "{$nonce_context}_nonce" ] ) :
+						sanitize_text_field( $_POST[ "{$nonce_context}_nonce" ] ) :
 						false,
 				),
 				'post_type'        => isset( $_POST['post_type'] ) ? sanitize_key( $_POST['post_type'] ) : '',
