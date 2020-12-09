@@ -209,16 +209,21 @@ class Contact_Form {
 			$this->utils
 		);
 
-		$attachments      = array();
-		$oi_feedback_file = false;
-		if ( ! empty( $property_data ) ) {
+		if ( $this->config['oi_feedback_type'] && ! empty( $property_data ) ) {
 			$qoi_feedback = new Quick_Openimmo_Feedback( $this->config, $this->utils );
 			$qoi_feedback->set_property_post_id( $property_data['post_id'] );
 			$qoi_feedback->set_prospect_data( $form_data );
 			$oi_feedback_xml_source = $qoi_feedback->get_oi_feedback_xml_source();
-			$oi_feedback_file       = $qoi_feedback->create_temp_file( $oi_feedback_xml_source );
-			if ( $oi_feedback_file ) {
-				$attachments[] = $oi_feedback_file;
+
+			if ( 'body' === $this->config['oi_feedback_type'] ) {
+				$body .= PHP_EOL . PHP_EOL . '--- OpenImmo-Feedback ---' . PHP_EOL . PHP_EOL;
+				$body .= $oi_feedback_xml_source;
+			} else {
+				$attachments      = array();
+				$oi_feedback_file = $qoi_feedback->create_temp_file( $oi_feedback_xml_source );
+				if ( $oi_feedback_file ) {
+					$attachments[] = $oi_feedback_file;
+				}
 			}
 		}
 

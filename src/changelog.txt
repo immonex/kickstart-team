@@ -1,0 +1,18 @@
+== Changelog ==
+
+= 1.1.0 =
+* Release date: ?
+* OpenImmo-Feedback attachment type selection added.
+
+= 1.0.2 =
+* Release date: 2020-09-18
+* Contact form submission bug fixed.
+
+= 1.0.1 =
+* Release date: 2020-09-01
+* External libraries updated.
+* Plugin description and tags updated.
+
+= 1.0.0 =
+* Release date: 2020-08-20
+* Initial release.

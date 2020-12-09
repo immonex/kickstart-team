@@ -59,6 +59,7 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_1_1\Base {
 		'consent_text_privacy'               => 'INSERT_TRANSLATED_DEFAULT_VALUE',
 		'form_confirmation_message'          => 'INSERT_TRANSLATED_DEFAULT_VALUE',
 		'hide_form_after_submit'             => true,
+		'oi_feedback_type'                   => 'attachment',
 	);
 
 	/**
@@ -437,6 +438,23 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_1_1\Base {
 					'plugin_slug' => $this->plugin_slug,
 					'option_name' => $this->plugin_options_name,
 					'value'       => $this->plugin_options['hide_form_after_submit'],
+				),
+			),
+			array(
+				'name'    => 'oi_feedback_type',
+				'type'    => 'select',
+				'label'   => __( 'OpenImmo-Feedback Type', 'immonex-kickstart-team' ),
+				'section' => "{$prefix}contact_form",
+				'args'    => array(
+					'plugin_slug' => $this->plugin_slug,
+					'option_name' => $this->plugin_options_name,
+					'description' => __( 'This option defines if and how OpenImmo-Feedback data are attached to contact form mails sent to admin recipients (e.g. for further processing in an external software solution).', 'immonex-kickstart-team' ),
+					'options'     => array(
+						''           => _x( 'none', 'as a synonym for "without"', 'immonex-kickstart-team' ),
+						'attachment' => __( 'Attachment', 'immonex-kickstart-team' ),
+						'body'       => __( 'Mail Body', 'immonex-kickstart-team' ),
+					),
+					'value'       => $this->plugin_options['oi_feedback_type'],
 				),
 			),
 		);

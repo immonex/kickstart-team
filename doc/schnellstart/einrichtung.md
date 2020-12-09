@@ -64,3 +64,9 @@ Der widerrufsspezifische Teil des Einwilligungstexts: Hier kann mit `[cancellati
 #### Einwilligungstext zum Datenschutz
 
 Eine zu bestätigende Angabe dieser Art ist aus rechtlichen Gründen obligatorisch. Auch hier kann mit `[privacy_policy]` ein Link zur entsprechenden Infoseite (**Datenschutzerklärung**) eingefügt werden, die unter ***Einstellungen → Datenschutz*** definiert wurde.
+
+#### OpenImmo-Feedback-Typ
+
+**OpenImmo-Feedback** bezeichnet einen Standard für den einheitlichen Austausch von Daten immobilienspezifischer Anfragen (Interessenten-Kontaktdaten und Infos zum angefragten Objekt) auf XML-Basis.
+
+Beim Absenden von Kontaktformular-Daten wird ein solcher Datensatz (optional) automatisiert erstellt und kann entweder als Datei oder direkt im Nachrichtentext an die Mails angehangen werden, die an den Website-Betreiber bzw. Administrator gesendet werden. Anhänge dieser Art können bspw. in einer Softwarelösung für Immobilienmakler weiterverarbeitet werden.
