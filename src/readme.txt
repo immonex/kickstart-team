@@ -108,6 +108,7 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 = 1.1.0 =
 * Release date: ?
 * OpenImmo-Feedback attachment type selection added.
+* Extended filter hooks for notification subject modifications.
 
 = 1.0.2 =
 * Release date: 2020-09-18

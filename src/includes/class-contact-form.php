@@ -136,9 +136,11 @@ class Contact_Form {
 			return $result;
 		}
 
+		$site_title    = get_bloginfo( 'name' );
 		$fields        = $this->get_fields();
 		$template_data = array(
-			'form_data' => array(),
+			'site_title' => $site_title,
+			'form_data'  => array(),
 		);
 
 		if ( count( $fields ) > 0 ) {
@@ -164,7 +166,6 @@ class Contact_Form {
 			$property_data
 		);
 
-		$site_title  = get_bloginfo( 'name' );
 		$send_result = false;
 		$sender      = get_option( 'admin_email' );
 
@@ -177,8 +178,12 @@ class Contact_Form {
 		}
 		$subject = apply_filters(
 			'inx_team_contact_form_notification_subject',
-			filter_var( $subject, FILTER_SANITIZE_STRING )
+			filter_var( $subject, FILTER_SANITIZE_STRING ),
+			'admin',
+			$template_data
 		);
+
+		$subject = $this->replace_vars( $subject, 'admin', $template_data );
 
 		$headers = array( "From: {$sender}" );
 
@@ -715,6 +720,44 @@ class Contact_Form {
 			'cc'         => $cc_recipients,
 		);
 	} // get_default_recipients
+
+	/**
+	 * Replace variables/placeholders (e.g. {property_title}) in the given text
+	 * by the corresponding template data values.
+	 *
+	 * @since 1.1.0
+	 *
+	 * @param string  $text Source text.
+	 * @param string  $context Mail context/recipient (admin or prospect).
+	 * @param mixed[] $template_data Template data.
+	 *
+	 * @return string Modified or original content.
+	 */
+	private function replace_vars( $text, $context, $template_data ) {
+		if ( false === strpos( $text, '{' ) ) {
+			return $text;
+		}
+
+		$replace = apply_filters(
+			'inx_team_contact_form_notification_subject_variables',
+			array(
+				'site_title'     => $template_data['site_title'],
+				'post_id'        => $template_data['property']['post_id'],
+				'obid'           => $template_data['property']['obid'],
+				'external_id'    => $template_data['property']['external_id'],
+				'property_title' => $template_data['property']['title'],
+			),
+			$context
+		);
+
+		if ( is_array( $replace ) && count( $replace ) > 0 ) {
+			foreach ( $replace as $key => $value ) {
+				$text = str_replace( '{' . $key . '}', $value, $text );
+			}
+		}
+
+		return trim( $text );
+	} // replace_vars
 
 	/**
 	 * Determine if the form has been embedded in a demo/example context.

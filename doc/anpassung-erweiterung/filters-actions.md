@@ -30,6 +30,7 @@ search: 1
 
 - [inx_team_contact_form_fields](filter-inx-team-contact-form-fields.html) (Felder des Kontaktformulars)
 - [inx_team_contact_form_notification_subject](filter-inx-team-contact-form-notification-subject.html) (Betreff der Kontaktformular-Mails)
+- [inx_team_contact_form_notification_subject_variables](filter-inx-team-contact-form-notification-subject-variables.html) (Variablen für den Betreff der Kontaktformular-Mails)
 - [inx_team_contact_form_mail_headers](filter-inx-team-contact-form-mail-headers.html) (Header der Kontaktformular-Mails)
 - [inx_team_contact_form_user_data](filter-inx-team-contact-form-user-data.html) (via Frontend übermittelte Benutzer-Formulardaten)
 - [inx_team_fallback_recipient_admin_email](filter-inx-team-fallback-recipient-admin-email.html) (Fallback-Admin-Mailadresse(n))
