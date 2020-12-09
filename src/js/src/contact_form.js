@@ -1,6 +1,6 @@
 jQuery(document).ready(function($) {
 
-	$('.inx-team-contact-form input[name=consent]').change(function (e) {
+	$('.inx-team-contact-form input[name=consent]').on('change', function (e) {
 		const el = $(this);
 		const submitEl = el.parentsUntil('.inx-team-contact-form').parent().find('.inx-team-contact-form__submit');
 		submitEl.attr('disabled', !el.prop('checked'));

@@ -147,7 +147,7 @@ $ npm run apidoc:delete
 
 ### User/Integrator Documentation
 
-The source files (markdown) of the [docs for users and integrators](https://docs.immonex.de/kickstart-team/) mentioned above are located in the `doc` folder. A globally installed *doc-gen* package (currently **not** available publicly) and a suitable API key (`.env`) are required for serving...
+The source files (markdown) of the [docs for users and integrators](https://docs.immonex.de/kickstart-team/) mentioned above are located in the `doc` folder. A globally installed *doc-gen* package (currently **not** available publicly) and a suitable user account are required for publishing...
 
 ```bash
 $ npm run doc

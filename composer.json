@@ -7,7 +7,7 @@
         }
     ],
     "require": {
-        "immonex/wp-free-plugin-core": "^1.1.0"
+        "immonex/wp-free-plugin-core": "^1.1.1"
     },
     "require-dev": {
         "inverisoss/wp-i18n-tools": "^1.0",

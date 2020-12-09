@@ -9,9 +9,9 @@ search: 1
 
 <img src="assets/kickstart-team-logo.png" alt="immonex Kickstart Team" class="uk-align-right">
 
-**immonex Kickstart Team** ist ein <i>Add-on-Plugin</i>, das **WordPress-Immobilien-Websites** auf Basis von [immonex Kickstart](https://de.wordpress.org/plugins/immonex-kickstart/)<sup>1</sup> folgende Funktionen und Inhalte erweitert:
+**immonex Kickstart Team** ist ein <i>Add-on-Plugin</i>, das **WordPress-Immobilien-Websites** auf Basis von [immonex Kickstart](https://de.wordpress.org/plugins/immonex-kickstart/)<sup>1</sup> um folgende Funktionen und Inhalte erweitert:
 
-- [benutzerdefinierte Beitragsarten]](schnellstart/beitragsarten.html) (<i>Custom Post Types</i>) inkl. passenden Archiv- und Detailseiten
+- [benutzerdefinierte Beitragsarten](beitragsarten.html) (<i>Custom Post Types</i>) inkl. passenden Archiv- und Detailseiten
   - **Immobilien-Agenturen** (Maklerbüros)
   - **Kontaktpersonen** (Immobilienmakler/innen)
 - **automatisierte** Erstellung und Aktualisierung der Agentur- und Makler-Datensätze beim [OpenImmo®-basierten Import](systemvoraussetzungen.html#Datenimport)<sup>2, 3</sup> von Immobilien-Angeboten

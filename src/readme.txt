@@ -2,7 +2,7 @@
 Contributors: immonex
 Tags: immobilien, openimmo, immobilienmakler, immomakler, realestate, agent, agency, team, immonex
 Requires at least: 4.7
-Tested up to: 5.5.1
+Tested up to: 5.6
 Stable Tag: 1.0.2
 Requires PHP: 5.6
 License: GPLv2 or later
