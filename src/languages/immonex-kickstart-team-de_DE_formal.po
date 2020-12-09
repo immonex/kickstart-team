@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: immonex Kickstart Team 1.1.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/immonex-kickstart-team\n"
-"POT-Creation-Date: 2020-12-09 07:40:54+00:00\n"
-"PO-Revision-Date: 2020-12-09 08:45+0100\n"
+"POT-Creation-Date: 2020-12-09 15:29:09+00:00\n"
+"PO-Revision-Date: 2020-12-09 16:30+0100\n"
 "Last-Translator: \n"
 "Language-Team: Carsten Scheuer <scheuer@inveris.de>\n"
 "Language: de_DE@formal\n"
@@ -27,8 +27,8 @@ msgstr "E-Mail"
 
 #: includes/class-agency-backend-form.php:95
 #: includes/class-agency-backend-form.php:214 includes/class-agency.php:413
-#: includes/class-agent.php:640 includes/class-contact-form.php:274
-#: includes/class-contact-form.php:275
+#: includes/class-agent.php:640 includes/class-contact-form.php:281
+#: includes/class-contact-form.php:282
 msgid "Phone"
 msgstr "Telefon"
 
@@ -410,62 +410,62 @@ msgstr "bei"
 msgid "I am interested in the property &quot;%1$s&quot; (%2$s)."
 msgstr "Ich interessiere mich für die Immobilie &quot;%1$s&quot; (%2$s)."
 
-#: includes/class-contact-form.php:171
+#: includes/class-contact-form.php:174
 msgid "Inquiry"
 msgstr "Anfrage"
 
-#: includes/class-contact-form.php:173
+#: includes/class-contact-form.php:176
 msgid "for"
 msgstr "für"
 
-#: includes/class-contact-form.php:242
+#: includes/class-contact-form.php:249
 msgid ""
 "Uh-oh! A problem occured while sending your data. Please try again later!"
 msgstr ""
 "Hoppla! Bei Versenden Ihrer Angaben ist leider ein Problem aufgetreten - "
 "bitte versuchen Sie es etwas später erneut!"
 
-#: includes/class-contact-form.php:266 includes/class-contact-form.php:268
+#: includes/class-contact-form.php:273 includes/class-contact-form.php:275
 msgid "Name"
 msgstr "Name"
 
-#: includes/class-contact-form.php:267
+#: includes/class-contact-form.php:274
 msgid "Prospect"
 msgstr "Interessent/in"
 
-#: includes/class-contact-form.php:281 includes/class-contact-form.php:282
+#: includes/class-contact-form.php:288 includes/class-contact-form.php:289
 msgid "Email Address"
 msgstr "E-Mail-Adresse"
 
-#: includes/class-contact-form.php:287 includes/class-contact-form.php:288
+#: includes/class-contact-form.php:294 includes/class-contact-form.php:295
 msgid "Message"
 msgstr "Nachricht"
 
-#: includes/class-contact-form.php:326
+#: includes/class-contact-form.php:333
 msgid "This is a required field!"
 msgstr "Dies ist ein Pflichtfeld!"
 
 #. translators: %s = caption of a required field
-#: includes/class-contact-form.php:334
+#: includes/class-contact-form.php:341
 msgid "Please provide this information <strong>or: %s</strong>"
 msgstr "Bitte dieses Feld ausfüllen <strong>oder: %s</strong>"
 
-#: includes/class-contact-form.php:345
+#: includes/class-contact-form.php:352
 msgid "Your data could not be submitted. Please check your inputs!"
 msgstr ""
 "Ihre Daten konnten nicht übermittelt werden. Bitte prüfen Sie Ihre Eingaben!"
 
-#: includes/class-contact-form.php:351
+#: includes/class-contact-form.php:358
 msgid "Your data could not be submitted. Please reload the page and try again!"
 msgstr ""
 "Ihre Angaben konnten nicht übermittelt werden. Bitte laden Sie die Seite neu "
 "und versuchen Sie es noch einmal!"
 
-#: includes/class-contact-form.php:405
+#: includes/class-contact-form.php:419
 msgid "Privacy Policy"
 msgstr "Datenschutzerklärung"
 
-#: includes/class-contact-form.php:417
+#: includes/class-contact-form.php:443
 msgid "Cancellation Policy"
 msgstr "Widerrufsbelehrung"
 
@@ -611,28 +611,29 @@ msgstr "Einwilligungstext zum Widerrufsrecht"
 
 #: includes/class-kickstart-team.php:400
 msgid ""
-"The <strong>cancellation policy part</strong> (optional) of the form consent "
-"text - use [cancellation_policy] to add a link to the page selected above."
+"This text must be confirmed by the user if a cancellation policy page has "
+"been selected above (insert <strong>[cancellation_policy]</strong> to add a "
+"link)."
 msgstr ""
-"Der <strong>Abschnitt zum Widerrufsrecht</strong> (optional) des Formular-"
-"Einwilligungstextes - mit [cancellation_policy] kann ein Link zur oben "
-"ausgewählten Seite ergänzt werden."
+"Dieser Text muss vom Benutzer bestätigt werden, wenn zuvor eine Seite "
+"ausgewählt wurde, die eine Widerrufsbelehrung enthält (mit "
+"<strong>[cancellation_policy]</strong> kann ein Link eingefügt werden)."
 
 #: includes/class-kickstart-team.php:407
-msgid "Privacy Consent Text"
-msgstr "Einwilligungstext zum Datenschutz"
+msgid "Privacy Note"
+msgstr "Datenschutzhinweis"
 
 #. translators: %s = privacy options page URL
 #: includes/class-kickstart-team.php:414
 msgid ""
-"The <strong>privacy policy part</strong> (mandatory) of the form consent "
-"text - use [privacy_policy] to add a link to the privacy policy page defined "
-"in the <a href=\"%s\">site options</a>."
+"The privacy policy notice is mandatory, but does <strong>not</strong> have "
+"to be confirmed (insert <strong>[privacy_policy]</strong> to add a link to "
+"the privacy policy page defined in the <a href=\"%s\">site options</a>)."
 msgstr ""
-"Der <strong>Abschnitt zur Verarbeitung personenbezogener Daten</strong> "
-"(verpflichtend) des Formular-Einwilligungstextes - mit [privacy_policy] kann "
-"ein Link zur Datenschutzerklärungsseite eingefügt werden, die in den <a href="
-"\"%s\">Website-Einstellungen</a> definiert werden kann."
+"Der Hinweis zum Datenschutz ist obligatorisch, muss aber <strong>nicht</"
+"strong> bestätigt werden. (Mit <strong>[privacy_policy]</strong> kann ein "
+"Link zur Seite der Datenschutzerklärung eingefügt werden, die in den <a href="
+"\"%s\">Website-Einstellungen</a> definiert wurde.)"
 
 #: includes/class-kickstart-team.php:423
 msgid "Confirmation Message"
@@ -1293,7 +1294,7 @@ msgstr "Meine Angebote"
 msgid "About Me"
 msgstr "Über mich"
 
-#: skins/default/contact-form.php:76
+#: skins/default/contact-form.php:86
 msgid ""
 "Heads up! This is only sample data, the form data will <strong>not</strong> "
 "be submitted."
@@ -1301,11 +1302,15 @@ msgstr ""
 "Achtung! Dies sind nur Beispieldaten, die Angaben im Formular werden "
 "<strong>nicht</strong> übermittelt."
 
-#: skins/default/contact-form.php:84
+#: skins/default/contact-form.php:94
 msgid "Secure submission"
 msgstr "Sichere Übermittlung"
 
-#: skins/default/contact-form.php:88
+#: skins/default/contact-form.php:94
+msgid "Secure!"
+msgstr "Sicher!"
+
+#: skins/default/contact-form.php:98
 msgid "Send"
 msgstr "Senden"
 
@@ -1375,6 +1380,18 @@ msgstr "inveris OHG / immonex"
 #. Author URI of the plugin/theme
 msgid "https://immonex.dev/"
 msgstr "https://immonex.dev/"
+
+#~ msgid "Privacy Consent Text"
+#~ msgstr "Einwilligungstext zum Datenschutz"
+
+#~ msgid ""
+#~ "The <strong>cancellation policy part</strong> (optional) of the form "
+#~ "consent text - use [cancellation_policy] to add a link to the page "
+#~ "selected above."
+#~ msgstr ""
+#~ "Der <strong>Abschnitt zum Widerrufsrecht</strong> (optional) des Formular-"
+#~ "Einwilligungstextes - mit [cancellation_policy] kann ein Link zur oben "
+#~ "ausgewählten Seite ergänzt werden."
 
 #~ msgctxt "Custom Post Type Slug (plural only!)"
 #~ msgid "realtors"

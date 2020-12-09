@@ -83,17 +83,19 @@ class Contact_Form {
 			$this->config,
 			$atts,
 			array(
-				'instance'            => $this,
-				'is_demo'             => $is_demo,
-				'post_type'           => get_post_type(),
-				'origin_post_id'      => $origin_post_id,
-				'post_id'             => $post_id,
-				'property_post_id'    => $property_post_id ? $property_post_id : 0,
-				'fields'              => $fields,
-				'consent_text'        => $this->get_consent_text(),
-				'recipients_enc'      => $recipients_enc['recipients'],
-				'cc_enc'              => $recipients_enc['cc'],
-				'honeypot_field_name' => self::HONEYPOT_FIELD_NAME,
+				'instance'                  => $this,
+				'is_demo'                   => $is_demo,
+				'post_type'                 => get_post_type(),
+				'origin_post_id'            => $origin_post_id,
+				'post_id'                   => $post_id,
+				'property_post_id'          => $property_post_id ? $property_post_id : 0,
+				'fields'                    => $fields,
+				'consent_text'              => $this->get_consent_text(),
+				'privacy_consent_text'      => $this->get_consent_text( 'privacy' ),
+				'cancellation_consent_text' => $this->get_consent_text( 'cancellation' ),
+				'recipients_enc'            => $recipients_enc['recipients'],
+				'cc_enc'                    => $recipients_enc['cc'],
+				'honeypot_field_name'       => self::HONEYPOT_FIELD_NAME,
 			)
 		);
 
@@ -401,37 +403,66 @@ class Contact_Form {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return string Combined consent text.
+	 * @param string|bool $type Consent text type (privacy, cancellation or false
+	 *                          for a combined version due to compatibility).
+	 *
+	 * @return string Requested consent text.
 	 */
-	private function get_consent_text() {
-		$privacy_link = wp_sprintf(
-			'<a href="%s" target="_blank">%s</a>',
-			get_privacy_policy_url(),
-			__( 'Privacy Policy', 'immonex-kickstart-team' )
-		);
-		$consent_text = '<p>' . str_replace(
-			'[privacy_policy]',
-			$privacy_link,
-			$this->config['consent_text_privacy']
-		) . '</p>';
+	private function get_consent_text( $type = false ) {
+		$privacy_text      = '';
+		$cancellation_text = '';
 
-		if ( (int) $this->config['cancellation_page_id'] ) {
+		if ( 'cancellation' !== $type ) {
+			$privacy_link = wp_sprintf(
+				'<a href="%s" target="_blank">%s</a>',
+				get_privacy_policy_url(),
+				__( 'Privacy Policy', 'immonex-kickstart-team' )
+			);
+
+			$privacy_text = wp_sprintf(
+				'<p>%s</p>',
+				str_replace(
+					'[privacy_policy]',
+					$privacy_link,
+					$this->config['consent_text_privacy']
+				)
+			);
+
+			if ( 'privacy' === $type ) {
+				return $privacy_text;
+			}
+		}
+
+		if (
+			'privacy' !== $type
+			&& (int) $this->config['cancellation_page_id']
+		) {
 			$cancellation_link = wp_sprintf(
 				'<a href="%s" target="_blank">%s</a>',
 				get_permalink( (int) $this->config['cancellation_page_id'] ),
 				__( 'Cancellation Policy', 'immonex-kickstart-team' )
 			);
 
-			$cancellation_text = '<p>' . str_replace(
-				'[cancellation_policy]',
-				$cancellation_link,
-				$this->config['consent_text_cancellation']
-			) . '</p>';
+			$cancellation_text = wp_sprintf(
+				'<p>%s</p>',
+				str_replace(
+					'[cancellation_policy]',
+					$cancellation_link,
+					$this->config['consent_text_cancellation']
+				)
+			);
 
-			$consent_text = $cancellation_text . PHP_EOL . $consent_text;
+			if ( 'cancellation' === $type ) {
+				return $cancellation_text;
+			}
 		}
 
-		return $consent_text;
+		$combined = $privacy_text;
+		if ( ! empty( $cancellation_text ) ) {
+			$combined .= PHP_EOL . $cancellation_text;
+		}
+
+		return $combined;
 	} // get_consent_text
 
 	/**

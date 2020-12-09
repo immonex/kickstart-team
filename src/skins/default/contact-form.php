@@ -54,6 +54,7 @@ foreach ( $template_data['fields'] as $inx_skin_field_name => $inx_skin_field ) 
 			<div class="inx-team-contact-form__input-error"></div>
 		</div>
 
+		<?php if ( $template_data['cancellation_consent_text'] ) : ?>
 		<div class="inx-team-contact-form__input inx-team-contact-form__input--type--full inx-team-contact-form__input--name--consent">
 			<div class="inx-team-contact-form__consent-checkbox">
 				<label class="inx-switch">
@@ -63,9 +64,18 @@ foreach ( $template_data['fields'] as $inx_skin_field_name => $inx_skin_field ) 
 			</div>
 
 			<div class="inx-team-contact-form__consent-text">
-				<?php echo $template_data['consent_text']; ?>
+				<?php echo $template_data['cancellation_consent_text']; ?>
 			</div>
 		</div>
+		<?php endif; ?>
+
+		<?php if ( $template_data['privacy_consent_text'] ) : ?>
+		<div class="inx-team-contact-form__input inx-team-contact-form__input--type--privacy-consent">
+			<div class="inx-team-contact-form__consent-text">
+				<?php echo $template_data['privacy_consent_text']; ?>
+			</div>
+		</div>
+		<?php endif; ?>
 
 		<div class="inx-team-contact-form__input inx-team-contact-form__input--type--full inx-team-contact-form__result-wrap">
 			<div class="inx-team-contact-form__result"></div>
@@ -79,9 +89,9 @@ foreach ( $template_data['fields'] as $inx_skin_field_name => $inx_skin_field ) 
 		</div>
 
 		<div class="inx-team-contact-form__input inx-team-contact-form__input--type--full inx-team-contact-form__input--name--submit">
-			<div>
+			<div class="uk">
 				<?php if ( $inx_skin_is_localhost || is_ssl() ) : ?>
-				<span uk-icon="lock"></span> <?php _e( 'Secure submission', 'immonex-kickstart-team' ); ?>
+				<span uk-icon="lock" title="<?php _e( 'Secure submission', 'immonex-kickstart-team' ); ?>"></span> <?php _e( 'Secure!', 'immonex-kickstart-team' ); ?>
 				<?php endif; ?>
 				&nbsp;
 			</div>

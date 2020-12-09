@@ -397,21 +397,21 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_1_1\Base {
 				'args'    => array(
 					'plugin_slug' => $this->plugin_slug,
 					'option_name' => $this->plugin_options_name,
-					'description' => __( 'The <strong>cancellation policy part</strong> (optional) of the form consent text - use [cancellation_policy] to add a link to the page selected above.', 'immonex-kickstart-team' ),
+					'description' => __( 'This text must be confirmed by the user if a cancellation policy page has been selected above (insert <strong>[cancellation_policy]</strong> to add a link).', 'immonex-kickstart-team' ),
 					'value'       => $this->plugin_options['consent_text_cancellation'],
 				),
 			),
 			array(
 				'name'    => 'consent_text_privacy',
 				'type'    => 'textarea',
-				'label'   => __( 'Privacy Consent Text', 'immonex-kickstart-team' ),
+				'label'   => __( 'Privacy Note', 'immonex-kickstart-team' ),
 				'section' => "{$prefix}contact_form",
 				'args'    => array(
 					'plugin_slug' => $this->plugin_slug,
 					'option_name' => $this->plugin_options_name,
 					'description' => wp_sprintf(
 						/* translators: %s = privacy options page URL */
-						__( 'The <strong>privacy policy part</strong> (mandatory) of the form consent text - use [privacy_policy] to add a link to the privacy policy page defined in the <a href="%s">site options</a>.', 'immonex-kickstart-team' ),
+						__( 'The privacy policy notice is mandatory, but does <strong>not</strong> have to be confirmed (insert <strong>[privacy_policy]</strong> to add a link to the privacy policy page defined in the <a href="%s">site options</a>).', 'immonex-kickstart-team' ),
 						admin_url( 'options-privacy.php' )
 					),
 					'value'       => $this->plugin_options['consent_text_privacy'],

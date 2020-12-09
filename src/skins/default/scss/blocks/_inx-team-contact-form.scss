@@ -23,9 +23,15 @@
 	flex: 0 0 100%;
 }
 
+.inx-team-contact-form__input--type--privacy-consent {
+	margin-bottom: 1em;
+}
+
 .inx-team-contact-form__input--name--consent {
 	display: flex;
 	margin: 1em 0;
+	padding-bottom: 1em;
+	border-bottom: 1px solid rgba(164, 164, 164, .8)
 }
 
 .inx-team-contact-form__consent-checkbox {
@@ -33,7 +39,7 @@
 }
 
 .inx-team-contact-form__consent-text {
-	font-size: 85%;
+	font-size: 12px;
 
 	p:last-child {
 		margin: 0;
@@ -50,7 +56,7 @@
 	align-items: center;
 
 	div:first-child {
-		font-size: 85%;
+		font-size: 12px;
 		text-transform: uppercase;
 
 		span.uk-icon {

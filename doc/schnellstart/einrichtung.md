@@ -55,15 +55,15 @@ Sollen Kopien **aller** via [Kontaktformular](../komponenten/kontaktformular.htm
 
 #### Seite der Widerrufsbelehrung
 
-Diese Option ist für den Umfang des zu bestätigenden **Einwilligungstexts** relevant, der im [Kontaktformular](../komponenten/kontaktformular.html) über dem Absendebutton angezeigt wird: Nur wenn hier eine Seite ausgewählt oder bei der Plugin-Installation automatisch ermittelt wurde, die **Informationen zum Widerrufsrecht** enthält, wird der nachfolgende Hinweis hierzu im Formular angezeigt.
+Eine hier ausgewählte Seite, die Informationen zum gesetzlichen Widerrufsrecht enthält, ist Voraussetzung für die Einbindung des nachfolgenden **Einwilligungstexts** in das [Kontaktformular](../komponenten/kontaktformular.html). (Im Rahmen der Plugin-Installation erfolgt eine automatische Zuordnung, sofern eine passende Seite erkannt wurde.)
 
 #### Einwilligungstext zum Widerrufsrecht
 
-Der widerrufsspezifische Teil des Einwilligungstexts: Hier kann mit `[cancellation_policy]` ein Link zur zuvor ausgewählten Seite eingefügt werden, die eine Widerrufsbelehrung o. ä. enthält.
+Dieser Hinweis muss vom Benutzer bestätigt werden, bevor er seine Anfrage per Kontaktformular absenden kann. Mit `[cancellation_policy]` kann ein Link zur zuvor ausgewählten Seite eingefügt werden.
 
 #### Einwilligungstext zum Datenschutz
 
-Eine zu bestätigende Angabe dieser Art ist aus rechtlichen Gründen obligatorisch. Auch hier kann mit `[privacy_policy]` ein Link zur entsprechenden Infoseite (**Datenschutzerklärung**) eingefügt werden, die unter ***Einstellungen → Datenschutz*** definiert wurde.
+Ein Hinweis zum Thema Datenschutz ist obligatorisch, muss aber **nicht** explizit bestätigt werden. Per Platzhalter `[privacy_policy]` wird ein Link zur entsprechenden Infoseite (**Datenschutzerklärung**) eingefügt, die unter ***Einstellungen → Datenschutz*** definiert wurde.
 
 #### OpenImmo-Feedback-Typ
 
