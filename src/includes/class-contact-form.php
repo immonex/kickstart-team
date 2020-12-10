@@ -190,11 +190,13 @@ class Contact_Form {
 		$headers = array( "From: {$sender}" );
 
 		if ( ! empty( $form_data['email'] ) ) {
-			$headers[] = wp_sprintf(
-				'Reply-To: %s <%s>',
+			$receipt_conf_recipient = wp_sprintf(
+				'%s <%s>',
 				$form_data['name'],
 				$form_data['email']
 			);
+
+			$headers[] = "Reply-To: {$receipt_conf_recipient}";
 		}
 
 		if ( count( $recipient_lists['cc'] ) > 0 ) {
@@ -209,6 +211,8 @@ class Contact_Form {
 			$headers,
 			'admin'
 		);
+
+		$this->add_prerendered_data( $template_data );
 
 		$body = $this->utils['template']->render_php_template(
 			'mail/contact-form-to-admin',
@@ -247,6 +251,11 @@ class Contact_Form {
 		if ( ! $send_result ) {
 			$result['valid']   = false;
 			$result['message'] = __( 'Uh-oh! A problem occured while sending your data. Please try again later!', 'immonex-kickstart-team' );
+		} elseif (
+			$this->config['send_receipt_confirmation']
+			&& ! empty( $receipt_conf_recipient )
+		) {
+			$this->send_receipt_confirmation( $sender, $recipient_lists['receipt_conf_sender_info'], $receipt_conf_recipient, $template_data );
 		}
 
 		if ( isset( $qoi_feedback ) && $oi_feedback_file ) {
@@ -349,7 +358,7 @@ class Contact_Form {
 			count( $result['field_errors'] ) > 0
 		) {
 			$result['valid']   = false;
-			$result['message'] = __( 'Your data could not be submitted. Please check your inputs!', 'immonex-kickstart-team' );
+			$result['message'] = __( 'Please check your inputs!', 'immonex-kickstart-team' );
 		} elseif (
 			empty( $form_data['nonce']['value'] )
 			|| ! wp_verify_nonce( $form_data['nonce']['value'], $form_data['nonce']['context'] )
@@ -397,6 +406,82 @@ class Contact_Form {
 
 		return apply_filters( 'inx_team_contact_form_user_data', $form_data );
 	} // get_user_form_data
+
+	/**
+	 * Send a receipt confirmation mail.
+	 *
+	 * @since 1.1.0
+	 *
+	 * @param string   $sender Real Sender mail address.
+	 * @param string[] $sender_info Sender type, name/company and reply-to address.
+	 * @param string   $recipient Recipient name and mail address.
+	 * @param mixed[]  $template_data Property and form data.
+	 *
+	 * @return bool Send Result.
+	 */
+	private function send_receipt_confirmation( $sender, $sender_info, $recipient, $template_data ) {
+		$template_data['sender_info'] = $sender_info;
+
+		if ( ! empty( $template_data['property'] ) ) {
+			$subject = wp_sprintf(
+				'[%s] %s %s',
+				$template_data['prerendered']['site_title'],
+				__( 'Your inquiry for the property', 'immonex-kickstart-team' ),
+				$template_data['prerendered']['property_title_ext_id']
+			);
+		} else {
+			$subject = wp_sprintf(
+				'[%s] %s',
+				$template_data['prerendered']['site_title'],
+				__( 'Confirmation of receipt', 'immonex-kickstart-team' )
+			);
+		}
+
+		$subject = apply_filters(
+			'inx_team_contact_form_notification_subject',
+			filter_var( $subject, FILTER_SANITIZE_STRING ),
+			'prospect',
+			$template_data
+		);
+
+		$subject = $this->replace_vars( $subject, 'prospect', $template_data );
+		$headers = array( "From: {$sender}" );
+
+		if ( ! empty( $sender_info['email'] ) ) {
+			$replyto_recipient = trim(
+				wp_sprintf(
+					'%s <%s>',
+					$sender_info['name'],
+					$sender_info['email']
+				)
+			);
+
+			$headers[] = "Reply-To: {$replyto_recipient}";
+		}
+
+		$headers = apply_filters(
+			'inx_team_contact_form_mail_headers',
+			$headers,
+			'prospect'
+		);
+
+		$body = $this->utils['template']->render_php_template(
+			'mail/receipt-confirmation',
+			$template_data,
+			$this->utils
+		);
+
+		if ( $body ) {
+			return wp_mail(
+				$recipient,
+				$subject,
+				stripslashes( $body ),
+				$headers
+			);
+		}
+
+		return false;
+	} // send_receipt_confirmation
 
 	/**
 	 * Assemble the form consent text (cancellation/privacy policies).
@@ -512,14 +597,16 @@ class Contact_Form {
 			return false;
 		}
 
-		$mail_recipients = array();
-		$property        = get_post( $property_id );
-		$property_data   = array(
-			'post_id'     => $property->ID,
-			'external_id' => get_post_meta( $property->ID, '_inx_property_id', true ),
-			'obid'        => get_post_meta( $property->ID, '_openimmo_obid', true ),
-			'title'       => $property->post_title,
-			'url'         => get_permalink( $property->ID ),
+		$property      = get_post( $property_id );
+		$property_data = array(
+			'post_id'               => $property->ID,
+			'external_id'           => get_post_meta( $property->ID, '_inx_property_id', true ),
+			'obid'                  => get_post_meta( $property->ID, '_openimmo_obid', true ),
+			'title'                 => $property->post_title,
+			'url'                   => get_permalink( $property->ID ),
+			'primary_agent_name'    => '',
+			'primary_agent_company' => '',
+			'primary_agent_email'   => '',
 		);
 
 		/**
@@ -528,17 +615,26 @@ class Contact_Form {
 
 		$agent_ids = Agent::fetch_agent_ids( $property_id );
 		if ( count( $agent_ids ) > 0 ) {
-			foreach ( $agent_ids as $agent_id ) {
+			foreach ( $agent_ids as $i => $agent_id ) {
 				$agent = new Agent( $agent_id, $this->config, $this->utils );
-				// Prioritize a dedicated feedback mail address if existent.
-				$email = sanitize_email( $agent->get_element_value( 'email_feedback' ) );
-				if ( $email ) {
-					$mail_recipients[] = $email;
-					continue;
+
+				if ( 0 === $i ) {
+					$property_data['primary_agent_name']    = $agent->get_element_value( 'full_name_incl_title' );
+					$property_data['primary_agent_company'] = $agent->get_element_value( 'company' );
 				}
 
-				$email = sanitize_email( $agent->get_element_value( 'email_auto_select' ) );
+				// Prioritize a dedicated feedback mail address if existent.
+				$email = sanitize_email( $agent->get_element_value( 'email_feedback' ) );
+
+				if ( ! $email ) {
+					$email = sanitize_email( $agent->get_element_value( 'email_auto_select' ) );
+				}
+
 				if ( $email ) {
+					if ( 0 === $i ) {
+						$property_data['primary_agent_email'] = $email;
+					}
+
 					$mail_recipients[] = $email;
 					continue;
 				}
@@ -616,32 +712,60 @@ class Contact_Form {
 			}
 		}
 
-		if ( empty( $mail_addresses['recipients'] ) ) {
-			switch ( $post_type ) {
-				case 'inx_agent':
-					$agent = new Agent( $post_id, $this->config, $this->utils );
-					$email = sanitize_email( $agent->get_element_value( 'email_auto_select' ) );
+		switch ( $post_type ) {
+			case 'inx_agent':
+				$agent = new Agent( $post_id, $this->config, $this->utils );
+				$email = sanitize_email( $agent->get_element_value( 'email_auto_select' ) );
 
-					if ( $email ) {
+				$receipt_conf_sender_info = array(
+					'type'    => 'agent',
+					'name'    => $agent->get_element_value( 'full_name_incl_title' ),
+					'company' => $agent->get_element_value( 'company' ),
+					'email'   => $email,
+				);
+
+				if ( $email ) {
+					if ( empty( $mail_addresses['recipients'] ) ) {
 						$mail_addresses['recipients'][] = $email;
 					}
-					break;
-				case 'inx_agency':
-					$agency = new Agency( $post_id, $this->config, $this->utils );
-					$email  = sanitize_email( $agency->get_element_value( 'email' ) );
+				}
+				break;
+			case 'inx_agency':
+				$agency = new Agency( $post_id, $this->config, $this->utils );
+				$email  = sanitize_email( $agency->get_element_value( 'email' ) );
 
-					if ( $email ) {
+				$receipt_conf_sender_info = array(
+					'type'    => 'agency',
+					'name'    => $agency->get_element_value( 'company' )['raw'],
+					'company' => $agency->get_element_value( 'company' )['raw'],
+					'email'   => $email,
+				);
+
+				if ( $email ) {
+					if ( empty( $mail_addresses['recipients'] ) ) {
 						$mail_addresses['recipients'][] = $email;
 					}
-					break;
-				default:
+				}
+				break;
+			default:
+				$receipt_conf_sender_info = array(
+					'type'    => 'agent',
+					'name'    => ! empty( $property_data['primary_agent_name'] ) ? $property_data['primary_agent_name'] : '',
+					'company' => ! empty( $property_data['primary_agent_company'] ) ? $property_data['primary_agent_company'] : '',
+					'email'   => ! empty( $property_data['primary_agent_email'] ) ? $property_data['primary_agent_email'] : '',
+				);
+
+				if (
+					empty( $mail_addresses['recipients'] )
+					&& ! empty( $property_addresses )
+				) {
 					/**
 					 * Use the property related address of the primary agent
 					 * if no override address is given.
 					 */
 					$primary_agent_address        = array_shift( $property_addresses );
 					$mail_addresses['recipients'] = array( $primary_agent_address );
-			}
+				}
 		}
 
 		if (
@@ -669,8 +793,9 @@ class Contact_Form {
 		}
 
 		return array(
-			'recipients' => array_unique( $mail_addresses['recipients'] ),
-			'cc'         => array_unique( $mail_addresses['cc'] ),
+			'recipients'               => array_unique( $mail_addresses['recipients'] ),
+			'cc'                       => array_unique( $mail_addresses['cc'] ),
+			'receipt_conf_sender_info' => $receipt_conf_sender_info,
 		);
 	} // compose_recipient_lists
 
@@ -811,5 +936,133 @@ class Contact_Form {
 
 		return false;
 	} // is_demo_context
+
+	/**
+	 * Prerender property/form data for output in PHP templates.
+	 *
+	 * @since 1.1.0
+	 *
+	 * @param mixed $template_data Template source data.
+	 */
+	private function add_prerendered_data( &$template_data ) {
+		$data = array(
+			'site_title'            => $template_data['site_title'],
+			'property_title'        => '',
+			'external_id'           => '',
+			'property_title_ext_id' => '',
+			'property_url'          => '',
+			'merged_form_data'      => '',
+		);
+
+		if ( ! empty( $template_data['property'] ) ) {
+			$data['property_title'] = $template_data['property']['title'];
+			$data['property_url']   = $template_data['property']['url'];
+
+			if ( ! empty( $template_data['property']['external_id'] ) ) {
+				$data['external_id']           = $template_data['property']['external_id'];
+				$data['property_title_ext_id'] = wp_sprintf(
+					'%s (%s)',
+					$data['property_title'],
+					$data['external_id']
+				);
+			} else {
+				$data['property_title_ext_id'] = $data['property_title'];
+			}
+		}
+
+		if ( ! empty( $template_data['form_data'] ) ) {
+			$max_caption_length = $this->get_max_field_caption_length( $template_data['form_data'] );
+			$fields_inserted    = 0;
+
+			foreach ( $template_data['form_data'] as $field_name => $field ) {
+				if (
+					'checkbox' === $field['type']
+					|| empty( $field['value'] )
+				) {
+					continue;
+				}
+
+				$rendered_field = '';
+				$caption        = $this->get_field_caption( $field );
+
+				if ( 'textarea' === $field['type'] ) {
+					$divider = PHP_EOL . str_repeat( '-', strlen( $field['caption'] ) + 1 );
+
+					if ( $fields_inserted > 0 ) {
+						$data['merged_form_data'] .= PHP_EOL;
+					}
+					if ( $caption ) {
+						$rendered_field = $caption . ':';
+					}
+					$rendered_field .= wp_sprintf(
+						'%2$s%1$s%2$s',
+						PHP_EOL . $field['value'],
+						$divider
+					);
+				} else {
+					if ( $caption ) {
+						$rendered_field = str_pad( $caption . ':', $max_caption_length );
+					}
+					$rendered_field .= $field['value'];
+				}
+
+				$data[ $field_name ]       = $rendered_field;
+				$data['merged_form_data'] .= $rendered_field . PHP_EOL;
+
+				$fields_inserted++;
+			}
+
+			$data['merged_form_data'] = trim( $data['merged_form_data'] );
+		}
+
+		$template_data['prerendered'] = $data;
+	} // add_prerendered_data
+
+	/**
+	 * Get the most suitable caption for the given field (plain text mail rendering).
+	 *
+	 * @since 1.1.0
+	 *
+	 * @param string $field Field key (name).
+	 *
+	 * @return string Caption.
+	 */
+	private function get_field_caption( $field ) {
+		$caption = '';
+
+		if ( ! empty( $field['caption_mail'] ) ) {
+			$caption = $field['caption_mail'];
+		} elseif ( ! empty( $field['caption'] ) ) {
+			$caption = $field['caption'];
+		}
+
+		return $caption;
+	} // get_field_caption
+
+	/**
+	 * Get the maximum field caption length (plain text mail rendering).
+	 *
+	 * @since 1.1.0
+	 *
+	 * @param mixed[] $form_data Form data.
+	 *
+	 * @return int Max. caption length.
+	 */
+	private function get_max_field_caption_length( $form_data ) {
+		$max_caption_length = 4;
+
+		foreach ( $form_data as $field_name => $field ) {
+			$caption = $this->get_field_caption( $field );
+
+			if (
+				$caption
+				&& ! in_array( $field['type'], array( 'textarea', 'checkbox' ) )
+			) {
+				$max_caption_length = strlen( $caption ) + 2;
+			}
+		}
+
+		return $max_caption_length;
+	} // get_max_field_caption_length
 
 } // Contact_Form

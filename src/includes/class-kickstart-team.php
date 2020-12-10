@@ -17,7 +17,7 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_1_1\Base {
 	const PLUGIN_PREFIX              = 'inx_team_';
 	const PUBLIC_PREFIX              = 'inx-team-';
 	const TEXTDOMAIN                 = 'immonex-kickstart-team';
-	const PLUGIN_VERSION             = '1.0.2';
+	const PLUGIN_VERSION             = '1.1.0';
 	const PLUGIN_HOME_URL            = 'https://de.wordpress.org/plugins/immonex-kickstart/';
 	const PLUGIN_DOC_URLS            = array(
 		'de' => 'https://docs.immonex.de/kickstart-team/',
@@ -58,6 +58,7 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_1_1\Base {
 		'consent_text_cancellation'          => 'INSERT_TRANSLATED_DEFAULT_VALUE',
 		'consent_text_privacy'               => 'INSERT_TRANSLATED_DEFAULT_VALUE',
 		'form_confirmation_message'          => 'INSERT_TRANSLATED_DEFAULT_VALUE',
+		'send_receipt_confirmation'          => false,
 		'hide_form_after_submit'             => true,
 		'oi_feedback_type'                   => 'attachment',
 	);
@@ -427,6 +428,18 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_1_1\Base {
 					'option_name' => $this->plugin_options_name,
 					'description' => __( 'This message is being displayed when the form data have been successfully submitted.', 'immonex-kickstart-team' ),
 					'value'       => $this->plugin_options['form_confirmation_message'],
+				),
+			),
+			array(
+				'name'    => 'send_receipt_confirmation',
+				'type'    => 'checkbox',
+				'label'   => __( 'Receipt Confirmation', 'immonex-kickstart-team' ),
+				'section' => "{$prefix}contact_form",
+				'args'    => array(
+					'plugin_slug' => $this->plugin_slug,
+					'option_name' => $this->plugin_options_name,
+					'description' => __( 'Activate if prospects shall receive a receipt confirmation mail on successful form submissions.', 'immonex-kickstart-team' ),
+					'value'       => $this->plugin_options['send_receipt_confirmation'],
 				),
 			),
 			array(

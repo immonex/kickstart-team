@@ -65,6 +65,10 @@ Dieser Hinweis muss vom Benutzer bestätigt werden, bevor er seine Anfrage per K
 
 Ein Hinweis zum Thema Datenschutz ist obligatorisch, muss aber **nicht** explizit bestätigt werden. Per Platzhalter `[privacy_policy]` wird ein Link zur entsprechenden Infoseite (**Datenschutzerklärung**) eingefügt, die unter ***Einstellungen → Datenschutz*** definiert wurde.
 
+#### Eingangsbestätigung
+
+Bei erfolgreicher Übermittlung von Formulardaten **kann** eine Eingangsbestätigung per Mail an den Absender geschickt werden, diese muss allerdings **explizit aktiviert** werden. Damit das Formular nicht für den Versand von Spam missbraucht werden kann, sind in den Bestätigungsmails keine vom Nutzer selbst erfassten Inhalte enthalten.
+
 #### OpenImmo-Feedback-Typ
 
 **OpenImmo-Feedback** bezeichnet einen Standard für den einheitlichen Austausch von Daten immobilienspezifischer Anfragen (Interessenten-Kontaktdaten und Infos zum angefragten Objekt) auf XML-Basis.

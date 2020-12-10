@@ -31,7 +31,7 @@ Wie das [Agentur-Widget](agentur-details.html#Widget) ist auch die Variante für
 
 Ein Frontend-Beispiel auf Basis des WP-Standard-Themes <i>Twenty Sixteen</i>:
 
-![Screenshot: Kontaktpersonen-Widget (Immobilienmakler/in, Ansprechparter/in) im Einsatz](../assets/scst-fe-agent-widget-1.gif)
+![Screenshot: Kontaktpersonen-Widget (Immobilienmakler/in, Ansprechparter/in) im Einsatz](../assets/scst-fe-agent-widget-1.png)
 
 **Alternativ** hierzu wird die Widget-Ansicht (hier im <i>Twenty Twenty</i> Theme-Look) auch als Ersatz des [Standard-Kontaktdaten-Abschnitts](../schnellstart/einrichtung.html#Anpassung-des-Standard-Kontaktabschnitts) in den Objekt-Details verwendet, sofern die entsprechende [Add-on-Option](../schnellstart/einrichtung.html#Anpassung-des-Standard-Kontaktabschnitts) ausgewählt ist (Standardeinstellung nach der ersten Plugin-Aktivierung):
 
