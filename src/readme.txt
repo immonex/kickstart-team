@@ -43,6 +43,7 @@ Plugins like immonex OpenImmo2WP [2] are used to import OpenImmo-XML data into t
 * Shortcodes for embedding list and single views (agent or agency details)
 * Unified and simple (mail) contact form, usable in agent/agency single views and widgets
 * OpenImmo-Feedback XML attachments for property inquiry mails via contact form
+* Optional receipt confirmation mails on successful form submissions
 * Separate, editable form consent texts on withdrawal and privacy policies (EU GDPR compliance)
 * Translations provided via translate.wordpress.org (GlotPress)
 * Current POT file and German translations included as PO/MO files additionally
