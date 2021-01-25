@@ -39,6 +39,8 @@ Auch ohne Team-Add-on werden natürlich **objektbezogene Kontaktdaten** in den D
 
 ![Kontaktdaten-Abschnitt mit Team-Add-on](../assets/scst-contact-section-2.gif)
 
+Die "genderkonformen Titel", die für die Überschrift des Kontaktabschnitts verwendet werden, sind in den Übersetzungsdateien hinterlegt und können bei Bedarf auch [hier geändert](../anpassung-erweiterung/uebersetzung-mehrsprachigkeit.html) werden. Im folgenden Eingabefeld (<i>Standard-Überschrift des Kontaktabschnitts</i>) kann aber auch ein **alternativer** Text hierfür hinterlegt werden. (Ist das Feld leer, wird die Titelzeile entsprechend ausgeblendet. Mit "auto" wird wiederum die o. g. Standard-Variante übernommen.)
+
 Werden die Kontaktdaten an einer anderen Position per Widget ([Ansprechpartner/in](../komponenten/kontaktpersonen-details.html#Widget) und/oder [Agentur](../komponenten/agentur-details.html#Widget)) eingebunden, kann – und sollte – der Standard-Abschnitt ausgeblendet werden (`ausblenden`).
 
 ### Kontaktformular

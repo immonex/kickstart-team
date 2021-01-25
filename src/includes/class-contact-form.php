@@ -220,6 +220,8 @@ class Contact_Form {
 			$this->utils
 		);
 
+		$attachments = array();
+
 		if ( $this->config['oi_feedback_type'] && ! empty( $property_data ) ) {
 			$qoi_feedback = new Quick_Openimmo_Feedback( $this->config, $this->utils );
 			$qoi_feedback->set_property_post_id( $property_data['post_id'] );
@@ -230,7 +232,6 @@ class Contact_Form {
 				$body .= PHP_EOL . PHP_EOL . '--- OpenImmo-Feedback ---' . PHP_EOL . PHP_EOL;
 				$body .= $oi_feedback_xml_source;
 			} else {
-				$attachments      = array();
 				$oi_feedback_file = $qoi_feedback->create_temp_file( $oi_feedback_xml_source );
 				if ( $oi_feedback_file ) {
 					$attachments[] = $oi_feedback_file;
@@ -258,7 +259,7 @@ class Contact_Form {
 			$this->send_receipt_confirmation( $sender, $recipient_lists['receipt_conf_sender_info'], $receipt_conf_recipient, $template_data );
 		}
 
-		if ( isset( $qoi_feedback ) && $oi_feedback_file ) {
+		if ( isset( $qoi_feedback ) && ! empty( $oi_feedback_file ) ) {
 			$qoi_feedback->delete_temp_file( $oi_feedback_file );
 		}
 
@@ -305,7 +306,7 @@ class Contact_Form {
 			),
 			'consent' => array(
 				'type'     => 'checkbox',
-				'required' => true,
+				'required' => (int) $this->config['cancellation_page_id'] ? true : false,
 			),
 		);
 

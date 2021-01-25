@@ -1,7 +1,12 @@
 <wpml-config>
 	<admin-texts>
 		<key name="immonex-kickstart-team_options">
-			<!--key name="option_name" /-->
+			<key name="agency_archive_title" />
+			<key name="agent_archive_title" />
+			<key name="default_contact_section_title" />
+			<key name="consent_text_cancellation" />
+			<key name="consent_text_privacy" />
+			<key name="form_confirmation_message" />
 		</key>
 	</admin-texts>
 </wpml-config>

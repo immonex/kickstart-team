@@ -184,7 +184,20 @@ EOT;
 	public function create_temp_file( $xml_source ) {
 		$temp_dir = trailingslashit( get_temp_dir() ) . uniqid();
 		mkdir( $temp_dir );
-		$oi_file = "{$temp_dir}/openimmo-feedback.xml";
+
+		$default_filename = 'kontakt-openimmo-feedback.xml';
+		$filename         = sanitize_file_name(
+			apply_filters(
+				'inx_team_openimmo_feedback_attachment_filename',
+				$default_filename
+			)
+		);
+
+		if ( empty( $filename ) ) {
+			$filename = $default_filename;
+		}
+
+		$oi_file = "{$temp_dir}/{$filename}";
 
 		$f = fopen( $oi_file, 'w+' );
 		fwrite( $f, $xml_source );

@@ -7,6 +7,7 @@
 
 $inx_skin_is_localhost          = in_array( $_SERVER['REMOTE_ADDR'], array( '127.0.0.1', '::1' ) );
 $inx_skin_action                = $template_data['plugin_prefix'] . 'submit_contact_form';
+$inx_skin_send_button_disabled  = $template_data['cancellation_consent_text'] ? true : false;
 $inx_skin_message_default_value = isset( $template_data['fields']['message']['default_value'] ) ?
 	$template_data['fields']['message']['default_value'] :
 	'';
@@ -95,7 +96,11 @@ foreach ( $template_data['fields'] as $inx_skin_field_name => $inx_skin_field ) 
 				<?php endif; ?>
 				&nbsp;
 			</div>
-			<div><button class="inx-team-contact-form__submit inx-button uk-button uk-button-primary" disabled><?php _e( 'Send', 'immonex-kickstart-team' ); ?></button></div>
+			<div>
+				<button	class="inx-team-contact-form__submit inx-button uk-button uk-button-primary"<?php echo $inx_skin_send_button_disabled ? ' disabled' : ''; ?>>
+					<?php _e( 'Send', 'immonex-kickstart-team' ); ?>
+				</button>
+			</div>
 		</div>
 
 		<div class="inx-team-contact-form__spinner uk-overlay-default uk-position-cover">

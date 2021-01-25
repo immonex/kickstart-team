@@ -10,14 +10,14 @@ namespace immonex\Kickstart\Team;
 /**
  * Main plugin class
  */
-class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_1_1\Base {
+class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_1_2\Base {
 
 	const PLUGIN_NAME                = 'immonex Kickstart Team';
 	const ADDON_NAME                 = 'Team';
 	const PLUGIN_PREFIX              = 'inx_team_';
 	const PUBLIC_PREFIX              = 'inx-team-';
 	const TEXTDOMAIN                 = 'immonex-kickstart-team';
-	const PLUGIN_VERSION             = '1.1.0';
+	const PLUGIN_VERSION             = '1.1.3';
 	const PLUGIN_HOME_URL            = 'https://de.wordpress.org/plugins/immonex-kickstart/';
 	const PLUGIN_DOC_URLS            = array(
 		'de' => 'https://docs.immonex.de/kickstart-team/',
@@ -52,6 +52,7 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_1_1\Base {
 		'agency_archive_title'               => 'INSERT_TRANSLATED_DEFAULT_VALUE',
 		'agent_archive_title'                => 'INSERT_TRANSLATED_DEFAULT_VALUE',
 		'default_contact_section_adaptation' => 'replace',
+		'default_contact_section_title'      => 'auto',
 		'fallback_form_mail_recipients'      => '',
 		'form_mail_cc_recipients'            => '',
 		'cancellation_page_id'               => 0,
@@ -351,6 +352,19 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_1_1\Base {
 						'disable' => __( 'disable', 'immonex-kickstart-team' ),
 					),
 					'value'       => $this->plugin_options['default_contact_section_adaptation'],
+				),
+			),
+			array(
+				'name'    => 'default_contact_section_title',
+				'type'    => 'text',
+				'label'   => __( 'Default Contact Section Headline', 'immonex-kickstart-team' ),
+				'section' => "{$prefix}layout",
+				'args'    => array(
+					'plugin_slug' => $this->plugin_slug,
+					'option_name' => $this->plugin_options_name,
+					'description' => __( 'default headline for the contact section/form in property detail pages if <strong>replace</strong> is selected above', 'immonex-kickstart-team' ) .
+						' (' . __( 'Use "auto" for a gender-related default title.', 'immonex-kickstart-team' ) . ')',
+					'value'       => $this->plugin_options['default_contact_section_title'],
 				),
 			),
 			array(

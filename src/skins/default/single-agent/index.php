@@ -23,8 +23,7 @@ $inx_skin_photo = isset( $template_data['elements']['photo'] ) ?
 <article class="inx-team-single-agent inx-team-single-agent--type--single inx-container">
 	<div class="uk-flex uk-flex-wrap uk-margin-large-bottom">
 		<div class="inx-team-single-agent__photo-wrap uk-width-1-3@s uk-width-1-4@m uk-width-2-6@l">
-			<div
-				class="inx-team-single-agent__photo inx-squared-image"
+			<div class="inx-team-single-agent__photo inx-squared-image"
 				<?php
 				if ( ! empty( $inx_skin_photo['value'] ) ) {
 					echo wp_sprintf(

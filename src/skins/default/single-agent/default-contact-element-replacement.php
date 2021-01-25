@@ -16,15 +16,19 @@ $inx_skin_title_level = isset( $immonex_kickstart ) ?
 	$immonex_kickstart->heading_base_level + 1 :
 	2;
 
-switch ( $template_data['agent_gender'] ) {
-	case 'm':
-		$inx_skin_title = _x( 'Your contact with us', 'male', 'immonex-kickstart-team' );
-		break;
-	case 'f':
-		$inx_skin_title = _x( 'Your contact with us', 'female', 'immonex-kickstart-team' );
-		break;
-	default:
-		$inx_skin_title = _x( 'Your contact with us', 'gender neutral', 'immonex-kickstart-team' );
+if ( 'auto' === strtolower( $template_data['default_contact_section_title'] ) ) {
+	switch ( $template_data['agent_gender'] ) {
+		case 'm':
+			$inx_skin_title = _x( 'Your contact with us', 'male', 'immonex-kickstart-team' );
+			break;
+		case 'f':
+			$inx_skin_title = _x( 'Your contact with us', 'female', 'immonex-kickstart-team' );
+			break;
+		default:
+			$inx_skin_title = _x( 'Your contact with us', 'gender neutral', 'immonex-kickstart-team' );
+	}
+} else {
+	$inx_skin_title = $template_data['default_contact_section_title'];
 }
 
 $inx_skin_photo = isset( $template_data['elements']['photo'] ) ?
@@ -33,17 +37,18 @@ $inx_skin_photo = isset( $template_data['elements']['photo'] ) ?
 ?>
 <div class="inx-single-property__section inx-single-property__section--type--gallery inx-team-single-agent inx-team-single-agent--type--single uk-margin-large-bottom">
 	<?php
-	echo wp_sprintf(
-		'<h%2$d class="inx-single-property__section-title uk-heading-divider">%1$s</h%2$d>',
-		$inx_skin_title,
-		$inx_skin_title_level
-	);
+	if ( $inx_skin_title ) {
+		echo wp_sprintf(
+			'<h%2$d class="inx-single-property__section-title uk-heading-divider">%1$s</h%2$d>',
+			$inx_skin_title,
+			$inx_skin_title_level
+		);
+	}
 	?>
 
 	<div class="uk-flex uk-flex-wrap">
 		<div class="inx-team-single-agent__photo-wrap uk-width-1-3@s uk-width-1-4@m uk-width-2-6@l">
-			<div
-				class="inx-team-single-agent__photo inx-squared-image"
+			<div class="inx-team-single-agent__photo inx-squared-image"
 				<?php
 				if ( ! empty( $inx_skin_photo['value'] ) ) {
 					echo wp_sprintf(

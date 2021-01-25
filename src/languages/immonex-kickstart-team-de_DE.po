@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the immonex Kickstart Team package.
 msgid ""
 msgstr ""
-"Project-Id-Version: immonex Kickstart Team 1.1.0\n"
+"Project-Id-Version: immonex Kickstart Team 1.1.3\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/immonex-kickstart-team\n"
-"POT-Creation-Date: 2020-12-10 09:09:06+00:00\n"
-"PO-Revision-Date: 2020-12-10 10:10+0100\n"
+"POT-Creation-Date: 2021-01-25 06:27:46+00:00\n"
+"PO-Revision-Date: 2021-01-25 07:30+0100\n"
 "Last-Translator: \n"
 "Language-Team: Carsten Scheuer <scheuer@inveris.de>\n"
 "Language: de\n"
@@ -27,8 +27,8 @@ msgstr "E-Mail"
 
 #: includes/class-agency-backend-form.php:95
 #: includes/class-agency-backend-form.php:214 includes/class-agency.php:413
-#: includes/class-agent.php:640 includes/class-contact-form.php:290
-#: includes/class-contact-form.php:291
+#: includes/class-agent.php:640 includes/class-contact-form.php:291
+#: includes/class-contact-form.php:292
 msgid "Phone"
 msgstr "Telefon"
 
@@ -219,7 +219,7 @@ msgid "Business/Social Network Icons"
 msgstr "Netzwerk-Icons (Business/Social)"
 
 #: includes/class-agency.php:621 includes/class-agent.php:870
-#: includes/class-kickstart-team.php:275
+#: includes/class-kickstart-team.php:276
 msgid "Contact Form"
 msgstr "Kontaktformular"
 
@@ -418,73 +418,73 @@ msgstr "Anfrage"
 msgid "for"
 msgstr "für"
 
-#: includes/class-contact-form.php:253
+#: includes/class-contact-form.php:254
 msgid ""
 "Uh-oh! A problem occured while sending your data. Please try again later!"
 msgstr ""
 "Hoppla! Bei Versenden deiner Angaben ist leider ein Problem aufgetreten - "
 "bitte etwas später erneut versuchen!"
 
-#: includes/class-contact-form.php:282 includes/class-contact-form.php:284
+#: includes/class-contact-form.php:283 includes/class-contact-form.php:285
 msgid "Name"
 msgstr "Name"
 
-#: includes/class-contact-form.php:283
+#: includes/class-contact-form.php:284
 msgid "Prospect"
 msgstr "Interessent/in"
 
-#: includes/class-contact-form.php:297 includes/class-contact-form.php:298
+#: includes/class-contact-form.php:298 includes/class-contact-form.php:299
 msgid "Email Address"
 msgstr "E-Mail-Adresse"
 
-#: includes/class-contact-form.php:303 includes/class-contact-form.php:304
+#: includes/class-contact-form.php:304 includes/class-contact-form.php:305
 msgid "Message"
 msgstr "Nachricht"
 
-#: includes/class-contact-form.php:342
+#: includes/class-contact-form.php:343
 msgid "This is a required field!"
 msgstr "Dies ist ein Pflichtfeld!"
 
 #. translators: %s = caption of a required field
-#: includes/class-contact-form.php:350
+#: includes/class-contact-form.php:351
 msgid "Please provide this information <strong>or: %s</strong>"
 msgstr "Bitte dieses Feld ausfüllen <strong>oder: %s</strong>"
 
-#: includes/class-contact-form.php:361
+#: includes/class-contact-form.php:362
 msgid "Please check your inputs!"
 msgstr "Bitte prüfe deine Eingaben!"
 
-#: includes/class-contact-form.php:367
+#: includes/class-contact-form.php:368
 msgid "Your data could not be submitted. Please reload the page and try again!"
 msgstr ""
 "Deine Angaben konnten nicht übermittelt werden. Bitte lade die Seite neu und "
 "versuche es noch einmal!"
 
-#: includes/class-contact-form.php:429
+#: includes/class-contact-form.php:430
 msgid "Your inquiry for the property"
 msgstr "Deine Anfrage zur Immobilie"
 
-#: includes/class-contact-form.php:436
+#: includes/class-contact-form.php:437
 msgid "Confirmation of receipt"
 msgstr "Eingangsbestätigung"
 
-#: includes/class-contact-form.php:504
+#: includes/class-contact-form.php:505
 msgid "Privacy Policy"
 msgstr "Datenschutzerklärung"
 
-#: includes/class-contact-form.php:528
+#: includes/class-contact-form.php:529
 msgid "Cancellation Policy"
 msgstr "Widerrufsbelehrung"
 
-#: includes/class-kickstart-team.php:116
+#: includes/class-kickstart-team.php:117
 msgid "Real Estate Agencies"
 msgstr "Immobilien-Agenturen"
 
-#: includes/class-kickstart-team.php:120
+#: includes/class-kickstart-team.php:121
 msgid "Real Estate Agents"
 msgstr "Immobilienmakler/innen"
 
-#: includes/class-kickstart-team.php:124
+#: includes/class-kickstart-team.php:125
 msgid ""
 "I have read the [cancellation_policy] and confirm that I have been informed "
 "about its legal effects. I agree that the real estate agency services may be "
@@ -495,7 +495,7 @@ msgstr ""
 "die Dienstleistungen der Immobilienmakler-Agentur bereits vor Ablauf der "
 "Stornierungsfrist erbracht werden können."
 
-#: includes/class-kickstart-team.php:128
+#: includes/class-kickstart-team.php:129
 msgid ""
 "I agree that my data will be processed and stored in accordance with the "
 "[privacy_policy] in order to answer my request. This consent can be revoked "
@@ -505,52 +505,52 @@ msgstr ""
 "[privacy_policy] zwecks Beantwortung meiner Anfrage zu. Diese Einwilligung "
 "kann jederzeit widerrufen werden."
 
-#: includes/class-kickstart-team.php:132
+#: includes/class-kickstart-team.php:133
 msgid "Thank you for your inquiry!"
 msgstr "Vielen Dank für deine Anfrage!"
 
-#: includes/class-kickstart-team.php:270
+#: includes/class-kickstart-team.php:271
 msgid "Layout & Design"
 msgstr "Layout & Design"
 
-#: includes/class-kickstart-team.php:299
+#: includes/class-kickstart-team.php:300
 #: includes/widgets/class-agency-widget.php:129
 #: includes/widgets/class-agent-widget.php:123
 msgid "none"
 msgstr "keine"
 
-#: includes/class-kickstart-team.php:305
+#: includes/class-kickstart-team.php:306
 msgid "Skin"
 msgstr "Skin"
 
-#: includes/class-kickstart-team.php:310
+#: includes/class-kickstart-team.php:311
 msgid ""
 "A skin is a set of connected templates for plugin related pages and elements."
 msgstr ""
 "Als Skin wird ein Reihe zusammengehöriger Plugin-Vorlagen (Templates) "
 "bezeichnet."
 
-#: includes/class-kickstart-team.php:318
+#: includes/class-kickstart-team.php:319
 msgid "Agency Archive Title"
 msgstr "Agentur-Archiv-Titel"
 
-#: includes/class-kickstart-team.php:323
+#: includes/class-kickstart-team.php:324
 msgid "default title for the agency post type archive pages"
 msgstr "Standardtitel für Archivseiten des Agentur-Beitragstyps"
 
-#: includes/class-kickstart-team.php:330
+#: includes/class-kickstart-team.php:331
 msgid "Agent Archive Title"
 msgstr "Kontaktpersonen-Archiv-Titel"
 
-#: includes/class-kickstart-team.php:335
+#: includes/class-kickstart-team.php:336
 msgid "default title for the agent post type archive pages"
 msgstr "Standardtitel für Archivseiten des Kontaktpersonen-Beitragstyps"
 
-#: includes/class-kickstart-team.php:342
+#: includes/class-kickstart-team.php:343
 msgid "Default Contact Section Adaptation"
 msgstr "Anpassung des Standard-Kontaktabschnitts"
 
-#: includes/class-kickstart-team.php:347
+#: includes/class-kickstart-team.php:348
 msgid ""
 "The default contact data section in <strong>property detail pages</strong> "
 "can optionally be disabled or replaced by the related primary agent contact "
@@ -561,23 +561,40 @@ msgstr ""
 "Kontaktdaten (inkl. Formular) ersetzt werden, die von diesem Add-on "
 "bereitgestellt werden."
 
-#: includes/class-kickstart-team.php:349
+#: includes/class-kickstart-team.php:350
 msgid "no change"
 msgstr "keine Änderung"
 
-#: includes/class-kickstart-team.php:350
+#: includes/class-kickstart-team.php:351
 msgid "replace"
 msgstr "ersetzen"
 
-#: includes/class-kickstart-team.php:351
+#: includes/class-kickstart-team.php:352
 msgid "disable"
 msgstr "ausblenden"
 
-#: includes/class-kickstart-team.php:359
+#: includes/class-kickstart-team.php:360
+msgid "Default Contact Section Headline"
+msgstr "Standard-Überschrift des Kontaktabschnitts"
+
+#: includes/class-kickstart-team.php:365
+msgid ""
+"default headline for the contact section/form in property detail pages if "
+"<strong>replace</strong> is selected above"
+msgstr ""
+"Standard-Überschrift für den Kontakt/Formular-Abschnitt in Immobilien-"
+"Detailseiten, wenn oben <strong>ersetzen</strong> ausgewählt ist"
+
+#: includes/class-kickstart-team.php:366
+#: includes/widgets/class-agent-widget.php:117
+msgid "Use \"auto\" for a gender-related default title."
+msgstr "Für einen genderkonformen Standardtitel \"auto\" hinterlegen."
+
+#: includes/class-kickstart-team.php:373
 msgid "Fallback Recipient Mail Addresses"
 msgstr "Fallback-Empfänger-Mailadressen"
 
-#: includes/class-kickstart-team.php:364
+#: includes/class-kickstart-team.php:378
 msgid ""
 "comma-separated list of <strong>fallback</strong> recipient addresses used "
 "if no property related agent/agency address is determinable (default: main "
@@ -588,11 +605,11 @@ msgstr ""
 "Agenturenadresse ermittelbar ist (Standard: Haupt-Admin-Mailadresse der "
 "Website)"
 
-#: includes/class-kickstart-team.php:371
+#: includes/class-kickstart-team.php:385
 msgid "CC Mail Addresses"
 msgstr "CC-Mailadressen"
 
-#: includes/class-kickstart-team.php:376
+#: includes/class-kickstart-team.php:390
 msgid ""
 "comma-separated list of addresses to which <strong>copies of all inquiry "
 "mails</strong> should be sent"
@@ -600,11 +617,11 @@ msgstr ""
 "kommagetrennte Liste von Mailadressen, an die <strong>Kopien aller Anfrage-"
 "Mails</strong> gesendet werden sollen"
 
-#: includes/class-kickstart-team.php:383
+#: includes/class-kickstart-team.php:397
 msgid "Cancellation Policy Page"
 msgstr "Seite der Widerrufsbelehrung"
 
-#: includes/class-kickstart-team.php:388
+#: includes/class-kickstart-team.php:402
 msgid ""
 "If a cancellation policy page is selected, the following consent text will "
 "be added to the form."
@@ -612,11 +629,11 @@ msgstr ""
 "Wenn eine Seite ausgewählt ist, die Infos und Bedingungen zum Widerrufsrecht "
 "enthält, wird der folgende Einwilligungstext zum Formular hinzugefügt."
 
-#: includes/class-kickstart-team.php:396
+#: includes/class-kickstart-team.php:410
 msgid "Cancellation Consent Text"
 msgstr "Einwilligungstext zum Widerrufsrecht"
 
-#: includes/class-kickstart-team.php:401
+#: includes/class-kickstart-team.php:415
 msgid ""
 "This text must be confirmed by the user if a cancellation policy page has "
 "been selected above (insert <strong>[cancellation_policy]</strong> to add a "
@@ -626,12 +643,12 @@ msgstr ""
 "ausgewählt wurde, die eine Widerrufsbelehrung enthält (mit "
 "<strong>[cancellation_policy]</strong> kann ein Link eingefügt werden)."
 
-#: includes/class-kickstart-team.php:408
+#: includes/class-kickstart-team.php:422
 msgid "Privacy Note"
 msgstr "Datenschutzhinweis"
 
 #. translators: %s = privacy options page URL
-#: includes/class-kickstart-team.php:415
+#: includes/class-kickstart-team.php:429
 msgid ""
 "The privacy policy notice is mandatory, but does <strong>not</strong> have "
 "to be confirmed (insert <strong>[privacy_policy]</strong> to add a link to "
@@ -642,11 +659,11 @@ msgstr ""
 "Link zur Seite der Datenschutzerklärung eingefügt werden, die in den <a href="
 "\"%s\">Website-Einstellungen</a> definiert wurde.)"
 
-#: includes/class-kickstart-team.php:424
+#: includes/class-kickstart-team.php:438
 msgid "Confirmation Message"
 msgstr "Bestätigungsmeldung"
 
-#: includes/class-kickstart-team.php:429
+#: includes/class-kickstart-team.php:443
 msgid ""
 "This message is being displayed when the form data have been successfully "
 "submitted."
@@ -654,11 +671,11 @@ msgstr ""
 "Diese Meldung wird angezeigt, wenn die Formulardaten erfolgreich übermittelt "
 "wurden."
 
-#: includes/class-kickstart-team.php:436
+#: includes/class-kickstart-team.php:450
 msgid "Receipt Confirmation"
 msgstr "Eingangsbestätigung"
 
-#: includes/class-kickstart-team.php:441
+#: includes/class-kickstart-team.php:455
 msgid ""
 "Activate if prospects shall receive a receipt confirmation mail on "
 "successful form submissions."
@@ -666,15 +683,15 @@ msgstr ""
 "Aktivieren, wenn Interessenten nach erfolgreicher Übermittlung der "
 "Formulardaten eine Empfangsbestätigung per Mail erhalten sollen."
 
-#: includes/class-kickstart-team.php:448
+#: includes/class-kickstart-team.php:462
 msgid "Hide form after submit"
 msgstr "Formular nach Absenden ausblenden"
 
-#: includes/class-kickstart-team.php:459
+#: includes/class-kickstart-team.php:473
 msgid "OpenImmo-Feedback Type"
 msgstr "OpenImmo-Feedback-Typ"
 
-#: includes/class-kickstart-team.php:464
+#: includes/class-kickstart-team.php:478
 msgid ""
 "This option defines if and how OpenImmo-Feedback data are attached to "
 "contact form mails sent to admin recipients (e.g. for further processing in "
@@ -684,24 +701,24 @@ msgstr ""
 "an Kontaktformular-Mails für Administratoren angehangen werden (z. B. für "
 "die Weiterverarbeitung in einer externen Software-Lösung)."
 
-#: includes/class-kickstart-team.php:466
+#: includes/class-kickstart-team.php:480
 msgctxt "as a synonym for \"without\""
 msgid "none"
 msgstr "ohne"
 
-#: includes/class-kickstart-team.php:467
+#: includes/class-kickstart-team.php:481
 msgid "Attachment"
 msgstr "Anhang"
 
-#: includes/class-kickstart-team.php:468
+#: includes/class-kickstart-team.php:482
 msgid "Mail Body"
 msgstr "Mailtext"
 
-#: includes/class-kickstart-team.php:544
+#: includes/class-kickstart-team.php:558
 msgid "Withdrawal"
 msgstr "Widerruf"
 
-#: includes/class-kickstart-team.php:545
+#: includes/class-kickstart-team.php:559
 msgid "Cancellation"
 msgstr "Widerruf"
 
@@ -1271,10 +1288,6 @@ msgstr "Anzuzeigende Elemente:"
 msgid "Property related agent information and contact data/form"
 msgstr "Objektbezogene Kontaktpersonen-Infos und Kontaktdaten/Formular"
 
-#: includes/widgets/class-agent-widget.php:117
-msgid "Use \"auto\" for a gender-related default title."
-msgstr "Für einen genderkonformen Standardtitel \"auto\" hinterlegen."
-
 #: includes/widgets/class-agent-widget.php:120
 msgid "Link Type"
 msgstr "Linktyp"
@@ -1304,7 +1317,7 @@ msgid "No agents found."
 msgstr "Keine Kontaktpersonen gefunden."
 
 #: skins/default/agent-list/item.php:160
-#: skins/default/single-agent/index.php:129
+#: skins/default/single-agent/index.php:128
 msgid "My Offers"
 msgstr "Meine Angebote"
 
@@ -1312,7 +1325,7 @@ msgstr "Meine Angebote"
 msgid "About Me"
 msgstr "Über mich"
 
-#: skins/default/contact-form.php:86
+#: skins/default/contact-form.php:87
 msgid ""
 "Heads up! This is only sample data, the form data will <strong>not</strong> "
 "be submitted."
@@ -1320,15 +1333,15 @@ msgstr ""
 "Achtung! Dies sind nur Beispieldaten, die Angaben im Formular werden "
 "<strong>nicht</strong> übermittelt."
 
-#: skins/default/contact-form.php:94
+#: skins/default/contact-form.php:95
 msgid "Secure submission"
 msgstr "Sichere Übermittlung"
 
-#: skins/default/contact-form.php:94
+#: skins/default/contact-form.php:95
 msgid "Secure!"
 msgstr "Sicher!"
 
-#: skins/default/contact-form.php:98
+#: skins/default/contact-form.php:101
 msgid "Send"
 msgstr "Senden"
 
@@ -1369,22 +1382,22 @@ msgstr "Unser Team"
 msgid "Our Offers"
 msgstr "Unsere Immobilien-Angebote"
 
-#: skins/default/single-agent/default-contact-element-replacement.php:21
+#: skins/default/single-agent/default-contact-element-replacement.php:22
 msgctxt "male"
 msgid "Your contact with us"
 msgstr "Dein Ansprechpartner bei uns"
 
-#: skins/default/single-agent/default-contact-element-replacement.php:24
+#: skins/default/single-agent/default-contact-element-replacement.php:25
 msgctxt "female"
 msgid "Your contact with us"
 msgstr "Deine Ansprechpartnerin bei uns"
 
-#: skins/default/single-agent/default-contact-element-replacement.php:27
+#: skins/default/single-agent/default-contact-element-replacement.php:28
 msgctxt "gender neutral"
 msgid "Your contact with us"
 msgstr "Deine Kontaktperson bei uns"
 
-#: skins/default/single-agent/index.php:169
+#: skins/default/single-agent/index.php:168
 msgid "More about"
 msgstr "Mehr über"
 
