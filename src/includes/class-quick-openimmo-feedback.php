@@ -120,6 +120,7 @@ class Quick_Openimmo_Feedback {
 		$raw_name  = trim( sanitize_text_field( $prospect['name'] ) );
 		$full_name = explode( ' ', $raw_name );
 		$vorname   = count( $full_name ) > 1 ? trim( $full_name[0] ) : '';
+		$anrede    = $this->get_salutation( $vorname );
 		$nachname  = count( $full_name ) > 1 ?
 			substr( $raw_name, strpos( $raw_name, ' ' ) + 1 ) :
 			$raw_name;
@@ -137,7 +138,9 @@ class Quick_Openimmo_Feedback {
 		$land        = (string) $immobilie->geo->land['iso_land'];
 		$preis       = get_post_meta( $property->ID, '_inx_primary_price', true );
 
-		$openimmo_feedback_xml_source = <<<EOT
+		$openimmo_feedback_xml_source = apply_filters(
+			'inx_team_openimmo_feedback_xml_source',
+			<<<EOT
 <?xml version="1.0" encoding="UTF-8"?>
 <openimmo_feedback>
 	<version>1.2.5</version>
@@ -158,7 +161,7 @@ class Quick_Openimmo_Feedback {
 		<land>$land</land>
 		<preis>$preis</preis>
 		<interessent>
-			<anrede></anrede>
+			<anrede>$anrede</anrede>
 			<vorname>$vorname</vorname>
 			<nachname>$nachname</nachname>
 			<tel>$tel</tel>
@@ -167,7 +170,8 @@ class Quick_Openimmo_Feedback {
 		</interessent>
 	</objekt>
 </openimmo_feedback>
-EOT;
+EOT
+		);
 
 		return $openimmo_feedback_xml_source;
 	} // get_oi_feedback_xml_source
@@ -244,5 +248,38 @@ EOT;
 
 		return false;
 	} // get_agent_and_agency_ids
+
+	/**
+	 * Determine the prospect's gender by his/her first name utilizing genderize.io.
+	 *
+	 * @since 1.1.4-beta
+	 *
+	 * @param string $first_name First name.
+	 *
+	 * @return string Salutation.
+	 */
+	private function get_salutation( $first_name ) {
+		if ( strlen( (string) $first_name ) < 3 ) {
+			return __( 'Mr', 'immonex-kickstart-team' );
+		}
+
+		$genderize_request_url = wp_sprintf(
+			'https://api.genderize.io?name=%s&country_id=DE',
+			urlencode( $first_name )
+		);
+		$response              = $this->utils['general']->get_url_contents( $genderize_request_url );
+
+		if ( $response ) {
+			$response_json = json_decode( $response, true );
+
+			if ( ! empty( $response_json['gender'] ) ) {
+				return 'f' === $response_json['gender'][0] ?
+					__( 'Ms', 'immonex-kickstart-team' ) :
+					__( 'Mr', 'immonex-kickstart-team' );
+			}
+		}
+
+		return __( 'Mr', 'immonex-kickstart-team' );
+	} // get_salutation
 
 } // Quick_Openimmo_Feedback

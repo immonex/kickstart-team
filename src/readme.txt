@@ -106,6 +106,12 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 
 == Changelog ==
 
+= 1.1.4-beta =
+* Release date: ?
+* Added salutation determination for OpenImmo-Feedback attachments
+  utilizing genderize.io.
+* Added filter for modifying the OpenImmo-Feedback XML source code.
+
 = 1.1.3 =
 * Release date: 2021-01-25
 * Added option for setting an alternative contact section headline.
@@ -118,9 +124,5 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 * OpenImmo-Feedback attachment type selection added.
 * Extended filter hooks for notification subject modifications.
 * Splitted up form consent texts (withdrawal/privacy).
-
-= 1.0.2 =
-* Release date: 2020-09-18
-* Contact form submission bug fixed.
 
 See changelog.txt for complete version history.

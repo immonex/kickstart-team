@@ -34,6 +34,7 @@ search: 1
 - [inx_team_contact_form_mail_headers](filter-inx-team-contact-form-mail-headers.html) (Header der Kontaktformular-Mails)
 - [inx_team_contact_form_user_data](filter-inx-team-contact-form-user-data.html) (via Frontend übermittelte Benutzer-Formulardaten)
 - [inx_team_fallback_recipient_admin_email](filter-inx-team-fallback-recipient-admin-email.html) (Fallback-Admin-Mailadresse(n))
+- [inx_team_openimmo_feedback_xml_source](filter-inx-team-openimmo-feedback-xml-source.html) (XML-Quelltext des OpenImmo-Feedback-Anhangs)
 - [inx_team_openimmo_feedback_attachment_filename](filter-inx-team-openimmo-feedback-attachment-filename.html) (Dateiname des OpenImmo-Feedback-Anhangs)
 
 ## Actions
