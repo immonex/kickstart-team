@@ -5,7 +5,7 @@
 @import "_mixins.scss";
 
 // Base styles
-// @import "_base.scss";
+@import "_base.scss";
 
 // Blocks (Modules)
 @import "blocks/_inx-team-agency-list-item";

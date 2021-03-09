@@ -10,14 +10,14 @@ namespace immonex\Kickstart\Team;
 /**
  * Main plugin class
  */
-class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_1_2\Base {
+class Kickstart_Team extends \immonex\WordPressFreePluginCore\DEV_3\Base {
 
 	const PLUGIN_NAME                = 'immonex Kickstart Team';
 	const ADDON_NAME                 = 'Team';
 	const PLUGIN_PREFIX              = 'inx_team_';
 	const PUBLIC_PREFIX              = 'inx-team-';
 	const TEXTDOMAIN                 = 'immonex-kickstart-team';
-	const PLUGIN_VERSION             = '1.1.4-beta';
+	const PLUGIN_VERSION             = '1.1.5';
 	const PLUGIN_HOME_URL            = 'https://de.wordpress.org/plugins/immonex-kickstart/';
 	const PLUGIN_DOC_URLS            = array(
 		'de' => 'https://docs.immonex.de/kickstart-team/',
@@ -62,6 +62,8 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_1_2\Base {
 		'send_receipt_confirmation'          => false,
 		'hide_form_after_submit'             => true,
 		'oi_feedback_type'                   => 'attachment',
+		'agency_post_type_slug_rewrite'      => 'INSERT_TRANSLATED_DEFAULT_VALUE',
+		'agent_post_type_slug_rewrite'       => 'INSERT_TRANSLATED_DEFAULT_VALUE',
 	);
 
 	/**
@@ -91,11 +93,15 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_1_2\Base {
 
 		parent::__construct( $plugin_slug, self::TEXTDOMAIN );
 
+		$this->bootstrap_data['plugin_options_name'] = $this->plugin_options_name;
+
 		// Set up custom post types, taxonomies and backend menus.
 		new WP_Bootstrap( $this->bootstrap_data, $this );
 
 		// Set up CPT backend forms (if any).
 		$this->setup_cpt_backend_forms();
+
+		add_filter( 'sanitize_option_immonex-kickstart_options', array( $this, 'synchronize_slugs_from_kickstart_options' ), 5 );
 	} // __construct
 
 	/**
@@ -131,6 +137,14 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_1_2\Base {
 						break;
 					case 'form_confirmation_message':
 						$this->plugin_options[ $option_name ] = __( 'Thank you for your inquiry!', 'immonex-kickstart-team' );
+						$update_options                       = true;
+						break;
+					case 'agency_post_type_slug_rewrite':
+						$this->plugin_options[ $option_name ] = _x( 'real-estate-agencies', 'Custom Post Type Slug (plural only!)', 'immonex-kickstart-team' );
+						$update_options                       = true;
+						break;
+					case 'agent_post_type_slug_rewrite':
+						$this->plugin_options[ $option_name ] = _x( 'real-estate-agents', 'Custom Post Type Slug (plural only!)', 'immonex-kickstart-team' );
 						$update_options                       = true;
 						break;
 				}
@@ -188,6 +202,44 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_1_2\Base {
 			add_filter( 'immonex-kickstart_option_fields', array( $this, 'extend_fields' ), 15 );
 		}
 	} // init_plugin
+
+	/**
+	 * Extract and save agency/agent post type rewrite slugs on sanitizing
+	 * base plugin options (callback).
+	 *
+	 * @since 1.1.6
+	 *
+	 * @param mixed[] $options Key-Value-Array of Kickstart base plugin options.
+	 *
+	 * @return mixed[] Original or updated option array.
+	 */
+	public function synchronize_slugs_from_kickstart_options( $options ) {
+		if (
+			! isset( $options['inx_team_agency_post_type_slug_rewrite'] ) ||
+			! isset( $this->utils['string'] )
+		) {
+			return $options;
+		}
+
+		$slugs_updated = false;
+
+		foreach ( self::CUSTOM_POST_TYPES as $cpt_base_name => $cpt_name ) {
+			$field_key = "inx_team_{$cpt_base_name}_post_type_slug_rewrite";
+
+			if ( isset( $options[ $field_key ] ) ) {
+				$options[ $field_key ] = $this->utils['string']->slugify( $options[ $field_key ] );
+				$slugs_updated         = true;
+
+				$this->plugin_options[ "{$cpt_base_name}_post_type_slug_rewrite" ] = $options[ $field_key ];
+			}
+		}
+
+		if ( $slugs_updated ) {
+			update_option( $this->plugin_options_name, $this->plugin_options );
+		}
+
+		return $options;
+	} // synchronize_slugs_from_kickstart_options
 
 	/**
 	 * Register the plugin widgets.

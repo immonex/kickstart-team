@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the immonex Kickstart Team package.
 msgid ""
 msgstr ""
-"Project-Id-Version: immonex Kickstart Team 1.1.4\n"
+"Project-Id-Version: immonex Kickstart Team 1.1.6\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/immonex-kickstart-team\n"
-"POT-Creation-Date: 2021-02-02 14:34:07+00:00\n"
-"PO-Revision-Date: 2021-02-02 15:43+0100\n"
+"POT-Creation-Date: 2021-03-09 14:29:23+00:00\n"
+"PO-Revision-Date: 2021-03-09 15:34+0100\n"
 "Last-Translator: \n"
 "Language-Team: Carsten Scheuer <scheuer@inveris.de>\n"
 "Language: de_DE@formal\n"
@@ -219,7 +219,7 @@ msgid "Business/Social Network Icons"
 msgstr "Netzwerk-Icons (Business/Social)"
 
 #: includes/class-agency.php:621 includes/class-agent.php:870
-#: includes/class-kickstart-team.php:276
+#: includes/class-kickstart-team.php:328
 msgid "Contact Form"
 msgstr "Kontaktformular"
 
@@ -289,7 +289,8 @@ msgstr "Telefon (Zentrale)"
 msgid "Phone (private)"
 msgstr "Telefon (privat)"
 
-#: includes/class-agent-backend-form.php:297 includes/class-wp-bootstrap.php:72
+#: includes/class-agent-backend-form.php:297 includes/class-wp-bootstrap.php:74
+#: includes/class-wp-bootstrap.php:115
 #: includes/widgets/class-agency-widget.php:27
 msgid "Agency"
 msgstr "Agentur"
@@ -340,7 +341,8 @@ msgstr "Kontakt"
 msgid "Agent (primary)"
 msgstr "Kontaktperson (primär)"
 
-#: includes/class-agent-backend-form.php:379 includes/class-wp-bootstrap.php:95
+#: includes/class-agent-backend-form.php:379
+#: includes/class-wp-bootstrap.php:137
 msgid "Agents"
 msgstr "Kontaktpersonen"
 
@@ -476,15 +478,15 @@ msgstr "Datenschutzerklärung"
 msgid "Cancellation Policy"
 msgstr "Widerrufsbelehrung"
 
-#: includes/class-kickstart-team.php:117
+#: includes/class-kickstart-team.php:123
 msgid "Real Estate Agencies"
 msgstr "Immobilien-Agenturen"
 
-#: includes/class-kickstart-team.php:121
+#: includes/class-kickstart-team.php:127
 msgid "Real Estate Agents"
 msgstr "Immobilienmakler/innen"
 
-#: includes/class-kickstart-team.php:125
+#: includes/class-kickstart-team.php:131
 msgid ""
 "I have read the [cancellation_policy] and confirm that I have been informed "
 "about its legal effects. I agree that the real estate agency services may be "
@@ -495,7 +497,7 @@ msgstr ""
 "die Dienstleistungen der Immobilienmakler-Agentur bereits vor Ablauf der "
 "Stornierungsfrist erbracht werden können."
 
-#: includes/class-kickstart-team.php:129
+#: includes/class-kickstart-team.php:135
 msgid ""
 "I agree that my data will be processed and stored in accordance with the "
 "[privacy_policy] in order to answer my request. This consent can be revoked "
@@ -505,52 +507,62 @@ msgstr ""
 "[privacy_policy] zwecks Beantwortung meiner Anfrage zu. Diese Einwilligung "
 "kann jederzeit widerrufen werden."
 
-#: includes/class-kickstart-team.php:133
+#: includes/class-kickstart-team.php:139
 msgid "Thank you for your inquiry!"
 msgstr "Vielen Dank für Ihre Anfrage!"
 
-#: includes/class-kickstart-team.php:271
+#: includes/class-kickstart-team.php:143 includes/class-wp-bootstrap.php:75
+msgctxt "Custom Post Type Slug (plural only!)"
+msgid "real-estate-agencies"
+msgstr "Immobilienmakler-agenturen"
+
+#: includes/class-kickstart-team.php:147 includes/class-wp-bootstrap.php:79
+msgctxt "Custom Post Type Slug (plural only!)"
+msgid "real-estate-agents"
+msgstr "Immobilienmakler"
+
+#: includes/class-kickstart-team.php:323
 msgid "Layout & Design"
 msgstr "Layout & Design"
 
-#: includes/class-kickstart-team.php:300
+#: includes/class-kickstart-team.php:352
 #: includes/widgets/class-agency-widget.php:129
 #: includes/widgets/class-agent-widget.php:123
 msgid "none"
 msgstr "keine"
 
-#: includes/class-kickstart-team.php:306
+#: includes/class-kickstart-team.php:358
 msgid "Skin"
 msgstr "Skin"
 
-#: includes/class-kickstart-team.php:311
+#: includes/class-kickstart-team.php:363
 msgid ""
 "A skin is a set of connected templates for plugin related pages and elements."
 msgstr ""
 "Als Skin wird ein Reihe zusammengehöriger Plugin-Vorlagen (Templates) "
 "bezeichnet."
 
-#: includes/class-kickstart-team.php:319
+#: includes/class-kickstart-team.php:371
 msgid "Agency Archive Title"
 msgstr "Agentur-Archiv-Titel"
 
-#: includes/class-kickstart-team.php:324
+#: includes/class-kickstart-team.php:376
 msgid "default title for the agency post type archive pages"
 msgstr "Standardtitel für Archivseiten des Agentur-Beitragstyps"
 
-#: includes/class-kickstart-team.php:331
+#: includes/class-kickstart-team.php:383
 msgid "Agent Archive Title"
 msgstr "Kontaktpersonen-Archiv-Titel"
 
-#: includes/class-kickstart-team.php:336
+#: includes/class-kickstart-team.php:388
 msgid "default title for the agent post type archive pages"
 msgstr "Standardtitel für Archivseiten des Kontaktpersonen-Beitragstyps"
 
-#: includes/class-kickstart-team.php:343
+#: includes/class-kickstart-team.php:395
 msgid "Default Contact Section Adaptation"
 msgstr "Anpassung des Standard-Kontaktabschnitts"
 
-#: includes/class-kickstart-team.php:348
+#: includes/class-kickstart-team.php:400
 msgid ""
 "The default contact data section in <strong>property detail pages</strong> "
 "can optionally be disabled or replaced by the related primary agent contact "
@@ -561,23 +573,23 @@ msgstr ""
 "Kontaktdaten (inkl. Formular) ersetzt werden, die von diesem Add-on "
 "bereitgestellt werden."
 
-#: includes/class-kickstart-team.php:350
+#: includes/class-kickstart-team.php:402
 msgid "no change"
 msgstr "keine Änderung"
 
-#: includes/class-kickstart-team.php:351
+#: includes/class-kickstart-team.php:403
 msgid "replace"
 msgstr "ersetzen"
 
-#: includes/class-kickstart-team.php:352
+#: includes/class-kickstart-team.php:404
 msgid "disable"
 msgstr "ausblenden"
 
-#: includes/class-kickstart-team.php:360
+#: includes/class-kickstart-team.php:412
 msgid "Default Contact Section Headline"
 msgstr "Standard-Überschrift des Kontaktabschnitts"
 
-#: includes/class-kickstart-team.php:365
+#: includes/class-kickstart-team.php:417
 msgid ""
 "default headline for the contact section/form in property detail pages if "
 "<strong>replace</strong> is selected above"
@@ -585,16 +597,16 @@ msgstr ""
 "Standard-Überschrift für den Kontakt/Formular-Abschnitt in Immobilien-"
 "Detailseiten, wenn oben <strong>ersetzen</strong> ausgewählt ist"
 
-#: includes/class-kickstart-team.php:366
+#: includes/class-kickstart-team.php:418
 #: includes/widgets/class-agent-widget.php:117
 msgid "Use \"auto\" for a gender-related default title."
 msgstr "Für einen genderkonformen Standardtitel \"auto\" hinterlegen."
 
-#: includes/class-kickstart-team.php:373
+#: includes/class-kickstart-team.php:425
 msgid "Fallback Recipient Mail Addresses"
 msgstr "Fallback-Empfänger-Mailadressen"
 
-#: includes/class-kickstart-team.php:378
+#: includes/class-kickstart-team.php:430
 msgid ""
 "comma-separated list of <strong>fallback</strong> recipient addresses used "
 "if no property related agent/agency address is determinable (default: main "
@@ -605,11 +617,11 @@ msgstr ""
 "Agenturenadresse ermittelbar ist (Standard: Haupt-Admin-Mailadresse der "
 "Website)"
 
-#: includes/class-kickstart-team.php:385
+#: includes/class-kickstart-team.php:437
 msgid "CC Mail Addresses"
 msgstr "CC-Mailadressen"
 
-#: includes/class-kickstart-team.php:390
+#: includes/class-kickstart-team.php:442
 msgid ""
 "comma-separated list of addresses to which <strong>copies of all inquiry "
 "mails</strong> should be sent"
@@ -617,11 +629,11 @@ msgstr ""
 "kommagetrennte Liste von Mailadressen, an die <strong>Kopien aller Anfrage-"
 "Mails</strong> gesendet werden sollen"
 
-#: includes/class-kickstart-team.php:397
+#: includes/class-kickstart-team.php:449
 msgid "Cancellation Policy Page"
 msgstr "Seite der Widerrufsbelehrung"
 
-#: includes/class-kickstart-team.php:402
+#: includes/class-kickstart-team.php:454
 msgid ""
 "If a cancellation policy page is selected, the following consent text will "
 "be added to the form."
@@ -629,11 +641,11 @@ msgstr ""
 "Wenn eine Seite ausgewählt ist, die Infos und Bedingungen zum Widerrufsrecht "
 "enthält, wird der folgende Einwilligungstext zum Formular hinzugefügt."
 
-#: includes/class-kickstart-team.php:410
+#: includes/class-kickstart-team.php:462
 msgid "Cancellation Consent Text"
 msgstr "Einwilligungstext zum Widerrufsrecht"
 
-#: includes/class-kickstart-team.php:415
+#: includes/class-kickstart-team.php:467
 msgid ""
 "This text must be confirmed by the user if a cancellation policy page has "
 "been selected above (insert <strong>[cancellation_policy]</strong> to add a "
@@ -643,12 +655,12 @@ msgstr ""
 "ausgewählt wurde, die eine Widerrufsbelehrung enthält (mit "
 "<strong>[cancellation_policy]</strong> kann ein Link eingefügt werden)."
 
-#: includes/class-kickstart-team.php:422
+#: includes/class-kickstart-team.php:474
 msgid "Privacy Note"
 msgstr "Datenschutzhinweis"
 
 #. translators: %s = privacy options page URL
-#: includes/class-kickstart-team.php:429
+#: includes/class-kickstart-team.php:481
 msgid ""
 "The privacy policy notice is mandatory, but does <strong>not</strong> have "
 "to be confirmed (insert <strong>[privacy_policy]</strong> to add a link to "
@@ -659,11 +671,11 @@ msgstr ""
 "Link zur Seite der Datenschutzerklärung eingefügt werden, die in den <a href="
 "\"%s\">Website-Einstellungen</a> definiert wurde.)"
 
-#: includes/class-kickstart-team.php:438
+#: includes/class-kickstart-team.php:490
 msgid "Confirmation Message"
 msgstr "Bestätigungsmeldung"
 
-#: includes/class-kickstart-team.php:443
+#: includes/class-kickstart-team.php:495
 msgid ""
 "This message is being displayed when the form data have been successfully "
 "submitted."
@@ -671,11 +683,11 @@ msgstr ""
 "Diese Meldung wird angezeigt, wenn die Formulardaten erfolgreich übermittelt "
 "wurden."
 
-#: includes/class-kickstart-team.php:450
+#: includes/class-kickstart-team.php:502
 msgid "Receipt Confirmation"
 msgstr "Eingangsbestätigung"
 
-#: includes/class-kickstart-team.php:455
+#: includes/class-kickstart-team.php:507
 msgid ""
 "Activate if prospects shall receive a receipt confirmation mail on "
 "successful form submissions."
@@ -683,15 +695,15 @@ msgstr ""
 "Aktivieren, wenn Interessenten nach erfolgreicher Übermittlung der "
 "Formulardaten eine Empfangsbestätigung per Mail erhalten sollen."
 
-#: includes/class-kickstart-team.php:462
+#: includes/class-kickstart-team.php:514
 msgid "Hide form after submit"
 msgstr "Formular nach Absenden ausblenden"
 
-#: includes/class-kickstart-team.php:473
+#: includes/class-kickstart-team.php:525
 msgid "OpenImmo-Feedback Type"
 msgstr "OpenImmo-Feedback-Typ"
 
-#: includes/class-kickstart-team.php:478
+#: includes/class-kickstart-team.php:530
 msgid ""
 "This option defines if and how OpenImmo-Feedback data are attached to "
 "contact form mails sent to admin recipients (e.g. for further processing in "
@@ -701,117 +713,118 @@ msgstr ""
 "an Kontaktformular-Mails für Administratoren angehangen werden (z. B. für "
 "die Weiterverarbeitung in einer externen Software-Lösung)."
 
-#: includes/class-kickstart-team.php:480
+#: includes/class-kickstart-team.php:532
 msgctxt "as a synonym for \"without\""
 msgid "none"
 msgstr "ohne"
 
-#: includes/class-kickstart-team.php:481
+#: includes/class-kickstart-team.php:533
 msgid "Attachment"
 msgstr "Anhang"
 
-#: includes/class-kickstart-team.php:482
+#: includes/class-kickstart-team.php:534
 msgid "Mail Body"
 msgstr "Mailtext"
 
-#: includes/class-kickstart-team.php:558
+#: includes/class-kickstart-team.php:610
 msgid "Withdrawal"
 msgstr "Widerruf"
 
-#: includes/class-kickstart-team.php:559
+#: includes/class-kickstart-team.php:611
 msgid "Cancellation"
 msgstr "Widerruf"
 
-#: includes/class-quick-openimmo-feedback.php:260
-#: includes/class-quick-openimmo-feedback.php:275
-#: includes/class-quick-openimmo-feedback.php:279
+#: includes/class-quick-openimmo-feedback.php:263
+#: includes/class-quick-openimmo-feedback.php:278
+#: includes/class-quick-openimmo-feedback.php:282
 msgid "Mr"
 msgstr "Herr"
 
-#: includes/class-quick-openimmo-feedback.php:274
+#: includes/class-quick-openimmo-feedback.php:277
 msgid "Ms"
 msgstr "Frau"
 
-#: includes/class-wp-bootstrap.php:71
-msgid "Agencies"
-msgstr "Agenturen"
-
-#: includes/class-wp-bootstrap.php:73
-msgid "Add New Agency"
-msgstr "Neue Agentur hinzufügen"
-
-#: includes/class-wp-bootstrap.php:74
-msgid "Edit Agency"
-msgstr "Agentur bearbeiten"
-
-#: includes/class-wp-bootstrap.php:75
-msgid "New Agency"
-msgstr "Neue Agentur"
-
-#: includes/class-wp-bootstrap.php:76
-msgid "View Agency"
-msgstr "Agentur anzeigen"
-
-#: includes/class-wp-bootstrap.php:77
-msgid "Search Agencies"
-msgstr "Agenturen durchsuchen"
-
-#: includes/class-wp-bootstrap.php:78
-msgid "No agencies found"
-msgstr "Keine Agenturen gefunden"
-
-#: includes/class-wp-bootstrap.php:79
-msgid "No agencies found in Trash"
-msgstr "Keine Agenturen im Papierkorb gefunden"
-
-#: includes/class-wp-bootstrap.php:90
-msgctxt "Custom Post Type Slug (plural only!)"
-msgid "real-estate-agencies"
-msgstr "Immobilienmakler-agenturen"
-
-#: includes/class-wp-bootstrap.php:96
+#: includes/class-wp-bootstrap.php:78 includes/class-wp-bootstrap.php:138
 #: includes/widgets/class-agent-widget.php:26
 msgid "Agent"
 msgstr "Kontaktperson"
 
-#: includes/class-wp-bootstrap.php:97
+#. translators: %1$s = CPT default rewrite slug, %2$s = CPT name
+#: includes/class-wp-bootstrap.php:92
+msgid ""
+"This should be a single term in its plural form and in the site's "
+"<strong>main language</strong> (usually <strong>%1$s</strong>). If empty, "
+"<em>%2$s</em> will be used as base slug."
+msgstr ""
+"Dies sollte ein einzelner Begriff in seiner Pluralform und in der "
+"<strong>Hauptsprache</strong> der Website sein (normalerweise <strong>%1$s</"
+"strong>). Falls leer, wird <em>%2$s</em> als Basis-Slug verwendet."
+
+#: includes/class-wp-bootstrap.php:114
+msgid "Agencies"
+msgstr "Agenturen"
+
+#: includes/class-wp-bootstrap.php:116
+msgid "Add New Agency"
+msgstr "Neue Agentur hinzufügen"
+
+#: includes/class-wp-bootstrap.php:117
+msgid "Edit Agency"
+msgstr "Agentur bearbeiten"
+
+#: includes/class-wp-bootstrap.php:118
+msgid "New Agency"
+msgstr "Neue Agentur"
+
+#: includes/class-wp-bootstrap.php:119
+msgid "View Agency"
+msgstr "Agentur anzeigen"
+
+#: includes/class-wp-bootstrap.php:120
+msgid "Search Agencies"
+msgstr "Agenturen durchsuchen"
+
+#: includes/class-wp-bootstrap.php:121
+msgid "No agencies found"
+msgstr "Keine Agenturen gefunden"
+
+#: includes/class-wp-bootstrap.php:122
+msgid "No agencies found in Trash"
+msgstr "Keine Agenturen im Papierkorb gefunden"
+
+#: includes/class-wp-bootstrap.php:139
 msgid "Add New Agent"
 msgstr "Neue Kontaktperson hinzufügen"
 
-#: includes/class-wp-bootstrap.php:98
+#: includes/class-wp-bootstrap.php:140
 msgid "Edit Agent"
 msgstr "Kontaktperson bearbeiten"
 
-#: includes/class-wp-bootstrap.php:99
+#: includes/class-wp-bootstrap.php:141
 msgid "New Agent"
 msgstr "Neue Kontaktperson"
 
-#: includes/class-wp-bootstrap.php:100
+#: includes/class-wp-bootstrap.php:142
 msgid "View Agent"
 msgstr "Kontaktperson anzeigen"
 
-#: includes/class-wp-bootstrap.php:101
+#: includes/class-wp-bootstrap.php:143
 msgid "Search Agents"
 msgstr "Kontaktpersonen durchsuchen"
 
-#: includes/class-wp-bootstrap.php:102
+#: includes/class-wp-bootstrap.php:144
 msgid "No agents found"
 msgstr "Keine Kontaktpersonen gefunden"
 
-#: includes/class-wp-bootstrap.php:103
+#: includes/class-wp-bootstrap.php:145
 msgid "No agents found in Trash"
 msgstr "Keine Kontaktpersonen im Papierkorb gefunden"
 
-#: includes/class-wp-bootstrap.php:114
-msgctxt "Custom Post Type Slug (plural only!)"
-msgid "real-estate-agents"
-msgstr "Immobilienmakler"
-
-#: includes/class-wp-bootstrap.php:145
+#: includes/class-wp-bootstrap.php:186
 msgid "Agency ID"
 msgstr "Agentur-ID"
 
-#: includes/class-wp-bootstrap.php:149
+#: includes/class-wp-bootstrap.php:190
 msgid "Agent ID"
 msgstr "Kontaktpersonen-ID"
 

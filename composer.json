@@ -6,8 +6,9 @@
             "url": "https://github.com/inverisOSS/wp-i18n-tools"
         }
     ],
+    "minimum-stability": "dev",
     "require": {
-        "immonex/wp-free-plugin-core": "^1.1.2"
+        "immonex/wp-free-plugin-core": "^1.1.5"
     },
     "require-dev": {
         "inverisoss/wp-i18n-tools": "^1.0",

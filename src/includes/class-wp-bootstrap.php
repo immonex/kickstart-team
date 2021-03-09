@@ -47,6 +47,7 @@ class WP_Bootstrap {
 		$this->plugin = $plugin;
 
 		if ( ! empty( $bootstrap_data['custom_post_types'] ) ) {
+			add_filter( 'immonex-kickstart_option_fields', array( $this, 'add_slug_rewrites_to_base_plugin_options' ) );
 			add_action( 'init', array( $this, 'register_custom_post_types' ), 100 );
 		}
 
@@ -56,6 +57,48 @@ class WP_Bootstrap {
 		add_action( 'personal_options_update', array( $this, 'save_extended_user_contents' ) );
 		add_action( 'edit_user_profile_update', array( $this, 'save_extended_user_contents' ) );
 	} // __construct
+
+	/**
+	 * Add slug rewrite fields to base plugin options (callback - special case).
+	 *
+	 * @since 1.1.6
+	 *
+	 * @param mixed[] $fields Base plugin option fields.
+	 *
+	 * @return mixed[] Extended option field array.
+	 */
+	public function add_slug_rewrites_to_base_plugin_options( $fields ) {
+		foreach ( $this->data['custom_post_types'] as $cpt_base_name => $cpt ) {
+			switch ( $cpt_base_name ) {
+				case 'agency':
+					$label   = __( 'Agency', 'immonex-kickstart-team' );
+					$default = _x( 'real-estate-agencies', 'Custom Post Type Slug (plural only!)', 'immonex-kickstart-team' );
+					break;
+				case 'agent':
+					$label   = __( 'Agent', 'immonex-kickstart-team' );
+					$default = _x( 'real-estate-agents', 'Custom Post Type Slug (plural only!)', 'immonex-kickstart-team' );
+					break;
+			}
+
+			$fields[] = array(
+				'name'    => "inx_team_{$cpt_base_name}_post_type_slug_rewrite",
+				'type'    => 'text',
+				'label'   => $label . ' (+Team)',
+				'section' => 'section_post_type_slugs',
+				'args'    => array(
+					'value'       => $this->plugin->{"{$cpt_base_name}_post_type_slug_rewrite"},
+					'description' => wp_sprintf(
+						/* translators: %1$s = CPT default rewrite slug, %2$s = CPT name */
+						'[Team Add-on] ' . __( 'This should be a single term in its plural form and in the site\'s <strong>main language</strong> (usually <strong>%1$s</strong>). If empty, <em>%2$s</em> will be used as base slug.', 'immonex-kickstart-team' ),
+						$default,
+						$cpt['post_type_name']
+					),
+				),
+			);
+		}
+
+		return $fields;
+	} // add_slug_rewrites_to_base_plugin_options
 
 	/**
 	 * Register custom post types used by this plugin.
@@ -81,13 +124,12 @@ class WP_Bootstrap {
 					'public'       => true,
 					'has_archive'  => true,
 					'show_ui'      => true,
-					// 'show_ui'      => true,
 					'show_in_menu' => 'inx_menu',
 					'show_in_rest' => false,
 					'supports'     => array( 'title', 'editor', 'author', 'thumbnail' ),
 					'map_meta_cap' => true,
 					'rewrite'      => array(
-						'slug' => _x( 'real-estate-agencies', 'Custom Post Type Slug (plural only!)', 'immonex-kickstart-team' ),
+						'slug' => $this->plugin->agency_post_type_slug_rewrite,
 					),
 				),
 				'agent'  => array(
@@ -105,13 +147,12 @@ class WP_Bootstrap {
 					'public'       => true,
 					'has_archive'  => true,
 					'show_ui'      => true,
-					// 'show_ui'      => true,
 					'show_in_menu' => 'inx_menu',
 					'show_in_rest' => false,
 					'supports'     => array( 'title', 'editor', 'author', 'thumbnail' ),
 					'map_meta_cap' => true,
 					'rewrite'      => array(
-						'slug' => _x( 'real-estate-agents', 'Custom Post Type Slug (plural only!)', 'immonex-kickstart-team' ),
+						'slug' => $this->plugin->agent_post_type_slug_rewrite,
 					),
 				),
 			)
