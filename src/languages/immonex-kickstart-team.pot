@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the immonex Kickstart Team package.
 msgid ""
 msgstr ""
-"Project-Id-Version: immonex Kickstart Team 1.1.5-beta\n"
+"Project-Id-Version: immonex Kickstart Team 1.1.6-beta\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/immonex-kickstart-team\n"
-"POT-Creation-Date: 2021-03-09 14:29:23+00:00\n"
+"POT-Creation-Date: 2021-03-19 15:40:35+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -453,11 +453,11 @@ msgstr ""
 msgid "Confirmation of receipt"
 msgstr ""
 
-#: includes/class-contact-form.php:505
+#: includes/class-contact-form.php:508 includes/class-contact-form.php:511
 msgid "Privacy Policy"
 msgstr ""
 
-#: includes/class-contact-form.php:529
+#: includes/class-contact-form.php:546
 msgid "Cancellation Policy"
 msgstr ""
 
@@ -501,182 +501,188 @@ msgstr ""
 msgid "Layout & Design"
 msgstr ""
 
-#: includes/class-kickstart-team.php:352
+#: includes/class-kickstart-team.php:368
 #: includes/widgets/class-agency-widget.php:129
 #: includes/widgets/class-agent-widget.php:123
 msgid "none"
 msgstr ""
 
-#: includes/class-kickstart-team.php:358
+#: includes/class-kickstart-team.php:374
 msgid "Skin"
 msgstr ""
 
-#: includes/class-kickstart-team.php:363
+#: includes/class-kickstart-team.php:379
 msgid ""
 "A skin is a set of connected templates for plugin related pages and elements."
 msgstr ""
 
-#: includes/class-kickstart-team.php:371
+#: includes/class-kickstart-team.php:387
 msgid "Agency Archive Title"
 msgstr ""
 
-#: includes/class-kickstart-team.php:376
+#: includes/class-kickstart-team.php:392
 msgid "default title for the agency post type archive pages"
 msgstr ""
 
-#: includes/class-kickstart-team.php:383
+#: includes/class-kickstart-team.php:399
 msgid "Agent Archive Title"
 msgstr ""
 
-#: includes/class-kickstart-team.php:388
+#: includes/class-kickstart-team.php:404
 msgid "default title for the agent post type archive pages"
 msgstr ""
 
-#: includes/class-kickstart-team.php:395
+#: includes/class-kickstart-team.php:411
 msgid "Default Contact Section Adaptation"
 msgstr ""
 
-#: includes/class-kickstart-team.php:400
+#: includes/class-kickstart-team.php:416
 msgid ""
 "The default contact data section in <strong>property detail pages</strong> "
 "can optionally be disabled or replaced by the related primary agent contact "
 "data and form supplied by this add-on."
 msgstr ""
 
-#: includes/class-kickstart-team.php:402
+#: includes/class-kickstart-team.php:418
 msgid "no change"
 msgstr ""
 
-#: includes/class-kickstart-team.php:403
+#: includes/class-kickstart-team.php:419
 msgid "replace"
 msgstr ""
 
-#: includes/class-kickstart-team.php:404
+#: includes/class-kickstart-team.php:420
 msgid "disable"
 msgstr ""
 
-#: includes/class-kickstart-team.php:412
+#: includes/class-kickstart-team.php:428
 msgid "Default Contact Section Headline"
 msgstr ""
 
-#: includes/class-kickstart-team.php:417
+#: includes/class-kickstart-team.php:433
 msgid ""
 "default headline for the contact section/form in property detail pages if "
 "<strong>replace</strong> is selected above"
 msgstr ""
 
-#: includes/class-kickstart-team.php:418
+#: includes/class-kickstart-team.php:434
 #: includes/widgets/class-agent-widget.php:117
 msgid "Use \"auto\" for a gender-related default title."
 msgstr ""
 
-#: includes/class-kickstart-team.php:425
+#: includes/class-kickstart-team.php:441
 msgid "Fallback Recipient Mail Addresses"
 msgstr ""
 
-#: includes/class-kickstart-team.php:430
+#: includes/class-kickstart-team.php:446
 msgid ""
 "comma-separated list of <strong>fallback</strong> recipient addresses used "
 "if no property related agent/agency address is determinable (default: main "
 "site admin address)"
 msgstr ""
 
-#: includes/class-kickstart-team.php:437
+#: includes/class-kickstart-team.php:453
 msgid "CC Mail Addresses"
 msgstr ""
 
-#: includes/class-kickstart-team.php:442
+#: includes/class-kickstart-team.php:458
 msgid ""
 "comma-separated list of addresses to which <strong>copies of all inquiry "
 "mails</strong> should be sent"
 msgstr ""
 
-#: includes/class-kickstart-team.php:449
+#: includes/class-kickstart-team.php:465
 msgid "Cancellation Policy Page"
 msgstr ""
 
-#: includes/class-kickstart-team.php:454
+#: includes/class-kickstart-team.php:470
 msgid ""
 "If a cancellation policy page is selected, the following consent text will "
 "be added to the form."
 msgstr ""
 
-#: includes/class-kickstart-team.php:462
+#: includes/class-kickstart-team.php:471
+msgid ""
+"If the page is available in multiple languages, please select the version in "
+"the <strong>site's main language</strong> here."
+msgstr ""
+
+#: includes/class-kickstart-team.php:479
 msgid "Cancellation Consent Text"
 msgstr ""
 
-#: includes/class-kickstart-team.php:467
+#: includes/class-kickstart-team.php:484
 msgid ""
 "This text must be confirmed by the user if a cancellation policy page has "
 "been selected above (insert <strong>[cancellation_policy]</strong> to add a "
 "link)."
 msgstr ""
 
-#: includes/class-kickstart-team.php:474
+#: includes/class-kickstart-team.php:491
 msgid "Privacy Note"
 msgstr ""
 
 #. translators: %s = privacy options page URL
-#: includes/class-kickstart-team.php:481
+#: includes/class-kickstart-team.php:498
 msgid ""
 "The privacy policy notice is mandatory, but does <strong>not</strong> have "
 "to be confirmed (insert <strong>[privacy_policy]</strong> to add a link to "
 "the privacy policy page defined in the <a href=\"%s\">site options</a>)."
 msgstr ""
 
-#: includes/class-kickstart-team.php:490
+#: includes/class-kickstart-team.php:507
 msgid "Confirmation Message"
 msgstr ""
 
-#: includes/class-kickstart-team.php:495
+#: includes/class-kickstart-team.php:512
 msgid ""
 "This message is being displayed when the form data have been successfully "
 "submitted."
 msgstr ""
 
-#: includes/class-kickstart-team.php:502
+#: includes/class-kickstart-team.php:519
 msgid "Receipt Confirmation"
 msgstr ""
 
-#: includes/class-kickstart-team.php:507
+#: includes/class-kickstart-team.php:524
 msgid ""
 "Activate if prospects shall receive a receipt confirmation mail on "
 "successful form submissions."
 msgstr ""
 
-#: includes/class-kickstart-team.php:514
+#: includes/class-kickstart-team.php:531
 msgid "Hide form after submit"
 msgstr ""
 
-#: includes/class-kickstart-team.php:525
+#: includes/class-kickstart-team.php:542
 msgid "OpenImmo-Feedback Type"
 msgstr ""
 
-#: includes/class-kickstart-team.php:530
+#: includes/class-kickstart-team.php:547
 msgid ""
 "This option defines if and how OpenImmo-Feedback data are attached to "
 "contact form mails sent to admin recipients (e.g. for further processing in "
 "an external software solution)."
 msgstr ""
 
-#: includes/class-kickstart-team.php:532
+#: includes/class-kickstart-team.php:549
 msgctxt "as a synonym for \"without\""
 msgid "none"
 msgstr ""
 
-#: includes/class-kickstart-team.php:533
+#: includes/class-kickstart-team.php:550
 msgid "Attachment"
 msgstr ""
 
-#: includes/class-kickstart-team.php:534
+#: includes/class-kickstart-team.php:551
 msgid "Mail Body"
 msgstr ""
 
-#: includes/class-kickstart-team.php:610
+#: includes/class-kickstart-team.php:627
 msgid "Withdrawal"
 msgstr ""
 
-#: includes/class-kickstart-team.php:611
+#: includes/class-kickstart-team.php:628
 msgid "Cancellation"
 msgstr ""
 

@@ -2,7 +2,7 @@
 Contributors: immonex
 Tags: immobilien, openimmo, immobilienmakler, immomakler, realestate, agent, agency, team, immonex
 Requires at least: 4.7
-Tested up to: 5.7
+Tested up to: 5.8
 Stable Tag: 1.1.5
 Requires PHP: 5.6
 License: GPLv2 or later
@@ -106,6 +106,11 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 
 == Changelog ==
 
+= 1.1.6-beta =
+* Release date: ?
+* Fixed withdrawal info selection and privacy policy links in
+  multilingual environments.
+
 = 1.1.5 =
 * Release date: 2021-03-09
 * Added salutation determination for OpenImmo-Feedback attachments
@@ -118,12 +123,5 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 * Added option for setting an alternative contact section headline.
 * Added filter for modifying the OpenImmo-Feedback attachment filename.
 * Fixed disabled contact form send button if no withdrawal page was selected.
-
-= 1.1.0 =
-* Release date: 2020-12-10
-* Optional receipt confirmation mails for inquiry/contact forms added.
-* OpenImmo-Feedback attachment type selection added.
-* Extended filter hooks for notification subject modifications.
-* Splitted up form consent texts (withdrawal/privacy).
 
 See changelog.txt for complete version history.

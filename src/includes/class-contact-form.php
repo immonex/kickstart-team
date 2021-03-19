@@ -499,11 +499,17 @@ class Contact_Form {
 		$cancellation_text = '';
 
 		if ( 'cancellation' !== $type ) {
-			$privacy_link = wp_sprintf(
-				'<a href="%s" target="_blank">%s</a>',
-				get_privacy_policy_url(),
-				__( 'Privacy Policy', 'immonex-kickstart-team' )
-			);
+			$privacy_url = get_privacy_policy_url();
+
+			if ( $privacy_url ) {
+				$privacy_link = wp_sprintf(
+					'<a href="%s" target="_blank">%s</a>',
+					$privacy_url,
+					__( 'Privacy Policy', 'immonex-kickstart-team' )
+				);
+			} else {
+				$privacy_link = __( 'Privacy Policy', 'immonex-kickstart-team' );
+			}
 
 			$privacy_text = wp_sprintf(
 				'<p>%s</p>',
@@ -523,9 +529,20 @@ class Contact_Form {
 			'privacy' !== $type
 			&& (int) $this->config['cancellation_page_id']
 		) {
+			$lang = isset( $_GET[ 'inx-force-lang' ] ) ?
+				strtolower( substr( $_GET[ 'inx-force-lang' ], 0, 2 ) ) :
+				false;
+
+			$cancellation_page_id = apply_filters(
+				'inx_element_translation_id',
+				(int) $this->config['cancellation_page_id'],
+				'page',
+				$lang
+			);
+
 			$cancellation_link = wp_sprintf(
 				'<a href="%s" target="_blank">%s</a>',
-				get_permalink( (int) $this->config['cancellation_page_id'] ),
+				get_permalink( $cancellation_page_id ),
 				__( 'Cancellation Policy', 'immonex-kickstart-team' )
 			);
 

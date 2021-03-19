@@ -17,7 +17,7 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_1_5\Base {
 	const PLUGIN_PREFIX              = 'inx_team_';
 	const PUBLIC_PREFIX              = 'inx-team-';
 	const TEXTDOMAIN                 = 'immonex-kickstart-team';
-	const PLUGIN_VERSION             = '1.1.5';
+	const PLUGIN_VERSION             = '1.1.6-beta';
 	const PLUGIN_HOME_URL            = 'https://de.wordpress.org/plugins/immonex-kickstart/';
 	const PLUGIN_DOC_URLS            = array(
 		'de' => 'https://docs.immonex.de/kickstart-team/',
@@ -348,7 +348,23 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_1_5\Base {
 	public function extend_fields( $fields ) {
 		$prefix = 'addon_' . str_replace( '-', '_', $this->plugin_slug ) . '_';
 
-		$pages      = $this->utils['template']->get_page_list();
+		$pages = apply_filters(
+			'inx_page_list_all_languages',
+			$this->utils['template']->get_page_list( array( 'lang' => '' ) )
+		);
+
+		if ( count( $pages ) > 0 ) {
+			foreach ( $pages as $page_id => $page_title ) {
+				$page_lang = apply_filters( 'inx_element_language', '', $page_id, 'page' );
+
+				$pages[ $page_id ] = wp_sprintf(
+					'%s [%s%s]',
+					$page_title,
+					$page_id,
+					$page_lang ? ', ' . $page_lang : ''
+				);
+			}
+		}
 		$pages_list = array( __( 'none', 'immonex-kickstart-team' ) ) + $pages;
 
 		$addon_fields = array(
@@ -451,7 +467,8 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_1_5\Base {
 				'args'    => array(
 					'plugin_slug' => $this->plugin_slug,
 					'option_name' => $this->plugin_options_name,
-					'description' => __( 'If a cancellation policy page is selected, the following consent text will be added to the form.', 'immonex-kickstart-team' ),
+					'description' => __( 'If a cancellation policy page is selected, the following consent text will be added to the form.', 'immonex-kickstart-team' ) . ' (' .
+						__( "If the page is available in multiple languages, please select the version in the <strong>site's main language</strong> here.", 'immonex-kickstart-team' ) . ')',
 					'options'     => $pages_list,
 					'value'       => $this->plugin_options['cancellation_page_id'],
 				),
