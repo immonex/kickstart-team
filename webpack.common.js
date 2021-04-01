@@ -6,17 +6,18 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 module.exports = {
   entry: {
     ...{
-        'src/js/frontend': './src/js/src/frontend.js'
+        frontend: './src/js/src/frontend.js'
     },
     ...glob.sync('./src/skins/**/js/src/index.js').reduce((acc, path) => {
-        const entry = path.replace('/js/src/index.js', '/js/index')
+        let entry = path.replace('./src/skins/', '../../src/skins/')
+        entry = entry.replace('/js/src/index.js', '/js/index')
         acc[entry] = path
         return acc
     }, {})
   },
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname)
+    path: path.resolve(__dirname, 'src/js')
   },
   module: {
     rules: [
@@ -50,7 +51,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      moduleFilename: ({ name }) => `${name.replace('/js/', '/css/')}.css`,
-    }),
+      filename: path => path.chunk.name.replace('/js/', '/css/') + '.css'
+    })
   ]
 }
