@@ -43,7 +43,11 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: '../fonts/'
+              outputPath: (url, resourcePath, context) => {
+                const relativePath = path.relative(context, resourcePath);
+                return '../../' + relativePath;
+              },
+              publicPath: '../fonts'
             }
         }]
       }
