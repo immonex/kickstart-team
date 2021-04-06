@@ -17,7 +17,7 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_1_5\Base {
 	const PLUGIN_PREFIX              = 'inx_team_';
 	const PUBLIC_PREFIX              = 'inx-team-';
 	const TEXTDOMAIN                 = 'immonex-kickstart-team';
-	const PLUGIN_VERSION             = '1.1.7-beta';
+	const PLUGIN_VERSION             = '1.1.8-beta';
 	const PLUGIN_HOME_URL            = 'https://de.wordpress.org/plugins/immonex-kickstart/';
 	const PLUGIN_DOC_URLS            = array(
 		'de' => 'https://docs.immonex.de/kickstart-team/',
@@ -171,6 +171,10 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_1_5\Base {
 	 * @since 1.0.0
 	 */
 	public function init_plugin_admin() {
+		if ( ! class_exists( '\immonex\Kickstart\Kickstart' ) ) {
+			return;
+		}
+
 		parent::init_plugin_admin();
 
 		if ( ! get_option( 'rewrite_rules' ) ) {
@@ -185,6 +189,10 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_1_5\Base {
 	 * @since 1.0.0
 	 */
 	public function init_plugin() {
+		if ( ! class_exists( '\immonex\Kickstart\Kickstart' ) ) {
+			return;
+		}
+
 		parent::init_plugin();
 
 		$component_config = array_merge(
@@ -247,6 +255,10 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_1_5\Base {
 	 * @since 1.0.0
 	 */
 	public function init_plugin_widgets() {
+		if ( ! class_exists( '\immonex\Kickstart\Kickstart' ) ) {
+			return;
+		}
+
 		register_widget( __NAMESPACE__ . '\Widgets\Agent_Widget' );
 		register_widget( __NAMESPACE__ . '\Widgets\Agency_Widget' );
 	} // init_plugin_widgets
@@ -591,7 +603,10 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_1_5\Base {
 	 * @param mixed[] $component_config Various component configuration data.
 	 */
 	private function register_cpt_actions_filters( $component_config ) {
-		if ( empty( $this->bootstrap_data['custom_post_types'] ) ) {
+		if (
+			empty( $this->bootstrap_data['custom_post_types'] ) ||
+			! class_exists( '\immonex\Kickstart\Kickstart' )
+		) {
 			return;
 		}
 

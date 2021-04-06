@@ -106,7 +106,7 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 
 == Changelog ==
 
-= 1.1.7-beta =
+= 1.1.8-beta =
 * Release date: ?
 * Fixed withdrawal info selection and privacy policy links in
   multilingual environments.
