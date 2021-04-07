@@ -7,7 +7,7 @@ search: 1
 
 Mit diesem Filter können bestimmte Details (Typ, Bezeichnung, Platzhalter etc.) der Felder des [einheitlichen Kontaktformulars](../komponenten/kontaktformular.html) angepasst werden.
 
-> **ACHTUNG!** Der Umfang des Formulars wurde bewusst auf die wesentlichen Angaben reduziert, eine Erweiterung des Umfangs über diesen Filter-Hook ist daher explizit **nicht** möglich.
+> **ACHTUNG!** Der Umfang des Formulars wurde bewusst auf die wesentlichen Angaben reduziert. Eine Erweiterung des Umfangs über diesen Filter-Hook ist zwar grundsätzlich möglich, wird aber nicht empfohlen. (In diesem Fall muss auch die zugehörige [Skin-Datei](skins.html) `contact-form.php` entsprechend erweitert werden.)
 
 ## Parameter
 
