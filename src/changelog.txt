@@ -1,5 +1,12 @@
 == Changelog ==
 
+= 1.1.8 =
+* Release date: 2021-04-13
+* Added property status selection for widget display.
+* Fixed withdrawal info selection and privacy policy links in
+  multilingual environments.
+* Improved performance and stability.
+
 = 1.1.5 =
 * Release date: 2021-03-09
 * Added salutation determination for OpenImmo-Feedback attachments

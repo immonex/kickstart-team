@@ -466,6 +466,20 @@ class Agency_Hooks extends Base_CPT_Hooks {
 				return '';
 			}
 
+			if ( ! empty( $atts['display_for'] ) ) {
+				$display_for         = strtolower( trim( $atts['display_for'] ) );
+				$display_for_options = $this->config['plugin']->get_display_for_options();
+
+				if (
+					'all' !== $display_for
+					&& in_array( $display_for, array_keys( $display_for_options ) )
+				) {
+					if ( ! $this->config['plugin']->shall_be_displayed( $property_id, $display_for ) ) {
+						return '';
+					}
+				}
+			}
+
 			// Retrieve all agent IDs for the current property (first = primary).
 			$agent_ids = Agent::fetch_agent_ids( $property_id );
 			if ( empty( $agent_ids ) ) {

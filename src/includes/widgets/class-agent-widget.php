@@ -52,6 +52,13 @@ class Agent_Widget extends \WP_Widget {
 			return;
 		}
 
+		if (
+			! empty( $instance['display_for'] )
+			&& ! $immonex_kickstart_team->shall_be_displayed( $property_id, $instance['display_for'] )
+		) {
+			return;
+		}
+
 		$agent_ids = Agent::fetch_agent_ids();
 		if ( empty( $agent_ids ) ) {
 			return;
@@ -80,6 +87,7 @@ class Agent_Widget extends \WP_Widget {
 				'before_title'  => isset( $args['before_title'] ) ? $args['before_title'] : '',
 				'title'         => apply_filters( 'widget_title', isset( $instance['title'] ) ? $instance['title'] : '' ),
 				'after_title'   => isset( $args['after_title'] ) ? $args['after_title'] : '',
+				'display_for'   => ! empty( $instance['display_for'] ) ? $instance['display_for'] : 'all',
 				'link_type'     => ! empty( $instance['link_type'] ) ? $instance['link_type'] : 'internal',
 				'convert_links' => isset( $instance['convert_links'] ) ? ! empty( $instance['convert_links'] ) : true,
 				'elements'      => $elements,
@@ -101,8 +109,11 @@ class Agent_Widget extends \WP_Widget {
 	 * @param mixed[] $instance Previously saved values from database.
 	 */
 	public function form( $instance ) {
+		global $immonex_kickstart_team;
+
 		$selectable_elements = $this->get_selectable_elements();
 		$options             = array(
+			'display_for'   => 'all',
 			'link_type'     => 'internal',
 			'convert_links' => true,
 		);
@@ -115,6 +126,15 @@ class Agent_Widget extends \WP_Widget {
 	<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 </p>
 <p class="description"><?php _e( 'Use "auto" for a gender-related default title.', 'immonex-kickstart-team' ); ?></p>
+
+<p>
+	<label for="<?php echo $this->get_field_id( 'display_for' ); ?>"><?php echo __( 'Display for:', 'immonex-kickstart-team' ); ?></label>
+	<select name="<?php echo $this->get_field_name( 'display_for' ); ?>">
+		<?php foreach ( $immonex_kickstart_team->get_display_for_options() as $option_key => $title ) : ?>
+		<option value="<?php echo $option_key; ?>"<?php selected( $instance['display_for'], $option_key ); ?>><?php echo $title; ?></option>
+		<?php endforeach; ?>
+	</select>
+</p>
 
 <p>
 	<label for="<?php echo $this->get_field_id( 'link_type' ); ?>"><?php echo __( 'Link Type', 'immonex-kickstart-team' ); ?>:</label><br>
@@ -200,6 +220,7 @@ class Agent_Widget extends \WP_Widget {
 			}
 		}
 
+		$instance['display_for']   = $new_instance['display_for'];
 		$instance['link_type']     = $new_instance['link_type'];
 		$instance['convert_links'] = ! empty( $new_instance['convert_links'] );
 

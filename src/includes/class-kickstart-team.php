@@ -18,7 +18,7 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_1_5\Base {
 	const PUBLIC_PREFIX              = 'inx-team-';
 	const TEXTDOMAIN                 = 'immonex-kickstart-team';
 	const PLUGIN_VERSION             = '1.1.8-beta';
-	const PLUGIN_HOME_URL            = 'https://de.wordpress.org/plugins/immonex-kickstart/';
+	const PLUGIN_HOME_URL            = 'https://de.wordpress.org/plugins/immonex-kickstart-team/';
 	const PLUGIN_DOC_URLS            = array(
 		'de' => 'https://docs.immonex.de/kickstart-team/',
 	);
@@ -279,6 +279,92 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_1_5\Base {
 			)
 		);
 	} // frontend_scripts_and_styles
+
+	/**
+	 * Return an array of display options related to "property flags"
+	 * (available, reference etc.).
+	 *
+	 * @since 1.2.0
+	 *
+	 * @param bool $key_title_only If true, only key and option title will
+	 *                             be returned (default).
+	 *
+	 * @return mixed[] Property flag selection options.
+	 */
+	public function get_display_for_options( $key_title_only = true ) {
+		$options = array(
+			'all'                   => array(
+				'title' => __( 'all properties', 'immonex-kickstart-team' ),
+			),
+			'all_except_references' => array(
+				'title' => __( 'all properties except references', 'immonex-kickstart-team' ),
+			),
+			'available_only'        => array(
+				'title' => __( 'available properties only', 'immonex-kickstart-team' ),
+			),
+			'references_only'       => array(
+				'title' => __( 'references only', 'immonex-kickstart-team' ),
+			),
+			'unavailable_only'      => array(
+				'title' => __( 'unavailable properties only', 'immonex-kickstart-team' ),
+			),
+		);
+
+		$options = apply_filters( 'inx_team_display_for_options', $options );
+
+		if ( ! $key_title_only ) {
+			return $options;
+		}
+
+		$compact_options = array();
+		foreach ( $options as $key => $option ) {
+			$compact_options[ $key ] = $option['title'];
+		}
+
+		return $compact_options;
+	} // get_display_for_options
+
+	/**
+	 * Check if an element shall be displayed based on the given "display for"
+	 * key and the related property flags.
+	 *
+	 * @since 1.2.0
+	 *
+	 * @param int    $property_id The ID of the property for which the flags are
+	 *                         to be checked.
+	 * @param string $display_for Key for determining the output scope.
+	 *
+	 * @return mixed[] Property flag selection options.
+	 */
+	public function shall_be_displayed( $property_id, $display_for ) {
+		if ( 'all' === $display_for ) {
+			return true;
+		}
+
+		if (
+			'all_except_references' === $display_for
+			&& get_post_meta( $property_id, '_immonex_is_reference', true )
+		) {
+			return false;
+		} elseif (
+			'available_only' === $display_for
+			&& ! get_post_meta( $property_id, '_immonex_is_available', true )
+		) {
+			return false;
+		} elseif (
+			'unavailable_only' === $display_for
+			&& get_post_meta( $property_id, '_immonex_is_available', true )
+		) {
+			return false;
+		} elseif (
+			'references_only' === $display_for
+			&& ! get_post_meta( $property_id, '_immonex_is_reference', true )
+		) {
+			return false;
+		}
+
+		return true;
+	} // shall_be_displayed
 
 	/**
 	 * Add tabs to an options page of another compatible plugin.

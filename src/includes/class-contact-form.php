@@ -529,8 +529,8 @@ class Contact_Form {
 			'privacy' !== $type
 			&& (int) $this->config['cancellation_page_id']
 		) {
-			$lang = isset( $_GET[ 'inx-force-lang' ] ) ?
-				strtolower( substr( $_GET[ 'inx-force-lang' ], 0, 2 ) ) :
+			$lang = isset( $_GET['inx-force-lang'] ) ?
+				strtolower( substr( $_GET['inx-force-lang'], 0, 2 ) ) :
 				false;
 
 			$cancellation_page_id = apply_filters(

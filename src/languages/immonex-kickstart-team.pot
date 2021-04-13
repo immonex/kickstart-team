@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the immonex Kickstart Team package.
 msgid ""
 msgstr ""
-"Project-Id-Version: immonex Kickstart Team 1.1.6-beta\n"
+"Project-Id-Version: immonex Kickstart Team 1.1.8-beta\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/immonex-kickstart-team\n"
-"POT-Creation-Date: 2021-03-19 15:40:35+00:00\n"
+"POT-Creation-Date: 2021-04-13 07:02:50+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -211,7 +211,7 @@ msgid "Business/Social Network Icons"
 msgstr ""
 
 #: includes/class-agency.php:621 includes/class-agent.php:870
-#: includes/class-kickstart-team.php:328
+#: includes/class-kickstart-team.php:426
 msgid "Contact Form"
 msgstr ""
 
@@ -236,8 +236,8 @@ msgid "diverse"
 msgstr ""
 
 #: includes/class-agent-backend-form.php:95 includes/class-agent.php:531
-#: includes/widgets/class-agency-widget.php:121
-#: includes/widgets/class-agent-widget.php:114
+#: includes/widgets/class-agency-widget.php:132
+#: includes/widgets/class-agent-widget.php:125
 msgid "Title"
 msgstr ""
 
@@ -497,192 +497,212 @@ msgctxt "Custom Post Type Slug (plural only!)"
 msgid "real-estate-agents"
 msgstr ""
 
-#: includes/class-kickstart-team.php:323
+#: includes/class-kickstart-team.php:297
+msgid "all properties"
+msgstr ""
+
+#: includes/class-kickstart-team.php:300
+msgid "all properties except references"
+msgstr ""
+
+#: includes/class-kickstart-team.php:303
+msgid "available properties only"
+msgstr ""
+
+#: includes/class-kickstart-team.php:306
+msgid "references only"
+msgstr ""
+
+#: includes/class-kickstart-team.php:309
+msgid "unavailable properties only"
+msgstr ""
+
+#: includes/class-kickstart-team.php:421
 msgid "Layout & Design"
 msgstr ""
 
-#: includes/class-kickstart-team.php:368
-#: includes/widgets/class-agency-widget.php:129
-#: includes/widgets/class-agent-widget.php:123
+#: includes/class-kickstart-team.php:466
+#: includes/widgets/class-agency-widget.php:149
+#: includes/widgets/class-agent-widget.php:143
 msgid "none"
 msgstr ""
 
-#: includes/class-kickstart-team.php:374
+#: includes/class-kickstart-team.php:472
 msgid "Skin"
 msgstr ""
 
-#: includes/class-kickstart-team.php:379
+#: includes/class-kickstart-team.php:477
 msgid ""
 "A skin is a set of connected templates for plugin related pages and elements."
 msgstr ""
 
-#: includes/class-kickstart-team.php:387
+#: includes/class-kickstart-team.php:485
 msgid "Agency Archive Title"
 msgstr ""
 
-#: includes/class-kickstart-team.php:392
+#: includes/class-kickstart-team.php:490
 msgid "default title for the agency post type archive pages"
 msgstr ""
 
-#: includes/class-kickstart-team.php:399
+#: includes/class-kickstart-team.php:497
 msgid "Agent Archive Title"
 msgstr ""
 
-#: includes/class-kickstart-team.php:404
+#: includes/class-kickstart-team.php:502
 msgid "default title for the agent post type archive pages"
 msgstr ""
 
-#: includes/class-kickstart-team.php:411
+#: includes/class-kickstart-team.php:509
 msgid "Default Contact Section Adaptation"
 msgstr ""
 
-#: includes/class-kickstart-team.php:416
+#: includes/class-kickstart-team.php:514
 msgid ""
 "The default contact data section in <strong>property detail pages</strong> "
 "can optionally be disabled or replaced by the related primary agent contact "
 "data and form supplied by this add-on."
 msgstr ""
 
-#: includes/class-kickstart-team.php:418
+#: includes/class-kickstart-team.php:516
 msgid "no change"
 msgstr ""
 
-#: includes/class-kickstart-team.php:419
+#: includes/class-kickstart-team.php:517
 msgid "replace"
 msgstr ""
 
-#: includes/class-kickstart-team.php:420
+#: includes/class-kickstart-team.php:518
 msgid "disable"
 msgstr ""
 
-#: includes/class-kickstart-team.php:428
+#: includes/class-kickstart-team.php:526
 msgid "Default Contact Section Headline"
 msgstr ""
 
-#: includes/class-kickstart-team.php:433
+#: includes/class-kickstart-team.php:531
 msgid ""
 "default headline for the contact section/form in property detail pages if "
 "<strong>replace</strong> is selected above"
 msgstr ""
 
-#: includes/class-kickstart-team.php:434
-#: includes/widgets/class-agent-widget.php:117
+#: includes/class-kickstart-team.php:532
+#: includes/widgets/class-agent-widget.php:128
 msgid "Use \"auto\" for a gender-related default title."
 msgstr ""
 
-#: includes/class-kickstart-team.php:441
+#: includes/class-kickstart-team.php:539
 msgid "Fallback Recipient Mail Addresses"
 msgstr ""
 
-#: includes/class-kickstart-team.php:446
+#: includes/class-kickstart-team.php:544
 msgid ""
 "comma-separated list of <strong>fallback</strong> recipient addresses used "
 "if no property related agent/agency address is determinable (default: main "
 "site admin address)"
 msgstr ""
 
-#: includes/class-kickstart-team.php:453
+#: includes/class-kickstart-team.php:551
 msgid "CC Mail Addresses"
 msgstr ""
 
-#: includes/class-kickstart-team.php:458
+#: includes/class-kickstart-team.php:556
 msgid ""
 "comma-separated list of addresses to which <strong>copies of all inquiry "
 "mails</strong> should be sent"
 msgstr ""
 
-#: includes/class-kickstart-team.php:465
+#: includes/class-kickstart-team.php:563
 msgid "Cancellation Policy Page"
 msgstr ""
 
-#: includes/class-kickstart-team.php:470
+#: includes/class-kickstart-team.php:568
 msgid ""
 "If a cancellation policy page is selected, the following consent text will "
 "be added to the form."
 msgstr ""
 
-#: includes/class-kickstart-team.php:471
+#: includes/class-kickstart-team.php:569
 msgid ""
 "If the page is available in multiple languages, please select the version in "
 "the <strong>site's main language</strong> here."
 msgstr ""
 
-#: includes/class-kickstart-team.php:479
+#: includes/class-kickstart-team.php:577
 msgid "Cancellation Consent Text"
 msgstr ""
 
-#: includes/class-kickstart-team.php:484
+#: includes/class-kickstart-team.php:582
 msgid ""
 "This text must be confirmed by the user if a cancellation policy page has "
 "been selected above (insert <strong>[cancellation_policy]</strong> to add a "
 "link)."
 msgstr ""
 
-#: includes/class-kickstart-team.php:491
+#: includes/class-kickstart-team.php:589
 msgid "Privacy Note"
 msgstr ""
 
 #. translators: %s = privacy options page URL
-#: includes/class-kickstart-team.php:498
+#: includes/class-kickstart-team.php:596
 msgid ""
 "The privacy policy notice is mandatory, but does <strong>not</strong> have "
 "to be confirmed (insert <strong>[privacy_policy]</strong> to add a link to "
 "the privacy policy page defined in the <a href=\"%s\">site options</a>)."
 msgstr ""
 
-#: includes/class-kickstart-team.php:507
+#: includes/class-kickstart-team.php:605
 msgid "Confirmation Message"
 msgstr ""
 
-#: includes/class-kickstart-team.php:512
+#: includes/class-kickstart-team.php:610
 msgid ""
 "This message is being displayed when the form data have been successfully "
 "submitted."
 msgstr ""
 
-#: includes/class-kickstart-team.php:519
+#: includes/class-kickstart-team.php:617
 msgid "Receipt Confirmation"
 msgstr ""
 
-#: includes/class-kickstart-team.php:524
+#: includes/class-kickstart-team.php:622
 msgid ""
 "Activate if prospects shall receive a receipt confirmation mail on "
 "successful form submissions."
 msgstr ""
 
-#: includes/class-kickstart-team.php:531
+#: includes/class-kickstart-team.php:629
 msgid "Hide form after submit"
 msgstr ""
 
-#: includes/class-kickstart-team.php:542
+#: includes/class-kickstart-team.php:640
 msgid "OpenImmo-Feedback Type"
 msgstr ""
 
-#: includes/class-kickstart-team.php:547
+#: includes/class-kickstart-team.php:645
 msgid ""
 "This option defines if and how OpenImmo-Feedback data are attached to "
 "contact form mails sent to admin recipients (e.g. for further processing in "
 "an external software solution)."
 msgstr ""
 
-#: includes/class-kickstart-team.php:549
+#: includes/class-kickstart-team.php:647
 msgctxt "as a synonym for \"without\""
 msgid "none"
 msgstr ""
 
-#: includes/class-kickstart-team.php:550
+#: includes/class-kickstart-team.php:648
 msgid "Attachment"
 msgstr ""
 
-#: includes/class-kickstart-team.php:551
+#: includes/class-kickstart-team.php:649
 msgid "Mail Body"
 msgstr ""
 
-#: includes/class-kickstart-team.php:627
+#: includes/class-kickstart-team.php:728
 msgid "Withdrawal"
 msgstr ""
 
-#: includes/class-kickstart-team.php:628
+#: includes/class-kickstart-team.php:729
 msgid "Cancellation"
 msgstr ""
 
@@ -1205,25 +1225,30 @@ msgstr ""
 msgid "Property related agency information and contact data/form"
 msgstr ""
 
-#: includes/widgets/class-agency-widget.php:126
+#: includes/widgets/class-agency-widget.php:137
+#: includes/widgets/class-agent-widget.php:131
+msgid "Display for:"
+msgstr ""
+
+#: includes/widgets/class-agency-widget.php:146
 msgid "Agency Link Type"
 msgstr ""
 
-#: includes/widgets/class-agency-widget.php:127
+#: includes/widgets/class-agency-widget.php:147
 msgid "internal (agency details page)"
 msgstr ""
 
-#: includes/widgets/class-agency-widget.php:128
+#: includes/widgets/class-agency-widget.php:148
 msgid "external (if URL is available)"
 msgstr ""
 
-#: includes/widgets/class-agency-widget.php:134
-#: includes/widgets/class-agent-widget.php:129
+#: includes/widgets/class-agency-widget.php:154
+#: includes/widgets/class-agent-widget.php:149
 msgid "Convert mail addresses and phone numbers to links"
 msgstr ""
 
-#: includes/widgets/class-agency-widget.php:140
-#: includes/widgets/class-agent-widget.php:135
+#: includes/widgets/class-agency-widget.php:160
+#: includes/widgets/class-agent-widget.php:155
 msgid "Elements to display:"
 msgstr ""
 
@@ -1231,19 +1256,19 @@ msgstr ""
 msgid "Property related agent information and contact data/form"
 msgstr ""
 
-#: includes/widgets/class-agent-widget.php:120
+#: includes/widgets/class-agent-widget.php:140
 msgid "Link Type"
 msgstr ""
 
-#: includes/widgets/class-agent-widget.php:121
+#: includes/widgets/class-agent-widget.php:141
 msgid "internal agent/agency details pages"
 msgstr ""
 
-#: includes/widgets/class-agent-widget.php:122
+#: includes/widgets/class-agent-widget.php:142
 msgid "external agency URL (if available)"
 msgstr ""
 
-#: includes/widgets/class-agent-widget.php:125
+#: includes/widgets/class-agent-widget.php:145
 msgid "Add links to agent photo/name and the company name."
 msgstr ""
 

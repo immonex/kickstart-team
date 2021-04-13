@@ -41,6 +41,8 @@ Das Widget kann via ***Design → Widgets*** oder (bei geöffneter Immobilien-De
 
 ![Screenshot: Agentur-Widget-Konfiguration im WP-Backend](../assets/scst-be-agency-widget-1.gif)
 
+Auch eine **mehrfache Einbindung** des Widgets ist möglich, bspw. wenn der Umfang der Ausgabe sich bei Referenzobjekten von dem regulärer Objekte unterscheiden soll. Die entsprechende Auswahl des Objektstatus erfolgt in diesem Fall über die Widget-Option *Anzeigen für* (beim folgenden Shortcode analog mit dem Attribut `display_for`).
+
 > Das Kontaktpersonen-Widget ist die gängigere Variante der Kontaktdaten-Einbindung.
 
 ## Shortcode
@@ -62,19 +64,25 @@ Alle folgenden Attribute sind **optional**.
 | `after_title` | nur Widget: HTML-Code nach dem Titel (WP/Theme-Vorgabe überschreiben) |
 | `convert_links` | *1* oder *yes*, um Mailadressen und Telefonnummern bei der Ausgabe in Links zu konvertieren |
 | `elements` | kommagetrennte Liste der anzuzeigenden Elemente: |
-| | *logo*: Logo (in der Vollansicht immer enthalten) |
-| | *company*: Firma |
-| | *about*: Kurzbeschreibung ("Über uns") |
-| | *email*: Mailadresse |
-| | *phone*: Telefonnummer |
-| | *city*: Ort (Bürostandort) |
-| | *address*: Adresse (Bürostandort) |
-| | *network_icons*: Icons/Links von Business- und sozialen Netzwerken, für die eine URL in den Agenturdaten hinterlegt ist) |
-| | *contact_form*: einheitliches Kontaktformular |
+| | *logo* : Logo (in der Vollansicht immer enthalten) |
+| | *company* : Firma |
+| | *about* : Kurzbeschreibung ("Über uns") |
+| | *email* : Mailadresse |
+| | *phone* : Telefonnummer |
+| | *city* : Ort (Bürostandort) |
+| | *address* : Adresse (Bürostandort) |
+| | *network_icons* : Icons/Links von Business- und sozialen Netzwerken, für die eine URL in den Agenturdaten hinterlegt ist) |
+| | *contact_form* : einheitliches Kontaktformular |
 | `link_type` | nur Widget – Art der Verlinkung von Logo und Firma/Name des Unternehmens: |
-| | *internal*: Link zur [internen Agentur-Profilseite](#Vollansicht) |
-| | *external*: Link zu einer externen Website, sofern eine entsprechende URL  vorhanden ist |
-| | *none*: keine Verlinkung |
+| | *internal* : Link zur [internen Agentur-Profilseite](#Vollansicht) |
+| | *external* : Link zu einer externen Website, sofern eine entsprechende URL  vorhanden ist |
+| | *none* : keine Verlinkung |
+| `display_for` | nur Widget – Anzeige nur bei Immobilien mit einem bestimmten Status: |
+| | *all* : alle Objekte |
+| | *all_except_references* : alle Immobilien **außer** Referenzobjekte |
+| | *available_only* : nur verfügbare Objekte |
+| | *unavailable_only* : nur **nicht** verfügbare Objekte |
+| | *references_only* : nur Referenzobjekte |
 
 #### Beispiele
 
