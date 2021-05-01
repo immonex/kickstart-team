@@ -106,6 +106,10 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 
 == Changelog ==
 
+= 1.1.9-beta =
+* Release date: ?
+* Improved compatibility in Windows-based hosting environments.
+
 = 1.1.8 =
 * Release date: 2021-04-13
 * Added property status selection for widget display.
@@ -119,11 +123,5 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
   utilizing genderize.io.
 * Added filter for modifying the OpenImmo-Feedback XML source code.
 * Made permalink base slugs for agency/agent post types changeable via plugin options.
-
-= 1.1.3 =
-* Release date: 2021-01-25
-* Added option for setting an alternative contact section headline.
-* Added filter for modifying the OpenImmo-Feedback attachment filename.
-* Fixed disabled contact form send button if no withdrawal page was selected.
 
 See changelog.txt for complete version history.

@@ -129,7 +129,7 @@ class Agent_Hooks extends Base_CPT_Hooks {
 		}
 
 		$initial_agent_meta = array(
-			'_immonex_import_folder'     => $import_folder,
+			'_immonex_import_folder'     => addslashes( $import_folder ),
 			"{$agent_prefix}auto_update" => isset( $data['auto_update'] ) ? (bool) $data['auto_update'] : true,
 		);
 
@@ -184,7 +184,7 @@ class Agent_Hooks extends Base_CPT_Hooks {
 		);
 
 		$initial_agent_meta = array(
-			'_immonex_import_folder'     => $core_data['import_folder'],
+			'_immonex_import_folder'     => addslashes( $core_data['import_folder'] ),
 			'_immonex_is_demo'           => $core_data['is_demo'],
 			"{$agent_prefix}auto_update" => true,
 		);
@@ -488,7 +488,7 @@ class Agent_Hooks extends Base_CPT_Hooks {
 			);
 
 			$initial_agency_meta = array(
-				'_immonex_import_folder'      => $core_data['import_folder'],
+				'_immonex_import_folder'      => addslashes( $core_data['import_folder'] ),
 				'_immonex_is_demo'            => $core_data['is_demo'],
 				"{$agency_prefix}auto_update" => true,
 			);
