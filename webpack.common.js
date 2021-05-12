@@ -55,7 +55,9 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: path => path.chunk.name.replace('/js/', '/css/') + '.css'
+      filename: path => path.chunk.name.indexOf('/js/') !== -1 ?
+        path.chunk.name.replace('/js/', '/css/') + '.css' :
+        '../css/[name].css'
     })
   ]
 }
