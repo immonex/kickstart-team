@@ -188,7 +188,7 @@ class Agent_Backend_Form {
 				'type' => 'text',
 			),
 			array(
-				'name' => 'Company',
+				'name' => __( 'Company', 'immonex-kickstart-team' ),
 				'desc' => '',
 				'id'   => "{$prefix}company",
 				'type' => 'text',

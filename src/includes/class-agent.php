@@ -287,19 +287,23 @@ class Agent extends Base_CPT_Post {
 		}
 
 		$kontaktperson = $immobilie->kontaktperson;
-		$post_data     = array(
-			'post_title' => sanitize_text_field(
-				(string) $kontaktperson->vorname . ' ' . (string) $kontaktperson->name
-			),
-		);
-		$elements      = $this->get_elements();
-		$meta          = array();
+		$first_name    = isset( $kontaktperson->vorname ) ?
+			(string) $kontaktperson->vorname : '';
+		$last_name     = isset( $kontaktperson->name ) ?
+			(string) $kontaktperson->name : '';
+		$company       = isset( $kontaktperson->firma ) ?
+			(string) $kontaktperson->firma : '';
 
-		$post_data['post_title'] = sanitize_text_field(
-			(string) $kontaktperson->vorname
-			. ' '
-			. (string) $kontaktperson->name
+		$title = trim( "{$first_name} {$last_name}" );
+		if ( ! $title && $company ) {
+			$title = $company;
+		}
+
+		$post_data = array(
+			'post_title' => sanitize_text_field( $title ),
 		);
+		$elements  = $this->get_elements();
+		$meta      = array();
 
 		if ( (string) $kontaktperson->freitextfeld ) {
 			$post_data['post_content'] = sanitize_textarea_field( (string) $kontaktperson->freitextfeld );
@@ -556,12 +560,13 @@ class Agent extends Base_CPT_Post {
 				'section_order'         => 10,
 			),
 			'full_name_incl_title'        => array(
-				'label'                 => __( 'Full Name incl. Title', 'immonex-kickstart-team' ),
-				'description'           => __( 'Disables &quot;Full Name&quot; if set.', 'immonex-kickstart-team' ),
-				'consists_of'           => array( 'title', 'first_name', 'last_name' ),
-				'selectable_for_output' => true,
-				'default_show'          => array( 'widget' ),
-				'section_order'         => 10,
+				'label'                      => __( 'Full Name incl. Title', 'immonex-kickstart-team' ),
+				'description'                => __( 'Disables &quot;Full Name&quot; if set.', 'immonex-kickstart-team' ),
+				'consists_of'                => array( 'title', 'first_name', 'last_name' ),
+				'agency_fallback_post_field' => 'post_title',
+				'selectable_for_output'      => true,
+				'default_show'               => array( 'widget' ),
+				'section_order'              => 10,
 			),
 			'position'                    => array(
 				'label'                 => __( 'Position', 'immonex-kickstart-team' ),
@@ -939,7 +944,7 @@ class Agent extends Base_CPT_Post {
 
 			foreach ( $element['consists_of'] as $sub_key ) {
 				$temp[] = (string) $this->get_element_value( $sub_key );
-				$value  = implode( ' ', $temp );
+				$value  = trim( implode( ' ', $temp ) );
 			}
 		} elseif (
 			isset( $element['compose_cb'] )
@@ -959,7 +964,7 @@ class Agent extends Base_CPT_Post {
 			if ( ! empty( $element['agency_fallback_meta_key'] ) ) {
 				$value = get_post_meta( $this->agency_id, $element['agency_fallback_meta_key'], true );
 			} elseif ( ! empty( $element['agency_fallback_post_field'] ) ) {
-				$value = get_post_field( 'post_title', $this->agency_id );
+				$value = get_post_field( $element['agency_fallback_post_field'], $this->agency_id );
 			}
 		}
 

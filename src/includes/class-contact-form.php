@@ -355,9 +355,7 @@ class Contact_Form {
 			}
 		}
 
-		if (
-			count( $result['field_errors'] ) > 0
-		) {
+		if ( count( $result['field_errors'] ) > 0 ) {
 			$result['valid']   = false;
 			$result['message'] = __( 'Please check your inputs!', 'immonex-kickstart-team' );
 		} elseif (

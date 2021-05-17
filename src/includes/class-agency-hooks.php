@@ -326,8 +326,10 @@ class Agency_Hooks extends Base_CPT_Hooks {
 			$company = $agency->get_element_value( 'legal_company' );
 
 			if ( $company ) {
+				remove_filter( 'save_post', array( $this, __FUNCTION__ ), 90, 3 );
 				$post->post_title = $company;
 				wp_update_post( $post );
+				add_filter( 'save_post', array( $this, __FUNCTION__ ), 90, 3 );
 			}
 		}
 	} // maybe_update_post_title

@@ -122,7 +122,7 @@ class Contact_Form_Hooks {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return \immonex\Kickstart\Team\Base_CPT_Post Current post object.
+	 * @return \immonex\Kickstart\Team\Contact_Form Current form object.
 	 */
 	public function get_form_instance() {
 		if ( ! $this->current_form ) {

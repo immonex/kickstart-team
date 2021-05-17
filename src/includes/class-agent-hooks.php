@@ -173,10 +173,17 @@ class Agent_Hooks extends Base_CPT_Hooks {
 	public function create_agent_by_xml( $agent_id, $core_data, $immobilie, $import_dir ) {
 		$agent_prefix = '_' . $this->config['plugin_prefix'] . 'agent_';
 		$agent        = $this->get_post_instance();
-		$title        = trim(
-			(string) $immobilie->kontaktperson->vorname
-			. ' ' . (string) $immobilie->kontaktperson->name
-		);
+		$first_name   = isset( $immobilie->kontaktperson->vorname ) ?
+			(string) $immobilie->kontaktperson->vorname : '';
+		$last_name    = isset( $immobilie->kontaktperson->name ) ?
+			(string) $immobilie->kontaktperson->name : '';
+		$company      = isset( $immobilie->kontaktperson->firma ) ?
+			(string) $immobilie->kontaktperson->firma : '';
+
+		$title = trim( "{$first_name} {$last_name}" );
+		if ( ! $title && $company ) {
+			$title = $company;
+		}
 
 		$initial_agent_post_data = array(
 			'post_title'  => $title,
@@ -531,9 +538,15 @@ class Agent_Hooks extends Base_CPT_Hooks {
 			$agent = $this->get_post_instance( $post_id );
 			$name  = $agent->get_element_value( 'full_name_incl_title' );
 
+			if ( ! $name ) {
+				$name = $agent->get_element_value( 'company' );
+			}
+
 			if ( $name ) {
+				remove_filter( 'save_post', array( $this, __FUNCTION__ ), 90, 3 );
 				$post->post_title = $name;
 				wp_update_post( $post );
+				add_filter( 'save_post', array( $this, __FUNCTION__ ), 90, 3 );
 			}
 		}
 	} // maybe_update_post_title
