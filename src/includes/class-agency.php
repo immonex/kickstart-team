@@ -269,7 +269,8 @@ class Agency extends Base_CPT_Post {
 				continue;
 			}
 
-			$value = (string) $anbieter->xpath( $element['xpath'] )[0];
+			$value = ! empty( $anbieter->xpath( $element['xpath'] ) ) ?
+				(string) $anbieter->xpath( $element['xpath'] )[0] : false;
 
 			if ( ! empty( $value ) ) {
 				if (

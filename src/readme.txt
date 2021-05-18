@@ -106,7 +106,7 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 
 == Changelog ==
 
-= 1.1.10-beta =
+= 1.1.11-beta =
 * Release date: ?
 * Fixed recursion bug and added fallback name on auto creating/updating agent/agency records.
 * Improved compatibility in Windows-based hosting environments.
