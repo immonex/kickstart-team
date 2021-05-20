@@ -969,15 +969,17 @@ class Agency extends Base_CPT_Post {
 	 */
 	private function get_property_count() {
 		if ( ! is_object( $this->post ) || ! $this->post->ID ) {
-			return false;
+			return 0;
 		}
 
-		$url   = get_site_url()
-			. '/wp-json/immonex-kickstart/v1/properties/?count=1&inx-agency='
-			. urlencode( $this->post->ID );
-		$count = (int) $this->utils['general']->get_url_contents( $url );
-
-		return $count;
+		return apply_filters(
+			'inx_get_properties',
+			[],
+			[
+				'inx-agency' => $this->post->ID,
+				'count'      => true,
+			]
+		 );
 	} // get_property_count
 
 } // Agency
