@@ -123,13 +123,13 @@ class Agent_Widget extends \WP_Widget {
 		?>
 <p>
 	<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title', 'immonex-kickstart-team' ); ?>:</label>
-	<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+	<input id="<?php echo $this->get_field_id( 'title' ); ?>" type="text" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $title ); ?>" class="widefat">
 </p>
 <p class="description"><?php _e( 'Use "auto" for a gender-related default title.', 'immonex-kickstart-team' ); ?></p>
 
 <p>
 	<label for="<?php echo $this->get_field_id( 'display_for' ); ?>"><?php echo __( 'Display for:', 'immonex-kickstart-team' ); ?></label>
-	<select name="<?php echo $this->get_field_name( 'display_for' ); ?>">
+	<select id="<?php echo $this->get_field_id( 'display_for' ); ?>" name="<?php echo $this->get_field_name( 'display_for' ); ?>">
 		<?php foreach ( $immonex_kickstart_team->get_display_for_options() as $option_key => $title ) : ?>
 		<option value="<?php echo $option_key; ?>"<?php selected( $instance['display_for'], $option_key ); ?>><?php echo $title; ?></option>
 		<?php endforeach; ?>
@@ -137,16 +137,27 @@ class Agent_Widget extends \WP_Widget {
 </p>
 
 <p>
-	<label for="<?php echo $this->get_field_id( 'link_type' ); ?>"><?php echo __( 'Link Type', 'immonex-kickstart-team' ); ?>:</label><br>
-	<input type="radio" name="<?php echo $this->get_field_name( 'link_type' ); ?>" value="internal"<?php checked( $instance['link_type'], 'internal' ); ?>> <?php _e( 'internal agent/agency details pages', 'immonex-kickstart-team' ); ?><br>
-	<input type="radio" name="<?php echo $this->get_field_name( 'link_type' ); ?>" value="external"<?php checked( $instance['link_type'], 'external' ); ?>> <?php _e( 'external agency URL (if available)', 'immonex-kickstart-team' ); ?><br>
-	<input type="radio" name="<?php echo $this->get_field_name( 'link_type' ); ?>" value="none"<?php checked( $instance['link_type'], 'none' ); ?>> <?php _e( 'none', 'immonex-kickstart-team' ); ?>
+	<label><?php echo __( 'Link Type', 'immonex-kickstart-team' ); ?>:</label><br>
+	<label>
+		<input type="radio" name="<?php echo $this->get_field_name( 'link_type' ); ?>" value="internal"<?php checked( $instance['link_type'], 'internal' ); ?>>
+		<?php _e( 'internal agent/agency details pages', 'immonex-kickstart-team' ); ?>
+	</label><br>
+	<label>
+		<input type="radio" name="<?php echo $this->get_field_name( 'link_type' ); ?>" value="external"<?php checked( $instance['link_type'], 'external' ); ?>>
+		<?php _e( 'external agency URL (if available)', 'immonex-kickstart-team' ); ?>
+	</label><br>
+	<label>
+		<input type="radio" name="<?php echo $this->get_field_name( 'link_type' ); ?>" value="none"<?php checked( $instance['link_type'], 'none' ); ?>>
+		<?php _e( 'none', 'immonex-kickstart-team' ); ?>
+	</label>
 </p>
 <p class="description"><?php _e( 'Add links to agent photo/name and the company name.', 'immonex-kickstart-team' ); ?></p>
 
 <p>
-	<input type="checkbox" name="<?php echo $this->get_field_name( 'convert_links' ); ?>" <?php checked( $instance['convert_links'] ); ?>>
-	<label for="<?php echo $this->get_field_id( 'convert_links' ); ?>"><?php echo __( 'Convert mail addresses and phone numbers to links', 'immonex-kickstart-team' ); ?></label>
+	<label>
+		<input type="checkbox" name="<?php echo $this->get_field_name( 'convert_links' ); ?>" <?php checked( $instance['convert_links'] ); ?>>
+		<?php echo __( 'Convert mail addresses and phone numbers to links', 'immonex-kickstart-team' ); ?>
+	</label>
 </p>
 
 <hr>
@@ -158,8 +169,10 @@ class Agent_Widget extends \WP_Widget {
 			?>
 
 	<p>
-		<input type="checkbox" name="<?php echo $this->get_field_name( $key ); ?>" <?php checked( $instance[ $key ] ); ?>>
-		<label for="<?php echo $this->get_field_id( $key ); ?>"><?php echo $element['label']; ?></label>
+		<label>
+			<input type="checkbox" name="<?php echo $this->get_field_name( $key ); ?>" <?php checked( $instance[ $key ] ); ?>>
+			<?php echo $element['label']; ?>
+		</label>
 	</p>
 			<?php
 			if ( ! empty( $element['description'] ) ) :

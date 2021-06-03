@@ -1273,12 +1273,12 @@ class Agent extends Base_CPT_Post {
 
 		return apply_filters(
 			'inx_get_properties',
-			[],
-			[
+			array(),
+			array(
 				'inx-agent' => $this->post->ID,
 				'count'     => true,
-			]
-		 );
+			)
+		);
 	} // get_property_count
 
 	/**
