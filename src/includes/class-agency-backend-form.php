@@ -163,9 +163,11 @@ class Agency_Backend_Form {
 			$contact_data->add_field( $field );
 		}
 
-		$networks = $this->plugin->cpt_hooks['Agency_Hooks']->get_post_instance()->get_networks();
+		$networks = ! empty( $this->plugin->cpt_hooks['Agency_Hooks'] ) ?
+			$this->plugin->cpt_hooks['Agency_Hooks']->get_post_instance()->get_networks() :
+			false;
 
-		if ( $networks && count( $networks ) > 0 ) {
+		if ( ! empty( $networks ) ) {
 			$contact_data->add_field(
 				array(
 					'name' => __( 'Business/Social Networks', 'immonex-kickstart-team' ),

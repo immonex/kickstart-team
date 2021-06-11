@@ -78,21 +78,23 @@ class Agent_Widget extends \WP_Widget {
 			echo $args['before_widget'];
 		}
 
-		// Render the primary agent object.
-		$immonex_kickstart_team->cpt_hooks['Agent_Hooks']->render_single(
-			$agent_ids[0],
-			'single-agent/widget',
-			array(
-				'type'          => 'widget',
-				'before_title'  => isset( $args['before_title'] ) ? $args['before_title'] : '',
-				'title'         => apply_filters( 'widget_title', isset( $instance['title'] ) ? $instance['title'] : '' ),
-				'after_title'   => isset( $args['after_title'] ) ? $args['after_title'] : '',
-				'display_for'   => ! empty( $instance['display_for'] ) ? $instance['display_for'] : 'all',
-				'link_type'     => ! empty( $instance['link_type'] ) ? $instance['link_type'] : 'internal',
-				'convert_links' => isset( $instance['convert_links'] ) ? ! empty( $instance['convert_links'] ) : true,
-				'elements'      => $elements,
-			)
-		);
+		if ( ! empty( $immonex_kickstart_team->cpt_hooks['Agent_Hooks'] ) ) {
+			// Render the primary agent object.
+			$immonex_kickstart_team->cpt_hooks['Agent_Hooks']->render_single(
+				$agent_ids[0],
+				'single-agent/widget',
+				array(
+					'type'          => 'widget',
+					'before_title'  => isset( $args['before_title'] ) ? $args['before_title'] : '',
+					'title'         => apply_filters( 'widget_title', isset( $instance['title'] ) ? $instance['title'] : '' ),
+					'after_title'   => isset( $args['after_title'] ) ? $args['after_title'] : '',
+					'display_for'   => ! empty( $instance['display_for'] ) ? $instance['display_for'] : 'all',
+					'link_type'     => ! empty( $instance['link_type'] ) ? $instance['link_type'] : 'internal',
+					'convert_links' => isset( $instance['convert_links'] ) ? ! empty( $instance['convert_links'] ) : true,
+					'elements'      => $elements,
+				)
+			);
+		}
 
 		if ( ! empty( $args['after_widget'] ) ) {
 			echo $args['after_widget'];
@@ -250,6 +252,13 @@ class Agent_Widget extends \WP_Widget {
 	 */
 	private function get_selectable_elements() {
 		global $immonex_kickstart_team;
+
+		if ( empty( $immonex_kickstart_team->cpt_hooks['Agent_Hooks'] ) ) {
+			return array(
+				'full_data' => array(),
+				'defaults'  => array(),
+			);
+		}
 
 		$agent               = $immonex_kickstart_team->cpt_hooks['Agent_Hooks']->get_post_instance();
 		$elements            = $agent->get_elements();

@@ -99,7 +99,8 @@ class Agent_Hooks extends Base_CPT_Hooks {
 	 */
 	public function create_agent( $agent_id, $data ) {
 		$agent_prefix  = '_' . $this->config['plugin_prefix'] . 'agent_';
-		$agency_hooks  = $this->config['plugin']->cpt_hooks['Agency_Hooks'];
+		$agency_hooks  = ! empty( $this->config['plugin']->cpt_hooks['Agency_Hooks'] ) ?
+			$this->config['plugin']->cpt_hooks['Agency_Hooks'] : false;
 		$agent         = $this->get_post_instance();
 		$import_folder = ! empty( $data['import_folder'] ) ? $data['import_folder'] : 'global';
 
@@ -147,6 +148,7 @@ class Agent_Hooks extends Base_CPT_Hooks {
 
 			if (
 				! empty( $data['agency_id'] )
+				&& $agency_hooks
 				&& $agency_hooks->is_valid_agency_id( $data['agency_id'] )
 			) {
 				update_post_meta( $agent_id, '_inx_team_agency_id', $data['agency_id'] );
@@ -270,11 +272,13 @@ class Agent_Hooks extends Base_CPT_Hooks {
 
 		$agent_prefix = '_' . $this->config['plugin_prefix'] . 'agent_';
 		$agency_id    = get_post_meta( $agent_id, '_inx_team_agency_id', true );
-		$agency_hooks = $this->config['plugin']->cpt_hooks['Agency_Hooks'];
+		$agency_hooks = ! empty( $this->config['plugin']->cpt_hooks['Agency_Hooks'] ) ?
+			$this->config['plugin']->cpt_hooks['Agency_Hooks'] : false;
 		$xml_checksum = strlen( $immobilie->kontaktperson->asXML() );
 
 		if (
 			$agency_id
+			&& $agency_hooks
 			&& ! $agency_hooks->is_valid_agency_id( $agency_id )
 		) {
 			/**
@@ -418,11 +422,13 @@ class Agent_Hooks extends Base_CPT_Hooks {
 	 * @return int|string|bool Agency post ID, false on failure.
 	 */
 	private function determine_or_create_agency( $agent_id, $core_data, $immobilie ) {
-		$agency_hooks = $this->config['plugin']->cpt_hooks['Agency_Hooks'];
+		$agency_hooks = ! empty( $this->config['plugin']->cpt_hooks['Agency_Hooks'] ) ?
+			$this->config['plugin']->cpt_hooks['Agency_Hooks'] : false;
 
 		$forced_agency_id = apply_filters( 'inx_team_force_agency_id_on_agent_update', false );
 		if (
 			$forced_agency_id
+			&& $agency_hooks
 			&& $agency_hooks->is_valid_agency_id( $forced_agency_id )
 		) {
 			return $forced_agency_id;
@@ -431,7 +437,7 @@ class Agent_Hooks extends Base_CPT_Hooks {
 		$agent_prefix  = '_' . $this->config['plugin_prefix'] . 'agent_';
 		$agency_prefix = '_' . $this->config['plugin_prefix'] . 'agency_';
 		$agency_id     = false;
-		$agency        = $agency_hooks->get_post_instance();
+		$agency        = $agency_hooks ? $agency_hooks->get_post_instance() : false;
 		$company       = $agency->get_company_from_xml( $this->anbieter, $immobilie );
 
 		if ( $agent_id ) {
@@ -439,6 +445,7 @@ class Agent_Hooks extends Base_CPT_Hooks {
 
 			if (
 				$agency_id
+				&& $agency_hooks
 				&& ! $agency_hooks->is_valid_agency_id( $agency_id )
 			) {
 				/**
@@ -453,13 +460,14 @@ class Agent_Hooks extends Base_CPT_Hooks {
 		if (
 			! $agency_id
 			&& $core_data['user_agency_id']
+			&& $agency_hooks
 			&& $agency_hooks->is_valid_agency_id( $core_data['user_agency_id'] )
 		) {
 			// Take over a user based agency ID if given and valid.
 			$agency_id = $core_data['user_agency_id'];
 		}
 
-		if ( ! $agency_id ) {
+		if ( ! $agency_id && $agency_hooks ) {
 			/**
 			 * Try to determine a suitable existing agency and assign it
 			 * (below) if found.
