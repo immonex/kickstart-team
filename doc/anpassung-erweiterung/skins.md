@@ -33,7 +33,7 @@ Aktuell ist hier nur der Ordner des Standard-Skins <i>TeamQuiwi</i> enthalten (`
 
 Der passende und *update-sichere* Ort für **eigene oder angepasste** Skins ist der Unterordner `immonex-kickstart-team` im **(Child-)Theme-Verzeichnis**:
 
-`.../wp-content/themes/(CHILD-)THEME-NAME/immonex-kickstart/`
+`.../wp-content/themes/(CHILD-)THEME-NAME/immonex-kickstart-team/`
 
 ## Auswahl
 
