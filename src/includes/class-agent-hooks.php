@@ -94,8 +94,9 @@ class Agent_Hooks extends Base_CPT_Hooks {
 	 * @param null    $agent_id Agent ID (return value only).
 	 * @param mixed[] $data Agent data.
 	 *
-	 * @return int|string|\WP_Error ID of created agent post or WP_Error object
-	 *                              on failure.
+	 * @return int|string|bool|\WP_Error ID of created agent post on success,
+	 *                                   false if no title or name is given
+	 *                                   or WP_Error object on failure.
 	 */
 	public function create_agent( $agent_id, $data ) {
 		$agent_prefix  = '_' . $this->config['plugin_prefix'] . 'agent_';
@@ -112,6 +113,10 @@ class Agent_Hooks extends Base_CPT_Hooks {
 				. ' '
 				. ( isset( $data['last_name'] ) ? $data['last_name'] : '' )
 			);
+		}
+
+		if ( ! $title ) {
+			return false;
 		}
 
 		$initial_agent_post_data = array(
@@ -169,8 +174,9 @@ class Agent_Hooks extends Base_CPT_Hooks {
 	 * @param \SimpleXMLElement $immobilie Property XML object.
 	 * @param string            $import_dir Full import directory path.
 	 *
-	 * @return int|string|\WP_Error ID of created agent post or WP_Error object
-	 *                              on failure.
+	 * @return int|string|bool|\WP_Error ID of created agent post on success,
+	 *                                   false if no title or name is given
+	 *                                   or WP_Error object on failure.
 	 */
 	public function create_agent_by_xml( $agent_id, $core_data, $immobilie, $import_dir ) {
 		$agent_prefix = '_' . $this->config['plugin_prefix'] . 'agent_';
@@ -185,6 +191,10 @@ class Agent_Hooks extends Base_CPT_Hooks {
 		$title = trim( "{$first_name} {$last_name}" );
 		if ( ! $title && $company ) {
 			$title = $company;
+		}
+
+		if ( ! $title ) {
+			return false;
 		}
 
 		$initial_agent_post_data = array(

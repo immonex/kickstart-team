@@ -183,12 +183,12 @@ class WP_Bootstrap {
 
 		<table class="form-table">
 			<tr>
-				<th><label for="inx_agency_id"><?php _e( 'Agency ID', 'immonex-kickstart-team' ); ?></label></th>
-				<td><input type="text" name="inx_agency_id" value="<?php echo esc_attr( get_the_author_meta( 'inx_team_agency_id', $user->ID ) ); ?>" class="small-text" /></td>
+				<th><label for="inx_team_agency_id"><?php _e( 'Agency ID', 'immonex-kickstart-team' ); ?></label></th>
+				<td><input id="inx_team_agency_id" type="text" name="inx_team_agency_id" value="<?php echo esc_attr( get_the_author_meta( 'inx_team_agency_id', $user->ID ) ); ?>" class="small-text" /></td>
 			</tr>
 			<tr>
-				<th><label for="inx_agent_id"><?php _e( 'Agent ID', 'immonex-kickstart-team' ); ?></label></th>
-				<td><input type="text" name="inx_agent_id" value="<?php echo esc_attr( get_the_author_meta( 'inx_team_agent_id', $user->ID ) ); ?>" class="small-text" /></td>
+				<th><label for="inx_team_agent_id"><?php _e( 'Agent ID', 'immonex-kickstart-team' ); ?></label></th>
+				<td><input id="inx_team_agent_id" type="text" name="inx_team_agent_id" value="<?php echo esc_attr( get_the_author_meta( 'inx_team_agent_id', $user->ID ) ); ?>" class="small-text" /></td>
 			</tr>
 		</table>
 		<?php
