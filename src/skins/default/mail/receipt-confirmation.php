@@ -3,7 +3,7 @@
  * Default mail template for receipt confirmations of messages sent
  * via unified contact form
  *
- * @package immonex-kickstart-team
+ * @package immonex\KickstartTeam
  */
 
 echo __( 'Good day!', 'immonex-kickstart-team' );

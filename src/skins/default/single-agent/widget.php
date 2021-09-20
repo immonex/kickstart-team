@@ -2,7 +2,7 @@
 /**
  * Template for agent single views in property details
  *
- * @package immonex-kickstart-team
+ * @package immonex\KickstartTeam
  */
 
 // Exit if accessed directly.

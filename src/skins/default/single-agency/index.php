@@ -2,7 +2,7 @@
 /**
  * Default main template for agency single views
  *
- * @package immonex-kickstart-team
+ * @package immonex\KickstartTeam
  */
 
 // Exit if accessed directly.

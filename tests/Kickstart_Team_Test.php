@@ -2,7 +2,7 @@
 /**
  * Unit tests for Kickstart_Team class.
  *
- * @package immonex-kickstart-team
+ * @package immonex\KickstartTeam
  */
 
 use immonex\Kickstart\Team\Kickstart_Team;

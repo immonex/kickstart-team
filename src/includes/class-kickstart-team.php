@@ -2,7 +2,7 @@
 /**
  * Class Kickstart_Team
  *
- * @package immonex-kickstart-team
+ * @package immonex\KickstartTeam
  */
 
 namespace immonex\Kickstart\Team;

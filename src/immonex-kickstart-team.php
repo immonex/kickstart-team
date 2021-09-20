@@ -26,7 +26,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this software. If not, see https://www.gnu.org/licenses/gpl-2.0.html.
  *
- * @package immonex-kickstart-team
+ * @package immonex\KickstartTeam
  */
 
 namespace immonex\Kickstart\Team;

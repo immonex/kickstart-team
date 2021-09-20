@@ -2,7 +2,7 @@
 /**
  * Default unified contact form template
  *
- * @package immonex-kickstart-team
+ * @package immonex\KickstartTeam
  */
 
 $inx_skin_remote_addr           = isset( $_SERVER['REMOTE_ADDR'] ) ?

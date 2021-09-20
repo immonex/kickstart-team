@@ -2,7 +2,7 @@
 /**
  * Template for replacing the Kickstart default property contact section
  *
- * @package immonex-kickstart-team
+ * @package immonex\KickstartTeam
  */
 
 // Exit if accessed directly.

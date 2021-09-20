@@ -2,7 +2,7 @@
 /**
  * TGMPA handling
  *
- * @package immonex-kickstart-team
+ * @package immonex\KickstartTeam
  */
 
 namespace immonex\Kickstart\Team;

@@ -2,7 +2,7 @@
 /**
  * Abstract class Base_CPT_Hooks
  *
- * @package immonex-kickstart-team
+ * @package immonex\KickstartTeam
  */
 
 namespace immonex\Kickstart\Team;

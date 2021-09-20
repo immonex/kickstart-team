@@ -2,7 +2,7 @@
 /**
  * CMB2-based agency edit form
  *
- * @package immonex-kickstart-team
+ * @package immonex\KickstartTeam
  */
 
 namespace immonex\Kickstart\Team;

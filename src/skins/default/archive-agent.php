@@ -2,7 +2,7 @@
 /**
  * Default archive template for the agent custom post type
  *
- * @package immonex-kickstart-team
+ * @package immonex\KickstartTeam
  */
 
 // Exit if accessed directly.

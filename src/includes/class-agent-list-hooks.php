@@ -2,7 +2,7 @@
 /**
  * Class Agent_List_Hooks
  *
- * @package immonex-kickstart-team
+ * @package immonex\KickstartTeam
  */
 
 namespace immonex\Kickstart\Team;

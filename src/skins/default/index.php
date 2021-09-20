@@ -2,7 +2,7 @@
 /**
  * Skin Name: TeamQuiwi
  *
- * @package immonex-kickstart-team
+ * @package immonex\KickstartTeam
  */
 
 die( "Don't event think about it!" );

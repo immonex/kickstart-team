@@ -2,7 +2,7 @@
 /**
  * Default mail template for admin mails via unified contact form
  *
- * @package immonex-kickstart-team
+ * @package immonex\KickstartTeam
  */
 
 if ( $template_data['prerendered']['property_title_ext_id'] ) {

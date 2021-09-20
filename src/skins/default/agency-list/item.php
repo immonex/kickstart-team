@@ -2,7 +2,7 @@
 /**
  * Example agency list item template
  *
- * @package immonex-kickstart-team
+ * @package immonex\KickstartTeam
  */
 
 // Exit if accessed directly.

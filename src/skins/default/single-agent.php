@@ -2,7 +2,7 @@
 /**
  * Default page template for agent CPT single views
  *
- * @package immonex-kickstart-team
+ * @package immonex\KickstartTeam
  */
 
 // Exit if accessed directly.
