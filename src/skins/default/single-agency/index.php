@@ -64,7 +64,7 @@ $inx_skin_logo = isset( $template_data['elements']['logo'] ) ?
 			foreach ( $template_data['elements'] as $inx_skin_element_key => $inx_skin_element ) :
 				if (
 					! empty( $inx_skin_element['default_show'] )
-					&& in_array( 'single_agency_page', $inx_skin_element['default_show'] )
+					&& in_array( 'single_agency_page', $inx_skin_element['default_show'], true )
 					&& ! empty( $inx_skin_element['value'] )
 				) :
 					if (
@@ -87,7 +87,7 @@ $inx_skin_logo = isset( $template_data['elements']['logo'] ) ?
 
 					if (
 						! $inx_skin_value
-						|| in_array( $inx_skin_value, $inx_skin_displayed_values )
+						|| in_array( $inx_skin_value, $inx_skin_displayed_values, true )
 					) {
 						continue;
 					}

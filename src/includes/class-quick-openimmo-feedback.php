@@ -104,7 +104,7 @@ class Quick_Openimmo_Feedback {
 		$site_url  = get_bloginfo( 'url' );
 		$site_name = get_bloginfo( 'name' );
 
-		$name          = wp_sprintf( '%s [%s]', $site_name, parse_url( $site_url, PHP_URL_HOST ) );
+		$name          = wp_sprintf( '%s [%s]', $site_name, wp_parse_url( $site_url, PHP_URL_HOST ) );
 		$datum         = date_i18n( 'd.m.Y' );
 		$openimmo_anid = get_post_meta( $property->ID, '_openimmo_anid', true );
 		if ( ! $openimmo_anid ) {
@@ -130,7 +130,7 @@ class Quick_Openimmo_Feedback {
 		$anfrage = ! empty( $prospect['message'] ) ? stripslashes( sanitize_textarea_field( $prospect['message'] ) ) : '';
 
 		$marketing_type_sale = strtolower( (string) $immobilie->objektkategorie->vermarktungsart['KAUF'] );
-		$is_sale             = in_array( $marketing_type_sale, array( 'true', '1' ) );
+		$is_sale             = in_array( (string) $marketing_type_sale, array( 'true', '1' ), true );
 		$vermarktungsart     = $is_sale ? 'Verkauf' : 'Vermietung/Verpachtung';
 
 		$bezeichnung = $property->post_title;
@@ -203,9 +203,11 @@ EOT
 
 		$oi_file = "{$temp_dir}/{$filename}";
 
+		// @codingStandardsIgnoreStart
 		$f = fopen( $oi_file, 'w+' );
 		fwrite( $f, $xml_source );
 		fclose( $f );
+		// @codingStandardsIgnoreEnd
 
 		return $oi_file;
 	} // mysite_send_oi_feedback
@@ -265,7 +267,7 @@ EOT
 
 		$genderize_request_url = wp_sprintf(
 			'https://api.genderize.io?name=%s&country_id=DE',
-			urlencode( $first_name )
+			rawurlencode( $first_name )
 		);
 		$response              = $this->utils['general']->get_url_contents( $genderize_request_url );
 

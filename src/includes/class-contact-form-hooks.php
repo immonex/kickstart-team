@@ -94,12 +94,13 @@ class Contact_Form_Hooks {
 	public function process_submission() {
 		$form          = $this->get_form_instance();
 		$nonce_context = $this->config['plugin_prefix'] . 'submit_contact_form';
+		// @codingStandardsIgnoreStart
 		$form_data     = array_merge(
 			array(
 				'nonce'            => array(
 					'context' => $nonce_context,
 					'value'   => ! empty( $_POST[ "{$nonce_context}_nonce" ] ) ?
-						sanitize_text_field( $_POST[ "{$nonce_context}_nonce" ] ) :
+						sanitize_text_field( wp_unslash( $_POST[ "{$nonce_context}_nonce" ] ) ) :
 						false,
 				),
 				'post_type'        => isset( $_POST['post_type'] ) ? sanitize_key( $_POST['post_type'] ) : '',
@@ -111,6 +112,7 @@ class Contact_Form_Hooks {
 			),
 			$form->get_user_form_data()
 		);
+		// @codingStandardsIgnoreEnd
 
 		$result = $form->send( $form_data );
 

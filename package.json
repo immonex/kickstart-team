@@ -54,7 +54,7 @@
     "test": "vendor/phpunit/phpunit/phpunit -c tests/phpunit/plugin.xml",
     "doc": "doc-gen server",
     "doc:publish": "doc-gen publish",
-    "apidoc": "vendor/bin/phpdoc run --sourcecode --template=clean --title='immonex Kickstart Team'",
+    "apidoc": "bin/phpdoc run --sourcecode",
     "apidoc:view": "node_modules/.bin/lws --stack lws-static lws-index -d apidoc -o",
     "apidoc:delete": "rimraf apidoc && rimraf .tmp/apidoc"
   }

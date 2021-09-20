@@ -8,14 +8,11 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "immonex/wp-free-plugin-core": "^1.1.5"
+        "immonex/wp-free-plugin-core": "1.3.3"
     },
     "require-dev": {
         "inverisoss/wp-i18n-tools": "^1.0",
         "phpunit/phpunit": "^7",
-        "phpdocumentor/phpdocumentor": "dev-master",
-        "phpdocumentor/graphviz": "@dev",
-        "phpdocumentor/reflection-docblock": "@dev",
         "doctrine/rst-parser": "@dev"
     },
     "autoload": {

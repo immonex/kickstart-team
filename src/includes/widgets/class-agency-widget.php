@@ -129,6 +129,7 @@ class Agency_Widget extends \WP_Widget {
 
 		$instance = wp_parse_args( (array) $instance, array_merge( $selectable_elements['defaults'], $options ) );
 		$title    = isset( $instance['title'] ) ? $instance['title'] : '';
+		// @codingStandardsIgnoreStart
 		?>
 <p style="margin-bottom:26px">
 	<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title', 'immonex-kickstart-team' ); ?>:</label>
@@ -191,6 +192,7 @@ class Agency_Widget extends \WP_Widget {
 		?>
 </div>
 		<?php
+		// @codingStandardsIgnoreEnd
 	} // form
 
 	/**

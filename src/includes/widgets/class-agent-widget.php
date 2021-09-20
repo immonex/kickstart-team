@@ -122,6 +122,7 @@ class Agent_Widget extends \WP_Widget {
 
 		$instance = wp_parse_args( (array) $instance, array_merge( $selectable_elements['defaults'], $options ) );
 		$title    = isset( $instance['title'] ) ? $instance['title'] : 'auto';
+		// @codingStandardsIgnoreStart
 		?>
 <p>
 	<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title', 'immonex-kickstart-team' ); ?>:</label>
@@ -186,6 +187,7 @@ class Agent_Widget extends \WP_Widget {
 		?>
 </div>
 		<?php
+		// @codingStandardsIgnoreEnd
 	} // form
 
 	/**

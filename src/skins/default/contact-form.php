@@ -5,7 +5,9 @@
  * @package immonex-kickstart-team
  */
 
-$inx_skin_is_localhost          = in_array( $_SERVER['REMOTE_ADDR'], array( '127.0.0.1', '::1' ) );
+$inx_skin_remote_addr           = isset( $_SERVER['REMOTE_ADDR'] ) ?
+	sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : false;
+$inx_skin_is_localhost          = in_array( $inx_skin_remote_addr, array( '127.0.0.1', '::1' ), true );
 $inx_skin_action                = $template_data['plugin_prefix'] . 'submit_contact_form';
 $inx_skin_send_button_disabled  = $template_data['cancellation_consent_text'] ? true : false;
 $inx_skin_message_default_value = isset( $template_data['fields']['message']['default_value'] ) ?
@@ -78,6 +80,8 @@ foreach ( $template_data['fields'] as $inx_skin_field_name => $inx_skin_field ) 
 		</div>
 		<?php endif; ?>
 
+		<?php // @codingStandardsIgnoreStart ?>
+
 		<div class="inx-team-contact-form__input inx-team-contact-form__input--type--full inx-team-contact-form__result-wrap">
 			<div class="inx-team-contact-form__result"></div>
 
@@ -102,6 +106,8 @@ foreach ( $template_data['fields'] as $inx_skin_field_name => $inx_skin_field ) 
 				</button>
 			</div>
 		</div>
+
+		<?php // @codingStandardsIgnoreEnd ?>
 
 		<div class="inx-team-contact-form__spinner uk-overlay-default uk-position-cover">
 			<div class="uk-position-center" uk-spinner="ratio: 2"></div>

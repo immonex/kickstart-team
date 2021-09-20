@@ -110,7 +110,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			if (
 				! $inx_skin_value
-				|| in_array( $inx_skin_value, $inx_skin_displayed_values )
+				|| in_array( $inx_skin_value, $inx_skin_displayed_values, true )
 			) {
 				continue;
 			}

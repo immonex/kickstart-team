@@ -617,7 +617,7 @@ class Agent_Hooks extends Base_CPT_Hooks {
 				if ( count( $agent_ids ) > 0 ) {
 					foreach ( $agent_ids as $agent_id ) {
 						$agency_id = get_post_meta( $agent_id, '_inx_team_agency_id', true );
-						if ( $agency_id && ! in_array( $agency_id, $agency_ids ) ) {
+						if ( $agency_id && ! in_array( $agency_id, $agency_ids, true ) ) {
 							$agency_ids[] = $agency_id;
 						}
 					}
@@ -681,7 +681,7 @@ class Agent_Hooks extends Base_CPT_Hooks {
 		if ( count( $property_ids ) > 0 ) {
 			foreach ( $property_ids as $property_id ) {
 				$agents = get_post_meta( $property_id, '_inx_team_agents', true );
-				$key    = array_search( $agent_post_id, $agents );
+				$key    = array_search( $agent_post_id, $agents, true );
 
 				if ( ! empty( $agents ) && false !== $key ) {
 					unset( $agents[ $key ] );
@@ -749,7 +749,7 @@ class Agent_Hooks extends Base_CPT_Hooks {
 
 			if (
 				'all' !== $display_for
-				&& in_array( $display_for, array_keys( $display_for_options ) )
+				&& isset( $display_for_options[ $display_for ] )
 			) {
 				$property_id = apply_filters(
 					'inx_current_property_post_id',

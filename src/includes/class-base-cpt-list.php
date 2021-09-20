@@ -231,8 +231,10 @@ abstract class Base_CPT_List {
 
 		$cpt_query = new \WP_Query( $args );
 		$org_query = $wp_query;
+		// @codingStandardsIgnoreStart
 		$wp_query  = null;
 		$wp_query  = $cpt_query;
+		// @codingStandardsIgnoreEnd
 
 		return $org_query;
 	} // replace_main_query
@@ -248,8 +250,10 @@ abstract class Base_CPT_List {
 		global $wp_query;
 
 		wp_reset_postdata();
+		// @codingStandardsIgnoreStart
 		$wp_query = null;
 		$wp_query = $org_query;
+		// @codingStandardsIgnoreEnd
 	} // restore_main_query
 
 } // Base_CPT_List

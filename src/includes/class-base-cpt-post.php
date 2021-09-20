@@ -213,7 +213,7 @@ class Base_CPT_Post {
 	 * @return string Address string.
 	 */
 	protected function get_address( $value_getter, $divider = ', ' ) {
-		if ( ! in_array( $this->base_name, array( 'agent', 'agency' ) ) ) {
+		if ( ! in_array( $this->base_name, array( 'agent', 'agency' ), true ) ) {
 			return '';
 		}
 
@@ -252,7 +252,7 @@ class Base_CPT_Post {
 	 *                      or false if inexistent.
 	 */
 	protected function get_featured_image( $value_getter ) {
-		if ( ! in_array( $this->base_name, array( 'agent', 'agency' ) ) ) {
+		if ( ! in_array( $this->base_name, array( 'agent', 'agency' ), true ) ) {
 			return false;
 		}
 
@@ -345,7 +345,7 @@ class Base_CPT_Post {
 			'youtube',
 		);
 
-		return in_array( $key, $uk_brands ) ? $key : 'world';
+		return in_array( $key, $uk_brands, true ) ? $key : 'world';
 	} // get_network_icon_key
 
 } // Base_CPT_Post

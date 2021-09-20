@@ -111,7 +111,8 @@ class Agent extends Base_CPT_Post {
 			array(
 				'single_agent_page',
 				'default_contact_element_replacement',
-			)
+			),
+			true
 		) ? 'all' : $atts['type'];
 		$default_elements = array_keys( $this->get_elements( $default_filter ) );
 		$convert_links    = ! empty( $atts['convert_links'] );
@@ -145,7 +146,7 @@ class Agent extends Base_CPT_Post {
 
 		if ( count( $element_keys ) > 0 ) {
 			foreach ( $valid_elements as $key => $element ) {
-				if ( ! in_array( $key, $element_keys ) ) {
+				if ( ! in_array( $key, $element_keys, true ) ) {
 					continue;
 				}
 
@@ -311,7 +312,8 @@ class Agent extends Base_CPT_Post {
 
 		$meta[ "{$this->prefix}address_publishing_approved" ] = in_array(
 			(string) $kontaktperson->adressfreigabe,
-			array( '0', 'false' )
+			array( '0', 'false' ),
+			true
 		) ? '0' : '1';
 
 		$meta[ "{$this->prefix}gender" ] = $this->get_gender(
@@ -439,6 +441,7 @@ class Agent extends Base_CPT_Post {
 			);
 		} else {
 			$temp = tmpfile();
+			// @codingStandardsIgnoreLine
 			fwrite( $temp, file_get_contents( $path_or_url ) );
 
 			$file_data = array(
@@ -897,7 +900,8 @@ class Agent extends Base_CPT_Post {
 			$elements = array_filter(
 				$elements,
 				function ( $element ) use ( &$filter ) {
-					return ! empty( $element['default_show'] ) && in_array( $filter, $element['default_show'] );
+					return ! empty( $element['default_show'] )
+						&& in_array( $filter, $element['default_show'], true );
 				}
 			);
 		}
@@ -1317,7 +1321,7 @@ class Agent extends Base_CPT_Post {
 		if ( $first_name && strlen( $first_name ) > 2 ) {
 			$genderize_request_url = wp_sprintf(
 				'https://api.genderize.io?name=%s&country_id=DE',
-				urlencode( $first_name )
+				rawurlencode( $first_name )
 			);
 			$response              = $this->utils['general']->get_url_contents( $genderize_request_url );
 
@@ -1356,7 +1360,7 @@ class Agent extends Base_CPT_Post {
 		$prefix = '_' . Kickstart_Team::PLUGIN_PREFIX . 'agent';
 
 		$primary_agent_id = get_post_meta( $property_post_id, "{$prefix}_primary", true );
-		if ( $primary_agent_id && ! in_array( $primary_agent_id, $agent_ids ) ) {
+		if ( $primary_agent_id && ! in_array( $primary_agent_id, $agent_ids, true ) ) {
 			$agent_ids[] = $primary_agent_id;
 		}
 

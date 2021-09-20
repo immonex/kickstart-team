@@ -368,7 +368,7 @@ class Agency_Hooks extends Base_CPT_Hooks {
 		if ( count( $agent_ids ) > 0 ) {
 			foreach ( $agent_ids as $agent_id ) {
 				$agency_id = get_post_meta( $agent_id, '_inx_team_agency_id', true );
-				if ( $agency_id && ! in_array( $agency_id, $agency_ids ) ) {
+				if ( $agency_id && ! in_array( $agency_id, $agency_ids, true ) ) {
 					$agency_ids[] = $agency_id;
 				}
 			}
@@ -474,7 +474,7 @@ class Agency_Hooks extends Base_CPT_Hooks {
 
 				if (
 					'all' !== $display_for
-					&& in_array( $display_for, array_keys( $display_for_options ) )
+					&& isset( $display_for_options[ $display_for ] )
 				) {
 					if ( ! $this->config['plugin']->shall_be_displayed( $property_id, $display_for ) ) {
 						return '';

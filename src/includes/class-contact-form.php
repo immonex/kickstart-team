@@ -380,14 +380,15 @@ class Contact_Form {
 		$form_data   = array();
 		$field_names = $this->get_fields( true );
 
-		if ( ! in_array( self::HONEYPOT_FIELD_NAME, $field_names ) ) {
+		if ( ! in_array( self::HONEYPOT_FIELD_NAME, $field_names, true ) ) {
 			// Add a honeypot field name.
 			$field_names[] = self::HONEYPOT_FIELD_NAME;
 		}
 
 		if ( count( $field_names ) > 0 ) {
 			foreach ( $field_names as $field ) {
-				$value = isset( $_POST[ $field ] ) ? $_POST[ $field ] : '';
+				// @codingStandardsIgnoreLine
+				$value = isset( $_POST[ $field ] ) ? wp_unslash( $_POST[ $field ] ) : '';
 
 				if ( self::HONEYPOT_FIELD_NAME !== $field ) {
 					if ( false !== strpos( $value, PHP_EOL ) ) {
@@ -528,7 +529,7 @@ class Contact_Form {
 			&& (int) $this->config['cancellation_page_id']
 		) {
 			$lang = isset( $_GET['inx-force-lang'] ) ?
-				strtolower( substr( $_GET['inx-force-lang'], 0, 2 ) ) :
+				strtolower( substr( sanitize_key( wp_unslash( $_GET['inx-force-lang'] ), 0, 2 ) ) ) :
 				false;
 
 			$cancellation_page_id = apply_filters(
@@ -580,6 +581,7 @@ class Contact_Form {
 		if ( ! empty( $atts['recipients'] ) ) {
 			$recipients = $this->utils['string']->split_mail_address_string( $atts['recipients'] );
 			if ( count( $recipients ) > 0 ) {
+				// @codingStandardsIgnoreLine
 				$recipients_enc = base64_encode( $this->utils['string']->xor_string( implode( ',', $recipients ), self::OBFUSCATION_KEY ) );
 			}
 		}
@@ -588,6 +590,7 @@ class Contact_Form {
 		if ( ! empty( $atts['cc'] ) ) {
 			$cc_recipients = $this->utils['string']->split_mail_address_string( $atts['cc'] );
 			if ( count( $cc_recipients ) > 0 ) {
+				// @codingStandardsIgnoreLine
 				$cc_enc = base64_encode( $this->utils['string']->xor_string( implode( ',', $cc_recipients ), self::OBFUSCATION_KEY ) );
 			}
 		}
@@ -833,16 +836,18 @@ class Contact_Form {
 
 		if ( $form_recipient_string ) {
 			$form_recipients_string_decode = $this->utils['string']->xor_string(
+				// @codingStandardsIgnoreLine
 				base64_decode( $form_recipient_string ),
 				self::OBFUSCATION_KEY
 			);
-			$override_recipients           = $this->utils['string']->split_mail_address_string(
+			$override_recipients = $this->utils['string']->split_mail_address_string(
 				$form_recipients_string_decode
 			);
 		}
 
 		if ( $form_cc_string ) {
-			$form_cc_string_decode  = $this->utils['string']->xor_string(
+			$form_cc_string_decode = $this->utils['string']->xor_string(
+				// @codingStandardsIgnoreLine
 				base64_decode( $form_cc_string ),
 				self::OBFUSCATION_KEY
 			);
@@ -1072,7 +1077,7 @@ class Contact_Form {
 
 			if (
 				$caption
-				&& ! in_array( $field['type'], array( 'textarea', 'checkbox' ) )
+				&& ! in_array( $field['type'], array( 'textarea', 'checkbox' ), true )
 			) {
 				$max_caption_length = strlen( $caption ) + 2;
 			}

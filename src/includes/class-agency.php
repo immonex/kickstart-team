@@ -99,7 +99,7 @@ class Agency extends Base_CPT_Post {
 
 		if ( count( $element_keys ) > 0 ) {
 			foreach ( $valid_elements as $key => $element ) {
-				if ( ! in_array( $key, $element_keys ) ) {
+				if ( ! in_array( $key, $element_keys, true ) ) {
 					continue;
 				}
 
@@ -230,7 +230,8 @@ class Agency extends Base_CPT_Post {
 
 		$meta[ "{$this->prefix}address_publishing_approved" ] = in_array(
 			(string) $immobilie->kontaktperson->adressfreigabe,
-			array( '0', 'false' )
+			array( '0', 'false' ),
+			true
 		) ? '0' : '1';
 
 		/**
@@ -645,7 +646,7 @@ class Agency extends Base_CPT_Post {
 				$elements,
 				function ( $element ) use ( &$filter ) {
 					return ! empty( $element['default_show'] )
-						&& in_array( $filter, $element['default_show'] );
+						&& in_array( $filter, $element['default_show'], true );
 				}
 			);
 		}
@@ -769,6 +770,7 @@ class Agency extends Base_CPT_Post {
 			);
 		} else {
 			$temp = tmpfile();
+			// @codingStandardsIgnoreLine
 			fwrite( $temp, file_get_contents( $path_or_url ) );
 
 			$file_data = array(
