@@ -117,17 +117,31 @@ class Quick_Openimmo_Feedback {
 		$oobj_id          = get_post_meta( $property->ID, '_openimmo_obid', true );
 		$expose_url       = get_permalink( $property->ID );
 
-		$raw_name  = trim( sanitize_text_field( $prospect['name'] ) );
-		$full_name = explode( ' ', $raw_name );
-		$vorname   = count( $full_name ) > 1 ? trim( $full_name[0] ) : '';
-		$anrede    = $this->get_salutation( $vorname );
-		$nachname  = count( $full_name ) > 1 ?
-			substr( $raw_name, strpos( $raw_name, ' ' ) + 1 ) :
-			$raw_name;
+		$anrede   = '';
+		$vorname  = '';
+		$nachname = '';
 
-		$tel     = ! empty( $prospect['phone'] ) ? sanitize_text_field( $prospect['phone'] ) : '';
-		$email   = ! empty( $prospect['email'] ) ? sanitize_text_field( $prospect['email'] ) : '';
-		$anfrage = ! empty( $prospect['message'] ) ? stripslashes( sanitize_textarea_field( $prospect['message'] ) ) : '';
+		if ( isset( $prospect['first_name'] ) || isset( $prospect['last_name'] ) ) {
+			$vorname  = ! empty( $prospect['first_name'] ) ?
+				trim( sanitize_text_field( $prospect['first_name'] ) ) : '';
+			$nachname = ! empty( $prospect['last_name'] ) ?
+				trim( sanitize_text_field( $prospect['last_name'] ) ) : '';
+		} elseif ( ! empty( $prospect['name'] ) ) {
+			$raw_name  = trim( sanitize_text_field( $prospect['name'] ) );
+			$full_name = explode( ' ', $raw_name );
+			$vorname   = count( $full_name ) > 1 ? trim( $full_name[0] ) : '';
+			$nachname  = count( $full_name ) > 1 ?
+				substr( $raw_name, strpos( $raw_name, ' ' ) + 1 ) :
+				$raw_name;
+		}
+
+		$anrede      = ! empty( $prospect['salutation'] ) ? $prospect['salutation'] : $this->get_salutation( $vorname );
+		$int_strasse = ! empty( $prospect['street'] ) ? sanitize_text_field( $prospect['street'] ) : '';
+		$int_plz     = ! empty( $prospect['postal_code'] ) ? sanitize_text_field( $prospect['postal_code'] ) : '';
+		$int_ort     = ! empty( $prospect['postal_code'] ) ? sanitize_text_field( $prospect['city'] ) : '';
+		$tel         = ! empty( $prospect['phone'] ) ? sanitize_text_field( $prospect['phone'] ) : '';
+		$email       = ! empty( $prospect['email'] ) ? sanitize_text_field( $prospect['email'] ) : '';
+		$anfrage     = ! empty( $prospect['message'] ) ? stripslashes( sanitize_textarea_field( $prospect['message'] ) ) : '';
 
 		$marketing_type_sale = strtolower( (string) $immobilie->objektkategorie->vermarktungsart['KAUF'] );
 		$is_sale             = in_array( (string) $marketing_type_sale, array( 'true', '1' ), true );
@@ -164,6 +178,9 @@ class Quick_Openimmo_Feedback {
 			<anrede>$anrede</anrede>
 			<vorname>$vorname</vorname>
 			<nachname>$nachname</nachname>
+			<strasse>$int_strasse</strasse>
+			<plz>$int_plz</plz>
+			<ort>$int_ort</ort>
 			<tel>$tel</tel>
 			<email>$email</email>
 			<anfrage>$anfrage</anfrage>

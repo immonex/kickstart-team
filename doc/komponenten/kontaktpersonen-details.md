@@ -29,6 +29,8 @@ Hier ein Beispiel – wie immer mit <i>TeamQuiwi-Skin</i> und dem WP-Standard-Th
 
 Wie das [Agentur-Widget](agentur-details.html#Widget) ist auch die Variante für Kontaktpersonen in erster Linie für den Einsatz im Sidebar-Bereich der Immobilien-Detailseiten vorgesehen. (Die Kontaktperson, deren Daten angezeigt werden sollen, wird automatisch anhand der **primären Kontaktpersonen-ID** ermittelt, die der betr. [Immobilie zugewiesen](../beitragsarten.html#Kontaktperson-Agentur-gt-Immobilie) ist.)
 
+> Das im Widget enthaltene Kontaktformular umfasst in der Standardvariante Eingabefelder für Name, Telefonnummer, Mailadresse sowie für die Nachricht, kann per Plugin-Option, Widget-Einstellung, Shortcode-Attribut oder Filterfunktion aber auch um zusätzliche Felder/Optionen für Anrede und Adresse der Interessenten erweitert werden.
+
 Ein Frontend-Beispiel auf Basis des WP-Standard-Themes <i>Twenty Sixteen</i>:
 
 ![Screenshot: Kontaktpersonen-Widget (Immobilienmakler/in, Ansprechparter/in) im Einsatz](../assets/scst-fe-agent-widget-1.png)
@@ -39,7 +41,9 @@ Ein Frontend-Beispiel auf Basis des WP-Standard-Themes <i>Twenty Sixteen</i>:
 
 > Wird das Widget in einem Sidebar-Bereich verwendet, sollte der [Standard-Kontaktdaten-Abschnitt](../schnellstart/einrichtung.html#Anpassung-des-Standard-Kontaktabschnitts) über die entsprechende Plugin-Option **ausbeblendet** werden.
 
-Das Widget kann via ***Design → Widgets*** oder (bei geöffneter Immobilien-Detailseite) ***Customizer → Widgets*** eingebunden und konfiguriert werden:
+Das Widget kann via ***Design → Widgets*** (ab WordPress 5.8 als Block des Typs <i>Legacy-Widget</i>) oder – bei geöffneter Immobilien-Detailseite – ***Customizer → Widgets*** eingebunden und konfiguriert werden:
+
+![Screenshot: Legacy-Widget-Auswahl im WordPress-Backend](../assets/scst-be-wordpress-legacy-widget.gif)
 
 ![Screenshot: Kontaktpersonen-Widget-Konfiguration im WP-Backend](../assets/scst-be-agent-widget-1.gif)
 
@@ -77,8 +81,8 @@ Alle folgenden Attribute sind **optional**.
 | | *city* : Ort (Bürostandort) |
 | | *address* : Adresse (Bürostandort) |
 | | *network_icons* : Icons/Links von Business- und sozialen Netzwerken, für die eine URL im Kontaktpersonen-Datensatz hinterlegt ist) |
-| | *contact_form* : einheitliches Kontaktformular |
-| `link_type` | nur Widget – Art der Verlinkung von Foto, Name und Firma: |
+| | *contact_form* : einheitliches [Kontaktformular](kontaktformular.html) (siehe auch `contact_form_scope` unten) |
+| `link_type` | nur Widget – Art der Verlinkung von Foto, Name und Firma: |
 | | *internal* : Link zur **internen** [Kontaktpersonen-Profilseite](#Vollansicht) (Foto/Name) bzw. [Agentur-Detailseite](agentur-details.html#Vollansicht) (Firma) |
 | | *external* : Link zu einer externen Website, sofern eine entsprechende URL  vorhanden ist |
 | | *none* : keine Verlinkung |
@@ -88,6 +92,9 @@ Alle folgenden Attribute sind **optional**.
 | | *available_only* : nur verfügbare Objekte |
 | | *unavailable_only* : nur **nicht** verfügbare Objekte |
 | | *references_only* : nur Referenzobjekte |
+| `contact_form_scope` | Feldumfang des [Kontaktformulars](kontaktformular.html): |
+| | *basic* : Name, Telefonnummer, E-Mail-Adresse und Nachricht (Standardvorgabe) |
+| | *extended* : **zusätzliche** Pflichtfelder/-auswahloptionen für Anrede und Adresse, separate Felder für Vor- und Nachname |
 
 #### Beispiele
 
@@ -99,6 +106,9 @@ Widget mit Foto, Name inkl. Titel, Position, primärer Mailadresse und Telefonnu
 
 Widget (Standardansicht), keine Anzeige bei Referenzobjekten
 `[inx-team-agent type="widget" display_for="all_except_references"]`
+
+Widget mit Standardumfang, aber erweitertem Kontaktformular (u. a. inkl. Adressfeldern):
+`[inx-team-agent type="widget" contact_form_scope="extended"]`
 
 ---
 

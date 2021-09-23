@@ -45,6 +45,12 @@ Werden die Kontaktdaten an einer anderen Position per Widget ([Ansprechpartner/i
 
 ### Kontaktformular
 
+#### Erweitertes Formular
+
+Das Kontaktformular umfasst in der Standardvariante Eingabefelder für Name, Telefonnummer, Mailadresse sowie für die Nachricht. Ist diese Option aktiviert, werden eine Auswahlmöglichkeit für die Anrede, separate Felder für Vor- und Nachname sowie zusätzliche **Pflichtfelder** für die Adresse des Absenders ergänzt.
+
+Je nach Art der Einbindung kann diese Vorgabe per Widget-Einstellung (<i>Kontaktformular-Umfang</i>) oder Shortcode-Attribut (`contact_form_scope`) überschrieben werden. Darüber hinaus können Umfang und Art der Formularelemente auch über den Hook [`inx_team_contact_form_fields`](../anpassung-erweiterung/filter-inx-team-contact-form-fields.html) mit einer Filterfunktion individuell angepasst oder erweitert werden.
+
 #### Fallback-Empfänger-Mailadressen
 
 Die Empfänger der Mails, die über das im Plugin enthaltene [einheitliche Kontaktformular](../komponenten/kontaktformular.html) versendet werden, sind **kontextbezogen**: Findet das Formular bspw. in einem [Kontaktpersonen-Widget](../komponenten/kontaktpersonen-details.html#Widget) Verwendung, das in einer Objekt-Detailseite eingebunden ist, wird die Nachricht an die Mailadresse der zugehörigen [primären Kontaktperson](../beitragsarten.html#Kontaktperson-Agentur-gt-Immobilie) gesendet. Sind der Immobilie weitere Ansprechpartner/innen zugeordnet, erhalten diese jeweils eine Kopie der Anfrage.

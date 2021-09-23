@@ -4,6 +4,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/inverisOSS/wp-i18n-tools"
+        },
+        {
+            "type": "path",
+            "url": "/Users/splash/Projekte/immonex-wp-free-plugin-core"
         }
     ],
     "minimum-stability": "dev",

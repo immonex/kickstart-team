@@ -73,18 +73,19 @@ class Agency extends Base_CPT_Post {
 		$default_elements = array_keys( $this->get_elements( $default_filter ) );
 		$convert_links    = ! empty( $atts['convert_links'] );
 		$contents         = array(
-			'before_title'   => isset( $atts['before_title'] ) ? $atts['before_title'] : '',
-			'title'          => isset( $atts['title'] ) ? $atts['title'] : $this->post->post_title,
-			'after_title'    => isset( $atts['after_title'] ) ? $atts['after_title'] : '',
-			'convert_links'  => $convert_links,
-			'link_type'      => $this->link_type,
-			'agency_id'      => $this->post->ID,
-			'is_public'      => $this->is_public,
-			'is_demo'        => get_post_meta( $this->post->ID, '_immonex_is_demo', true ),
-			'url'            => $url,
-			'agent_count'    => $this->get_agent_count(),
-			'property_count' => $this->get_property_count(),
-			'elements'       => array(),
+			'before_title'       => isset( $atts['before_title'] ) ? $atts['before_title'] : '',
+			'title'              => isset( $atts['title'] ) ? $atts['title'] : $this->post->post_title,
+			'after_title'        => isset( $atts['after_title'] ) ? $atts['after_title'] : '',
+			'link_type'          => $this->link_type,
+			'convert_links'      => $convert_links,
+			'contact_form_scope' => ! empty( $atts['contact_form_scope'] ) ? $atts['contact_form_scope'] : '',
+			'agency_id'          => $this->post->ID,
+			'is_public'          => $this->is_public,
+			'is_demo'            => get_post_meta( $this->post->ID, '_immonex_is_demo', true ),
+			'url'                => $url,
+			'agent_count'        => $this->get_agent_count(),
+			'property_count'     => $this->get_property_count(),
+			'elements'           => array(),
 		);
 
 		$requested_elements = ! empty( $atts['elements'] ) ?

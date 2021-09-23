@@ -5,14 +5,19 @@
  * @package immonex\KickstartTeam
  */
 
-$inx_skin_remote_addr           = isset( $_SERVER['REMOTE_ADDR'] ) ?
+if ( defined( 'INX_SKIN_MARK_REQUIRED_FORM_FIELDS' ) ) {
+	$inx_skin_mark_req_fields = INX_SKIN_MARK_REQUIRED_FORM_FIELDS;
+} else {
+	$inx_skin_mark_req_fields = false;
+}
+
+$inx_skin_remote_addr          = isset( $_SERVER['REMOTE_ADDR'] ) ?
 	sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : false;
-$inx_skin_is_localhost          = in_array( $inx_skin_remote_addr, array( '127.0.0.1', '::1' ), true );
-$inx_skin_action                = $template_data['plugin_prefix'] . 'submit_contact_form';
-$inx_skin_send_button_disabled  = $template_data['cancellation_consent_text'] ? true : false;
-$inx_skin_message_default_value = isset( $template_data['fields']['message']['default_value'] ) ?
-	$template_data['fields']['message']['default_value'] :
-	'';
+$inx_skin_is_localhost         = in_array( $inx_skin_remote_addr, array( '127.0.0.1', '::1' ), true );
+$inx_skin_action               = $template_data['plugin_prefix'] . 'submit_contact_form';
+$inx_skin_scope                = ! empty( $template_data['scope'] ) ?
+	$template_data['scope'] : 'basic';
+$inx_skin_send_button_disabled = $template_data['cancellation_consent_text'] ? true : false;
 
 $inx_skin_required = array();
 foreach ( $template_data['fields'] as $inx_skin_field_name => $inx_skin_field ) {
@@ -22,6 +27,7 @@ foreach ( $template_data['fields'] as $inx_skin_field_name => $inx_skin_field ) 
 <div class="inx-team-contact-form-wrap">
 	<form class="inx-team-contact-form uk-form-stacked uk-inline" method="post" action="<?php echo admin_url( 'admin-ajax.php' ); ?>">
 		<input type="hidden" name="action" value="<?php echo $inx_skin_action; ?>">
+		<input type="hidden" name="scope" value="<?php echo $inx_skin_scope; ?>">
 		<input type="hidden" name="post_type" value="<?php echo $template_data['post_type']; ?>">
 		<input type="hidden" name="origin_post_id" value="<?php echo $template_data['origin_post_id']; ?>">
 		<input type="hidden" name="post_id" value="<?php echo $template_data['post_id']; ?>">
@@ -37,25 +43,113 @@ foreach ( $template_data['fields'] as $inx_skin_field_name => $inx_skin_field ) 
 		</div>
 		<?php // /Honeypot. ?>
 
-		<div class="inx-team-contact-form__input inx-team-contact-form__input--name--name">
-			<input type="text" name="name" placeholder="<?php echo $template_data['fields']['name']['placeholder']; ?>" class="uk-input"<?php echo $inx_skin_required['name']; ?>>
-			<div class="inx-team-contact-form__input-error"></div>
-		</div>
+		<?php
+		foreach ( $template_data['fields'] as $inx_skin_field_name => $inx_skin_field ) :
+			if ( 'consent' === $inx_skin_field_name ) {
+				continue;
+			}
 
-		<div class="inx-team-contact-form__input inx-team-contact-form__input--name--phone">
-			<input type="text" name="phone" placeholder="<?php echo $template_data['fields']['phone']['placeholder']; ?>" class="uk-input"<?php echo $inx_skin_required['phone']; ?>>
-			<div class="inx-team-contact-form__input-error"></div>
-		</div>
+			if ( ! empty( $inx_skin_field['type'] ) ) {
+				$inx_skin_field_type = $inx_skin_field['type'];
+			} elseif ( 'email' === $inx_skin_field_name ) {
+				$inx_skin_field_type = 'email';
+			} elseif ( 'message' === $inx_skin_field_name ) {
+				$inx_skin_field_type = 'textarea';
+			} else {
+				$inx_skin_field_type = 'text';
+			}
 
-		<div class="inx-team-contact-form__input inx-team-contact-form__input--name--email">
-			<input type="email" name="email" placeholder="<?php echo $template_data['fields']['email']['placeholder']; ?>" class="uk-input"<?php echo $inx_skin_required['email']; ?>>
-			<div class="inx-team-contact-form__input-error"></div>
-		</div>
+			if ( 'checkbox' === $inx_skin_field_type && empty( $inx_skin_field['caption'] ) ) {
+				continue;
+			}
 
-		<div class="inx-team-contact-form__input inx-team-contact-form__input--type--full inx-team-contact-form__input--name--message">
-			<textarea name="message" rows="4" placeholder="<?php echo $template_data['fields']['message']['placeholder']; ?>" class="uk-textarea"<?php echo $inx_skin_required['message']; ?>><?php echo $inx_skin_message_default_value; ?></textarea>
+			$inx_skin_field_required = ! empty( $inx_skin_field['required'] )
+				|| ! empty( $inx_skin_field['required_or'] );
+			$inx_skin_placeholder    = ! empty( $inx_skin_field['placeholder'] ) ?
+				$inx_skin_field['placeholder'] : '';
+			if ( $inx_skin_mark_req_fields && $inx_skin_placeholder && $inx_skin_field_required ) {
+				$inx_skin_placeholder .= '*';
+			}
+			$inx_skin_default_value = isset( $inx_skin_field['default_value'] ) ?
+				$inx_skin_field['default_value'] : '';
+			$inx_skin_add_classes   = isset( $inx_skin_field['layout_type'] ) ?
+				' inx-team-contact-form__input--type--' . $inx_skin_field['layout_type'] : '';
+			?>
+
+		<div class="inx-team-contact-form__input<?php echo $inx_skin_add_classes; ?> inx-team-contact-form__input--name--<?php echo $inx_skin_field_name; ?>">
+
+			<?php if ( in_array( $inx_skin_field_type, array( 'text', 'email' ), true ) ) : ?>
+
+			<input
+				type="<?php echo $inx_skin_field_type; ?>"
+				name="<?php echo $inx_skin_field_name; ?>"
+				placeholder="<?php echo $inx_skin_placeholder; ?>"
+				class="uk-input"<?php echo $inx_skin_required[ $inx_skin_field_name ]; ?>
+			>
+
+			<?php elseif ( 'textarea' === $inx_skin_field_type ) : ?>
+
+			<textarea
+				name="<?php echo $inx_skin_field_name; ?>"
+				rows="4"
+				placeholder="<?php echo $inx_skin_placeholder; ?>"
+				class="uk-textarea"<?php echo $inx_skin_required[ $inx_skin_field_name ]; ?>
+			><?php echo $inx_skin_default_value; ?></textarea>
+
+			<?php elseif ( 'checkbox' === $inx_skin_field_type ) : ?>
+
+			<label>
+				<input
+					type="checkbox"
+					name="<?php echo $inx_skin_field_name; ?>"
+					value="<?php echo ! empty( $inx_skin_field['value'] ) ? $inx_skin_field['value'] : 'X'; ?>"
+					class="uk-checkbox"<?php echo $inx_skin_required[ $inx_skin_field_name ]; ?>
+				>
+				<?php echo $inx_skin_field['caption'] . ( $inx_skin_mark_req_fields && $inx_skin_field_required ? '*' : '' ); ?>
+			</label>
+
+				<?php
+			elseif ( 'radio' === $inx_skin_field_type && ! empty( $inx_skin_field['options'] ) ) :
+				foreach ( $inx_skin_field['options'] as $inx_skin_option => $inx_skin_option_label ) :
+					?>
+
+					<label>
+						<input
+							type="radio"
+							name="<?php echo $inx_skin_field_name; ?>"
+							value="<?php echo $inx_skin_option; ?>"
+							class="uk-radio"<?php echo $inx_skin_required[ $inx_skin_field_name ]; ?>
+						>
+						<?php echo $inx_skin_option_label; ?>
+					</label>&nbsp;
+
+					<?php
+				endforeach;
+				if ( $inx_skin_mark_req_fields && $inx_skin_field_required ) :
+					echo '*';
+				endif;
+			elseif ( 'select' === $inx_skin_field_type && ! empty( $inx_skin_field['options'] ) ) :
+				if ( $inx_skin_mark_req_fields && $inx_skin_field_required ) :
+					$inx_skin_field['options'][ array_keys( $inx_skin_field['options'] )[0] ] .= '*';
+				endif;
+				?>
+
+				<select name="<?php echo $inx_skin_field_name; ?>" class="uk-select"<?php echo $inx_skin_required[ $inx_skin_field_name ]; ?>>
+					<?php foreach ( $inx_skin_field['options'] as $inx_skin_option => $inx_skin_option_label ) : ?>
+					<option value="<?php echo $inx_skin_option; ?>"><?php echo $inx_skin_option_label; ?></option>
+					<?php endforeach; ?>
+				</select>
+
+				<?php
+			endif;
+			?>
+
 			<div class="inx-team-contact-form__input-error"></div>
-		</div>
+		</div><!-- .inx-team-contact-form__input -->
+
+			<?php
+		endforeach;
+		?>
 
 		<?php if ( $template_data['cancellation_consent_text'] ) : ?>
 		<div class="inx-team-contact-form__input inx-team-contact-form__input--type--full inx-team-contact-form__input--name--consent">

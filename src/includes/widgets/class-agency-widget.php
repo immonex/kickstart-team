@@ -91,14 +91,15 @@ class Agency_Widget extends \WP_Widget {
 				$agency_id,
 				'single-agency/widget',
 				array(
-					'type'          => 'widget',
-					'before_title'  => isset( $args['before_title'] ) ? $args['before_title'] : '',
-					'title'         => apply_filters( 'widget_title', isset( $instance['title'] ) ? $instance['title'] : '' ),
-					'after_title'   => isset( $args['after_title'] ) ? $args['after_title'] : '',
-					'display_for'   => ! empty( $instance['display_for'] ) ? $instance['display_for'] : 'all',
-					'link_type'     => ! empty( $instance['link_type'] ) ? $instance['link_type'] : 'internal',
-					'convert_links' => isset( $instance['convert_links'] ) ? ! empty( $instance['convert_links'] ) : true,
-					'elements'      => $elements,
+					'type'               => 'widget',
+					'before_title'       => isset( $args['before_title'] ) ? $args['before_title'] : '',
+					'title'              => apply_filters( 'widget_title', isset( $instance['title'] ) ? $instance['title'] : '' ),
+					'after_title'        => isset( $args['after_title'] ) ? $args['after_title'] : '',
+					'display_for'        => ! empty( $instance['display_for'] ) ? $instance['display_for'] : 'all',
+					'link_type'          => ! empty( $instance['link_type'] ) ? $instance['link_type'] : 'internal',
+					'convert_links'      => isset( $instance['convert_links'] ) ? ! empty( $instance['convert_links'] ) : true,
+					'contact_form_scope' => ! empty( $instance['contact_form_scope'] ) ? $instance['contact_form_scope'] : '',
+					'elements'           => $elements,
 				)
 			);
 		}
@@ -122,21 +123,24 @@ class Agency_Widget extends \WP_Widget {
 
 		$selectable_elements = $this->get_selectable_elements();
 		$options             = array(
-			'display_for'   => 'all',
-			'link_type'     => 'internal',
-			'convert_links' => true,
+			'display_for'        => 'all',
+			'link_type'          => 'internal',
+			'convert_links'      => true,
+			'contact_form_scope' => '',
 		);
 
 		$instance = wp_parse_args( (array) $instance, array_merge( $selectable_elements['defaults'], $options ) );
 		$title    = isset( $instance['title'] ) ? $instance['title'] : '';
 		// @codingStandardsIgnoreStart
 		?>
-<p style="margin-bottom:26px">
+<div class="immonex-be-widget-form">
+
+<p class="option-wrap">
 	<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title', 'immonex-kickstart-team' ); ?>:</label>
-	<input id="<?php echo $this->get_field_id( 'title' ); ?>" type="text" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $title ); ?>" class="widefat"><br>
+	<input id="<?php echo $this->get_field_id( 'title' ); ?>" type="text" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo esc_attr( $title ); ?>" class="widefat">
 </p>
 
-<p>
+<p class="option-wrap">
 	<label for="<?php echo $this->get_field_id( 'display_for' ); ?>"><?php echo __( 'Display for:', 'immonex-kickstart-team' ); ?></label>
 	<select id="<?php echo $this->get_field_id( 'display_for' ); ?>" name="<?php echo $this->get_field_name( 'display_for' ); ?>">
 		<?php foreach ( $immonex_kickstart_team->get_display_for_options() as $option_key => $title ) : ?>
@@ -145,7 +149,7 @@ class Agency_Widget extends \WP_Widget {
 	</select>
 </p>
 
-<p>
+<p class="option-wrap">
 	<label><?php echo __( 'Agency Link Type', 'immonex-kickstart-team' ); ?>:</label><br>
 	<label>
 		<input type="radio" name="<?php echo $this->get_field_name( 'link_type' ); ?>" value="internal"<?php checked( $instance['link_type'], 'internal' ); ?>>
@@ -161,12 +165,29 @@ class Agency_Widget extends \WP_Widget {
 	</label>
 </p>
 
-<p>
+<p class="option-wrap">
 	<label>
 		<input type="checkbox" name="<?php echo $this->get_field_name( 'convert_links' ); ?>" <?php checked( $instance['convert_links'] ); ?>>
 		<?php echo __( 'Convert mail addresses and phone numbers to links', 'immonex-kickstart-team' ); ?>
 	</label>
 </p>
+
+<p>
+	<label><?php echo __( 'Contact Form Scope', 'immonex-kickstart-team' ); ?>:</label><br>
+	<label>
+		<input type="radio" name="<?php echo $this->get_field_name( 'contact_form_scope' ); ?>" value=""<?php checked( $instance['contact_form_scope'], '' ); ?>>
+		<?php _e( 'use default (plugin options)', 'immonex-kickstart-team' ); ?>
+	</label><br>
+	<label>
+		<input type="radio" name="<?php echo $this->get_field_name( 'contact_form_scope' ); ?>" value="basic"<?php checked( $instance['contact_form_scope'], 'basic' ); ?>>
+		<?php _e( 'basic (name, phone number, e-mail address, message)', 'immonex-kickstart-team' ); ?>
+	</label><br>
+	<label>
+		<input type="radio" name="<?php echo $this->get_field_name( 'contact_form_scope' ); ?>" value="extended"<?php checked( $instance['contact_form_scope'], 'extended' ); ?>>
+		<?php _e( 'extended (basic fields + salutation and address)', 'immonex-kickstart-team' ); ?>
+	</label>
+</p>
+<p class="description option-end"><?php _e( 'This setting applies if the <strong>contact form</strong> element ist activated below.', 'immonex-kickstart-team' ); ?></p>
 
 <hr>
 
@@ -191,6 +212,8 @@ class Agency_Widget extends \WP_Widget {
 		endforeach;
 		?>
 </div>
+
+</div><!-- .immonex-be-widget-form -->
 		<?php
 		// @codingStandardsIgnoreEnd
 	} // form
@@ -226,9 +249,10 @@ class Agency_Widget extends \WP_Widget {
 			}
 		}
 
-		$instance['display_for']   = $new_instance['display_for'];
-		$instance['link_type']     = $new_instance['link_type'];
-		$instance['convert_links'] = ! empty( $new_instance['convert_links'] );
+		$instance['display_for']        = $new_instance['display_for'];
+		$instance['link_type']          = $new_instance['link_type'];
+		$instance['convert_links']      = ! empty( $new_instance['convert_links'] );
+		$instance['contact_form_scope'] = $new_instance['contact_form_scope'];
 
 		return $instance;
 	} // update

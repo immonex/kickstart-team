@@ -10,14 +10,14 @@ namespace immonex\Kickstart\Team;
 /**
  * Main plugin class
  */
-class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_3_3\Base {
+class Kickstart_Team extends \immonex\WordPressFreePluginCore\DEV_6\Base {
 
 	const PLUGIN_NAME                = 'immonex Kickstart Team';
 	const ADDON_NAME                 = 'Team';
 	const PLUGIN_PREFIX              = 'inx_team_';
 	const PUBLIC_PREFIX              = 'inx-team-';
 	const TEXTDOMAIN                 = 'immonex-kickstart-team';
-	const PLUGIN_VERSION             = '1.1.15-beta';
+	const PLUGIN_VERSION             = '1.1.16-beta';
 	const PLUGIN_HOME_URL            = 'https://de.wordpress.org/plugins/immonex-kickstart-team/';
 	const PLUGIN_DOC_URLS            = array(
 		'de' => 'https://docs.immonex.de/kickstart-team/',
@@ -53,6 +53,7 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_3_3\Base {
 		'agent_archive_title'                => 'INSERT_TRANSLATED_DEFAULT_VALUE',
 		'default_contact_section_adaptation' => 'replace',
 		'default_contact_section_title'      => 'auto',
+		'extended_form'                      => false,
 		'fallback_form_mail_recipients'      => '',
 		'form_mail_cc_recipients'            => '',
 		'cancellation_page_id'               => 0,
@@ -532,6 +533,18 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_3_3\Base {
 					'description' => __( 'default headline for the contact section/form in property detail pages if <strong>replace</strong> is selected above', 'immonex-kickstart-team' ) .
 						' (' . __( 'Use "auto" for a gender-related default title.', 'immonex-kickstart-team' ) . ')',
 					'value'       => $this->plugin_options['default_contact_section_title'],
+				),
+			),
+			array(
+				'name'    => 'extended_form',
+				'type'    => 'checkbox',
+				'label'   => __( 'Extended Form', 'immonex-kickstart-team' ),
+				'section' => "{$prefix}contact_form",
+				'args'    => array(
+					'plugin_slug' => $this->plugin_slug,
+					'option_name' => $this->plugin_options_name,
+					'description' => __( 'Add salutation, street, postal code and city as required fields in contact forms by default (can be overridden by widget option or shortcode attribute).', 'immonex-kickstart-team' ),
+					'value'       => $this->plugin_options['extended_form'],
 				),
 			),
 			array(

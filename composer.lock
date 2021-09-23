@@ -4,21 +4,15 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0ed37006948517477f0071daa3287e25",
+    "content-hash": "e076bbf3613d5eacade3383621e0e718",
     "packages": [
         {
             "name": "immonex/wp-free-plugin-core",
             "version": "1.3.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/immonex/wp-free-plugin-core.git",
-                "reference": "fb21555ddcd2117f8ca7d3b54182083ffb1a5195"
-            },
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/immonex/wp-free-plugin-core/zipball/fb21555ddcd2117f8ca7d3b54182083ffb1a5195",
-                "reference": "fb21555ddcd2117f8ca7d3b54182083ffb1a5195",
-                "shasum": ""
+                "type": "path",
+                "url": "/Users/splash/Projekte/immonex-wp-free-plugin-core",
+                "reference": "fb21555ddcd2117f8ca7d3b54182083ffb1a5195"
             },
             "require": {
                 "symfony/polyfill-mbstring": "1.20.0",
@@ -30,7 +24,11 @@
                 "phpunit/phpunit": "^7"
             },
             "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "immonex\\WordPressFreePluginCore\\tests\\": "tests/"
+                }
+            },
             "license": [
                 "GPL-2.0-or-later"
             ],
@@ -45,11 +43,9 @@
                 "wordpress",
                 "wp"
             ],
-            "support": {
-                "issues": "https://github.com/immonex/wp-free-plugin-core/issues",
-                "source": "https://github.com/immonex/wp-free-plugin-core/tree/1.3.3"
-            },
-            "time": "2021-09-17T10:03:23+00:00"
+            "transport-options": {
+                "relative": false
+            }
         },
         {
             "name": "symfony/polyfill-ctype",

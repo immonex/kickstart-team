@@ -96,8 +96,15 @@ if (
 
 			if ( 'do_action:' === substr( $inx_skin_value, 0, 10 ) ) {
 				$inx_skin_action = substr( $inx_skin_value, 10 );
-				// @codingStandardsIgnoreLine
-				do_action( $inx_skin_action, '', array( 'origin_post_id' => $template_data['agent_id'] ) );
+				do_action(
+					// @codingStandardsIgnoreLine
+					$inx_skin_action,
+					'',
+					array(
+						'origin_post_id'     => $template_data['agent_id'],
+						'contact_form_scope' => $template_data['contact_form_scope'],
+					)
+				);
 				continue;
 			}
 

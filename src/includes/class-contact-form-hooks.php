@@ -103,6 +103,7 @@ class Contact_Form_Hooks {
 						sanitize_text_field( wp_unslash( $_POST[ "{$nonce_context}_nonce" ] ) ) :
 						false,
 				),
+				'scope'            => isset( $_POST['scope'] ) ? sanitize_key( $_POST['scope'] ) : '',
 				'post_type'        => isset( $_POST['post_type'] ) ? sanitize_key( $_POST['post_type'] ) : '',
 				'origin_post_id'   => isset( $_POST['origin_post_id'] ) ? (int) sanitize_key( $_POST['origin_post_id'] ) : 0,
 				'post_id'          => isset( $_POST['post_id'] ) ? (int) sanitize_key( $_POST['post_id'] ) : 0,

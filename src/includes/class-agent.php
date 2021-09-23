@@ -117,21 +117,22 @@ class Agent extends Base_CPT_Post {
 		$default_elements = array_keys( $this->get_elements( $default_filter ) );
 		$convert_links    = ! empty( $atts['convert_links'] );
 		$contents         = array(
-			'type'             => $atts['type'],
-			'before_title'     => isset( $atts['before_title'] ) ? $atts['before_title'] : '',
-			'title'            => isset( $atts['title'] ) ? $atts['title'] : $this->post->post_title,
-			'after_title'      => isset( $atts['after_title'] ) ? $atts['after_title'] : '',
-			'convert_links'    => $convert_links,
-			'link_type'        => $this->link_type,
-			'agent_id'         => $this->post->ID,
-			'agent_gender'     => $this->get_element_value( 'gender' ),
-			'agency_id'        => $this->agency_id,
-			'is_public'        => $this->is_public,
-			'is_public_agency' => $this->is_public_agency,
-			'is_demo'          => get_post_meta( $this->post->ID, '_immonex_is_demo', true ),
-			'url'              => $url,
-			'property_count'   => $this->get_property_count(),
-			'elements'         => array(),
+			'type'               => $atts['type'],
+			'before_title'       => isset( $atts['before_title'] ) ? $atts['before_title'] : '',
+			'title'              => isset( $atts['title'] ) ? $atts['title'] : $this->post->post_title,
+			'after_title'        => isset( $atts['after_title'] ) ? $atts['after_title'] : '',
+			'link_type'          => $this->link_type,
+			'convert_links'      => $convert_links,
+			'contact_form_scope' => ! empty( $atts['contact_form_scope'] ) ? $atts['contact_form_scope'] : '',
+			'agent_id'           => $this->post->ID,
+			'agent_gender'       => $this->get_element_value( 'gender' ),
+			'agency_id'          => $this->agency_id,
+			'is_public'          => $this->is_public,
+			'is_public_agency'   => $this->is_public_agency,
+			'is_demo'            => get_post_meta( $this->post->ID, '_immonex_is_demo', true ),
+			'url'                => $url,
+			'property_count'     => $this->get_property_count(),
+			'elements'           => array(),
 		);
 
 		$requested_elements = ! empty( $atts['elements'] ) ?

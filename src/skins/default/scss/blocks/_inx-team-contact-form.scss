@@ -15,8 +15,12 @@
 	box-sizing: border-box;
 }
 
-.inx-team-contact-form__input:not(.inx-team-contact-form__input--type--full) {
+.inx-team-contact-form__input:not(.inx-team-contact-form__input--type--half):not(.inx-team-contact-form__input--type--full) {
 	flex: 1 1 16em;
+}
+
+.inx-team-contact-form__input--type--half {
+	flex: 0 0 50%;
 }
 
 .inx-team-contact-form__input--type--full {

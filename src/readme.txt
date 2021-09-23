@@ -106,10 +106,12 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 
 == Changelog ==
 
-= 1.1.15-beta =
+= 1.1.16-beta =
 * Release date: ?
+* Added (optional) extended contact forms.
+* Added option to add user-defined contact form fields per filter function.
 * Fixed recursion bug and added fallback name on auto creating/updating agent/agency records.
-* Added missing checks if Kickstart core plugin is available in special cases.
+* Added missing checks if Kickstart core plugin is available (special cases).
 * Improved compatibility in Windows-based hosting environments.
 * Adjusted agency/agent-related property queries.
 * Fixed saving of user-related property agent IDs.

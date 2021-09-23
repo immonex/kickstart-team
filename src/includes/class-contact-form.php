@@ -57,6 +57,7 @@ class Contact_Form {
 			$template = 'contact-form';
 		}
 
+		$scope            = $this->get_scope( $atts );
 		$origin_post_id   = ! empty( $atts['origin_post_id'] ) ? $atts['origin_post_id'] : false;
 		$post_id          = $this->utils['general']->get_the_ID();
 		$property_post_id = apply_filters(
@@ -64,7 +65,7 @@ class Contact_Form {
 			$post_id
 		);
 		$is_demo          = $this->is_demo_context( $origin_post_id, $property_post_id );
-		$fields           = $this->get_fields();
+		$fields           = $this->get_fields( false, $scope );
 		$property         = get_post( $property_post_id );
 
 		if ( $property_post_id && $property ) {
@@ -84,6 +85,7 @@ class Contact_Form {
 			$atts,
 			array(
 				'instance'                  => $this,
+				'scope'                     => $scope,
 				'is_demo'                   => $is_demo,
 				'post_type'                 => get_post_type(),
 				'origin_post_id'            => $origin_post_id,
@@ -138,8 +140,9 @@ class Contact_Form {
 			return $result;
 		}
 
+		$scope         = $this->get_scope( $form_data );
 		$site_title    = get_bloginfo( 'name' );
-		$fields        = $this->get_fields();
+		$fields        = $this->get_fields( false, $scope );
 		$template_data = array(
 			'site_title' => $site_title,
 			'form_data'  => array(),
@@ -271,50 +274,157 @@ class Contact_Form {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param bool $names_only Indicate if only the element names shall be returned.
+	 * @param bool        $names_only Indicate if only the element names shall be returned.
+	 * @param string|bool $scope      Scope of fields: "basic"/false (default) or extended.
 	 *
 	 * @return mixed[] Full element data or names only.
 	 */
-	public function get_fields( $names_only = false ) {
-		$fields = array(
-			'name'    => array(
+	public function get_fields( $names_only = false, $scope = false ) {
+		if ( ! $scope ) {
+			$scope = $this->get_scope();
+		}
+
+		$variable_fields = array(
+			'salutation'  => array(
+				'type'        => 'radio',
+				'required'    => true,
+				'caption'     => __( 'Salutation', 'immonex-kickstart-team' ),
+				'options'     => array(
+					'f' => __( 'Ms.', 'immonex-kickstart-team' ),
+					'm' => __( 'Mr.', 'immonex-kickstart-team' ),
+				),
+				'layout_type' => 'full',
+				'scope'       => array( 'extended' ),
+				'order'       => 10,
+			),
+			'first_name'  => array(
+				'type'        => 'text',
+				'required'    => true,
+				'caption'     => __( 'First Name', 'immonex-kickstart-team' ),
+				'placeholder' => __( 'First Name', 'immonex-kickstart-team' ),
+				'scope'       => array( 'extended' ),
+				'order'       => 20,
+			),
+			'last_name'   => array(
+				'type'        => 'text',
+				'required'    => true,
+				'caption'     => __( 'Last Name', 'immonex-kickstart-team' ),
+				'placeholder' => __( 'Last Name', 'immonex-kickstart-team' ),
+				'scope'       => array( 'extended' ),
+				'order'       => 30,
+			),
+			'street'      => array(
+				'type'        => 'text',
+				'required'    => true,
+				'caption'     => __( 'Street', 'immonex-kickstart-team' ),
+				'placeholder' => __( 'Street', 'immonex-kickstart-team' ),
+				'scope'       => array( 'extended' ),
+				'layout_type' => 'full',
+				'order'       => 40,
+			),
+			'postal_code' => array(
+				'type'        => 'text',
+				'required'    => true,
+				'caption'     => __( 'Postal Code', 'immonex-kickstart-team' ),
+				'placeholder' => __( 'Postal Code', 'immonex-kickstart-team' ),
+				'layout_type' => 'half',
+				'scope'       => array( 'extended' ),
+				'order'       => 50,
+			),
+			'city'        => array(
+				'type'        => 'text',
+				'required'    => true,
+				'caption'     => __( 'City', 'immonex-kickstart-team' ),
+				'placeholder' => __( 'City', 'immonex-kickstart-team' ),
+				'layout_type' => 'half',
+				'scope'       => array( 'extended' ),
+				'order'       => 60,
+			),
+			'name'        => array(
 				'type'         => 'text',
 				'required'     => true,
 				'caption'      => __( 'Name', 'immonex-kickstart-team' ),
 				'caption_mail' => __( 'Prospect', 'immonex-kickstart-team' ),
 				'placeholder'  => __( 'Name', 'immonex-kickstart-team' ),
+				'scope'        => array( 'basic' ),
+				'order'        => 70,
 			),
-			'phone'   => array(
+			'phone'       => array(
 				'type'        => 'text',
 				'required'    => false,
 				'required_or' => 'email',
 				'caption'     => __( 'Phone', 'immonex-kickstart-team' ),
 				'placeholder' => __( 'Phone', 'immonex-kickstart-team' ),
+				'scope'       => array( 'basic', 'extended' ),
+				'order'       => 80,
 			),
-			'email'   => array(
+			'email'       => array(
 				'type'        => 'email',
 				'required'    => false,
 				'required_or' => 'phone',
 				'caption'     => __( 'Email Address', 'immonex-kickstart-team' ),
 				'placeholder' => __( 'Email Address', 'immonex-kickstart-team' ),
+				'scope'       => array( 'basic', 'extended' ),
+				'order'       => 90,
 			),
-			'message' => array(
+			'message'     => array(
 				'type'        => 'textarea',
 				'required'    => true,
 				'caption'     => __( 'Message', 'immonex-kickstart-team' ),
 				'placeholder' => __( 'Message', 'immonex-kickstart-team' ),
-			),
-			'consent' => array(
-				'type'     => 'checkbox',
-				'required' => (int) $this->config['cancellation_page_id'] ? true : false,
+				'layout_type' => 'full',
+				'scope'       => array( 'basic', 'extended' ),
+				'order'       => 100,
 			),
 		);
 
-		return apply_filters(
-			'inx_team_contact_form_fields',
-			$names_only ? array_keys( $fields ) : $fields,
-			$names_only
+		$mandatory_fields = array(
+			'consent' => array(
+				'type'     => 'checkbox',
+				'required' => (int) $this->config['cancellation_page_id'] ? true : false,
+				'order'    => 200,
+			),
 		);
+
+		$fields = apply_filters(
+			'inx_team_contact_form_fields',
+			$variable_fields,
+			$names_only,
+			$scope
+		);
+
+		if ( empty( $fields ) || ! is_array( $fields ) ) {
+			$fields = $variable_fields;
+		}
+
+		$default_scope   = $this->get_scope();
+		$filtered_fields = array();
+		foreach ( $fields as $field_name => $field ) {
+			if ( empty( $field['scope'] ) ) {
+				$field['scope'] = array( $default_scope );
+			}
+			if ( in_array( $scope, $field['scope'], true ) ) {
+				$filtered_fields[ $field_name ] = $field;
+			}
+		}
+
+		$fields = array_merge( $filtered_fields, $mandatory_fields );
+		uasort(
+			$fields,
+			function( $a, $b ) {
+				if (
+					! isset( $a['order'] )
+					|| ! isset( $b['order'] )
+					|| $a['order'] === $b['order']
+				) {
+					return 0;
+				}
+
+				return $a['order'] < $b['order'] ? -1 : 1;
+			}
+		);
+
+		return $names_only ? array_keys( $fields ) : $fields;
 	} // get_fields
 
 	/**
@@ -327,7 +437,8 @@ class Contact_Form {
 	 * @return mixed[] Validation result (status, user messages, errors).
 	 */
 	public function validate( $form_data ) {
-		$fields = $this->get_fields();
+		$scope  = $this->get_scope( $form_data );
+		$fields = $this->get_fields( false, $scope );
 		$result = array(
 			'valid'        => true,
 			'message'      => $this->config['form_confirmation_message'],
@@ -377,8 +488,11 @@ class Contact_Form {
 	 * @return mixed[] User form data.
 	 */
 	public function get_user_form_data() {
-		$form_data   = array();
-		$field_names = $this->get_fields( true );
+		$form_data = array();
+
+		// @codingStandardsIgnoreLine
+		$scope       = $this->get_scope( $_POST );
+		$field_names = $this->get_fields( false, $scope );
 
 		if ( ! in_array( self::HONEYPOT_FIELD_NAME, $field_names, true ) ) {
 			// Add a honeypot field name.
@@ -386,21 +500,32 @@ class Contact_Form {
 		}
 
 		if ( count( $field_names ) > 0 ) {
-			foreach ( $field_names as $field ) {
+			foreach ( $field_names as $field_name => $field ) {
 				// @codingStandardsIgnoreLine
-				$value = isset( $_POST[ $field ] ) ? wp_unslash( $_POST[ $field ] ) : '';
+				$value = isset( $_POST[ $field_name ] ) ?
+					// @codingStandardsIgnoreLine
+					wp_unslash( $_POST[ $field_name ] ) : '';
+				if ( $value && isset( $field['options'] ) && isset( $field['options'][ $value ] ) ) {
+					$value = $field['options'][ $value ];
+				}
 
-				if ( self::HONEYPOT_FIELD_NAME !== $field ) {
-					if ( false !== strpos( $value, PHP_EOL ) ) {
+				if ( self::HONEYPOT_FIELD_NAME !== $field_name ) {
+					if (
+						( isset( $field['type'] ) && 'textarea' === $field['type'] )
+						|| false !== strpos( $value, PHP_EOL )
+					) {
 						$value = sanitize_textarea_field( $value );
-					} elseif ( 'email' === $field ) {
+					} elseif (
+						( isset( $field['type'] ) && 'email' === $field['type'] )
+						|| 'email' === $field_name
+					) {
 						$value = sanitize_email( $value );
 					} else {
 						$value = sanitize_text_field( $value );
 					}
 				}
 
-				$form_data[ $field ] = $value;
+				$form_data[ $field_name ] = $value;
 			}
 		}
 
@@ -997,7 +1122,7 @@ class Contact_Form {
 
 			foreach ( $template_data['form_data'] as $field_name => $field ) {
 				if (
-					'checkbox' === $field['type']
+					'consent' === $field_name
 					|| empty( $field['value'] )
 				) {
 					continue;
@@ -1022,7 +1147,7 @@ class Contact_Form {
 					);
 				} else {
 					if ( $caption ) {
-						$rendered_field = str_pad( $caption . ':', $max_caption_length );
+						$rendered_field = $this->utils['string']->mb_str_pad( $caption . ':', $max_caption_length );
 					}
 					$rendered_field .= $field['value'];
 				}
@@ -1077,7 +1202,8 @@ class Contact_Form {
 
 			if (
 				$caption
-				&& ! in_array( $field['type'], array( 'textarea', 'checkbox' ), true )
+				&& 'textarea' !== $field['type']
+				&& 'consent' !== $field_name
 			) {
 				$max_caption_length = strlen( $caption ) + 2;
 			}
@@ -1085,5 +1211,35 @@ class Contact_Form {
 
 		return $max_caption_length;
 	} // get_max_field_caption_length
+
+	/**
+	 * Get the form scope from an array of elements (e.g. user form data)
+	 * or the default value.
+	 *
+	 * @since 1.2.0
+	 *
+	 * @param mixed[]|bool $elements Form data or false for default value.
+	 *
+	 * @return string Form scope (basic or extended).
+	 */
+	private function get_scope( $elements = false ) {
+		$valid_scopes  = array( 'basic', 'extended' );
+		$default_scope = $this->config['extended_form'] ?
+			'extended' : $valid_scopes[0];
+		if ( empty( $elements ) ) {
+			return $default_scope;
+		}
+
+		foreach ( array( 'scope', 'contact_form_scope' ) as $scope_key ) {
+			$scope = isset( $elements[ $scope_key ] ) ?
+				trim( strtolower( $elements[ $scope_key ] ) ) : '';
+
+			if ( in_array( $scope, $valid_scopes, true ) ) {
+				return $scope;
+			}
+		}
+
+		return $default_scope;
+	} // get_scope
 
 } // Contact_Form
