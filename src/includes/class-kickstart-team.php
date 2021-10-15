@@ -498,7 +498,7 @@ and conditions can be used in the related input fields:<br><br>
 	<dd>User-submitted form data (for admin/agent mails)</dd>
 
 	<dt><code>{{ sender_info.name }}</code></dt>
-	<dd><a href="%2$s">Agent</a> or <a href="%3\$s">agency</a> name (depending on the form context)</dd>
+	<dd><a href="%2$s">Agent</a> or <a href="%3$s">agency</a> name (depending on the form context)</dd>
 
 	<dt><code>{{ sender_info.company }}</code></dt>
 	<dd><a href="%3$s">Agency</a> name (if available)</dd>

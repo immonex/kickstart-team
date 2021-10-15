@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the immonex Kickstart Team package.
 msgid ""
 msgstr ""
-"Project-Id-Version: immonex Kickstart Team 1.1.16-beta\n"
+"Project-Id-Version: immonex Kickstart Team 1.2.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/immonex-kickstart-team\n"
-"POT-Creation-Date: 2021-10-15 09:46:04+00:00\n"
+"POT-Creation-Date: 2021-10-15 15:15:57+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -594,7 +594,7 @@ msgid ""
 "\t<dd>User-submitted form data (for admin/agent mails)</dd>\n"
 "\n"
 "\t<dt><code>{{ sender_info.name }}</code></dt>\n"
-"\t<dd><a href=\"%2$s\">Agent</a> or <a href=\"%3\\$s\">agency</a> name "
+"\t<dd><a href=\"%2$s\">Agent</a> or <a href=\"%3$s\">agency</a> name "
 "(depending on the form context)</dd>\n"
 "\n"
 "\t<dt><code>{{ sender_info.company }}</code></dt>\n"
@@ -730,77 +730,77 @@ msgid ""
 msgstr ""
 
 #: includes/class-kickstart-team.php:687
-msgid "Fallback Recipient Mail Addresses"
-msgstr ""
-
-#: includes/class-kickstart-team.php:692
-msgid ""
-"comma-separated list of <strong>fallback</strong> recipient addresses used "
-"if no property related agent/agency address is determinable (default: main "
-"site admin address)"
-msgstr ""
-
-#: includes/class-kickstart-team.php:699
-msgid "CC Mail Addresses"
-msgstr ""
-
-#: includes/class-kickstart-team.php:704
-msgid ""
-"comma-separated list of addresses to which <strong>copies of all inquiry "
-"mails</strong> should be sent"
-msgstr ""
-
-#: includes/class-kickstart-team.php:711
 msgid "Cancellation Policy Page"
 msgstr ""
 
-#: includes/class-kickstart-team.php:716
+#: includes/class-kickstart-team.php:692
 msgid ""
 "If a cancellation policy page is selected, the following consent text will "
 "be added to the form."
 msgstr ""
 
-#: includes/class-kickstart-team.php:717
+#: includes/class-kickstart-team.php:693
 msgid ""
 "If the page is available in multiple languages, please select the version in "
 "the <strong>site's main language</strong> here."
 msgstr ""
 
-#: includes/class-kickstart-team.php:725
+#: includes/class-kickstart-team.php:701
 msgid "Cancellation Consent Text"
 msgstr ""
 
-#: includes/class-kickstart-team.php:730
+#: includes/class-kickstart-team.php:706
 msgid ""
 "This text must be confirmed by the user if a cancellation policy page has "
 "been selected above (insert <code>[cancellation_policy]</code> to add a "
 "link)."
 msgstr ""
 
-#: includes/class-kickstart-team.php:737
+#: includes/class-kickstart-team.php:713
 msgid "Privacy Note"
 msgstr ""
 
 #. translators: %s = privacy options page URL
-#: includes/class-kickstart-team.php:744
+#: includes/class-kickstart-team.php:720
 msgid ""
 "The privacy policy notice is mandatory, but does <strong>not</strong> have "
 "to be confirmed (insert <code>[privacy_policy]</code> to add a link to the "
 "privacy policy page defined in the <a href=\"%s\">site options</a>)."
 msgstr ""
 
-#: includes/class-kickstart-team.php:753
+#: includes/class-kickstart-team.php:729
 msgid "Confirmation Message"
 msgstr ""
 
-#: includes/class-kickstart-team.php:758
+#: includes/class-kickstart-team.php:734
 msgid ""
 "This message is being displayed when the form data have been successfully "
 "submitted."
 msgstr ""
 
-#: includes/class-kickstart-team.php:765
+#: includes/class-kickstart-team.php:741
 msgid "Hide form after submit"
+msgstr ""
+
+#: includes/class-kickstart-team.php:752
+msgid "Fallback Recipient Mail Addresses"
+msgstr ""
+
+#: includes/class-kickstart-team.php:757
+msgid ""
+"comma-separated list of <strong>fallback</strong> recipient addresses used "
+"if no property related agent/agency address is determinable (default: main "
+"site admin address)"
+msgstr ""
+
+#: includes/class-kickstart-team.php:764
+msgid "CC Mail Addresses"
+msgstr ""
+
+#: includes/class-kickstart-team.php:769
+msgid ""
+"comma-separated list of addresses to which <strong>copies of all inquiry "
+"mails</strong> should be sent"
 msgstr ""
 
 #: includes/class-kickstart-team.php:776 includes/class-kickstart-team.php:870
