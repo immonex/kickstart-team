@@ -10,14 +10,14 @@ namespace immonex\Kickstart\Team;
 /**
  * Main plugin class
  */
-class Kickstart_Team extends \immonex\WordPressFreePluginCore\DEV_6\Base {
+class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_4_0\Base {
 
 	const PLUGIN_NAME                = 'immonex Kickstart Team';
 	const ADDON_NAME                 = 'Team';
 	const PLUGIN_PREFIX              = 'inx_team_';
 	const PUBLIC_PREFIX              = 'inx-team-';
 	const TEXTDOMAIN                 = 'immonex-kickstart-team';
-	const PLUGIN_VERSION             = '1.1.16-beta';
+	const PLUGIN_VERSION             = '1.2.0';
 	const PLUGIN_HOME_URL            = 'https://de.wordpress.org/plugins/immonex-kickstart-team/';
 	const PLUGIN_DOC_URLS            = array(
 		'de' => 'https://docs.immonex.de/kickstart-team/',
@@ -54,15 +54,26 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\DEV_6\Base {
 		'default_contact_section_adaptation' => 'replace',
 		'default_contact_section_title'      => 'auto',
 		'extended_form'                      => false,
-		'fallback_form_mail_recipients'      => '',
-		'form_mail_cc_recipients'            => '',
 		'cancellation_page_id'               => 0,
 		'consent_text_cancellation'          => 'INSERT_TRANSLATED_DEFAULT_VALUE',
 		'consent_text_privacy'               => 'INSERT_TRANSLATED_DEFAULT_VALUE',
 		'form_confirmation_message'          => 'INSERT_TRANSLATED_DEFAULT_VALUE',
 		'send_receipt_confirmation'          => false,
 		'hide_form_after_submit'             => true,
+		'fallback_form_mail_recipients'      => '',
+		'form_mail_cc_recipients'            => '',
+		'admin_mails_as_html'                => false,
 		'oi_feedback_type'                   => 'attachment',
+		'admin_contact_form_mail_template'   => '{% if is_property_inquiry %}' . PHP_EOL .
+			'{{ property_title_ext_id_url }}' . PHP_EOL . PHP_EOL .
+			'{% endif %}' . PHP_EOL . '{{ form_data }}',
+		'rcpt_conf_mail_subject_general'     => 'INSERT_TRANSLATED_DEFAULT_VALUE',
+		'rcpt_conf_mail_subject_property'    => 'INSERT_TRANSLATED_DEFAULT_VALUE',
+		'rcpt_conf_mails_as_html'            => false,
+		'rcpt_conf_logo_id'                  => '',
+		'rcpt_conf_logo_position'            => 'top_center',
+		'rcpt_conf_mail_template'            => 'INSERT_TRANSLATED_DEFAULT_VALUE',
+		'rcpt_conf_mail_signature'           => '{{ site_title }}' . PHP_EOL . '{{ site_url }}',
 		'agency_post_type_slug_rewrite'      => 'INSERT_TRANSLATED_DEFAULT_VALUE',
 		'agent_post_type_slug_rewrite'       => 'INSERT_TRANSLATED_DEFAULT_VALUE',
 	);
@@ -133,11 +144,11 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\DEV_6\Base {
 						$update_options                       = true;
 						break;
 					case 'consent_text_privacy':
-						$this->plugin_options[ $option_name ] = __( 'I agree that my data will be processed and stored in accordance with the [privacy_policy] in order to answer my request. This consent can be revoked at any time.', 'immonex-kickstart-team' );
+						$this->plugin_options[ $option_name ] = __( 'By submitting I consent to my data being processed and stored in accordance with the [privacy_policy] in order to answer my request. This consent can be revoked at any time.', 'immonex-kickstart-team' );
 						$update_options                       = true;
 						break;
 					case 'form_confirmation_message':
-						$this->plugin_options[ $option_name ] = __( 'Thank you for your inquiry!', 'immonex-kickstart-team' );
+						$this->plugin_options[ $option_name ] = __( 'Thank you for the inquiry!', 'immonex-kickstart-team' );
 						$update_options                       = true;
 						break;
 					case 'agency_post_type_slug_rewrite':
@@ -148,6 +159,55 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\DEV_6\Base {
 						$this->plugin_options[ $option_name ] = _x( 'real-estate-agents', 'Custom Post Type Slug (plural only!)', 'immonex-kickstart-team' );
 						$update_options                       = true;
 						break;
+					case 'rcpt_conf_mail_subject_general':
+						$this->plugin_options[ $option_name ] = wp_sprintf(
+							'[{{ site_title }}] %s',
+							__( 'Confirmation of receipt', 'immonex-kickstart-team' )
+						);
+						$update_options                       = true;
+						break;
+					case 'rcpt_conf_mail_template':
+						$this->plugin_options[ $option_name ] = wp_sprintf(
+							'%1$s
+
+{%% if is_property_inquiry %%}
+%2$s
+
+{{ property_title_ext_id_url }}
+{%% else %%}
+%3$s
+{%% endif %%}
+
+{%% if confirmation_sender == \'agent\' %%}
+%4$s
+
+%5$s
+
+{{ sender_info.name }}
+{{ sender_info.company }}
+{%% else %%}
+%6$s
+
+%5$s
+
+{{ sender_info.company }}
+{%% endif %%}',
+							__( 'Good day!', 'immonex-kickstart-team' ),
+							__( 'Thanks for the inquiry on the following property:', 'immonex-kickstart-team' ),
+							__( 'Thanks for the message!', 'immonex-kickstart-team' ),
+							__( 'I will get in touch with you as soon as possible.', 'immonex-kickstart-team' ),
+							__( 'Best regards,', 'immonex-kickstart-team' ),
+							__( 'We will get in touch with you as soon as possible.', 'immonex-kickstart-team' )
+						);
+						$update_options                       = true;
+						break;
+					case 'rcpt_conf_mail_subject_property':
+						$this->plugin_options[ $option_name ] = wp_sprintf(
+							'[{{ site_title }}] %s %s',
+							__( 'Inquiry for the property', 'immonex-kickstart-team' ),
+							'{{ property_title_ext_id }}'
+						);
+						$update_options                       = true;
 				}
 			}
 		}
@@ -418,15 +478,89 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\DEV_6\Base {
 		$addon_tab_id   = "addon_{$plugin_slug_us}";
 		$prefix         = $addon_tab_id . '_';
 
+		$templating_info = wp_sprintf(
+			/* translators: %1$s, %2$s and %3$s are placeholders for URLs. */
+			__(
+				'All mail <strong>subject, body and signature contents</strong> can be implemented based on
+the flexible <a href="%1$s" target="_blank">template engine Twig 3</a>. The following variables
+and conditions can be used in the related input fields:<br><br>
+
+<strong>General</strong>
+
+<dl>
+	<dt><code>{{ site_title }}</code></dt>
+	<dd>Website title</dd>
+
+	<dt><code>{{ site_url }}</code></dt>
+	<dd>Website URL (home page)</dd>
+
+	<dt><code>{{ form_data }}</code></dt>
+	<dd>User-submitted form data (for admin/agent mails)</dd>
+
+	<dt><code>{{ sender_info.name }}</code></dt>
+	<dd><a href="%2$s">Agent</a> or <a href="%3\$s">agency</a> name (depending on the form context)</dd>
+
+	<dt><code>{{ sender_info.company }}</code></dt>
+	<dd><a href="%3$s">Agency</a> name (if available)</dd>
+</dl>',
+				'immonex-kickstart-team'
+			),
+			'https://twig.symfony.com/doc/3.x/templates.html',
+			admin_url( 'edit.php?post_type=inx_agent' ),
+			admin_url( 'edit.php?post_type=inx_agency' )
+		);
+
+		$ext_templating_info = __(
+			'<strong>Property Inquiries</strong>
+
+<dl>
+	<dt><code>{{ property_title }}</code></dt>
+	<dd>Name of the property</dd>
+
+	<dt><code>{{ external_id }}</code></dt>
+	<dd>Custom property ID submitted via OpenImmo import interface</dd>
+
+	<dt><code>{{ property_url }}</code></dt>
+	<dd>Property detail page URL</dd>
+
+	<dt><code>{{ property_title_ext_id }}</code></dt>
+	<dd>Combined property name and ID</dd>
+
+	<dt><code>{{ property_title_ext_id_url }}</code></dt>
+	<dd>Combined property name, ID and URL</dd>
+</dl>
+
+<strong>Conditions</strong>
+
+<dl>
+	<dt><code>{%% if is_property_inquiry %%} ... {%% else %%} ... {%% endif %%}</code></dt>
+	<dd>Conditional embedding of property related <strong>or</strong> alternative contents</dd>
+
+	<dt><code>{%% if confirmation_sender == \'agent\' %%} ... {%% endif %%}</code></dt>
+	<dd>Conditional embedding contents based on the <strong>sender type</strong> (agent or agency)</dd>
+</dl>',
+			'immonex-kickstart-team'
+		);
+
 		$addon_sections = array(
-			"{$prefix}layout"       => array(
+			"{$prefix}layout"             => array(
 				'title'       => __( 'Layout & Design', 'immonex-kickstart-team' ),
 				'description' => '',
 				'tab'         => $addon_tab_id,
 			),
-			"{$prefix}contact_form" => array(
+			"{$prefix}contact_form"       => array(
 				'title'       => __( 'Contact Form', 'immonex-kickstart-team' ),
 				'description' => '',
+				'tab'         => $addon_tab_id,
+			),
+			"{$prefix}contact_form_mails" => array(
+				'title'       => __( 'Contact Form Mails', 'immonex-kickstart-team' ),
+				'description' => array( $templating_info, $ext_templating_info ),
+				'tab'         => $addon_tab_id,
+			),
+			"{$prefix}rcpt_conf_mails"    => array(
+				'title'       => __( 'Receipt Confirmation Mails', 'immonex-kickstart-team' ),
+				'description' => array( $templating_info, $ext_templating_info ),
 				'tab'         => $addon_tab_id,
 			),
 		);
@@ -548,30 +682,6 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\DEV_6\Base {
 				),
 			),
 			array(
-				'name'    => 'fallback_form_mail_recipients',
-				'type'    => 'text',
-				'label'   => __( 'Fallback Recipient Mail Addresses', 'immonex-kickstart-team' ),
-				'section' => "{$prefix}contact_form",
-				'args'    => array(
-					'plugin_slug' => $this->plugin_slug,
-					'option_name' => $this->plugin_options_name,
-					'description' => __( 'comma-separated list of <strong>fallback</strong> recipient addresses used if no property related agent/agency address is determinable (default: main site admin address)', 'immonex-kickstart-team' ),
-					'value'       => $this->plugin_options['fallback_form_mail_recipients'],
-				),
-			),
-			array(
-				'name'    => 'form_mail_cc_recipients',
-				'type'    => 'text',
-				'label'   => __( 'CC Mail Addresses', 'immonex-kickstart-team' ),
-				'section' => "{$prefix}contact_form",
-				'args'    => array(
-					'plugin_slug' => $this->plugin_slug,
-					'option_name' => $this->plugin_options_name,
-					'description' => __( 'comma-separated list of addresses to which <strong>copies of all inquiry mails</strong> should be sent', 'immonex-kickstart-team' ),
-					'value'       => $this->plugin_options['form_mail_cc_recipients'],
-				),
-			),
-			array(
 				'name'    => 'cancellation_page_id',
 				'type'    => 'select',
 				'label'   => __( 'Cancellation Policy Page', 'immonex-kickstart-team' ),
@@ -593,7 +703,7 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\DEV_6\Base {
 				'args'    => array(
 					'plugin_slug' => $this->plugin_slug,
 					'option_name' => $this->plugin_options_name,
-					'description' => __( 'This text must be confirmed by the user if a cancellation policy page has been selected above (insert <strong>[cancellation_policy]</strong> to add a link).', 'immonex-kickstart-team' ),
+					'description' => __( 'This text must be confirmed by the user if a cancellation policy page has been selected above (insert <code>[cancellation_policy]</code> to add a link).', 'immonex-kickstart-team' ),
 					'value'       => $this->plugin_options['consent_text_cancellation'],
 				),
 			),
@@ -607,7 +717,7 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\DEV_6\Base {
 					'option_name' => $this->plugin_options_name,
 					'description' => wp_sprintf(
 						/* translators: %s = privacy options page URL */
-						__( 'The privacy policy notice is mandatory, but does <strong>not</strong> have to be confirmed (insert <strong>[privacy_policy]</strong> to add a link to the privacy policy page defined in the <a href="%s">site options</a>).', 'immonex-kickstart-team' ),
+						__( 'The privacy policy notice is mandatory, but does <strong>not</strong> have to be confirmed (insert <code>[privacy_policy]</code> to add a link to the privacy policy page defined in the <a href="%s">site options</a>).', 'immonex-kickstart-team' ),
 						admin_url( 'options-privacy.php' )
 					),
 					'value'       => $this->plugin_options['consent_text_privacy'],
@@ -626,18 +736,6 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\DEV_6\Base {
 				),
 			),
 			array(
-				'name'    => 'send_receipt_confirmation',
-				'type'    => 'checkbox',
-				'label'   => __( 'Receipt Confirmation', 'immonex-kickstart-team' ),
-				'section' => "{$prefix}contact_form",
-				'args'    => array(
-					'plugin_slug' => $this->plugin_slug,
-					'option_name' => $this->plugin_options_name,
-					'description' => __( 'Activate if prospects shall receive a receipt confirmation mail on successful form submissions.', 'immonex-kickstart-team' ),
-					'value'       => $this->plugin_options['send_receipt_confirmation'],
-				),
-			),
-			array(
 				'name'    => 'hide_form_after_submit',
 				'type'    => 'checkbox',
 				'label'   => __( 'Hide form after submit', 'immonex-kickstart-team' ),
@@ -649,20 +747,219 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\DEV_6\Base {
 				),
 			),
 			array(
-				'name'    => 'oi_feedback_type',
-				'type'    => 'select',
-				'label'   => __( 'OpenImmo-Feedback Type', 'immonex-kickstart-team' ),
-				'section' => "{$prefix}contact_form",
+				'name'    => 'fallback_form_mail_recipients',
+				'type'    => 'text',
+				'label'   => __( 'Fallback Recipient Mail Addresses', 'immonex-kickstart-team' ),
+				'section' => "{$prefix}contact_form_mails",
 				'args'    => array(
 					'plugin_slug' => $this->plugin_slug,
 					'option_name' => $this->plugin_options_name,
-					'description' => __( 'This option defines if and how OpenImmo-Feedback data are attached to contact form mails sent to admin recipients (e.g. for further processing in an external software solution).', 'immonex-kickstart-team' ),
+					'description' => __( 'comma-separated list of <strong>fallback</strong> recipient addresses used if no property related agent/agency address is determinable (default: main site admin address)', 'immonex-kickstart-team' ),
+					'value'       => $this->plugin_options['fallback_form_mail_recipients'],
+				),
+			),
+			array(
+				'name'    => 'form_mail_cc_recipients',
+				'type'    => 'text',
+				'label'   => __( 'CC Mail Addresses', 'immonex-kickstart-team' ),
+				'section' => "{$prefix}contact_form_mails",
+				'args'    => array(
+					'plugin_slug' => $this->plugin_slug,
+					'option_name' => $this->plugin_options_name,
+					'description' => __( 'comma-separated list of addresses to which <strong>copies of all inquiry mails</strong> should be sent', 'immonex-kickstart-team' ),
+					'value'       => $this->plugin_options['form_mail_cc_recipients'],
+				),
+			),
+			array(
+				'name'    => 'admin_mails_as_html',
+				'type'    => 'checkbox',
+				'label'   => __( 'Send HTML Mails', 'immonex-kickstart-team' ),
+				'section' => "{$prefix}contact_form_mails",
+				'args'    => array(
+					'plugin_slug' => $this->plugin_slug,
+					'option_name' => $this->plugin_options_name,
+					'description' => wp_sprintf(
+						/* translators: %s = placeholder for the message type */
+						__( 'Activate to send %s as <strong>HTML-formatted</strong> mails. (An alternative plain text version is generated automatically.)', 'immonex-kickstart-team' ),
+						__( 'contact form messages/inquiries', 'immonex-kickstart-team' )
+					),
+					'value'       => $this->plugin_options['admin_mails_as_html'],
+				),
+			),
+			array(
+				'name'    => 'admin_contact_form_mail_template',
+				'type'    => 'wysiwyg',
+				'label'   => __( 'Contact Form Mail Body', 'immonex-kickstart-team' ),
+				'section' => "{$prefix}contact_form_mails",
+				'args'    => array(
+					'plugin_slug'     => $this->plugin_slug,
+					'option_name'     => $this->plugin_options_name,
+					'description'     => wp_sprintf(
+						/* translators: %s = URL placeholder */
+						__( 'HTML and Twig 3 markup can be used here (see info section above and the <a href="%s" target="_blank">Twig documentation</a> for details).', 'immonex-kickstart-team' ),
+						'https://twig.symfony.com/doc/3.x/templates.html'
+					) . ' ' .
+						__( 'The variable <code>{{ form_data }}</code> <strong>must</strong> be included.', 'immonex-kickstart-team' ) . ' ' .
+						__( 'If this field is <strong>empty</strong>, a default template in the skin folder will be used instead.', 'immonex-kickstart-team' ),
+					'value'           => $this->plugin_options['admin_contact_form_mail_template'],
+					'editor_settings' => array(
+						'default_editor' => 'html',
+						'teeny'          => true,
+						'quicktags'      => array( 'buttons' => 'strong,em,link,img,close' ),
+						'tinymce'        => true,
+					),
+				),
+			),
+			array(
+				'name'    => 'oi_feedback_type',
+				'type'    => 'select',
+				'label'   => __( 'OpenImmo Feedback Type', 'immonex-kickstart-team' ),
+				'section' => "{$prefix}contact_form_mails",
+				'args'    => array(
+					'plugin_slug' => $this->plugin_slug,
+					'option_name' => $this->plugin_options_name,
+					'description' => __( 'This option defines if and how <strong>OpenImmo Feedback XML data</strong> are attached to contact form mails sent to admin/agent recipients (e.g. for further processing in an external software solution).', 'immonex-kickstart-team' ),
 					'options'     => array(
 						''           => _x( 'none', 'as a synonym for "without"', 'immonex-kickstart-team' ),
 						'attachment' => __( 'Attachment', 'immonex-kickstart-team' ),
 						'body'       => __( 'Mail Body', 'immonex-kickstart-team' ),
 					),
 					'value'       => $this->plugin_options['oi_feedback_type'],
+				),
+			),
+			array(
+				'name'    => 'send_receipt_confirmation',
+				'type'    => 'checkbox',
+				'label'   => __( 'Receipt Confirmation', 'immonex-kickstart-team' ),
+				'section' => "{$prefix}rcpt_conf_mails",
+				'args'    => array(
+					'plugin_slug' => $this->plugin_slug,
+					'option_name' => $this->plugin_options_name,
+					'description' => __( 'Activate if prospects shall receive a receipt confirmation mail on successful contact form submissions.', 'immonex-kickstart-team' ),
+					'value'       => $this->plugin_options['send_receipt_confirmation'],
+				),
+			),
+			array(
+				'name'    => 'rcpt_conf_mail_subject_general',
+				'type'    => 'text',
+				'label'   => __( 'Subject (General)', 'immonex-kickstart-team' ),
+				'section' => "{$prefix}rcpt_conf_mails",
+				'args'    => array(
+					'plugin_slug' => $this->plugin_slug,
+					'option_name' => $this->plugin_options_name,
+					'description' => __( 'The Twig variables listed above can be used here and in the following field.', 'immonex-kickstart-team' ),
+					'value'       => $this->plugin_options['rcpt_conf_mail_subject_general'],
+					'class'       => 'large-text',
+				),
+			),
+			array(
+				'name'    => 'rcpt_conf_mail_subject_property',
+				'type'    => 'text',
+				'label'   => __( 'Subject (Property Inquiries)', 'immonex-kickstart-team' ),
+				'section' => "{$prefix}rcpt_conf_mails",
+				'args'    => array(
+					'plugin_slug' => $this->plugin_slug,
+					'option_name' => $this->plugin_options_name,
+					'value'       => $this->plugin_options['rcpt_conf_mail_subject_property'],
+					'class'       => 'large-text',
+				),
+			),
+			array(
+				'name'    => 'rcpt_conf_mails_as_html',
+				'type'    => 'checkbox',
+				'label'   => __( 'Send HTML Mails', 'immonex-kickstart-team' ),
+				'section' => "{$prefix}rcpt_conf_mails",
+				'args'    => array(
+					'plugin_slug' => $this->plugin_slug,
+					'option_name' => $this->plugin_options_name,
+					'description' => wp_sprintf(
+						/* translators: %s = placholder for the message type */
+						__( 'Activate to send %s as HTML-formatted mails.', 'immonex-kickstart-team' ),
+						__( 'receipt confirmations', 'immonex-kickstart-team' )
+					),
+					'value'       => $this->plugin_options['rcpt_conf_mails_as_html'],
+				),
+			),
+			array(
+				'name'    => 'rcpt_conf_logo_id',
+				'type'    => 'media_image_select',
+				'label'   => __( 'Logo', 'immonex-kickstart-team' ) .
+					' (' . __( 'HTML Mails', 'immonex-kickstart-team' ) . ')',
+				'section' => "{$prefix}rcpt_conf_mails",
+				'args'    => array(
+					'plugin_slug' => $this->plugin_slug,
+					'option_name' => $this->plugin_options_name,
+					'description' => __( 'If the sending of HTML mails is activated, a logo can be inserted.', 'immonex-kickstart-team' ),
+					'value'       => $this->plugin_options['rcpt_conf_logo_id'],
+				),
+			),
+			array(
+				'name'    => 'rcpt_conf_logo_position',
+				'type'    => 'select',
+				'label'   => __( 'Logo Position', 'immonex-kickstart-team' ) .
+					' (' . __( 'HTML Mails', 'immonex-kickstart-team' ) . ')',
+				'section' => "{$prefix}rcpt_conf_mails",
+				'args'    => array(
+					'plugin_slug' => $this->plugin_slug,
+					'option_name' => $this->plugin_options_name,
+					'description' => __( 'If selected, you can specify where the logo should appear in the mail here.', 'immonex-kickstart-team' ),
+					'options'     => array(
+						'top_center'    => __( 'top', 'immonex-kickstart-team' ) . ' ' .
+							__( 'centered', 'immonex-kickstart-team' ),
+						'top_left'      => __( 'top', 'immonex-kickstart-team' ) . ' ' .
+							__( 'left', 'immonex-kickstart-team' ),
+						'top_right'     => __( 'top', 'immonex-kickstart-team' ) . ' ' .
+							__( 'right', 'immonex-kickstart-team' ),
+						'footer_center' => __( 'bottom', 'immonex-kickstart-team' ) . ' ' .
+							__( 'centered', 'immonex-kickstart-team' ),
+						'footer_left'   => __( 'bottom', 'immonex-kickstart-team' ) . ' ' .
+							__( 'left', 'immonex-kickstart-team' ),
+						'footer_right'  => __( 'bottom', 'immonex-kickstart-team' ) . ' ' .
+							__( 'right', 'immonex-kickstart-team' ),
+					),
+					'value'       => $this->plugin_options['rcpt_conf_logo_position'],
+				),
+			),
+			array(
+				'name'    => 'rcpt_conf_mail_template',
+				'type'    => 'wysiwyg',
+				'label'   => __( 'Mail Body', 'immonex-kickstart-team' ),
+				'section' => "{$prefix}rcpt_conf_mails",
+				'args'    => array(
+					'plugin_slug'     => $this->plugin_slug,
+					'option_name'     => $this->plugin_options_name,
+					'description'     => wp_sprintf(
+						/* translators: %s = URL placeholder */
+						__( 'HTML and Twig 3 markup can be used here (see info section above and the <a href="%s" target="_blank">Twig documentation</a> for details).', 'immonex-kickstart-team' ),
+						'https://twig.symfony.com/doc/3.x/templates.html'
+					) . ' ' .
+						__( 'If this field is <strong>empty</strong>, a default template in the skin folder will be used instead.', 'immonex-kickstart-team' ),
+					'value'           => $this->plugin_options['rcpt_conf_mail_template'],
+					'editor_settings' => array(
+						'default_editor' => 'html',
+						'teeny'          => true,
+						'quicktags'      => array( 'buttons' => 'strong,em,link,img,close' ),
+						'tinymce'        => true,
+					),
+				),
+			),
+			array(
+				'name'    => 'rcpt_conf_mail_signature',
+				'type'    => 'wysiwyg',
+				'label'   => __( 'Signature', 'immonex-kickstart-team' ),
+				'section' => "{$prefix}rcpt_conf_mails",
+				'args'    => array(
+					'plugin_slug'     => $this->plugin_slug,
+					'option_name'     => $this->plugin_options_name,
+					'description'     => __( 'The (optional) signature is added below the main content of the email.', 'immonex-kickstart-team' ) . ' ' .
+						__( 'The Twig variables listed above can be used here, too.', 'immonex-kickstart-team' ),
+					'value'           => $this->plugin_options['rcpt_conf_mail_signature'],
+					'editor_settings' => array(
+						'default_editor' => 'html',
+						'teeny'          => true,
+						'quicktags'      => array( 'buttons' => 'strong,em,link,img,close' ),
+						'tinymce'        => true,
+					),
 				),
 			),
 		);

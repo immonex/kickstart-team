@@ -51,16 +51,6 @@ Das Kontaktformular umfasst in der Standardvariante Eingabefelder für Name, Tel
 
 Je nach Art der Einbindung kann diese Vorgabe per Widget-Einstellung (<i>Kontaktformular-Umfang</i>) oder Shortcode-Attribut (`contact_form_scope`) überschrieben werden. Darüber hinaus können Umfang und Art der Formularelemente auch über den Hook [`inx_team_contact_form_fields`](../anpassung-erweiterung/filter-inx-team-contact-form-fields.html) mit einer Filterfunktion individuell angepasst oder erweitert werden.
 
-#### Fallback-Empfänger-Mailadressen
-
-Die Empfänger der Mails, die über das im Plugin enthaltene [einheitliche Kontaktformular](../komponenten/kontaktformular.html) versendet werden, sind **kontextbezogen**: Findet das Formular bspw. in einem [Kontaktpersonen-Widget](../komponenten/kontaktpersonen-details.html#Widget) Verwendung, das in einer Objekt-Detailseite eingebunden ist, wird die Nachricht an die Mailadresse der zugehörigen [primären Kontaktperson](../beitragsarten.html#Kontaktperson-Agentur-gt-Immobilie) gesendet. Sind der Immobilie weitere Ansprechpartner/innen zugeordnet, erhalten diese jeweils eine Kopie der Anfrage.
-
-Kann in Ausnahmefällen keine dem Kontext entsprechende Empfänger-Mailadresse ermittelt werden, wird als Standardvorgabe die primäre Administrator-E-Mail-Adresse der WP-Installation übernommen, die unter ***Einstellungen → Allgemein*** hinterlegt ist. Sollen die Mails stattdessen an eine oder mehrere alternative Adressen gesendet werden, können diese im Feld für Fallback-Empfänger angegeben oder per [Filterfunktion](../anpassung-erweiterung/filter-inx-team-fallback-recipient-admin-email.html) definiert werden.
-
-#### CC-Mailadressen
-
-Sollen Kopien **aller** via [Kontaktformular](../komponenten/kontaktformular.html) versendeten Anfragen an eine oder mehrere Mailadressen gesendet werden, können diese hier definiert werden.
-
 #### Seite der Widerrufsbelehrung
 
 Eine hier ausgewählte Seite, die Informationen zum gesetzlichen Widerrufsrecht enthält, ist Voraussetzung für die Einbindung des nachfolgenden **Einwilligungstexts** in das [Kontaktformular](../komponenten/kontaktformular.html). (Im Rahmen der Plugin-Installation erfolgt eine automatische Zuordnung, sofern eine passende Seite erkannt wurde.)
@@ -73,12 +63,62 @@ Dieser Hinweis muss vom Benutzer bestätigt werden, bevor er seine Anfrage per K
 
 Ein Hinweis zum Thema Datenschutz ist obligatorisch, muss aber **nicht** explizit bestätigt werden. Per Platzhalter `[privacy_policy]` wird ein Link zur entsprechenden Infoseite (**Datenschutzerklärung**) eingefügt, die unter ***Einstellungen → Datenschutz*** definiert wurde.
 
-#### Eingangsbestätigung
+### Kontaktformular-Mails
 
-Bei erfolgreicher Übermittlung von Formulardaten **kann** eine Eingangsbestätigung per Mail an den Absender geschickt werden, diese muss allerdings **explizit aktiviert** werden. Damit das Formular nicht für den Versand von Spam missbraucht werden kann, sind in den Bestätigungsmails keine vom Nutzer selbst erfassten Inhalte enthalten.
+Mit der Plugin-Version 1.2.0 wurden die mailbezogenen Optionen in zwei separaten Subtabs zusammengefasst. Ebenfalls neu hinzugekommen sind hier die Möglichkeiten zum Versand von HTML-Mails sowie die Gestaltung der Mailinhalte auf Basis der <i>Template-Engine</i> [Twig 3](https://twig.symfony.com/doc/3.x/templates.html)<sup>1</sup>.
+
+![Mailbezogene Optionen](../assets/scst-be-mail-options-1.gif)
+
+#### Fallback-Empfänger-Mailadressen
+
+Die Empfänger der Mails, die über das im Plugin enthaltene [einheitliche Kontaktformular](../komponenten/kontaktformular.html) versendet werden, sind **kontextbezogen**: Findet das Formular bspw. in einem [Kontaktpersonen-Widget](../komponenten/kontaktpersonen-details.html#Widget) Verwendung, das in einer Objekt-Detailseite eingebunden ist, wird die Nachricht an die Mailadresse der zugehörigen [primären Kontaktperson](../beitragsarten.html#Kontaktperson-Agentur-gt-Immobilie) gesendet. Sind der Immobilie weitere Ansprechpartner/innen zugeordnet, erhalten diese jeweils eine Kopie der Anfrage.
+
+Kann in Ausnahmefällen keine dem Kontext entsprechende Empfänger-Mailadresse ermittelt werden, wird als Standardvorgabe die primäre Administrator-E-Mail-Adresse der WP-Installation übernommen, die unter ***Einstellungen → Allgemein*** hinterlegt ist. Sollen die Mails stattdessen an eine oder mehrere alternative Adressen gesendet werden, können diese im Feld für Fallback-Empfänger angegeben oder per [Filterfunktion](../anpassung-erweiterung/filter-inx-team-fallback-recipient-admin-email.html) definiert werden.
+
+#### CC-Mailadressen
+
+Sollen Kopien **aller** via [Kontaktformular](../komponenten/kontaktformular.html) versendeten Anfragen an eine oder mehrere Mailadressen gesendet werden, können diese hier definiert werden.
+
+#### HTML-Mails senden
+
+Anstelle von reinen Textmails (Standardvorgabe) können die per Kontaktformular übermittelten Daten auch als HTML-formatierte Nachrichten gesendet werden. (Eine alternative, automatisiert generierte Klartext-Version wird immer mitgesendet.)
+
+#### Kontaktformular-Mailtext
+
+Der Inhalt der Mails, die beim Absenden eines Kontaktformulars im Website-Frontend an die jeweilige Kontaktperson (oder einen Admin-Benutzer) gesendet werden, kann in diesem Feld hinterlegt werden. Hierbei kann auf alle im Infoabschnitt unterhalb der Subtab-Navigation genannten <i>Twig</i>-Variablen<sup>1</sup> (<i>Platzhalter</i>) bzw. Abfragemöglichkeiten zurückgegriffen werden. Am wichtigsten ist hier die Variable `{{ form_data }}`, die in den Mails durch die Formulardaten ersetzt wird. Auch eine HTML-basierte Formatierung ist möglich.
+
+Ist dieses Feld leer, kommt ein Standard-Mail-Template (reiner PHP-Code) im [Skin-Ordner](../anpassung-erweiterung/skins.html) zum Einsatz.
 
 #### OpenImmo-Feedback-Typ
 
-**OpenImmo-Feedback** bezeichnet einen Standard für den einheitlichen Austausch von Daten immobilienspezifischer Anfragen (Interessenten-Kontaktdaten und Infos zum angefragten Objekt) auf XML-Basis.
+**OpenImmo-Feedback XML** bezeichnet einen Standard für den einheitlichen Austausch von Daten immobilienspezifischer Anfragen (Interessenten-Kontaktdaten und Infos zum angefragten Objekt) auf XML-Basis.
 
 Beim Absenden von Kontaktformular-Daten wird ein solcher Datensatz (optional) automatisiert erstellt und kann entweder als Datei oder direkt im Nachrichtentext an die Mails angehangen werden, die an den Website-Betreiber bzw. Administrator gesendet werden. Anhänge dieser Art können bspw. in einer Softwarelösung für Immobilienmakler weiterverarbeitet werden.
+
+### Eingangsbestätigungsmails
+
+#### Eingangsbestätigung
+
+Bei erfolgreicher Übermittlung von Formulardaten **kann** eine Eingangsbestätigung per Mail an den Absender gesendet werden, diese muss allerdings **explizit aktiviert** werden. Auch hier wird bei den Inhalten (inkl. Betreff und Signatur) <i>Twig</i>-Markup<sup>1</sup> unterstützt, Mailtext und Signatur können zudem per HTML formatiert werden.
+
+> **Achtung!** Damit das Formular nicht für den Versand von <i>Spam</i> missbraucht werden kann, sollten in die Bestätigungsmails **niemals** Variablen (<i>Platzhalter</i>) für vom Nutzer selbst erfasste Inhalte eingebunden werden.
+
+#### Betreff (allgemein / Immobilien-Anfragen)
+
+Für allgemeine und objektbezogene Anfragen kann jeweils ein eigener Mail-Betreff angegeben werden.
+
+#### HTML-Mails senden
+
+Analog zu den administrativen Nachrichten können auch die Eingangsbestätigungen als HTML-formatierte Mails versendet werden. Auch hier ist die Standardvorgabe allerdings der reine Klartext-Versand.
+
+#### Logo / Logo-Position
+
+Ist der HTML-Mailversand aktiviert, kann **optional** auch ein Logo aus der WordPress-Mediathek mit eingebunden und dessen Position innerhalb der Nachricht festgelegt werden.
+
+#### Mailtext / Signatur
+
+Der eigentliche Inhalt der Eingangsbestätigung sowie die (bei Bedarf) ergänzende Signatur können wiederum mittels <i>Twig</i>-Variablen/Abfragen<sup>1</sup> sowie zusätzlichen Texten zusammengestellt und (optional) ebenfalls per HTML formatiert werden.
+
+---
+
+<sup>1</sup> Detaillierte Infos zur Erstellung von <i>Twig</i>-Templates sind in der [Dokumentation](https://twig.symfony.com/doc/3.x/templates.html) hierzu verfügbar.

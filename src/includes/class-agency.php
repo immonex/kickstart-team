@@ -86,6 +86,7 @@ class Agency extends Base_CPT_Post {
 			'agent_count'        => $this->get_agent_count(),
 			'property_count'     => $this->get_property_count(),
 			'elements'           => array(),
+			'show_all_elements'  => ! empty( $atts['elements'] ),
 		);
 
 		$requested_elements = ! empty( $atts['elements'] ) ?
@@ -97,6 +98,7 @@ class Agency extends Base_CPT_Post {
 		}
 
 		$element_keys = ! empty( $requested_elements ) ? $requested_elements : $default_elements;
+		$element_keys = array_unique( $element_keys );
 
 		if ( count( $element_keys ) > 0 ) {
 			foreach ( $valid_elements as $key => $element ) {

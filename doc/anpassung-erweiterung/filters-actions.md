@@ -33,9 +33,15 @@ search: 1
 - [inx_team_contact_form_notification_subject_variables](filter-inx-team-contact-form-notification-subject-variables.html) (Variablen für den Betreff der Kontaktformular-Mails)
 - [inx_team_contact_form_mail_headers](filter-inx-team-contact-form-mail-headers.html) (Header der Kontaktformular-Mails)
 - [inx_team_contact_form_user_data](filter-inx-team-contact-form-user-data.html) (via Frontend übermittelte Benutzer-Formulardaten)
+- [inx_team_contact_form_rcpt_conf_attachments](filter-inx-team-contact-form-rcpt-conf-attachments.html) (Dateianhänge von Eingangsbestätigungsmails)
 - [inx_team_fallback_recipient_admin_email](filter-inx-team-fallback-recipient-admin-email.html) (Fallback-Admin-Mailadresse(n))
 - [inx_team_openimmo_feedback_xml_source](filter-inx-team-openimmo-feedback-xml-source.html) (XML-Quelltext des OpenImmo-Feedback-Anhangs)
 - [inx_team_openimmo_feedback_attachment_filename](filter-inx-team-openimmo-feedback-attachment-filename.html) (Dateiname des OpenImmo-Feedback-Anhangs)
+
+### Rendering / Templates
+
+- [inx_team_template_search_folders](filter-inx-team-template-search-folders.html) (Basisordner für Skins/Templates ergänzen)
+- [inx_team_template_folder_url_mappings](filter-inx-team-template-folder-url-mappings.html) (URL-Zuordnungen für nicht öffentlich zugängliche Template/Skin-Dateisystem-Basisordner definieren)
 
 ## Actions
 

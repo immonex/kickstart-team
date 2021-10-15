@@ -144,8 +144,11 @@ class Contact_Form {
 		$site_title    = get_bloginfo( 'name' );
 		$fields        = $this->get_fields( false, $scope );
 		$template_data = array(
-			'site_title' => $site_title,
-			'form_data'  => array(),
+			'site_title'              => $site_title,
+			'form_data'               => array(),
+			'inline_oi_feedback'      => '',
+			'admin_mails_as_html'     => $this->config['admin_mails_as_html'],
+			'rcpt_conf_mails_as_html' => $this->config['rcpt_conf_mails_as_html'],
 		);
 
 		if ( count( $fields ) > 0 ) {
@@ -163,16 +166,27 @@ class Contact_Form {
 
 		$template_data['property'] = $property_data;
 
+		$form_post_type = $form_data['post_type'];
+		$form_post_id   = $form_data['post_id'];
+		if (
+			'inx_' !== strpos( $form_post_type, 0, 4 )
+			&& $origin_post_id
+		) {
+			$form_post_type = get_post_type( $origin_post_id );
+			$form_post_id   = $origin_post_id;
+		}
+
 		$recipient_lists = $this->compose_recipient_lists(
-			$form_data['post_type'],
-			$form_data['post_id'],
+			$form_post_type,
+			$form_post_id,
 			$form_data['recipients_enc'],
 			$form_data['cc_enc'],
 			$property_data
 		);
 
-		$send_result = false;
-		$sender      = get_option( 'admin_email' );
+		$send_result                  = false;
+		$sender                       = get_option( 'admin_email' );
+		$template_data['sender_info'] = $recipient_lists['receipt_conf_sender_info'];
 
 		$subject = "[{$site_title}] " . __( 'Inquiry', 'immonex-kickstart-team' );
 		if ( $property_data ) {
@@ -188,6 +202,7 @@ class Contact_Form {
 			$template_data
 		);
 
+		// This type of variable replacement is DEPRECATED, see Twig variant below.
 		$subject = $this->replace_vars( $subject, 'admin', $template_data );
 
 		$headers = array( "From: {$sender}" );
@@ -215,14 +230,6 @@ class Contact_Form {
 			'admin'
 		);
 
-		$this->add_prerendered_data( $template_data );
-
-		$body = $this->utils['template']->render_php_template(
-			'mail/contact-form-to-admin',
-			$template_data,
-			$this->utils
-		);
-
 		$attachments = array();
 
 		if ( $this->config['oi_feedback_type'] && ! empty( $property_data ) ) {
@@ -232,8 +239,10 @@ class Contact_Form {
 			$oi_feedback_xml_source = $qoi_feedback->get_oi_feedback_xml_source();
 
 			if ( 'body' === $this->config['oi_feedback_type'] ) {
-				$body .= PHP_EOL . PHP_EOL . '--- OpenImmo-Feedback ---' . PHP_EOL . PHP_EOL;
-				$body .= $oi_feedback_xml_source;
+				$inline_oi_feedback  = PHP_EOL . PHP_EOL . '--- OpenImmo-Feedback ---' . PHP_EOL . PHP_EOL;
+				$inline_oi_feedback .= $oi_feedback_xml_source;
+
+				$template_data['inline_oi_feedback'] = $inline_oi_feedback;
 			} else {
 				$oi_feedback_file = $qoi_feedback->create_temp_file( $oi_feedback_xml_source );
 				if ( $oi_feedback_file ) {
@@ -242,13 +251,85 @@ class Contact_Form {
 			}
 		}
 
-		if ( $body ) {
-			$send_result = wp_mail(
+		$this->add_prerendered_data( $template_data );
+
+		// In future plugin versions, (only) Twig is used for template rendering.
+		$subject = $this->utils['template']->render_twig_template_string(
+			$subject,
+			$template_data['prerendered']
+		);
+
+		if ( trim( $this->config['admin_contact_form_mail_template'] ) ) {
+			// Render Twig-based template (plugin options).
+			$twig_template = $this->config['admin_contact_form_mail_template'];
+
+			$body = array(
+				'txt'  => $this->utils['template']->render_twig_template_string(
+					$twig_template,
+					$template_data['prerendered']
+				),
+				'html' => $this->utils['template']->render_twig_template_string(
+					$twig_template,
+					$template_data['prerendered_html']
+				),
+			);
+		} else {
+			/**
+			 * Fallback: PHP-based template (skin)
+			 * (Grotesque template data array mangling is required to ensure
+			 * compatibility with older plugin versions.)
+			 */
+			$template_data_html                = $template_data;
+			$template_data_html['prerendered'] = $template_data['prerendered_html'];
+
+			$body = array(
+				'txt'  => $this->utils['template']->render_php_template(
+					'mail/contact-form-to-admin',
+					$template_data,
+					$this->utils
+				),
+				'html' => $this->utils['template']->render_php_template(
+					'mail/contact-form-to-admin',
+					$template_data_html,
+					$this->utils
+				),
+			);
+		}
+
+		$body['txt'] = $this->utils['string']->html_to_plain_text( $body['txt'] );
+
+		if (
+			'body' === $this->config['oi_feedback_type']
+			&& ! empty( $template_data['inline_oi_feedback'] )
+		) {
+			$body['txt']  .= $template_data['prerendered']['inline_oi_feedback'];
+			$body['html'] .= $template_data['prerendered_html']['inline_oi_feedback'];
+		}
+
+		$body['html'] = preg_replace_callback(
+			'/(?<=\<span).*?(?=\<\/span\>)/s',
+			function ( $matches ) {
+				return nl2br( wp_strip_all_tags( $matches[0] ) );
+			},
+			wpautop( stripslashes( $body['html'] ) )
+		);
+
+		$html_frame_template_data = array();
+
+		if ( $this->config['admin_mails_as_html'] ) {
+			$html_frame_template_data['preset'] = 'admin_info';
+		} else {
+			$body['html'] = false;
+		}
+
+		if ( ! empty( $body ) ) {
+			$send_result = $this->utils['mail']->send(
 				$recipient_lists['recipients'],
 				$subject,
-				stripslashes( $body ),
+				$body,
 				$headers,
-				$attachments
+				$attachments,
+				$html_frame_template_data
 			);
 		}
 
@@ -468,7 +549,7 @@ class Contact_Form {
 
 		if ( count( $result['field_errors'] ) > 0 ) {
 			$result['valid']   = false;
-			$result['message'] = __( 'Please check your inputs!', 'immonex-kickstart-team' );
+			$result['message'] = __( 'Please check the inputs!', 'immonex-kickstart-team' );
 		} elseif (
 			empty( $form_data['nonce']['value'] )
 			|| ! wp_verify_nonce( $form_data['nonce']['value'], $form_data['nonce']['context'] )
@@ -545,23 +626,9 @@ class Contact_Form {
 	 * @return bool Send Result.
 	 */
 	private function send_receipt_confirmation( $sender, $sender_info, $recipient, $template_data ) {
-		$template_data['sender_info'] = $sender_info;
-
-		if ( ! empty( $template_data['property'] ) ) {
-			$subject = wp_sprintf(
-				'[%s] %s %s',
-				$template_data['prerendered']['site_title'],
-				__( 'Your inquiry for the property', 'immonex-kickstart-team' ),
-				$template_data['prerendered']['property_title_ext_id']
-			);
-		} else {
-			$subject = wp_sprintf(
-				'[%s] %s',
-				$template_data['prerendered']['site_title'],
-				__( 'Confirmation of receipt', 'immonex-kickstart-team' )
-			);
-		}
-
+		$subject = ! empty( $template_data['property'] ) ?
+			$this->config['rcpt_conf_mail_subject_property'] :
+			$this->config['rcpt_conf_mail_subject_general'];
 		$subject = apply_filters(
 			'inx_team_contact_form_notification_subject',
 			filter_var( $subject, FILTER_SANITIZE_STRING ),
@@ -569,7 +636,35 @@ class Contact_Form {
 			$template_data
 		);
 
+		if ( ! trim( $subject ) ) {
+			/**
+			 * Fallback subject creation
+			 */
+			if ( ! empty( $template_data['property'] ) ) {
+				$subject = wp_sprintf(
+					'[%s] %s %s',
+					$template_data['prerendered']['site_title'],
+					__( 'Your inquiry for the property', 'immonex-kickstart-team' ),
+					$template_data['prerendered']['property_title_ext_id']
+				);
+			} else {
+				$subject = wp_sprintf(
+					'[%s] %s',
+					$template_data['prerendered']['site_title'],
+					__( 'Confirmation of receipt', 'immonex-kickstart-team' )
+				);
+			}
+		}
+
+		// This type of variable replacement is DEPRECATED.
 		$subject = $this->replace_vars( $subject, 'prospect', $template_data );
+
+		// In future plugin versions, (only) Twig is used instead for template rendering.
+		$subject = $this->utils['template']->render_twig_template_string(
+			$subject,
+			$template_data['prerendered']
+		);
+
 		$headers = array( "From: {$sender}" );
 
 		if ( ! empty( $sender_info['email'] ) ) {
@@ -590,18 +685,90 @@ class Contact_Form {
 			'prospect'
 		);
 
-		$body = $this->utils['template']->render_php_template(
-			'mail/receipt-confirmation',
-			$template_data,
-			$this->utils
+		if ( trim( $this->config['rcpt_conf_mail_template'] ) ) {
+			// Render Twig-based template (plugin options).
+			$twig_template = $this->config['rcpt_conf_mail_template'];
+
+			$body = array(
+				'txt'  => $this->utils['template']->render_twig_template_string(
+					$twig_template,
+					$template_data['prerendered']
+				),
+				'html' => $this->utils['template']->render_twig_template_string(
+					$twig_template,
+					$template_data['prerendered_html']
+				),
+			);
+		} else {
+			/**
+			 * Fallback: PHP-based template (skin)
+			 * (Grotesque template data array mangling is required to ensure
+			 * compatibility with older plugin versions.)
+			 */
+			$template_data_html                = $template_data;
+			$template_data_html['prerendered'] = $template_data['prerendered_html'];
+
+			$body = array(
+				'txt'  => $this->utils['template']->render_php_template(
+					'mail/receipt-confirmation',
+					$template_data,
+					$this->utils
+				),
+				'html' => $this->utils['template']->render_php_template(
+					'mail/receipt-confirmation',
+					$template_data_html,
+					$this->utils
+				),
+			);
+		}
+
+		$body['txt']  = $this->utils['string']->html_to_plain_text( $body['txt'] );
+		$body['html'] = $this->config['rcpt_conf_mails_as_html'] ?
+			wpautop( stripslashes( $body['html'] ) ) : false;
+		$signature    = trim(
+			$this->utils['template']->render_twig_template_string(
+				$this->config['rcpt_conf_mail_signature'],
+				$template_data['prerendered_html']
+			)
 		);
 
-		if ( $body ) {
-			return wp_mail(
+		if ( $signature ) {
+			$body['txt'] = wp_sprintf(
+				'%s%s--%s',
+				trim( $body['txt'] ),
+				PHP_EOL . PHP_EOL,
+				PHP_EOL . $this->utils['string']->html_to_plain_text( $signature )
+			);
+			$signature   = wpautop( stripslashes( $signature ) );
+		}
+
+		$attachments = apply_filters(
+			'inx_team_contact_form_rcpt_conf_attachments',
+			array()
+		);
+
+		$html_frame_template_data = apply_filters(
+			'inx_team_contact_form_rcpt_conf_html_frame_params',
+			array(
+				'logo'          => $this->config['rcpt_conf_logo_id'] ?
+					wp_get_attachment_url( $this->config['rcpt_conf_logo_id'] ) : '',
+				'logo_link_url' => $this->config['rcpt_conf_logo_id'] ?
+					home_url() : '',
+				'footer_text'   => $signature,
+				'layout'        => array(
+					'logo_position' => $this->config['rcpt_conf_logo_position'],
+				),
+			)
+		);
+
+		if ( ! empty( $body ) ) {
+			return $this->utils['mail']->send(
 				$recipient,
 				$subject,
-				stripslashes( $body ),
-				$headers
+				$body,
+				$headers,
+				$attachments,
+				$html_frame_template_data
 			);
 		}
 
@@ -1092,17 +1259,32 @@ class Contact_Form {
 	 */
 	private function add_prerendered_data( &$template_data ) {
 		$data = array(
-			'site_title'            => $template_data['site_title'],
-			'property_title'        => '',
-			'external_id'           => '',
-			'property_title_ext_id' => '',
-			'property_url'          => '',
-			'merged_form_data'      => '',
+			'site_title'                => $template_data['site_title'],
+			'site_url'                  => home_url(),
+			'is_property_inquiry'       => false,
+			'confirmation_sender'       => ! empty( $template_data['sender_info']['type'] ) ?
+				$template_data['sender_info']['type'] : 'agency',
+			'property_title'            => '',
+			'external_id'               => '',
+			'property_title_ext_id'     => '',
+			'property_title_ext_id_url' => '',
+			'property_url'              => '',
+			'merged_form_data'          => '',
+			'form_data'                 => '',
+			'inline_oi_feedback'        => $template_data['inline_oi_feedback'],
+			'admin_mails_as_html'       => $template_data['admin_mails_as_html'],
+			'rcpt_conf_mails_as_html'   => $template_data['rcpt_conf_mails_as_html'],
+			'sender_info'               => ! empty( $template_data['sender_info'] ) ?
+				$template_data['sender_info'] : array(),
 		);
 
+		$data_html                       = array();
+		$data_html['inline_oi_feedback'] = htmlspecialchars( $data['inline_oi_feedback'], ENT_XML1 );
+
 		if ( ! empty( $template_data['property'] ) ) {
-			$data['property_title'] = $template_data['property']['title'];
-			$data['property_url']   = $template_data['property']['url'];
+			$data['is_property_inquiry'] = true;
+			$data['property_title']      = $template_data['property']['title'];
+			$data['property_url']        = $template_data['property']['url'];
 
 			if ( ! empty( $template_data['property']['external_id'] ) ) {
 				$data['external_id']           = $template_data['property']['external_id'];
@@ -1114,6 +1296,14 @@ class Contact_Form {
 			} else {
 				$data['property_title_ext_id'] = $data['property_title'];
 			}
+
+			$data['property_title_ext_id_url']      = $data['property_title_ext_id']
+				. PHP_EOL . $data['property_url'];
+			$data_html['property_title_ext_id_url'] = wp_sprintf(
+				'<a href="%s">%s</a>',
+				$data['property_url'],
+				$data['property_title_ext_id']
+			);
 		}
 
 		if ( ! empty( $template_data['form_data'] ) ) {
@@ -1128,8 +1318,9 @@ class Contact_Form {
 					continue;
 				}
 
-				$rendered_field = '';
-				$caption        = $this->get_field_caption( $field );
+				$rendered_field      = '';
+				$rendered_field_html = '';
+				$caption             = $this->get_field_caption( $field );
 
 				if ( 'textarea' === $field['type'] ) {
 					$divider = PHP_EOL . str_repeat( '-', strlen( $field['caption'] ) + 1 );
@@ -1140,28 +1331,41 @@ class Contact_Form {
 					if ( $caption ) {
 						$rendered_field = $caption . ':';
 					}
-					$rendered_field .= wp_sprintf(
+
+					$rendered_field_html  = PHP_EOL . $rendered_field;
+					$rendered_field      .= wp_sprintf(
 						'%2$s%1$s%2$s',
 						PHP_EOL . $field['value'],
 						$divider
 					);
+					$rendered_field_html .= wp_sprintf(
+						'<span style="display:block; width:100%%; box-sizing:border-box; padding:16px; background:rgba(0, 0, 0, .10)">%s</span>',
+						$field['value'] . PHP_EOL
+					);
 				} else {
 					if ( $caption ) {
-						$rendered_field = $this->utils['string']->mb_str_pad( $caption . ':', $max_caption_length );
+						$rendered_field      = $this->utils['string']->mb_str_pad( $caption . ':', $max_caption_length );
+						$rendered_field_html = $caption . ': ';
 					}
-					$rendered_field .= $field['value'];
+					$rendered_field      .= $field['value'];
+					$rendered_field_html .= wp_sprintf( '<strong>%s</strong>', $field['value'] );
 				}
 
-				$data[ $field_name ]       = $rendered_field;
-				$data['merged_form_data'] .= $rendered_field . PHP_EOL;
+				$data[ $field_name ]            = $rendered_field;
+				$data_html[ $field_name ]       = $rendered_field;
+				$data['merged_form_data']      .= $rendered_field . PHP_EOL;
+				$data_html['merged_form_data'] .= $rendered_field_html . PHP_EOL;
 
 				$fields_inserted++;
 			}
 
 			$data['merged_form_data'] = trim( $data['merged_form_data'] );
+			$data['form_data']        = $data['merged_form_data'];
+			$data_html['form_data']   = $data_html['merged_form_data'];
 		}
 
-		$template_data['prerendered'] = $data;
+		$template_data['prerendered']      = $data;
+		$template_data['prerendered_html'] = array_merge( $data, $data_html );
 	} // add_prerendered_data
 
 	/**

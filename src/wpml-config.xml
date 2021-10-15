@@ -7,6 +7,10 @@
 			<key name="consent_text_cancellation" />
 			<key name="consent_text_privacy" />
 			<key name="form_confirmation_message" />
+			<key name="rcpt_conf_mail_subject_general" />
+			<key name="rcpt_conf_mail_subject_property" />
+			<key name="rcpt_conf_mail_template" />
+			<key name="rcpt_conf_mail_signature" />
 		</key>
 	</admin-texts>
 </wpml-config>

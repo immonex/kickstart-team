@@ -1,6 +1,6 @@
 <?php
 /**
- * Default mail template for receipt confirmations of messages sent
+ * Default FALLBACK mail template for receipt confirmations of messages sent
  * via unified contact form
  *
  * @package immonex\KickstartTeam
@@ -10,16 +10,15 @@ echo __( 'Good day!', 'immonex-kickstart-team' );
 echo PHP_EOL . PHP_EOL;
 
 if ( ! empty( $template_data['property'] ) ) {
-	echo __( 'Thanks for your inquiry on the following property:', 'immonex-kickstart-team' );
+	echo __( 'Thanks for the inquiry on the following property:', 'immonex-kickstart-team' );
 	echo PHP_EOL . PHP_EOL;
 
-	echo $template_data['prerendered']['property_title_ext_id'] . PHP_EOL;
-	echo $template_data['prerendered']['property_url'];
+	echo $template_data['prerendered']['property_title_ext_id_url'] . PHP_EOL;
 } else {
-	echo __( 'Thanks for your message!', 'immonex-kickstart-team' );
+	echo __( 'Thanks for the message!', 'immonex-kickstart-team' );
 }
 
-echo PHP_EOL . PHP_EOL;
+echo PHP_EOL;
 
 if (
 	! empty( $template_data['sender_info'] )

@@ -7,6 +7,8 @@ search: 1
 
 Über diesen Filter-Hook können die Header-Zeilen der via [Kontaktformular](../komponenten/kontaktformular.html) generierten Mails modifiziert werden. Der Versand erfolgt regulär per WordPress-Funktion [wp_mail](https://developer.wordpress.org/reference/functions/wp_mail/).
 
+> **Achtung!** Die Header-Angaben sollten nur in Ausnahmefällen angepasst werden, vor allem wenn in den [mailbezogenen Plugin-Optionen](../schnellstart/einrichtung.html#Kontaktformular-Mails) der Versand als HTML-Mails aktiviert ist.
+
 ## Parameter
 
 | Name (Typ) | Beschreibung |

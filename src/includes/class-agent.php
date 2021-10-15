@@ -133,6 +133,7 @@ class Agent extends Base_CPT_Post {
 			'url'                => $url,
 			'property_count'     => $this->get_property_count(),
 			'elements'           => array(),
+			'show_all_elements'  => ! empty( $atts['elements'] ),
 		);
 
 		$requested_elements = ! empty( $atts['elements'] ) ?
@@ -144,6 +145,7 @@ class Agent extends Base_CPT_Post {
 		}
 
 		$element_keys = ! empty( $requested_elements ) ? $requested_elements : $default_elements;
+		$element_keys = array_unique( $element_keys );
 
 		if ( count( $element_keys ) > 0 ) {
 			foreach ( $valid_elements as $key => $element ) {
@@ -436,9 +438,14 @@ class Agent extends Base_CPT_Post {
 		}
 
 		if ( $is_remote ) {
+			$temp = download_url( $path_or_url );
+			if ( is_wp_error( $temp ) ) {
+				return $temp;
+			}
+
 			$file_data = array(
 				'name'     => basename( $path_or_url ),
-				'tmp_name' => $path_or_url,
+				'tmp_name' => $temp,
 			);
 		} else {
 			$temp = tmpfile();
@@ -451,7 +458,14 @@ class Agent extends Base_CPT_Post {
 			);
 		}
 
-		return media_handle_sideload( $file_data, $this->post->ID, $name );
+		$result = media_handle_sideload( $file_data, $this->post->ID, $name );
+
+		if ( ! empty( $temp ) && file_exists( $temp ) ) {
+			// @codingStandardsIgnoreLine
+			@unlink( $temp );
+		}
+
+		return $result;
 	} // replace_photo
 
 	/**

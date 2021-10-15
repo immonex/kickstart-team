@@ -1,5 +1,19 @@
 == Changelog ==
 
+= 1.2.0 =
+* Release date: 2021-10-15
+* Added (optional) extended contact forms.
+* Added option to add user-defined contact form fields per filter function.
+* Added option for sending HTML-formatted contact form mails.
+* Made contact form mail templates modifiable in the plugin options.
+* Added Twig 3 templating support for mail contents.
+* Fixed recursion bug and added fallback name on auto creating/updating agent/agency records.
+* Added missing checks if Kickstart core plugin is available (special cases).
+* Improved compatibility in Windows-based hosting environments.
+* Adjusted agency/agent-related property queries.
+* Fixed saving of user-related property agent IDs.
+* Fixed unintended automatic creation of unnamed contact persons.
+
 = 1.1.8 =
 * Release date: 2021-04-13
 * Added property status selection for widget display.

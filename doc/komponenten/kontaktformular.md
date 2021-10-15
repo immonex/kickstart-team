@@ -9,6 +9,8 @@ search: 1
 
 Das Add-on bringt ein **einheitliches** Kontaktformular mit, das in den Detailansichten und Widgets der [Agenturen](agentur-details.html) und [Kontaktpersonen](kontaktpersonen-details.html) verwendet werden kann.
 
+Die Grundeinstellungen bezüglich Formularumfang und Mailversand werden in den [Plugin-Optionen](../schnellstart/einrichtung.html#Kontaktformular) vorgenommen. Bei immobilienbezogenen Anfragen werden Mailanhänge im **OpenImmo-Feedback-XML-Format** unterstützt, mit denen bspw. eine automatisierte Verarbeitung der Daten in einer externen Immobilienmakler-Softwarelösung realisiert werden kann.
+
 ## Widget
 
 Wird das Formular in einem Widget aktiviert, das bspw. in einem Sidebar-Bereich der Immobilien-Detailseiten eingebunden ist, wird automatisch der entsprechende Objekttitel im Nachrichtenfeld übernommen. Dieser ist – neben der ID, Objektnummer, URL sowie einem optionalen **OpenImmo-Feedback-Anhang** für die weitere (automatisierte) Verarbeitung – nach dem Absenden auch in den Anfragemails enthalten.
