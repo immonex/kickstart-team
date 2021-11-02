@@ -460,7 +460,7 @@ class Agent extends Base_CPT_Post {
 
 		$result = media_handle_sideload( $file_data, $this->post->ID, $name );
 
-		if ( ! empty( $temp ) && file_exists( $temp ) ) {
+		if ( ! empty( $temp ) && is_string( $temp ) && file_exists( $temp ) ) {
 			// @codingStandardsIgnoreLine
 			@unlink( $temp );
 		}
