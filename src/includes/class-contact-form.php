@@ -368,11 +368,12 @@ class Contact_Form {
 		$variable_fields = array(
 			'salutation'  => array(
 				'type'        => 'radio',
-				'required'    => true,
+				'required'    => false,
 				'caption'     => __( 'Salutation', 'immonex-kickstart-team' ),
 				'options'     => array(
 					'f' => __( 'Ms.', 'immonex-kickstart-team' ),
 					'm' => __( 'Mr.', 'immonex-kickstart-team' ),
+					'x' => __( 'Diverse', 'immonex-kickstart-team' ),
 				),
 				'layout_type' => 'full',
 				'scope'       => array( 'extended' ),

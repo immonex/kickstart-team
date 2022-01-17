@@ -275,11 +275,11 @@ EOT
 	 *
 	 * @param string $first_name First name.
 	 *
-	 * @return string Salutation.
+	 * @return string Salutation or empty string if undeterminable.
 	 */
 	private function get_salutation( $first_name ) {
 		if ( strlen( (string) $first_name ) < 3 ) {
-			return __( 'Mr', 'immonex-kickstart-team' );
+			return '';
 		}
 
 		$genderize_request_url = wp_sprintf(
@@ -298,7 +298,7 @@ EOT
 			}
 		}
 
-		return __( 'Mr', 'immonex-kickstart-team' );
+		return '';
 	} // get_salutation
 
 } // Quick_Openimmo_Feedback

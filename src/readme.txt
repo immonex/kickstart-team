@@ -106,6 +106,10 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 
 == Changelog ==
 
+= 1.2.1-beta =
+* Release date: ?
+* Add "Diverse" salutation option by default in extended contact forms.
+
 = 1.2.0 =
 * Release date: 2021-10-15
 * Added (optional) extended contact forms.

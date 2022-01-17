@@ -2,18 +2,18 @@
 # This file is distributed under the same license as the immonex Kickstart Team package.
 msgid ""
 msgstr ""
-"Project-Id-Version: immonex Kickstart Team 1.2\n"
+"Project-Id-Version: immonex Kickstart Team 1.2.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/immonex-kickstart-team\n"
-"POT-Creation-Date: 2021-10-15 15:15:57+00:00\n"
-"PO-Revision-Date: 2021-10-15 17:16+0200\n"
+"POT-Creation-Date: 2022-01-17 10:19:01+00:00\n"
+"PO-Revision-Date: 2022-01-17 11:20+0100\n"
 "Last-Translator: \n"
 "Language-Team: Carsten Scheuer <scheuer@inveris.de>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: includes/class-agency-backend-form.php:72
 #: includes/class-agent-backend-form.php:127
@@ -27,8 +27,8 @@ msgstr "E-Mail"
 
 #: includes/class-agency-backend-form.php:95
 #: includes/class-agency-backend-form.php:216 includes/class-agency.php:418
-#: includes/class-agent.php:663 includes/class-contact-form.php:437
-#: includes/class-contact-form.php:438
+#: includes/class-agent.php:663 includes/class-contact-form.php:438
+#: includes/class-contact-form.php:439
 msgid "Phone"
 msgstr "Telefon"
 
@@ -39,7 +39,7 @@ msgstr "Fax"
 
 #: includes/class-agency-backend-form.php:113 includes/class-agency.php:445
 #: includes/class-agent-backend-form.php:203 includes/class-agent.php:758
-#: includes/class-contact-form.php:400 includes/class-contact-form.php:401
+#: includes/class-contact-form.php:401 includes/class-contact-form.php:402
 msgid "Street"
 msgstr "Straße"
 
@@ -55,7 +55,7 @@ msgstr "PLZ"
 
 #: includes/class-agency-backend-form.php:131 includes/class-agency.php:469
 #: includes/class-agent-backend-form.php:221 includes/class-agent.php:785
-#: includes/class-contact-form.php:418 includes/class-contact-form.php:419
+#: includes/class-contact-form.php:419 includes/class-contact-form.php:420
 msgid "City"
 msgstr "Ort"
 
@@ -252,12 +252,12 @@ msgid "Title"
 msgstr "Titel"
 
 #: includes/class-agent-backend-form.php:101 includes/class-agent.php:560
-#: includes/class-contact-form.php:384 includes/class-contact-form.php:385
+#: includes/class-contact-form.php:385 includes/class-contact-form.php:386
 msgid "First Name"
 msgstr "Vorname"
 
 #: includes/class-agent-backend-form.php:107 includes/class-agent.php:567
-#: includes/class-contact-form.php:392 includes/class-contact-form.php:393
+#: includes/class-contact-form.php:393 includes/class-contact-form.php:394
 msgid "Last Name"
 msgstr "Nachname"
 
@@ -443,58 +443,62 @@ msgstr "Frau"
 msgid "Mr."
 msgstr "Herr"
 
-#: includes/class-contact-form.php:409 includes/class-contact-form.php:410
+#: includes/class-contact-form.php:376
+msgid "Diverse"
+msgstr "Divers"
+
+#: includes/class-contact-form.php:410 includes/class-contact-form.php:411
 msgid "Postal Code"
 msgstr "PLZ"
 
-#: includes/class-contact-form.php:427 includes/class-contact-form.php:429
+#: includes/class-contact-form.php:428 includes/class-contact-form.php:430
 msgid "Name"
 msgstr "Name"
 
-#: includes/class-contact-form.php:428
+#: includes/class-contact-form.php:429
 msgid "Prospect"
 msgstr "Interessent/in"
 
-#: includes/class-contact-form.php:446 includes/class-contact-form.php:447
+#: includes/class-contact-form.php:447 includes/class-contact-form.php:448
 msgid "Email Address"
 msgstr "E-Mail-Adresse"
 
-#: includes/class-contact-form.php:454 includes/class-contact-form.php:455
+#: includes/class-contact-form.php:455 includes/class-contact-form.php:456
 msgid "Message"
 msgstr "Nachricht"
 
-#: includes/class-contact-form.php:535
+#: includes/class-contact-form.php:536
 msgid "This is a required field!"
 msgstr "Dies ist ein Pflichtfeld!"
 
 #. translators: %s = caption of a required field
-#: includes/class-contact-form.php:543
+#: includes/class-contact-form.php:544
 msgid "Please provide this information <strong>or: %s</strong>"
 msgstr "Bitte dieses Feld ausfüllen <strong>oder: %s</strong>"
 
-#: includes/class-contact-form.php:552
+#: includes/class-contact-form.php:553
 msgid "Please check the inputs!"
 msgstr "Bitte die Eingaben prüfen!"
 
-#: includes/class-contact-form.php:558
+#: includes/class-contact-form.php:559
 msgid "Your data could not be submitted. Please reload the page and try again!"
 msgstr ""
 "Deine Angaben konnten nicht übermittelt werden. Bitte lade die Seite neu und "
 "versuche es noch einmal!"
 
-#: includes/class-contact-form.php:647
+#: includes/class-contact-form.php:648
 msgid "Your inquiry for the property"
 msgstr "Deine Anfrage zur Immobilie"
 
-#: includes/class-contact-form.php:654 includes/class-kickstart-team.php:165
+#: includes/class-contact-form.php:655 includes/class-kickstart-team.php:165
 msgid "Confirmation of receipt"
 msgstr "Eingangsbestätigung"
 
-#: includes/class-contact-form.php:799 includes/class-contact-form.php:802
+#: includes/class-contact-form.php:800 includes/class-contact-form.php:803
 msgid "Privacy Policy"
 msgstr "Datenschutzerklärung"
 
-#: includes/class-contact-form.php:837
+#: includes/class-contact-form.php:838
 msgid "Cancellation Policy"
 msgstr "Widerrufsbelehrung"
 
@@ -1091,15 +1095,13 @@ msgstr "Widerruf"
 msgid "Cancellation"
 msgstr "Widerruf"
 
-#: includes/class-quick-openimmo-feedback.php:282
-#: includes/class-quick-openimmo-feedback.php:297
-#: includes/class-quick-openimmo-feedback.php:301
-msgid "Mr"
-msgstr "Herr"
-
 #: includes/class-quick-openimmo-feedback.php:296
 msgid "Ms"
 msgstr "Frau"
+
+#: includes/class-quick-openimmo-feedback.php:297
+msgid "Mr"
+msgstr "Herr"
 
 #: includes/class-wp-bootstrap.php:78 includes/class-wp-bootstrap.php:138
 #: includes/widgets/class-agent-widget.php:26
