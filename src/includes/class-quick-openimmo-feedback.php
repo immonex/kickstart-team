@@ -113,10 +113,17 @@ class Quick_Openimmo_Feedback {
 
 		$makler_id        = isset( $agent_agency['agency_id'] ) ? $agent_agency['agency_id'] : '';
 		$portal_unique_id = $property->ID;
-		$portal_obj_id    = trim( (string) $immobilie->verwaltung_techn->objektnr_extern );
-		$oobj_id          = get_post_meta( $property->ID, '_openimmo_obid', true );
 		$expose_url       = get_permalink( $property->ID );
 
+		$portal_obj_id = trim( (string) $immobilie->verwaltung_techn->objektnr_extern );
+		if ( ! $portal_obj_id ) {
+			$portal_obj_id = trim( (string) $immobilie->verwaltung_techn->objektnr_intern );
+		}
+		if ( ! $portal_obj_id ) {
+			$portal_obj_id = get_post_meta( $property->ID, '_openimmo_obid', true );
+		}
+
+		$oobj_id  = $portal_obj_id;
 		$anrede   = '';
 		$vorname  = '';
 		$nachname = '';
@@ -152,6 +159,35 @@ class Quick_Openimmo_Feedback {
 		$land        = (string) $immobilie->geo->land['iso_land'];
 		$preis       = get_post_meta( $property->ID, '_inx_primary_price', true );
 
+		$oi_fb_params = apply_filters(
+			'inx_team_openimmo_feedback_params',
+			array(
+				'name'             => $name,
+				'openimmo_anid'    => $openimmo_anid,
+				'datum'            => $datum,
+				'makler_id'        => $makler_id,
+				'portal_unique_id' => $portal_unique_id,
+				'portal_obj_id'    => $portal_obj_id,
+				'oobj_id'          => $oobj_id,
+				'expose_url'       => $expose_url,
+				'vermarktungsart'  => $vermarktungsart,
+				'bezeichnung'      => $bezeichnung,
+				'ort'              => $ort,
+				'land'             => $land,
+				'preis'            => $preis,
+				'anrede'           => $anrede,
+				'vorname'          => $vorname,
+				'nachname'         => $nachname,
+				'strasse'          => $int_strasse,
+				'plz'              => $int_plz,
+				'ort'              => $int_ort,
+				'tel'              => $tel,
+				'email'            => $email,
+				'anfrage'          => $anfrage,
+			),
+			$this->property_post_id
+		);
+
 		$openimmo_feedback_xml_source = apply_filters(
 			'inx_team_openimmo_feedback_xml_source',
 			<<<EOT
@@ -159,31 +195,31 @@ class Quick_Openimmo_Feedback {
 <openimmo_feedback>
 	<version>1.2.5</version>
 	<sender>
-		<name>$name</name>
-		<openimmo_anid>$openimmo_anid</openimmo_anid>
-		<datum>$datum</datum>
-		<makler_id>$makler_id</makler_id>
+		<name>{$oi_fb_params['name']}</name>
+		<openimmo_anid>{$oi_fb_params['openimmo_anid']}</openimmo_anid>
+		<datum>{$oi_fb_params['datum']}</datum>
+		<makler_id>{$oi_fb_params['makler_id']}</makler_id>
 	</sender>
 	<objekt>
-		<portal_unique_id>$portal_unique_id</portal_unique_id>
-		<portal_obj_id>$portal_obj_id</portal_obj_id>
-		<oobj_id>$oobj_id</oobj_id>
-		<expose_url>$expose_url</expose_url>
-		<vermarktungsart>$vermarktungsart</vermarktungsart>
-		<bezeichnung>$bezeichnung</bezeichnung>
-		<ort>$ort</ort>
-		<land>$land</land>
-		<preis>$preis</preis>
+		<portal_unique_id>{$oi_fb_params['portal_unique_id']}</portal_unique_id>
+		<portal_obj_id>{$oi_fb_params['portal_obj_id']}</portal_obj_id>
+		<oobj_id>{$oi_fb_params['oobj_id']}</oobj_id>
+		<expose_url>{$oi_fb_params['expose_url']}</expose_url>
+		<vermarktungsart>{$oi_fb_params['vermarktungsart']}</vermarktungsart>
+		<bezeichnung>{$oi_fb_params['bezeichnung']}</bezeichnung>
+		<ort>{$oi_fb_params['ort']}</ort>
+		<land>{$oi_fb_params['land']}</land>
+		<preis>{$oi_fb_params['preis']}</preis>
 		<interessent>
-			<anrede>$anrede</anrede>
-			<vorname>$vorname</vorname>
-			<nachname>$nachname</nachname>
-			<strasse>$int_strasse</strasse>
-			<plz>$int_plz</plz>
-			<ort>$int_ort</ort>
-			<tel>$tel</tel>
-			<email>$email</email>
-			<anfrage>$anfrage</anfrage>
+			<anrede>{$oi_fb_params['anrede']}</anrede>
+			<vorname>{$oi_fb_params['vorname']}</vorname>
+			<nachname>{$oi_fb_params['nachname']}</nachname>
+			<strasse>{$oi_fb_params['strasse']}</strasse>
+			<plz>{$oi_fb_params['plz']}</plz>
+			<ort>{$oi_fb_params['ort']}</ort>
+			<tel>{$oi_fb_params['tel']}</tel>
+			<email>{$oi_fb_params['email']}</email>
+			<anfrage>{$oi_fb_params['anfrage']}</anfrage>
 		</interessent>
 	</objekt>
 </openimmo_feedback>
