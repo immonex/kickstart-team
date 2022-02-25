@@ -106,11 +106,13 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 
 == Changelog ==
 
-= 1.2.2-beta =
+= 1.2.3-beta =
 * Release date: ?
 * Changed primary property ID source in OpenImmo-Feedback-XML attachments.
 * Added filter hook for modifying OpenImmo-Feedback-XML attachment parameters.
 * Added "Diverse" salutation option by default in extended contact forms.
+* Changed default display type of the contact meta boxes in property backend forms to closed.
+* Updated dependencies.
 
 = 1.2.0 =
 * Release date: 2021-10-15

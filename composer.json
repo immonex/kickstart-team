@@ -8,7 +8,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "immonex/wp-free-plugin-core": "1.4.0"
+        "immonex/wp-free-plugin-core": "1.5.0"
     },
     "require-dev": {
         "inverisoss/wp-i18n-tools": "^1.0",

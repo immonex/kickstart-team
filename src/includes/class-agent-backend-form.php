@@ -365,6 +365,7 @@ class Agent_Backend_Form {
 				'context'      => 'normal',
 				'priority'     => 'default',
 				'show_names'   => true,
+				'closed'       => true,
 			)
 		);
 
