@@ -68,7 +68,7 @@ class Contact_Form {
 		$fields           = $this->get_fields( false, $scope );
 		$property         = get_post( $property_post_id );
 
-		if ( $property_post_id && $property ) {
+		if ( $property_post_id && $property && ! isset( $fields['message']['default_value'] ) ) {
 			$external_id                        = get_post_meta( $property_post_id, '_inx_property_id', true );
 			$fields['message']['default_value'] = wp_sprintf(
 				/* translators: %1$s = property title, %2$s = property ID */
