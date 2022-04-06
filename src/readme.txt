@@ -3,7 +3,7 @@ Contributors: immonex
 Tags: immobilien, openimmo, immobilienmakler, immomakler, realestate, agent, agency, team, immonex
 Requires at least: 4.7
 Tested up to: 5.9
-Stable Tag: 1.2.0
+Stable Tag: 1.2.5
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -106,8 +106,8 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 
 == Changelog ==
 
-= 1.2.4-beta =
-* Release date: 2022-03-29
+= 1.2.5 =
+* Release date: 2022-04-06
 * Changed primary property ID source in OpenImmo-Feedback-XML attachments.
 * Added filter hook for modifying OpenImmo-Feedback-XML attachment parameters.
 * Added "Diverse" salutation option by default in extended contact forms.

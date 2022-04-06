@@ -143,7 +143,7 @@ If these docs are not needed anymore, the respective folders can be deleted with
 $ npm run apidoc:delete
 ```
 
-(The folder `apidoc` is meant to be used locally, it should **not** a part of any repository.)
+(The folder `apidoc` is meant to be used locally, it should **not** be a part of any repository.)
 
 ### User/Integrator Documentation
 
