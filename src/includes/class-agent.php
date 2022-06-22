@@ -547,7 +547,7 @@ class Agent extends Base_CPT_Post {
 				'meta_key'              => "{$this->prefix}gender",
 				'selectable_for_output' => false,
 				'default_show'          => array(),
-				'default'               => 'm',
+				'default'               => '',
 			),
 			'title'                       => array(
 				'label'                 => __( 'Title', 'immonex-kickstart-team' ),

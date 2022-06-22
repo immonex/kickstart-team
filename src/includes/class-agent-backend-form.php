@@ -83,12 +83,10 @@ class Agent_Backend_Form {
 				'desc'             => '',
 				'id'               => "{$prefix}gender",
 				'type'             => 'radio',
-				'default'          => 'm',
-				'show_option_none' => false,
+				'show_option_none' => __( 'not specified', 'immonex-kickstart-team' ),
 				'options'          => array(
 					'm' => __( 'male', 'immonex-kickstart-team' ),
 					'f' => __( 'female', 'immonex-kickstart-team' ),
-					'x' => __( 'diverse', 'immonex-kickstart-team' ),
 				),
 			),
 			array(

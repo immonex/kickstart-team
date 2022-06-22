@@ -119,6 +119,7 @@ foreach ( $template_data['fields'] as $inx_skin_field_name => $inx_skin_field ) 
 							name="<?php echo $inx_skin_field_name; ?>"
 							value="<?php echo $inx_skin_option; ?>"
 							class="uk-radio"<?php echo $inx_skin_required[ $inx_skin_field_name ]; ?>
+							<?php echo $inx_skin_option === $inx_skin_default_value ? 'checked' : ''; ?>
 						>
 						<?php echo $inx_skin_option_label; ?>
 					</label>&nbsp;

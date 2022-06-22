@@ -106,6 +106,11 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 
 == Changelog ==
 
+= 1.2.6-beta =
+* Release date: 2022-06-22
+* Reworked salutation/gender options.
+* Updated dependencies.
+
 = 1.2.5 =
 * Release date: 2022-04-06
 * Changed primary property ID source in OpenImmo-Feedback-XML attachments.

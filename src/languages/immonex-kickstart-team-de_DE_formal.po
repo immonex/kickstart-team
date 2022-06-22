@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: immonex Kickstart Team 1.2.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/immonex-kickstart-team\n"
-"POT-Creation-Date: 2022-01-17 10:19:01+00:00\n"
-"PO-Revision-Date: 2022-01-17 11:21+0100\n"
+"POT-Creation-Date: 2022-06-22 13:25:24+00:00\n"
+"PO-Revision-Date: 2022-06-22 15:32+0200\n"
 "Last-Translator: \n"
 "Language-Team: Carsten Scheuer <scheuer@inveris.de>\n"
 "Language: de_DE@formal\n"
@@ -13,15 +13,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.1\n"
 
 #: includes/class-agency-backend-form.php:72
-#: includes/class-agent-backend-form.php:127
+#: includes/class-agent-backend-form.php:125
 msgid "Contact Data"
 msgstr "Kontaktdaten"
 
 #: includes/class-agency-backend-form.php:89 includes/class-agency.php:408
-#: includes/class-agent-backend-form.php:137 includes/class-agent.php:613
+#: includes/class-agent-backend-form.php:135 includes/class-agent.php:613
 msgid "Email"
 msgstr "E-Mail"
 
@@ -33,54 +33,54 @@ msgid "Phone"
 msgstr "Telefon"
 
 #: includes/class-agency-backend-form.php:101 includes/class-agency.php:428
-#: includes/class-agent-backend-form.php:185 includes/class-agent.php:723
+#: includes/class-agent-backend-form.php:183 includes/class-agent.php:723
 msgid "Fax"
 msgstr "Fax"
 
 #: includes/class-agency-backend-form.php:113 includes/class-agency.php:445
-#: includes/class-agent-backend-form.php:203 includes/class-agent.php:758
+#: includes/class-agent-backend-form.php:201 includes/class-agent.php:758
 #: includes/class-contact-form.php:401 includes/class-contact-form.php:402
 msgid "Street"
 msgstr "Straße"
 
 #: includes/class-agency-backend-form.php:119 includes/class-agency.php:453
-#: includes/class-agent-backend-form.php:209 includes/class-agent.php:767
+#: includes/class-agent-backend-form.php:207 includes/class-agent.php:767
 msgid "House Number"
 msgstr "Hausnummer"
 
 #: includes/class-agency-backend-form.php:125 includes/class-agency.php:461
-#: includes/class-agent-backend-form.php:215 includes/class-agent.php:776
+#: includes/class-agent-backend-form.php:213 includes/class-agent.php:776
 msgid "ZIP Code"
 msgstr "PLZ"
 
 #: includes/class-agency-backend-form.php:131 includes/class-agency.php:469
-#: includes/class-agent-backend-form.php:221 includes/class-agent.php:785
+#: includes/class-agent-backend-form.php:219 includes/class-agent.php:785
 #: includes/class-contact-form.php:419 includes/class-contact-form.php:420
 msgid "City"
 msgstr "Ort"
 
 #: includes/class-agency-backend-form.php:137 includes/class-agency.php:477
-#: includes/class-agent-backend-form.php:227 includes/class-agent.php:794
+#: includes/class-agent-backend-form.php:225 includes/class-agent.php:794
 msgid "P.O. Box"
 msgstr "Postfach"
 
 #: includes/class-agency-backend-form.php:143 includes/class-agency.php:485
-#: includes/class-agent-backend-form.php:233 includes/class-agent.php:802
+#: includes/class-agent-backend-form.php:231 includes/class-agent.php:802
 msgid "P.O. Box ZIP Code"
 msgstr "Postfach-PLZ"
 
 #: includes/class-agency-backend-form.php:149 includes/class-agency.php:493
-#: includes/class-agent-backend-form.php:239 includes/class-agent.php:810
+#: includes/class-agent-backend-form.php:237 includes/class-agent.php:810
 msgid "P.O. Box City"
 msgstr "Postfach-Ort"
 
 #: includes/class-agency-backend-form.php:155
-#: includes/class-agent-backend-form.php:245
+#: includes/class-agent-backend-form.php:243
 msgid "Country code (ISO3)"
 msgstr "Ländercode (ISO3)"
 
 #: includes/class-agency-backend-form.php:156
-#: includes/class-agent-backend-form.php:246
+#: includes/class-agent-backend-form.php:244
 msgid ""
 "Code according to <a href=\"https://en.wikipedia.org/wiki/ISO_3166-1\" "
 "target=\"_blank\">ISO-3166-1 Alpha-3</a>"
@@ -89,8 +89,8 @@ msgstr ""
 "\"_blank\">ISO-3166-1 Alpha-3</a>"
 
 #: includes/class-agency-backend-form.php:173 includes/class-agency.php:613
-#: includes/class-agent-backend-form.php:251
-#: includes/class-agent-backend-form.php:268 includes/class-agent.php:880
+#: includes/class-agent-backend-form.php:249
+#: includes/class-agent-backend-form.php:266 includes/class-agent.php:880
 msgid "Business/Social Networks"
 msgstr "Netzwerke (Business/Social)"
 
@@ -99,7 +99,7 @@ msgid "Legal Information"
 msgstr "Rechtliche Informationen"
 
 #: includes/class-agency-backend-form.php:204 includes/class-agency.php:394
-#: includes/class-agent-backend-form.php:191 includes/class-agent.php:742
+#: includes/class-agent-backend-form.php:189 includes/class-agent.php:742
 msgid "Company"
 msgstr "Firma"
 
@@ -128,7 +128,7 @@ msgid "VATIN"
 msgstr "USt-ID"
 
 #: includes/class-agency-backend-form.php:252
-#: includes/class-agent-backend-form.php:343
+#: includes/class-agent-backend-form.php:341
 msgid "Other"
 msgstr "Weiteres"
 
@@ -137,12 +137,12 @@ msgid "Legal Notice"
 msgstr "Impressum"
 
 #: includes/class-agency-backend-form.php:272
-#: includes/class-agent-backend-form.php:289 includes/class-agent.php:873
+#: includes/class-agent-backend-form.php:287 includes/class-agent.php:873
 msgid "Miscellaneous"
 msgstr "Sonstiges"
 
 #: includes/class-agency-backend-form.php:282
-#: includes/class-agent-backend-form.php:307
+#: includes/class-agent-backend-form.php:305
 msgid "Auto Update"
 msgstr "Auto-Update"
 
@@ -233,102 +233,102 @@ msgstr "Über..."
 msgid "Gender"
 msgstr "Geschlecht"
 
-#: includes/class-agent-backend-form.php:89
+#: includes/class-agent-backend-form.php:86 includes/class-contact-form.php:374
+msgid "not specified"
+msgstr "keine Angabe"
+
+#: includes/class-agent-backend-form.php:88
 msgid "male"
 msgstr "männlich"
 
-#: includes/class-agent-backend-form.php:90
+#: includes/class-agent-backend-form.php:89
 msgid "female"
 msgstr "weiblich"
 
-#: includes/class-agent-backend-form.php:91
-msgid "diverse"
-msgstr "divers"
-
-#: includes/class-agent-backend-form.php:95 includes/class-agent.php:553
+#: includes/class-agent-backend-form.php:93 includes/class-agent.php:553
 #: includes/widgets/class-agency-widget.php:139
 #: includes/widgets/class-agent-widget.php:132
 msgid "Title"
 msgstr "Titel"
 
-#: includes/class-agent-backend-form.php:101 includes/class-agent.php:560
+#: includes/class-agent-backend-form.php:99 includes/class-agent.php:560
 #: includes/class-contact-form.php:385 includes/class-contact-form.php:386
 msgid "First Name"
 msgstr "Vorname"
 
-#: includes/class-agent-backend-form.php:107 includes/class-agent.php:567
+#: includes/class-agent-backend-form.php:105 includes/class-agent.php:567
 #: includes/class-contact-form.php:393 includes/class-contact-form.php:394
 msgid "Last Name"
 msgstr "Nachname"
 
-#: includes/class-agent-backend-form.php:113 includes/class-agent.php:590
+#: includes/class-agent-backend-form.php:111 includes/class-agent.php:590
 msgid "Position"
 msgstr "Position"
 
-#: includes/class-agent-backend-form.php:143
+#: includes/class-agent-backend-form.php:141
 msgid "Email (main office)"
 msgstr "E-Mail (Zentrale)"
 
-#: includes/class-agent-backend-form.php:149
+#: includes/class-agent-backend-form.php:147
 msgid "Email (feedback)"
 msgstr "E-Mail (Feedback)"
 
-#: includes/class-agent-backend-form.php:155 includes/class-agent.php:653
+#: includes/class-agent-backend-form.php:153 includes/class-agent.php:653
 msgid "Email (private)"
 msgstr "E-Mail (privat)"
 
-#: includes/class-agent-backend-form.php:161 includes/class-agent.php:672
+#: includes/class-agent-backend-form.php:159 includes/class-agent.php:672
 msgid "Phone (call-through)"
 msgstr "Telefon (Durchwahl)"
 
-#: includes/class-agent-backend-form.php:167 includes/class-agent.php:693
+#: includes/class-agent-backend-form.php:165 includes/class-agent.php:693
 msgid "Phone (mobile)"
 msgstr "Telefon (mobil)"
 
-#: includes/class-agent-backend-form.php:173
+#: includes/class-agent-backend-form.php:171
 msgid "Phone (main office)"
 msgstr "Telefon (Zentrale)"
 
-#: includes/class-agent-backend-form.php:179 includes/class-agent.php:703
+#: includes/class-agent-backend-form.php:177 includes/class-agent.php:703
 msgid "Phone (private)"
 msgstr "Telefon (privat)"
 
-#: includes/class-agent-backend-form.php:299 includes/class-wp-bootstrap.php:74
+#: includes/class-agent-backend-form.php:297 includes/class-wp-bootstrap.php:74
 #: includes/class-wp-bootstrap.php:115
 #: includes/widgets/class-agency-widget.php:27
 msgid "Agency"
 msgstr "Agentur"
 
-#: includes/class-agent-backend-form.php:303
-#: includes/class-agent-backend-form.php:377
+#: includes/class-agent-backend-form.php:301
+#: includes/class-agent-backend-form.php:376
 msgid "n/a"
 msgstr "k. A."
 
-#: includes/class-agent-backend-form.php:313
+#: includes/class-agent-backend-form.php:311
 msgid "Address Publishing"
 msgstr "Addressveröffentlichung"
 
-#: includes/class-agent-backend-form.php:319
+#: includes/class-agent-backend-form.php:317
 msgid "Import folder"
 msgstr "Importordner"
 
-#: includes/class-agent-backend-form.php:325 includes/class-agent.php:851
+#: includes/class-agent-backend-form.php:323 includes/class-agent.php:851
 msgid "Personal Number"
 msgstr "Personennummer"
 
-#: includes/class-agent-backend-form.php:331 includes/class-agent.php:858
+#: includes/class-agent-backend-form.php:329 includes/class-agent.php:858
 msgid "Property Trustee ID"
 msgstr "Immobilien-Treuhänder-ID"
 
-#: includes/class-agent-backend-form.php:337 includes/class-agent.php:866
+#: includes/class-agent-backend-form.php:335 includes/class-agent.php:866
 msgid "Reference ID"
 msgstr "Referenz-ID"
 
-#: includes/class-agent-backend-form.php:349
+#: includes/class-agent-backend-form.php:347
 msgid "Demo Agent"
 msgstr "Demo-Kontaktperson"
 
-#: includes/class-agent-backend-form.php:350
+#: includes/class-agent-backend-form.php:348
 msgid ""
 "Activate if this agent record only consists of example data. Related contact "
 "form data will <strong>not</strong> be submitted in this case."
@@ -337,15 +337,15 @@ msgstr ""
 "Beispieldaten handelt. Zugehörige Kontaktformulardaten werden in diesem Fall "
 "<strong>nicht</strong> übermittelt."
 
-#: includes/class-agent-backend-form.php:363
+#: includes/class-agent-backend-form.php:361
 msgid "Contact"
 msgstr "Kontakt"
 
-#: includes/class-agent-backend-form.php:373
+#: includes/class-agent-backend-form.php:372
 msgid "Agent (primary)"
 msgstr "Kontaktperson (primär)"
 
-#: includes/class-agent-backend-form.php:381
+#: includes/class-agent-backend-form.php:380
 #: includes/class-wp-bootstrap.php:137
 msgid "Agents"
 msgstr "Kontaktpersonen"
@@ -435,17 +435,13 @@ msgstr ""
 msgid "Salutation"
 msgstr "Anrede"
 
-#: includes/class-contact-form.php:374
+#: includes/class-contact-form.php:375
 msgid "Ms."
 msgstr "Frau"
 
-#: includes/class-contact-form.php:375
+#: includes/class-contact-form.php:376
 msgid "Mr."
 msgstr "Herr"
-
-#: includes/class-contact-form.php:376
-msgid "Diverse"
-msgstr "Divers"
 
 #: includes/class-contact-form.php:410 includes/class-contact-form.php:411
 msgid "Postal Code"
@@ -1095,11 +1091,11 @@ msgstr "Widerruf"
 msgid "Cancellation"
 msgstr "Widerruf"
 
-#: includes/class-quick-openimmo-feedback.php:296
+#: includes/class-quick-openimmo-feedback.php:332
 msgid "Ms"
 msgstr "Frau"
 
-#: includes/class-quick-openimmo-feedback.php:297
+#: includes/class-quick-openimmo-feedback.php:333
 msgid "Mr"
 msgstr "Herr"
 
@@ -1742,7 +1738,7 @@ msgstr "Meine Angebote"
 msgid "About Me"
 msgstr "Über mich"
 
-#: skins/default/contact-form.php:185
+#: skins/default/contact-form.php:186
 msgid ""
 "Heads up! This is only sample data, the form data will <strong>not</strong> "
 "be submitted."
@@ -1750,15 +1746,15 @@ msgstr ""
 "Achtung! Dies sind nur Beispieldaten, die Angaben im Formular werden "
 "<strong>nicht</strong> übermittelt."
 
-#: skins/default/contact-form.php:193
+#: skins/default/contact-form.php:194
 msgid "Secure submission"
 msgstr "Sichere Übermittlung"
 
-#: skins/default/contact-form.php:193
+#: skins/default/contact-form.php:194
 msgid "Secure!"
 msgstr "Sicher!"
 
-#: skins/default/contact-form.php:199
+#: skins/default/contact-form.php:200
 msgid "Send"
 msgstr "Senden"
 
@@ -1833,6 +1829,12 @@ msgstr "inveris OHG / immonex"
 msgid "https://immonex.dev/"
 msgstr "https://immonex.dev/"
 
+#~ msgid "diverse"
+#~ msgstr "divers"
+
+#~ msgid "Diverse"
+#~ msgstr "Divers"
+
 #~ msgid "Your data could not be submitted. Please check your inputs!"
 #~ msgstr ""
 #~ "Ihre Daten konnten nicht übermittelt werden. Bitte prüfen Sie Ihre "
@@ -1901,9 +1903,6 @@ msgstr "https://immonex.dev/"
 
 #~ msgid "Example description..."
 #~ msgstr "Beispiel-Beschreibung..."
-
-#~ msgid "not specified"
-#~ msgstr "keine Angabe"
 
 #~ msgid "Option 1"
 #~ msgstr "Option 1"

@@ -371,9 +371,9 @@ class Contact_Form {
 				'required'    => false,
 				'caption'     => __( 'Salutation', 'immonex-kickstart-team' ),
 				'options'     => array(
+					'' =>  __( 'not specified', 'immonex-kickstart-team' ),
 					'f' => __( 'Ms.', 'immonex-kickstart-team' ),
 					'm' => __( 'Mr.', 'immonex-kickstart-team' ),
-					'x' => __( 'Diverse', 'immonex-kickstart-team' ),
 				),
 				'layout_type' => 'full',
 				'scope'       => array( 'extended' ),

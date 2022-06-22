@@ -21,7 +21,6 @@ switch ( $template_data['agent_gender'] ) {
 		$inx_skin_title = _x( 'Your contact', 'gender neutral', 'immonex-kickstart-team' );
 }
 
-
 $inx_skin_link_type = false;
 if (
 	! empty( $template_data['link_type'] )
