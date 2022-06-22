@@ -35,7 +35,7 @@ $inx_skin_photo = isset( $template_data['elements']['photo'] ) ?
 	$template_data['elements']['photo'] :
 	false;
 ?>
-<div class="inx-single-property__section inx-single-property__section--type--gallery inx-team-single-agent inx-team-single-agent--type--single uk-margin-large-bottom">
+<div class="inx-single-property__section inx-team-single-agent inx-team-single-agent--type--single uk-margin-large-bottom">
 	<?php
 	if ( $inx_skin_title ) {
 		echo wp_sprintf(

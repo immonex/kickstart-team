@@ -145,7 +145,7 @@ class Quick_Openimmo_Feedback {
 		$anrede      = ! empty( $prospect['salutation'] ) ? $prospect['salutation'] : $this->get_salutation( $vorname );
 		$int_strasse = ! empty( $prospect['street'] ) ? sanitize_text_field( $prospect['street'] ) : '';
 		$int_plz     = ! empty( $prospect['postal_code'] ) ? sanitize_text_field( $prospect['postal_code'] ) : '';
-		$int_ort     = ! empty( $prospect['postal_code'] ) ? sanitize_text_field( $prospect['city'] ) : '';
+		$int_ort     = ! empty( $prospect['city'] ) ? sanitize_text_field( $prospect['city'] ) : '';
 		$tel         = ! empty( $prospect['phone'] ) ? sanitize_text_field( $prospect['phone'] ) : '';
 		$email       = ! empty( $prospect['email'] ) ? sanitize_text_field( $prospect['email'] ) : '';
 		$anfrage     = ! empty( $prospect['message'] ) ? stripslashes( sanitize_textarea_field( $prospect['message'] ) ) : '';
