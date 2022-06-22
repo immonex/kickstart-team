@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "164117673ebbe72af2c8e6dba77f71b4",
+    "content-hash": "5b520bfde9a82d27505158182f0b29d1",
     "packages": [
         {
             "name": "immonex/wp-free-plugin-core",
