@@ -314,7 +314,10 @@ EOT
 	 * @return string Salutation or empty string if undeterminable.
 	 */
 	private function get_salutation( $first_name ) {
-		if ( strlen( (string) $first_name ) < 3 ) {
+		if (
+			! $this->config['oi_feedback_auto_salutation']
+			|| strlen( (string) $first_name ) < 3
+		) {
 			return '';
 		}
 

@@ -306,10 +306,13 @@ class Contact_Form {
 			$body['html'] .= $template_data['prerendered_html']['inline_oi_feedback'];
 		}
 
+		// Strip tags and slashes and apply wpautop to textarea form inputs.
 		$body['html'] = preg_replace_callback(
 			'/(?<=\<span).*?(?=\<\/span\>)/s',
 			function ( $matches ) {
-				return nl2br( wp_strip_all_tags( $matches[0] ) );
+				$span_attrs    = substr( $matches[0], 0, strpos( $matches[0], '>' ) + 1 );
+				$inner_content = substr( $matches[0], strlen( $span_attrs ) );
+				return $span_attrs . nl2br( wp_strip_all_tags( $inner_content ) );
 			},
 			wpautop( stripslashes( $body['html'] ) )
 		);
@@ -371,9 +374,9 @@ class Contact_Form {
 				'required'    => false,
 				'caption'     => __( 'Salutation', 'immonex-kickstart-team' ),
 				'options'     => array(
-					'' =>  __( 'not specified', 'immonex-kickstart-team' ),
-					'f' => __( 'Ms.', 'immonex-kickstart-team' ),
-					'm' => __( 'Mr.', 'immonex-kickstart-team' ),
+					''                                    => __( 'not specified', 'immonex-kickstart-team' ),
+					__( 'Ms.', 'immonex-kickstart-team' ) => __( 'Ms.', 'immonex-kickstart-team' ),
+					__( 'Mr.', 'immonex-kickstart-team' ) => __( 'Mr.', 'immonex-kickstart-team' ),
 				),
 				'layout_type' => 'full',
 				'scope'       => array( 'extended' ),
@@ -587,7 +590,15 @@ class Contact_Form {
 				$value = isset( $_POST[ $field_name ] ) ?
 					// @codingStandardsIgnoreLine
 					wp_unslash( $_POST[ $field_name ] ) : '';
-				if ( $value && isset( $field['options'] ) && isset( $field['options'][ $value ] ) ) {
+
+				$has_options       = isset( $field['options'] );
+				$has_assoc_options = $has_options && array_values( $field['options'] ) !== $field['options'];
+
+				if (
+					$has_options
+					&& ( $value && ! $has_assoc_options )
+					&& isset( $field['options'][ $value ] )
+				) {
 					$value = $field['options'][ $value ];
 				}
 

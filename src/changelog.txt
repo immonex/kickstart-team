@@ -1,5 +1,11 @@
 == Changelog ==
 
+= 1.2.7 =
+* Release date: 2022-06-28
+* Reworked salutation/gender options (contact forms, widget titles etc.).
+* Fixed display bug in HTML form mails.
+* Updated dependencies.
+
 = 1.2.5 =
 * Release date: 2022-04-06
 * Changed primary property ID source in OpenImmo-Feedback-XML attachments.

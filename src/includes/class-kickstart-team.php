@@ -10,14 +10,14 @@ namespace immonex\Kickstart\Team;
 /**
  * Main plugin class
  */
-class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_6_0\Base {
+class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_5_4\Base {
 
 	const PLUGIN_NAME                = 'immonex Kickstart Team';
 	const ADDON_NAME                 = 'Team';
 	const PLUGIN_PREFIX              = 'inx_team_';
 	const PUBLIC_PREFIX              = 'inx-team-';
 	const TEXTDOMAIN                 = 'immonex-kickstart-team';
-	const PLUGIN_VERSION             = '1.2.6-beta';
+	const PLUGIN_VERSION             = '1.2.7';
 	const PLUGIN_HOME_URL            = 'https://de.wordpress.org/plugins/immonex-kickstart-team/';
 	const PLUGIN_DOC_URLS            = array(
 		'de' => 'https://docs.immonex.de/kickstart-team/',
@@ -64,6 +64,7 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_6_0\Base {
 		'form_mail_cc_recipients'            => '',
 		'admin_mails_as_html'                => false,
 		'oi_feedback_type'                   => 'attachment',
+		'oi_feedback_auto_salutation'        => true,
 		'admin_contact_form_mail_template'   => '{% if is_property_inquiry %}' . PHP_EOL .
 			'{{ property_title_ext_id_url }}' . PHP_EOL . PHP_EOL .
 			'{% endif %}' . PHP_EOL . '{{ form_data }}',
@@ -813,18 +814,34 @@ and conditions can be used in the related input fields:<br><br>
 			array(
 				'name'    => 'oi_feedback_type',
 				'type'    => 'select',
-				'label'   => __( 'OpenImmo Feedback Type', 'immonex-kickstart-team' ),
+				'label'   => __( 'OpenImmo-Feedback Type', 'immonex-kickstart-team' ),
 				'section' => "{$prefix}contact_form_mails",
 				'args'    => array(
 					'plugin_slug' => $this->plugin_slug,
 					'option_name' => $this->plugin_options_name,
-					'description' => __( 'This option defines if and how <strong>OpenImmo Feedback XML data</strong> are attached to contact form mails sent to admin/agent recipients (e.g. for further processing in an external software solution).', 'immonex-kickstart-team' ),
+					'description' => __( 'This option defines if and how <strong>OpenImmo-Feedback-XML data</strong> are attached to contact form mails sent to admin/agent recipients (e.g. for further processing in an external software solution).', 'immonex-kickstart-team' ),
 					'options'     => array(
 						''           => _x( 'none', 'as a synonym for "without"', 'immonex-kickstart-team' ),
 						'attachment' => __( 'Attachment', 'immonex-kickstart-team' ),
 						'body'       => __( 'Mail Body', 'immonex-kickstart-team' ),
 					),
 					'value'       => $this->plugin_options['oi_feedback_type'],
+				),
+			),
+			array(
+				'name'    => 'oi_feedback_auto_salutation',
+				'type'    => 'checkbox',
+				'label'   => wp_sprintf( __( 'Auto Salutation', 'immonex-kickstart-team' ) ),
+				'section' => "{$prefix}contact_form_mails",
+				'args'    => array(
+					'plugin_slug' => $this->plugin_slug,
+					'option_name' => $this->plugin_options_name,
+					'description' => wp_sprintf(
+						/* translators: %s = genderize.io URL */
+						__( 'If not specified, automatically determine a suitable salutation for the OpenImmo-Feedback-XML attachment based on the prospect\'s first name via <a href="%s" target="_blank">genderize.io</a>.', 'immonex-kickstart-team' ),
+						'https://genderize.io/'
+					),
+					'value'       => $this->plugin_options['oi_feedback_auto_salutation'],
 				),
 			),
 			array(
