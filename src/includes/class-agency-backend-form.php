@@ -48,8 +48,8 @@ class Agency_Backend_Form {
 	 * @param mixed[]                                $bootstrap_data Plugin bootstrap data.
 	 * @param \immonex\Kickstart\Team\Kickstart_Team $plugin Main plugin object.
 	 */
-	public function __construct( $bootstrap_data = array(), $plugin ) {
-		$this->data   = $bootstrap_data;
+	public function __construct( $bootstrap_data, $plugin ) {
+		$this->data   = is_array( $bootstrap_data ) ? $bootstrap_data : array();
 		$this->plugin = $plugin;
 
 		// Setup CMB2 meta boxes.

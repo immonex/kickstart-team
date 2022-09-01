@@ -320,9 +320,9 @@ class Agency extends Base_CPT_Post {
 	 *
 	 * @return string Company name.
 	 */
-	public function get_company_from_xml( $anbieter = null, $immobilie ) {
+	public function get_company_from_xml( $anbieter, $immobilie ) {
 		$company = (string) $immobilie->kontaktperson->firma;
-		if ( $anbieter ) {
+		if ( ! empty( $anbieter ) ) {
 			$company = (string) $anbieter->firma;
 			if ( ! $company ) {
 				$company = (string) $anbieter->impressum_strukt->firmenname;
