@@ -1,11 +1,6 @@
----
-title: XML-Quelltext des OpenImmo-Feedback-Anhangs (Filter)
-search: 1
----
-
 # inx_team_openimmo_feedback_xml_source (Filter)
 
-Der **Quelltext** der Anhänge im [OpenImmo-Feedback-XML-Format](../schnellstart/einrichtung.html#OpenImmo-Feedback-Typ), die bei Anfragen via [Objekt-Kontaktformular](../komponenten/kontaktformular.html) mitgesendet werden, kann bei Bedarf über diesen Filter-Hook angepasst oder erweitert werden.
+Der **Quelltext** der Anhänge im [OpenImmo-Feedback-XML-Format](../schnellstart/einrichtung#OpenImmo-Feedback-Typ), die bei Anfragen via [Objekt-Kontaktformular](../komponenten/kontaktformular) mitgesendet werden, kann bei Bedarf über diesen Filter-Hook angepasst oder erweitert werden.
 
 ## Parameter
 

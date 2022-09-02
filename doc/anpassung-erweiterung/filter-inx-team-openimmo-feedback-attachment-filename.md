@@ -1,11 +1,6 @@
----
-title: Dateiname des OpenImmo-Feedback-Anhangs (Filter)
-search: 1
----
-
 # inx_team_openimmo_feedback_attachment_filename (Filter)
 
-Der **Dateiname** der Anhänge im [OpenImmo-Feedback-XML-Format](../schnellstart/einrichtung.html#OpenImmo-Feedback-Typ), die bei Anfragen via [Objekt-Kontaktformular](../komponenten/kontaktformular.html) generiert werden, lautet standardmäßig `kontakt-openimmo-feedback.xml`, kann aber bei Bedarf über diesen Filter-Hook angepasst werden.
+Der **Dateiname** der Anhänge im [OpenImmo-Feedback-XML-Format](../schnellstart/einrichtung#OpenImmo-Feedback-Typ), die bei Anfragen via [Objekt-Kontaktformular](../komponenten/kontaktformular) generiert werden, lautet standardmäßig `kontakt-openimmo-feedback.xml`, kann aber bei Bedarf über diesen Filter-Hook angepasst werden.
 
 ## Parameter
 

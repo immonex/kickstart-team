@@ -1,11 +1,6 @@
----
-title: Felder des Kontaktformulars (Filter)
-search: 1
----
-
 # inx_team_contact_form_fields (Filter)
 
-Mit diesem Filter können die Felder des [einheitlichen Kontaktformulars](../komponenten/kontaktformular.html) angepasst oder um eigene Elemente erweitert werden.
+Mit diesem Filter können die Felder des [einheitlichen Kontaktformulars](../komponenten/kontaktformular) angepasst oder um eigene Elemente erweitert werden.
 
 ## Parameter
 
@@ -15,7 +10,7 @@ Mit diesem Filter können die Felder des [einheitlichen Kontaktformulars](../kom
 | `$names_only` (bool) | *true*, wenn – kontextabhängig – nur die Feldnamen (Keys) zurückgeliefert werden sollen, ansonsten *false* (Standardvorgabe) |
 | `$scope`\* (string) | für die Ausgabe vorgesehener Feldumfang: *basic* (Standardvorgabe: einfaches Formular) oder *extended* (erweitertes Formular) |
 
-\* Der Umfang des Formulars kann – je nach Art der Einbindung – per [Plugin-Option](../schnellstart/einrichtung.html#Erweitertes-Formular), Widget-Einstellung (<i>Kontaktformular-Umfang</i>) oder Shortcode-Attribut (`contact_form_scope`) festgelegt werden.
+\* Der Umfang des Formulars kann – je nach Art der Einbindung – per [Plugin-Option](../schnellstart/einrichtung#Erweitertes-Formular), Widget-Einstellung (*Kontaktformular-Umfang*) oder Shortcode-Attribut (`contact_form_scope`) festgelegt werden.
 
 ### Fields-Array im Detail
 
@@ -41,7 +36,7 @@ Die folgenden Optionen können pro Feld definiert werden:
 | `layout_type` (string) | **optionale** Mindestbeite des Elements |
 | | *half*: mindestens 50 % des Rahmenelements |
 | | *full*: komplette Breite des Rahmenelements |
-| `scope` (array) | Liste von <i>Scopes</i>, in denen das Element enthalten ist (enthält im Regelfall *basic*, *extended* oder beide Angaben) |
+| `scope` (array) | Liste von *Scopes*, in denen das Element enthalten ist (enthält im Regelfall *basic*, *extended* oder beide Angaben) |
 | `order` (int) | Sortierindex für die Reihenfolge der Ausgabe |
 
 #### Standardkonfiguration
@@ -54,6 +49,7 @@ $fields = [
 		'required'    => true,
 		'caption'     => __( 'Salutation', 'immonex-kickstart-team' ),
 		'options'     => [
+			''  => __( 'not specified', 'immonex-kickstart-team' ),
 			'f' => __( 'Ms.', 'immonex-kickstart-team' ),
 			'm' => __( 'Mr.', 'immonex-kickstart-team' ),
 		],

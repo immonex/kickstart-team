@@ -1,8 +1,3 @@
----
-title: Business/Soziale Netzwerke für Kontaktpersonen (Filter)
-search: 1
----
-
 # inx_team_agent_networks (Filter)
 
 Über diesen Filter-Hook kann die Liste der Business- (XING, LinkedIn etc.) und sozialen Netzwerke (Twitter, Facebook & Co.) verändert oder erweitert werden, für die entsprechende URLs in den Datensätzen von **Kontaktpersonen** hinterlegt werden können.

@@ -1,8 +1,3 @@
----
-title: HTML-Code der Business/Social-Network-Icons von Kontaktpersonen (Filter)
-search: 1
----
-
 # inx_team_agent_network_icons_output (Filter)
 
 Dieser Filter-Hook bietet die Möglichkeit, den bereits gerenderten HTML-Code von **Icon-Listen** mit verlinkten Netzwerk-Profilseiten von Kontaktpersonen vor der Ausgabe zu verändern. Die Icon-Listen kommen – sofern entsprechende URLs vorhanden sind – in den Detailansichten und Widgets der Kontaktpersonen zum Einsatz.)

@@ -1,10 +1,3 @@
----
-title: Listen-Attribute (Shortcodes/GET)
-category: schnellstart
-order: 40
-search: 1
----
-
 # Allgemeine Listen-Attribute
 
 ## Shortcodes
@@ -19,7 +12,7 @@ Die folgenden Parameter zur Filterung, Sortierung und Begrenzung der anzuzeigend
 | `order` | **Sortierung/Reihenfolge**: eines der folgenden Kriterien plus (optional) *ASC* für aufsteigend oder *DESC* für absteigend, Beispiel: *date DESC* |
 | | *ID*: Beitrags-ID |
 | | *title*: Beitragstitel (Firma oder Name der Kontaktperson) |
-| | *name*: <i>Slug</i> |
+| | *name*: *Slug* |
 | | *date*: Erstellungsdatum |
 | | *modified*: Datum der letzten Änderung |
 | | *rand*: zufällige Reihenfolge |
@@ -56,4 +49,4 @@ Agenturliste (Standard-Archivseite) mit maximal vier Einträgen (zufällige Ausw
 
 ---
 
-<sup>1</sup> In der Praxis ist bei Makler/Ansprechpartner-Listen eher die [Agentur-Zugehörigkeit](einbindung.html#Beispiel-1) (`agency`) als Filterkriterium relevant.
+<sup>1</sup> In der Praxis ist bei Makler/Ansprechpartner-Listen eher die [Agentur-Zugehörigkeit](einbindung#Beispiel-1) (`agency`) als Filterkriterium relevant.

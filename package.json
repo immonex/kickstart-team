@@ -52,7 +52,7 @@
     "pot": "npm run pot:copy && npm run pot:extract && npm run pot:delete",
     "test:install": "bin/invoke_test_installer.sh",
     "test": "vendor/phpunit/phpunit/phpunit -c tests/phpunit/plugin.xml",
-    "doc": "doc-gen server",
+    "doc": "doc-gen serve",
     "doc:publish": "doc-gen publish",
     "apidoc": "bin/phpdoc run --sourcecode",
     "apidoc:view": "node_modules/.bin/lws --stack lws-static lws-index -d apidoc -o",

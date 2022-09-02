@@ -1,8 +1,3 @@
----
-title: Titel der Agentur-Archivseiten (Filter)
-search: 1
----
-
 # inx_team_agency_archive_title (Filter)
 
 Der **Seiten- und Dokumenttitel** für Agentur-Archivseiten kann in den Add-on-Optionen festgelegt werden. Alternativ kann hierfür aber auch dieser Filter-Hook verwendet werden, der den Wert der Option überschreibt.
@@ -15,7 +10,7 @@ Der **Seiten- und Dokumenttitel** für Agentur-Archivseiten kann in den Add-on-O
 
 ## Rückgabewert
 
-alternativer Titel für die Archivseiten des [<i>Custom Post Types</i> für Agenturen](../beitragsarten.html) (`inx_agency`)
+alternativer Titel für die Archivseiten des [*Custom Post Types* für Agenturen](../beitragsarten) (`inx_agency`)
 
 ## Rahmenfunktion
 

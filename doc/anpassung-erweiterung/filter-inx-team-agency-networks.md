@@ -1,8 +1,3 @@
----
-title: Business/Soziale Netzwerke für Agenturen (Filter)
-search: 1
----
-
 # inx_team_agency_networks (Filter)
 
 Über diesen Filter-Hook kann die Liste der Business- (XING, LinkedIn etc.) und sozialen Netzwerke (Twitter, Facebook & Co.) verändert oder erweitert werden, für die entsprechende URLs in den Kontaktdaten von **Agenturen** hinterlegt werden können.

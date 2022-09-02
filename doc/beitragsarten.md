@@ -1,28 +1,21 @@
----
-title: Beitragsarten
-category: grundlagen
-order: 30
-search: 1
----
-
 # Beitragsarten
 
 ## Custom Post Types
 
-Für **Immobilien-Agenturen** und **Kontaktpersonen** werden die folgenden benutzerdefinierten Beitragsarten (<i>Custom Post Types</i> oder kurz <i>CPT</i>) registriert:
+Für **Immobilien-Agenturen** und **Kontaktpersonen** werden die folgenden benutzerdefinierten Beitragsarten (*Custom Post Types* oder kurz *CPT*) registriert:
 
 - *inx_agency* (Agenturen)
-- *inx_agent* (Kontaktpersonen nachfolgend auch als <i>Immobilienmakler/innen</i>, <i>Ansprechpartner/innen</i> oder <i>Agenten</i> bezeichnet)
+- *inx_agent* (Kontaktpersonen nachfolgend auch als *Immobilienmakler/innen*, *Ansprechpartner/innen* oder *Agenten* bezeichnet)
 
-### Agentur > Kontaktperson
+### Agentur → Kontaktperson
 
 Eine Kontaktperson ist im Regelfall einer (einzelnen) Agentur zugeordnet.
 
 ![Kontaktperson: Auswahl der zugehörigen Agentur im WP-Backend](assets/scst-be-agent-agency-selection-1.gif)
 
-### Kontaktperson/Agentur > Immobilie
+### Kontaktperson/Agentur → Immobilie
 
-Einem importierten Immobilienobjekt (CPT *inx_property* des [Kickstart-Basisplugins](https://docs.immonex.de/kickstart/)) können grundsätzlich mehrere Kontaktpersonen zugeordnet werden, wobei aber nur eine hiervon den *primären* Kontakt darstellt. Über diese **primäre Kontaktperson** wird wiederum eine Verbindung zwischen einem Immobilien-Angebot und einer Agentur hergestellt.
+Einem importierten Immobilienobjekt (CPT *inx_property* des [Kickstart-Basis-Plugins](https://docs.immonex.de/kickstart/)) können grundsätzlich mehrere Kontaktpersonen zugeordnet werden, wobei aber nur eine hiervon den *primären* Kontakt darstellt. Über diese **primäre Kontaktperson** wird wiederum eine Verbindung zwischen einem Immobilien-Angebot und einer Agentur hergestellt.
 
 ![Auswahl der Kontaktpersonen eines Immobilien-Angebots im WordPress-Backend](assets/scst-be-property-agents-selection-1.gif)
 
@@ -53,7 +46,7 @@ Bei den folgenden Angaben zur Agentur handelt es sich vornehmlich um **allgemein
 
 #### Business/Soziale Netzwerke
 
-Die Netzwerk-Liste kann bei Bedarf per [Filterfunktion](anpassung-erweiterung/filter-inx-team-agency-networks.html) modifiziert werden. Die URLs gehören nicht zum regulären Umfang des OpenImmo-Standards, müssen also bei Bedarf manuell oder mit einer individuellen Hook-Funktion ergänzt werden.
+Die Netzwerk-Liste kann bei Bedarf per [Filterfunktion](anpassung-erweiterung/filter-inx-team-agency-networks) modifiziert werden. Die URLs gehören nicht zum regulären Umfang des OpenImmo-Standards, müssen also bei Bedarf manuell oder mit einer individuellen Hook-Funktion ergänzt werden.
 
 | Feldname | Beschreibung |
 | -------- | ------------ |
@@ -138,7 +131,7 @@ Vor- und Nachname werden bei der automatisierten Erstellung eines Beitrags als B
 | `_inx_team_agent_facebook_url` | URL der Facebook-Seite des Unternehmens |
 | `_inx_team_agent_instagram_url` | Instagram-URL |
 
-Auch hier gilt: Anpassung/Erweiterung per [Filterfunktion](anpassung-erweiterung/filter-inx-team-agent-networks.html) möglich
+Auch hier gilt: Anpassung/Erweiterung per [Filterfunktion](anpassung-erweiterung/filter-inx-team-agent-networks) möglich
 
 #### Verarbeitung/Spezial-Flags etc.
 

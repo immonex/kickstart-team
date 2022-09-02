@@ -1,11 +1,6 @@
----
-title: Benutzer-Formulardaten (Filter)
-search: 1
----
-
 # inx_team_contact_form_user_data (Filter)
 
-Mit diesem Filter können die im Frontend per [Kontaktformular](../komponenten/kontaktformular.html) erfassten Benutzer-Daten verarbeitet oder modifiziert werden.
+Mit diesem Filter können die im Frontend per [Kontaktformular](../komponenten/kontaktformular) erfassten Benutzer-Daten verarbeitet oder modifiziert werden.
 
 ## Parameter
 

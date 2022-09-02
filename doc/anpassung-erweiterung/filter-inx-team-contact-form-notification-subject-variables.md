@@ -1,11 +1,6 @@
----
-title: Variablen für den Betreff der Kontaktformular-Mails (Filter)
-search: 1
----
-
 # inx_team_contact_form_notification_subject_variables (Filter)
 
-Dieser Filter dient der Erweiterung oder Anpassung von Variablen, die für den Austausch der Platzhalter im [Kontaktformular-Mail-Betreff](filter-inx-team-contact-form-notification-subject.html) verwendet werden.
+Dieser Filter dient der Erweiterung oder Anpassung von Variablen, die für den Austausch der Platzhalter im [Kontaktformular-Mail-Betreff](filter-inx-team-contact-form-notification-subject) verwendet werden.
 
 Anhand des Kontext-Parameters kann unterschieden werden, ob es sich um eine Mail an den Immobilien-Anbieter (im Regelfall der Website-Betreiber bzw. Administrator) oder eine Eingangsbestätigung an den Absender (Interessent/in) handelt.
 
@@ -34,7 +29,7 @@ angepasstes/erweitertes Variablen-Array
 
 Eine Funktion zur Nutzung des Filters wird typischerweise in der folgenden Form in der Datei **functions.php** des **Child-Themes** oder per Code-Snippets-Plugin eingebunden.
 
-Siehe auch: [Beispielfunktion zur Verwendung der Variable "foo"](filter-inx-team-contact-form-notification-subject.html#Rahmenfunktion)
+Siehe auch: [Beispielfunktion zur Verwendung der Variable "foo"](filter-inx-team-contact-form-notification-subject#Rahmenfunktion)
 
 ```php
 add_filter( 'inx_team_contact_form_notification_subject_variables', 'mysite_extend_inquiry_mail_subject_vars', 10, 2 );

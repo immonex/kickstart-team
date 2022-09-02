@@ -1,10 +1,3 @@
----
-title: Einbindung
-category: schnellstart
-order: 30
-search: 1
----
-
 # Frontend-Komponenten
 
 Das Team-Add-on stellt folgende Elemente bereit, die im Website-Frontend auf unterschiedliche Art eingebunden werden können:
@@ -24,14 +17,14 @@ Das Team-Add-on stellt folgende Elemente bereit, die im Website-Frontend auf unt
 
 `[inx-team-agency-list]`
 
-Der Shortcode dient zur Einbindung von Agentur-Listen in beliebige Seiten oder Page-Builder-Inhaltselemente. Zur Filterung und Begrenzung der Elemente können die [allgemeinen Listen-Attribute](listen-attribute.html#Shortcodes) genutzt werden.
+Der Shortcode dient zur Einbindung von Agentur-Listen in beliebige Seiten oder Page-Builder-Inhaltselemente. Zur Filterung und Begrenzung der Elemente können die [allgemeinen Listen-Attribute](listen-attribute#Shortcodes) genutzt werden.
 
 #### Beispiel
 
 Agenturliste mit maximal vier Einträgen, denen der WordPress-Benutzer mit der ID *128* als Autor zugeordnet ist
 `[inx-team-agency-list author=128 limit=4]`
 
-Details: [Komponenten → Agentur-Listen](../komponenten/index.html)
+Details: [Komponenten → Agentur-Listen](../komponenten/agentur-listen)
 
 ## Agentur-Details
 
@@ -76,7 +69,7 @@ Agentur-Widget mit Standardumfang innerhalb einer Immobilien-Detailseite einfüg
 Agentur-Widget nur mit angegebenen Elementen rendern
 `[inx-team-agency type="widget" elements="logo, company, email, phone"]`
 
-Details und vollständige Attribut-/Elementliste: [Komponenten → Agentur-Details](../komponenten/agentur-details.html)
+Details und vollständige Attribut-/Elementliste: [Komponenten → Agentur-Details](../komponenten/agentur-details)
 
 ## Kontaktpersonen-Listen
 
@@ -88,7 +81,7 @@ Details und vollständige Attribut-/Elementliste: [Komponenten → Agentur-Detai
 
 `[inx-team-agent-list]`
 
-Auch dieser Shortcode dient der Einbindung von Listen – in diesem Fall von Kontaktpersonen – in beliebige Seiten bzw. Page-Builder-Elemente. Hier sind ebenfalls zur Filterung und Begrenzung der Elemente die [allgemeinen Listen-Attribute](listen-attribute.html#Shortcodes) verfügbar, zudem ein weiterer Parameter:
+Auch dieser Shortcode dient der Einbindung von Listen – in diesem Fall von Kontaktpersonen – in beliebige Seiten bzw. Page-Builder-Elemente. Hier sind ebenfalls zur Filterung und Begrenzung der Elemente die [allgemeinen Listen-Attribute](listen-attribute#Shortcodes) verfügbar, zudem ein weiterer Parameter:
 
 - **ID des zugehörigen Agentur-Beitrags**: `agency=[ID]`
 
@@ -97,7 +90,7 @@ Auch dieser Shortcode dient der Einbindung von Listen – in diesem Fall von Kon
 Ansprechpartnerliste mit maximal vier Einträgen, denen die Agentur mit der ID 128 zugeordnet ist
 `[inx-team-agent-list agency=128 limit=4]`
 
-Details: [Komponenten → Kontaktpersonen-Listen](../komponenten/kontaktpersonen-listen.html)
+Details: [Komponenten → Kontaktpersonen-Listen](../komponenten/kontaktpersonen-listen)
 
 ## Kontaktpersonen-Details
 
@@ -114,7 +107,7 @@ Die **Detailseite** der Kontaktpersonen enthält folgende Inhalte:
 
 `immonex Kickstart: Kontaktperson`
 
-Analog zu den Agenturen kann mit diesem Widget die "Kompaktansicht" der Ansprechpartner-Kontaktdatendaten (auswählbar) inkl. [Formular](../komponenten/kontaktformular.html) in einem immobilienbezogenen Sidebar-Bereich (z. B. *Immobilien-Detailseite*) via ***Design → Widgets*** oder (bei geöffneter Immobilien-Seite) ***Customizer → Widgets***) eingebunden werden.
+Analog zu den Agenturen kann mit diesem Widget die "Kompaktansicht" der Ansprechpartner-Kontaktdatendaten (auswählbar) inkl. [Formular](../komponenten/kontaktformular) in einem immobilienbezogenen Sidebar-Bereich (z. B. *Immobilien-Detailseite*) via ***Design → Widgets*** oder (bei geöffneter Immobilien-Seite) ***Customizer → Widgets***) eingebunden werden.
 
 ### Shortcode
 
@@ -137,8 +130,8 @@ Kontaktpersonen-Widget mit Standardumfang innerhalb einer Immobilien-Detailseite
 Kontaktpersonen-Widget nur mit angegebenen Elementen rendern
 `[inx-team-agent type="widget" elements="photo, full_name_incl_title, position, email_auto_select, phone_auto_select"]`
 
-Details und vollständige Attribut-/Elementliste: [Komponenten → Kontaktpersonen-Details](../komponenten/kontaktpersonen-details.html)
+Details und vollständige Attribut-/Elementliste: [Komponenten → Kontaktpersonen-Details](../komponenten/kontaktpersonen-details)
 
 ---
 
-<sup>1</sup> abhängig von der aktuellen Website-Sprache (→ [Übersetzungen & Mehrsprachigkeit](../anpassung-erweiterung/uebersetzung-mehrsprachigkeit.html))
+<sup>1</sup> abhängig von der aktuellen Website-Sprache (→ [Übersetzungen & Mehrsprachigkeit](../anpassung-erweiterung/uebersetzung-mehrsprachigkeit))

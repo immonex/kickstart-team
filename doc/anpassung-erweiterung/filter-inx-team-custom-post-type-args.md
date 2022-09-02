@@ -1,11 +1,6 @@
----
-title: Eigenschaften der benutzerdefinierten Beitragsarten (Filter)
-search: 1
----
-
 # inx_team_custom_post_type_args (Filter)
 
-Mit diesem Filter können die Eigenschaften der [Beitragsarten (Custom Post Types) für Agenturen und Kontaktpersonen](../beitragsarten.html) **vor** deren Registrierung bearbeitet werden.
+Mit diesem Filter können die Eigenschaften der [Beitragsarten (Custom Post Types) für Agenturen und Kontaktpersonen](../beitragsarten) **vor** deren Registrierung bearbeitet werden.
 
 ## Parameter
 
@@ -69,7 +64,7 @@ $args = [
 
 ## Rückgabewert
 
-angepasstes Eigenschaften-Array für die Registrierung der <i>Custom Post Types</i> für Agenturen (`inx_agency`) und Kontaktpersonen (`inx_agent`)
+angepasstes Eigenschaften-Array für die Registrierung der *Custom Post Types* für Agenturen (`inx_agency`) und Kontaktpersonen (`inx_agent`)
 
 ## Rahmenfunktion
 

@@ -1,23 +1,16 @@
----
-title: Kontaktpersonen-Details
-category: komponenten
-order: 40
-search: 1
----
-
 # Kontaktpersonen-Details
 
-Auch bei den Kontaktpersonen werden grundsätzlich zwei Arten der Ausgabe unterschieden: Der Umfang des **Standard-Templates** (**Vollansicht**) umfasst beim <i>TeamQuiwi-Skin</i> neben dem Namen und Foto (sofern vorhanden) der Person alle relevanten Kontaktdaten sowie einen zusätzlichen Abschnitt für die Immobilienangebote, die dem Ansprechpartner respektive der Ansprechpartnerin zugeordnet sind.
+Auch bei den Kontaktpersonen werden grundsätzlich zwei Arten der Ausgabe unterschieden: Der Umfang des **Standard-Templates** (**Vollansicht**) umfasst beim *TeamQuiwi-Skin* neben dem Namen und Foto (sofern vorhanden) der Person alle relevanten Kontaktdaten sowie einen zusätzlichen Abschnitt für die Immobilienangebote, die dem Ansprechpartner respektive der Ansprechpartnerin zugeordnet sind.
 
 Das **Widget-Template** bietet die bereits bekannte kompaktere Form der Daten, die für die Darstellung als Teil einer Immobilien-Detailansicht optimiert ist.
 
 ## Vollansicht
 
-Die Standard-Einzelansicht (<i>Single Template</i>, d. h. vollständige Seite inkl. Header und Footer der Website) enthält eine Vollansicht der Daten einer Kontaktperson. Das URL-Schema dieser Seiten sieht im Regelfall so aus:
+Die Standard-Einzelansicht (*Single Template*, d. h. vollständige Seite inkl. Header und Footer der Website) enthält eine Vollansicht der Daten einer Kontaktperson. Das URL-Schema dieser Seiten sieht im Regelfall so aus:
 
 `https://[WEBSITE.TLD]/immobilienmakler/[NAMENS-SLUG]/`<sup>1</sup> bzw. `https://[WEBSITE.TLD]/real-estate-agents/[NAMENS-SLUG]/`<sup>1</sup>
 
-Hier ein Beispiel – wie immer mit <i>TeamQuiwi-Skin</i> und dem WP-Standard-Theme <i>Twenty Twenty</i>:
+Hier ein Beispiel – wie immer mit *TeamQuiwi-Skin* und dem WP-Standard-Theme *Twenty Twenty*:
 
 ![Screenshot: Immobilienmakler-Details (Standard-Template)](../assets/scst-fe-agent-details-1.jpg)
 
@@ -27,21 +20,21 @@ Hier ein Beispiel – wie immer mit <i>TeamQuiwi-Skin</i> und dem WP-Standard-Th
 
 `immonex Kickstart: Kontaktperson`
 
-Wie das [Agentur-Widget](agentur-details.html#Widget) ist auch die Variante für Kontaktpersonen in erster Linie für den Einsatz im Sidebar-Bereich der Immobilien-Detailseiten vorgesehen. (Die Kontaktperson, deren Daten angezeigt werden sollen, wird automatisch anhand der **primären Kontaktpersonen-ID** ermittelt, die der betr. [Immobilie zugewiesen](../beitragsarten.html#Kontaktperson-Agentur-gt-Immobilie) ist.)
+Wie das [Agentur-Widget](agentur-details#Widget) ist auch die Variante für Kontaktpersonen in erster Linie für den Einsatz im Sidebar-Bereich der Immobilien-Detailseiten vorgesehen. (Die Kontaktperson, deren Daten angezeigt werden sollen, wird automatisch anhand der **primären Kontaktpersonen-ID** ermittelt, die der betr. [Immobilie zugewiesen](../beitragsarten#kontaktpersonagentur-→-immobilie) ist.)
 
 > Das im Widget enthaltene Kontaktformular umfasst in der Standardvariante Eingabefelder für Name, Telefonnummer, Mailadresse sowie für die Nachricht, kann per Plugin-Option, Widget-Einstellung, Shortcode-Attribut oder Filterfunktion aber auch um zusätzliche Felder/Optionen für Anrede und Adresse der Interessenten erweitert werden.
 
-Ein Frontend-Beispiel auf Basis des WP-Standard-Themes <i>Twenty Sixteen</i>:
+Ein Frontend-Beispiel auf Basis des WP-Standard-Themes *Twenty Sixteen*:
 
 ![Screenshot: Kontaktpersonen-Widget (Immobilienmakler/in, Ansprechparter/in) im Einsatz](../assets/scst-fe-agent-widget-1.png)
 
-**Alternativ** hierzu wird die Widget-Ansicht (hier im <i>Twenty Twenty</i> Theme-Look) auch als Ersatz des [Standard-Kontaktdaten-Abschnitts](../schnellstart/einrichtung.html#Anpassung-des-Standard-Kontaktabschnitts) in den Objekt-Details verwendet, sofern die entsprechende [Add-on-Option](../schnellstart/einrichtung.html#Anpassung-des-Standard-Kontaktabschnitts) ausgewählt ist (Standardeinstellung nach der ersten Plugin-Aktivierung):
+**Alternativ** hierzu wird die Widget-Ansicht (hier im *Twenty Twenty* Theme-Look) auch als Ersatz des [Standard-Kontaktdaten-Abschnitts](../schnellstart/einrichtung#Anpassung-des-Standard-Kontaktabschnitts) in den Objekt-Details verwendet, sofern die entsprechende [Add-on-Option](../schnellstart/einrichtung#Anpassung-des-Standard-Kontaktabschnitts) ausgewählt ist (Standardeinstellung nach der ersten Plugin-Aktivierung):
 
 ![Kontaktdaten-Abschnitt mit Team-Add-on](../assets/scst-contact-section-2.gif)
 
-> Wird das Widget in einem Sidebar-Bereich verwendet, sollte der [Standard-Kontaktdaten-Abschnitt](../schnellstart/einrichtung.html#Anpassung-des-Standard-Kontaktabschnitts) über die entsprechende Plugin-Option **ausbeblendet** werden.
+> Wird das Widget in einem Sidebar-Bereich verwendet, sollte der [Standard-Kontaktdaten-Abschnitt](../schnellstart/einrichtung#Anpassung-des-Standard-Kontaktabschnitts) über die entsprechende Plugin-Option **ausbeblendet** werden.
 
-Das Widget kann via ***Design → Widgets*** (ab WordPress 5.8 als Block des Typs <i>Legacy-Widget</i>) oder – bei geöffneter Immobilien-Detailseite – ***Customizer → Widgets*** eingebunden und konfiguriert werden:
+Das Widget kann via ***Design → Widgets*** (ab WordPress 5.8 als Block des Typs *Legacy-Widget*) oder – bei geöffneter Immobilien-Detailseite – ***Customizer → Widgets*** eingebunden und konfiguriert werden:
 
 ![Screenshot: Legacy-Widget-Auswahl im WordPress-Backend](../assets/scst-be-wordpress-legacy-widget.gif)
 
@@ -81,9 +74,9 @@ Alle folgenden Attribute sind **optional**.
 | | *city* : Ort (Bürostandort) |
 | | *address* : Adresse (Bürostandort) |
 | | *network_icons* : Icons/Links von Business- und sozialen Netzwerken, für die eine URL im Kontaktpersonen-Datensatz hinterlegt ist) |
-| | *contact_form* : einheitliches [Kontaktformular](kontaktformular.html) (siehe auch `contact_form_scope` unten) |
+| | *contact_form* : einheitliches [Kontaktformular](kontaktformular) (siehe auch `contact_form_scope` unten) |
 | `link_type` | nur Widget – Art der Verlinkung von Foto, Name und Firma: |
-| | *internal* : Link zur **internen** [Kontaktpersonen-Profilseite](#Vollansicht) (Foto/Name) bzw. [Agentur-Detailseite](agentur-details.html#Vollansicht) (Firma) |
+| | *internal* : Link zur **internen** [Kontaktpersonen-Profilseite](#Vollansicht) (Foto/Name) bzw. [Agentur-Detailseite](agentur-details#Vollansicht) (Firma) |
 | | *external* : Link zu einer externen Website, sofern eine entsprechende URL  vorhanden ist |
 | | *none* : keine Verlinkung |
 | `display_for` | nur Widget – Anzeige nur bei Immobilien mit einem bestimmten Status: |
@@ -92,7 +85,7 @@ Alle folgenden Attribute sind **optional**.
 | | *available_only* : nur verfügbare Objekte |
 | | *unavailable_only* : nur **nicht** verfügbare Objekte |
 | | *references_only* : nur Referenzobjekte |
-| `contact_form_scope` | Feldumfang des [Kontaktformulars](kontaktformular.html): |
+| `contact_form_scope` | Feldumfang des [Kontaktformulars](kontaktformular): |
 | | *basic* : Name, Telefonnummer, E-Mail-Adresse und Nachricht (Standardvorgabe) |
 | | *extended* : **zusätzliche** Pflichtfelder/-auswahloptionen für Anrede und Adresse, separate Felder für Vor- und Nachname |
 
@@ -112,4 +105,4 @@ Widget mit Standardumfang, aber erweitertem Kontaktformular (u. a. inkl. Adressf
 
 ---
 
-<sup>1</sup> abhängig von der aktuellen Website-Sprache (→ [Übersetzungen & Mehrsprachigkeit](../anpassung-erweiterung/uebersetzung-mehrsprachigkeit.html))
+<sup>1</sup> abhängig von der aktuellen Website-Sprache (→ [Übersetzungen & Mehrsprachigkeit](../anpassung-erweiterung/uebersetzung-mehrsprachigkeit))

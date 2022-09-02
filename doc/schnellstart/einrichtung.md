@@ -1,10 +1,3 @@
----
-title: Einrichtung
-category: schnellstart
-order: 20
-search: 1
----
-
 # Einrichtung
 
 Bei aktiviertem [Kickstart-Plugin](https://de.wordpress.org/plugins/immonex-kickstart/) sind die zugehörigen Inhalte und Optionen in der Hauptnavigation des WordPress-Admin-Backends unter ***immonex*** zusammengefasst.
@@ -21,17 +14,17 @@ Die meisten Optionen sind selbsterklärend oder mit einer Beschreibung versehen.
 
 #### Skin
 
-Ein so genanntes [Skin](../anpassung-erweiterung/skins.html) bildet die Grundlage für individuelle Anpassungen und umfasst alle Dateien, die für die **Ausgabe und Darstellung** der vom Plugin bereitgestellten Komponenten im **Website-Frontend** maßgeblich sind (Layoutvorlagen, Stile, Ausgabelogik etc.).
+Ein so genanntes [Skin](../anpassung-erweiterung/skins) bildet die Grundlage für individuelle Anpassungen und umfasst alle Dateien, die für die **Ausgabe und Darstellung** der vom Plugin bereitgestellten Komponenten im **Website-Frontend** maßgeblich sind (Layoutvorlagen, Stile, Ausgabelogik etc.).
 
 Kurzum: Mit einem alternativen Skin können Optik und Umfang der angezeigten Daten sowie die Benutzer-Interaktion grundlegend verändert und – bei Bedarf bis ins Detail – an die spezifischen Vorgaben des jeweiligen Projekts angepasst werden.
 
-Das aktuell mitgelieferte [Skin "TeamQuiwi"](../anpassung-erweiterung/standard-skin.html) orientiert sich optisch am Standard-Skin "Quiwi" des Kickstart-Basisplugins und setzt wie dieses ebenfalls auf Komponenten des Frontend-Frameworks [UIkit](https://getuikit.com/).
+Das aktuell mitgelieferte [Skin "TeamQuiwi"](../anpassung-erweiterung/standard-skin) orientiert sich optisch am Standard-Skin "Quiwi" des Kickstart-Basis-Plugins und setzt wie dieses ebenfalls auf Komponenten des Frontend-Frameworks [UIkit](https://getuikit.com/).
 
-Detaillierte Infos zur Anpassung vorhandener und Entwicklung eigener Skins sind unter [Anpassung & Erweiterung](../anpassung-erweiterung/skins.html) zu finden.
+Detaillierte Infos zur Anpassung vorhandener und Entwicklung eigener Skins sind unter [Anpassung & Erweiterung](../anpassung-erweiterung/skins) zu finden.
 
 #### Anpassung des Standard-Kontaktabschnitts
 
-Auch ohne Team-Add-on werden natürlich **objektbezogene Kontaktdaten** in den Detailseiten der Immobilien-Angebote angezeigt, sofern das Kickstart-Standard-Skin "Quiwi" im Einsatz ist. Der entsprechende Abschnitt sieht in diesem Fall – oder wenn als Wert dieser Option `keine Änderung` ausgewählt ist – folgendermaßen aus (WP-Theme <i>Twenty Twenty</i>):
+Auch ohne Team-Add-on werden natürlich **objektbezogene Kontaktdaten** in den Detailseiten der Immobilien-Angebote angezeigt, sofern das Kickstart-Standard-Skin "Quiwi" im Einsatz ist. Der entsprechende Abschnitt sieht in diesem Fall – oder wenn als Wert dieser Option `keine Änderung` ausgewählt ist – folgendermaßen aus (WP-Theme *Twenty Twenty*):
 
 ![Kontaktdaten-Abschnitt ohne Team-Add-on](../assets/scst-contact-section-1.gif)
 
@@ -39,9 +32,9 @@ Auch ohne Team-Add-on werden natürlich **objektbezogene Kontaktdaten** in den D
 
 ![Kontaktdaten-Abschnitt mit Team-Add-on](../assets/scst-contact-section-2.gif)
 
-Die "genderkonformen Titel", die für die Überschrift des Kontaktabschnitts verwendet werden, sind in den Übersetzungsdateien hinterlegt und können bei Bedarf auch [hier geändert](../anpassung-erweiterung/uebersetzung-mehrsprachigkeit.html) werden. Im folgenden Eingabefeld (<i>Standard-Überschrift des Kontaktabschnitts</i>) kann aber auch ein **alternativer** Text hierfür hinterlegt werden. (Ist das Feld leer, wird die Titelzeile entsprechend ausgeblendet. Mit "auto" wird wiederum die o. g. Standard-Variante übernommen.)
+Die "genderkonformen Titel", die für die Überschrift des Kontaktabschnitts verwendet werden, sind in den Übersetzungsdateien hinterlegt und können bei Bedarf auch [hier geändert](../anpassung-erweiterung/uebersetzung-mehrsprachigkeit) werden. Im folgenden Eingabefeld (*Standard-Überschrift des Kontaktabschnitts*) kann aber auch ein **alternativer** Text hierfür hinterlegt werden. (Ist das Feld leer, wird die Titelzeile entsprechend ausgeblendet. Mit "auto" wird wiederum die o. g. Standard-Variante übernommen.)
 
-Werden die Kontaktdaten an einer anderen Position per Widget ([Ansprechpartner/in](../komponenten/kontaktpersonen-details.html#Widget) und/oder [Agentur](../komponenten/agentur-details.html#Widget)) eingebunden, kann – und sollte – der Standard-Abschnitt ausgeblendet werden (`ausblenden`).
+Werden die Kontaktdaten an einer anderen Position per Widget ([Ansprechpartner/in](../komponenten/kontaktpersonen-details#Widget) und/oder [Agentur](../komponenten/agentur-details#Widget)) eingebunden, kann – und sollte – der Standard-Abschnitt ausgeblendet werden (`ausblenden`).
 
 ### Kontaktformular
 
@@ -49,11 +42,11 @@ Werden die Kontaktdaten an einer anderen Position per Widget ([Ansprechpartner/i
 
 Das Kontaktformular umfasst in der Standardvariante Eingabefelder für Name, Telefonnummer, Mailadresse sowie für die Nachricht. Ist diese Option aktiviert, werden eine Auswahlmöglichkeit für die Anrede, separate Felder für Vor- und Nachname sowie zusätzliche **Pflichtfelder** für die Adresse des Absenders ergänzt.
 
-Je nach Art der Einbindung kann diese Vorgabe per Widget-Einstellung (<i>Kontaktformular-Umfang</i>) oder Shortcode-Attribut (`contact_form_scope`) überschrieben werden. Darüber hinaus können Umfang und Art der Formularelemente auch über den Hook [`inx_team_contact_form_fields`](../anpassung-erweiterung/filter-inx-team-contact-form-fields.html) mit einer Filterfunktion individuell angepasst oder erweitert werden.
+Je nach Art der Einbindung kann diese Vorgabe per Widget-Einstellung (*Kontaktformular-Umfang*) oder Shortcode-Attribut (`contact_form_scope`) überschrieben werden. Darüber hinaus können Umfang und Art der Formularelemente auch über den Hook [`inx_team_contact_form_fields`](../anpassung-erweiterung/filter-inx-team-contact-form-fields) mit einer Filterfunktion individuell angepasst oder erweitert werden.
 
 #### Seite der Widerrufsbelehrung
 
-Eine hier ausgewählte Seite, die Informationen zum gesetzlichen Widerrufsrecht enthält, ist Voraussetzung für die Einbindung des nachfolgenden **Einwilligungstexts** in das [Kontaktformular](../komponenten/kontaktformular.html). (Im Rahmen der Plugin-Installation erfolgt eine automatische Zuordnung, sofern eine passende Seite erkannt wurde.)
+Eine hier ausgewählte Seite, die Informationen zum gesetzlichen Widerrufsrecht enthält, ist Voraussetzung für die Einbindung des nachfolgenden **Einwilligungstexts** in das [Kontaktformular](../komponenten/kontaktformular). (Im Rahmen der Plugin-Installation erfolgt eine automatische Zuordnung, sofern eine passende Seite erkannt wurde.)
 
 #### Einwilligungstext zum Widerrufsrecht
 
@@ -65,19 +58,17 @@ Ein Hinweis zum Thema Datenschutz ist obligatorisch, muss aber **nicht** explizi
 
 ### Kontaktformular-Mails
 
-Mit der Plugin-Version 1.2.0 wurden die mailbezogenen Optionen in zwei separaten Subtabs zusammengefasst. Ebenfalls neu hinzugekommen sind hier die Möglichkeiten zum Versand von HTML-Mails sowie die Gestaltung der Mailinhalte auf Basis der <i>Template-Engine</i> [Twig 3](https://twig.symfony.com/doc/3.x/templates.html)<sup>1</sup>.
-
-![Mailbezogene Optionen](../assets/scst-be-mail-options-1.gif)
+Mit der Plugin-Version 1.2.0 wurden die mailbezogenen Optionen in zwei separaten Subtabs zusammengefasst. Ebenfalls neu hinzugekommen sind hier die Möglichkeiten zum Versand von HTML-Mails sowie die Gestaltung der Mailinhalte auf Basis der *Template-Engine* [Twig 3](https://twig.symfony.com/doc/3.x/templates)<sup>1</sup>.
 
 #### Fallback-Empfänger-Mailadressen
 
-Die Empfänger der Mails, die über das im Plugin enthaltene [einheitliche Kontaktformular](../komponenten/kontaktformular.html) versendet werden, sind **kontextbezogen**: Findet das Formular bspw. in einem [Kontaktpersonen-Widget](../komponenten/kontaktpersonen-details.html#Widget) Verwendung, das in einer Objekt-Detailseite eingebunden ist, wird die Nachricht an die Mailadresse der zugehörigen [primären Kontaktperson](../beitragsarten.html#Kontaktperson-Agentur-gt-Immobilie) gesendet. Sind der Immobilie weitere Ansprechpartner/innen zugeordnet, erhalten diese jeweils eine Kopie der Anfrage.
+Die Empfänger der Mails, die über das im Plugin enthaltene [einheitliche Kontaktformular](../komponenten/kontaktformular) versendet werden, sind **kontextbezogen**: Findet das Formular bspw. in einem [Kontaktpersonen-Widget](../komponenten/kontaktpersonen-details#Widget) Verwendung, das in einer Objekt-Detailseite eingebunden ist, wird die Nachricht an die Mailadresse der zugehörigen [primären Kontaktperson](../beitragsarten#kontaktpersonagentur-→-immobilie) gesendet. Sind der Immobilie weitere Ansprechpartner/innen zugeordnet, erhalten diese jeweils eine Kopie der Anfrage.
 
-Kann in Ausnahmefällen keine dem Kontext entsprechende Empfänger-Mailadresse ermittelt werden, wird als Standardvorgabe die primäre Administrator-E-Mail-Adresse der WP-Installation übernommen, die unter ***Einstellungen → Allgemein*** hinterlegt ist. Sollen die Mails stattdessen an eine oder mehrere alternative Adressen gesendet werden, können diese im Feld für Fallback-Empfänger angegeben oder per [Filterfunktion](../anpassung-erweiterung/filter-inx-team-fallback-recipient-admin-email.html) definiert werden.
+Kann in Ausnahmefällen keine dem Kontext entsprechende Empfänger-Mailadresse ermittelt werden, wird als Standardvorgabe die primäre Administrator-E-Mail-Adresse der WP-Installation übernommen, die unter ***Einstellungen → Allgemein*** hinterlegt ist. Sollen die Mails stattdessen an eine oder mehrere alternative Adressen gesendet werden, können diese im Feld für Fallback-Empfänger angegeben oder per [Filterfunktion](../anpassung-erweiterung/filter-inx-team-fallback-recipient-admin-email) definiert werden.
 
 #### CC-Mailadressen
 
-Sollen Kopien **aller** via [Kontaktformular](../komponenten/kontaktformular.html) versendeten Anfragen an eine oder mehrere Mailadressen gesendet werden, können diese hier definiert werden.
+Sollen Kopien **aller** via [Kontaktformular](../komponenten/kontaktformular) versendeten Anfragen an eine oder mehrere Mailadressen gesendet werden, können diese hier definiert werden.
 
 #### HTML-Mails senden
 
@@ -85,9 +76,9 @@ Anstelle von reinen Textmails (Standardvorgabe) können die per Kontaktformular 
 
 #### Kontaktformular-Mailtext
 
-Der Inhalt der Mails, die beim Absenden eines Kontaktformulars im Website-Frontend an die jeweilige Kontaktperson (oder einen Admin-Benutzer) gesendet werden, kann in diesem Feld hinterlegt werden. Hierbei kann auf alle im Infoabschnitt unterhalb der Subtab-Navigation genannten <i>Twig</i>-Variablen<sup>1</sup> (<i>Platzhalter</i>) bzw. Abfragemöglichkeiten zurückgegriffen werden. Am wichtigsten ist hier die Variable `{{ form_data }}`, die in den Mails durch die Formulardaten ersetzt wird. Auch eine HTML-basierte Formatierung ist möglich.
+Der Inhalt der Mails, die beim Absenden eines Kontaktformulars im Website-Frontend an die jeweilige Kontaktperson (oder einen Admin-Benutzer) gesendet werden, kann in diesem Feld hinterlegt werden. Hierbei kann auf alle im Infoabschnitt unterhalb der Subtab-Navigation genannten *Twig*-Variablen<sup>1</sup> (*Platzhalter*) bzw. Abfragemöglichkeiten zurückgegriffen werden. Am wichtigsten ist hier die Variable `{{ form_data }}`, die in den Mails durch die Formulardaten ersetzt wird. Auch eine HTML-basierte Formatierung ist möglich.
 
-Ist dieses Feld leer, kommt ein Standard-Mail-Template (reiner PHP-Code) im [Skin-Ordner](../anpassung-erweiterung/skins.html) zum Einsatz.
+Ist dieses Feld leer, kommt ein Standard-Mail-Template (reiner PHP-Code) im [Skin-Ordner](../anpassung-erweiterung/skins) zum Einsatz.
 
 #### OpenImmo-Feedback-Typ
 
@@ -99,9 +90,9 @@ Beim Absenden von Kontaktformular-Daten wird ein solcher Datensatz (optional) au
 
 #### Eingangsbestätigung
 
-Bei erfolgreicher Übermittlung von Formulardaten **kann** eine Eingangsbestätigung per Mail an den Absender gesendet werden, diese muss allerdings **explizit aktiviert** werden. Auch hier wird bei den Inhalten (inkl. Betreff und Signatur) <i>Twig</i>-Markup<sup>1</sup> unterstützt, Mailtext und Signatur können zudem per HTML formatiert werden.
+Bei erfolgreicher Übermittlung von Formulardaten **kann** eine Eingangsbestätigung per Mail an den Absender gesendet werden, diese muss allerdings **explizit aktiviert** werden. Auch hier wird bei den Inhalten (inkl. Betreff und Signatur) *Twig*-Markup<sup>1</sup> unterstützt, Mailtext und Signatur können zudem per HTML formatiert werden.
 
-> **Achtung!** Damit das Formular nicht für den Versand von <i>Spam</i> missbraucht werden kann, sollten in die Bestätigungsmails **niemals** Variablen (<i>Platzhalter</i>) für vom Nutzer selbst erfasste Inhalte eingebunden werden.
+> **Achtung!** Damit das Formular nicht für den Versand von *Spam* missbraucht werden kann, sollten in die Bestätigungsmails **niemals** Variablen (*Platzhalter*) für vom Nutzer selbst erfasste Inhalte eingebunden werden.
 
 #### Betreff (allgemein / Immobilien-Anfragen)
 
@@ -117,8 +108,8 @@ Ist der HTML-Mailversand aktiviert, kann **optional** auch ein Logo aus der Word
 
 #### Mailtext / Signatur
 
-Der eigentliche Inhalt der Eingangsbestätigung sowie die (bei Bedarf) ergänzende Signatur können wiederum mittels <i>Twig</i>-Variablen/Abfragen<sup>1</sup> sowie zusätzlichen Texten zusammengestellt und (optional) ebenfalls per HTML formatiert werden.
+Der eigentliche Inhalt der Eingangsbestätigung sowie die (bei Bedarf) ergänzende Signatur können wiederum mittels *Twig*-Variablen/Abfragen<sup>1</sup> sowie zusätzlichen Texten zusammengestellt und (optional) ebenfalls per HTML formatiert werden.
 
 ---
 
-<sup>1</sup> Detaillierte Infos zur Erstellung von <i>Twig</i>-Templates sind in der [Dokumentation](https://twig.symfony.com/doc/3.x/templates.html) hierzu verfügbar.
+<sup>1</sup> Detaillierte Infos zur Erstellung von *Twig*-Templates sind in der [Dokumentation](https://twig.symfony.com/doc/3.x/templates) hierzu verfügbar.

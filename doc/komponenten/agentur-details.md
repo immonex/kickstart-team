@@ -1,25 +1,18 @@
----
-title: Agentur-Details
-category: komponenten
-order: 20
-search: 1
----
-
 # Agentur-Details
 
 Analog zu den Listen ist auch die Agentur-Detailansicht für Websites vorgesehen, in denen die Inhalte mehrerer Immobilienmakler-Agenturen kombiniert werden.
 
-Es werden grundsätzlich zwei Arten der Ausgabe unterschieden: Der Umfang des **Standard-Templates** (<i>TeamQuiwi-Skin</i>) umfasst neben dem Namen und Logo (sofern vorhanden) des Unternehmens alle relevanten Kontaktdaten sowie zwei zusätzliche Abschnitte für Kontaktpersonen und Immobilienangebote, die der Agentur zugeordnet sind. Wir sprechen bei dieser Form daher auch von der **Vollansicht**.
+Es werden grundsätzlich zwei Arten der Ausgabe unterschieden: Der Umfang des **Standard-Templates** (*TeamQuiwi-Skin*) umfasst neben dem Namen und Logo (sofern vorhanden) des Unternehmens alle relevanten Kontaktdaten sowie zwei zusätzliche Abschnitte für Kontaktpersonen und Immobilienangebote, die der Agentur zugeordnet sind. Wir sprechen bei dieser Form daher auch von der **Vollansicht**.
 
 Mit dem **Widget-Template** wird hingegen eine kompaktere Form der Agenturdaten generiert, die für die Darstellung als Teil einer Immobilien-Detailansicht optimiert ist.
 
 ## Vollansicht
 
-Die Vollansicht einer Agentur kann "out of the box" über die Standard-Einzelansicht (im WP-Jargon <i>Single Template</i>) aufgerufen werden. Hierbei handelt es sich um eine vollständige Seite inkl. Header und Footer der Website. Das URL-Schema dieser Seiten sieht im Regelfall so aus:
+Die Vollansicht einer Agentur kann "out of the box" über die Standard-Einzelansicht (im WP-Jargon *Single Template*) aufgerufen werden. Hierbei handelt es sich um eine vollständige Seite inkl. Header und Footer der Website. Das URL-Schema dieser Seiten sieht im Regelfall so aus:
 
 `https://[WEBSITE.TLD]/immobilienmakler-agenturen/[AGENTUR-SLUG]/`<sup>1</sup> bzw. `https://[WEBSITE.TLD]/real-estate-agencies/[AGENTUR-SLUG]/`<sup>1</sup>
 
-Hier ein Beispiel – wie immer mit <i>TeamQuiwi-Skin</i> und dem WP-Standard-Theme <i>Twenty Twenty</i>:
+Hier ein Beispiel – wie immer mit *TeamQuiwi-Skin* und dem WP-Standard-Theme *Twenty Twenty*:
 
 ![Screenshot: Agentur-Details (Standard-Template)](../assets/scst-fe-agency-details-1.jpg)
 
@@ -29,17 +22,17 @@ Hier ein Beispiel – wie immer mit <i>TeamQuiwi-Skin</i> und dem WP-Standard-Th
 
 `immonex Kickstart: Agentur`
 
-Das Agentur-Widget soll die Kontaktaufnahme erleichtern und beinhaltet daher nur die wichtigsten Informationen in kompakter Form sowie ein **einfaches** [Kontaktformular](kontaktformular.html). Der beste Platz für das Widget ist der Sidebar-Bereich der Immobilien-Detailseiten. Da die grundlegende Widget-Optik viel vom eingesetzten Theme abhängt, muss dieses allerdings auch dafür geeignet sein.
+Das Agentur-Widget soll die Kontaktaufnahme erleichtern und beinhaltet daher nur die wichtigsten Informationen in kompakter Form sowie ein **einfaches** [Kontaktformular](kontaktformular). Der beste Platz für das Widget ist der Sidebar-Bereich der Immobilien-Detailseiten. Da die grundlegende Widget-Optik viel vom eingesetzten Theme abhängt, muss dieses allerdings auch dafür geeignet sein.
 
 > Das Kontaktformular umfasst in der Standardvariante Eingabefelder für Name, Telefonnummer, Mailadresse sowie für die Nachricht, kann per Plugin-Option, Widget-Einstellung, Shortcode-Attribut oder Filterfunktion aber auch um zusätzliche Felder/Optionen für Anrede und Adresse der Interessenten erweitert werden.
 
-Die Agentur, deren Daten angezeigt werden sollen, wird automatisch anhand der [primären Kontaktperson](../beitragsarten.html#Kontaktperson-Agentur-gt-Immobilie) ermittelt, die der betr. Immobilie zugewiesen ist.
+Die Agentur, deren Daten angezeigt werden sollen, wird automatisch anhand der [primären Kontaktperson](../beitragsarten#kontaktpersonagentur-→-immobilie) ermittelt, die der betr. Immobilie zugewiesen ist.
 
-Ein Frontend-Beispiel – hier wurde das gute alte WP-Standard-Theme <i>Twenty Sixteen</i> reaktiviert:
+Ein Frontend-Beispiel – hier wurde das gute alte WP-Standard-Theme *Twenty Sixteen* reaktiviert:
 
 ![Screenshot: Agentur-Widget im Einsatz](../assets/scst-fe-agency-widget-1.gif)
 
-Das Widget kann via ***Design → Widgets*** oder (bei geöffneter Immobilien-Detailseite) ***Customizer → Widgets*** eingebunden und konfiguriert werden. Ab der WordPress-Version 5.8 wird ein Block des Typs <i>Legacy-Widget</i> eingebunden.
+Das Widget kann via ***Design → Widgets*** oder (bei geöffneter Immobilien-Detailseite) ***Customizer → Widgets*** eingebunden und konfiguriert werden. Ab der WordPress-Version 5.8 wird ein Block des Typs *Legacy-Widget* eingebunden.
 
 ![Screenshot: Legacy-Widget-Auswahl im WordPress-Backend](../assets/scst-be-wordpress-legacy-widget.gif)
 
@@ -47,7 +40,7 @@ Das Widget kann via ***Design → Widgets*** oder (bei geöffneter Immobilien-De
 
 Auch eine **mehrfache Einbindung** des Widgets ist möglich, bspw. wenn der Umfang der Ausgabe sich bei Referenzobjekten von dem regulärer Objekte unterscheiden soll. Die entsprechende Auswahl des Objektstatus erfolgt in diesem Fall über die Widget-Option *Anzeigen für* (beim folgenden Shortcode analog mit dem Attribut `display_for`).
 
-> Das [Kontaktpersonen-Widget](kontaktpersonen-details.html#Widget) ist die gängigere Variante der Kontaktdaten-Einbindung.
+> Das [Kontaktpersonen-Widget](kontaktpersonen-details#Widget) ist die gängigere Variante der Kontaktdaten-Einbindung.
 
 ## Shortcode
 
@@ -76,7 +69,7 @@ Alle folgenden Attribute sind **optional**.
 | | *city* : Ort (Bürostandort) |
 | | *address* : Adresse (Bürostandort) |
 | | *network_icons* : Icons/Links von Business- und sozialen Netzwerken, für die eine URL in den Agenturdaten hinterlegt ist) |
-| | *contact_form* : einheitliches [Kontaktformular](kontaktformular.html) (siehe auch `contact_form_scope` unten) |
+| | *contact_form* : einheitliches [Kontaktformular](kontaktformular) (siehe auch `contact_form_scope` unten) |
 | `link_type` | nur Widget – Art der Verlinkung von Logo und Firma/Name des Unternehmens: |
 | | *internal* : Link zur [internen Agentur-Profilseite](#Vollansicht) |
 | | *external* : Link zu einer externen Website, sofern eine entsprechende URL  vorhanden ist |
@@ -87,7 +80,7 @@ Alle folgenden Attribute sind **optional**.
 | | *available_only* : nur verfügbare Objekte |
 | | *unavailable_only* : nur **nicht** verfügbare Objekte |
 | | *references_only* : nur Referenzobjekte |
-| `contact_form_scope` | Feldumfang des [Kontaktformulars](kontaktformular.html): |
+| `contact_form_scope` | Feldumfang des [Kontaktformulars](kontaktformular): |
 | | *basic* : Name, Telefonnummer, E-Mail-Adresse und Nachricht (Standardvorgabe) |
 | | *extended* : **zusätzliche** Pflichtfelder/-auswahloptionen für Anrede und Adresse, separate Felder für Vor- und Nachname |
 
@@ -104,4 +97,4 @@ Widget mit Standardumfang, aber erweitertem Kontaktformular (u. a. inkl. Adressf
 
 ---
 
-<sup>1</sup> abhängig von der aktuellen Website-Sprache (→ [Übersetzungen & Mehrsprachigkeit](../anpassung-erweiterung/uebersetzung-mehrsprachigkeit.html))
+<sup>1</sup> abhängig von der aktuellen Website-Sprache (→ [Übersetzungen & Mehrsprachigkeit](../anpassung-erweiterung/uebersetzung-mehrsprachigkeit))

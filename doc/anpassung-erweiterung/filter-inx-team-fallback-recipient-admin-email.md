@@ -1,11 +1,6 @@
----
-title: Fallback-Admin-Mailadresse(n) (Filter)
-search: 1
----
-
 # inx_team_fallback_recipient_admin_email (Filter)
 
-Ist beim Versand einer Mail über das [einheitliche Kontaktformular](../komponenten/kontaktformular.html) – in Ausnahmefällen – keine direkte Empfängeradresse ermittelbar, wird hierfür die Standard-Administrations-Mailadresse der WordPress-Konfiguration übernommen.
+Ist beim Versand einer Mail über das [einheitliche Kontaktformular](../komponenten/kontaktformular) – in Ausnahmefällen – keine direkte Empfängeradresse ermittelbar, wird hierfür die Standard-Administrations-Mailadresse der WordPress-Konfiguration übernommen.
 
 Soll das nicht so sein, können über diesen Filter-Hook eine oder mehrere alternative Fallback-Adressen definiert werden.
 

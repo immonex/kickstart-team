@@ -1,11 +1,6 @@
----
-title: Inhalte (Parameter) des OpenImmo-Feedback-Anhangs (Filter)
-search: 1
----
-
 # inx_team_openimmo_feedback_params (Filter)
 
-Mit diesem Filter können die Inhalte modifiziert werden, die bei der Generierung des OpenImmo-Feedback-Anhangs in die entsprechenden XML-Elemente eingefügt werden. Hierzu gehören u. a. die im Frontend per [Kontaktformular](../komponenten/kontaktformular.html) erfassten Interessenten-Kontaktdaten sowie Angaben zur angefragten Immobilie.
+Mit diesem Filter können die Inhalte modifiziert werden, die bei der Generierung des OpenImmo-Feedback-Anhangs in die entsprechenden XML-Elemente eingefügt werden. Hierzu gehören u. a. die im Frontend per [Kontaktformular](../komponenten/kontaktformular) erfassten Interessenten-Kontaktdaten sowie Angaben zur angefragten Immobilie.
 
 ## Parameter
 
