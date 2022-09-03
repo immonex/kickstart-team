@@ -3,8 +3,8 @@
 # Source: https://npm.immonex.de/#/detail/@immonex/doc-gen
 # Docsify-Konfiguration: https://docsify.js.org/#/configuration
 
-title: immonex Kickstart Team
-subtitle: Kickstart Team
+title: Kickstart Team
+subtitle: immonex Kickstart Team
 description: immonex Kickstart Add-on für die Verarbeitung, Verknüpfung und Einbindung von OpenImmo-XML-basierten Immobilienmakler-Informationen und Kontaktformularen
 keywords:
   - wordpress
