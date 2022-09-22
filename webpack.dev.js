@@ -11,8 +11,10 @@ module.exports = merge(common, {
       proxy: process.env.BROWSERSYNC_PROXY_URL,
       files: [
         'src/**/*.php',
-        'src/css/*.css',
-        'src/skins/**/*.css'
+        'src/assets/css/*.css',
+        'src/skins/**/*.php',
+        'src/skins/**/*.css',
+        '!src/vendor'
       ]
     })
   ]

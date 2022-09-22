@@ -151,12 +151,26 @@ class Contact_Form {
 			'rcpt_conf_mails_as_html' => $this->config['rcpt_conf_mails_as_html'],
 		);
 
+		if (
+			empty( $form_data['name'] )
+			&& isset( $form_data['first_name'] )
+			&& isset( $form_data['last_name'] )
+		) {
+			$form_data['name'] = trim( $form_data['first_name'] . ' ' . $form_data['last_name'] );
+		}
+
 		if ( count( $fields ) > 0 ) {
 			foreach ( $fields as $field_name => $field ) {
 				if ( isset( $form_data[ $field_name ] ) ) {
 					$field['value']                            = $form_data[ $field_name ];
 					$template_data['form_data'][ $field_name ] = $field;
 				}
+			}
+
+			if ( ! isset( $template_data['form_data']['name'] ) ) {
+				$template_data['form_data']['name'] = array(
+					'value' => $form_data['name'],
+				);
 			}
 		}
 
@@ -169,7 +183,7 @@ class Contact_Form {
 		$form_post_type = $form_data['post_type'];
 		$form_post_id   = $form_data['post_id'];
 		if (
-			'inx_' !== strpos( $form_post_type, 0, 4 )
+			'inx_' !== substr( $form_post_type, 0, 4 )
 			&& $origin_post_id
 		) {
 			$form_post_type = get_post_type( $origin_post_id );
@@ -208,11 +222,17 @@ class Contact_Form {
 		$headers = array( "From: {$sender}" );
 
 		if ( ! empty( $form_data['email'] ) ) {
-			$receipt_conf_recipient = wp_sprintf(
-				'%s <%s>',
-				$form_data['name'],
-				$form_data['email']
-			);
+			$recipient_name = ! empty( $form_data['name'] ) ? $form_data['name'] : '';
+
+			if ( $recipient_name ) {
+				$receipt_conf_recipient = wp_sprintf(
+					'%s <%s>',
+					$recipient_name,
+					$form_data['email']
+				);
+			} else {
+				$receipt_conf_recipient = $form_data['email'];
+			}
 
 			$headers[] = "Reply-To: {$receipt_conf_recipient}";
 		}
@@ -359,7 +379,7 @@ class Contact_Form {
 	 * @since 1.0.0
 	 *
 	 * @param bool        $names_only Indicate if only the element names shall be returned.
-	 * @param string|bool $scope      Scope of fields: "basic"/false (default) or extended.
+	 * @param string|bool $scope      Scope of fields: "basic"/false (default) or "extended".
 	 *
 	 * @return mixed[] Full element data or names only.
 	 */
@@ -1290,7 +1310,7 @@ class Contact_Form {
 				$template_data['sender_info'] : array(),
 		);
 
-		$data_html                       = array();
+		$data_html                       = array( 'merged_form_data' => '' );
 		$data_html['inline_oi_feedback'] = htmlspecialchars( $data['inline_oi_feedback'], ENT_XML1 );
 
 		if ( ! empty( $template_data['property'] ) ) {
@@ -1330,6 +1350,10 @@ class Contact_Form {
 					continue;
 				}
 
+				if ( ! isset( $field['type'] ) ) {
+					$field['type'] = 'text';
+				}
+
 				$rendered_field      = '';
 				$rendered_field_html = '';
 				$caption             = $this->get_field_caption( $field );
@@ -1363,10 +1387,14 @@ class Contact_Form {
 					$rendered_field_html .= wp_sprintf( '<strong>%s</strong>', $field['value'] );
 				}
 
-				$data[ $field_name ]            = $rendered_field;
-				$data_html[ $field_name ]       = $rendered_field;
-				$data['merged_form_data']      .= $rendered_field . PHP_EOL;
-				$data_html['merged_form_data'] .= $rendered_field_html . PHP_EOL;
+				$data[ $field_name ]                   = $field['value'];
+				$data[ "{$field_name}_rendered" ]      = $rendered_field;
+				$data_html[ $field_name ]              = $field['value'];
+				$data_html[ "{$field_name}_rendered" ] = $rendered_field_html;
+				if ( $caption || 'textarea' === $field['type'] ) {
+					$data['merged_form_data']      .= $rendered_field . PHP_EOL;
+					$data_html['merged_form_data'] .= $rendered_field_html . PHP_EOL;
+				}
 
 				$fields_inserted++;
 			}

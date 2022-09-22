@@ -10,14 +10,14 @@ namespace immonex\Kickstart\Team;
 /**
  * Main plugin class
  */
-class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_5_4\Base {
+class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_7_0\Base {
 
 	const PLUGIN_NAME                = 'immonex Kickstart Team';
 	const ADDON_NAME                 = 'Team';
 	const PLUGIN_PREFIX              = 'inx_team_';
 	const PUBLIC_PREFIX              = 'inx-team-';
 	const TEXTDOMAIN                 = 'immonex-kickstart-team';
-	const PLUGIN_VERSION             = '1.2.7';
+	const PLUGIN_VERSION             = '1.2.9';
 	const PLUGIN_HOME_URL            = 'https://de.wordpress.org/plugins/immonex-kickstart-team/';
 	const PLUGIN_DOC_URLS            = array(
 		'de' => 'https://docs.immonex.de/kickstart-team/',
@@ -230,9 +230,18 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_5_4\Base {
 	/**
 	 * Initialize the plugin (admin/backend only).
 	 *
-	 * @since 1.0.0
+	 * @since 1.1.0
+	 *
+	 * @param bool $fire_before_hook Flag to indicate if an action hook should fire
+	 *                               before the actual method execution (optional,
+	 *                               true by default).
+	 * @param bool $fire_after_hook  Flag to indicate if an action hook should fire
+	 *                               after the actual method execution (optional,
+	 *                               true by default).
 	 */
-	public function init_plugin_admin() {
+	public function init_plugin_admin( $fire_before_hook = true, $fire_after_hook = true ) {
+		parent::init_plugin_admin( $fire_before_hook, $fire_after_hook );
+
 		if ( ! class_exists( '\immonex\Kickstart\Kickstart' ) ) {
 			return;
 		}
@@ -249,13 +258,20 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_5_4\Base {
 	 * Perform common initialization tasks.
 	 *
 	 * @since 1.0.0
+	 *
+	 * @param bool $fire_before_hook Flag to indicate if an action hook should fire
+	 *                               before the actual method execution (optional,
+	 *                               true by default).
+	 * @param bool $fire_after_hook  Flag to indicate if an action hook should fire
+	 *                               after the actual method execution (optional,
+	 *                               true by default).
 	 */
-	public function init_plugin() {
+	public function init_plugin( $fire_before_hook = true, $fire_after_hook = true ) {
 		if ( ! class_exists( '\immonex\Kickstart\Kickstart' ) ) {
 			return;
 		}
 
-		parent::init_plugin();
+		parent::init_plugin( $fire_before_hook, $fire_after_hook );
 
 		$component_config = array_merge(
 			$this->bootstrap_data,
@@ -450,12 +466,13 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_5_4\Base {
 
 		$addon_tabs = array(
 			$addon_tab_id => array(
-				'title'      => self::ADDON_NAME . ' [Add-on]',
+				'title'      => self::ADDON_NAME,
 				'content'    => '',
 				'attributes' => array(
 					'tabbed_sections' => true,
 					'plugin_slug'     => $this->plugin_slug,
 					'footer_info'     => $addon_footer_infos,
+					'is_addon_tab'    => true,
 				),
 			),
 		);
@@ -496,7 +513,7 @@ and conditions can be used in the related input fields:<br><br>
 	<dd>Website URL (home page)</dd>
 
 	<dt><code>{{ form_data }}</code></dt>
-	<dd>User-submitted form data (for admin/agent mails)</dd>
+	<dd><strong>All</strong> user-submitted form data (see below) combined for admin/agent mails</dd>
 
 	<dt><code>{{ sender_info.name }}</code></dt>
 	<dd><a href="%2$s">Agent</a> or <a href="%3$s">agency</a> name (depending on the form context)</dd>
@@ -512,7 +529,43 @@ and conditions can be used in the related input fields:<br><br>
 		);
 
 		$ext_templating_info = __(
-			'<strong>Property Inquiries</strong>
+			'<strong>User Form Data</strong>
+
+<dl>
+	<dt><code>{{ salutation }}</code></dt>
+	<dd>Salutation (if selected): <code>Ms.</code> or <code>Mr.</code></dd>
+
+	<dt><code>{{ first_name }}</code></dt>
+	<dd>First Name *</dd>
+
+	<dt><code>{{ last_name }}</code></dt>
+	<dd>Last Name *</dd>
+
+	<dt><code>{{ name }}</code></dt>
+	<dd>Full Name</dd>
+
+	<dt><code>{{ street }}</code></dt>
+	<dd>Street *</dd>
+
+	<dt><code>{{ postal_code }}</code></dt>
+	<dd>Postal Code *</dd>
+
+	<dt><code>{{ city }}</code></dt>
+	<dd>City *</dd>
+
+	<dt><code>{{ email }}</code></dt>
+	<dd>E-mail address</dd>
+
+	<dt><code>{{ phone }}</code></dt>
+	<dd>Phone number</dd>
+
+	<dt><code>{{ message }}</code></dt>
+	<dd>Message</dd>
+</dl>
+
+<p>* These values are only available if the <strong>extended contact form</strong> is enabled.</p>
+
+<strong>Property Inquiries</strong>
 
 <dl>
 	<dt><code>{{ property_title }}</code></dt>
@@ -534,10 +587,10 @@ and conditions can be used in the related input fields:<br><br>
 <strong>Conditions</strong>
 
 <dl>
-	<dt><code>{%% if is_property_inquiry %%} ... {%% else %%} ... {%% endif %%}</code></dt>
+	<dt><code>{% if is_property_inquiry %} ... {% else %} ... {% endif %}</code></dt>
 	<dd>Conditional embedding of property related <strong>or</strong> alternative contents</dd>
 
-	<dt><code>{%% if confirmation_sender == \'agent\' %%} ... {%% endif %%}</code></dt>
+	<dt><code>{% if confirmation_sender == \'agent\' %} ... {% endif %}</code></dt>
 	<dd>Conditional embedding contents based on the <strong>sender type</strong> (agent or agency)</dd>
 </dl>',
 			'immonex-kickstart-team'
@@ -749,7 +802,7 @@ and conditions can be used in the related input fields:<br><br>
 			),
 			array(
 				'name'    => 'fallback_form_mail_recipients',
-				'type'    => 'text',
+				'type'    => 'email_list',
 				'label'   => __( 'Fallback Recipient Mail Addresses', 'immonex-kickstart-team' ),
 				'section' => "{$prefix}contact_form_mails",
 				'args'    => array(
@@ -761,7 +814,7 @@ and conditions can be used in the related input fields:<br><br>
 			),
 			array(
 				'name'    => 'form_mail_cc_recipients',
-				'type'    => 'text',
+				'type'    => 'email_list',
 				'label'   => __( 'CC Mail Addresses', 'immonex-kickstart-team' ),
 				'section' => "{$prefix}contact_form_mails",
 				'args'    => array(

@@ -58,7 +58,7 @@ Ein Hinweis zum Thema Datenschutz ist obligatorisch, muss aber **nicht** explizi
 
 ### Kontaktformular-Mails
 
-Mit der Plugin-Version 1.2.0 wurden die mailbezogenen Optionen in zwei separaten Subtabs zusammengefasst. Ebenfalls neu hinzugekommen sind hier die Möglichkeiten zum Versand von HTML-Mails sowie die Gestaltung der Mailinhalte auf Basis der *Template-Engine* [Twig 3](https://twig.symfony.com/doc/3.x/templates)<sup>1</sup>.
+Mit der Plugin-Version 1.2.0 wurden die mailbezogenen Optionen in zwei separaten Subtabs zusammengefasst. Ebenfalls neu hinzugekommen sind hier die Möglichkeiten zum Versand von **HTML-Mails**<sup>1</sup> sowie die Gestaltung der Mailinhalte auf Basis der *Template-Engine* [Twig 3](https://twig.symfony.com/doc/3.x/templates)<sup>2</sup>.
 
 #### Fallback-Empfänger-Mailadressen
 
@@ -76,7 +76,7 @@ Anstelle von reinen Textmails (Standardvorgabe) können die per Kontaktformular 
 
 #### Kontaktformular-Mailtext
 
-Der Inhalt der Mails, die beim Absenden eines Kontaktformulars im Website-Frontend an die jeweilige Kontaktperson (oder einen Admin-Benutzer) gesendet werden, kann in diesem Feld hinterlegt werden. Hierbei kann auf alle im Infoabschnitt unterhalb der Subtab-Navigation genannten *Twig*-Variablen<sup>1</sup> (*Platzhalter*) bzw. Abfragemöglichkeiten zurückgegriffen werden. Am wichtigsten ist hier die Variable `{{ form_data }}`, die in den Mails durch die Formulardaten ersetzt wird. Auch eine HTML-basierte Formatierung ist möglich.
+Der Inhalt der Mails, die beim Absenden eines Kontaktformulars im Website-Frontend an die jeweilige Kontaktperson (oder einen Admin-Benutzer) gesendet werden, kann in diesem Feld hinterlegt werden. Hierbei kann auf alle im Infoabschnitt unterhalb der Subtab-Navigation genannten *Twig*-Variablen<sup>2</sup> (*Platzhalter*) bzw. Abfragemöglichkeiten zurückgegriffen werden. Am wichtigsten ist hier die Variable `{{ form_data }}`, die in den Mails durch die Formulardaten ersetzt wird. Auch eine HTML-basierte Formatierung ist möglich.
 
 Ist dieses Feld leer, kommt ein Standard-Mail-Template (reiner PHP-Code) im [Skin-Ordner](../anpassung-erweiterung/skins) zum Einsatz.
 
@@ -90,9 +90,9 @@ Beim Absenden von Kontaktformular-Daten wird ein solcher Datensatz (optional) au
 
 #### Eingangsbestätigung
 
-Bei erfolgreicher Übermittlung von Formulardaten **kann** eine Eingangsbestätigung per Mail an den Absender gesendet werden, diese muss allerdings **explizit aktiviert** werden. Auch hier wird bei den Inhalten (inkl. Betreff und Signatur) *Twig*-Markup<sup>1</sup> unterstützt, Mailtext und Signatur können zudem per HTML formatiert werden.
+Bei erfolgreicher Übermittlung von Formulardaten **kann** eine Eingangsbestätigung per Mail an den Absender gesendet werden, diese muss allerdings **explizit aktiviert** werden. Auch hier wird bei den Inhalten (inkl. Betreff und Signatur) *Twig*-Markup<sup>2</sup> unterstützt, Mailtext und Signatur können zudem per HTML formatiert werden.
 
-> **Achtung!** Damit das Formular nicht für den Versand von *Spam* missbraucht werden kann, sollten in die Bestätigungsmails **niemals** Variablen (*Platzhalter*) für vom Nutzer selbst erfasste Inhalte eingebunden werden.
+> **Achtung!** Damit das Formular nicht für den Versand von *Spam* missbraucht werden kann, sollten in die Bestätigungsmails nach Möglichkeit **keine** Variablen (*Platzhalter*) für vom Nutzer selbst erfasste Inhalte eingebunden werden. (Falls **unbedingt nötig**, kann hier eine Ausnahme bei der Anrede und dem Namen gemacht werden.)
 
 #### Betreff (allgemein / Immobilien-Anfragen)
 
@@ -108,8 +108,10 @@ Ist der HTML-Mailversand aktiviert, kann **optional** auch ein Logo aus der Word
 
 #### Mailtext / Signatur
 
-Der eigentliche Inhalt der Eingangsbestätigung sowie die (bei Bedarf) ergänzende Signatur können wiederum mittels *Twig*-Variablen/Abfragen<sup>1</sup> sowie zusätzlichen Texten zusammengestellt und (optional) ebenfalls per HTML formatiert werden.
+Der eigentliche Inhalt der Eingangsbestätigung sowie die (bei Bedarf) ergänzende Signatur können wiederum mittels *Twig*-Variablen/Abfragen<sup>2</sup> sowie zusätzlichen Texten zusammengestellt und (optional) ebenfalls per HTML formatiert werden.
 
 ---
 
-<sup>1</sup> Detaillierte Infos zur Erstellung von *Twig*-Templates sind in der [Dokumentation](https://twig.symfony.com/doc/3.x/templates) hierzu verfügbar.
+<sup>1</sup> Beim Versand von HTML-Mails kommt ein **Rahmentemplate** zum Einsatz, das neben einem Abschnitt für die eigentlichen, per Formular übermittelten Inhalte auch Bereiche für die Einbettung eines Logos sowie einer Signatur enthält. Eine alternative, benutzerdefinierte Rahmenvorlage kann per Filterfunktion (Hook: [`immonex-kickstart-team_html_mail_twig_template_file`](../anpassung-erweiterung/immonex-kickstart-team-html-mail-twig-template-file)) definiert werden.
+
+<sup>2</sup> Detaillierte Infos zur Erstellung von *Twig*-Templates sind in der [Dokumentation](https://twig.symfony.com/doc/3.x/templates) hierzu verfügbar.

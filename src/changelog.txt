@@ -1,5 +1,12 @@
 == Changelog ==
 
+= 1.2.9 =
+* Release date: 2022-09-22
+* Updated contact form data processing.
+* Added further variables for use in form mail templates (Twig 3).
+* Extended plugin option description and help texts.
+* Updated plugin framework and dependencies.
+
 = 1.2.7 =
 * Release date: 2022-06-28
 * Reworked salutation/gender options (contact forms, widget titles etc.).

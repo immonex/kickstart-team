@@ -10,6 +10,7 @@
 - **automatisierte** Erstellung und Aktualisierung der Agentur- und Makler-Datensätze beim [OpenImmo®-basierten Import](systemvoraussetzungen#datenimport-openimmo-xml)<sup>2, 3</sup> von Immobilien-Angeboten
 - **Widgets** für die Einbindung von Agentur/Makler-Informationen und Kontaktformularen
 - einheitliches **Mail-Kontaktformular** mit OpenImmo-Feedback-Anhängen bei objektbezogenen Anfragen
+- Versand von HTML-Mails auf Basis von [Twig-Templates](https://twig.symfony.com/)
 - **Shortcodes** für die flexible Einbindung von Listen- und Detailansichten
 - direkt einsatzbereites, responsives Template-Set ("[Skin](anpassung-erweiterung/skins)")
 - Möglichkeit der update-sicheren Anpassung vorhandener oder Ergänzung eigener Skins im (Child-)Theme-Ordner

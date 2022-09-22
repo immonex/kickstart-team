@@ -31,8 +31,9 @@
 - [inx_team_openimmo_feedback_params](filter-inx-team-openimmo-feedback-params) (Inhalte des OpenImmo-Feedback-Anhangs)
 - [inx_team_openimmo_feedback_xml_source](filter-inx-team-openimmo-feedback-xml-source) (XML-Quelltext des OpenImmo-Feedback-Anhangs)
 - [inx_team_openimmo_feedback_attachment_filename](filter-inx-team-openimmo-feedback-attachment-filename) (Dateiname des OpenImmo-Feedback-Anhangs)
+- [immonex-kickstart-team_html_mail_twig_template_file](immonex-kickstart-team-html-mail-twig-template-file) (Alternatives Rahmentemplate für Kontaktformular-HTML-Mails)
 
-### Rendering / Templates
+### Rendering / Templates (allgemein)
 
 - [inx_team_template_search_folders](filter-inx-team-template-search-folders) (Basisordner für Skins/Templates ergänzen)
 - [inx_team_template_folder_url_mappings](filter-inx-team-template-folder-url-mappings) (URL-Zuordnungen für nicht öffentlich zugängliche Template/Skin-Dateisystem-Basisordner definieren)
