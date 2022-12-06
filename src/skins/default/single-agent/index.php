@@ -73,7 +73,7 @@ $inx_skin_photo = isset( $template_data['elements']['photo'] ) ?
 			<?php endif; ?>
 
 			<?php
-			$inx_skin_displayed_elements = array( 'full_name_incl_title', 'position_incl_company' );
+			$inx_skin_displayed_elements = array( 'photo', 'full_name_incl_title', 'position_incl_company' );
 			$inx_skin_displayed_values   = array();
 
 			foreach ( $template_data['elements'] as $inx_skin_element_key => $inx_skin_element ) :
@@ -94,6 +94,10 @@ $inx_skin_photo = isset( $template_data['elements']['photo'] ) ?
 						$inx_skin_value = $inx_skin_element['value']['raw'];
 					} else {
 						$inx_skin_value = $inx_skin_element['value'];
+					}
+
+					if ( ! is_string( $inx_skin_value ) ) {
+						continue;
 					}
 
 					if ( 'do_action:' === substr( $inx_skin_value, 0, 10 ) ) {

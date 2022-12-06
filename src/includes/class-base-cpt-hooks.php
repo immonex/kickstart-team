@@ -187,7 +187,7 @@ abstract class Base_CPT_Hooks {
 	public function get_post_instance( $post_id = false ) {
 		if (
 			! $this->current_post
-			|| ! is_object( $this->current_post->post )
+			|| ! is_a( $this->current_post->post, 'WP_Post' )
 			|| ( $post_id && $this->current_post->post->ID !== $post_id )
 		) {
 			$class_name = __NAMESPACE__ . '\\' . $this->config['class_base_name'];

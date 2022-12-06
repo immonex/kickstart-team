@@ -46,21 +46,39 @@ class Agent_Hooks extends Base_CPT_Hooks {
 	public function __construct( $config, $utils ) {
 		parent::__construct( $config, $utils );
 
+		/**
+		 * WP actions
+		 */
+
 		// Hook save_post instead of save_post_inx_agent due to CMB2 priority issue.
 		add_action( 'save_post', array( $this, 'maybe_update_post_title' ), 90, 3 );
 		add_action( 'save_post', array( $this, 'update_property_agency_ids' ), 90, 3 );
 		add_action( 'deleted_post', array( $this, 'remove_outdated_agent_ids' ) );
 		add_action( 'template_redirect', array( $this, 'prevent_page_param_redirect' ), 0 );
 
+		/**
+		 * OpenImmo2WP filters
+		 */
+
 		add_filter( 'immonex_oi2wp_import_agency_xml_before_import', array( $this, 'set_xml_agency' ) );
 		add_filter( 'immonex_oi2wp_create_agent', array( $this, 'create_agent_by_xml' ), 10, 4 );
 		add_filter( 'immonex_oi2wp_assign_agent', array( $this, 'maybe_update_agent' ), 10, 5 );
+
+		/**
+		 * Kickstart filters
+		 */
 
 		add_filter( 'inx_special_query_vars', array( $this, 'add_agent_query_vars' ), 10, 2 );
 		add_filter( 'inx_search_tax_and_meta_queries', array( $this, 'maybe_add_agent_query' ), 10, 3 );
 		add_filter( 'inx_detail_page_elements', array( $this, 'replace_default_contact_section' ) );
 
-		// Filter for "manually" creating and updating agents.
+		/**
+		 * Plugin-specific filters
+		 */
+
+		add_filter( 'inx_team_get_agent_template_data', array( $this, 'get_agent_data' ), 10, 2 );
+
+		// Filters for "manually" creating and updating agents.
 		add_filter( 'inx_team_create_agent', array( $this, 'create_agent' ), 10, 2 );
 		add_filter( 'inx_team_update_agent', array( $this, 'update_agent' ), 10, 3 );
 
@@ -695,6 +713,33 @@ class Agent_Hooks extends Base_CPT_Hooks {
 			}
 		}
 	} // remove_outdated_agent_ids
+
+	/**
+	 * Retrieve all data and tools relevant for rendering an agent template
+	 * (filter callback).
+	 *
+	 * @since 1.3.0
+	 *
+	 * @param mixed[] $template_data Dummy template data (empty).
+	 * @param mixed[] $atts Rendering attributes (optional).
+	 *
+	 * @return mixed[] Property and related meta data.
+	 */
+	public function get_agent_data( $template_data = array(), $atts = array() ) {
+		$agent = false;
+
+		if ( ! empty( $atts['post_id'] ) ) {
+			$agent = $this->get_post_instance( $atts['post_id'] );
+
+			if ( ! $agent || empty( $agent->post ) ) {
+				return array();
+			}
+		} else {
+			$agent = $this->get_primary_agent_for_current_property();
+		}
+
+		return $agent ? $agent->get_template_data() : array();
+	} // get_agent_data
 
 	/**
 	 * Return a rendered agent single view (shortcode-based).

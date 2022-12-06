@@ -35,6 +35,11 @@ function init() {
 						form.find('.inx-team-contact-form__input:not(.inx-team-contact-form__result-wrap)').hide();
 					}
 
+					if ( 'undefined' !== typeof response.redirect_url && response.redirect_url ) {
+						window.location.href = response.redirect_url
+						return
+					}
+
 					resultEl.html('<span uk-icon="icon: check; ratio: 2"></span> <span>' + data.message + '</span>');
 					resultEl[0].className = 'inx-team-contact-form__result inx-team-contact-form__result--type--success uk-margin';
 				},

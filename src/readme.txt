@@ -106,6 +106,13 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 
 == Changelog ==
 
+= 1.3.0-beta3 =
+* Release date: 2022-11-22
+* Added redirect option after contact form data submission.
+* Added agent/agency data retrieval filter hooks.
+* Improved WPML/Polylang compatibility in combination with other plugins that modify permalinks.
+* Fixed some minor bugs.
+
 = 1.2.9 =
 * Release date: 2022-09-22
 * Updated contact form data processing.
@@ -117,15 +124,6 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 * Release date: 2022-06-28
 * Reworked salutation/gender options (contact forms, widget titles etc.).
 * Fixed display bug in HTML form mails.
-* Updated dependencies.
-
-= 1.2.5 =
-* Release date: 2022-04-06
-* Changed primary property ID source in OpenImmo-Feedback-XML attachments.
-* Added filter hook for modifying OpenImmo-Feedback-XML attachment parameters.
-* Added "Diverse" salutation option by default in extended contact forms.
-* Changed default display type of the contact meta boxes in property backend forms to closed.
-* Added default value check for messages in property-based contact forms.
 * Updated dependencies.
 
 See changelog.txt for complete version history.

@@ -57,6 +57,12 @@ class Contact_Form_Hooks {
 
 		add_action( "wp_ajax_{$plugin_prefix}submit_contact_form", array( $this, 'process_submission' ) );
 		add_action( "wp_ajax_nopriv_{$plugin_prefix}submit_contact_form", array( $this, 'process_submission' ) );
+
+		/**
+		 * Shortcodes
+		 */
+
+		add_shortcode( 'inx-team-contact-form-confirmation-message', array( $this, 'shortcode_confirmation_message' ) );
 	} // __construct
 
 	/**
@@ -119,6 +125,19 @@ class Contact_Form_Hooks {
 
 		wp_send_json( $result, $result['valid'] ? 200 : 400 );
 	} // process_submission
+
+	/**
+	 * Return the form submission confirmation message (plugin options).
+	 *
+	 * @since 1.3.0
+	 *
+	 * @param mixed[] $atts Rendering Attributes.
+	 *
+	 * @return string Rendered shortcode contents.
+	 */
+	public function shortcode_confirmation_message( $atts = array() ) {
+		return $this->config['form_confirmation_message'];
+	} // shortcode_confirmation_message
 
 	/**
 	 * Return the current form object instance, create if not existing yet.

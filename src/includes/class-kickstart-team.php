@@ -10,14 +10,15 @@ namespace immonex\Kickstart\Team;
 /**
  * Main plugin class
  */
-class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_7_0\Base {
+class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_7_15\Base {
 
 	const PLUGIN_NAME                = 'immonex Kickstart Team';
 	const ADDON_NAME                 = 'Team';
+	const ADDON_TAB_ID               = 'addon_team';
 	const PLUGIN_PREFIX              = 'inx_team_';
 	const PUBLIC_PREFIX              = 'inx-team-';
 	const TEXTDOMAIN                 = 'immonex-kickstart-team';
-	const PLUGIN_VERSION             = '1.2.9';
+	const PLUGIN_VERSION             = '1.3.0-beta3';
 	const PLUGIN_HOME_URL            = 'https://de.wordpress.org/plugins/immonex-kickstart-team/';
 	const PLUGIN_DOC_URLS            = array(
 		'de' => 'https://docs.immonex.de/kickstart-team/',
@@ -33,13 +34,7 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_7_0\Base {
 		'agency' => 'inx_agency',
 		'agent'  => 'inx_agent',
 	);
-
-	/**
-	 * CPT hook objects
-	 *
-	 * @var object[]
-	 */
-	public $cpt_hooks = array();
+	const PARENT_PLUGIN_MAIN_CLASS   = 'immonex\Kickstart\Kickstart';
 
 	/**
 	 * Plugin options
@@ -58,6 +53,7 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_7_0\Base {
 		'consent_text_cancellation'          => 'INSERT_TRANSLATED_DEFAULT_VALUE',
 		'consent_text_privacy'               => 'INSERT_TRANSLATED_DEFAULT_VALUE',
 		'form_confirmation_message'          => 'INSERT_TRANSLATED_DEFAULT_VALUE',
+		'form_confirmation_page'             => '',
 		'send_receipt_confirmation'          => false,
 		'hide_form_after_submit'             => true,
 		'fallback_form_mail_recipients'      => '',
@@ -87,32 +83,12 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_7_0\Base {
 	 * @param string $plugin_slug Plugin name slug.
 	 */
 	public function __construct( $plugin_slug ) {
-		$custom_post_types = array();
-
-		if ( ! empty( self::CUSTOM_POST_TYPES ) ) {
-			foreach ( self::CUSTOM_POST_TYPES as $cpt_base_name => $post_type_name ) {
-				$class_base_name = ucwords( $cpt_base_name );
-
-				$custom_post_types[ $cpt_base_name ] = array(
-					'post_type_name'  => $post_type_name,
-					'class_base_name' => $class_base_name,
-				);
-			}
-		}
-		$this->bootstrap_data = array(
-			'plugin'            => $this,
-			'custom_post_types' => $custom_post_types,
-		);
+		$this->bootstrap_data['plugin'] = $this;
 
 		parent::__construct( $plugin_slug, self::TEXTDOMAIN );
 
-		$this->bootstrap_data['plugin_options_name'] = $this->plugin_options_name;
-
 		// Set up custom post types, taxonomies and backend menus.
 		new WP_Bootstrap( $this->bootstrap_data, $this );
-
-		// Set up CPT backend forms (if any).
-		$this->setup_cpt_backend_forms();
 
 		add_filter( 'sanitize_option_immonex-kickstart_options', array( $this, 'synchronize_slugs_from_kickstart_options' ), 5 );
 	} // __construct
@@ -240,13 +216,11 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_7_0\Base {
 	 *                               true by default).
 	 */
 	public function init_plugin_admin( $fire_before_hook = true, $fire_after_hook = true ) {
-		parent::init_plugin_admin( $fire_before_hook, $fire_after_hook );
-
-		if ( ! class_exists( '\immonex\Kickstart\Kickstart' ) ) {
+		if ( ! $this->is_parent_plugin_active ) {
 			return;
 		}
 
-		parent::init_plugin_admin();
+		parent::init_plugin_admin( $fire_before_hook, $fire_after_hook );
 
 		if ( ! get_option( 'rewrite_rules' ) ) {
 			global $wp_rewrite;
@@ -267,20 +241,15 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_7_0\Base {
 	 *                               true by default).
 	 */
 	public function init_plugin( $fire_before_hook = true, $fire_after_hook = true ) {
-		if ( ! class_exists( '\immonex\Kickstart\Kickstart' ) ) {
+		if ( ! $this->is_parent_plugin_active ) {
 			return;
 		}
 
+		$this->settings_page = 'admin.php?page=immonex-kickstart_settings&tab=addon_' . str_replace( '-', '_', $this->plugin_slug );
+
 		parent::init_plugin( $fire_before_hook, $fire_after_hook );
 
-		$component_config = array_merge(
-			$this->bootstrap_data,
-			$this->plugin_options
-		);
-
-		$this->register_cpt_actions_filters( $component_config );
-
-		new Contact_Form_Hooks( $component_config, $this->utils );
+		new Contact_Form_Hooks( array_merge( $this->bootstrap_data, $this->plugin_options ), $this->utils );
 
 		if ( is_admin() ) {
 			add_filter( 'immonex-kickstart_option_tabs', array( $this, 'extend_tabs' ), 15 );
@@ -333,7 +302,7 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_7_0\Base {
 	 * @since 1.0.0
 	 */
 	public function init_plugin_widgets() {
-		if ( ! class_exists( '\immonex\Kickstart\Kickstart' ) ) {
+		if ( ! $this->is_parent_plugin_active ) {
 			return;
 		}
 
@@ -454,8 +423,6 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_7_0\Base {
 	 * @return array Extended tab array.
 	 */
 	public function extend_tabs( $tabs ) {
-		$addon_tab_id = 'addon_' . str_replace( '-', '_', $this->plugin_slug );
-
 		$addon_footer_infos = implode(
 			' | ',
 			array_merge(
@@ -465,7 +432,7 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_7_0\Base {
 		);
 
 		$addon_tabs = array(
-			$addon_tab_id => array(
+			self::ADDON_TAB_ID => array(
 				'title'      => self::ADDON_NAME,
 				'content'    => '',
 				'attributes' => array(
@@ -492,9 +459,7 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_7_0\Base {
 	 * @return array Extended sections array.
 	 */
 	public function extend_sections( $sections ) {
-		$plugin_slug_us = str_replace( '-', '_', $this->plugin_slug );
-		$addon_tab_id   = "addon_{$plugin_slug_us}";
-		$prefix         = $addon_tab_id . '_';
+		$prefix = self::ADDON_TAB_ID . '_';
 
 		$templating_info = wp_sprintf(
 			/* translators: %1$s, %2$s and %3$s are placeholders for URLs. */
@@ -600,22 +565,22 @@ and conditions can be used in the related input fields:<br><br>
 			"{$prefix}layout"             => array(
 				'title'       => __( 'Layout & Design', 'immonex-kickstart-team' ),
 				'description' => '',
-				'tab'         => $addon_tab_id,
+				'tab'         => self::ADDON_TAB_ID,
 			),
 			"{$prefix}contact_form"       => array(
 				'title'       => __( 'Contact Form', 'immonex-kickstart-team' ),
 				'description' => '',
-				'tab'         => $addon_tab_id,
+				'tab'         => self::ADDON_TAB_ID,
 			),
 			"{$prefix}contact_form_mails" => array(
 				'title'       => __( 'Contact Form Mails', 'immonex-kickstart-team' ),
 				'description' => array( $templating_info, $ext_templating_info ),
-				'tab'         => $addon_tab_id,
+				'tab'         => self::ADDON_TAB_ID,
 			),
 			"{$prefix}rcpt_conf_mails"    => array(
 				'title'       => __( 'Receipt Confirmation Mails', 'immonex-kickstart-team' ),
 				'description' => array( $templating_info, $ext_templating_info ),
-				'tab'         => $addon_tab_id,
+				'tab'         => self::ADDON_TAB_ID,
 			),
 		);
 
@@ -634,7 +599,7 @@ and conditions can be used in the related input fields:<br><br>
 	 * @return array Extended fields array.
 	 */
 	public function extend_fields( $fields ) {
-		$prefix = 'addon_' . str_replace( '-', '_', $this->plugin_slug ) . '_';
+		$prefix = self::ADDON_TAB_ID . '_';
 
 		$pages = apply_filters(
 			'inx_page_list_all_languages',
@@ -744,7 +709,7 @@ and conditions can be used in the related input fields:<br><br>
 					'plugin_slug' => $this->plugin_slug,
 					'option_name' => $this->plugin_options_name,
 					'description' => __( 'If a cancellation policy page is selected, the following consent text will be added to the form.', 'immonex-kickstart-team' ) . ' (' .
-						__( "If the page is available in multiple languages, please select the version in the <strong>site's main language</strong> here.", 'immonex-kickstart-team' ) . ')',
+						__( "If the page is available in multiple languages, please select the version in the <strong>site's primary language</strong> here.", 'immonex-kickstart-team' ) . ')',
 					'options'     => $pages_list,
 					'value'       => $this->plugin_options['cancellation_page_id'],
 				),
@@ -785,8 +750,22 @@ and conditions can be used in the related input fields:<br><br>
 				'args'    => array(
 					'plugin_slug' => $this->plugin_slug,
 					'option_name' => $this->plugin_options_name,
-					'description' => __( 'This message is being displayed when the form data have been successfully submitted.', 'immonex-kickstart-team' ),
+					'description' => __( 'This message is being displayed when the form data have been successfully submitted.', 'immonex-kickstart-team' ) . ' ' .
+						__( 'Embedding in a (local) confirmation page is possbile with the shortcode <code>[inx-team-contact-form-confirmation-message]</code>.', 'immonex-kickstart-team' ),
 					'value'       => $this->plugin_options['form_confirmation_message'],
+				),
+			),
+			array(
+				'name'    => 'form_confirmation_page',
+				'type'    => 'text',
+				'label'   => __( 'Confirmation Page ID/URL', 'immonex-kickstart-team' ),
+				'section' => "{$prefix}contact_form",
+				'args'    => array(
+					'plugin_slug' => $this->plugin_slug,
+					'option_name' => $this->plugin_options_name,
+					'description' => __( 'Redirect to this page (<strong>ID</strong>) or full URL on successful form submissions.', 'immonex-kickstart-team' ) .
+						' (' . __( 'Enter the ID of the page in the <strong>primary language</strong> in multilingual sites.', 'immonex-kickstart-team' ) . ')',
+					'value'       => $this->plugin_options['form_confirmation_page'],
 				),
 			),
 			array(
@@ -1042,58 +1021,6 @@ and conditions can be used in the related input fields:<br><br>
 
 		return array_merge( $fields, $addon_fields );
 	} // extend_fields
-
-	/**
-	 * Setup backend edit form(s) for plugin related CPT(s).
-	 *
-	 * @since 1.0.0
-	 */
-	private function setup_cpt_backend_forms() {
-		if ( empty( $this->bootstrap_data['custom_post_types'] ) ) {
-			return;
-		}
-
-		foreach ( $this->bootstrap_data['custom_post_types'] as $cpt_base_name => $cpt ) {
-			$class_name = __NAMESPACE__ . '\\' . $cpt['class_base_name'] . '_Backend_Form';
-
-			if ( class_exists( $class_name ) ) {
-				new $class_name( $this->bootstrap_data, $this );
-			}
-		}
-	} // setup_cpt_backend_forms
-
-	/**
-	 * Register actions and filters for plugin related custom post types
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param mixed[] $component_config Various component configuration data.
-	 */
-	private function register_cpt_actions_filters( $component_config ) {
-		if (
-			empty( $this->bootstrap_data['custom_post_types'] ) ||
-			! class_exists( '\immonex\Kickstart\Kickstart' )
-		) {
-			return;
-		}
-
-		foreach ( $this->bootstrap_data['custom_post_types'] as $cpt_base_name => $cpt ) {
-			foreach ( array( '_Hooks', '_List_Hooks' ) as $class_name_suffix ) {
-				$class_name = __NAMESPACE__ . '\\' . $cpt['class_base_name'] . $class_name_suffix;
-
-				$config = array_merge(
-					$component_config,
-					array(
-						'class_base_name' => $cpt['class_base_name'],
-					)
-				);
-
-				if ( class_exists( $class_name ) ) {
-					$this->cpt_hooks[ $cpt['class_base_name'] . $class_name_suffix ] = new $class_name( $config, $this->utils );
-				}
-			}
-		}
-	} // register_cpt_actions_filters
 
 	/**
 	 * Determine the ID of the site's withdrawal/cancellation policy page,

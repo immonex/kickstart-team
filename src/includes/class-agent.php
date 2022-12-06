@@ -50,22 +50,19 @@ class Agent extends Base_CPT_Post {
 	private $element_values = array();
 
 	/**
-	 * Constructor
+	 * (Re)Set the current agent post ID/object and the related agency ID.
 	 *
-	 * @since 1.0.0
+	 * @since 1.3.0
 	 *
-	 * @param \WP_Post|int|string $post_or_id CPT post object or ID.
-	 * @param mixed[]             $config Various component configuration data.
-	 * @param object[]            $utils Helper/Utility objects.
+	 * @param \WP_Post|int|string|bool $post_or_id Agent post object or ID (false if undefined).
 	 */
-	public function __construct( $post_or_id, $config, $utils ) {
-		parent::__construct( $post_or_id, $config, $utils );
+	public function set_post( $post_or_id ) {
+		parent::set_post( $post_or_id );
 
-		$agent_id = is_object( $post_or_id ) ? $post_or_id->ID : $post_or_id;
-		if ( $agent_id ) {
-			$this->agency_id = get_post_meta( $agent_id, '_inx_team_agency_id', true );
+		if ( $this->post ) {
+			$this->agency_id = get_post_meta( $this->post->ID, '_inx_team_agency_id', true );
 		}
-	} // __construct
+	} // set_post
 
 	/**
 	 * Render post details (PHP template).
@@ -81,6 +78,39 @@ class Agent extends Base_CPT_Post {
 		if ( ! $this->post ) {
 			return '';
 		}
+
+		$atts['template'] = $template;
+
+		$template_data = $this->get_template_data( $atts );
+
+		return parent::render( $template, $template_data );
+	} // render
+
+	/**
+	 * Compile and return all relevant data for rendering an agent template.
+	 *
+	 * @since 1.3.0
+	 *
+	 * @param mixed[] $atts Rendering Attributes.
+	 *
+	 * @return mixed[] Agent and related meta data.
+	 */
+	public function get_template_data( $atts = array() ) {
+		if ( ! $this->post ) {
+			$post_id = ! empty( $atts['post_id'] ) ? $atts['post_id'] : false;
+			if ( ! $post_id ) {
+				$post_id = ! empty( $atts['id'] ) ? $atts['id'] : false;
+			}
+			if ( $post_id ) {
+				$this->set_post( $post_id );
+			}
+		}
+
+		if ( ! $this->post ) {
+			return '';
+		}
+
+		$template = isset( $atts['template'] ) ? $atts['template'] : '';
 
 		if ( empty( $atts['type'] ) ) {
 			$atts['type'] = 'widget' === substr( $template, 0, 6 ) ? 'widget' : 'single_agent_page';
@@ -116,7 +146,7 @@ class Agent extends Base_CPT_Post {
 		) ? 'all' : $atts['type'];
 		$default_elements = array_keys( $this->get_elements( $default_filter ) );
 		$convert_links    = ! empty( $atts['convert_links'] );
-		$contents         = array(
+		$template_data    = array(
 			'type'               => $atts['type'],
 			'before_title'       => isset( $atts['before_title'] ) ? $atts['before_title'] : '',
 			'title'              => isset( $atts['title'] ) ? $atts['title'] : $this->post->post_title,
@@ -158,7 +188,7 @@ class Agent extends Base_CPT_Post {
 					$value = $this->maybe_add_link( $value );
 				}
 
-				$contents['elements'][ $key ] = array(
+				$template_data['elements'][ $key ] = array(
 					'label'         => ! empty( $valid_elements[ $key ]['show_label'] ) ?
 						$valid_elements[ $key ]['label'] :
 						'',
@@ -176,8 +206,8 @@ class Agent extends Base_CPT_Post {
 			}
 		}
 
-		return parent::render( $template, $contents );
-	} // render
+		return $template_data;
+	} // get_template_data
 
 	/**
 	 * Update an agent post and the related meta data.
@@ -481,7 +511,7 @@ class Agent extends Base_CPT_Post {
 	 */
 	public function get_agent_meta_query( $agent_ids = false, $primary = false ) {
 		if ( empty( $agent_ids ) ) {
-			if ( is_object( $this->post ) ) {
+			if ( is_a( $this->post, 'WP_Post' ) ) {
 				$agent_ids = array( $this->post->ID );
 			} else {
 				return false;
@@ -1035,7 +1065,7 @@ class Agent extends Base_CPT_Post {
 	 * @return mixed[] Array containing name/URL pairs.
 	 */
 	private function get_network_urls( $value_getter ) {
-		if ( ! is_object( $this->post ) || ! $this->post->ID ) {
+		if ( ! is_a( $this->post, 'WP_Post' ) || ! $this->post->ID ) {
 			return array();
 		}
 
@@ -1286,7 +1316,7 @@ class Agent extends Base_CPT_Post {
 	 * @return int|bool Property count or false if no agent post is assigned yet.
 	 */
 	private function get_property_count() {
-		if ( ! is_object( $this->post ) || ! $this->post->ID ) {
+		if ( ! is_a( $this->post, 'WP_Post' ) || ! $this->post->ID ) {
 			return 0;
 		}
 

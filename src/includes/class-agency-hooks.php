@@ -39,14 +39,28 @@ class Agency_Hooks extends Base_CPT_Hooks {
 	public function __construct( $config, $utils ) {
 		parent::__construct( $config, $utils );
 
+		/**
+		 * WP actions
+		 */
+
 		// Hook save_post instead of save_post_inx_agency due to CMB2 priority issue.
 		add_action( 'save_post', array( $this, 'maybe_update_post_title' ), 90, 3 );
 		add_action( 'save_post', array( $this, 'update_property_agency_ids' ), 90, 3 );
 		add_action( 'deleted_post', array( $this, 'remove_outdated_agency_ids' ) );
 		add_action( 'template_redirect', array( $this, 'prevent_page_param_redirect' ), 0 );
 
+		/**
+		 * Kickstart filters
+		 */
+
 		add_filter( 'inx_special_query_vars', array( $this, 'add_agency_query_var' ), 10, 2 );
 		add_filter( 'inx_search_tax_and_meta_queries', array( $this, 'maybe_add_agency_query' ), 10, 3 );
+
+		/**
+		 * Plugin-specific filters
+		 */
+
+		add_filter( 'inx_team_get_agency_template_data', array( $this, 'get_agency_data' ), 10, 2 );
 
 		// Filters for "manually" creating and updating agencies.
 		add_filter( 'inx_team_create_agency', array( $this, 'create_agency' ), 10, 2 );
@@ -421,6 +435,33 @@ class Agency_Hooks extends Base_CPT_Hooks {
 	} // remove_outdated_agency_ids
 
 	/**
+	 * Retrieve all data and tools relevant for rendering an agency template
+	 * (filter callback).
+	 *
+	 * @since 1.3.0
+	 *
+	 * @param mixed[] $template_data Dummy template data (empty).
+	 * @param mixed[] $atts Rendering attributes (optional).
+	 *
+	 * @return mixed[] Property and related meta data.
+	 */
+	public function get_agency_data( $template_data = array(), $atts = array() ) {
+		$agency = false;
+
+		if ( ! empty( $atts['post_id'] ) ) {
+			$agency = $this->get_post_instance( $atts['post_id'] );
+
+			if ( ! $agency || empty( $agency->post ) ) {
+				return array();
+			}
+		} else {
+			$agency = $this->get_current_property_agency();
+		}
+
+		return $agency ? $agency->get_template_data() : array();
+	} // get_agency_data
+
+	/**
 	 * Return a rendered agency single view (shortcode-based).
 	 *
 	 * @since 1.0.0
@@ -506,5 +547,28 @@ class Agency_Hooks extends Base_CPT_Hooks {
 
 		return $this->render_single( $agency->post->ID, $template, $atts, false );
 	} // shortcode_agency
+
+	/**
+	 * Retrieve the agency object of the current property.
+	 *
+	 * @since 1.3.0
+	 *
+	 * @return Agency|bool Agency object or false if inexistent/indeterminable.
+	 */
+	private function get_current_property_agency() {
+		$agency      = false;
+		$property_id = apply_filters(
+			'inx_current_property_post_id',
+			$this->utils['general']->get_the_ID()
+		);
+
+		if ( ! $property_id ) {
+			return false;
+		}
+
+		$agency_id = get_post_meta( $property_id, '_inx_team_agency_id', true );
+
+		return $agency_id ? $this->get_post_instance( $agency_id ) : false;
+	} // get_current_property_agency
 
 } // Agency_Hooks

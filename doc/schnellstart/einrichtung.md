@@ -52,9 +52,21 @@ Eine hier ausgewählte Seite, die Informationen zum gesetzlichen Widerrufsrecht 
 
 Dieser Hinweis muss vom Benutzer bestätigt werden, bevor er seine Anfrage per Kontaktformular absenden kann. Mit `[cancellation_policy]` kann ein Link zur zuvor ausgewählten Seite eingefügt werden.
 
-#### Einwilligungstext zum Datenschutz
+#### Datenschutzhinweis
 
 Ein Hinweis zum Thema Datenschutz ist obligatorisch, muss aber **nicht** explizit bestätigt werden. Per Platzhalter `[privacy_policy]` wird ein Link zur entsprechenden Infoseite (**Datenschutzerklärung**) eingefügt, die unter ***Einstellungen → Datenschutz*** definiert wurde.
+
+#### Bestätigungsmeldung
+
+Sofern **keine** Weiterleitung zu einer Bestätigungsseite erfolgt (folgende Option), wird der hier hinterlegte Text bei erfolgreicher Übermittlung der Formulardaten angezeigt.
+
+#### Eingangsbestätigungsseite ID/URL
+
+Hier kann die ID einer lokalen Seite oder eine URL angegeben werden, zu der nach dem Absenden der Formulars weitergeleitet wird. In mehrsprachigen Umgebungen muss das Feld die ID der Seite in der primären Sprache enthalten.
+
+Ist das Ziel eine Seite der WP-Installation, kann hier per Shortcode die o. g. Bestätigungsmeldung eingefügt werden:
+
+`[inx-team-contact-form-confirmation-message]`
 
 ### Kontaktformular-Mails
 

@@ -85,18 +85,26 @@ class Base_CPT_Post {
 	} // __construct
 
 	/**
-	 * Set/Change or unset the current CPT post object.
+	 * (Re)Set the current CPT post object.
 	 *
 	 * @since 1.0.0
 	 *
 	 * @param int|\WP_Post $post_or_id CPT post object or ID.
 	 */
 	public function set_post( $post_or_id ) {
+		$this->post = null;
+
 		if ( is_numeric( $post_or_id ) ) {
 			$this->post = get_post( $post_or_id );
-		} elseif ( is_object( $post_or_id ) ) {
+		} elseif ( is_a( $post_or_id, 'WP_Post' ) ) {
 			$this->post = $post_or_id;
-		} else {
+		}
+
+		if (
+			$this->post
+			&& is_a( $this->post, 'WP_Post' )
+			&& $this->post->post_type !== $this->post_type_name
+		) {
 			$this->post = null;
 		}
 	} // set_post
@@ -266,6 +274,7 @@ class Base_CPT_Post {
 			'id'  => get_post_thumbnail_id( $this->post, 'large' ),
 			'url' => get_the_post_thumbnail_url( $this->post, 'large' ),
 			'tag' => $tag,
+			'raw' => $tag,
 		);
 	} // get_featured_image
 

@@ -132,6 +132,19 @@ class Contact_Form {
 			(int) $form_data['property_post_id'] :
 			false;
 
+		if ( $this->config['form_confirmation_page'] ) {
+			if ( intval( $this->config['form_confirmation_page'] ) ) {
+				$confirmation_page_id = apply_filters( 'inx_element_translation_id', intval( $this->config['form_confirmation_page'] ) );
+				$redirect_url = get_permalink( $confirmation_page_id );
+			} else {
+				$redirect_url = $this->config['form_confirmation_page'];
+			}
+
+			if ( $redirect_url ) {
+				$result['redirect_url'] = $redirect_url;
+			}
+		}
+
 		if (
 			$this->is_demo_context( $origin_post_id, $property_post_id )
 			|| ! empty( $form_data[ self::HONEYPOT_FIELD_NAME ] )

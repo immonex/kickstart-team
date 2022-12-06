@@ -48,6 +48,39 @@ class Agency extends Base_CPT_Post {
 			return '';
 		}
 
+		$atts['template'] = $template;
+
+		$template_data = $this->get_template_data( $atts );
+
+		return parent::render( $template, $template_data );
+	} // render
+
+	/**
+	 * Compile and return all relevant data for rendering an agency template.
+	 *
+	 * @since 1.3.0
+	 *
+	 * @param mixed[] $atts Rendering Attributes.
+	 *
+	 * @return mixed[] Agency and related meta data.
+	 */
+	public function get_template_data( $atts = array() ) {
+		if ( ! $this->post ) {
+			$post_id = ! empty( $atts['post_id'] ) ? $atts['post_id'] : false;
+			if ( ! $post_id ) {
+				$post_id = ! empty( $atts['id'] ) ? $atts['id'] : false;
+			}
+			if ( $post_id ) {
+				$this->set_post( $post_id );
+			}
+		}
+
+		if ( ! $this->post ) {
+			return '';
+		}
+
+		$template = isset( $atts['template'] ) ? $atts['template'] : '';
+
 		if ( empty( $atts['type'] ) ) {
 			$atts['type'] = 'widget' === substr( $template, 0, 6 ) ? 'widget' : 'single_agency_page';
 		}
@@ -72,7 +105,7 @@ class Agency extends Base_CPT_Post {
 		$default_filter   = 'single_agency_page' === $atts['type'] ? 'all' : $atts['type'];
 		$default_elements = array_keys( $this->get_elements( $default_filter ) );
 		$convert_links    = ! empty( $atts['convert_links'] );
-		$contents         = array(
+		$template_data    = array(
 			'before_title'       => isset( $atts['before_title'] ) ? $atts['before_title'] : '',
 			'title'              => isset( $atts['title'] ) ? $atts['title'] : $this->post->post_title,
 			'after_title'        => isset( $atts['after_title'] ) ? $atts['after_title'] : '',
@@ -111,7 +144,7 @@ class Agency extends Base_CPT_Post {
 					$value = $this->maybe_add_link( $value );
 				}
 
-				$contents['elements'][ $key ] = array(
+				$template_data['elements'][ $key ] = array(
 					'label'         => ! empty( $valid_elements[ $key ]['show_label'] ) ?
 						$valid_elements[ $key ]['label'] :
 						'',
@@ -129,8 +162,8 @@ class Agency extends Base_CPT_Post {
 			}
 		}
 
-		return parent::render( $template, $contents );
-	} // render
+		return $template_data;
+	} // get_template_data
 
 	/**
 	 * Update an agency post and the related meta data.
@@ -343,7 +376,7 @@ class Agency extends Base_CPT_Post {
 	 */
 	public function get_agency_meta_query( $agency_ids = false ) {
 		if ( empty( $agency_ids ) ) {
-			if ( is_object( $this->post ) ) {
+			if ( is_a( $this->post, 'WP_Post' ) ) {
 				$agency_ids = array( $this->post->ID );
 			} else {
 				return false;
@@ -866,7 +899,7 @@ class Agency extends Base_CPT_Post {
 	 * @return mixed[] Array containing name/URL pairs.
 	 */
 	private function get_network_urls( $value_getter ) {
-		if ( ! is_object( $this->post ) || ! $this->post->ID ) {
+		if ( ! is_a( $this->post, 'WP_Post' ) || ! $this->post->ID ) {
 			return array();
 		}
 
@@ -947,7 +980,7 @@ class Agency extends Base_CPT_Post {
 	 * @return int|bool Agent count or false if no agency post is assigned yet.
 	 */
 	private function get_agent_count() {
-		if ( ! is_object( $this->post ) || ! $this->post->ID ) {
+		if ( ! is_a( $this->post, 'WP_Post' ) || ! $this->post->ID ) {
 			return false;
 		}
 
@@ -973,7 +1006,7 @@ class Agency extends Base_CPT_Post {
 	 * @return int|bool Property count or false if no agency post is assigned yet.
 	 */
 	private function get_property_count() {
-		if ( ! is_object( $this->post ) || ! $this->post->ID ) {
+		if ( ! is_a( $this->post, 'WP_Post' ) || ! $this->post->ID ) {
 			return 0;
 		}
 

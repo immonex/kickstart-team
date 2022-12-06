@@ -11,6 +11,7 @@
 - [inx_team_agency_archive_title](filter-inx-team-agency-archive-title) (Titel der Agentur-Archivseiten)
 - [inx_team_agency_networks](filter-inx-team-agency-networks) (Business/Soziale Netzwerke für Agenturen)
 - [inx_team_agency_network_icons_output](filter-inx-team-agency-network-icons-output) (HTML-Code der Business/Social-Network-Icons von Agenturen)
+- [inx_team_get_agency_template_data](filter-inx-team-get-agency-template-data) (komplette "Rohdaten" für das Template-Rendering einer Agentur abrufen)
 
 ### Kontaktpersonen
 
@@ -18,6 +19,7 @@
 - [inx_team_agent_networks](filter-inx-team-agent-networks) (Business/Soziale Netzwerke für Kontaktpersonen)
 - [inx_team_agent_network_icons_output](filter-inx-team-agent-network-icons-output) (HTML-Code der Business/Social-Network-Icons von Kontaktpersonen)
 - [inx_team_force_agency_id_on_agent_update](filter-inx-team-force-agency-id-on-agent-update) (Fixe Agentur-ID für alle Kontaktpersonen)
+- [inx_team_get_agent_template_data](filter-inx-team-get-agent-template-data) (komplette "Rohdaten" für das Template-Rendering einer Kontaktperson abrufen)
 
 ### Kontaktformular
 
