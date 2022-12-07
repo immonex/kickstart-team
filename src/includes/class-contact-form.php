@@ -135,7 +135,7 @@ class Contact_Form {
 		if ( $this->config['form_confirmation_page'] ) {
 			if ( intval( $this->config['form_confirmation_page'] ) ) {
 				$confirmation_page_id = apply_filters( 'inx_element_translation_id', intval( $this->config['form_confirmation_page'] ) );
-				$redirect_url = get_permalink( $confirmation_page_id );
+				$redirect_url         = get_permalink( $confirmation_page_id );
 			} else {
 				$redirect_url = $this->config['form_confirmation_page'];
 			}

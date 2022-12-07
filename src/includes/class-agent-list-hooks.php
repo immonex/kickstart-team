@@ -55,6 +55,12 @@ class Agent_List_Hooks extends Base_CPT_List_Hooks {
 
 		add_filter( 'document_title_parts', array( $this, 'modify_archive_document_title' ) );
 		add_filter( 'get_the_archive_title', array( $this, 'modify_archive_title' ) );
+
+		/**
+		 * Plugin-specific filters
+		 */
+
+		add_filter( 'inx_agent_has_archive', array( $this, 'has_archive' ) );
 	} // __construct
 
 	/**
@@ -108,5 +114,18 @@ class Agent_List_Hooks extends Base_CPT_List_Hooks {
 
 		return $title;
 	} // modify_archive_title
+
+	/**
+	 * Return agency post default archive activation option value (filter callback).
+	 *
+	 * @since 1.3.0
+	 *
+	 * @param bool $has_archive Current value.
+	 *
+	 * @return bool Option value.
+	 */
+	public function has_archive( $has_archive ) {
+		return $this->config['enable_agent_archive'];
+	} // has_archive
 
 } // Agent_List_Hooks

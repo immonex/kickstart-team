@@ -120,10 +120,11 @@ class Agent extends Base_CPT_Post {
 
 		$post_types = get_post_types( array(), 'objects' );
 		if ( isset( $post_types[ $this->post_type_name ] ) ) {
-			$this->is_public = $post_types[ $this->post_type_name ]->public;
+			// @codingStandardsIgnoreLine
+			$this->is_public = apply_filters( "{$this->post_type_name}_has_single_view", $post_types[ $this->post_type_name ]->public );
 		}
 		if ( isset( $post_types['inx_agency'] ) ) {
-			$this->is_public_agency = $post_types['inx_agency']->public;
+			$this->is_public_agency = apply_filters( 'inx_agency_has_single_view', $post_types['inx_agency']->public );
 		}
 
 		$url = false;

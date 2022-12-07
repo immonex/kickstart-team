@@ -16,7 +16,7 @@ $inx_skin_logo = isset( $template_data['elements']['logo'] ) ?
 	$template_data['elements']['logo'] :
 	false;
 ?>
-<article class="inx-team-agency-list-item inx-team-agency-list-item--type--card uk-card uk-card-default">
+<article class="inx-team-agency-list-item inx-team-agency-list-item--type--card<?php echo ! $template_data['is_public'] ? ' inx-team-agency-list-item--no-footer' : ''; ?> uk-card uk-card-default">
 	<div class="uk-flex uk-flex-wrap">
 		<div class="inx-team-agency-list-item__logo">
 			<div class="inx-team-agency-list-item__logo-wrap">

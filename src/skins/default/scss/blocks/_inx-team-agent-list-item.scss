@@ -83,7 +83,7 @@
 }
 
 @media screen and (min-width: $screen-m) {
-	.inx-team-agent-list-item {
+	.inx-team-agent-list-item:not(.inx-team-agent-list-item--no-footer) {
 		padding-bottom: 36px;
 	}
 

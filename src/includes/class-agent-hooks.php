@@ -47,7 +47,7 @@ class Agent_Hooks extends Base_CPT_Hooks {
 		parent::__construct( $config, $utils );
 
 		/**
-		 * WP actions
+		 * WP actions and filters
 		 */
 
 		// Hook save_post instead of save_post_inx_agent due to CMB2 priority issue.
@@ -55,6 +55,8 @@ class Agent_Hooks extends Base_CPT_Hooks {
 		add_action( 'save_post', array( $this, 'update_property_agency_ids' ), 90, 3 );
 		add_action( 'deleted_post', array( $this, 'remove_outdated_agent_ids' ) );
 		add_action( 'template_redirect', array( $this, 'prevent_page_param_redirect' ), 0 );
+
+		add_filter( 'template_include', array( $this, 'maybe_disable_single_view' ) );
 
 		/**
 		 * OpenImmo2WP filters
@@ -71,6 +73,7 @@ class Agent_Hooks extends Base_CPT_Hooks {
 		add_filter( 'inx_special_query_vars', array( $this, 'add_agent_query_vars' ), 10, 2 );
 		add_filter( 'inx_search_tax_and_meta_queries', array( $this, 'maybe_add_agent_query' ), 10, 3 );
 		add_filter( 'inx_detail_page_elements', array( $this, 'replace_default_contact_section' ) );
+		add_filter( 'inx_agent_has_single_view', array( $this, 'has_single_view' ) );
 
 		/**
 		 * Plugin-specific filters
@@ -740,6 +743,49 @@ class Agent_Hooks extends Base_CPT_Hooks {
 
 		return $agent ? $agent->get_template_data() : array();
 	} // get_agent_data
+
+	/**
+	 * Return agent post default single view activation option value (filter callback).
+	 *
+	 * @since 1.3.0
+	 *
+	 * @param bool $has_single_view Current value.
+	 *
+	 * @return bool Option value.
+	 */
+	public function has_single_view( $has_single_view ) {
+		return $this->config['enable_agent_single_view'];
+	} // has_single_view
+
+	/**
+	 * Redirect agent single view template requests to 404 if disabled by the
+	 * related plugin option (filter callback).
+	 *
+	 * @since 1.3.0
+	 *
+	 * @param string $template Current template file path.
+	 *
+	 * @return string Template file (path).
+	 */
+	public function maybe_disable_single_view( $template ) {
+		if ( apply_filters( 'inx_agent_has_single_view', true ) ) {
+			return $template;
+		}
+
+		$queried_post_type = get_query_var( 'post_type' );
+
+		if ( is_single() && $queried_post_type === $this->post_type_name ) {
+			global $wp_query;
+
+			$wp_query->set_404();
+			status_header( 404 );
+			nocache_headers();
+
+			$template = get_404_template();
+		}
+
+		return $template;
+	} // maybe_disable_single_view
 
 	/**
 	 * Return a rendered agent single view (shortcode-based).

@@ -16,7 +16,7 @@ $inx_skin_photo = isset( $template_data['elements']['photo'] ) ?
 	$template_data['elements']['photo'] :
 	false;
 ?>
-<article class="inx-team-agent-list-item inx-team-agent-list-item--type--card uk-card uk-card-default">
+<article class="inx-team-agent-list-item inx-team-agent-list-item--type--card<?php echo ! $template_data['is_public'] ? ' inx-team-agent-list-item--no-footer' : ''; ?> uk-card uk-card-default">
 	<div class="uk-flex uk-flex-wrap">
 		<div class="inx-team-agent-list-item__photo">
 			<?php

@@ -106,9 +106,10 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 
 == Changelog ==
 
-= 1.3.0-beta3 =
-* Release date: 2022-11-22
+= 1.3.0-beta4 =
+* Release date: 2022-12-07
 * Added redirect option after contact form data submission.
+* Added options to enable/disable agency and agent archive and single views.
 * Added agent/agency data retrieval filter hooks.
 * Improved WPML/Polylang compatibility in combination with other plugins that modify permalinks.
 * Fixed some minor bugs.

@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cd429b7da4499dd63e961f351c25244a",
+    "content-hash": "2023d8d11344a1bc8df1e456ff234270",
     "packages": [
         {
             "name": "immonex/wp-free-plugin-core",
-            "version": "1.7.15",
+            "version": "1.7.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/immonex/wp-free-plugin-core.git",
-                "reference": "2a0d4f215eb9c35ab97c320b357d71628f3405eb"
+                "reference": "9ef3186addc3e5b564445c8e01f7a713be8f1470"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/immonex/wp-free-plugin-core/zipball/2a0d4f215eb9c35ab97c320b357d71628f3405eb",
-                "reference": "2a0d4f215eb9c35ab97c320b357d71628f3405eb",
+                "url": "https://api.github.com/repos/immonex/wp-free-plugin-core/zipball/9ef3186addc3e5b564445c8e01f7a713be8f1470",
+                "reference": "9ef3186addc3e5b564445c8e01f7a713be8f1470",
                 "shasum": ""
             },
             "require": {
@@ -48,9 +48,9 @@
             ],
             "support": {
                 "issues": "https://github.com/immonex/wp-free-plugin-core/issues",
-                "source": "https://github.com/immonex/wp-free-plugin-core/tree/1.7.15"
+                "source": "https://github.com/immonex/wp-free-plugin-core/tree/1.7.16"
             },
-            "time": "2022-12-06T11:43:55+00:00"
+            "time": "2022-12-07T08:25:05+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",

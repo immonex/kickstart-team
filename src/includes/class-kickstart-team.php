@@ -10,7 +10,7 @@ namespace immonex\Kickstart\Team;
 /**
  * Main plugin class
  */
-class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_7_15\Base {
+class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_7_16\Base {
 
 	const PLUGIN_NAME                = 'immonex Kickstart Team';
 	const ADDON_NAME                 = 'Team';
@@ -18,7 +18,7 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_7_15\Base {
 	const PLUGIN_PREFIX              = 'inx_team_';
 	const PUBLIC_PREFIX              = 'inx-team-';
 	const TEXTDOMAIN                 = 'immonex-kickstart-team';
-	const PLUGIN_VERSION             = '1.3.0-beta3';
+	const PLUGIN_VERSION             = '1.3.0-beta4';
 	const PLUGIN_HOME_URL            = 'https://de.wordpress.org/plugins/immonex-kickstart-team/';
 	const PLUGIN_DOC_URLS            = array(
 		'de' => 'https://docs.immonex.de/kickstart-team/',
@@ -44,8 +44,12 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_7_15\Base {
 	protected $plugin_options = array(
 		'plugin_version'                     => self::PLUGIN_VERSION,
 		'skin'                               => 'default',
+		'enable_agency_archive'              => true,
 		'agency_archive_title'               => 'INSERT_TRANSLATED_DEFAULT_VALUE',
+		'enable_agency_single_view'          => true,
+		'enable_agent_archive'               => true,
 		'agent_archive_title'                => 'INSERT_TRANSLATED_DEFAULT_VALUE',
+		'enable_agent_single_view'           => true,
 		'default_contact_section_adaptation' => 'replace',
 		'default_contact_section_title'      => 'auto',
 		'extended_form'                      => false,
@@ -635,6 +639,23 @@ and conditions can be used in the related input fields:<br><br>
 				),
 			),
 			array(
+				'name'    => 'enable_agency_archive',
+				'type'    => 'checkbox',
+				'label'   => __( 'Agency Archive', 'immonex-kickstart-team' ),
+				'section' => "{$prefix}layout",
+				'args'    => array(
+					'plugin_slug' => $this->plugin_slug,
+					'option_name' => $this->plugin_options_name,
+					'description' => wp_sprintf(
+						/* translators: %1$s = post type name, %2$s = exception info */
+						__( 'Enable the <strong>default archive</strong> view for <strong>%1$s</strong> posts. (%2$s)', 'immonex-kickstart-team' ),
+						__( 'agency', 'immonex-kickstart-team' ),
+						__( 'This has no effect on lists embedded via shortcode or widget.', 'immonex-kickstart-team' )
+					),
+					'value'       => $this->plugin_options['enable_agency_archive'],
+				),
+			),
+			array(
 				'name'    => 'agency_archive_title',
 				'type'    => 'text',
 				'label'   => __( 'Agency Archive Title', 'immonex-kickstart-team' ),
@@ -647,6 +668,40 @@ and conditions can be used in the related input fields:<br><br>
 				),
 			),
 			array(
+				'name'    => 'enable_agency_single_view',
+				'type'    => 'checkbox',
+				'label'   => __( 'Agency Single View', 'immonex-kickstart-team' ),
+				'section' => "{$prefix}layout",
+				'args'    => array(
+					'plugin_slug' => $this->plugin_slug,
+					'option_name' => $this->plugin_options_name,
+					'description' => wp_sprintf(
+						/* translators: %1$s = post type name, %2$s = exception info */
+						__( 'Enable the <strong>default single</strong> view for <strong>%1$s</strong> posts. (%2$s)', 'immonex-kickstart-team' ),
+						__( 'agency', 'immonex-kickstart-team' ),
+						__( 'This has no effect on views embedded via shortcode or widget.', 'immonex-kickstart-team' )
+					),
+					'value'       => $this->plugin_options['enable_agency_single_view'],
+				),
+			),
+			array(
+				'name'    => 'enable_agent_archive',
+				'type'    => 'checkbox',
+				'label'   => __( 'Agent Archive', 'immonex-kickstart-team' ),
+				'section' => "{$prefix}layout",
+				'args'    => array(
+					'plugin_slug' => $this->plugin_slug,
+					'option_name' => $this->plugin_options_name,
+					'description' => wp_sprintf(
+						/* translators: %1$s = post type name, %2$s = exception info */
+						__( 'Enable the <strong>default archive</strong> view for <strong>%1$s</strong> posts. (%2$s)', 'immonex-kickstart-team' ),
+						__( 'agent', 'immonex-kickstart-team' ),
+						__( 'This has no effect on lists embedded via shortcode or widget.', 'immonex-kickstart-team' )
+					),
+					'value'       => $this->plugin_options['enable_agent_archive'],
+				),
+			),
+			array(
 				'name'    => 'agent_archive_title',
 				'type'    => 'text',
 				'label'   => __( 'Agent Archive Title', 'immonex-kickstart-team' ),
@@ -656,6 +711,23 @@ and conditions can be used in the related input fields:<br><br>
 					'option_name' => $this->plugin_options_name,
 					'description' => __( 'default title for the agent post type archive pages', 'immonex-kickstart-team' ),
 					'value'       => $this->plugin_options['agent_archive_title'],
+				),
+			),
+			array(
+				'name'    => 'enable_agent_single_view',
+				'type'    => 'checkbox',
+				'label'   => __( 'Agent Single View', 'immonex-kickstart-team' ),
+				'section' => "{$prefix}layout",
+				'args'    => array(
+					'plugin_slug' => $this->plugin_slug,
+					'option_name' => $this->plugin_options_name,
+					'description' => wp_sprintf(
+						/* translators: %1$s = post type name, %2$s = exception info */
+						__( 'Enable the <strong>default single view</strong> for <strong>%1$s</strong> posts. (%2$s)', 'immonex-kickstart-team' ),
+						__( 'agency', 'immonex-kickstart-team' ),
+						__( 'This has no effect on views embedded via shortcode or widget.', 'immonex-kickstart-team' )
+					),
+					'value'       => $this->plugin_options['enable_agent_single_view'],
 				),
 			),
 			array(

@@ -89,7 +89,8 @@ class Agency extends Base_CPT_Post {
 
 		$post_types = get_post_types( array( 'name' => $this->post_type_name ), 'objects' );
 		if ( isset( $post_types[ $this->post_type_name ] ) ) {
-			$this->is_public = $post_types[ $this->post_type_name ]->public;
+			// @codingStandardsIgnoreLine
+			$this->is_public = apply_filters( "{$this->post_type_name}_has_single_view", $post_types[ $this->post_type_name ]->public );
 		}
 
 		$url = false;
