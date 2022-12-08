@@ -111,7 +111,7 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 * Added redirect option after contact form data submission.
 * Added options to enable/disable agency and agent archive and single views.
 * Added agent/agency data retrieval filter hooks.
-* Improved contact form anti-spam functionality.
+* Improved contact form anti-spam functionality (honeypot & time checks).
 * Improved WPML/Polylang compatibility in combination with other plugins that modify permalinks.
 * Fixed some minor bugs.
 
