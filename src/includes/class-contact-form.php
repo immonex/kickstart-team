@@ -12,8 +12,11 @@ namespace immonex\Kickstart\Team;
  */
 class Contact_Form {
 
-	const OBFUSCATION_KEY     = 'yu9$K';
-	const HONEYPOT_FIELD_NAME = 'fname';
+	const OBFUSCATION_KEY      = 'yu9$K';
+	const HONEYPOT_FIELD_NAME  = 'fname';
+	const HONEYPOT_FIELD_NAME2 = 'alternative-email';
+	const TS_CHECK_FIELD_NAME  = 'form_msg_id';
+	const TS_CHECK_THRESHOLD   = 8;
 
 	/**
 	 * Various component configuration data
@@ -98,6 +101,10 @@ class Contact_Form {
 				'recipients_enc'            => $recipients_enc['recipients'],
 				'cc_enc'                    => $recipients_enc['cc'],
 				'honeypot_field_name'       => self::HONEYPOT_FIELD_NAME,
+				'honeypot_field_name2'      => self::HONEYPOT_FIELD_NAME2,
+				'ts_check_field_name'       => self::TS_CHECK_FIELD_NAME,
+				// @codingStandardsIgnoreLine
+				'obfuscated_timestamp'      => base64_encode( $this->utils['string']->xor_string( (string) time(), self::OBFUSCATION_KEY ) ),
 			)
 		);
 
@@ -148,8 +155,14 @@ class Contact_Form {
 		if (
 			$this->is_demo_context( $origin_post_id, $property_post_id )
 			|| ! empty( $form_data[ self::HONEYPOT_FIELD_NAME ] )
+			|| ! empty( $form_data[ self::HONEYPOT_FIELD_NAME2 ] )
 		) {
-			// Don't submit data when in demo context or if honeypot field is filled.
+			// Don't submit data when in demo context or if honeypot fields are filled.
+			return $result;
+		}
+
+		if ( ! $this->timestamp_check( $form_data ) ) {
+			// Don't submit data if the timestamp check threshold has not been exceeded yet.
 			return $result;
 		}
 
@@ -387,6 +400,52 @@ class Contact_Form {
 	} // send
 
 	/**
+	 * Perform a form submission timestamp check.
+	 *
+	 * @since 1.3.0
+	 *
+	 * @param mixed[] $form_data User-submitted form data.
+	 *
+	 * @return bool Check status (true = valid data/false = spam submission).
+	 */
+	public function timestamp_check( $form_data ) {
+		if ( ! isset( $form_data[ self::TS_CHECK_FIELD_NAME ] ) ) {
+			// No form rendering time field available (possibly older/custom template): skip check.
+			return true;
+		}
+
+		$timestamp_check_threshold = apply_filters( 'inx_team_contact_form_timestamp_check_threshold', self::TS_CHECK_THRESHOLD );
+		if ( ! is_int( $timestamp_check_threshold ) || $timestamp_check_threshold < 0 ) {
+			$timestamp_check_threshold = self::TS_CHECK_THRESHOLD;
+		}
+
+		if ( 0 === $timestamp_check_threshold ) {
+			// Threshold must have been zeroed by a filter function: skip check.
+			return true;
+		}
+
+		if ( ! $form_data[ self::TS_CHECK_FIELD_NAME ] ) {
+			return false;
+		}
+
+		$form_creation_timestamp = (int) $this->utils['string']->xor_string(
+			// @codingStandardsIgnoreLine
+			base64_decode( $form_data[ self::TS_CHECK_FIELD_NAME ] ),
+			self::OBFUSCATION_KEY
+		);
+
+		if (
+			! $form_creation_timestamp
+			|| time() - $form_creation_timestamp <= $timestamp_check_threshold
+		) {
+			// Check timeframe has not been exceeded yet: high probability of spam.
+			return false;
+		}
+
+		return true;
+	} // timestamp_check
+
+	/**
 	 * Get the contact form field elements.
 	 *
 	 * @since 1.0.0
@@ -576,8 +635,8 @@ class Contact_Form {
 					&& empty( $form_data[ $field['required_or'] ] )
 				) {
 					$result['field_errors'][ $field_name ] = wp_sprintf(
-						/* translators: %s = caption of a required field */
-						__( 'Please provide this information <strong>or: %s</strong>', 'immonex-kickstart-team' ),
+						/* translators: %s = caption of an alternative required field */
+						__( 'Please fill out this or the alternative field <strong>%s</strong>.', 'immonex-kickstart-team' ),
 						$fields[ $field['required_or'] ]['caption']
 					);
 				}
@@ -609,20 +668,29 @@ class Contact_Form {
 		$form_data = array();
 
 		// @codingStandardsIgnoreLine
-		$scope       = $this->get_scope( $_POST );
-		$field_names = $this->get_fields( false, $scope );
+		$scope  = $this->get_scope( $_POST );
+		$fields = $this->get_fields( false, $scope );
 
-		if ( ! in_array( self::HONEYPOT_FIELD_NAME, $field_names, true ) ) {
-			// Add a honeypot field name.
-			$field_names[] = self::HONEYPOT_FIELD_NAME;
+		foreach ( array( self::HONEYPOT_FIELD_NAME, self::HONEYPOT_FIELD_NAME2, self::TS_CHECK_FIELD_NAME ) as $hp_field_name ) {
+			// Add a honeypot/spam check field if missing.
+			if ( ! isset( $fields[ $hp_field_name ] ) ) {
+				$fields[ $hp_field_name ] = array(
+					'is_honeypot' => true,
+				);
+			}
 		}
 
-		if ( count( $field_names ) > 0 ) {
-			foreach ( $field_names as $field_name => $field ) {
+		if ( count( $fields ) > 0 ) {
+			foreach ( $fields as $field_name => $field ) {
 				// @codingStandardsIgnoreLine
 				$value = isset( $_POST[ $field_name ] ) ?
 					// @codingStandardsIgnoreLine
 					wp_unslash( $_POST[ $field_name ] ) : '';
+
+				if ( ! empty( $field['is_honeypot'] ) ) {
+					$form_data[ $field_name ] = $value;
+					continue;
+				}
 
 				$has_options       = isset( $field['options'] );
 				$has_assoc_options = $has_options && array_values( $field['options'] ) !== $field['options'];
@@ -635,20 +703,18 @@ class Contact_Form {
 					$value = $field['options'][ $value ];
 				}
 
-				if ( self::HONEYPOT_FIELD_NAME !== $field_name ) {
-					if (
-						( isset( $field['type'] ) && 'textarea' === $field['type'] )
-						|| false !== strpos( $value, PHP_EOL )
-					) {
-						$value = sanitize_textarea_field( $value );
-					} elseif (
-						( isset( $field['type'] ) && 'email' === $field['type'] )
-						|| 'email' === $field_name
-					) {
-						$value = sanitize_email( $value );
-					} else {
-						$value = sanitize_text_field( $value );
-					}
+				if (
+					( isset( $field['type'] ) && 'textarea' === $field['type'] )
+					|| false !== strpos( $value, PHP_EOL )
+				) {
+					$value = sanitize_textarea_field( $value );
+				} elseif (
+					( isset( $field['type'] ) && 'email' === $field['type'] )
+					|| 'email' === $field_name
+				) {
+					$value = sanitize_email( $value );
+				} else {
+					$value = sanitize_text_field( $value );
 				}
 
 				$form_data[ $field_name ] = $value;

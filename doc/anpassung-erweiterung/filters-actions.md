@@ -29,6 +29,7 @@
 - [inx_team_contact_form_mail_headers](filter-inx-team-contact-form-mail-headers) (Header der Kontaktformular-Mails)
 - [inx_team_contact_form_user_data](filter-inx-team-contact-form-user-data) (via Frontend übermittelte Benutzer-Formulardaten)
 - [inx_team_contact_form_rcpt_conf_attachments](filter-inx-team-contact-form-rcpt-conf-attachments) (Dateianhänge von Eingangsbestätigungsmails)
+- [inx_team_contact_form_timestamp_check_threshold](filter-inx-team-contact-form-timestamp-check-threshold) (Schwellwert in Sekunden für die Formular-Spam-Prüfung)
 - [inx_team_fallback_recipient_admin_email](filter-inx-team-fallback-recipient-admin-email) (Fallback-Admin-Mailadresse(n))
 - [inx_team_openimmo_feedback_params](filter-inx-team-openimmo-feedback-params) (Inhalte des OpenImmo-Feedback-Anhangs)
 - [inx_team_openimmo_feedback_xml_source](filter-inx-team-openimmo-feedback-xml-source) (XML-Quelltext des OpenImmo-Feedback-Anhangs)

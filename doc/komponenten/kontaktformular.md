@@ -40,6 +40,12 @@ Bei Anfragen, die sich auf eine bestimmte Immobilie beziehen (Formular innerhalb
 
 Beim [OpenImmo-Import](../systemvoraussetzungen#datenimport-openimmo-xml) wird hierfür in der Regel eine spezielle *Feedback-Mailadresse* übertragen, die automatisch als Empfängeradresse übernommen wird.
 
+### Spamschutz
+
+Um Spammern das Leben so schwer wie möglich zu machen, sind alle Kontaktformulare sowohl mit *Honeypot-Feldern* als auch mit einer Zeitprüfung geschützt: Beträgt die Zeitspanne zwischen dem Aufruf der Seite, in dem sich ein Formular befindet, und dem Absenden weniger als bzw. genau **8 Sekunden**<sup>2</sup>, erfolgt keine weitere Verbeitung und kein Mailversand.
+
 ---
 
 <sup>1</sup> Beim Versand von HTML-Mails kommt ein **Rahmentemplate** zum Einsatz, das neben einem Abschnitt für die eigentlichen, per Formular übermittelten Inhalte auch Bereiche für die Einbettung eines Logos sowie einer Signatur enthält. Eine alternative, benutzerdefinierte Rahmenvorlage kann per Filterfunktion (Hook: [`immonex-kickstart-team_html_mail_twig_template_file`](../anpassung-erweiterung/immonex-kickstart-team-html-mail-twig-template-file)) definiert werden.
+
+<sup>2</sup> Der Schwellenwert der Zeitprüfung kann via Filter-Hook [`inx_team_contact_form_timestamp_check_threshold`](../anpassung-erweiterung/filter-inx-team-contact-form-timestamp-check-threshold) angepasst werden.

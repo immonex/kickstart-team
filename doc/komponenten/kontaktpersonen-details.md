@@ -10,6 +10,8 @@ Die Standard-Einzelansicht (*Single Template*, d. h. vollständige Seite inkl. H
 
 `https://[WEBSITE.TLD]/immobilienmakler/[NAMENS-SLUG]/`<sup>1</sup> bzw. `https://[WEBSITE.TLD]/real-estate-agents/[NAMENS-SLUG]/`<sup>1</sup>
 
+Voraussetzung für die Verfügbarkeit dieser Seiten ist, dass sie in den [Plugin-Optionen](../einrichtung?id=kontaktpersonen-archiveinzelansicht) nicht deaktiviert wurden und im WP-Backend unter ***Einstellungen → Permalinks*** die Option *Beitragsname* o. vgl. für die Permalink-Struktur festgelegt wurde
+
 Hier ein Beispiel – wie immer mit *TeamQuiwi-Skin* und dem WP-Standard-Theme *Twenty Twenty*:
 
 ![Screenshot: Immobilienmakler-Details (Standard-Template)](../assets/scst-fe-agent-details-1.jpg)

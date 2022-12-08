@@ -2,8 +2,8 @@
 Contributors: immonex
 Tags: immobilien, openimmo, immobilienmakler, immomakler, realestate, agent, agency, team, immonex
 Requires at least: 4.7
-Tested up to: 6.0
-Stable Tag: 1.2.9
+Tested up to: 6.1
+Stable Tag: 1.3.0
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -41,7 +41,7 @@ Plugins like immonex OpenImmo2WP [2] are used to import OpenImmo-XML data into t
 * Clean, responsive and fully customizable template set ("Skin")
 * Possibility to add individual custom skins update-safe in the (child) theme folder
 * Shortcodes for embedding list and single views (agent or agency details)
-* Unified and simple (mail) contact form, usable in agent/agency single views and widgets
+* Unified and simple (mail) contact form, usable in agent/agency single views and widgets and protected by multiple anti-spam checks
 * OpenImmo-Feedback XML attachments for property inquiry mails via contact form
 * Optional receipt confirmation mails on successful form submissions
 * Separate, editable form consent texts on withdrawal and privacy policies (EU GDPR compliance)
@@ -106,11 +106,12 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 
 == Changelog ==
 
-= 1.3.0-beta4 =
-* Release date: 2022-12-07
+= 1.3.0 =
+* Release date: 2022-12-08
 * Added redirect option after contact form data submission.
 * Added options to enable/disable agency and agent archive and single views.
 * Added agent/agency data retrieval filter hooks.
+* Improved contact form anti-spam functionality.
 * Improved WPML/Polylang compatibility in combination with other plugins that modify permalinks.
 * Fixed some minor bugs.
 

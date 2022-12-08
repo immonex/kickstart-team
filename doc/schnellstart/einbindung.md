@@ -7,6 +7,8 @@ Das Team-Add-on stellt folgende Elemente bereit, die im Website-Frontend auf unt
 - [Kontaktpersonen-Listen](#Kontaktpersonen-Listen)
 - [Kontaktpersonen-Details](#Kontaktpersonen-Details) (Einzelansicht + Widget)
 
+> Voraussetzungen für die Verfügbarkeit aller nachfolgend genannten **Standard-Archiv- und Einzelansichten** sind, dass diese **nicht** in den [Plugin-Optionen](einrichtung?id=add-on-optionen) deaktiviert wurden und im WordPress-Backend unter ***Einstellungen → Permalinks*** die Option *Beitragsname* o. vgl. für die Permalink-Struktur festgelegt wurde. (Die Shortcode- und Widget-Varianten sind hiervon nicht betroffen.)
+
 ## Agentur-Listen
 
 ### Archivseite (Standard-Listenansicht)

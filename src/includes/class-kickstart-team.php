@@ -18,7 +18,7 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_7_16\Base {
 	const PLUGIN_PREFIX              = 'inx_team_';
 	const PUBLIC_PREFIX              = 'inx-team-';
 	const TEXTDOMAIN                 = 'immonex-kickstart-team';
-	const PLUGIN_VERSION             = '1.3.0-beta4';
+	const PLUGIN_VERSION             = '1.3.0';
 	const PLUGIN_HOME_URL            = 'https://de.wordpress.org/plugins/immonex-kickstart-team/';
 	const PLUGIN_DOC_URLS            = array(
 		'de' => 'https://docs.immonex.de/kickstart-team/',
@@ -648,7 +648,7 @@ and conditions can be used in the related input fields:<br><br>
 					'option_name' => $this->plugin_options_name,
 					'description' => wp_sprintf(
 						/* translators: %1$s = post type name, %2$s = exception info */
-						__( 'Enable the <strong>default archive</strong> view for <strong>%1$s</strong> posts. (%2$s)', 'immonex-kickstart-team' ),
+						__( 'Enable the default archive view for <strong>%1$s</strong> posts. (%2$s)', 'immonex-kickstart-team' ),
 						__( 'agency', 'immonex-kickstart-team' ),
 						__( 'This has no effect on lists embedded via shortcode or widget.', 'immonex-kickstart-team' )
 					),
@@ -677,7 +677,7 @@ and conditions can be used in the related input fields:<br><br>
 					'option_name' => $this->plugin_options_name,
 					'description' => wp_sprintf(
 						/* translators: %1$s = post type name, %2$s = exception info */
-						__( 'Enable the <strong>default single</strong> view for <strong>%1$s</strong> posts. (%2$s)', 'immonex-kickstart-team' ),
+						__( 'Enable the default single view for <strong>%1$s</strong> posts. (%2$s)', 'immonex-kickstart-team' ),
 						__( 'agency', 'immonex-kickstart-team' ),
 						__( 'This has no effect on views embedded via shortcode or widget.', 'immonex-kickstart-team' )
 					),
@@ -694,7 +694,7 @@ and conditions can be used in the related input fields:<br><br>
 					'option_name' => $this->plugin_options_name,
 					'description' => wp_sprintf(
 						/* translators: %1$s = post type name, %2$s = exception info */
-						__( 'Enable the <strong>default archive</strong> view for <strong>%1$s</strong> posts. (%2$s)', 'immonex-kickstart-team' ),
+						__( 'Enable the default archive view for <strong>%1$s</strong> posts. (%2$s)', 'immonex-kickstart-team' ),
 						__( 'agent', 'immonex-kickstart-team' ),
 						__( 'This has no effect on lists embedded via shortcode or widget.', 'immonex-kickstart-team' )
 					),
@@ -723,7 +723,7 @@ and conditions can be used in the related input fields:<br><br>
 					'option_name' => $this->plugin_options_name,
 					'description' => wp_sprintf(
 						/* translators: %1$s = post type name, %2$s = exception info */
-						__( 'Enable the <strong>default single view</strong> for <strong>%1$s</strong> posts. (%2$s)', 'immonex-kickstart-team' ),
+						__( 'Enable the default single view for <strong>%1$s</strong> posts. (%2$s)', 'immonex-kickstart-team' ),
 						__( 'agency', 'immonex-kickstart-team' ),
 						__( 'This has no effect on views embedded via shortcode or widget.', 'immonex-kickstart-team' )
 					),

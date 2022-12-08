@@ -4,7 +4,7 @@ Die Listendarstellung von Beiträgen des Typs **Agentur** (CPT *inx_agency*) ist
 
 ## Archiv
 
-Die Standard-Archivseiten der Agenturbeiträge sind unter `https://[DOMAIN.TLD]/immobilienmakler-agenturen/`<sup>1</sup> bzw. `.../real-estate-agencies/`<sup>1</sup> abrufbar.
+Die Standard-Archivseiten der Agenturbeiträge sind unter `https://[DOMAIN.TLD]/immobilienmakler-agenturen/`<sup>1</sup> bzw. `.../real-estate-agencies/`<sup>1</sup> abrufbar, sofern diese nicht in den [Plugin-Optionen](../schnellstart/einrichtung?id=agentur-archiv) deaktiviert wurden und im WP-Backend unter ***Einstellungen → Permalinks*** die Option *Beitragsname* o. vgl. für die Permalink-Struktur festgelegt wurde.
 
 So sieht die Agentur-Archivseite im Website-Frontend mit dem im Plugin enthaltenen Standard-Skin *TeamQuiwi* und dem WordPress-Theme *Twenty Twenty* **ohne individuelle Anpassungen** aus:
 

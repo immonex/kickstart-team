@@ -2,7 +2,7 @@
 
 Bei aktiviertem [Kickstart-Plugin](https://de.wordpress.org/plugins/immonex-kickstart/) sind die zugehörigen Inhalte und Optionen in der Hauptnavigation des WordPress-Admin-Backends unter ***immonex*** zusammengefasst.
 
-Die Einstellungen des Team-Add-ons sind im gleichnamigen Tab enthalten: ***immonex → Einstellungen → Team [Add-on]***
+Die Einstellungen des Team-Add-ons sind im gleichnamigen Tab enthalten: ***immonex → Einstellungen → Team <sup>ADD-ON</sup>***
 
 ![Plugin-Optionen](../assets/scst-options-1.gif)
 
@@ -21,6 +21,22 @@ Kurzum: Mit einem alternativen Skin können Optik und Umfang der angezeigten Dat
 Das aktuell mitgelieferte [Skin "TeamQuiwi"](../anpassung-erweiterung/standard-skin) orientiert sich optisch am Standard-Skin "Quiwi" des Kickstart-Basis-Plugins und setzt wie dieses ebenfalls auf Komponenten des Frontend-Frameworks [UIkit](https://getuikit.com/).
 
 Detaillierte Infos zur Anpassung vorhandener und Entwicklung eigener Skins sind unter [Anpassung & Erweiterung](../anpassung-erweiterung/skins) zu finden.
+
+#### Agentur-Archiv
+
+In den [Standard-Archivseiten für Immobilienmakler-Agenturen](../komponenten/agentur-listen?id=archiv) werden alle Beiträge der entsprechenden [Beitragsart](../beitragsarten) (CPT *inx_agency*) aufgelistet, sofern diese Option nicht deaktiviert wird.
+
+Agenturlisten, die per [Shortcode](../komponenten/agentur-listen?id=shortcode) eingebunden werden, sind hiervon nicht betroffen.
+
+#### Agentur-Einzelansicht
+
+Analog zur Archiv- kann auch die [Standard-Einzelansicht](../komponenten/agentur-details?id=vollansicht) (nachfolgend auch *Single Template* oder *Detailansicht*) der Agenturbeiträge deaktiviert werden.
+
+Auch hier gilt: Diese Option hat keine Auswirkungen auf die shortcode- oder widgetbasierte Einbindung von Agenturdaten.
+
+#### Kontaktpersonen-Archiv/Einzelansicht
+
+Die [Archivseiten](../komponenten/kontaktpersonen-listen?id=archivseite) und [Detailansichten](../komponenten/kontaktpersonen-details) der Immobilienmakler/innen (einzelne Kontaktpersonen, CPT *inx_agent*) können ebenso wie der Agenturen selektiv aktiviert oder deaktiviert werden.
 
 #### Anpassung des Standard-Kontaktabschnitts
 

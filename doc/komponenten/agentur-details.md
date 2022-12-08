@@ -8,7 +8,9 @@ Mit dem **Widget-Template** wird hingegen eine kompaktere Form der Agenturdaten 
 
 ## Vollansicht
 
-Die Vollansicht einer Agentur kann "out of the box" über die Standard-Einzelansicht (im WP-Jargon *Single Template*) aufgerufen werden. Hierbei handelt es sich um eine vollständige Seite inkl. Header und Footer der Website. Das URL-Schema dieser Seiten sieht im Regelfall so aus:
+Die Vollansicht einer Agentur kann "out of the box" über die Standard-Einzelansicht (im WP-Jargon *Single Template*) aufgerufen werden, sofern diese nicht in den [Plugin-Optionen](../schnellstart/einrichtung?id=agentur-einzelansicht) deaktiviert wurde und im WP-Backend unter ***Einstellungen → Permalinks*** die Option *Beitragsname* o. vgl. für die Permalink-Struktur festgelegt wurde.
+
+Hierbei handelt es sich um eine vollständige Seite inkl. Header und Footer der Website. Das URL-Schema dieser Seiten sieht im Regelfall so aus:
 
 `https://[WEBSITE.TLD]/immobilienmakler-agenturen/[AGENTUR-SLUG]/`<sup>1</sup> bzw. `https://[WEBSITE.TLD]/real-estate-agencies/[AGENTUR-SLUG]/`<sup>1</sup>
 

@@ -4,7 +4,7 @@ Auch die Listendarstellung von Beiträgen des Typs **Kontaktperson** (CPT *inx_a
 
 ## Archivseite
 
-Die Standard-Archivseiten der Kontaktpersonen-Beiträge sind unter `https://[DOMAIN.TLD]/immobilienmakler/`<sup>1</sup> bzw. `.../real-estate-agent/`<sup>1</sup> abrufbar.
+Die Standard-Archivseiten der Kontaktpersonen-Beiträge sind unter `https://[DOMAIN.TLD]/immobilienmakler/`<sup>1</sup> bzw. `.../real-estate-agent/`<sup>1</sup> abrufbar, sofern diese nicht in den [Plugin-Optionen](../schnellstart/einrichtung?id=kontaktpersonen-archiveinzelansicht) deaktiviert wurden und im WP-Backend unter ***Einstellungen → Permalinks*** die Option *Beitragsname* o. vgl. für die Permalink-Struktur festgelegt wurde.
 
 Die Optik im Website-Frontend entspricht dabei weitestgehend der der [Agentur-Listen](index):
 

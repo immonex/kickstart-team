@@ -34,11 +34,12 @@ foreach ( $template_data['fields'] as $inx_skin_field_name => $inx_skin_field ) 
 		<input type="hidden" name="property_post_id" value="<?php echo $template_data['property_post_id']; ?>">
 		<input type="hidden" name="recipients_enc" value="<?php echo $template_data['recipients_enc']; ?>">
 		<input type="hidden" name="cc_enc" value="<?php echo $template_data['cc_enc']; ?>">
+		<input type="hidden" name="<?php echo $template_data['ts_check_field_name']; ?>" value="<?php echo $template_data['obfuscated_timestamp']; ?>">
 		<?php wp_nonce_field( $inx_skin_action, "{$inx_skin_action}_nonce" ); ?>
 
 		<?php // Honeypot. ?>
-		<div class="inx-team-contact-form__input inx-team-contact-form__input--name--<?php echo $template_data['honeypot_field_name']; ?>">
-			<input type="text" name="<?php echo $template_data['honeypot_field_name']; ?>" placeholder="First Name" class="uk-input">
+		<div class="inx-team-contact-form__input inx-team-contact-form__input--name--<?php echo $template_data['honeypot_field_name']; ?>" aria-hidden="true">
+			<input type="text" name="<?php echo $template_data['honeypot_field_name']; ?>" placeholder="First Name" tabindex="-1" autocomplete="off" class="uk-input">
 			<div class="inx-team-contact-form__input-error"></div>
 		</div>
 		<?php // /Honeypot. ?>
@@ -152,6 +153,13 @@ foreach ( $template_data['fields'] as $inx_skin_field_name => $inx_skin_field ) 
 		endforeach;
 		?>
 
+		<?php // Honeypot. ?>
+		<div class="inx-team-contact-form__input inx-team-contact-form__input--name--<?php echo $template_data['honeypot_field_name2']; ?>" aria-hidden="true">
+			<input type="email" name="<?php echo $template_data['honeypot_field_name2']; ?>" placeholder="Alternative E-Mail Address" tabindex="-1" autocomplete="off" class="uk-input">
+			<div class="inx-team-contact-form__input-error"></div>
+		</div>
+		<?php // /Honeypot. ?>
+
 		<?php if ( $template_data['cancellation_consent_text'] ) : ?>
 		<div class="inx-team-contact-form__input inx-team-contact-form__input--type--full inx-team-contact-form__input--name--consent">
 			<div class="inx-team-contact-form__consent-checkbox">
@@ -180,16 +188,16 @@ foreach ( $template_data['fields'] as $inx_skin_field_name => $inx_skin_field ) 
 		<div class="inx-team-contact-form__input inx-team-contact-form__input--type--full inx-team-contact-form__result-wrap">
 			<div class="inx-team-contact-form__result"></div>
 
-		<?php if ( $template_data['is_demo'] ) : ?>
+			<?php if ( $template_data['is_demo'] ) : ?>
 			<div class="inx-team-contact-form__demo-notice">
 				<span uk-icon="warning"></span>
 				<span><?php _e( 'Heads up! This is only sample data, the form data will <strong>not</strong> be submitted.', 'immonex-kickstart-team' ); ?></span>
 			</div>
-		<?php endif; ?>
+			<?php endif; ?>
 		</div>
 
 		<div class="inx-team-contact-form__input inx-team-contact-form__input--type--full inx-team-contact-form__input--name--submit">
-			<div class="uk">
+			<div>
 				<?php if ( $inx_skin_is_localhost || is_ssl() ) : ?>
 				<span uk-icon="lock" title="<?php _e( 'Secure submission', 'immonex-kickstart-team' ); ?>"></span> <?php _e( 'Secure!', 'immonex-kickstart-team' ); ?>
 				<?php endif; ?>

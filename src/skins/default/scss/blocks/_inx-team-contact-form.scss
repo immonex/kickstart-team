@@ -69,9 +69,17 @@
 	}
 }
 
-/* Honeypot */
-.inx-team-contact-form__input--name--fname {
-	display: none;
+/* H/P */
+.inx-team-contact-form__input--name--fname,
+.inx-team-contact-form__input--name--alternative-email {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	border: 0;
+	clip: rect(0 0 0 0);
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
 }
 
 .inx-team-contact-form__input-error {
