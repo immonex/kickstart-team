@@ -33,6 +33,13 @@ class Contact_Form {
 	protected $utils;
 
 	/**
+	 * Obfuscated (current) timestamp
+	 *
+	 * @var string
+	 */
+	private $obfuscated_timestamp;
+
+	/**
 	 * Constructor
 	 *
 	 * @since 1.0.0
@@ -41,8 +48,10 @@ class Contact_Form {
 	 * @param object[] $utils Helper/Utility objects.
 	 */
 	public function __construct( $config, $utils ) {
-		$this->config = $config;
-		$this->utils  = $utils;
+		$this->config               = $config;
+		$this->utils                = $utils;
+		// @codingStandardsIgnoreLine
+		$this->obfuscated_timestamp = base64_encode( $this->utils['string']->xor_string( (string) time(), self::OBFUSCATION_KEY ) );
 	} // __construct
 
 	/**
@@ -103,8 +112,7 @@ class Contact_Form {
 				'honeypot_field_name'       => self::HONEYPOT_FIELD_NAME,
 				'honeypot_field_name2'      => self::HONEYPOT_FIELD_NAME2,
 				'ts_check_field_name'       => self::TS_CHECK_FIELD_NAME,
-				// @codingStandardsIgnoreLine
-				'obfuscated_timestamp'      => base64_encode( $this->utils['string']->xor_string( (string) time(), self::OBFUSCATION_KEY ) ),
+				'obfuscated_timestamp'      => $this->obfuscated_timestamp,
 			)
 		);
 
@@ -409,7 +417,7 @@ class Contact_Form {
 	 * @return bool Check status (true = valid data/false = spam submission).
 	 */
 	public function timestamp_check( $form_data ) {
-		if ( ! isset( $form_data[ self::TS_CHECK_FIELD_NAME ] ) ) {
+		if ( ! isset( $form_data[ self::TS_CHECK_FIELD_NAME ] ) || false === $form_data[ self::TS_CHECK_FIELD_NAME ] ) {
 			// No form rendering time field available (possibly older/custom template): skip check.
 			return true;
 		}
@@ -422,10 +430,6 @@ class Contact_Form {
 		if ( 0 === $timestamp_check_threshold ) {
 			// Threshold must have been zeroed by a filter function: skip check.
 			return true;
-		}
-
-		if ( ! $form_data[ self::TS_CHECK_FIELD_NAME ] ) {
-			return false;
 		}
 
 		$form_creation_timestamp = (int) $this->utils['string']->xor_string(
@@ -688,7 +692,8 @@ class Contact_Form {
 					wp_unslash( $_POST[ $field_name ] ) : '';
 
 				if ( ! empty( $field['is_honeypot'] ) ) {
-					$form_data[ $field_name ] = $value;
+					$form_data[ $field_name ] = ! $value && self::TS_CHECK_FIELD_NAME === $field_name ?
+						false : $value;
 					continue;
 				}
 

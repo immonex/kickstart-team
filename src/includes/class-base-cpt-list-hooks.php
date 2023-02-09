@@ -27,6 +27,13 @@ abstract class Base_CPT_List_Hooks {
 	protected $post_type_name;
 
 	/**
+	 * Related shortcode name (optional)
+	 *
+	 * @var string
+	 */
+	protected $shortcode_name = '';
+
+	/**
 	 * Various component configuration data
 	 *
 	 * @var mixed[]
@@ -95,7 +102,8 @@ abstract class Base_CPT_List_Hooks {
 		 */
 
 		if ( ! empty( $this->config['has_shortcode'] ) ) {
-			add_shortcode( "{$public_prefix}{$this->base_name}-list", array( $this, 'shortcode_list' ) );
+			$this->shortcode_name = "{$public_prefix}{$this->base_name}-list";
+			add_shortcode( $this->shortcode_name, array( $this, 'shortcode_list' ) );
 		}
 	} // __construct
 
@@ -107,14 +115,34 @@ abstract class Base_CPT_List_Hooks {
 	 * @param \WP_Query $query WP query object.
 	 */
 	public function adjust_frontend_query( $query ) {
+		global $post;
+
 		if (
-			! empty( $query->query_vars['suppress_pre_get_posts_filter'] )
+			(
+				! empty( $query->query_vars['suppress_pre_get_posts_filter'] ) &&
+				empty( $query->query_vars['execute_pre_get_posts_filter'] )
+			)
 			|| ! empty( $query->query_vars['page'] )
 			|| ! empty( $query->query_vars['pagename'] )
 			|| is_admin()
 			|| (
-				$query->get( 'post_type' ) &&
-				$query->get( 'post_type' ) !== $this->post_type_name
+				$query->get( 'post_type' )
+				&& $query->get( 'post_type' ) !== $this->post_type_name
+			)
+		) {
+			return;
+		}
+
+		$contains_shortcode = $this->shortcode_name
+			&& is_a( $post, 'WP_Post' )
+			&& has_shortcode( $post->post_content, $this->shortcode_name );
+
+		if (
+			! isset( $query->query_vars['execute_pre_get_posts_filter'] )
+			&& ! $contains_shortcode
+			&& (
+				is_page()
+				|| $query->get( 'post_type' ) !== $this->post_type_name
 			)
 		) {
 			return;

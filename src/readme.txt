@@ -3,7 +3,7 @@ Contributors: immonex
 Tags: immobilien, openimmo, immobilienmakler, immomakler, realestate, agent, agency, team, immonex
 Requires at least: 4.7
 Tested up to: 6.1
-Stable Tag: 1.3.0
+Stable Tag: 1.3.2
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -106,6 +106,12 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 
 == Changelog ==
 
+= 1.3.2 =
+* Release date: 2023-02-09
+* Fixed a post order bug.
+* Fixed an issue regarding custom contact form templates.
+* Updated dependencies.
+
 = 1.3.0 =
 * Release date: 2022-12-08
 * Added redirect option after contact form data submission.
@@ -121,11 +127,5 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 * Added further variables for use in form mail templates (Twig 3).
 * Extended plugin option description and help texts.
 * Updated plugin framework and dependencies.
-
-= 1.2.7 =
-* Release date: 2022-06-28
-* Reworked salutation/gender options (contact forms, widget titles etc.).
-* Fixed display bug in HTML form mails.
-* Updated dependencies.
 
 See changelog.txt for complete version history.
