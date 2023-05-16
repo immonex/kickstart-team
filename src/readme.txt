@@ -106,6 +106,11 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 
 == Changelog ==
 
+= 1.3.3-beta =
+* Release date: 2023-05-16
+* Disabled user edit form extensions for non-admin users.
+* Updated dependencies.
+
 = 1.3.2 =
 * Release date: 2023-02-09
 * Fixed a post order bug.
@@ -120,12 +125,5 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 * Improved contact form anti-spam functionality (honeypot & time checks).
 * Improved WPML/Polylang compatibility in combination with other plugins that modify permalinks.
 * Fixed some minor bugs.
-
-= 1.2.9 =
-* Release date: 2022-09-22
-* Updated contact form data processing.
-* Added further variables for use in form mail templates (Twig 3).
-* Extended plugin option description and help texts.
-* Updated plugin framework and dependencies.
 
 See changelog.txt for complete version history.

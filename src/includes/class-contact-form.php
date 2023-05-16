@@ -48,8 +48,8 @@ class Contact_Form {
 	 * @param object[] $utils Helper/Utility objects.
 	 */
 	public function __construct( $config, $utils ) {
-		$this->config               = $config;
-		$this->utils                = $utils;
+		$this->config = $config;
+		$this->utils  = $utils;
 		// @codingStandardsIgnoreLine
 		$this->obfuscated_timestamp = base64_encode( $this->utils['string']->xor_string( (string) time(), self::OBFUSCATION_KEY ) );
 	} // __construct

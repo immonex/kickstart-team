@@ -178,6 +178,19 @@ class WP_Bootstrap {
 	 * @param \WP_User $user The object of the user being edited.
 	 */
 	public function extend_user_form( $user ) {
+		$plugin_options_access_capability = apply_filters(
+			// @codingStandardsIgnoreLine
+			"{$this->data['plugin_slug']}_plugin_options_access_capability",
+			''
+		);
+
+		if (
+			! $plugin_options_access_capability
+			|| ! current_user_can( $plugin_options_access_capability )
+		) {
+			return;
+		}
+
 		// @codingStandardsIgnoreStart
 		?>
 		<h3>immonex Kickstart Team</h3>
@@ -204,6 +217,19 @@ class WP_Bootstrap {
 	 * @param int $user_id ID of the related user.
 	 */
 	public function save_extended_user_contents( $user_id ) {
+		$plugin_options_access_capability = apply_filters(
+			// @codingStandardsIgnoreLine
+			"{$this->data['plugin_slug']}_plugin_options_access_capability",
+			''
+		);
+
+		if (
+			! $plugin_options_access_capability
+			|| ! current_user_can( $plugin_options_access_capability )
+		) {
+			return;
+		}
+
 		// @codingStandardsIgnoreStart
 		if ( isset( $_POST['inx_team_agency_id'] ) ) {
 			update_user_meta( $user_id, 'inx_team_agency_id', (int) sanitize_key( $_POST['inx_team_agency_id'] ) );

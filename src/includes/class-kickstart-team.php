@@ -10,7 +10,7 @@ namespace immonex\Kickstart\Team;
 /**
  * Main plugin class
  */
-class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_7_18\Base {
+class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_8_1\Base {
 
 	const PLUGIN_NAME                = 'immonex Kickstart Team';
 	const ADDON_NAME                 = 'Team';
@@ -18,7 +18,7 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_7_18\Base {
 	const PLUGIN_PREFIX              = 'inx_team_';
 	const PUBLIC_PREFIX              = 'inx-team-';
 	const TEXTDOMAIN                 = 'immonex-kickstart-team';
-	const PLUGIN_VERSION             = '1.3.2';
+	const PLUGIN_VERSION             = '1.3.3-beta';
 	const PLUGIN_HOME_URL            = 'https://de.wordpress.org/plugins/immonex-kickstart-team/';
 	const PLUGIN_DOC_URLS            = array(
 		'de' => 'https://docs.immonex.de/kickstart-team/',
@@ -249,7 +249,7 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_7_18\Base {
 			return;
 		}
 
-		$this->settings_page = 'admin.php?page=immonex-kickstart_settings&tab=addon_' . str_replace( '-', '_', $this->plugin_slug );
+		$this->settings_page = 'admin.php?page=immonex-kickstart_settings&tab=' . self::ADDON_TAB_ID;
 
 		parent::init_plugin( $fire_before_hook, $fire_after_hook );
 
