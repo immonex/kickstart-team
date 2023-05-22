@@ -20,7 +20,7 @@ modifiziertes/erweitertes Header-Array
 Eine Funktion zur Nutzung des Filters wird typischerweise in der folgenden Form in der Datei **functions.php** des **Child-Themes** oder per Code-Snippets-Plugin eingebunden.
 
 ```php
-add_filter( 'inx_team_contact_form_mail_headers', 'mysite_modify_contact_form_mail_headers' );
+add_filter( 'inx_team_contact_form_mail_headers', 'mysite_modify_contact_form_mail_headers', 10, 2 );
 
 function mysite_modify_contact_form_mail_headers( $headers, $context ) {
 	// Headerzeilen anpassen/ergänzen...

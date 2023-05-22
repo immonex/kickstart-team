@@ -49,7 +49,7 @@ $params = [
 Eine Funktion zur Nutzung des Filters wird typischerweise in der folgenden Form in der Datei **functions.php** des **Child-Themes** oder per Code-Snippets-Plugin eingebunden.
 
 ```php
-add_filter( 'inx_team_openimmo_feedback_params', 'mysite_modify_openimmo_feedback_xml_params' );
+add_filter( 'inx_team_openimmo_feedback_params', 'mysite_modify_openimmo_feedback_xml_params', 10, 2 );
 
 function mysite_process_contact_form_user_data( $params, $property_post_id ) {
 	/**

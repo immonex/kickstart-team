@@ -43,7 +43,7 @@
     "build:clean-core": "rimraf 'build/vendor/immonex/wp-free-plugin-core/!(src|assets|languages|README*|LICENSE)'",
     "build:clean-vendor": "rimraf 'build/vendor/**/@(bin|sass|example*|Grunt*|grunt*|gulp*|phpunit*|Dock*|composer.*|package.json|package-lock.json)' && rimraf 'build/vendor/**/.[^.]*'",
     "build:del-scss-js-sources": "rimraf build/**/scss && rimraf build/**/*.scss && rimraf build/js && rimraf build/skins/**/js/src",
-    "build:zip": "mv build $npm_package_config_pluginFolderName && mkdir -p dist && zip -rq dist/$npm_package_config_pluginFolderName.zip $npm_package_config_pluginFolderName && mv $npm_package_config_pluginFolderName build",
+    "build:zip": "mv build $npm_package_config_pluginFolderName && mkdir -p dist && zip -rq dist/$npm_package_config_pluginFolderName.zip $npm_package_config_pluginFolderName -x '**/.DS_Store' && mv $npm_package_config_pluginFolderName build",
     "build": "npm run build:scripts && npm run build:copy && npm run build:clean-core && npm run build:clean-vendor && npm run build:del-scss-js-sources && npm run build:zip",
     "postbuild": "composer install",
     "watch": "webpack --watch --config webpack.dev.js",
