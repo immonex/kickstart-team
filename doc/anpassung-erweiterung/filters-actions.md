@@ -24,6 +24,7 @@
 ### Kontaktformular
 
 - [inx_team_contact_form_fields](filter-inx-team-contact-form-fields) (Felder des Kontaktformulars)
+- [inx_team_contact_form_notification_recipients](filter-inx-team-contact-form-notification-recipients) (Empfänger der Kontaktformular-Anfragemails und Absenderangaben für Eingangsbestätigungen)
 - [inx_team_contact_form_notification_subject](filter-inx-team-contact-form-notification-subject) (Betreff der Kontaktformular-Mails)
 - [inx_team_contact_form_notification_subject_variables](filter-inx-team-contact-form-notification-subject-variables) (Variablen für den Betreff der Kontaktformular-Mails)
 - [inx_team_contact_form_mail_headers](filter-inx-team-contact-form-mail-headers) (Header der Kontaktformular-Mails)

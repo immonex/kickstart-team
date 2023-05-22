@@ -227,8 +227,7 @@ class Contact_Form {
 		$recipient_lists = $this->compose_recipient_lists(
 			$form_post_type,
 			$form_post_id,
-			$form_data['recipients_enc'],
-			$form_data['cc_enc'],
+			$form_data,
 			$property_data
 		);
 
@@ -1105,23 +1104,31 @@ class Contact_Form {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param post_type  $post_type Type of the post (output) the form is embedded in.
-	 * @param int|string $post_id Post ID.
-	 * @param string     $form_recipient_string Encoded recipient string submitted
-	 *                                          with the form data.
-	 * @param string     $form_cc_string Encoded CC recipients string submitted
-	 *                                   with the form data.
-	 * @param string[]   $property_data Related property data.
+	 * @param post_type     $post_type Type of the post (output) the form is embedded in.
+	 * @param int|string    $post_id Post ID.
+	 * @param mixed[]       $form_data Frontend form data (user inputs, meta data).
+	 * @param string[]|bool $property_data Related property data or false on non-property-related
+	 *                      inquiries.
 	 *
 	 * @return string[] Two recipient arrays (regular recipients and CC).
 	 */
-	private function compose_recipient_lists( $post_type, $post_id, $form_recipient_string, $form_cc_string, $property_data ) {
+	private function compose_recipient_lists( $post_type, $post_id, $form_data, $property_data ) {
 		$default_addresses  = $this->get_default_recipients();
 		$property_addresses = isset( $property_data['mail_recipients'] ) ? $property_data['mail_recipients'] : array();
 		$mail_addresses     = array(
 			'recipients' => array(),
 			'cc'         => $default_addresses['cc'],
 		);
+
+		// Encoded recipient string submitted with the form data.
+		$form_recipient_string = ! empty( $form_data['recipients_enc'] ) ? $form_data['recipients_enc'] : '';
+
+		// Encoded CC recipients string submitted with the form data.
+		$form_cc_string = ! empty( $form_data['cc_enc'] ) ? $form_data['cc_enc'] : '';
+
+		if ( isset( $form_data['nonce'] ) ) {
+			unset( $form_data['nonce'] );
+		}
 
 		if ( $form_recipient_string || $form_cc_string ) {
 			/**
@@ -1219,10 +1226,15 @@ class Contact_Form {
 			$mail_addresses['cc'] = array_diff( $mail_addresses['cc'], $mail_addresses['recipients'] );
 		}
 
-		return array(
-			'recipients'               => array_unique( $mail_addresses['recipients'] ),
-			'cc'                       => array_unique( $mail_addresses['cc'] ),
-			'receipt_conf_sender_info' => $receipt_conf_sender_info,
+		return apply_filters(
+			'inx_team_contact_form_notification_recipients',
+			array(
+				'recipients'               => array_unique( $mail_addresses['recipients'] ),
+				'cc'                       => array_unique( $mail_addresses['cc'] ),
+				'receipt_conf_sender_info' => $receipt_conf_sender_info,
+			),
+			$form_data,
+			$property_data
 		);
 	} // compose_recipient_lists
 

@@ -106,8 +106,9 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 
 == Changelog ==
 
-= 1.3.3-beta =
-* Release date: 2023-05-16
+= 1.3.4-beta =
+* Release date: 2023-05-22
+* Added filter hook for modifying contact form mail recipients.
 * Disabled user edit form extensions for non-admin users.
 * Updated dependencies.
 
