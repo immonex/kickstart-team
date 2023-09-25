@@ -14,7 +14,7 @@ alternativer Dateiname (**ohne Pfadangabe**)
 
 ## Rahmenfunktion
 
-Eine Funktion zur Nutzung des Filters wird typischerweise in der folgenden Form in der Datei **functions.php** des **Child-Themes** oder per Code-Snippets-Plugin eingebunden.
+[](_info-snippet-einbindung.md ':include')
 
 ```php
 add_filter( 'inx_team_openimmo_feedback_attachment_filename', 'mysite_modify_openimmo_feedback_attachment_filename' );
@@ -24,3 +24,5 @@ function mysite_modify_openimmo_feedback_attachment_filename( $filename ) {
 	return 'openimmo-contact.xml';
 } // mysite_modify_openimmo_feedback_attachment_filename
 ```
+
+[](_backlink.md ':include')

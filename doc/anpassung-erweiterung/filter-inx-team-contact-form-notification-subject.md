@@ -11,9 +11,9 @@ Anhand des Kontext-Parameters kann unterschieden werden, ob es sich um eine Mail
 | `$subject` (string) | Inhalt der Mail-Betreffzeile/Platzhalter |
 | `$context` (string) | Kontext/Empfängergruppe (*admin* oder *prospect*) |
 | `$mail_data` (array) | Objekt-/Formulardaten in folgenden Elementen: |
-| | *site_title* (string): Haupt-Titel der Website |
-| | *form_data* (array): übermittelte Formulardaten, jeweils ein Unterarray pro Feld |
-| | *property* (array): Objektdaten inkl. Anbieter-Mailadresse |
+| | `site_title` (string): Haupt-Titel der Website |
+| | `form_data` (array): übermittelte Formulardaten, jeweils ein Unterarray pro Feld |
+| | `property` (array): Objektdaten inkl. Anbieter-Mailadresse |
 
 ## Platzhalter (Variablen)
 
@@ -33,7 +33,7 @@ angepasster Betreff (optional inkl. Platzhaltern)
 
 ## Rahmenfunktion
 
-Eine Funktion zur Nutzung des Filters wird typischerweise in der folgenden Form in der Datei **functions.php** des **Child-Themes** oder per Code-Snippets-Plugin eingebunden.
+[](_info-snippet-einbindung.md ':include')
 
 Siehe auch: [Beispielfunktion zur Erweiterung der Variablen](filter-inx-team-contact-form-notification-subject-variables#Rahmenfunktion)
 
@@ -49,3 +49,5 @@ function mysite_modify_contact_form_subject( $subject, $context, $mail_data ) {
 	return $subject;
 } // mysite_modify_contact_form_subject
 ```
+
+[](_backlink.md ':include')

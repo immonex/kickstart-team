@@ -4,7 +4,7 @@ Dieser Hook ist in erster Linie für den [OpenImmo-Import](../systemvoraussetzun
 
 Soll stattdessen immer eine bestimmte Agentur zugewiesen werden, kann deren ID über diesen Filter-Hook fix definiert werden. Eine automatische Ermittlung/Erstellung findet dann nicht mehr statt.
 
-> **ACHTUNG!** Eine entsprechende Filterfunktion greift nur dann, wenn diese eine valide ID eines veröffentlichten Agentur-Beitrags zurückliefert.
+!> Eine entsprechende Filterfunktion greift nur dann, wenn diese eine valide ID eines veröffentlichten Agentur-Beitrags zurückliefert.
 
 ## Parameter
 
@@ -18,7 +18,7 @@ fixe ID eines aktiven/veröffentlichten [Agentur-Beitrags](../beitragsarten) (*C
 
 ## Rahmenfunktion
 
-Eine Funktion zur Nutzung des Filters wird typischerweise in der folgenden Form in der Datei **functions.php** des **Child-Themes** oder per Code-Snippets-Plugin eingebunden.
+[](_info-snippet-einbindung.md ':include')
 
 ```php
 add_filter( 'inx_team_force_agency_id_on_agent_update', 'mysite_set_static_agency_id' );
@@ -28,3 +28,5 @@ function mysite_set_static_agency_id( $id ) {
 	return 4711;
 } // mysite_set_static_agency_id
 ```
+
+[](_backlink.md ':include')

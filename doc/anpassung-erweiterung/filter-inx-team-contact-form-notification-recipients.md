@@ -64,7 +64,7 @@ angepasste Empfängeradressen (Anfragemails) und Absenderangaben (Eingangsbestä
 
 ## Rahmenfunktion
 
-Eine Funktion zur Nutzung des Filters wird typischerweise in der folgenden Form in der Datei **functions.php** des **Child-Themes** oder per Code-Snippets-Plugin eingebunden.
+[](_info-snippet-einbindung.md ':include')
 
 ```php
 /**
@@ -81,3 +81,5 @@ function mysite_maybe_add_cc( $recipients_and_conf_sender, $form_data, $property
 	return $recipients;
 } // mysite_maybe_add_cc
 ```
+
+[](_backlink.md ':include')

@@ -155,7 +155,7 @@ angepasstes bzw. erweitertes Felddaten-Array, wobei das Format abhängig vom Par
 
 ## Rahmenfunktion
 
-Eine Funktion zur Nutzung des Filters wird typischerweise in der folgenden Form in der Datei **functions.php** des **Child-Themes** oder per Code-Snippets-Plugin eingebunden.
+[](_info-snippet-einbindung.md ':include')
 
 ```php
 add_filter( 'inx_team_contact_form_fields', 'mysite_extend_contact_form_fields', 10, 3 );
@@ -194,3 +194,5 @@ function mysite_extend_contact_form_fields( $fields, $names_only, $scope ) {
 	return $names_only ? array_keys( $fields ) : $fields;
 } // mysite_extend_contact_form_fields
 ```
+
+[](_backlink.md ':include')

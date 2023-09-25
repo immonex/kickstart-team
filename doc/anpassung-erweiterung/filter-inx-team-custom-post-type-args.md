@@ -68,7 +68,7 @@ angepasstes Eigenschaften-Array für die Registrierung der *Custom Post Types* f
 
 ## Rahmenfunktion
 
-Eine Funktion zur Nutzung des Filters wird typischerweise in der folgenden Form in der Datei **functions.php** des **Child-Themes** oder per Code-Snippets-Plugin eingebunden.
+[](_info-snippet-einbindung.md ':include')
 
 ```php
 add_filter( 'inx_team_custom_post_type_args', 'mysite_modify_team_post_type_args' );
@@ -79,3 +79,5 @@ function mysite_modify_team_post_type_args( $args ) {
 	return $args;
 } // mysite_modify_team_post_type_args
 ```
+
+[](_backlink.md ':include')

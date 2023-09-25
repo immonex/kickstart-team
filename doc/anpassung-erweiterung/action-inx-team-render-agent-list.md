@@ -2,7 +2,7 @@
 
 Über diesen Action-Hook kann eine [Kontaktpersonen-Listenansicht](../komponenten/kontaktpersonen-listen) in eine Template-Datei eingebunden werden.
 
-> Das Rendern von (Teil)Komponenten erfolgt **anstelle von direkten Funktionsaufrufen** per Action-Hook, da so bspw. auch in anderen Add-ons/Plugins oder Themes **nicht** explizit die Verfügbarkeit dieses Plugins geprüft werden muss. *Render Actions* können auch als *Low-Level-Varianten* der hierauf aufbauenden Shortcodes betrachtet werden.
+?> Das Rendern von (Teil)Komponenten erfolgt **anstelle von direkten Funktionsaufrufen** per Action-Hook, da so bspw. auch in anderen Add-ons/Plugins oder Themes **nicht** explizit die Verfügbarkeit dieses Plugins geprüft werden muss. *Render Actions* können auch als *Low-Level-Varianten* der hierauf aufbauenden Shortcodes betrachtet werden.
 
 ## Parameter
 
@@ -27,3 +27,5 @@ do_action(
 	]
 );
 ```
+
+[](_backlink.md ':include')

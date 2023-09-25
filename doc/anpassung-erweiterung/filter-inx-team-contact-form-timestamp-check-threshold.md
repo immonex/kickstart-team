@@ -14,7 +14,7 @@ alternative Sekundenanzahl oder 0 zum Deaktivieren des Checks
 
 ## Rahmenfunktion
 
-Eine Funktion zur Nutzung des Filters wird typischerweise in der folgenden Form in der Datei **functions.php** des **Child-Themes** oder per Code-Snippets-Plugin eingebunden.
+[](_info-snippet-einbindung.md ':include')
 
 ```php
 add_filter( 'inx_team_contact_form_timestamp_check_threshold', 'mysite_adjust_form_time_check_threshold' );
@@ -24,3 +24,5 @@ function mysite_adjust_form_time_check_threshold( $seconds ) {
 	return 16;
 } // mysite_adjust_form_time_check_threshold
 ```
+
+[](_backlink.md ':include')

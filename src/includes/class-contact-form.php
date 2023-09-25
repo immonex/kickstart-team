@@ -349,8 +349,6 @@ class Contact_Form {
 			);
 		}
 
-		$body['txt'] = $this->utils['string']->html_to_plain_text( $body['txt'] );
-
 		if (
 			'body' === $this->config['oi_feedback_type']
 			&& ! empty( $template_data['inline_oi_feedback'] )

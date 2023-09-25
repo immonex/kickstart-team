@@ -14,7 +14,7 @@ angepasster/erweiterter XML-Quelltext
 
 ## Rahmenfunktion
 
-Eine Funktion zur Nutzung des Filters wird typischerweise in der folgenden Form in der Datei **functions.php** des **Child-Themes** oder per Code-Snippets-Plugin eingebunden.
+[](_info-snippet-einbindung.md ':include')
 
 ```php
 add_filter( 'inx_team_openimmo_feedback_xml_source', 'mysite_modify_openimmo_feedback_xml_source' );
@@ -26,3 +26,5 @@ function mysite_modify_openimmo_feedback_xml_source( $xml_source ) {
 	return $xml_source;
 } // mysite_modify_openimmo_xml_source
 ```
+
+[](_backlink.md ':include')

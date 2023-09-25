@@ -9,7 +9,7 @@
 
 Für die **automatisierte** Erstellung von Agentur- und Ansprechpartner-Beiträgen sowie die Aktualisierung der zugehörigen Kontaktdaten beim Import von Immobilienangeboten via OpenImmo-Schnittstelle wird das Zusatzplugin [immonex OpenImmo2WP](https://plugins.inveris.de/shop/immonex-openimmo2wp) **ab Version 4.7.0** benötigt.
 
-> Aktuelle Versionen von OpenImmo2WP und weiterer immonex-Plugins sowie passende OpenImmo-Demodaten sind für Test- und Entwicklungszwecke **kostenlos** unter [immonex.dev](https://immonex.dev/) verfügbar!
+?> Aktuelle Versionen von OpenImmo2WP und weiterer immonex-Plugins sowie passende OpenImmo-Demodaten sind für Test- und Entwicklungszwecke **kostenlos** unter [immonex.dev](https://immonex.dev/) verfügbar!
 
 ---
 

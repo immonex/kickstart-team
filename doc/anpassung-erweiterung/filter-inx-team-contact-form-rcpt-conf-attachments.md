@@ -14,7 +14,7 @@ Datei-Array
 
 ## Rahmenfunktion
 
-Eine Funktion zur Nutzung des Filters wird typischerweise in der folgenden Form in der Datei **functions.php** des **Child-Themes** oder per Code-Snippets-Plugin eingebunden.
+[](_info-snippet-einbindung.md ':include')
 
 ```php
 add_filter( 'inx_team_contact_form_rcpt_conf_attachments', 'mysite_add_rcpt_conf_attachments' );
@@ -27,3 +27,5 @@ function mysite_add_rcpt_conf_attachments( $files ) {
 	return $files;
 } // mysite_add_rcpt_conf_attachments
 ```
+
+[](_backlink.md ':include')

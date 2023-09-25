@@ -16,7 +16,7 @@ angepasster HTML-Code
 
 ## Rahmenfunktion
 
-Eine Funktion zur Nutzung des Filters wird typischerweise in der folgenden Form in der Datei **functions.php** des **Child-Themes** oder per Code-Snippets-Plugin eingebunden.
+[](_info-snippet-einbindung.md ':include')
 
 ```php
 add_filter( 'inx_team_agency_networks', 'mysite_modify_agency_network_icons_output' );
@@ -28,3 +28,5 @@ function mysite_modify_agency_network_icons_output( $html ) {
 	return $html;
 } // mysite_modify_agency_network_icons_output
 ```
+
+[](_backlink.md ':include')

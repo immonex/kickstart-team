@@ -18,6 +18,8 @@ Array der Kontaktpersonendaten und zugehörige [WP_Post](https://developer.wordp
 
 ## Code-Beispiele
 
+[](_info-snippet-einbindung.md ':include')
+
 ```php
 /**
  * [immonex Kickstart Team] Template-Rendering-Daten der primären Kontaktperson
@@ -38,3 +40,5 @@ function mysite_save_current_primary_contact_template_data() {
 	}
 } // mysite_save_current_primary_contact_template_data
 ```
+
+[](_backlink.md ':include')

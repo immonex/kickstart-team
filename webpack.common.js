@@ -8,16 +8,17 @@ module.exports = {
     ...{
         frontend: './src/js/frontend.js'
     },
-    ...glob.sync('./src/skins/**/js/src/index.js').reduce((acc, path) => {
+    ...glob.sync('./src/skins/**/js/index.js', { dotRelative: true }).reduce((acc, path) => {
         let entry = path.replace('./src/skins/', '../../skins/')
-        entry = entry.replace('/js/src/index.js', '/js/index')
+        entry = entry.replace('/js/index.js', '/assets/index')
         acc[entry] = path
         return acc
-    }, {})
+    }, {}),
   },
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'src/assets/js')
+    path: path.resolve(__dirname, 'src/assets/js'),
+    chunkFilename: '[name].[chunkhash:8].js'
   },
   resolve: {
     fallback: {
@@ -38,7 +39,8 @@ module.exports = {
             loader: MiniCssExtractPlugin.loader
           },
           {
-            loader: 'css-loader'
+            loader: 'css-loader',
+            options: { url: false }
           },
           {
             loader: 'sass-loader'
@@ -46,19 +48,13 @@ module.exports = {
         ]
       },
       {
-        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-        exclude: /node_modules|build/,
-        use: [{
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: (url, resourcePath, context) => {
-                const relativePath = path.relative(context, resourcePath);
-                return '../../../' + relativePath;
-              },
-              publicPath: '../fonts'
-            }
-        }]
+          test: /\.(woff(2)?|ttf|eot)$/,
+          exclude: /node_modules|build/,
+          type: 'asset/resource',
+          generator: {
+            filename: '[name][ext]',
+            emit: false
+          }
       }
     ]
   },
@@ -66,7 +62,10 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: path => path.chunk.name.indexOf('/js/') !== -1 ?
         path.chunk.name.replace('/js/', '/css/') + '.css' :
-        '../css/[name].css'
+        '../css/[name].css',
+      chunkFilename: path => path.chunk.name.indexOf('/js/') !== -1 ?
+        path.chunk.name.replace('/js/', '/css/') + '.css' :
+        '../css/[name].[chunkhash:8].css'
     })
   ]
 }

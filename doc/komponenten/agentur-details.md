@@ -18,7 +18,7 @@ Hier ein Beispiel – wie immer mit *TeamQuiwi-Skin* und dem WP-Standard-Theme *
 
 ![Screenshot: Agentur-Details (Standard-Template)](../assets/scst-fe-agency-details-1.jpg)
 
-> Die im Screenshot enthaltene Seitennavigation bezieht sich auf die Liste der Immobilien-Angebote.
+?> Die im Screenshot enthaltene Seitennavigation bezieht sich auf die Liste der Immobilien-Angebote.
 
 ## Widget
 
@@ -42,7 +42,7 @@ Das Widget kann via ***Design → Widgets*** oder (bei geöffneter Immobilien-De
 
 Auch eine **mehrfache Einbindung** des Widgets ist möglich, bspw. wenn der Umfang der Ausgabe sich bei Referenzobjekten von dem regulärer Objekte unterscheiden soll. Die entsprechende Auswahl des Objektstatus erfolgt in diesem Fall über die Widget-Option *Anzeigen für* (beim folgenden Shortcode analog mit dem Attribut `display_for`).
 
-> Das [Kontaktpersonen-Widget](kontaktpersonen-details#Widget) ist die gängigere Variante der Kontaktdaten-Einbindung.
+?> Das [Kontaktpersonen-Widget](kontaktpersonen-details#Widget) ist die gängigere Variante der Kontaktdaten-Einbindung.
 
 ## Shortcode
 

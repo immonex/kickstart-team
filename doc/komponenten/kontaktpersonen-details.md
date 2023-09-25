@@ -16,7 +16,7 @@ Hier ein Beispiel – wie immer mit *TeamQuiwi-Skin* und dem WP-Standard-Theme *
 
 ![Screenshot: Immobilienmakler-Details (Standard-Template)](../assets/scst-fe-agent-details-1.jpg)
 
-> Die im Screenshot enthaltene Seitennavigation bezieht sich auf die Liste der Immobilien-Angebote.
+?> Die im Screenshot enthaltene Seitennavigation bezieht sich auf die Liste der Immobilien-Angebote.
 
 ## Widget
 
@@ -24,7 +24,7 @@ Hier ein Beispiel – wie immer mit *TeamQuiwi-Skin* und dem WP-Standard-Theme *
 
 Wie das [Agentur-Widget](agentur-details#Widget) ist auch die Variante für Kontaktpersonen in erster Linie für den Einsatz im Sidebar-Bereich der Immobilien-Detailseiten vorgesehen. (Die Kontaktperson, deren Daten angezeigt werden sollen, wird automatisch anhand der **primären Kontaktpersonen-ID** ermittelt, die der betr. [Immobilie zugewiesen](../beitragsarten#kontaktpersonagentur-→-immobilie) ist.)
 
-> Das im Widget enthaltene Kontaktformular umfasst in der Standardvariante Eingabefelder für Name, Telefonnummer, Mailadresse sowie für die Nachricht, kann per Plugin-Option, Widget-Einstellung, Shortcode-Attribut oder Filterfunktion aber auch um zusätzliche Felder/Optionen für Anrede und Adresse der Interessenten erweitert werden.
+?> Das im Widget enthaltene Kontaktformular umfasst in der Standardvariante Eingabefelder für Name, Telefonnummer, Mailadresse sowie für die Nachricht, kann per Plugin-Option, Widget-Einstellung, Shortcode-Attribut oder Filterfunktion aber auch um zusätzliche Felder/Optionen für Anrede und Adresse der Interessenten erweitert werden.
 
 Ein Frontend-Beispiel auf Basis des WP-Standard-Themes *Twenty Sixteen*:
 
@@ -34,7 +34,7 @@ Ein Frontend-Beispiel auf Basis des WP-Standard-Themes *Twenty Sixteen*:
 
 ![Kontaktdaten-Abschnitt mit Team-Add-on](../assets/scst-contact-section-2.gif)
 
-> Wird das Widget in einem Sidebar-Bereich verwendet, sollte der [Standard-Kontaktdaten-Abschnitt](../schnellstart/einrichtung#Anpassung-des-Standard-Kontaktabschnitts) über die entsprechende Plugin-Option **ausbeblendet** werden.
+!> Wird das Widget in einem Sidebar-Bereich verwendet, sollte der [Standard-Kontaktdaten-Abschnitt](../schnellstart/einrichtung#Anpassung-des-Standard-Kontaktabschnitts) über die entsprechende Plugin-Option **ausgeblendet** werden.
 
 Das Widget kann via ***Design → Widgets*** (ab WordPress 5.8 als Block des Typs *Legacy-Widget*) oder – bei geöffneter Immobilien-Detailseite – ***Customizer → Widgets*** eingebunden und konfiguriert werden:
 
@@ -63,33 +63,33 @@ Alle folgenden Attribute sind **optional**.
 | `after_title` | nur Widget: HTML-Code nach dem Titel (WP/Theme-Vorgabe überschreiben) |
 | `convert_links` | *1* oder *yes*, um Mailadressen und Telefonnummern bei der Ausgabe in Links zu konvertieren |
 | `elements` | kommagetrennte Liste der anzuzeigenden Elemente: |
-| | *photo* : Foto der Kontaktperson (in der Vollansicht immer enthalten) |
-| | *full_name* : Vor- und Nachname |
-| | *full_name_incl_title* : Vor- und Nachname inkl. Titel |
-| | *position* : Position/Funktion im Unternehmen oder Berufsbezeichnung |
-| | *position_incl_company* : Position/Funktion/Berufsbezeichnung + Firma |
-| | *bio* : Kurzbeschreibung/-biographie der Person |
-| | *email_auto_select* : **primäre** Mailadresse (automatische Ermittlung) |
-| | *phone_auto_select* : **primäre** Telefonnummer (automatische Ermittlung) |
-| | *phone_mobile* : Telefonnummer mobil |
-| | *company_link* : Firma (verlinkt) |
-| | *city* : Ort (Bürostandort) |
-| | *address* : Adresse (Bürostandort) |
-| | *network_icons* : Icons/Links von Business- und sozialen Netzwerken, für die eine URL im Kontaktpersonen-Datensatz hinterlegt ist) |
-| | *contact_form* : einheitliches [Kontaktformular](kontaktformular) (siehe auch `contact_form_scope` unten) |
+| | *photo* → Foto der Kontaktperson (in der Vollansicht immer enthalten) |
+| | *full_name* → Vor- und Nachname |
+| | *full_name_incl_title* → Vor- und Nachname inkl. Titel |
+| | *position* → Position/Funktion im Unternehmen oder Berufsbezeichnung |
+| | *position_incl_company* → Position/Funktion/Berufsbezeichnung + Firma |
+| | *bio* → Kurzbeschreibung/-biographie der Person |
+| | *email_auto_select* → **primäre** Mailadresse (automatische Ermittlung) |
+| | *phone_auto_select* → **primäre** Telefonnummer (automatische Ermittlung) |
+| | *phone_mobile* → Telefonnummer mobil |
+| | *company_link* → Firma (verlinkt) |
+| | *city* → Ort (Bürostandort) |
+| | *address* → Adresse (Bürostandort) |
+| | *network_icons* → Icons/Links von Business- und sozialen Netzwerken, für die eine URL im Kontaktpersonen-Datensatz hinterlegt ist) |
+| | *contact_form* → einheitliches [Kontaktformular](kontaktformular) (siehe auch `contact_form_scope` unten) |
 | `link_type` | nur Widget – Art der Verlinkung von Foto, Name und Firma: |
-| | *internal* : Link zur **internen** [Kontaktpersonen-Profilseite](#Vollansicht) (Foto/Name) bzw. [Agentur-Detailseite](agentur-details#Vollansicht) (Firma) |
-| | *external* : Link zu einer externen Website, sofern eine entsprechende URL  vorhanden ist |
-| | *none* : keine Verlinkung |
+| | *internal* → Link zur **internen** [Kontaktpersonen-Profilseite](#Vollansicht) (Foto/Name) bzw. [Agentur-Detailseite](agentur-details#Vollansicht) (Firma) |
+| | *external* → Link zu einer externen Website, sofern eine entsprechende URL  vorhanden ist |
+| | *none* → keine Verlinkung |
 | `display_for` | nur Widget – Anzeige nur bei Immobilien mit einem bestimmten Status: |
-| | *all* : alle Objekte |
-| | *all_except_references* : alle Immobilien **außer** Referenzobjekte |
-| | *available_only* : nur verfügbare Objekte |
-| | *unavailable_only* : nur **nicht** verfügbare Objekte |
-| | *references_only* : nur Referenzobjekte |
+| | *all* → alle Objekte |
+| | *all_except_references* → alle Immobilien **außer** Referenzobjekte |
+| | *available_only* → nur verfügbare Objekte |
+| | *unavailable_only* → nur **nicht** verfügbare Objekte |
+| | *references_only* → nur Referenzobjekte |
 | `contact_form_scope` | Feldumfang des [Kontaktformulars](kontaktformular): |
-| | *basic* : Name, Telefonnummer, E-Mail-Adresse und Nachricht (Standardvorgabe) |
-| | *extended* : **zusätzliche** Pflichtfelder/-auswahloptionen für Anrede und Adresse, separate Felder für Vor- und Nachname |
+| | *basic* → Name, Telefonnummer, E-Mail-Adresse und Nachricht (Standardvorgabe) |
+| | *extended* → **zusätzliche** Pflichtfelder/-auswahloptionen für Anrede und Adresse, separate Felder für Vor- und Nachname |
 
 #### Beispiele
 

@@ -14,7 +14,7 @@ alternativer Titel für die Archivseiten des [*Custom Post Types* für Agenturen
 
 ## Rahmenfunktion
 
-Eine Funktion zur Nutzung des Filters wird typischerweise in der folgenden Form in der Datei **functions.php** des **Child-Themes** oder per Code-Snippets-Plugin eingebunden.
+[](_info-snippet-einbindung.md ':include')
 
 ```php
 add_filter( 'inx_team_agency_archive_title', 'mysite_modify_agency_archive_title' );
@@ -24,3 +24,5 @@ function mysite_modify_agency_archive_title( $title ) {
 	return 'Die besten Immobilienmakler der Welt - mindestens!';
 } // mysite_modify_agency_archive_title
 ```
+
+[](_backlink.md ':include')

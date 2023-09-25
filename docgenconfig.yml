@@ -17,5 +17,10 @@ author: Carsten Scheuer
 name: kickstart-team
 permission: public
 category: Plugins
-use:
-  - -zoomImage
+
+subMaxLevel: 2
+
+plugins:
+  docsify:
+    css: assets/ext-style.css
+    js: assets/docsify-plugin-scroll-bug-fix.js

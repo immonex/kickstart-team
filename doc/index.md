@@ -1,4 +1,4 @@
-# Über dieses Plugin
+# Über dieses Plugin <!-- {docsify-ignore-all} -->
 
 <span style="float: right">![immonex Kickstart Team Logo](assets/kickstart-team-logo.png)</span>
 

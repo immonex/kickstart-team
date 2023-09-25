@@ -2,7 +2,7 @@
 
 Über diesen Filter-Hook können die Header-Zeilen der via [Kontaktformular](../komponenten/kontaktformular) generierten Mails modifiziert werden. Der Versand erfolgt regulär per WordPress-Funktion [wp_mail](https://developer.wordpress.org/reference/functions/wp_mail/).
 
-> **Achtung!** Die Header-Angaben sollten nur in Ausnahmefällen angepasst werden, vor allem wenn in den [mailbezogenen Plugin-Optionen](../schnellstart/einrichtung#Kontaktformular-Mails) der Versand als HTML-Mails aktiviert ist.
+!> Die Header-Angaben sollten nur in Ausnahmefällen angepasst werden, vor allem wenn in den [mailbezogenen Plugin-Optionen](../schnellstart/einrichtung#Kontaktformular-Mails) der Versand als HTML-Mails aktiviert ist.
 
 ## Parameter
 
@@ -17,7 +17,7 @@ modifiziertes/erweitertes Header-Array
 
 ## Rahmenfunktion
 
-Eine Funktion zur Nutzung des Filters wird typischerweise in der folgenden Form in der Datei **functions.php** des **Child-Themes** oder per Code-Snippets-Plugin eingebunden.
+[](_info-snippet-einbindung.md ':include')
 
 ```php
 add_filter( 'inx_team_contact_form_mail_headers', 'mysite_modify_contact_form_mail_headers', 10, 2 );
@@ -31,3 +31,5 @@ function mysite_modify_contact_form_mail_headers( $headers, $context ) {
 	return $headers;
 } // mysite_modify_contact_form_mail_headers
 ```
+
+[](_backlink.md ':include')

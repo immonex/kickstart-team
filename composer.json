@@ -8,12 +8,13 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "immonex/wp-free-plugin-core": "^1.8.2"
+        "immonex/wp-free-plugin-core": "^1.8.21"
     },
     "require-dev": {
         "inverisoss/wp-i18n-tools": "^1.0",
         "phpunit/phpunit": "^7",
-        "doctrine/rst-parser": "@dev"
+        "doctrine/rst-parser": "@dev",
+        "yoast/phpunit-polyfills": "1.x-dev"
     },
     "autoload": {
         "psr-4": { "immonex\\Kickstart\\Team\\": ["includes", "src/includes"] }

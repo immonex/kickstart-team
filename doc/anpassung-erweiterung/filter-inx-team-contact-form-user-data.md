@@ -28,7 +28,7 @@ $form_data = [
 
 ## Rahmenfunktion
 
-Eine Funktion zur Nutzung des Filters wird typischerweise in der folgenden Form in der Datei **functions.php** des **Child-Themes** oder per Code-Snippets-Plugin eingebunden.
+[](_info-snippet-einbindung.md ':include')
 
 ```php
 add_filter( 'inx_team_contact_form_user_data', 'mysite_process_contact_form_user_data' );
@@ -39,3 +39,5 @@ function mysite_process_contact_form_user_data( $form_data ) {
 	return $form_data;
 } // mysite_process_contact_form_user_data
 ```
+
+[](_backlink.md ':include')

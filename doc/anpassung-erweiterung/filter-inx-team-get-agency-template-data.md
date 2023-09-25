@@ -18,6 +18,8 @@ Array der Agenturdaten und zugehörige [WP_Post](https://developer.wordpress.org
 
 ## Code-Beispiele
 
+[](_info-snippet-einbindung.md ':include')
+
 ```php
 /**
  * [immonex Kickstart Team] Template-Rendering-Daten der dem aktuellen Objekt
@@ -38,3 +40,5 @@ function mysite_save_current_property_agency_template_data() {
 	}
 } // mysite_save_current_property_agency_template_data
 ```
+
+[](_backlink.md ':include')

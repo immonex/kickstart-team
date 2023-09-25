@@ -18,8 +18,8 @@ class Kickstart_Team_Test extends WP_UnitTestCase {
 		$expected = array(
 			'plugin_name' => 'immonex Kickstart Team',
 			'plugin_slug' => 'immonex-kickstart-team',
-			'plugin_prefix' => 'immonex_kickstart_team_',
-			'public_prefix' => 'immonex-kickstart-team-'
+			'plugin_prefix' => 'inx_team_',
+			'public_prefix' => 'inx-team-'
 		);
 
 		$bootstrap_data = $this->kickstart_team->bootstrap_data;

@@ -4,13 +4,13 @@ Die offiziellen Übersetzungen werden via [translate.wordpress.org (GlotPress)](
 
 Die Übersetzungen von translate.wordpress.org werden automatisch in den globalen WordPress-Übersetzungs-Ordner `.../wp-content/languages/plugins` heruntergeladen, sofern diese für die unter ***Einstellungen → Allgemein*** eingestellte Website-Sprache verfügbar sind:
 
-```
-.../wp-content/languages/plugins
+<pre class="tree">
+<strong>.../wp-content/languages/plugins</strong>
 ├── immonex-kickstart-team-de_DE_formal.po
 └── immonex-kickstart-team-de_DE_formal.mo
-```
+</pre>
 
-> **ACHTUNG!** Die Übersetzungen im globalen WP-Sprachordner haben Priorität. Die gleichnamigen Dateien, die **zusätzlich** im Unterordner `languages` des Plugin-Verzeichnisses enthalten sind, werden im Regelfall **nicht** eingebunden.
+!> Die Übersetzungen im globalen WP-Sprachordner haben Priorität. Die gleichnamigen Dateien, die **zusätzlich** im Unterordner `languages` des Plugin-Verzeichnisses enthalten sind, werden im Regelfall **nicht** eingebunden.
 
 **Individuelle lokale Übersetzungen** können mit [Loco Translate](https://de.wordpress.org/plugins/loco-translate/) erstellt und aktualisiert werden.
 

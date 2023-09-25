@@ -4,7 +4,7 @@ Beim Versand von [Formulardaten](../komponenten/kontaktformular) per Mail kommt 
 
 Soll stattdessen eine eigene **Twig-Rahmenvorlage** verwendet werden, kann über diesen Filter-Hook der absolute Pfad der entsprechenden Template-Datei übergeben werden.
 
-> **Achtung!** Eigene Templates müssen in jedem Fall die Twig-Variable `{{ body }}` enthalten.
+!> Eigene Templates müssen in jedem Fall die Twig-Variable `{{ body }}` enthalten.
 
 ## Parameter
 
@@ -18,7 +18,7 @@ alternative Template-Datei (absoluter Pfad)
 
 ## Rahmenfunktion
 
-Eine Funktion zur Nutzung des Filters wird typischerweise in der folgenden Form in der Datei **functions.php** des **Child-Themes** oder per Code-Snippets-Plugin eingebunden.
+[](_info-snippet-einbindung.md ':include')
 
 ```php
 add_filter( 'immonex-kickstart-team_html_mail_twig_template_file', 'mysite_set_html_frame_mail_template' );
@@ -28,3 +28,5 @@ function mysite_set_html_frame_mail_template( $template_file ) {
 	return __DIR__ . '/immonex-kickstart-team/html-mail.twig';
 } // mysite_set_html_frame_mail_template
 ```
+
+[](_backlink.md ':include')

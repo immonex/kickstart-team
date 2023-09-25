@@ -16,7 +16,7 @@ alternative Fallback-Mailadresse(n)
 
 ## Rahmenfunktion
 
-Eine Funktion zur Nutzung des Filters wird typischerweise in der folgenden Form in der Datei **functions.php** des **Child-Themes** oder per Code-Snippets-Plugin eingebunden.
+[](_info-snippet-einbindung.md ':include')
 
 ```php
 add_filter( 'inx_team_fallback_recipient_admin_email', 'mysite_set_fallback_admin_mail_address' );
@@ -26,3 +26,5 @@ function mysite_set_fallback_admin_mail_address( $mail_address ) {
 	return 'admin2@pffff.local';
 } // mysite_set_fallback_admin_mail_address
 ```
+
+[](_backlink.md ':include')

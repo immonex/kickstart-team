@@ -27,7 +27,7 @@ angepasstes/erweitertes Variablen-Array
 
 ## Rahmenfunktion
 
-Eine Funktion zur Nutzung des Filters wird typischerweise in der folgenden Form in der Datei **functions.php** des **Child-Themes** oder per Code-Snippets-Plugin eingebunden.
+[](_info-snippet-einbindung.md ':include')
 
 Siehe auch: [Beispielfunktion zur Verwendung der Variable "foo"](filter-inx-team-contact-form-notification-subject#Rahmenfunktion)
 
@@ -44,3 +44,5 @@ function mysite_extend_inquiry_mail_subject_vars( $vars, $context ) {
 	return $vars;
 } // mysite_extend_inquiry_mail_subject_vars
 ```
+
+[](_backlink.md ':include')

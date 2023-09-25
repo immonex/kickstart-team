@@ -16,7 +16,7 @@ aktualisierte/erweiterte Ordnerliste
 
 ## Rahmenfunktion
 
-Eine Funktion zur Nutzung des Filters wird typischerweise in der folgenden Form in der Datei **functions.php** des **Child-Themes** oder per Code-Snippets-Plugin eingebunden.
+[](_info-snippet-einbindung.md ':include')
 
 ```php
 add_filter( 'inx_team_template_search_folders', 'mysite_add_custom_primary_skin_base_folder' );
@@ -29,3 +29,5 @@ function mysite_add_custom_primary_skin_base_folder( $folders ) {
 	return $folders;
 } // mysite_add_custom_primary_skin_base_folder
 ```
+
+[](_backlink.md ':include')

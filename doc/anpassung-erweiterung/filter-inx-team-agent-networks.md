@@ -26,7 +26,7 @@ modifizierte/erweiterte Netzwerk-Liste
 
 ## Rahmenfunktion
 
-Eine Funktion zur Nutzung des Filters wird typischerweise in der folgenden Form in der Datei **functions.php** des **Child-Themes** oder per Code-Snippets-Plugin eingebunden.
+[](_info-snippet-einbindung.md ':include')
 
 ```php
 add_filter( 'inx_team_agent_networks', 'mysite_modify_agent_networks' );
@@ -38,3 +38,5 @@ function mysite_modify_agent_networks( $networks ) {
 	return $networks;
 } // mysite_modify_agent_networks
 ```
+
+[](_backlink.md ':include')

@@ -7,7 +7,7 @@ Das Team-Add-on stellt folgende Elemente bereit, die im Website-Frontend auf unt
 - [Kontaktpersonen-Listen](#Kontaktpersonen-Listen)
 - [Kontaktpersonen-Details](#Kontaktpersonen-Details) (Einzelansicht + Widget)
 
-> Voraussetzungen für die Verfügbarkeit aller nachfolgend genannten **Standard-Archiv- und Einzelansichten** sind, dass diese **nicht** in den [Plugin-Optionen](einrichtung?id=add-on-optionen) deaktiviert wurden und im WordPress-Backend unter ***Einstellungen → Permalinks*** die Option *Beitragsname* o. vgl. für die Permalink-Struktur festgelegt wurde. (Die Shortcode- und Widget-Varianten sind hiervon nicht betroffen.)
+!> Voraussetzung für die Verfügbarkeit aller nachfolgend genannten **Standard-Archiv- und Einzelansichten** ist, dass diese **nicht** in den [Plugin-Optionen](einrichtung?id=add-on-optionen) deaktiviert wurden und im WordPress-Backend unter ***Einstellungen → Permalinks*** die Option *Beitragsname* o. vgl. für die Permalink-Struktur festgelegt wurde. (Die Shortcode- und Widget-Varianten sind hiervon nicht betroffen.)
 
 ## Agentur-Listen
 
@@ -48,7 +48,7 @@ Mit diesem Widget kann eine "Kompaktansicht" der Agentur-Kontaktdatendaten (ausw
 
 Die Agentur wird automatisch anhand der **primären Kontaktperson** ermittelt, die der betr. Immobilie zugewiesen ist.
 
-> Das nachfolgend beschriebene [Kontaktpersonen-Widget](#Widget-1) ist die gängigere Variante der Kontaktdaten-Einbindung.
+?> Das nachfolgend beschriebene [Kontaktpersonen-Widget](#Widget-1) ist die gängigere Variante der Kontaktdaten-Einbindung.
 
 ### Shortcode
 

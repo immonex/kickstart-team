@@ -35,37 +35,90 @@ Der passende und *update-sichere* Ort für **eigene oder angepasste** Skins ist 
 [Skin-Auswahl](../schnellstart/einrichtung#Skin) unter ***immonex → Einstellungen → Team [Add-on]***
 
 Die zugehörige Ordner-Struktur könnte so aussehen:
-```
-.../wp-content/plugins/immonex-kickstart-team/skins
-└── default
 
-.../wp-content/themes/(CHILD-)THEME-NAME/immonex-kickstart-team
-├── denise
-├── paula
-├── agnus
-└── one
- ```
+<pre class="tree">
+<strong>.../wp-content/plugins/immonex-kickstart-team/skins</strong>
+╷
+└── /default
+
+<strong>.../wp-content/themes/(CHILD-)THEME-NAME/immonex-kickstart-team</strong>
+╷
+├── /denise
+├── /paula
+├── /agnus
+└── /one
+</pre>
 
 ## Aufbau
 
-Der **grundlegende** Aufbau eines Kickstart-Skins ist denkbar einfach:
-```
+Der **grundlegende** Aufbau eines Kickstart(-Add-on)-Skins ist denkbar einfach:
+
+<pre class="tree">
 skin-name
-├── css
+╷
+├── /css
+│   ╷
 │   └── index.css
-├── js
+│
+├── /js
+│   ╷
 │   └── index.js
+│
 └── index.php
-```
+</pre>
 
-Die Dateien `index.css` und `index.js` des aktiven Skins werden im Frontend automatisch eingebunden. Je nach Umfang bietet es sich an, bei der Entwicklung mit mehreren Quelldateien zu arbeiten, die anschließend per Bundler bzw. Präprozessor à la [webpack](https://webpack.js.org/), [Sass](https://sass-lang.com/) & Co. kompiliert werden – Infos hierzu in der [Dokumentation des Kickstart-Basis-Plugins](https://docs.immonex.de/kickstart/#/anpassung-erweiterung/skins?id=komplett).
+Die Dateien `index.css` und `index.js` des aktiven Skins werden im Frontend automatisch eingebunden. Das gilt auch für weitere Dateien mit den folgenden Namen, sofern vorhanden:
 
-Die Datei `index.php` enthält nur den Namen des Skins für die Ausgabe:
+- `extend.css` / `extend.js`
+- `custom.css` / `custom.js`
+- `frontend.css` / `frontend.js`
+- `skin.css` / `skin.js`
+
+Je nach Umfang bietet es sich an, bei der **Entwicklung** mit mehreren Quelldateien zu arbeiten, die anschließend per Bundler bzw. Präprozessor à la [webpack](https://webpack.js.org/), [Sass](https://sass-lang.com/) & Co. kompiliert werden. Die *kompilierten und/oder minimierten* Varianten der Dateien sollten in diesem Fall im Ordner `assets` gespeichert werden:
+
+<pre class="tree">
+skin-name
+╷
+├── /assets
+│   ╷
+│   ├── index.css
+│   └── index.js
+…
+</pre>
+
+Auch die Aufteilung der CSS- und JS-Dateien in separate Unterordner ist hier möglich:
+
+<pre class="tree">
+…
+╷
+├── /assets
+│   ╷
+│   ├── /css
+│   │   ╷
+│   │   ├── index.css
+│   │   ├── custom.css
+│   │   …
+│   └── /js
+│       ╷
+│       ├── index.js
+│       ├── extend.js
+…       …
+</pre>    
+
+Jede der o. g. CSS/JSS-Dateien wird nur **einmalig** eingebunden. Sind mehrere Dateien gleichen Namens im Skin-Ordner enthalten, erfolgt die entsprechende Priorisierung anhand der **Unterordner** in dieser Reihenfolge:
+
+- `assets/css/` / `assets/js/`
+- `assets/`
+- `css/` / `js/`
+
+Ist also bspw. eine Datei `custom.css` in den Unterordnern `assets` **und** `css` enthalten, wird nur die Variante im Ordner `assets` im Website-Frontend geladen.
+
+Die Datei `index.php` enthält nur den Namen des (Add-on-)Skins für die Ausgabe:
 
 ```php
 <?php
 /**
- * Skin Name: Quiwi
+ * Skin Name: TeamQuiwi
  */
 
 die( "Don't event think about it!" );
@@ -83,34 +136,42 @@ Sollen bspw. nur eigene Varianten der Dateien `index.css` und `single-agency.php
 
 #### Standard-Skin-Ordner (Plugin-Verzeichnis)
 
-```
-.../wp-content/plugins/immonex-kickstart-team/skins
-└── default
-    ├── css
+<pre class="tree">
+<strong>.../wp-content/plugins/immonex-kickstart-team/skins</strong>
+╷
+└── /default
+    ╷
+    ├── /css
+    │   ╷
     │   └── index.css
-    ├── agency-list
-    ├── agent-list
-    ├── js
-    ├── mail
-    ├── single-agency
-    ├── single-agent
+    │
+    ├── /agency-list
+    ├── /agent-list
+    ├── /js
+    ├── /mail
+    ├── /single-agency
+    ├── /single-agent
     ├── archive-agency.php
     ├── archive-agent.php
     ├── contact-form.php
     ├── index.php
     ├── single-agency.php
     └── single-agent.php
-```
+</pre>
 
 #### Skin-Ordner mit angepassten Dateien (Theme/Child-Theme)
 
-```
-.../wp-content/themes/(CHILD-)THEME-NAME/immonex-kickstart-team
-└── default
-    ├── css
+<pre class="tree">
+<strong>.../wp-content/themes/(CHILD-)THEME-NAME/immonex-kickstart-team</strong>
+╷
+└── /default
+    ╷
+    ├── /css
+    │   ╷
     │   └── index.css
+    │
     └── single-agency.php
-```
+</pre>
 
 ### Komplett
 

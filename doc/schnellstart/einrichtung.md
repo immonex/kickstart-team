@@ -120,7 +120,7 @@ Beim Absenden von Kontaktformular-Daten wird ein solcher Datensatz (optional) au
 
 Bei erfolgreicher Übermittlung von Formulardaten **kann** eine Eingangsbestätigung per Mail an den Absender gesendet werden, diese muss allerdings **explizit aktiviert** werden. Auch hier wird bei den Inhalten (inkl. Betreff und Signatur) *Twig*-Markup<sup>2</sup> unterstützt, Mailtext und Signatur können zudem per HTML formatiert werden.
 
-> **Achtung!** Damit das Formular nicht für den Versand von *Spam* missbraucht werden kann, sollten in die Bestätigungsmails nach Möglichkeit **keine** Variablen (*Platzhalter*) für vom Nutzer selbst erfasste Inhalte eingebunden werden. (Falls **unbedingt nötig**, kann hier eine Ausnahme bei der Anrede und dem Namen gemacht werden.)
+!> **Achtung!** Damit das Formular nicht für den Versand von *Spam* missbraucht werden kann, sollten in die Bestätigungsmails nach Möglichkeit **keine** Variablen (*Platzhalter*) für vom Nutzer selbst erfasste Inhalte eingebunden werden. (Falls **unbedingt nötig**, kann hier eine Ausnahme bei der Anrede und dem Namen gemacht werden.)
 
 #### Betreff (allgemein / Immobilien-Anfragen)
 
