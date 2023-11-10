@@ -10,7 +10,7 @@ Die Optik im Website-Frontend entspricht dabei weitestgehend der der [Agentur-Li
 
 ![Kontaktpersonen-Archivseite im Frontend](../assets/scst-fe-agent-archive.png)
 
-Der **Seiten- und Dokumenttitel** der Archivseite kann in den Plugin-Optionen (***immonex → Einstellungen → Team [Add-on]: Kontaktpersonen-Archiv-Titel***) festgelegt werden.
+Der **Seiten- und Dokumenttitel** der Archivseite kann in den Plugin-Optionen (***immonex → Einstellungen → Team <sup>ADD-ON</sup>***: *Kontaktpersonen-Archiv-Titel*) festgelegt werden.
 
 ## Shortcode
 

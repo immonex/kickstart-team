@@ -128,7 +128,7 @@ $inx_skin_logo = isset( $template_data['elements']['logo'] ) ?
 		</div>
 	</div>
 
-	<?php if ( ! empty( $template_data['agent_count'] ) ) : ?>
+	<?php if ( in_array( 'agents', $template_data['single_view_optional_sections'], true ) && ! empty( $template_data['agent_count'] ) ) : ?>
 	<div class="inx-team-single-agency__agents uk-margin-large-bottom">
 		<?php
 		echo wp_sprintf(
@@ -148,7 +148,7 @@ $inx_skin_logo = isset( $template_data['elements']['logo'] ) ?
 	</div>
 	<?php endif; ?>
 
-	<?php if ( ! empty( $template_data['property_count'] ) ) : ?>
+	<?php if ( in_array( 'properties', $template_data['single_view_optional_sections'], true ) && ! empty( $template_data['property_count'] ) ) : ?>
 	<div class="inx-team-single-agency__properties uk-margin-large-bottom">
 		<?php
 		echo wp_sprintf(

@@ -4,6 +4,7 @@
   * [Multilang Add-on (mehrsprachige Importe)](https://docs.immonex.de/openimmo2wp-multilang/)
   * **WordPress-Immobilien-Präsentation**
   * [immonex Kickstart (Basis-Plugin)](https://docs.immonex.de/kickstart/)
+  * [immonex Kickstart Slideshows (Add-on)](https://docs.immonex.de/kickstart-slideshows/)
   * **Energieausweis**
   * [immonex Energy Scale Pro](https://docs.immonex.de/energy-scale-pro/)
   * **Objekt/Verkäufer-Akquise**

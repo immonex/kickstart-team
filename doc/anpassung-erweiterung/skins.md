@@ -30,9 +30,9 @@ Der passende und *update-sichere* Ort für **eigene oder angepasste** Skins ist 
 
 ## Auswahl
 
-![Skin-Auswahl](../assets/scst-skin-selection-1.gif)
+![Skin-Auswahl](../assets/scst-skin-selection.png)
 
-[Skin-Auswahl](../schnellstart/einrichtung#Skin) unter ***immonex → Einstellungen → Team [Add-on]***
+[Skin-Auswahl](../schnellstart/einrichtung#Skin) unter ***immonex → Einstellungen → Team <sup>ADD-ON</sup>***
 
 Die zugehörige Ordner-Struktur könnte so aussehen:
 
@@ -132,7 +132,7 @@ Ist ein mitgeliefertes Add-on-Skin grundsätzlich passend und sollen nur geringf
 
 Stattdessen besteht die Möglichkeit, nur die zu anzupassenden Dateien eines  vorhandenes Plugin-Skins im (Child-)Theme-Ordner zu überschreiben, dessen Name dem des Basis-Skin-Ordners (im Plugin-Verzeichnis) entspricht.
 
-Sollen bspw. nur eigene Varianten der Dateien `index.css` und `single-agency.php` zum Einsatz kommen, alles andere aber weiterhin vom Standard-Skin (Ordnername `default`) übernommen werden, ergibt sich bspw. die folgende Struktur:
+Sollen bspw. nur eigene Varianten der Dateien `index.css` und `single-agency.php` zum Einsatz kommen, alles andere aber weiterhin vom Standard-Skin (Ordnername `default`) übernommen werden, ergibt sich die folgende Struktur:
 
 #### Standard-Skin-Ordner (Plugin-Verzeichnis)
 

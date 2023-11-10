@@ -1,6 +1,6 @@
 {
   "name": "@immonex/kickstart-team",
-  "version": "1.3.5",
+  "version": "1.4.0",
   "description": "immonex Kickstart add-on for handling, linking and integrating OpenImmo-XML based real estate agent/agency information and contact forms",
   "private": true,
   "config": {

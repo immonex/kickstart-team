@@ -74,13 +74,7 @@ class Agency_Backend_Form {
 				'context'      => 'normal',
 				'priority'     => 'core',
 				'show_names'   => true,
-				'query_args'   => array(
-					'type' => array(
-						'image/gif',
-						'image/jpeg',
-						'image/png',
-					),
-				),
+				'closed'       => true,
 			)
 		);
 
@@ -196,6 +190,7 @@ class Agency_Backend_Form {
 				'context'      => 'normal',
 				'priority'     => 'core',
 				'show_names'   => true,
+				'closed'       => true,
 			)
 		);
 
@@ -274,6 +269,7 @@ class Agency_Backend_Form {
 				'context'      => 'normal',
 				'priority'     => 'core',
 				'show_names'   => true,
+				'closed'       => true,
 			)
 		);
 
@@ -289,6 +285,38 @@ class Agency_Backend_Form {
 				'desc' => '',
 				'id'   => "{$prefix}address_publishing_approved",
 				'type' => 'checkbox',
+			),
+			array(
+				'name'             => __( 'Show Agent List', 'immonex-kickstart-team' ),
+				'desc'             => '',
+				'id'               => "{$prefix}show_agent_list",
+				'type'             => 'select',
+				'show_option_none' => __( 'use default', 'immonex-kickstart-team' ),
+				'options'          => array(
+					'yes' => __( 'Yes', 'immonex-kickstart-team' ),
+					'no'  => __( 'No', 'immonex-kickstart-team' ),
+				),
+				'description'      => wp_sprintf(
+					/* translators: %1$s: plugin options URL */
+					__( 'The default can be set in the <a href="%1$s">plugin options</a> (Optional sections).', 'immonex-kickstart-team' ),
+					admin_url( 'admin.php?page=immonex-kickstart_settings&tab=addon_team&section_tab=3' )
+				),
+			),
+			array(
+				'name'             => __( 'Show Property List', 'immonex-kickstart-team' ),
+				'desc'             => '',
+				'id'               => "{$prefix}show_property_list",
+				'type'             => 'select',
+				'show_option_none' => __( 'use default', 'immonex-kickstart-team' ),
+				'options'          => array(
+					'yes' => __( 'Yes', 'immonex-kickstart-team' ),
+					'no'  => __( 'No', 'immonex-kickstart-team' ),
+				),
+				'description'      => wp_sprintf(
+					/* translators: %1$s: plugin options URL */
+					__( 'The default can be set in the <a href="%1$s">plugin options</a> (Optional sections).', 'immonex-kickstart-team' ),
+					admin_url( 'admin.php?page=immonex-kickstart_settings&tab=addon_team&section_tab=3' )
+				),
 			),
 			array(
 				'name'    => __( 'Import Folder', 'immonex-kickstart-team' ),

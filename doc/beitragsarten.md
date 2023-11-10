@@ -79,6 +79,8 @@ Die für das Impressum relevanten rechtlichen Angaben werden beim Import mit ber
 | -------- | ------------ |
 | `_inx_team_agency_auto_update`<sup>Flag</sup> | Kontaktdaten beim OpenImmo-Import aktualisieren? Voreinstellung: **aktiv** (*1*) |
 | `_inx_team_agency_address_publishing_approved`<sup>Flag</sup> | Adresse zur Veröffentlichung freigegeben? Voreinstellung: **aktiv** (*1*) |
+| `_inx_team_agency_show_agent_list` | Team-Übersicht in der [Agentur-Vollansicht](komponenten/agentur-details?id=vollansicht) anzeigen: *yes*, *no* oder *leer* (= Standardvorgabe aus den [Plugin-Optionen / Optionale Abschnitte](schnellstart/einrichtung?id=optionale-abschnitte) übernehmen) |
+| `_inx_team_agency_show_property_list` | Liste zugehöriger Immobilienangebote in der [Agentur-Vollansicht](komponenten/agentur-details?id=vollansicht) anzeigen: *yes*, *no* oder *leer* (= Standardvorgabe aus den [Plugin-Optionen / Optionale Abschnitte](schnellstart/einrichtung?id=optionale-abschnitte) übernehmen) |
 | `_immonex_import_folder` | Importordner beim Anlegen des Beitrags (sollte **nicht** bzw. nur in Ausnahmefällen manuell geändert werden) |
 | `_openimmo_anid` | zugehörige OpenImmo-Anbieter-ID (ANID), die beim Import übermittelt wurde |
 | `_immonex_is_demo`<sup>Flag</sup> | Demo/Beispieldaten? Wenn aktiv (*1*), werden entsprechende Meldungen bzw. Labels im Frontend angezeigt, zudem erfolgt kein Versand von zugehörigen Kontaktformular-Daten. |
@@ -140,6 +142,8 @@ Auch hier gilt: Anpassung/Erweiterung per [Filterfunktion](anpassung-erweiterung
 | `_inx_team_agency_id` | ID der Agentur (Beitrag), zu dem die Kontaktperson gehört (optional) |
 | `_inx_team_agent_auto_update`<sup>Flag</sup> | Kontaktdaten beim OpenImmo-Import aktualisieren? Voreinstellung: **aktiv** (*1*) |
 | `_inx_team_agent_address_publishing_approved`<sup>Flag</sup> | Adresse zur Veröffentlichung freigegeben? Voreinstellung: **aktiv** (*1*) |
+| `_inx_team_agent_show_property_list` | Liste zugehöriger Immobilienangebote in der [Kontaktpersonen-Vollansicht](komponenten/kontaktpersonen-details?id=vollansicht) anzeigen: *yes*, *no* oder *leer* (= Standardvorgabe aus den [Plugin-Optionen / Optionale Abschnitte](schnellstart/einrichtung?id=optionale-abschnitte-1) übernehmen) |
+| `_inx_team_agent_show_agency_link` | Link zur Immobilienmakler-Agentur in der [Kontaktpersonen-Vollansicht](komponenten/kontaktpersonen-details?id=vollansicht) anzeigen: *yes*, *no* oder *leer* (= Standardvorgabe aus den [Plugin-Optionen / Optionale Abschnitte](schnellstart/einrichtung?id=optionale-abschnitte-1) übernehmen) |
 | `_immonex_import_folder` | Importordner beim Anlegen des Beitrags (sollte **nicht** bzw. nur in Ausnahmefällen manuell geändert werden) |
 | `_inx_team_agent_personal_number` | Personennummer (aktuell **keine** Ausgabe oder anderweitige Verwendung vorgesehen) |
 | `_inx_team_property_trustee_id` | Immobilien-Treuhänder-ID (aktuell **keine** Ausgabe oder anderweitige Verwendung vorgesehen) |

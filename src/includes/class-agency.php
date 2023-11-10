@@ -107,20 +107,21 @@ class Agency extends Base_CPT_Post {
 		$default_elements = array_keys( $this->get_elements( $default_filter ) );
 		$convert_links    = ! empty( $atts['convert_links'] );
 		$template_data    = array(
-			'before_title'       => isset( $atts['before_title'] ) ? $atts['before_title'] : '',
-			'title'              => isset( $atts['title'] ) ? $atts['title'] : $this->post->post_title,
-			'after_title'        => isset( $atts['after_title'] ) ? $atts['after_title'] : '',
-			'link_type'          => $this->link_type,
-			'convert_links'      => $convert_links,
-			'contact_form_scope' => ! empty( $atts['contact_form_scope'] ) ? $atts['contact_form_scope'] : '',
-			'agency_id'          => $this->post->ID,
-			'is_public'          => $this->is_public,
-			'is_demo'            => get_post_meta( $this->post->ID, '_immonex_is_demo', true ),
-			'url'                => $url,
-			'agent_count'        => $this->get_agent_count(),
-			'property_count'     => $this->get_property_count(),
-			'elements'           => array(),
-			'show_all_elements'  => ! empty( $atts['elements'] ),
+			'before_title'                  => isset( $atts['before_title'] ) ? $atts['before_title'] : '',
+			'title'                         => isset( $atts['title'] ) ? $atts['title'] : $this->post->post_title,
+			'after_title'                   => isset( $atts['after_title'] ) ? $atts['after_title'] : '',
+			'link_type'                     => $this->link_type,
+			'convert_links'                 => $convert_links,
+			'contact_form_scope'            => ! empty( $atts['contact_form_scope'] ) ? $atts['contact_form_scope'] : '',
+			'agency_id'                     => $this->post->ID,
+			'is_public'                     => $this->is_public,
+			'is_demo'                       => get_post_meta( $this->post->ID, '_immonex_is_demo', true ),
+			'url'                           => $url,
+			'agent_count'                   => $this->get_agent_count(),
+			'property_count'                => $this->get_property_count(),
+			'elements'                      => array(),
+			'show_all_elements'             => ! empty( $atts['elements'] ),
+			'single_view_optional_sections' => $this->get_single_view_optional_sections( $this->post->ID ),
 		);
 
 		$requested_elements = ! empty( $atts['elements'] ) ?
@@ -1020,5 +1021,37 @@ class Agency extends Base_CPT_Post {
 			)
 		);
 	} // get_property_count
+
+	/**
+	 * Evaluate optional section display in single views.
+	 *
+	 * @since 1.3.7
+	 *
+	 * @param int|string $post_id Agency post ID.
+	 *
+	 * @return string[] Keys of optional sections to display.
+	 */
+	private function get_single_view_optional_sections( $post_id ) {
+		$sections = $this->config['agency_single_view_optional_sections'];
+
+		// Custom field name (meta key excl. prefix) => section key.
+		$option_mapping = array(
+			'show_agent_list'    => 'agents',
+			'show_property_list' => 'properties',
+		);
+
+		foreach ( $option_mapping as $cf_name => $section ) {
+			$meta_key   = '_' . $this->config['plugin_prefix'] . $this->base_name . '_' . $cf_name;
+			$meta_value = get_post_meta( $post_id, $meta_key, true );
+
+			if ( 'yes' === $meta_value && ! in_array( $section, $sections, true ) ) {
+				$sections[] = $section;
+			} elseif ( 'no' === $meta_value && in_array( $section, $sections, true ) ) {
+				$sections = array_diff( $sections, array( $section ) );
+			}
+		}
+
+		return $sections;
+	} // get_single_view_optional_sections
 
 } // Agency

@@ -18,6 +18,10 @@ Hier ein Beispiel – wie immer mit *TeamQuiwi-Skin* und dem WP-Standard-Theme *
 
 ?> Die im Screenshot enthaltene Seitennavigation bezieht sich auf die Liste der Immobilien-Angebote.
 
+### Optionale Abschnitte
+
+Die Liste der Immobilien-Angebote und die Box mit Logo und Link zur Detailseite der zugehörigen Agentur (sofern vorhanden und aktiviert) sind optional und können in der **Vollansicht** auch ausgeblendet werden – entweder individuell pro Kontaktperson im jeweiligen Backend-Bearbeitungsformular unter ***immonex → Kontaktpersonen*** in der Optionsbox *Sonstiges* oder per Übernahme der Standardvorgabe in den [Plugin-Optionen](../schnellstart/einrichtung?id=optionale-abschnitte-1) (***immonex → Einstellungen → Team <sup>ADD-ON</sup> → Kontaktpersonen***: *Optionale Abschnitte*).
+
 ## Widget
 
 `immonex Kickstart: Kontaktperson`

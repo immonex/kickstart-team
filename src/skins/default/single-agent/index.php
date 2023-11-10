@@ -139,7 +139,7 @@ $inx_skin_photo = isset( $template_data['elements']['photo'] ) ?
 		</div>
 	</div>
 
-	<?php if ( ! empty( $template_data['property_count'] ) ) : ?>
+	<?php if ( in_array( 'properties', $template_data['single_view_optional_sections'], true ) && ! empty( $template_data['property_count'] ) ) : ?>
 	<div class="inx-team-single-agent__properties uk-margin-large-bottom">
 		<?php
 		echo wp_sprintf(
@@ -161,7 +161,9 @@ $inx_skin_photo = isset( $template_data['elements']['photo'] ) ?
 	<?php endif; ?>
 
 	<?php
-	$inx_skin_agency = $template_data['agency_id'] && $template_data['is_public_agency'] ?
+	$inx_skin_agency = in_array( 'agency_link', $template_data['single_view_optional_sections'], true )
+		&& $template_data['agency_id']
+		&& $template_data['is_public_agency'] ?
 		get_post( $template_data['agency_id'] ) :
 		false;
 

@@ -10,7 +10,7 @@ namespace immonex\Kickstart\Team;
 /**
  * Main plugin class
  */
-class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_8_21\Base {
+class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_8_25\Base {
 
 	const PLUGIN_NAME                = 'immonex Kickstart Team';
 	const ADDON_NAME                 = 'Team';
@@ -18,7 +18,7 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_8_21\Base {
 	const PLUGIN_PREFIX              = 'inx_team_';
 	const PUBLIC_PREFIX              = 'inx-team-';
 	const TEXTDOMAIN                 = 'immonex-kickstart-team';
-	const PLUGIN_VERSION             = '1.3.5';
+	const PLUGIN_VERSION             = '1.4.0';
 	const PLUGIN_HOME_URL            = 'https://de.wordpress.org/plugins/immonex-kickstart-team/';
 	const PLUGIN_DOC_URLS            = array(
 		'de' => 'https://docs.immonex.de/kickstart-team/',
@@ -42,41 +42,43 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_8_21\Base {
 	 * @var mixed[]
 	 */
 	protected $plugin_options = array(
-		'plugin_version'                     => self::PLUGIN_VERSION,
-		'skin'                               => 'default',
-		'enable_agency_archive'              => true,
-		'agency_archive_title'               => 'INSERT_TRANSLATED_DEFAULT_VALUE',
-		'enable_agency_single_view'          => true,
-		'enable_agent_archive'               => true,
-		'agent_archive_title'                => 'INSERT_TRANSLATED_DEFAULT_VALUE',
-		'enable_agent_single_view'           => true,
-		'default_contact_section_adaptation' => 'replace',
-		'default_contact_section_title'      => 'auto',
-		'extended_form'                      => false,
-		'cancellation_page_id'               => 0,
-		'consent_text_cancellation'          => 'INSERT_TRANSLATED_DEFAULT_VALUE',
-		'consent_text_privacy'               => 'INSERT_TRANSLATED_DEFAULT_VALUE',
-		'form_confirmation_message'          => 'INSERT_TRANSLATED_DEFAULT_VALUE',
-		'form_confirmation_page'             => '',
-		'send_receipt_confirmation'          => false,
-		'hide_form_after_submit'             => true,
-		'fallback_form_mail_recipients'      => '',
-		'form_mail_cc_recipients'            => '',
-		'admin_mails_as_html'                => false,
-		'oi_feedback_type'                   => 'attachment',
-		'oi_feedback_auto_salutation'        => true,
-		'admin_contact_form_mail_template'   => '{% if is_property_inquiry %}' . PHP_EOL .
+		'plugin_version'                       => self::PLUGIN_VERSION,
+		'skin'                                 => 'default',
+		'enable_agency_archive'                => true,
+		'agency_archive_title'                 => 'INSERT_TRANSLATED_DEFAULT_VALUE',
+		'enable_agency_single_view'            => true,
+		'agency_single_view_optional_sections' => array( 'agents', 'properties' ),
+		'enable_agent_archive'                 => true,
+		'agent_archive_title'                  => 'INSERT_TRANSLATED_DEFAULT_VALUE',
+		'enable_agent_single_view'             => true,
+		'agent_single_view_optional_sections'  => array( 'properties', 'agency_link' ),
+		'default_contact_section_adaptation'   => 'replace',
+		'default_contact_section_title'        => 'auto',
+		'extended_form'                        => false,
+		'cancellation_page_id'                 => 0,
+		'consent_text_cancellation'            => 'INSERT_TRANSLATED_DEFAULT_VALUE',
+		'consent_text_privacy'                 => 'INSERT_TRANSLATED_DEFAULT_VALUE',
+		'form_confirmation_message'            => 'INSERT_TRANSLATED_DEFAULT_VALUE',
+		'form_confirmation_page'               => '',
+		'send_receipt_confirmation'            => false,
+		'hide_form_after_submit'               => true,
+		'fallback_form_mail_recipients'        => '',
+		'form_mail_cc_recipients'              => '',
+		'admin_mails_as_html'                  => false,
+		'oi_feedback_type'                     => 'attachment',
+		'oi_feedback_auto_salutation'          => true,
+		'admin_contact_form_mail_template'     => '{% if is_property_inquiry %}' . PHP_EOL .
 			'{{ property_title_ext_id_url }}' . PHP_EOL . PHP_EOL .
 			'{% endif %}' . PHP_EOL . '{{ form_data }}',
-		'rcpt_conf_mail_subject_general'     => 'INSERT_TRANSLATED_DEFAULT_VALUE',
-		'rcpt_conf_mail_subject_property'    => 'INSERT_TRANSLATED_DEFAULT_VALUE',
-		'rcpt_conf_mails_as_html'            => false,
-		'rcpt_conf_logo_id'                  => '',
-		'rcpt_conf_logo_position'            => 'top_center',
-		'rcpt_conf_mail_template'            => 'INSERT_TRANSLATED_DEFAULT_VALUE',
-		'rcpt_conf_mail_signature'           => '{{ site_title }}' . PHP_EOL . '{{ site_url }}',
-		'agency_post_type_slug_rewrite'      => 'INSERT_TRANSLATED_DEFAULT_VALUE',
-		'agent_post_type_slug_rewrite'       => 'INSERT_TRANSLATED_DEFAULT_VALUE',
+		'rcpt_conf_mail_subject_general'       => 'INSERT_TRANSLATED_DEFAULT_VALUE',
+		'rcpt_conf_mail_subject_property'      => 'INSERT_TRANSLATED_DEFAULT_VALUE',
+		'rcpt_conf_mails_as_html'              => false,
+		'rcpt_conf_logo_id'                    => '',
+		'rcpt_conf_logo_position'              => 'top_center',
+		'rcpt_conf_mail_template'              => 'INSERT_TRANSLATED_DEFAULT_VALUE',
+		'rcpt_conf_mail_signature'             => '{{ site_title }}' . PHP_EOL . '{{ site_url }}',
+		'agency_post_type_slug_rewrite'        => 'INSERT_TRANSLATED_DEFAULT_VALUE',
+		'agent_post_type_slug_rewrite'         => 'INSERT_TRANSLATED_DEFAULT_VALUE',
 	);
 
 	/**
@@ -571,6 +573,21 @@ and conditions can be used in the related input fields:<br><br>
 				'description' => '',
 				'tab'         => self::ADDON_TAB_ID,
 			),
+			"{$prefix}agencies"           => array(
+				'title'       => __( 'Agencies', 'immonex-kickstart-team' ),
+				'description' => '',
+				'tab'         => self::ADDON_TAB_ID,
+			),
+			"{$prefix}agents"             => array(
+				'title'       => __( 'Agents', 'immonex-kickstart-team' ),
+				'description' => '',
+				'tab'         => self::ADDON_TAB_ID,
+			),
+			"{$prefix}property_details"   => array(
+				'title'       => __( 'Property Details', 'immonex-kickstart-team' ),
+				'description' => '',
+				'tab'         => self::ADDON_TAB_ID,
+			),
 			"{$prefix}contact_form"       => array(
 				'title'       => __( 'Contact Form', 'immonex-kickstart-team' ),
 				'description' => '',
@@ -641,8 +658,8 @@ and conditions can be used in the related input fields:<br><br>
 			array(
 				'name'    => 'enable_agency_archive',
 				'type'    => 'checkbox',
-				'label'   => __( 'Agency Archive', 'immonex-kickstart-team' ),
-				'section' => "{$prefix}layout",
+				'label'   => __( 'Archive', 'immonex-kickstart-team' ),
+				'section' => "{$prefix}agencies",
 				'args'    => array(
 					'plugin_slug' => $this->plugin_slug,
 					'option_name' => $this->plugin_options_name,
@@ -658,8 +675,8 @@ and conditions can be used in the related input fields:<br><br>
 			array(
 				'name'    => 'agency_archive_title',
 				'type'    => 'text',
-				'label'   => __( 'Agency Archive Title', 'immonex-kickstart-team' ),
-				'section' => "{$prefix}layout",
+				'label'   => __( 'Archive Title', 'immonex-kickstart-team' ),
+				'section' => "{$prefix}agencies",
 				'args'    => array(
 					'plugin_slug' => $this->plugin_slug,
 					'option_name' => $this->plugin_options_name,
@@ -670,8 +687,8 @@ and conditions can be used in the related input fields:<br><br>
 			array(
 				'name'    => 'enable_agency_single_view',
 				'type'    => 'checkbox',
-				'label'   => __( 'Agency Single View', 'immonex-kickstart-team' ),
-				'section' => "{$prefix}layout",
+				'label'   => __( 'Single View', 'immonex-kickstart-team' ),
+				'section' => "{$prefix}agencies",
 				'args'    => array(
 					'plugin_slug' => $this->plugin_slug,
 					'option_name' => $this->plugin_options_name,
@@ -685,10 +702,34 @@ and conditions can be used in the related input fields:<br><br>
 				),
 			),
 			array(
+				'name'    => 'agency_single_view_optional_sections',
+				'type'    => 'checkbox_group',
+				'label'   => __( 'Optional Sections', 'immonex-kickstart-team' ),
+				'section' => "{$prefix}agencies",
+				'args'    => array(
+					'plugin_slug' => $this->plugin_slug,
+					'option_name' => $this->plugin_options_name,
+					'description' => __( 'Enable or disable sections to appear in addition to the contact information in the <strong>single views</strong> (depending on the skin).', 'immonex-kickstart-team' )
+						. '<br>('
+						. wp_sprintf(
+							/* translators: %1$s = post type backend URL, %2$s = post type name */
+							__( 'This <strong>default</strong> can be overridden by the corresponding individual setting of each <a href="%1$s">%2$s record</a>.', 'immonex-kickstart-team' ),
+							admin_url( 'edit.php?post_type=inx_agency' ),
+							__( 'agency', 'immonex-kickstart-team' )
+						)
+						. ')',
+					'options'     => array(
+						'agents'     => __( 'Agents (Team)', 'immonex-kickstart-team' ),
+						'properties' => __( 'related Real Estate Offers', 'immonex-kickstart-team' ),
+					),
+					'value'       => $this->plugin_options['agency_single_view_optional_sections'],
+				),
+			),
+			array(
 				'name'    => 'enable_agent_archive',
 				'type'    => 'checkbox',
-				'label'   => __( 'Agent Archive', 'immonex-kickstart-team' ),
-				'section' => "{$prefix}layout",
+				'label'   => __( 'Archive', 'immonex-kickstart-team' ),
+				'section' => "{$prefix}agents",
 				'args'    => array(
 					'plugin_slug' => $this->plugin_slug,
 					'option_name' => $this->plugin_options_name,
@@ -704,8 +745,8 @@ and conditions can be used in the related input fields:<br><br>
 			array(
 				'name'    => 'agent_archive_title',
 				'type'    => 'text',
-				'label'   => __( 'Agent Archive Title', 'immonex-kickstart-team' ),
-				'section' => "{$prefix}layout",
+				'label'   => __( 'Archive Title', 'immonex-kickstart-team' ),
+				'section' => "{$prefix}agents",
 				'args'    => array(
 					'plugin_slug' => $this->plugin_slug,
 					'option_name' => $this->plugin_options_name,
@@ -716,8 +757,8 @@ and conditions can be used in the related input fields:<br><br>
 			array(
 				'name'    => 'enable_agent_single_view',
 				'type'    => 'checkbox',
-				'label'   => __( 'Agent Single View', 'immonex-kickstart-team' ),
-				'section' => "{$prefix}layout",
+				'label'   => __( 'Single View', 'immonex-kickstart-team' ),
+				'section' => "{$prefix}agents",
 				'args'    => array(
 					'plugin_slug' => $this->plugin_slug,
 					'option_name' => $this->plugin_options_name,
@@ -731,10 +772,34 @@ and conditions can be used in the related input fields:<br><br>
 				),
 			),
 			array(
+				'name'    => 'agent_single_view_optional_sections',
+				'type'    => 'checkbox_group',
+				'label'   => __( 'Optional Sections', 'immonex-kickstart-team' ),
+				'section' => "{$prefix}agents",
+				'args'    => array(
+					'plugin_slug' => $this->plugin_slug,
+					'option_name' => $this->plugin_options_name,
+					'description' => __( 'Enable or disable sections to appear in addition to the contact information in the <strong>single views</strong> (depending on the skin).', 'immonex-kickstart-team' )
+						. '<br>('
+						. wp_sprintf(
+							/* translators: %1$s = post type backend URL, %2$s = post type name */
+							__( 'This <strong>default</strong> can be overridden by the corresponding individual setting of each <a href="%1$s">%2$s record</a>.', 'immonex-kickstart-team' ),
+							admin_url( 'edit.php?post_type=inx_agent' ),
+							__( 'agent', 'immonex-kickstart-team' )
+						)
+						. ')',
+					'options'     => array(
+						'properties'  => __( 'related Real Estate Offers', 'immonex-kickstart-team' ),
+						'agency_link' => __( 'Agency Link (More about…)', 'immonex-kickstart-team' ),
+					),
+					'value'       => $this->plugin_options['agent_single_view_optional_sections'],
+				),
+			),
+			array(
 				'name'    => 'default_contact_section_adaptation',
 				'type'    => 'select',
 				'label'   => __( 'Default Contact Section Adaptation', 'immonex-kickstart-team' ),
-				'section' => "{$prefix}layout",
+				'section' => "{$prefix}property_details",
 				'args'    => array(
 					'plugin_slug' => $this->plugin_slug,
 					'option_name' => $this->plugin_options_name,
@@ -751,7 +816,7 @@ and conditions can be used in the related input fields:<br><br>
 				'name'    => 'default_contact_section_title',
 				'type'    => 'text',
 				'label'   => __( 'Default Contact Section Headline', 'immonex-kickstart-team' ),
-				'section' => "{$prefix}layout",
+				'section' => "{$prefix}property_details",
 				'args'    => array(
 					'plugin_slug' => $this->plugin_slug,
 					'option_name' => $this->plugin_options_name,

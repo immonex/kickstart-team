@@ -2,8 +2,8 @@
 Contributors: immonex
 Tags: immobilien, openimmo, immobilienmakler, immomakler, realestate, agent, agency, team, immonex
 Requires at least: 4.7
-Tested up to: 6.4
-Stable Tag: 1.3.5
+Tested up to: 6.4.1
+Stable Tag: 1.4.0
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -19,7 +19,7 @@ Widgets for displaying agent/agency contact data and forms in property detail pa
 tl;dr
 - See it in action at [base.immonex.one](https://base.immonex.one/unser-team/)!
 - Install [immonex Kickstart](https://wordpress.org/plugins/immonex-kickstart/) first.
-- Download and install a compatible OpenImmo import plugin [2] and example data at [immonex.dev](https://immonex.dev/) (free of charge for testing/development).
+- Install a compatible OpenImmo import plugin [2] and import example data (both available free of charge at [immonex.dev](https://immonex.dev/) for testing/development).
 - Read the [docs](https://docs.immonex.de/kickstart-team/) for detailed usage/customization instructions.
 
 = immonex® =
@@ -63,7 +63,7 @@ The following plugins should be installed first:
 1. WordPress backend: *Plugins > Add New > Upload Plugin* [1]
 2. Select the plugin ZIP file and click the install button.
 3. Activate the plugin after successful installation.
-4. Check/Modify the default plugin options under *immonex > Settings > Kickstart Team [Add-on]*.
+4. Check/Modify the default plugin options under *immonex > Settings > Team [Add-on]*.
 5. OPTIONAL: Add Kickstart Team widgets to sidebars or shortcodes to arbitrary pages or page builder elements as needed, e.g. for embedding agent/agency lists or single views.
 6. OPTIONAL: Reimport/Update [2] all properties (preferably full import) to auto-create agents and agency posts.
 7. OPTIONAL: Complete/Extend the data of the agents and agencies that have been created automatically.
@@ -79,7 +79,7 @@ Agency Single View (Contact data/form, related agents & properties): `[inx-team-
 
 [1] Alternative: Unzip the plugin ZIP archive, copy it to the folder `wp-content/plugins` and activate the plugin in the WordPress backend under *Plugins > Installed Plugins* afterwards.
 
-[2] Current and fully functional versions of premium immonex plugins as well as OpenImmo demo data are available **free of charge** at the [immonex Developer Portal](https://immonex.dev/) for testing/development purposes.
+[2] Current and fully functional versions of premium immonex plugins as well as OpenImmo demo data are available **free of charge** at the [immonex Developer Portal](https://immonex.dev/) for testing/development and demonstration purposes.
 
 = Documentation & Development =
 
@@ -106,6 +106,11 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 
 == Changelog ==
 
+= 1.4.0 =
+* Release date: 2023-11-10
+* Added plugin and post options for enabling/disabling optional sections in agency and agent single views.
+* Updated dependencies (improved WordPress 6.4 compatibility).
+
 = 1.3.5 =
 * Release date: 2023-09-25
 * Added filter hook for modifying contact form mail recipients.
@@ -119,13 +124,4 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 * Fixed an issue regarding custom contact form templates.
 * Updated dependencies.
 
-= 1.3.0 =
-* Release date: 2022-12-08
-* Added redirect option after contact form data submission.
-* Added options to enable/disable agency and agent archive and single views.
-* Added agent/agency data retrieval filter hooks.
-* Improved contact form anti-spam functionality (honeypot & time checks).
-* Improved WPML/Polylang compatibility in combination with other plugins that modify permalinks.
-* Fixed some minor bugs.
-
-See changelog.txt for complete version history.
+See changelog.txt for the complete version history.

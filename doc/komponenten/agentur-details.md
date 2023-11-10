@@ -20,6 +20,10 @@ Hier ein Beispiel – wie immer mit *TeamQuiwi-Skin* und dem WP-Standard-Theme *
 
 ?> Die im Screenshot enthaltene Seitennavigation bezieht sich auf die Liste der Immobilien-Angebote.
 
+### Optionale Abschnitte
+
+Die Team-Übersicht und die Liste der Immobilien-Angebote sind optional und können in der **Vollansicht** auch ausgeblendet werden – entweder individuell pro Agentur im jeweiligen Backend-Bearbeitungsformular unter ***immonex → Agenturen*** in der Optionsbox *Sonstiges* oder per Übernahme der Standardvorgabe in den [Plugin-Optionen](../schnellstart/einrichtung?id=optionale-abschnitte) (***immonex → Einstellungen → Team <sup>ADD-ON</sup> → Agenturen***: *Optionale Abschnitte*).
+
 ## Widget
 
 `immonex Kickstart: Agentur`

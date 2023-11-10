@@ -10,7 +10,7 @@ So sieht die Agentur-Archivseite im Website-Frontend mit dem im Plugin enthalten
 
 ![Immobilienmakler-Agenturen-Archivseite im Frontend](../assets/scst-fe-agency-archive.gif)
 
-Der **Seiten- und Dokumenttitel** der Archivseiten kann in den Plugin-Optionen (***immonex → Einstellungen → Team [Add-on]: Agentur-Archiv-Titel***) festgelegt werden.
+Der **Seiten- und Dokumenttitel** der Archivseiten kann in den Plugin-Optionen (***immonex → Einstellungen → Team <sup>ADD-ON</sup>***: *Agentur-Archiv-Titel*) festgelegt werden.
 
 ## Shortcode
 

@@ -22,21 +22,41 @@ Das aktuell mitgelieferte [Skin "TeamQuiwi"](../anpassung-erweiterung/standard-s
 
 Detaillierte Infos zur Anpassung vorhandener und Entwicklung eigener Skins sind unter [Anpassung & Erweiterung](../anpassung-erweiterung/skins) zu finden.
 
-#### Agentur-Archiv
+### Agenturen
+
+#### Archiv<sup>3</sup>
 
 In den [Standard-Archivseiten für Immobilienmakler-Agenturen](../komponenten/agentur-listen?id=archiv) werden alle Beiträge der entsprechenden [Beitragsart](../beitragsarten) (CPT *inx_agency*) aufgelistet, sofern diese Option nicht deaktiviert wird.
 
 Agenturlisten, die per [Shortcode](../komponenten/agentur-listen?id=shortcode) eingebunden werden, sind hiervon nicht betroffen.
 
-#### Agentur-Einzelansicht
+#### Einzelansicht<sup>3</sup>
 
 Analog zur Archiv- kann auch die [Standard-Einzelansicht](../komponenten/agentur-details?id=vollansicht) (nachfolgend auch *Single Template* oder *Detailansicht*) der Agenturbeiträge deaktiviert werden.
 
 Auch hier gilt: Diese Option hat keine Auswirkungen auf die shortcode- oder widgetbasierte Einbindung von Agenturdaten.
 
-#### Kontaktpersonen-Archiv/Einzelansicht
+#### Optionale Abschnitte
+
+In den [Agentur-Einzelansichten](../komponenten/agentur-details?id=vollansicht) sind standardmäßig Listen-Abschnitte mit den zugehörigen Kontaktpersonen und Immobilien-Angeboten enthalten.
+
+Diese können auch ausgeblendet werden, sofern das vom eingesetzten [Skin](../anpassung-erweiterung/skins) unterstützt wird. (Beim aktuellen, im Plugin enthaltenen [Standard-Skin](../anpassung-erweiterung/standard-skin) ist das immer der Fall.)
+
+Diese Option stellt hierbei die **Standardvorgabe** dar, die bei Bedarf individuell pro Agentur angepasst werden kann (Optionsbox *Sonstiges* im jeweiligen Backend-Bearbeitungsformular unter ***immonex → Agenturen***).
+
+### Kontaktpersonen
+
+#### Archiv/Einzelansicht<sup>3</sup>
 
 Die [Archivseiten](../komponenten/kontaktpersonen-listen?id=archivseite) und [Detailansichten](../komponenten/kontaktpersonen-details) der Immobilienmakler/innen (einzelne Kontaktpersonen, CPT *inx_agent*) können ebenso wie der Agenturen selektiv aktiviert oder deaktiviert werden.
+
+#### Optionale Abschnitte
+
+In den [Kontaktpersonen-Einzelansichten](../komponenten/kontaktpersonen-details?id=vollansicht) sind standardmäßig eine Liste mit den zugehörigen Immobilien-Angeboten sowie ein Link zur Agenturseite (sofern vorhanden und aktiviert) enthalten.
+
+Wie bei den Agenturdetails ist auch hier eine Ausblendung möglich sowie das Überschreiben dieser **Standardvorgabe** pro Kontaktperson möglich (Optionsbox *Sonstiges* im betr. Backend-Bearbeitungsformular unter ***immonex → Kontaktpersonen***).
+
+### Objektdetails
 
 #### Anpassung des Standard-Kontaktabschnitts
 
@@ -143,3 +163,5 @@ Der eigentliche Inhalt der Eingangsbestätigung sowie die (bei Bedarf) ergänzen
 <sup>1</sup> Beim Versand von HTML-Mails kommt ein **Rahmentemplate** zum Einsatz, das neben einem Abschnitt für die eigentlichen, per Formular übermittelten Inhalte auch Bereiche für die Einbettung eines Logos sowie einer Signatur enthält. Eine alternative, benutzerdefinierte Rahmenvorlage kann per Filterfunktion (Hook: [`immonex-kickstart-team_html_mail_twig_template_file`](../anpassung-erweiterung/immonex-kickstart-team-html-mail-twig-template-file)) definiert werden.
 
 <sup>2</sup> Detaillierte Infos zur Erstellung von *Twig*-Templates sind in der [Dokumentation](https://twig.symfony.com/doc/3.x/templates) hierzu verfügbar.
+
+<sup>3</sup> Diese Optionen waren vor Version 1.4 im Tab *Layout & Design* enthalten.
