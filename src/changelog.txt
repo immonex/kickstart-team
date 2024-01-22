@@ -1,5 +1,11 @@
 == Changelog ==
 
+= 1.4.4 =
+* Release date: 2024-01-22
+* Resolved Twig issues related to third-party plugins.
+* Fixed translation file selection (beta versions only).
+* Updated dependencies (improved compatibility with current WP/PHP versions).
+
 = 1.4.0 =
 * Release date: 2023-11-10
 * Added plugin and post options for enabling/disabling optional sections in agency and agent single views.

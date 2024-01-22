@@ -244,7 +244,7 @@ class Contact_Form {
 		}
 		$subject = apply_filters(
 			'inx_team_contact_form_notification_subject',
-			filter_var( $subject, FILTER_SANITIZE_STRING ),
+			htmlspecialchars( $subject, ENT_NOQUOTES ),
 			'admin',
 			$template_data
 		);
@@ -744,7 +744,7 @@ class Contact_Form {
 			$this->config['rcpt_conf_mail_subject_general'];
 		$subject = apply_filters(
 			'inx_team_contact_form_notification_subject',
-			filter_var( $subject, FILTER_SANITIZE_STRING ),
+			htmlspecialchars( $subject, ENT_NOQUOTES ),
 			'prospect',
 			$template_data
 		);
