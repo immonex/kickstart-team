@@ -106,6 +106,10 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 
 == Changelog ==
 
+= 1.x.x =
+* Release date: ?
+* Updated inquiry/contact form withdrawal note.
+
 = 1.4.4 =
 * Release date: 2024-01-22
 * Resolved Twig issues related to third-party plugins.
@@ -116,12 +120,5 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 * Release date: 2023-11-10
 * Added plugin and post options for enabling/disabling optional sections in agency and agent single views.
 * Updated dependencies (improved WordPress 6.4 compatibility).
-
-= 1.3.5 =
-* Release date: 2023-09-25
-* Added filter hook for modifying contact form mail recipients.
-* Disabled user edit form extensions for non-admin users.
-* Improved cache busting of CSS/JS files.
-* Updated dependencies (improved WordPress 6.3/6.4 and PHP 8.2 compatibility).
 
 See changelog.txt for the complete version history.

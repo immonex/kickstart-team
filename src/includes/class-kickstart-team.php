@@ -123,7 +123,7 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_9_5\Base {
 						$update_options                       = true;
 						break;
 					case 'consent_text_cancellation':
-						$this->plugin_options[ $option_name ] = __( 'I have read the [cancellation_policy] and confirm that I have been informed about its legal effects. I agree that the real estate agency services may be provided before the cancellation period expires.', 'immonex-kickstart-team' );
+						$this->plugin_options[ $option_name ] = __( "According to the [cancellation_policy], I expressly wish that the real estate agency's services can be provided before the statutory cancellation period expires. I am aware that I thereby lose my right of cancellation if the contract is fully fulfilled.", 'immonex-kickstart-team' );
 						$update_options                       = true;
 						break;
 					case 'consent_text_privacy':

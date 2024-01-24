@@ -1,14 +1,14 @@
-# Copyright (C) 2023 immonex Kickstart Team
+# Copyright (C) 2024 immonex Kickstart Team
 # This file is distributed under the same license as the immonex Kickstart Team package.
 msgid ""
 msgstr ""
-"Project-Id-Version: immonex Kickstart Team 1.3.7-beta\n"
+"Project-Id-Version: immonex Kickstart Team 1.4.4\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/immonex-kickstart-team\n"
-"POT-Creation-Date: 2023-11-10 11:35:34+00:00\n"
+"POT-Creation-Date: 2024-01-24 09:18:48+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2023-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2024-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
@@ -541,9 +541,10 @@ msgstr ""
 
 #: includes/class-kickstart-team.php:126
 msgid ""
-"I have read the [cancellation_policy] and confirm that I have been informed "
-"about its legal effects. I agree that the real estate agency services may be "
-"provided before the cancellation period expires."
+"According to the [cancellation_policy], I expressly wish that the real "
+"estate agency's services can be provided before the statutory cancellation "
+"period expires. I am aware that I thereby lose my right of cancellation if "
+"the contract is fully fulfilled."
 msgstr ""
 
 #: includes/class-kickstart-team.php:130
