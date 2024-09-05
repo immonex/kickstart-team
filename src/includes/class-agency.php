@@ -233,12 +233,24 @@ class Agency extends Base_CPT_Post {
 		}
 
 		if ( ! empty( $data['logo'] ) ) {
-			$logo_id = $this->replace_logo( $data['logo'] );
+			$is_url = false !== strpos( $data['logo'], '://' );
+
+			if ( $is_url ) {
+				$file = $data['logo'];
+				$dir  = '';
+			} else {
+				$file = pathinfo( $data['logo'], PATHINFO_BASENAME );
+				$dir  = pathinfo( $data['logo'], PATHINFO_DIRNAME );
+			}
+
+			$logo_id = $this->replace_logo( $file, $dir );
 
 			if ( $logo_id && ! is_wp_error( $logo_id ) ) {
 				set_post_thumbnail( $this->post->ID, $logo_id );
 			}
 		}
+
+		update_post_meta( $this->post->ID, "{$this->prefix}update_checksum", 0 );
 	} // update
 
 	/**
@@ -248,8 +260,9 @@ class Agency extends Base_CPT_Post {
 	 *
 	 * @param \SimpleXMLElement $anbieter Offerer XML object.
 	 * @param \SimpleXMLElement $immobilie Property XML object.
+	 * @param string            $import_dir Full import directory path.
 	 */
-	public function update_by_openimmo_xml( $anbieter, $immobilie ) {
+	public function update_by_openimmo_xml( $anbieter, $immobilie, $import_dir ) {
 		if ( ! $this->post ) {
 			return;
 		}
@@ -343,6 +356,19 @@ class Agency extends Base_CPT_Post {
 				update_post_meta( $this->post->ID, $meta_key, $value );
 			}
 		}
+
+		$agency_logo = $anbieter->xpath( 'anhang[@gruppe="ANBIETERLOGO"]' );
+
+		if ( $agency_logo ) {
+			$logo_id = $this->replace_logo( $agency_logo[0], $import_dir );
+
+			if ( $logo_id && ! is_wp_error( $logo_id ) ) {
+				set_post_thumbnail( $this->post->ID, $logo_id );
+			}
+		}
+
+		$xml_checksum = $this->get_checksum( $anbieter );
+		update_post_meta( $this->post->ID, "{$this->prefix}update_checksum", $xml_checksum );
 	} // update_by_openimmo_xml
 
 	/**
@@ -753,30 +779,43 @@ class Agency extends Base_CPT_Post {
 	} // get_element_value
 
 	/**
-	 * Replace the agency's logo file (thumbnail/featured image) if different
-	 * than the given (new) one.
+	 * Replace the agency's logo file (thumbnail/featured image) if different than
+	 * the given (new) one.
 	 *
-	 * @since 1.0.0
+	 * @since 1.4.7-beta
 	 *
-	 * @param string $path_or_url Local path or URL of a (possibly) new logo file.
+	 * @param \SimpleXMLElement|string $logo Agency Logo XML element, local path or URL
+	 *                                       of a (possibly) new logo file.
+	 * @param string                   $dir Directory (for local files, optional).
 	 *
-	 * @return int|bool Attachment ID of new or existing logo, false on error.
+	 * @return int|bool|\WP_Error Attachment ID of new or existing photo, false or WP_Error on error.
 	 */
-	public function replace_logo( $path_or_url ) {
+	public function replace_logo( $logo, $dir = '' ) {
 		if ( ! $this->post ) {
 			return false;
 		}
 
-		$is_remote = false !== strpos( $path_or_url, '://' );
+		if ( is_object( $logo ) ) {
+			$path_or_url = (string) $logo->daten->pfad;
+			$is_remote   = 'REMOTE' === strtoupper( (string) $logo['location'] )
+				|| false !== strpos( $path_or_url, '://' );
+		} else {
+			$path_or_url = $logo;
+			$is_remote   = false !== strpos( $path_or_url, '://' );
+		}
 
+		if ( ! $is_remote && ! $dir ) {
+			return false;
+		}
 		if ( $is_remote ) {
 			if ( ! $this->utils['general']->remote_file_exists( $path_or_url ) ) {
-				// Remote image file or URL not found or accessible.
+				// Remote image file not found or accessible.
 				return false;
 			}
 
 			$filesize = (int) $this->utils['general']->get_remote_filesize( $path_or_url );
 		} else {
+			$path_or_url = "{$dir}/{$path_or_url}";
 			if ( ! file_exists( $path_or_url ) ) {
 				// Local image file not found or accessible.
 				return false;
@@ -802,9 +841,14 @@ class Agency extends Base_CPT_Post {
 		}
 
 		if ( $is_remote ) {
+			$temp = download_url( $path_or_url );
+			if ( is_wp_error( $temp ) ) {
+				return $temp;
+			}
+
 			$file_data = array(
 				'name'     => basename( $path_or_url ),
-				'tmp_name' => $path_or_url,
+				'tmp_name' => $temp,
 			);
 		} else {
 			$temp = tmpfile();
@@ -817,7 +861,15 @@ class Agency extends Base_CPT_Post {
 			);
 		}
 
-		return media_handle_sideload( $file_data, $this->post->ID, $this->post->post_title );
+		$desc   = $this->post->post_title . ' ' . __( 'Logo', 'immonex-kickstart-team' );
+		$result = media_handle_sideload( $file_data, $this->post->ID, $desc );
+
+		if ( ! empty( $temp ) && is_string( $temp ) && file_exists( $temp ) ) {
+			// @codingStandardsIgnoreLine
+			@unlink( $temp );
+		}
+
+		return $result;
 	} // replace_logo
 
 	/**
@@ -890,6 +942,36 @@ class Agency extends Base_CPT_Post {
 
 		return apply_filters( 'inx_team_agency_networks', $networks );
 	} // get_networks
+
+	/**
+	 * Calculate a simple checksum based on the length of serialized core
+	 * agency XML data.
+	 *
+	 * @since 1.4.7-beta
+	 *
+	 * @param \SimpleXMLElement $anbieter Offerer XML object.
+	 *
+	 * @return int Checksum.
+	 */
+	public function get_checksum( $anbieter ) {
+		$elements = array(
+			'anbieternr',
+			'firma',
+			'openimmo_anid',
+			'anhang',
+			'impressum',
+			'impressum_strukt',
+		);
+
+		$checksum = 0;
+		foreach ( $elements as $element ) {
+			if ( $anbieter->{$element} ) {
+				$checksum += strlen( $anbieter->{$element}->asXML() );
+			}
+		}
+
+		return $checksum;
+	} // get_checksum
 
 	/**
 	 * Special getter method for the agency's business/social network URLs.

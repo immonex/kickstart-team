@@ -19,6 +19,7 @@ Die folgenden Aufrufe der *Render-Action* erfolgen typischerweise in einer **Tem
 
 ```php
 // Standard-Listen-Template innerhalb des regulären Archiv-Templates der Agentur-Beitragsart rendern
+
 do_action(
 	'inx_team_render_agency_list',
 	[

@@ -20,6 +20,7 @@ Die folgenden Aufrufe der *Render-Action* erfolgen typischerweise in einer **Tem
 
 ```php
 // Standard-Detail-Template innerhalb des regulären Single-Templates der Agentur-CPT rendern (automatische Ermittlung der Beitrags-ID)
+
 do_action(
 	'inx_team_render_single_agency',
 	false,

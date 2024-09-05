@@ -225,7 +225,7 @@ class Agent_Hooks extends Base_CPT_Hooks {
 
 		$initial_agent_meta = array(
 			'_immonex_import_folder'     => addslashes( $core_data['import_folder'] ),
-			'_immonex_is_demo'           => $core_data['is_demo'],
+			'_immonex_is_demo'           => ! empty( $core_data['is_demo'] ),
 			"{$agent_prefix}auto_update" => true,
 		);
 
@@ -237,7 +237,7 @@ class Agent_Hooks extends Base_CPT_Hooks {
 		if ( $agent_id ) {
 			$agent->update_by_openimmo_xml( $immobilie, $import_dir );
 
-			$agency_id = $this->determine_or_create_agency( $agent_id, $core_data, $immobilie );
+			$agency_id = $this->determine_or_create_agency( $agent_id, $core_data, $immobilie, $import_dir );
 			if ( $agency_id ) {
 				update_post_meta( $agent_id, '_inx_team_agency_id', $agency_id );
 			}
@@ -301,11 +301,14 @@ class Agent_Hooks extends Base_CPT_Hooks {
 			return $agent_id;
 		}
 
-		$agent_prefix = '_' . $this->config['plugin_prefix'] . 'agent_';
-		$agency_id    = get_post_meta( $agent_id, '_inx_team_agency_id', true );
-		$agency_hooks = ! empty( $this->config['plugin']->cpt_hooks['Agency_Hooks'] ) ?
+		$agent_prefix  = '_' . $this->config['plugin_prefix'] . 'agent_';
+		$agency_prefix = '_' . $this->config['plugin_prefix'] . 'agency_';
+		$agency_id     = get_post_meta( $agent_id, '_inx_team_agency_id', true );
+		$agency_hooks  = ! empty( $this->config['plugin']->cpt_hooks['Agency_Hooks'] ) ?
 			$this->config['plugin']->cpt_hooks['Agency_Hooks'] : false;
-		$xml_checksum = strlen( $immobilie->kontaktperson->asXML() );
+
+		$agent_checksum  = strlen( $immobilie->kontaktperson->asXML() );
+		$agency_checksum = apply_filters( 'inx_team_get_agency_checksum', 0, $this->anbieter );
 
 		if (
 			$agency_id
@@ -324,7 +327,8 @@ class Agent_Hooks extends Base_CPT_Hooks {
 			! get_post_meta( $agent_id, "{$agent_prefix}auto_update", true )
 			|| (
 				$agency_id
-				&& (int) get_post_meta( $agent_id, "{$agent_prefix}update_checksum", true ) === $xml_checksum
+				&& (int) get_post_meta( $agent_id, "{$agent_prefix}update_checksum", true ) === $agent_checksum
+				&& (int) get_post_meta( $agency_id, "{$agent_prefix}update_checksum", true ) === $agency_checksum
 			)
 		) {
 			return $agent_id;
@@ -339,7 +343,7 @@ class Agent_Hooks extends Base_CPT_Hooks {
 			$agent->update_by_openimmo_xml( $immobilie, $import_dir );
 		}
 
-		$agency_id = $this->determine_or_create_agency( $agent_id, $core_data, $immobilie );
+		$agency_id = $this->determine_or_create_agency( $agent_id, $core_data, $immobilie, $import_dir );
 
 		if ( $agency_id ) {
 			update_post_meta( $agent_id, '_inx_team_agency_id', $agency_id );
@@ -449,10 +453,11 @@ class Agent_Hooks extends Base_CPT_Hooks {
 	 * @param int|string        $agent_id Agent post ID.
 	 * @param mixed[]           $core_data Import meta data.
 	 * @param \SimpleXMLElement $immobilie Property XML object.
+	 * @param string            $import_dir Full import directory path.
 	 *
 	 * @return int|string|bool Agency post ID, false on failure.
 	 */
-	private function determine_or_create_agency( $agent_id, $core_data, $immobilie ) {
+	private function determine_or_create_agency( $agent_id, $core_data, $immobilie, $import_dir ) {
 		$agency_hooks = ! empty( $this->config['plugin']->cpt_hooks['Agency_Hooks'] ) ?
 			$this->config['plugin']->cpt_hooks['Agency_Hooks'] : false;
 
@@ -519,7 +524,10 @@ class Agent_Hooks extends Base_CPT_Hooks {
 
 		if (
 			$agency->post
-			&& ! get_post_meta( $agency->post->ID, "{$agency_prefix}auto_update", true )
+			&& (
+				! get_post_meta( $agency->post->ID, "{$agency_prefix}auto_update", true )
+				|| (int) get_post_meta( $agency_id, "{$agent_prefix}update_checksum", true ) === $agency->get_checksum( $this->anbieter )
+			)
 		) {
 			return $agency_id;
 		}
@@ -535,7 +543,7 @@ class Agent_Hooks extends Base_CPT_Hooks {
 
 			$initial_agency_meta = array(
 				'_immonex_import_folder'      => addslashes( $core_data['import_folder'] ),
-				'_immonex_is_demo'            => $core_data['is_demo'],
+				'_immonex_is_demo'            => ! empty( $core_data['is_demo'] ),
 				"{$agency_prefix}auto_update" => true,
 			);
 
@@ -551,7 +559,7 @@ class Agent_Hooks extends Base_CPT_Hooks {
 
 		if ( $agency->post ) {
 			// Update an existing or newly created agency post.
-			$agency->update_by_openimmo_xml( $this->anbieter, $immobilie );
+			$agency->update_by_openimmo_xml( $this->anbieter, $immobilie, $import_dir );
 		}
 
 		return $agency_id;

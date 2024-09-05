@@ -63,6 +63,7 @@ class Agency_Hooks extends Base_CPT_Hooks {
 		 */
 
 		add_filter( 'inx_team_get_agency_template_data', array( $this, 'get_agency_data' ), 10, 2 );
+		add_filter( 'inx_team_get_agency_checksum', array( $this, 'get_agency_checksum' ), 10, 2 );
 		add_filter( 'inx_agency_has_single_view', array( $this, 'has_single_view' ) );
 
 		// Filters for "manually" creating and updating agencies.
@@ -264,9 +265,10 @@ class Agency_Hooks extends Base_CPT_Hooks {
 		);
 
 		$args = array(
-			'post_type'   => $this->post_type_name,
-			'numberposts' => -1,
-			'meta_query'  => $meta_query,
+			'post_type'        => $this->post_type_name,
+			'numberposts'      => -1,
+			'meta_query'       => $meta_query,
+			'suppress_filters' => false,
 		);
 
 		if ( (int) $author_id ) {
@@ -463,6 +465,23 @@ class Agency_Hooks extends Base_CPT_Hooks {
 
 		return $agency ? $agency->get_template_data() : array();
 	} // get_agency_data
+
+	/**
+	 * Return a checksum for the given agency XML data
+	 * (proxy filter callback).
+	 *
+	 * @since 1.4.7-beta
+	 *
+	 * @param int               $checksum Checksum value.
+	 * @param \SimpleXMLElement $anbieter Offerer XML object.
+	 *
+	 * @return int Checksum.
+	 */
+	public function get_agency_checksum( $checksum, $anbieter ) {
+		$agency = $this->get_post_instance();
+
+		return $agency ? $agency->get_checksum( $anbieter ) : 0;
+	} // get_agency_checksum
 
 	/**
 	 * Return agency post default single view activation option value (filter callback).

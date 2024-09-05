@@ -10,7 +10,7 @@ namespace immonex\Kickstart\Team;
 /**
  * Main plugin class
  */
-class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_9_5\Base {
+class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_9_21\Base {
 
 	const PLUGIN_NAME                = 'immonex Kickstart Team';
 	const ADDON_NAME                 = 'Team';
@@ -18,7 +18,7 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_9_5\Base {
 	const PLUGIN_PREFIX              = 'inx_team_';
 	const PUBLIC_PREFIX              = 'inx-team-';
 	const TEXTDOMAIN                 = 'immonex-kickstart-team';
-	const PLUGIN_VERSION             = '1.4.4';
+	const PLUGIN_VERSION             = '1.5.0';
 	const PLUGIN_HOME_URL            = 'https://de.wordpress.org/plugins/immonex-kickstart-team/';
 	const PLUGIN_DOC_URLS            = array(
 		'de' => 'https://docs.immonex.de/kickstart-team/',
@@ -62,6 +62,8 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_9_5\Base {
 		'form_confirmation_page'               => '',
 		'send_receipt_confirmation'            => false,
 		'hide_form_after_submit'               => true,
+		'form_mail_sender_name'                => '',
+		'form_mail_sender_email'               => '',
 		'fallback_form_mail_recipients'        => '',
 		'form_mail_cc_recipients'              => '',
 		'admin_mails_as_html'                  => false,
@@ -96,6 +98,9 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_9_5\Base {
 		// Set up custom post types, taxonomies and backend menus.
 		new WP_Bootstrap( $this->bootstrap_data, $this );
 
+		// Add filter for retrieving core and add-on options.
+		add_filter( 'inx_options', array( $this, 'get_options' ), 20 );
+
 		add_filter( 'sanitize_option_immonex-kickstart_options', array( $this, 'synchronize_slugs_from_kickstart_options' ), 5 );
 	} // __construct
 
@@ -103,9 +108,16 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_9_5\Base {
 	 * Perform activation tasks.
 	 *
 	 * @since 1.0.0
+	 *
+	 * @param bool $fire_before_hook Flag to indicate if an action hook should fire
+	 *                               before the actual method execution (optional,
+	 *                               true by default).
+	 * @param bool $fire_after_hook  Flag to indicate if an action hook should fire
+	 *                               after the actual method execution (optional,
+	 *                               true by default).
 	 */
-	protected function activate_plugin_single_site() {
-		parent::activate_plugin_single_site();
+	protected function activate_plugin_single_site( $fire_before_hook = true, $fire_after_hook = true ) {
+		parent::activate_plugin_single_site( true, false );
 
 		$update_options = false;
 
@@ -207,6 +219,9 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V1_9_5\Base {
 		}
 
 		update_option( 'rewrite_rules', false );
+
+		// @codingStandardsIgnoreLine
+		do_action( 'immonex_core_after_activation', $this->plugin_slug );
 	} // activate_plugin_single_site
 
 	/**
@@ -917,6 +932,34 @@ and conditions can be used in the related input fields:<br><br>
 				),
 			),
 			array(
+				'name'    => 'form_mail_sender_name',
+				'type'    => 'text',
+				'label'   => __( 'Sender Name', 'immonex-kickstart-team' ),
+				'section' => "{$prefix}contact_form_mails",
+				'args'    => array(
+					'plugin_slug' => $this->plugin_slug,
+					'option_name' => $this->plugin_options_name,
+					'description' => __( 'sender <strong>name</strong> for form mails (default: <em>WordPress</em> – may be overridden by an SMTP plugin if installed)', 'immonex-kickstart-team' ),
+					'value'       => $this->plugin_options['form_mail_sender_name'],
+				),
+			),
+			array(
+				'name'    => 'form_mail_sender_email',
+				'type'    => 'email',
+				'label'   => __( 'Sender Email', 'immonex-kickstart-team' ),
+				'section' => "{$prefix}contact_form_mails",
+				'args'    => array(
+					'plugin_slug' => $this->plugin_slug,
+					'option_name' => $this->plugin_options_name,
+					'description' => wp_sprintf(
+						/* translators: %s = default sender email address */
+						__( 'sender <strong>address</strong> for form mails (default: <em>%s</em> – may be overridden by an SMTP plugin if installed)', 'immonex-kickstart-team' ),
+						get_option( 'admin_email' )
+					),
+					'value'       => $this->plugin_options['form_mail_sender_email'],
+				),
+			),
+			array(
 				'name'    => 'fallback_form_mail_recipients',
 				'type'    => 'email_list',
 				'label'   => __( 'Fallback Recipient Mail Addresses', 'immonex-kickstart-team' ),
@@ -1158,6 +1201,26 @@ and conditions can be used in the related input fields:<br><br>
 
 		return array_merge( $fields, $addon_fields );
 	} // extend_fields
+
+	/**
+	 * Return plugin options for use in other add-ons etc. (filter callback).
+	 *
+	 * @since 1.9.27-beta
+	 *
+	 * @param mixed[] $options Source options or empty array.
+	 *
+	 * @return mixed[] Extended array with plugin options in sub-array "team".
+	 */
+	public function get_options( $options ) {
+		$add_on_options = $this->plugin_options;
+
+		return array_merge(
+			$options,
+			array(
+				'team' => $add_on_options,
+			)
+		);
+	} // get_options
 
 	/**
 	 * Determine the ID of the site's withdrawal/cancellation policy page,

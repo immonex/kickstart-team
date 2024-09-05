@@ -108,6 +108,18 @@ Ist das Ziel eine Seite der WP-Installation, kann hier per Shortcode die o. g. B
 
 Mit der Plugin-Version 1.2.0 wurden die mailbezogenen Optionen in zwei separaten Subtabs zusammengefasst. Ebenfalls neu hinzugekommen sind hier die Möglichkeiten zum Versand von **HTML-Mails**<sup>1</sup> sowie die Gestaltung der Mailinhalte auf Basis der *Template-Engine* [Twig 3](https://twig.symfony.com/doc/3.x/templates)<sup>2</sup>.
 
+#### Absendername
+
+Für die Formularmails wird der Standard-Absendername des WP-Systems übernommen: *WordPress*. In diesem Feld kann ein alternativer Name eingetragen werden.
+
+!> Absendername und -mailadresse können ggfls. von einem *SMTP-Plugin* überschrieben werden, falls installiert.
+
+#### Absender-E-Mail
+
+In diesem Feld kann eine Mailadresse angegeben werden, die anstatt der Standard-Admin-Mailadresse (***Einstellungen → Allgemein → Administrator-E-Mail-Adresse***) als Absenderadresse der Formularnachrichten übernommen werden soll.
+
+!> **Achtung!** Die Verwendung einer Mailadresse, deren Domain von der der Website abweicht, kann zu Problemen beim Mailversand führen, sofern dieser direkt vom Webserver aus erfolgt (nicht empfohlen in Produktivumgebungen).
+
 #### Fallback-Empfänger-Mailadressen
 
 Die Empfänger der Mails, die über das im Plugin enthaltene [einheitliche Kontaktformular](../komponenten/kontaktformular) versendet werden, sind **kontextbezogen**: Findet das Formular bspw. in einem [Kontaktpersonen-Widget](../komponenten/kontaktpersonen-details#Widget) Verwendung, das in einer Objekt-Detailseite eingebunden ist, wird die Nachricht an die Mailadresse der zugehörigen [primären Kontaktperson](../beitragsarten#kontaktpersonagentur-→-immobilie) gesendet. Sind der Immobilie weitere Ansprechpartner/innen zugeordnet, erhalten diese jeweils eine Kopie der Anfrage.

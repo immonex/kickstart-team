@@ -214,13 +214,15 @@ class Contact_Form {
 
 		$template_data['property'] = $property_data;
 
-		$form_post_type = $form_data['post_type'];
-		$form_post_id   = $form_data['post_id'];
+		$form_post_type        = $form_data['post_type'];
+		$form_post_id          = $form_data['post_id'];
+		$origin_form_post_type = $origin_post_id ? get_post_type( $origin_post_id ) : '';
+
 		if (
-			'inx_' !== substr( $form_post_type, 0, 4 )
-			&& $origin_post_id
+			'inx_' === substr( $origin_form_post_type, 0, 4 )
+			|| 'inx_' !== substr( $form_post_type, 0, 4 )
 		) {
-			$form_post_type = get_post_type( $origin_post_id );
+			$form_post_type = $origin_form_post_type;
 			$form_post_id   = $origin_post_id;
 		}
 
@@ -232,8 +234,18 @@ class Contact_Form {
 		);
 
 		$send_result                  = false;
-		$sender                       = get_option( 'admin_email' );
 		$template_data['sender_info'] = $recipient_lists['receipt_conf_sender_info'];
+		$sender                       = ! empty( $this->config['form_mail_sender_email'] ) ?
+			$this->config['form_mail_sender_email'] :
+			get_option( 'admin_email' );
+
+		if ( ! empty( $this->config['form_mail_sender_name'] ) ) {
+			$sender = wp_sprintf(
+				'%s <%s>',
+				$this->config['form_mail_sender_name'],
+				$sender
+			);
+		}
 
 		$subject = "[{$site_title}] " . __( 'Inquiry', 'immonex-kickstart-team' );
 		if ( $property_data ) {
@@ -781,12 +793,10 @@ class Contact_Form {
 		$headers = array( "From: {$sender}" );
 
 		if ( ! empty( $sender_info['email'] ) ) {
-			$replyto_recipient = trim(
-				wp_sprintf(
-					'%s <%s>',
-					$sender_info['name'],
-					$sender_info['email']
-				)
+			$replyto_recipient = wp_sprintf(
+				'%s <%s>',
+				$sender_info['name'],
+				$sender_info['email']
 			);
 
 			$headers[] = "Reply-To: {$replyto_recipient}";
@@ -1080,6 +1090,7 @@ class Contact_Form {
 			foreach ( $email_mapping_names as $mapping_name ) {
 				$email = apply_filters(
 					'inx_get_custom_field_value_by_name',
+					'',
 					$mapping_name,
 					$property->ID
 				);

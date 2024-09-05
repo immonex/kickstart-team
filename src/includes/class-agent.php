@@ -417,7 +417,7 @@ class Agent extends Base_CPT_Post {
 	 * @param string                   $name Photo name/title.
 	 * @param string                   $dir Directory (for local files, optional).
 	 *
-	 * @return int|bool Attachment ID of new or existing photo, false on error.
+	 * @return int|bool|\WP_Error Attachment ID of new or existing photo, false or WP_Error on error.
 	 */
 	public function replace_photo( $foto, $name, $dir = '' ) {
 		if ( ! $this->post ) {
@@ -1342,7 +1342,14 @@ class Agent extends Base_CPT_Post {
 	private function get_agency_count() {
 		$agency_list = new Agency_List( $this->config, $this->utils );
 
-		return count( $agency_list->get_items( array( 'fields' => 'ids' ) ) );
+		return count(
+			$agency_list->get_items(
+				array(
+					'fields'                        => 'ids',
+					'suppress_pre_get_posts_filter' => false,
+				)
+			)
+		);
 	} // get_agency_count
 
 	/**
