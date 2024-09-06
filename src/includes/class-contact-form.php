@@ -1348,10 +1348,14 @@ class Contact_Form {
 			'inx_team_contact_form_notification_subject_variables',
 			array(
 				'site_title'     => $template_data['site_title'],
-				'post_id'        => $template_data['property']['post_id'],
-				'obid'           => $template_data['property']['obid'],
-				'external_id'    => $template_data['property']['external_id'],
-				'property_title' => $template_data['property']['title'],
+				'post_id'        => ! empty( $template_data['property']['post_id'] ) ?
+					$template_data['property']['post_id'] : '',
+				'obid'           => ! empty( $template_data['property']['obid'] ) ?
+					$template_data['property']['obid'] : '',
+				'external_id'    => ! empty( $template_data['property']['external_id'] ) ?
+					$template_data['property']['external_id'] : '',
+				'property_title' => ! empty( $template_data['property']['title'] ) ?
+					$template_data['property']['title'] : '',
 			),
 			$context
 		);

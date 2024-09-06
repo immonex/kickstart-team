@@ -1,6 +1,6 @@
 === immonex Kickstart Team ===
 Contributors: immonex
-Tags: immobilien, openimmo, immobilienmakler, immomakler, realestate, agent, agency, team, immonex
+Tags: immobilien, immobilienmakler, realestate, agent, agency
 Requires at least: 4.7
 Tested up to: 6.7
 Stable Tag: 1.5.0
@@ -106,6 +106,10 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 
 == Changelog ==
 
+= 1.5.1-beta =
+* Release date: ?
+* Fix possible PHP warnings during contact form processing.
+
 = 1.5.0 =
 * Release date: 2024-09-05
 * Added plugin options for form mail sender name and address.
@@ -119,10 +123,5 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 * Resolved Twig issues related to third-party plugins.
 * Fixed translation file selection (beta versions only).
 * Updated dependencies (improved compatibility with current WP/PHP versions).
-
-= 1.4.0 =
-* Release date: 2023-11-10
-* Added plugin and post options for enabling/disabling optional sections in agency and agent single views.
-* Updated dependencies (improved WordPress 6.4 compatibility).
 
 See changelog.txt for the complete version history.
