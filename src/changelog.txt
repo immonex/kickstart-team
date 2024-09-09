@@ -1,5 +1,11 @@
 == Changelog ==
 
+= 1.5.2 =
+* Release date: 2024-09-09
+* Fixed possible PHP warnings during contact form processing.
+* Reverified WordPress 6.7 compatibility.
+* Updated dependencies.
+
 = 1.5.0 =
 * Release date: 2024-09-05
 * Added plugin options for form mail sender name and address.

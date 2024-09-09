@@ -3,7 +3,7 @@ Contributors: immonex
 Tags: immobilien, immobilienmakler, realestate, agent, agency
 Requires at least: 4.7
 Tested up to: 6.7
-Stable Tag: 1.5.0
+Stable Tag: 1.5.2
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -106,9 +106,11 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 
 == Changelog ==
 
-= 1.5.1-beta =
-* Release date: ?
-* Fix possible PHP warnings during contact form processing.
+= 1.5.2 =
+* Release date: 2024-09-09
+* Fixed possible PHP warnings during contact form processing.
+* Reverified WordPress 6.7 compatibility.
+* Updated dependencies.
 
 = 1.5.0 =
 * Release date: 2024-09-05
