@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f74380a9792330c3d04579f72d07f6f8",
+    "content-hash": "76545b3b21341e7ccee1380541d88232",
     "packages": [
         {
             "name": "html2text/html2text",
@@ -47,16 +47,16 @@
         },
         {
             "name": "immonex/wp-free-plugin-core",
-            "version": "2.0.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/immonex/wp-free-plugin-core.git",
-                "reference": "bf8f10446e6de40d5a01d0b5edd6cc5939bc6473"
+                "reference": "cc3f6f21cc9a19e80a5719bdaa18a6e39e8e2e31"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/immonex/wp-free-plugin-core/zipball/bf8f10446e6de40d5a01d0b5edd6cc5939bc6473",
-                "reference": "bf8f10446e6de40d5a01d0b5edd6cc5939bc6473",
+                "url": "https://api.github.com/repos/immonex/wp-free-plugin-core/zipball/cc3f6f21cc9a19e80a5719bdaa18a6e39e8e2e31",
+                "reference": "cc3f6f21cc9a19e80a5719bdaa18a6e39e8e2e31",
                 "shasum": ""
             },
             "require": {
@@ -88,9 +88,9 @@
             ],
             "support": {
                 "issues": "https://github.com/immonex/wp-free-plugin-core/issues",
-                "source": "https://github.com/immonex/wp-free-plugin-core/tree/2.0.0"
+                "source": "https://github.com/immonex/wp-free-plugin-core/tree/2.1.0"
             },
-            "time": "2024-09-09T12:00:17+00:00"
+            "time": "2024-09-20T12:27:52+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -479,16 +479,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v3.11.0",
+            "version": "v3.11.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "e80fb8ebba85c7341a97a9ebf825d7fd4b77708d"
+                "reference": "ff063afc691e1cfda6714f1915ed766cb108d188"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/e80fb8ebba85c7341a97a9ebf825d7fd4b77708d",
-                "reference": "e80fb8ebba85c7341a97a9ebf825d7fd4b77708d",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/ff063afc691e1cfda6714f1915ed766cb108d188",
+                "reference": "ff063afc691e1cfda6714f1915ed766cb108d188",
                 "shasum": ""
             },
             "require": {
@@ -543,7 +543,7 @@
             ],
             "support": {
                 "issues": "https://github.com/twigphp/Twig/issues",
-                "source": "https://github.com/twigphp/Twig/tree/v3.11.0"
+                "source": "https://github.com/twigphp/Twig/tree/v3.11.1"
             },
             "funding": [
                 {
@@ -555,7 +555,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-08-08T16:15:16+00:00"
+            "time": "2024-09-10T10:40:14+00:00"
         }
     ],
     "packages-dev": [
@@ -841,31 +841,6 @@
                 "source": "https://github.com/doctrine/rst-parser/tree/1.0.x"
             },
             "time": "2021-10-23T14:56:37+00:00"
-        },
-        {
-            "name": "inverisoss/wp-i18n-tools",
-            "version": "1.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/inverisOSS/wp-i18n-tools.git",
-                "reference": "482ce114cec7c36d7303254c631c6c2d732ffdc2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/inverisOSS/wp-i18n-tools/zipball/482ce114cec7c36d7303254c631c6c2d732ffdc2",
-                "reference": "482ce114cec7c36d7303254c631c6c2d732ffdc2",
-                "shasum": ""
-            },
-            "type": "library",
-            "license": [
-                "GPLv2 or later"
-            ],
-            "description": "An extended variant of the WordPress i18n tools including the ability to exclude specified folders.",
-            "support": {
-                "source": "https://github.com/inverisOSS/wp-i18n-tools/tree/1.0.2",
-                "issues": "https://github.com/inverisOSS/wp-i18n-tools/issues"
-            },
-            "time": "2020-01-20T10:00:53+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -1288,16 +1263,16 @@
         },
         {
             "name": "phpstan/phpdoc-parser",
-            "version": "1.30.1",
+            "version": "1.31.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpdoc-parser.git",
-                "reference": "51b95ec8670af41009e2b2b56873bad96682413e"
+                "reference": "249f15fb843bf240cf058372dad29e100cee6c17"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/51b95ec8670af41009e2b2b56873bad96682413e",
-                "reference": "51b95ec8670af41009e2b2b56873bad96682413e",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/249f15fb843bf240cf058372dad29e100cee6c17",
+                "reference": "249f15fb843bf240cf058372dad29e100cee6c17",
                 "shasum": ""
             },
             "require": {
@@ -1329,9 +1304,9 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
-                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.30.1"
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.31.0"
             },
-            "time": "2024-09-07T20:13:05+00:00"
+            "time": "2024-09-22T11:32:18+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -2381,12 +2356,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "6d29dd9340b372fa603f04e6df4dd76bb808591e"
+                "reference": "76c3818964e9d32be3862c9318ae3ba9aa280ddc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/6d29dd9340b372fa603f04e6df4dd76bb808591e",
-                "reference": "6d29dd9340b372fa603f04e6df4dd76bb808591e",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/76c3818964e9d32be3862c9318ae3ba9aa280ddc",
+                "reference": "76c3818964e9d32be3862c9318ae3ba9aa280ddc",
                 "shasum": ""
             },
             "require": {
@@ -2440,7 +2415,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-06-28T09:36:24+00:00"
+            "time": "2024-09-16T14:52:48+00:00"
         },
         {
             "name": "symfony/finder",
@@ -2672,12 +2647,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/string.git",
-                "reference": "8be1d484951ff5ca995eaf8edcbcb8b9a5888450"
+                "reference": "832caa16b6d9aac6bf11747315225f5aba384c24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/string/zipball/8be1d484951ff5ca995eaf8edcbcb8b9a5888450",
-                "reference": "8be1d484951ff5ca995eaf8edcbcb8b9a5888450",
+                "url": "https://api.github.com/repos/symfony/string/zipball/832caa16b6d9aac6bf11747315225f5aba384c24",
+                "reference": "832caa16b6d9aac6bf11747315225f5aba384c24",
                 "shasum": ""
             },
             "require": {
@@ -2750,7 +2725,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-08-01T10:24:28+00:00"
+            "time": "2024-09-20T07:56:40+00:00"
         },
         {
             "name": "symfony/translation-contracts",
@@ -2944,12 +2919,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Yoast/PHPUnit-Polyfills.git",
-                "reference": "e9c8413de4c8ae03d2923a44f17d0d7dad1b96be"
+                "reference": "e87abf2352b5f6736cab7c8d23c581ef6aaeaf3f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Yoast/PHPUnit-Polyfills/zipball/e9c8413de4c8ae03d2923a44f17d0d7dad1b96be",
-                "reference": "e9c8413de4c8ae03d2923a44f17d0d7dad1b96be",
+                "url": "https://api.github.com/repos/Yoast/PHPUnit-Polyfills/zipball/e87abf2352b5f6736cab7c8d23c581ef6aaeaf3f",
+                "reference": "e87abf2352b5f6736cab7c8d23c581ef6aaeaf3f",
                 "shasum": ""
             },
             "require": {
@@ -2999,7 +2974,7 @@
                 "security": "https://github.com/Yoast/PHPUnit-Polyfills/security/policy",
                 "source": "https://github.com/Yoast/PHPUnit-Polyfills"
             },
-            "time": "2024-09-06T22:03:10+00:00"
+            "time": "2024-09-16T19:21:25+00:00"
         }
     ],
     "aliases": [],

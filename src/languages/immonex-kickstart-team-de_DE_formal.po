@@ -3,9 +3,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: immonex Kickstart Team 1.5\n"
-"Report-Msgid-Bugs-To: http://wordpress.org/tag/immonex-kickstart-team\n"
-"POT-Creation-Date: 2024-09-05 04:59:51+00:00\n"
-"PO-Revision-Date: 2024-09-05 07:00+0200\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/src\n"
+"POT-Creation-Date: 2024-09-24T06:43:50+00:00\n"
+"PO-Revision-Date: 2024-09-24 08:44+0200\n"
 "Last-Translator: \n"
 "Language-Team: Carsten Scheuer <scheuer@inveris.de>\n"
 "Language: de_DE@formal\n"
@@ -14,6 +14,31 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.5\n"
+
+#. Plugin Name of the plugin
+msgid "immonex Kickstart Team"
+msgstr "immonex Kickstart Team"
+
+#. Plugin URI of the plugin
+msgid "https://wordpress.org/plugins/immonex-kickstart-team/"
+msgstr "https://de.wordpress.org/plugins/immonex-kickstart-team/"
+
+#. Description of the plugin
+msgid ""
+"immonex Kickstart add-on for handling, linking and embedding OpenImmo-XML-"
+"based real estate agent/agency information and contact forms"
+msgstr ""
+"immonex Kickstart Add-on für die Verarbeitung, Verknüpfung und Einbindung "
+"von OpenImmo-XML-basierten Immobilienmakler-Informationen und "
+"Kontaktformularen"
+
+#. Author of the plugin
+msgid "inveris OHG / immonex"
+msgstr "inveris OHG / immonex"
+
+#. Author URI of the plugin
+msgid "https://immonex.dev/"
+msgstr "https://immonex.dev/"
 
 #: includes/class-agency-backend-form.php:72
 #: includes/class-agent-backend-form.php:126
@@ -1585,7 +1610,9 @@ msgstr "Plugin erfolgreich aktiviert."
 #: includes/third_party/class-tgm-plugin-activation.php:359
 #: includes/third_party/class-tgm-plugin-activation.php:3009
 msgid "The following plugin was activated successfully:"
-msgstr "Das folgende Plugin wurde erfolgreich aktiviert:"
+msgid_plural "The following plugins were activated successfully:"
+msgstr[0] "Das folgende Plugin wurde erfolgreich aktiviert:"
+msgstr[1] "Die folgenden Plugins wurden erfolgreich aktiviert:"
 
 #. translators: 1: plugin name.
 #: includes/third_party/class-tgm-plugin-activation.php:361
@@ -1882,11 +1909,13 @@ msgstr ""
 msgid "%1$s installed and activated successfully."
 msgstr "%1$s erfolgreich installiert und aktiviert."
 
+#. translators: 1: plugin name.
 #: includes/third_party/class-tgm-plugin-activation.php:3566
 #: includes/third_party/class-tgm-plugin-activation.php:3574
 msgid "Show Details"
 msgstr "Details anzeigen"
 
+#. translators: 1: plugin name.
 #: includes/third_party/class-tgm-plugin-activation.php:3566
 #: includes/third_party/class-tgm-plugin-activation.php:3574
 msgid "Hide Details"
@@ -2089,31 +2118,6 @@ msgstr "Ihre Ansprechpartnerin"
 msgctxt "gender neutral"
 msgid "Your contact"
 msgstr "Ihre Kontaktperson"
-
-#. Plugin Name of the plugin/theme
-msgid "immonex Kickstart Team"
-msgstr "immonex Kickstart Team"
-
-#. Plugin URI of the plugin/theme
-msgid "https://wordpress.org/plugins/immonex-kickstart-team/"
-msgstr "https://de.wordpress.org/plugins/immonex-kickstart-team/"
-
-#. Description of the plugin/theme
-msgid ""
-"immonex Kickstart add-on for handling, linking and embedding OpenImmo-XML-"
-"based real estate agent/agency information and contact forms"
-msgstr ""
-"immonex Kickstart Add-on für die Verarbeitung, Verknüpfung und Einbindung "
-"von OpenImmo-XML-basierten Immobilienmakler-Informationen und "
-"Kontaktformularen"
-
-#. Author of the plugin/theme
-msgid "inveris OHG / immonex"
-msgstr "inveris OHG / immonex"
-
-#. Author URI of the plugin/theme
-msgid "https://immonex.dev/"
-msgstr "https://immonex.dev/"
 
 #~ msgid ""
 #~ "I have read the [cancellation_policy] and confirm that I have been "

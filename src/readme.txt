@@ -106,6 +106,10 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 
 == Changelog ==
 
+= 1.5.3-beta =
+* Release date: ?
+* Updated dependencies.
+
 = 1.5.2 =
 * Release date: 2024-09-09
 * Fixed possible PHP warnings during contact form processing.
@@ -119,11 +123,5 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 * Reworked form recipient determination.
 * Updated inquiry/contact form withdrawal note.
 * Updated dependencies.
-
-= 1.4.4 =
-* Release date: 2024-01-22
-* Resolved Twig issues related to third-party plugins.
-* Fixed translation file selection (beta versions only).
-* Updated dependencies (improved compatibility with current WP/PHP versions).
 
 See changelog.txt for the complete version history.
