@@ -44,7 +44,7 @@ class Agency extends Base_CPT_Post {
 	 * @return string Rendered contents (HTML).
 	 */
 	public function render( $template = '', $atts = array() ) {
-		if ( ! $this->post ) {
+		if ( ! $this->post && empty( $atts['is_preview'] ) ) {
 			return '';
 		}
 
@@ -75,7 +75,7 @@ class Agency extends Base_CPT_Post {
 			}
 		}
 
-		if ( ! $this->post ) {
+		if ( ! $this->post && empty( $atts['is_preview'] ) ) {
 			return '';
 		}
 
@@ -96,8 +96,8 @@ class Agency extends Base_CPT_Post {
 		$url = false;
 		if ( 'none' !== $this->link_type ) {
 			if ( 'external' === $this->link_type ) {
-				$url = $this->get_element_value( 'url' );
-			} elseif ( $this->is_public ) {
+				$url = $this->get_element_value( 'url', $atts );
+			} elseif ( $this->post && $this->is_public ) {
 				$url = get_permalink( $this->post->ID );
 			}
 		}
@@ -107,21 +107,22 @@ class Agency extends Base_CPT_Post {
 		$default_elements = array_keys( $this->get_elements( $default_filter ) );
 		$convert_links    = ! empty( $atts['convert_links'] );
 		$template_data    = array(
-			'before_title'                  => isset( $atts['before_title'] ) ? $atts['before_title'] : '',
+			'before_title'                  => isset( $atts['before_title'] ) ? html_entity_decode( $atts['before_title'] ) : '',
 			'title'                         => isset( $atts['title'] ) ? $atts['title'] : $this->post->post_title,
-			'after_title'                   => isset( $atts['after_title'] ) ? $atts['after_title'] : '',
+			'after_title'                   => isset( $atts['after_title'] ) ? html_entity_decode( $atts['after_title'] ) : '',
 			'link_type'                     => $this->link_type,
 			'convert_links'                 => $convert_links,
 			'contact_form_scope'            => ! empty( $atts['contact_form_scope'] ) ? $atts['contact_form_scope'] : '',
-			'agency_id'                     => $this->post->ID,
+			'agency_id'                     => $this->post ? $this->post->ID : 0,
 			'is_public'                     => $this->is_public,
-			'is_demo'                       => get_post_meta( $this->post->ID, '_immonex_is_demo', true ),
+			'is_demo'                       => $this->post ? get_post_meta( $this->post->ID, '_immonex_is_demo', true ) : true,
 			'url'                           => $url,
 			'agent_count'                   => $this->get_agent_count(),
 			'property_count'                => $this->get_property_count(),
 			'elements'                      => array(),
 			'show_all_elements'             => ! empty( $atts['elements'] ),
-			'single_view_optional_sections' => $this->get_single_view_optional_sections( $this->post->ID ),
+			'single_view_optional_sections' => $this->get_single_view_optional_sections( $this->post ? $this->post->ID : false ),
+			'is_preview'                    => ! empty( $atts['is_preview'] ),
 		);
 
 		$requested_elements = ! empty( $atts['elements'] ) ?
@@ -132,8 +133,7 @@ class Agency extends Base_CPT_Post {
 			$requested_elements = array_map( 'trim', explode( ',', (string) $requested_elements ) );
 		}
 
-		$element_keys = ! empty( $requested_elements ) ? $requested_elements : $default_elements;
-		$element_keys = array_unique( $element_keys );
+		$element_keys = array_unique( ! empty( $requested_elements ) ? $requested_elements : $default_elements );
 
 		if ( count( $element_keys ) > 0 ) {
 			foreach ( $valid_elements as $key => $element ) {
@@ -141,7 +141,7 @@ class Agency extends Base_CPT_Post {
 					continue;
 				}
 
-				$value = $this->get_element_value( $key );
+				$value = $this->get_element_value( $key, $atts );
 				if ( $convert_links ) {
 					$value = $this->maybe_add_link( $value );
 				}
@@ -731,12 +731,13 @@ class Agency extends Base_CPT_Post {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param string $key Element key (name).
+	 * @param string  $key Element key (name).
+	 * @param mixed[] $atts Rendering Attributes (optional).
 	 *
 	 * @return mixed Element value or false if indeterminable.
 	 */
-	public function get_element_value( $key ) {
-		if ( ! $this->post ) {
+	public function get_element_value( $key, $atts = array() ) {
+		if ( ! $this->post && empty( $atts['is_preview'] ) ) {
 			return false;
 		}
 
@@ -757,10 +758,14 @@ class Agency extends Base_CPT_Post {
 			&& is_callable( $element['compose_cb'] )
 		) {
 			$value = call_user_func( $element['compose_cb'], array( $this, 'get_element_value' ) );
-		} elseif ( ! empty( $element['post_data'] ) ) {
+		} elseif ( ! empty( $element['post_data'] ) && $this->post ) {
 			$value = apply_filters( 'inx_the_content', $this->post->{$element['post_data']} );
-		} elseif ( ! empty( $element['meta_key'] ) ) {
+		} elseif ( ! empty( $element['meta_key'] ) && $this->post ) {
 			$value = get_post_meta( $this->post->ID, $element['meta_key'], true );
+		}
+
+		if ( ! $value && empty( $atts['id'] ) && ! empty( $atts['is_preview'] ) ) {
+			$value = $this->get_preview_value( $key, $atts );
 		}
 
 		if (
@@ -873,6 +878,63 @@ class Agency extends Base_CPT_Post {
 	} // replace_logo
 
 	/**
+	 * Maybe create a set of demo data and get an example value for the
+	 * given key (preview purposes).
+	 *
+	 * @since 1.5.7-beta
+	 *
+	 * @param string  $key Element key (name).
+	 * @param mixed[] $atts Rendering Attributes (optional).
+	 *
+	 * @return mixed Example value or false if indeterminable.
+	 */
+	protected function get_preview_value( $key, $atts = array() ) {
+		if ( empty( $this->demo_data ) ) {
+			$this->preview_data = array(
+				'company'                     => array(
+					'raw'  => _x( 'ONE Realty Group', 'Sample data', 'immonex-kickstart-team' ),
+					'link' => wp_sprintf(
+						'<a href="https://immonex.one/" target="_blank">%s</a>',
+						_x( 'ONE Realty Group', 'Sample data', 'immonex-kickstart-team' )
+					),
+				),
+				'about'                       => _x(
+					'ONE Realty Group is a leading real estate company in the region. We offer a wide range of services for buying, selling and renting properties.',
+					'Sample data',
+					'immonex-kickstart-team'
+				),
+				'email'                       => _x( 'hello@immonex.one', 'Sample data', 'immonex-kickstart-team' ),
+				'phone'                       => _x( '+999 123 4567890', 'Sample data', 'immonex-kickstart-team' ),
+				'url'                         => 'https://immonex.one/',
+				'street'                      => _x( 'Fake Street', 'Sample data', 'immonex-kickstart-team' ),
+				'house_number'                => '123',
+				'zip_code'                    => '99999',
+				'city'                        => _x( 'Demotown', 'Sample data', 'immonex-kickstart-team' ),
+				'address_publishing_approved' => true,
+				'address'                     => _x( 'Fake Street 123<br>99999 Demotown', 'Sample data', 'immonex-kickstart-team' ),
+				'address_single_line'         => _x( 'Fake Street 123, 99999 Demotown', 'Sample data', 'immonex-kickstart-team' ),
+				'network_urls'                => array(
+					array(
+						'name' => 'X',
+						'url'  => 'https://x.com/immonexhq',
+					),
+					array(
+						'name' => 'Facebook',
+						'url'  => 'https://facebook.com/immonex',
+					),
+				),
+				'network_icons'               => PHP_EOL
+					. '<ul class="inx-team-network-icons">' . PHP_EOL
+					. '<li><a href="https://x.com/immonexhq" title="X" target="_blank"><span uk-icon="x"></span></a></li>' . PHP_EOL
+					. '<li><a href="https://facebook.com/immonex" title="Facebook" target="_blank"><span uk-icon="facebook"></span></a></li>' . PHP_EOL
+					. '</ul>',
+			);
+		}
+
+		return parent::get_preview_value( $key, $atts );
+	} // get_preview_value
+
+	/**
 	 * Special getter method for the agency's company name.
 	 *
 	 * @since 1.0.0
@@ -925,25 +987,6 @@ class Agency extends Base_CPT_Post {
 	} // get_company
 
 	/**
-	 * Get a list of supported business/social networks.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @return string[] Key:Name list of networks.
-	 */
-	public function get_networks() {
-		$networks = array(
-			'xing'      => 'XING',
-			'linkedin'  => 'LinkedIn',
-			'twitter'   => 'Twitter',
-			'facebook'  => 'Facebook',
-			'instagram' => 'Instagram',
-		);
-
-		return apply_filters( 'inx_team_agency_networks', $networks );
-	} // get_networks
-
-	/**
 	 * Calculate a simple checksum based on the length of serialized core
 	 * agency XML data.
 	 *
@@ -972,76 +1015,6 @@ class Agency extends Base_CPT_Post {
 
 		return $checksum;
 	} // get_checksum
-
-	/**
-	 * Special getter method for the agency's business/social network URLs.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param callable $value_getter Main value getter method.
-	 *
-	 * @return mixed[] Array containing name/URL pairs.
-	 */
-	private function get_network_urls( $value_getter ) {
-		if ( ! is_a( $this->post, 'WP_Post' ) || ! $this->post->ID ) {
-			return array();
-		}
-
-		$prefix   = '_' . $this->config['plugin_prefix'] . 'agency_';
-		$urls     = array();
-		$networks = $this->get_networks();
-
-		if ( count( $networks ) > 0 ) {
-			foreach ( $networks as $key => $name ) {
-				$url = get_post_meta( $this->post->ID, "{$prefix}{$key}_url", true );
-
-				if ( $url ) {
-					$urls[ $key ] = array(
-						'name' => $name,
-						'url'  => $url,
-					);
-				}
-			}
-		}
-
-		return $urls;
-	} // get_contact_form
-
-	/**
-	 * Special getter method for generating the agency's business/social
-	 * network icons HTML code.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param callable $value_getter Main value getter method.
-	 *
-	 * @return string Network icons HTML code.
-	 */
-	private function get_network_icons( $value_getter ) {
-		$network_urls = $value_getter( 'network_urls' );
-		$items        = array();
-
-		if ( 0 === count( $network_urls ) ) {
-			return '';
-		}
-
-		foreach ( $network_urls as $key => $network ) {
-			$items[] = wp_sprintf(
-				'<li><a href="%s" title="%s" target="_blank"><span uk-icon="%s"></span></a></li>',
-				$network['url'],
-				$network['name'],
-				$this->get_network_icon_key( $key )
-			);
-		}
-
-		$html = wp_sprintf(
-			'<ul class="inx-team-network-icons">%1$s%2$s%1$s</ul>',
-			PHP_EOL,
-			implode( PHP_EOL, $items )
-		);
-
-		return apply_filters( 'inx_team_agency_network_icons_output', $html );
-	} // get_network_icons
 
 	/**
 	 * Special getter method for the agency's contact form.

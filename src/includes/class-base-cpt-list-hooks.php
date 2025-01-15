@@ -119,30 +119,18 @@ abstract class Base_CPT_List_Hooks {
 
 		if (
 			(
-				! empty( $query->query_vars['suppress_pre_get_posts_filter'] ) &&
-				empty( $query->query_vars['execute_pre_get_posts_filter'] )
+				! empty( $query->query_vars['suppress_pre_get_posts_filter'] )
+				&& empty( $query->query_vars['execute_pre_get_posts_filter'] )
 			)
 			|| ! empty( $query->query_vars['page'] )
 			|| ! empty( $query->query_vars['pagename'] )
-			|| is_admin()
+			|| (
+				is_admin()
+				&& empty( $query->query['is_preview'] )
+			)
 			|| (
 				$query->get( 'post_type' )
 				&& $query->get( 'post_type' ) !== $this->post_type_name
-			)
-		) {
-			return;
-		}
-
-		$contains_shortcode = $this->shortcode_name
-			&& is_a( $post, 'WP_Post' )
-			&& has_shortcode( $post->post_content, $this->shortcode_name );
-
-		if (
-			! isset( $query->query_vars['execute_pre_get_posts_filter'] )
-			&& ! $contains_shortcode
-			&& (
-				is_page()
-				|| $query->get( 'post_type' ) !== $this->post_type_name
 			)
 		) {
 			return;
@@ -255,7 +243,7 @@ abstract class Base_CPT_List_Hooks {
 	 * @return string Rendered shortcode contents.
 	 */
 	public function shortcode_list( $atts ) {
-		if ( is_admin() ) {
+		if ( is_admin() && empty( $atts['is_preview'] ) ) {
 			return '';
 		}
 
@@ -278,6 +266,10 @@ abstract class Base_CPT_List_Hooks {
 			}
 		}
 		$shortcode_atts = shortcode_atts( $supported_atts, $prefixed_atts, "{$prefix}{$this->base_name}-list" );
+
+		if ( ! empty( $atts['is_preview'] ) ) {
+			$shortcode_atts['is_preview'] = true;
+		}
 
 		return $this->cpt_list->render( $template, $shortcode_atts );
 	} // shortcode_list

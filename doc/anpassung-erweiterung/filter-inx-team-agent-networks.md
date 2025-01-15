@@ -1,6 +1,6 @@
 # inx_team_agent_networks (Filter)
 
-Über diesen Filter-Hook kann die Liste der Business- (XING, LinkedIn etc.) und sozialen Netzwerke (Twitter, Facebook & Co.) verändert oder erweitert werden, für die entsprechende URLs in den Datensätzen von **Kontaktpersonen** hinterlegt werden können.
+Über diesen Filter-Hook kann die Liste der Business- (XING, LinkedIn etc.) und sozialen Netzwerke (X, Facebook & Co.) verändert oder erweitert werden, für die entsprechende URLs in den Datensätzen von **Kontaktpersonen** hinterlegt werden können.
 
 ## Parameter
 
@@ -14,7 +14,7 @@
 $networks = [
 	'xing'      => 'XING',
 	'linkedin'  => 'LinkedIn',
-	'twitter'   => 'Twitter',
+	'x'         => 'X',
 	'facebook'  => 'Facebook',
 	'instagram' => 'Instagram',
 ];

@@ -24,7 +24,7 @@ function mysite_modify_openimmo_feedback_xml_source( $xml_source ) {
 	// $xml_source = str_replace( '...', '...', $xml_source );
 
 	return $xml_source;
-} // mysite_modify_openimmo_xml_source
+} // mysite_modify_openimmo_feedback_xml_source
 ```
 
 [](_backlink.md ':include')

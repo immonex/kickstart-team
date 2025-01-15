@@ -57,6 +57,7 @@ class Agency_Hooks extends Base_CPT_Hooks {
 
 		add_filter( 'inx_special_query_vars', array( $this, 'add_agency_query_var' ), 10, 2 );
 		add_filter( 'inx_search_tax_and_meta_queries', array( $this, 'maybe_add_agency_query' ), 10, 3 );
+		add_filter( 'inx_agency_has_single_view', array( $this, 'has_single_view' ) );
 
 		/**
 		 * Plugin-specific filters
@@ -64,7 +65,7 @@ class Agency_Hooks extends Base_CPT_Hooks {
 
 		add_filter( 'inx_team_get_agency_template_data', array( $this, 'get_agency_data' ), 10, 2 );
 		add_filter( 'inx_team_get_agency_checksum', array( $this, 'get_agency_checksum' ), 10, 2 );
-		add_filter( 'inx_agency_has_single_view', array( $this, 'has_single_view' ) );
+		add_filter( 'inx_team_get_agency_elements', array( $this, 'get_agency_elements' ) );
 
 		// Filters for "manually" creating and updating agencies.
 		add_filter( 'inx_team_create_agency', array( $this, 'create_agency' ), 10, 2 );
@@ -467,6 +468,32 @@ class Agency_Hooks extends Base_CPT_Hooks {
 	} // get_agency_data
 
 	/**
+	 * Return all agency display element data (filter callback).
+	 *
+	 * @since 1.5.7-beta
+	 *
+	 * @param mixed[] $elements Empty array.
+	 *
+	 * @return mixed[] Agency elements.
+	 */
+	public function get_agency_elements( $elements = array() ) {
+		$agency = new Agency( 0, $this->config, $this->utils );
+
+		$elements = $agency->get_elements();
+
+		if ( ! empty( $elements ) ) {
+			// Filter out compose callbacks.
+			foreach ( $elements as $key => $element ) {
+				if ( isset( $element['compose_cb'] ) ) {
+					unset( $elements[ $key ]['compose_cb'] );
+				}
+			}
+		}
+
+		return $elements;
+	} // get_agency_elements
+
+	/**
 	 * Return a checksum for the given agency XML data
 	 * (proxy filter callback).
 	 *
@@ -536,7 +563,7 @@ class Agency_Hooks extends Base_CPT_Hooks {
 	 * @return string Rendered shortcode contents.
 	 */
 	public function shortcode_agency( $atts = array() ) {
-		if ( is_admin() ) {
+		if ( is_admin() && empty( $atts['is_preview'] ) ) {
 			return '';
 		}
 
@@ -564,7 +591,7 @@ class Agency_Hooks extends Base_CPT_Hooks {
 			$agency = $this->get_post_instance( $atts['id'] );
 		}
 
-		if ( ! $agency || empty( $agency->post ) ) {
+		if ( ( ! $agency || empty( $agency->post ) ) && empty( $atts['is_preview'] ) ) {
 			$property_id = apply_filters(
 				'inx_current_property_post_id',
 				$this->utils['general']->get_the_ID()
@@ -602,7 +629,7 @@ class Agency_Hooks extends Base_CPT_Hooks {
 			$agency = $this->get_post_instance( $agency_id );
 		}
 
-		if ( ! $agency || empty( $agency->post ) ) {
+		if ( ( ! $agency || empty( $agency->post ) ) && empty( $atts['is_preview'] ) ) {
 			return '';
 		}
 
@@ -610,7 +637,7 @@ class Agency_Hooks extends Base_CPT_Hooks {
 			$atts['title'] = '';
 		}
 
-		return $this->render_single( $agency->post->ID, $template, $atts, false );
+		return $this->render_single( $agency && ! empty( $agency->post ) ? $agency->post->ID : false, $template, $atts, false );
 	} // shortcode_agency
 
 	/**

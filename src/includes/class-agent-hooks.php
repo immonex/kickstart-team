@@ -80,6 +80,7 @@ class Agent_Hooks extends Base_CPT_Hooks {
 		 */
 
 		add_filter( 'inx_team_get_agent_template_data', array( $this, 'get_agent_data' ), 10, 2 );
+		add_filter( 'inx_team_get_agent_elements', array( $this, 'get_agent_elements' ) );
 
 		// Filters for "manually" creating and updating agents.
 		add_filter( 'inx_team_create_agent', array( $this, 'create_agent' ), 10, 2 );
@@ -753,6 +754,32 @@ class Agent_Hooks extends Base_CPT_Hooks {
 	} // get_agent_data
 
 	/**
+	 * Return all agent display element data (filter callback).
+	 *
+	 * @since 1.5.7-beta
+	 *
+	 * @param mixed[] $elements Empty array.
+	 *
+	 * @return mixed[] Agent elements.
+	 */
+	public function get_agent_elements( $elements = array() ) {
+		$agent = new Agent( 0, $this->config, $this->utils );
+
+		$elements = $agent->get_elements();
+
+		if ( ! empty( $elements ) ) {
+			// Filter out compose callbacks.
+			foreach ( $elements as $key => $element ) {
+				if ( isset( $element['compose_cb'] ) ) {
+					unset( $elements[ $key ]['compose_cb'] );
+				}
+			}
+		}
+
+		return $elements;
+	} // get_agent_elements
+
+	/**
 	 * Return agent post default single view activation option value (filter callback).
 	 *
 	 * @since 1.3.0
@@ -805,7 +832,7 @@ class Agent_Hooks extends Base_CPT_Hooks {
 	 * @return string Rendered shortcode contents.
 	 */
 	public function shortcode_agent( $atts = array() ) {
-		if ( is_admin() ) {
+		if ( is_admin() && empty( $atts['is_preview'] ) ) {
 			return '';
 		}
 
@@ -838,7 +865,7 @@ class Agent_Hooks extends Base_CPT_Hooks {
 			$agent = $this->get_primary_agent_for_current_property();
 		}
 
-		if ( ! $agent || empty( $agent->post ) ) {
+		if ( ( ! $agent || empty( $agent->post ) ) && empty( $atts['is_preview'] ) ) {
 			return '';
 		}
 
@@ -865,7 +892,7 @@ class Agent_Hooks extends Base_CPT_Hooks {
 			$atts['title'] = '';
 		}
 
-		return $this->render_single( $agent->post->ID, $template, $atts, false );
+		return $this->render_single( $agent && ! empty( $agent->post ) ? $agent->post->ID : false, $template, $atts, false );
 	} // shortcode_agent
 
 	/**

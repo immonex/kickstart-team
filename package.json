@@ -46,7 +46,7 @@
     "build": "npm run build:scripts && npm run build:copy && npm run build:clean-core && npm run build:clean-vendor && npm run build:del-scss-js-sources && npm run build:zip",
     "postbuild": "composer install",
     "watch": "webpack --watch --config webpack.dev.js",
-    "pot": "dotenv cross-var wp i18n make-pot --exclude=vendor,lib,assets,bin,data src src/languages/%PLUGIN_SLUG%.pot",
+    "pot": "dotenv -- cross-var 'wp i18n make-pot --exclude=vendor,lib,assets,bin,data src src/languages/%PLUGIN_SLUG%.pot'",
     "test:install": "bin/invoke_test_installer.sh",
     "test": "vendor/phpunit/phpunit/phpunit -c tests/phpunit/plugin.xml",
     "doc": "doc-gen serve",

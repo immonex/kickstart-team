@@ -16,7 +16,13 @@ Der **Seiten- und Dokumenttitel** der Archivseite kann in den Plugin-Optionen (*
 
 `[inx-team-agent-list]`
 
-Der Shortcode für die Einbindung der Kontaktpersonen-Listen unterstützt alle [allgemeinen Attribute](../schnellstart/listen-attribute#Shortcodes) zur Filterung, Sortierung und Begrenzung der anzuzeigenden Elemente.
+#### Attribute
+
+| Name | Beschreibung / Attributwerte |
+| ---- | ---------------------------- |
+| `agency` | optionale **Agentur-ID**, wenn nur Ansprechpartner einer bestimmten [Immobilien-Agentur](../beitragsarten?id=agentur-→-kontaktperson) angezeigt werden sollen |
+
+Der Shortcode für die Einbindung der Kontaktpersonen-Listen unterstützt zudem alle [allgemeinen Attribute](../schnellstart/listen-attribute#Shortcodes) zur Filterung, Sortierung und Begrenzung der anzuzeigenden Elemente.
 
 ---
 

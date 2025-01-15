@@ -69,6 +69,13 @@ class Base_CPT_Post {
 	protected $is_public = false;
 
 	/**
+	 * Preview data
+	 *
+	 * @var mixed[]
+	 */
+	protected $preview_data = array();
+
+	/**
 	 * Constructor
 	 *
 	 * @since 1.0.0
@@ -167,9 +174,9 @@ class Base_CPT_Post {
 			$this->config,
 			array(
 				'instance' => $this,
-				'post_id'  => $this->post->ID,
-				'title'    => $this->post->post_title,
-				'content'  => $this->post->post_content,
+				'post_id'  => $this->post ? $this->post->ID : false,
+				'title'    => $this->post ? $this->post->post_title : '',
+				'content'  => $this->post ? $this->post->post_content : '',
 			),
 			$atts
 		);
@@ -182,6 +189,127 @@ class Base_CPT_Post {
 
 		return $template_content;
 	} // render
+
+	/**
+	 * Get a list of supported business/social networks.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return string[] Key:Name list of networks.
+	 */
+	public function get_networks() {
+		$networks = array(
+			'xing'      => 'XING',
+			'linkedin'  => 'LinkedIn',
+			'x'         => 'X',
+			'facebook'  => 'Facebook',
+			'instagram' => 'Instagram',
+		);
+
+		return apply_filters( "inx_team_{$this->base_name}_networks", $networks );
+	} // get_networks
+
+	/**
+	 * Special getter method for the agent's business/social network URLs.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param callable $value_getter Main value getter method.
+	 *
+	 * @return mixed[] Array containing name/URL pairs.
+	 */
+	protected function get_network_urls( $value_getter ) {
+		if ( ! is_a( $this->post, 'WP_Post' ) || ! $this->post->ID ) {
+			return array();
+		}
+
+		$prefix   = '_' . $this->config['plugin_prefix'] . $this->base_name . '_';
+		$urls     = array();
+		$networks = $this->get_networks();
+
+		if ( count( $networks ) > 0 ) {
+			foreach ( $networks as $key => $name ) {
+				$url = get_post_meta( $this->post->ID, "{$prefix}{$key}_url", true );
+
+				if ( $url ) {
+					$urls[ $key ] = array(
+						'name' => $name,
+						'url'  => $url,
+					);
+				} elseif ( 'x' === $key ) {
+					$url = get_post_meta( $this->post->ID, "{$prefix}twitter_url", true );
+
+					if ( $url ) {
+						// Convert Twitter to X URL.
+						$urls[ $key ] = array(
+							'name' => $name,
+							'url'  => $url,
+						);
+
+						add_post_meta( $this->post->ID, "{$prefix}{$key}_url", $url, true );
+						delete_post_meta( $this->post->ID, "{$prefix}twitter_url" );
+					}
+				}
+			}
+		}
+
+		return $urls;
+	} // get_network_urls
+
+	/**
+	 * Special getter method for generating the agent's business/social
+	 * network icons HTML code.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param callable $value_getter Main value getter method.
+	 *
+	 * @return string Network icons HTML code.
+	 */
+	protected function get_network_icons( $value_getter ) {
+		$network_urls = $value_getter( 'network_urls' );
+		$items        = array();
+
+		if ( empty( $network_urls ) ) {
+			return '';
+		}
+
+		foreach ( $network_urls as $key => $network ) {
+			$items[] = wp_sprintf(
+				'<li><a href="%s" title="%s" target="_blank"><span uk-icon="%s"></span></a></li>',
+				$network['url'],
+				$network['name'],
+				$this->get_network_icon_key( $key )
+			);
+		}
+
+		$html = wp_sprintf(
+			'<ul class="inx-team-network-icons">%1$s%2$s%1$s</ul>',
+			PHP_EOL,
+			implode( PHP_EOL, $items )
+		);
+
+		return apply_filters( "inx_team_{$this->base_name}_network_icons_output", $html );
+	} // get_network_icons
+
+	/**
+	 * Get an example value for the given key (preview purposes).
+	 *
+	 * @since 1.5.7-beta
+	 *
+	 * @param string  $key Element key (name).
+	 * @param mixed[] $atts Rendering Attributes (optional).
+	 *
+	 * @return mixed Example value or false if indeterminable.
+	 */
+	protected function get_preview_value( $key, $atts = array() ) {
+		return apply_filters(
+			'inx_team_preview_value',
+			isset( $this->preview_data[ $key ] ) ? $this->preview_data[ $key ] : '',
+			$key,
+			$this->base_name
+		);
+	} // get_preview_value
 
 	/**
 	 * Special getter method for the agency's/agent's address as single line string.
@@ -322,6 +450,10 @@ class Base_CPT_Post {
 	 * @return string Unchanged or generic ("world") icon key.
 	 */
 	protected function get_network_icon_key( $key ) {
+		if ( 'twitter' === $key ) {
+			$key = 'x';
+		}
+
 		$uk_brands = array(
 			'500px',
 			'behance',
@@ -344,7 +476,7 @@ class Base_CPT_Post {
 			'soundcloud',
 			'tripadvisor',
 			'tumblr',
-			'twitter',
+			'x',
 			'uikit',
 			'vimeo',
 			'whatsapp',

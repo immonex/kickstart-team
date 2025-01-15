@@ -142,6 +142,7 @@ $inx_skin_logo = isset( $template_data['elements']['logo'] ) ?
 			array(
 				'inx-agency'            => $template_data['agency_id'],
 				'inx-ignore-pagination' => true,
+				'is_preview'            => ! empty( $template_data['is_preview'] ),
 			)
 		);
 		?>
@@ -161,6 +162,7 @@ $inx_skin_logo = isset( $template_data['elements']['logo'] ) ?
 			'inx_render_property_list',
 			array(
 				'inx-agency' => $template_data['agency_id'],
+				'is_preview' => ! empty( $template_data['is_preview'] ),
 			)
 		);
 

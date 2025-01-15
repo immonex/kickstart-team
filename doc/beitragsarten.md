@@ -52,7 +52,7 @@ Die Netzwerk-Liste kann bei Bedarf per [Filterfunktion](anpassung-erweiterung/fi
 | -------- | ------------ |
 | `_inx_team_agency_xing_url` | XING-URL (Unternehmensprofil) |
 | `_inx_team_agency_linkedin_url` | LinkedIn-URL (Unternehmensprofil) |
-| `_inx_team_agency_twitter_url` | Twitter-URL |
+| `_inx_team_agency_x_url` | X-URL |
 | `_inx_team_agency_facebook_url` | URL der Facebook-Seite des Unternehmens |
 | `_inx_team_agency_instagram_url` | Instagram-URL |
 
@@ -129,7 +129,7 @@ Vor- und Nachname werden bei der automatisierten Erstellung eines Beitrags als B
 | -------- | ------------ |
 | `_inx_team_agent_xing_url` | XING-URL (Unternehmensprofil) |
 | `_inx_team_agent_linkedin_url` | LinkedIn-URL (Unternehmensprofil) |
-| `_inx_team_agent_twitter_url` | Twitter-URL |
+| `_inx_team_agent_x_url` | X-URL |
 | `_inx_team_agent_facebook_url` | URL der Facebook-Seite des Unternehmens |
 | `_inx_team_agent_instagram_url` | Instagram-URL |
 

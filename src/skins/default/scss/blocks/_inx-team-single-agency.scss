@@ -16,6 +16,18 @@
 	margin-top: 1em;
 }
 
+.inx-team-single-agency__about {
+	margin-bottom: 1em;
+
+	p {
+		margin-bottom: .5em;
+	}
+
+	p:last-child {
+		margin-bottom: 0;
+	}
+}
+
 .inx-team-single-agency__element {
 	display: flex;
 	align-items: stretch;

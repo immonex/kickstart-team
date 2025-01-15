@@ -153,13 +153,13 @@ abstract class Base_CPT_Hooks {
 	 * @return string Rendered template contents.
 	 */
 	public function render_single( $post_id = false, $template = '', $atts = array(), $output = true ) {
-		if ( ! $post_id ) {
+		if ( ! $post_id && empty( $atts['is_preview'] ) ) {
 			$post_id = $this->utils['general']->get_the_ID();
 		}
 
 		$cpt_item = $this->get_post_instance( $post_id );
 
-		if ( ! $cpt_item || empty( $cpt_item->post->ID ) ) {
+		if ( ( ! $cpt_item || empty( $cpt_item->post->ID ) ) && empty( $atts['is_preview'] ) ) {
 			return '';
 		}
 
