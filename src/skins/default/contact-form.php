@@ -204,7 +204,7 @@ foreach ( $template_data['fields'] as $inx_skin_field_name => $inx_skin_field ) 
 				&nbsp;
 			</div>
 			<div>
-				<button	class="inx-team-contact-form__submit inx-button uk-button uk-button-primary"<?php echo $inx_skin_send_button_disabled ? ' disabled' : ''; ?>>
+				<button	class="inx-team-contact-form__submit inx-button inx-button--action uk-button uk-button-primary"<?php echo $inx_skin_send_button_disabled ? ' disabled' : ''; ?>>
 					<?php _e( 'Send', 'immonex-kickstart-team' ); ?>
 				</button>
 			</div>

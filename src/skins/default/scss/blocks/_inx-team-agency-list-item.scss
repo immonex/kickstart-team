@@ -35,12 +35,12 @@
 
 .inx-team-agency-list-item__body a,
 .inx-team-agency-list-item__logo a {
-	color: $color-link;
+	color: var(--inx-color-action-element);
 }
 
 .inx-team-agency-list-item__body a:hover,
 .inx-team-agency-list-item__logo a:hover {
-	color: $color-link-highlighted;
+	color: var(--inx-color-action-element-lighter);
 }
 
 .inx-team-agency-list-item__company {

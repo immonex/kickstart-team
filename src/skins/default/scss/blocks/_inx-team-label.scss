@@ -6,7 +6,8 @@
 	font-size: 1em;
 	text-transform: uppercase;
 	color: #FFF;
-	@include gradient($color-default-label);
+	background-color: var(--inx-color-label-default);
+	background: var(--inx-gradient-label-default);
 }
 
 .uk-position-top-left .inx-team-label {
@@ -15,5 +16,6 @@
 }
 
 .inx-team-label--type--demo {
-	@include gradient($color-demo);
+	background-color: var(--inx-color-demo);
+	background: var(--inx-gradient-demo);
 }

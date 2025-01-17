@@ -141,9 +141,9 @@
 
 .inx-team-contact-form__demo-notice {
 	margin-bottom: .5em;
-	border-color: $color-demo;
+	border-color: var(--inx-color-demo);
 	box-sizing: border-box;
 	color: #FFF;
-	@include gradient($color-demo);
+	background-color: var(--inx-color-demo);
+	background: var(--inx-gradient-demo);
 }
-

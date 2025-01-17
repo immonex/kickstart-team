@@ -31,12 +31,12 @@
 
 .inx-team-agent-list-item__body a,
 .inx-team-agent-list-item__photo-placeholder a {
-	color: $color-link;
+	color: var(--inx-color-action-element);
 }
 
 .inx-team-agent-list-item__body a:hover,
 .inx-team-agent-list-item__photo-placeholder a:hover {
-	color: $color-link-highlighted;
+	color: var(--inx-color-action-element-lighter);
 }
 
 

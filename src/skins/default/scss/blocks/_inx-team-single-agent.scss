@@ -50,11 +50,11 @@
 	a {
 		text-decoration: none;
 		box-shadow: none;
-		color: $color-link;
+		color: var(--inx-color-action-element);
 	}
 
 	a:hover {
-		color: $color-link-highlighted;
+		color: var(--inx-color-action-element-lighter);
 	}
 }
 
@@ -68,11 +68,11 @@
 	a {
 		text-decoration: none;
 		box-shadow: none;
-		color: $color-link;
+		color: var(--inx-color-action-element);
 	}
 
 	a:hover {
-		color: $color-link-highlighted;
+		color: var(--inx-color-action-element-lighter);
 	}
 
 	.inx-team-single-agent__section:not(:last-child) {

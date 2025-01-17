@@ -106,9 +106,10 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 
 == Changelog ==
 
-= 1.5.8-beta =
-* Release date: 2025-01-15
+= 1.5.9-beta =
+* Release date: 2025-01-17
 * Added filters for retrieving agent/agency frontend elements.
+* Updated default skin to support global Kickstart colors.
 * Updated dependencies (improved WP 6.7 compatibility).
 
 = 1.5.2 =

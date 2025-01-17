@@ -33,14 +33,14 @@
 	align-items: stretch;
 
 	a {
-		color: $color-link;
+		color: var(--inx-color-action-element);
 		text-decoration: none;
 		box-shadow: none;
 	}
 
 	a:hover,
 	a:hover {
-		color: $color-link-highlighted;
+		color: var(--inx-color-action-element-lighter);
 	}
 }
 
