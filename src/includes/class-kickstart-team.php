@@ -18,7 +18,7 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_1_11\Base {
 	const PLUGIN_PREFIX              = 'inx_team_';
 	const PUBLIC_PREFIX              = 'inx-team-';
 	const TEXTDOMAIN                 = 'immonex-kickstart-team';
-	const PLUGIN_VERSION             = '1.5.9-beta';
+	const PLUGIN_VERSION             = '1.5.10-beta';
 	const PLUGIN_HOME_URL            = 'https://de.wordpress.org/plugins/immonex-kickstart-team/';
 	const PLUGIN_DOC_URLS            = array(
 		'de' => 'https://docs.immonex.de/kickstart-team/',

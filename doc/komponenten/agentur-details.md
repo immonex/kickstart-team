@@ -24,6 +24,8 @@ Hier ein Beispiel – wie immer mit *TeamQuiwi-Skin* und dem WP-Standard-Theme *
 
 Die Team-Übersicht und die Liste der Immobilien-Angebote sind optional und können in der **Vollansicht** auch ausgeblendet werden – entweder individuell pro Agentur im jeweiligen Backend-Bearbeitungsformular unter ***immonex → Agenturen*** in der Optionsbox *Sonstiges* oder per Übernahme der Standardvorgabe in den [Plugin-Optionen](../schnellstart/einrichtung?id=optionale-abschnitte) (***immonex → Einstellungen → Team <sup>ADD-ON</sup> → Agenturen***: *Optionale Abschnitte*).
 
+Bei einer Einbindung per [Shortcode](#shortcode) kann die (explizite) Ein- oder Ausblendung auch mittels Attributen erfolgen (`show_agent_list`/`show_property_list`).
+
 ## Widget
 
 `immonex Kickstart: Agentur`
@@ -89,6 +91,12 @@ Alle folgenden Attribute sind **optional**.
 | `contact_form_scope` | Feldumfang des [Kontaktformulars](kontaktformular): |
 | | *basic* : Name, Telefonnummer, E-Mail-Adresse und Nachricht (Standardvorgabe) |
 | | *extended* : **zusätzliche** Pflichtfelder/-auswahloptionen für Anrede und Adresse, separate Felder für Vor- und Nachname |
+| `show_agent_list` | nur Vollansicht: Liste der zugehörigen Kontaktpersonen explizit ein- oder aublenden (entsprechende Angabe in den Add-on-Optionen ([Optionale Abschnitte](#optionale-abschnitte)) und dem [Agentur-Datensatz](/beitragsarten?id=verarbeitungspezial-flags) überschreiben) |
+| | *1* oder *yes* : anzeigen |
+| | *0* oder *no* : nicht anzeigen |
+| `show_property_list` | nur Vollansicht: Liste der zugehörigen Immobilien explizit ein- oder aublenden (entsprechende Angabe in den Add-on-Optionen ([Optionale Abschnitte](#optionale-abschnitte)) und dem [Agentur-Datensatz](/beitragsarten?id=verarbeitungspezial-flags) überschreiben) |
+| | *1* oder *yes* : anzeigen |
+| | *0* oder *no* : nicht anzeigen |
 
 #### Beispiele
 

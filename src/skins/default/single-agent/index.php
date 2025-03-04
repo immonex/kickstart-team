@@ -55,7 +55,7 @@ $inx_skin_photo = isset( $template_data['elements']['photo'] ) ?
 			<?php
 			if ( ! empty( $template_data['elements']['full_name_incl_title']['value'] ) ) {
 				echo wp_sprintf(
-					'<h%2$d class="uk-margin-small-bottom">%1$s</h%2$d>',
+					'<h%2$d class="inx-team-single-agent__name uk-margin-small-bottom">%1$s</h%2$d>',
 					$template_data['elements']['full_name_incl_title']['value'],
 					$inx_skin_heading_level
 				);
@@ -68,10 +68,6 @@ $inx_skin_photo = isset( $template_data['elements']['photo'] ) ?
 			</div>
 			<?php endif; ?>
 
-			<?php if ( ! empty( $template_data['content'] ) ) : ?>
-			<div class="inx-team-single-agent__bio uk-margin-bottom"><?php echo $template_data['content']; ?></div>
-			<?php endif; ?>
-
 			<?php
 			$inx_skin_displayed_elements = array( 'photo', 'full_name_incl_title', 'position_incl_company' );
 			$inx_skin_displayed_values   = array();
@@ -79,6 +75,7 @@ $inx_skin_photo = isset( $template_data['elements']['photo'] ) ?
 			foreach ( $template_data['elements'] as $inx_skin_element_key => $inx_skin_element ) :
 				if (
 					! in_array( $inx_skin_element_key, $inx_skin_displayed_elements, true )
+					&& ! empty( $inx_skin_element['value'] )
 					&& (
 						! empty( $template_data['show_all_elements'] )
 						|| (
@@ -86,7 +83,6 @@ $inx_skin_photo = isset( $template_data['elements']['photo'] ) ?
 							&& in_array( 'single_agent_page', $inx_skin_element['default_show'], true )
 						)
 					)
-					&& ! empty( $inx_skin_element['value'] )
 				) :
 					if ( ! empty( $inx_skin_element['value']['link'] ) ) {
 						$inx_skin_value = $inx_skin_element['value']['link'];
@@ -109,6 +105,7 @@ $inx_skin_photo = isset( $template_data['elements']['photo'] ) ?
 							array(
 								'origin_post_id'     => $template_data['agent_id'],
 								'contact_form_scope' => $template_data['contact_form_scope'],
+								'is_preview'         => $template_data['is_preview'],
 							)
 						);
 						continue;
@@ -143,7 +140,7 @@ $inx_skin_photo = isset( $template_data['elements']['photo'] ) ?
 	<div class="inx-team-single-agent__properties uk-margin-large-bottom">
 		<?php
 		echo wp_sprintf(
-			'<h%2$d class="uk-margin-small-bottom">%1$s</h%2$d>',
+			'<h%2$d class="inx-team-single-agent__list-headline uk-margin-small-bottom">%1$s</h%2$d>',
 			__( 'My Offers', 'immonex-kickstart-team' ),
 			$inx_skin_heading_level + 1
 		);
@@ -168,7 +165,8 @@ $inx_skin_photo = isset( $template_data['elements']['photo'] ) ?
 		false;
 
 	if ( $inx_skin_agency ) :
-		$inx_skin_agency_excerpt = get_the_excerpt( $inx_skin_agency );
+		$inx_skin_agency_excerpt = ! empty( $inx_skin_agency->post_content ) ?
+			$utils['string']->get_excerpt( $inx_skin_agency->post_content ) : '';
 		$inx_skin_agency_url     = get_permalink( $template_data['agency_id'] );
 		?>
 	<div class="inx-team-single-agent__footer inx-quiet-bg uk-padding-small uk-margin-large-bottom">

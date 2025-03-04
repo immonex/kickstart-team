@@ -113,6 +113,7 @@ class Contact_Form {
 				'honeypot_field_name2'      => self::HONEYPOT_FIELD_NAME2,
 				'ts_check_field_name'       => self::TS_CHECK_FIELD_NAME,
 				'obfuscated_timestamp'      => $this->obfuscated_timestamp,
+				'is_preview'                => ! empty( $atts['is_preview'] ),
 			)
 		);
 

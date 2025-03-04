@@ -35,7 +35,7 @@ $inx_skin_logo = isset( $template_data['elements']['logo'] ) ?
 
 				if ( $template_data['is_demo'] ) :
 					?>
-				<div class="inx-team-single-agency__labels uk-position-top-left">
+				<div class="inx-team-single-agency__labels uk-position-top-right">
 					<div class="inx-team-label inx-team-label--type--demo">Demo</div>
 				</div>
 					<?php
@@ -98,6 +98,7 @@ $inx_skin_logo = isset( $template_data['elements']['logo'] ) ?
 							array(
 								'origin_post_id'     => $template_data['agency_id'],
 								'contact_form_scope' => $template_data['contact_form_scope'],
+								'is_preview'         => $template_data['is_preview'],
 							)
 						);
 						continue;
@@ -132,7 +133,7 @@ $inx_skin_logo = isset( $template_data['elements']['logo'] ) ?
 	<div class="inx-team-single-agency__agents uk-margin-large-bottom">
 		<?php
 		echo wp_sprintf(
-			'<h%2$d class="uk-margin-small-bottom">%1$s</h%2$d>',
+			'<h%2$d class="inx-team-single-agency__list-headline uk-margin-small-bottom">%1$s</h%2$d>',
 			__( 'Our Team', 'immonex-kickstart-team' ),
 			$inx_skin_heading_level + 1
 		);
@@ -153,7 +154,7 @@ $inx_skin_logo = isset( $template_data['elements']['logo'] ) ?
 	<div class="inx-team-single-agency__properties uk-margin-large-bottom">
 		<?php
 		echo wp_sprintf(
-			'<h%2$d class="uk-margin-small-bottom">%1$s</h%2$d>',
+			'<h%2$d class="inx-team-single-agency__list-headline uk-margin-small-bottom">%1$s</h%2$d>',
 			__( 'Our Offers', 'immonex-kickstart-team' ),
 			$inx_skin_heading_level + 1
 		);

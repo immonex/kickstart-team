@@ -1,5 +1,6 @@
 .inx-team-agent-list-item {
-	border-bottom-right-radius: $font-size-base;
+	border-radius: var(--inx-signature-border-radius, 8px 0 0 0);
+	overflow: hidden;
 
 	a {
 		text-decoration: none;
@@ -56,11 +57,6 @@
 	margin-right: .5em;
 }
 
-.inx-team-agent-list-item__footer {
-	border-bottom-right-radius: $font-size-base;
-	overflow: hidden;
-}
-
 .inx-team-agent-list-item__footer > a:first-child {
 	padding: .5em;
 	width: 100%;
@@ -93,6 +89,5 @@
 		bottom: 0;
 		height: 36px;
 		width: 100%;
-		background-color: #333;
 	}
 }

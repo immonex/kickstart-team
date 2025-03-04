@@ -13,6 +13,23 @@
 	padding-right: .5em;
 	margin-bottom: .5em;
 	box-sizing: border-box;
+
+	input[type=radio]:checked,
+	input[type=checkbox]:checked {
+		background-color: var(--inx-color-action-element);
+	}
+
+	input[type=radio]:not(:checked):focus,
+	input[type=checkbox]:not(:checked):focus {
+		border-color: var(--inx-color-action-element);
+	}
+
+	input:not([type=radio]):focus,
+	input:not([type=checkbox]):focus,
+	input:not([type=button]):focus,
+	textarea:focus {
+		border-color: var(--inx-color-action-element);
+	}
 }
 
 .inx-team-contact-form__input:not(.inx-team-contact-form__input--type--half):not(.inx-team-contact-form__input--type--full) {

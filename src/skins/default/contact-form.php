@@ -17,7 +17,7 @@ $inx_skin_is_localhost         = in_array( $inx_skin_remote_addr, array( '127.0.
 $inx_skin_action               = $template_data['plugin_prefix'] . 'submit_contact_form';
 $inx_skin_scope                = ! empty( $template_data['scope'] ) ?
 	$template_data['scope'] : 'basic';
-$inx_skin_send_button_disabled = $template_data['cancellation_consent_text'] ? true : false;
+$inx_skin_send_button_disabled = ! empty( $template_data['cancellation_consent_text'] ) && empty( $template_data['is_preview'] );
 
 $inx_skin_required = array();
 foreach ( $template_data['fields'] as $inx_skin_field_name => $inx_skin_field ) {

@@ -10,9 +10,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-<article class="inx-team-single-agency inx-team-single-agency--type--widget">
+<article class="inx-team-single-agency inx-team-single-agency--type--widget inx-container">
 	<?php if ( ! empty( $template_data['title'] ) ) : ?>
-	<div>
+	<div class="inx-team-single-agency__title">
 		<?php
 		if ( isset( $template_data['before_title'] ) ) {
 			echo $template_data['before_title'];
@@ -57,7 +57,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				}
 
 				if ( $template_data['is_demo'] ) {
-					$inx_skin_logo_inner_content .= PHP_EOL . '<div class="inx-team-single-agency__labels uk-position-top-left">'
+					$inx_skin_logo_inner_content .= PHP_EOL . '<div class="inx-team-single-agency__labels uk-position-top-right">'
 						. '<div class="inx-team-label inx-team-label--type--demo">Demo</div>'
 						. '</div>';
 				}
@@ -89,6 +89,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					array(
 						'origin_post_id'     => $template_data['agency_id'],
 						'contact_form_scope' => $template_data['contact_form_scope'],
+						'is_preview'         => $template_data['is_preview'],
 					)
 				);
 				continue;

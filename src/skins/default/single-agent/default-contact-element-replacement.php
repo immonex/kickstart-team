@@ -35,7 +35,7 @@ $inx_skin_photo = isset( $template_data['elements']['photo'] ) ?
 	$template_data['elements']['photo'] :
 	false;
 ?>
-<div class="inx-single-property__section inx-team-single-agent inx-team-single-agent--type--single uk-margin-large-bottom">
+<div class="inx-container inx-single-property__section inx-team-single-agent inx-team-single-agent--type--single uk-margin-large-bottom">
 	<?php
 	if ( $inx_skin_title ) {
 		echo wp_sprintf(
@@ -114,18 +114,21 @@ $inx_skin_photo = isset( $template_data['elements']['photo'] ) ?
 			</div>
 			<?php endif; ?>
 
-			<?php if ( ! empty( $template_data['content'] ) ) : ?>
-			<div class="inx-team-single-agent__bio uk-margin"><?php echo $template_data['content']; ?></div>
-			<?php endif; ?>
-
 			<?php
-			$inx_skin_displayed_values = array();
+			$inx_skin_displayed_elements = array( 'photo', 'full_name_incl_title', 'position_incl_company' );
+			$inx_skin_displayed_values   = array();
 
 			foreach ( $template_data['elements'] as $inx_skin_element_key => $inx_skin_element ) :
 				if (
-					! empty( $inx_skin_element['default_show'] )
-					&& in_array( $template_data['type'], $inx_skin_element['default_show'], true )
+					! in_array( $inx_skin_element_key, $inx_skin_displayed_elements, true )
 					&& ! empty( $inx_skin_element['value'] )
+					&& (
+						! empty( $template_data['show_all_elements'] )
+						|| (
+							! empty( $inx_skin_element['default_show'] )
+							&& in_array( $template_data['type'], $inx_skin_element['default_show'], true )
+						)
+					)
 				) :
 					if ( ! empty( $inx_skin_element['value']['link'] ) ) {
 						$inx_skin_value = $inx_skin_element['value']['link'];
@@ -138,7 +141,16 @@ $inx_skin_photo = isset( $template_data['elements']['photo'] ) ?
 					if ( 'do_action:' === substr( $inx_skin_value, 0, 10 ) ) {
 						$inx_skin_action = substr( $inx_skin_value, 10 );
 						// @codingStandardsIgnoreLine
-						do_action( $inx_skin_action, '', array( 'origin_post_id' => $template_data['agent_id'] ) );
+						do_action(
+							// @codingStandardsIgnoreLine
+							$inx_skin_action,
+							'',
+							array(
+								'origin_post_id'     => $template_data['agent_id'],
+								'contact_form_scope' => $template_data['contact_form_scope'],
+								'is_preview'         => $template_data['is_preview'],
+							)
+						);
 						continue;
 					}
 
@@ -149,8 +161,9 @@ $inx_skin_photo = isset( $template_data['elements']['photo'] ) ?
 						continue;
 					}
 
-					$inx_skin_element_type       = str_replace( '_', '-', $inx_skin_element_key );
-					$inx_skin_displayed_values[] = $inx_skin_value;
+					$inx_skin_element_type         = str_replace( '_', '-', $inx_skin_element_key );
+					$inx_skin_displayed_elements[] = $inx_skin_element_key;
+					$inx_skin_displayed_values[]   = $inx_skin_value;
 					?>
 			<div class="inx-team-single-agent__element inx-team-single-agent__element--type--<?php echo $inx_skin_element_type; ?>">
 					<?php if ( $inx_skin_element['icon'] ) : ?>

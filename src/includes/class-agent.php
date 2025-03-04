@@ -94,7 +94,7 @@ class Agent extends Base_CPT_Post {
 	 *
 	 * @since 1.3.0
 	 *
-	 * @param mixed[] $atts Rendering Attributes.
+	 * @param mixed[] $atts Rendering attributes.
 	 *
 	 * @return mixed[] Agent and related meta data.
 	 */
@@ -132,7 +132,9 @@ class Agent extends Base_CPT_Post {
 
 		$url = false;
 		if ( 'none' !== $this->link_type ) {
-			if ( 'external' === $this->link_type ) {
+			if ( ! empty( $atts['is_preview'] ) ) {
+				$url = $this->get_preview_value( 'url', $atts );
+			} elseif ( 'external' === $this->link_type ) {
 				$url = $this->get_element_value( 'url', $atts );
 			} elseif ( $this->post && $this->is_public ) {
 				$url = get_permalink( $this->post->ID );
@@ -168,7 +170,7 @@ class Agent extends Base_CPT_Post {
 			'property_count'                => $this->get_property_count(),
 			'elements'                      => array(),
 			'show_all_elements'             => ! empty( $atts['elements'] ),
-			'single_view_optional_sections' => $this->get_single_view_optional_sections( $this->post ? $this->post->ID : false ),
+			'single_view_optional_sections' => $this->get_single_view_optional_sections( $this->post ? $this->post->ID : false, $atts ),
 			'is_preview'                    => ! empty( $atts['is_preview'] ),
 		);
 
@@ -648,7 +650,7 @@ class Agent extends Base_CPT_Post {
 				'label'                 => __( 'Short Biography', 'immonex-kickstart-team' ),
 				'post_data'             => 'post_content',
 				'selectable_for_output' => true,
-				'default_show'          => array(),
+				'default_show'          => array( 'single_agent_page' ),
 				'section_order'         => 15,
 			),
 			'email_auto_select'           => array(
@@ -980,7 +982,7 @@ class Agent extends Base_CPT_Post {
 	 * @since 1.0.0
 	 *
 	 * @param string  $key Element key (name).
-	 * @param mixed[] $atts Rendering Attributes (optional).
+	 * @param mixed[] $atts Rendering attributes (optional).
 	 *
 	 * @return mixed Element value or false if indeterminable.
 	 */
@@ -1060,7 +1062,7 @@ class Agent extends Base_CPT_Post {
 	 * @since 1.5.7-beta
 	 *
 	 * @param string  $key Element key (name).
-	 * @param mixed[] $atts Rendering Attributes (optional).
+	 * @param mixed[] $atts Rendering attributes (optional).
 	 *
 	 * @return mixed Example value or false if indeterminable.
 	 */
@@ -1086,13 +1088,13 @@ class Agent extends Base_CPT_Post {
 				'last_name'                   => _x( 'Example', 'Sample data', 'immonex-kickstart-team' ),
 				'full_name'                   => _x( 'Elena Example', 'Sample data', 'immonex-kickstart-team' ),
 				'full_name_incl_title'        => _x( 'Elena Example', 'Sample data', 'immonex-kickstart-team' ),
-				'position'                    => 'Real Estate Agent',
+				'position'                    => _x( 'Real Estate Agent', 'Sample data', 'immonex-kickstart-team' ),
 				'position_incl_company'       => array(
 					'raw'  => _x( 'Real Estate Agent', 'Sample data', 'immonex-kickstart-team' )
 						. ' ' . __( 'at', 'immonex-kickstart-team' )
 						. ' ' . _x( 'ONE Realty Group', 'Sample data', 'immonex-kickstart-team' ),
 					'link' => wp_sprintf(
-						'%1$s %2$s <a href="https://immonex.one/" target="_blank">%3$s</a>',
+						'%1$s %2$s <a href="#" target="_blank">%3$s</a>',
 						_x( 'Real Estate Agent', 'Sample data', 'immonex-kickstart-team' ),
 						__( 'at', 'immonex-kickstart-team' ),
 						_x( 'ONE Realty Group', 'Sample data', 'immonex-kickstart-team' )
@@ -1109,7 +1111,7 @@ class Agent extends Base_CPT_Post {
 				'company'                     => _x( 'ONE Realty Group', 'Sample data', 'immonex-kickstart-team' ),
 				'company_link'                => array(
 					'raw'  => _x( 'ONE Realty Group', 'Sample data', 'immonex-kickstart-team' ),
-					'link' => wp_sprintf( '<a href="https://immonex.one/" target="_blank">%s</a>', _x( 'ONE Realty Group', 'Sample data', 'immonex-kickstart-team' ) ),
+					'link' => wp_sprintf( '<a href="#" target="_blank">%s</a>', _x( 'ONE Realty Group', 'Sample data', 'immonex-kickstart-team' ) ),
 				),
 				'street'                      => _x( 'Fake Street', 'Sample data', 'immonex-kickstart-team' ),
 				'house_number'                => '123',
@@ -1118,6 +1120,7 @@ class Agent extends Base_CPT_Post {
 				'address_publishing_approved' => true,
 				'address'                     => _x( 'Fake Street 123<br>99999 Demotown', 'Sample data', 'immonex-kickstart-team' ),
 				'address_single_line'         => _x( 'Fake Street 123, 99999 Demotown', 'Sample data', 'immonex-kickstart-team' ),
+				'url'                         => '#',
 				'network_urls'                => array(
 					array(
 						'name' => 'X',
@@ -1443,32 +1446,45 @@ class Agent extends Base_CPT_Post {
 		return $agent_ids;
 	} // fetch_agent_ids
 
-
 	/**
 	 * Evaluate optional section display in single views.
 	 *
 	 * @since 1.3.7
 	 *
 	 * @param int|string $post_id Agency post ID.
+	 * @param mixed[]    $atts Rendering attributes (optional).
 	 *
 	 * @return string[] Keys of optional sections to display.
 	 */
-	private function get_single_view_optional_sections( $post_id ) {
+	private function get_single_view_optional_sections( $post_id, $atts = array() ) {
 		$sections = $this->config['agent_single_view_optional_sections'];
 
-		if ( ! $post_id ) {
+		if ( ! $post_id && empty( $atts['is_preview'] ) ) {
 			return $sections;
 		}
 
-		// Custom field name (meta key excl. prefix) => section key.
+		// Custom field name (meta key excl. prefix)/shortcode attribute => section key.
 		$option_mapping = array(
 			'show_property_list' => 'properties',
 			'show_agency_link'   => 'agency_link',
 		);
 
 		foreach ( $option_mapping as $cf_name => $section ) {
-			$meta_key   = '_' . $this->config['plugin_prefix'] . $this->base_name . '_' . $cf_name;
-			$meta_value = get_post_meta( $post_id, $meta_key, true );
+			$meta_value = '';
+
+			if ( isset( $atts[ $cf_name ] ) ) {
+				// Shortcode attributes may override eponymous custom field values.
+				if ( in_array( $atts[ $cf_name ], array( 'yes', '1' ), true ) ) {
+					$meta_value = 'yes';
+				} elseif ( in_array( $atts[ $cf_name ], array( 'no', '0' ), true ) ) {
+					$meta_value = 'no';
+				}
+			}
+
+			if ( $post_id && ! $meta_value ) {
+				$meta_key   = '_' . $this->config['plugin_prefix'] . $this->base_name . '_' . $cf_name;
+				$meta_value = get_post_meta( $post_id, $meta_key, true );
+			}
 
 			if ( 'yes' === $meta_value && ! in_array( $section, $sections, true ) ) {
 				$sections[] = $section;

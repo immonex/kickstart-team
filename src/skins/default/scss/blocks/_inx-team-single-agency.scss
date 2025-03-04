@@ -1,3 +1,15 @@
+.inx-team-single-agency {
+	a {
+		text-decoration: none;
+		box-shadow: none;
+		color: var(--inx-color-action-element);
+	}
+
+	a:hover {
+		color: var(--inx-color-action-element-lighter);
+	}
+}
+
 .inx-team-single-agency__logo {
 	position: relative;
 	padding: 1em;
@@ -16,7 +28,8 @@
 	margin-top: 1em;
 }
 
-.inx-team-single-agency__about {
+.inx-team-single-agency__about,
+.inx-team-single-agency__element--type--about {
 	margin-bottom: 1em;
 
 	p {
@@ -82,8 +95,8 @@
 	}
 }
 
-.inx-team-agency-list-item__labels {
-	left: -.15rem !important;
+.inx-team-single-agency__labels {
+	right: -.15rem !important;
 	padding-top: .2em;
 	font-size: .85em;
 	text-align: right;

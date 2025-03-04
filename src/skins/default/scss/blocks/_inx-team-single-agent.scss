@@ -1,3 +1,15 @@
+.inx-team-single-agent {
+	a {
+		text-decoration: none;
+		box-shadow: none;
+		color: var(--inx-color-action-element);
+	}
+
+	a:hover {
+		color: var(--inx-color-action-element-lighter);
+	}
+}
+
 .inx-team-single-agent__photo {
 	position: relative;
 	width: 100%;
@@ -34,6 +46,14 @@
 	margin-right: .5em;
 }
 
+.inx-team-single-agent__element--type--bio {
+	margin-bottom: 1.5em;
+}
+
+.inx-team-single-agent__element-value p:last-child {
+	margin-bottom: 0;
+}
+
 .inx-team-single-agent__footer {
 	display: flex;
 	flex-direction: column;
@@ -65,16 +85,6 @@
 }
 
 .inx-team-single-agent--type--widget {
-	a {
-		text-decoration: none;
-		box-shadow: none;
-		color: var(--inx-color-action-element);
-	}
-
-	a:hover {
-		color: var(--inx-color-action-element-lighter);
-	}
-
 	.inx-team-single-agent__section:not(:last-child) {
 		margin-bottom: .75em;
 	}

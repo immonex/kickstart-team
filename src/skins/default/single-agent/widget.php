@@ -29,9 +29,9 @@ if (
 	$inx_skin_link_type = $template_data['link_type'];
 }
 ?>
-<article class="inx-team-single-agent inx-team-single-agent--type--widget">
+<article class="inx-team-single-agent inx-team-single-agent--type--widget inx-container">
 	<?php if ( ! empty( $template_data['title'] ) ) : ?>
-	<div>
+	<div class="inx-team-single-agent__title">
 		<?php
 		if ( isset( $template_data['before_title'] ) ) {
 			echo $template_data['before_title'];
@@ -102,6 +102,7 @@ if (
 					array(
 						'origin_post_id'     => $template_data['agent_id'],
 						'contact_form_scope' => $template_data['contact_form_scope'],
+						'is_preview'         => $template_data['is_preview'],
 					)
 				);
 				continue;

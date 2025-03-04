@@ -95,7 +95,9 @@ class Agency extends Base_CPT_Post {
 
 		$url = false;
 		if ( 'none' !== $this->link_type ) {
-			if ( 'external' === $this->link_type ) {
+			if ( ! empty( $atts['is_preview'] ) ) {
+				$url = $this->get_preview_value( 'url', $atts );
+			} elseif ( 'external' === $this->link_type ) {
 				$url = $this->get_element_value( 'url', $atts );
 			} elseif ( $this->post && $this->is_public ) {
 				$url = get_permalink( $this->post->ID );
@@ -121,7 +123,7 @@ class Agency extends Base_CPT_Post {
 			'property_count'                => $this->get_property_count(),
 			'elements'                      => array(),
 			'show_all_elements'             => ! empty( $atts['elements'] ),
-			'single_view_optional_sections' => $this->get_single_view_optional_sections( $this->post ? $this->post->ID : false ),
+			'single_view_optional_sections' => $this->get_single_view_optional_sections( $this->post ? $this->post->ID : false, $atts ),
 			'is_preview'                    => ! empty( $atts['is_preview'] ),
 		);
 
@@ -462,7 +464,7 @@ class Agency extends Base_CPT_Post {
 				'label'                 => __( 'About', 'immonex-kickstart-team' ),
 				'post_data'             => 'post_content',
 				'selectable_for_output' => true,
-				'default_show'          => array(),
+				'default_show'          => array( 'single_agency_page' ),
 				'section_order'         => 30,
 			),
 			'email'                       => array(
@@ -893,10 +895,10 @@ class Agency extends Base_CPT_Post {
 			$this->preview_data = array(
 				'company'                     => array(
 					'raw'  => _x( 'ONE Realty Group', 'Sample data', 'immonex-kickstart-team' ),
-					'link' => wp_sprintf(
+					'link' => 'none' !== $this->link_type ? wp_sprintf(
 						'<a href="https://immonex.one/" target="_blank">%s</a>',
 						_x( 'ONE Realty Group', 'Sample data', 'immonex-kickstart-team' )
-					),
+					) : '',
 				),
 				'about'                       => _x(
 					'ONE Realty Group is a leading real estate company in the region. We offer a wide range of services for buying, selling and renting properties.',
@@ -905,7 +907,7 @@ class Agency extends Base_CPT_Post {
 				),
 				'email'                       => _x( 'hello@immonex.one', 'Sample data', 'immonex-kickstart-team' ),
 				'phone'                       => _x( '+999 123 4567890', 'Sample data', 'immonex-kickstart-team' ),
-				'url'                         => 'https://immonex.one/',
+				'url'                         => '#',
 				'street'                      => _x( 'Fake Street', 'Sample data', 'immonex-kickstart-team' ),
 				'house_number'                => '123',
 				'zip_code'                    => '99999',
@@ -1083,21 +1085,39 @@ class Agency extends Base_CPT_Post {
 	 * @since 1.3.7
 	 *
 	 * @param int|string $post_id Agency post ID.
+	 * @param mixed[]    $atts Rendering attributes (optional).
 	 *
 	 * @return string[] Keys of optional sections to display.
 	 */
-	private function get_single_view_optional_sections( $post_id ) {
+	private function get_single_view_optional_sections( $post_id, $atts = array() ) {
 		$sections = $this->config['agency_single_view_optional_sections'];
 
-		// Custom field name (meta key excl. prefix) => section key.
+		if ( ! $post_id && empty( $atts['is_preview'] ) ) {
+			return $sections;
+		}
+
+		// Custom field name (meta key excl. prefix)/shortcode attribute => section key.
 		$option_mapping = array(
 			'show_agent_list'    => 'agents',
 			'show_property_list' => 'properties',
 		);
 
 		foreach ( $option_mapping as $cf_name => $section ) {
-			$meta_key   = '_' . $this->config['plugin_prefix'] . $this->base_name . '_' . $cf_name;
-			$meta_value = get_post_meta( $post_id, $meta_key, true );
+			$meta_value = '';
+
+			if ( isset( $atts[ $cf_name ] ) ) {
+				// Shortcode attributes may override eponymous custom field values.
+				if ( in_array( $atts[ $cf_name ], array( 'yes', '1' ), true ) ) {
+					$meta_value = 'yes';
+				} elseif ( in_array( $atts[ $cf_name ], array( 'no', '0' ), true ) ) {
+					$meta_value = 'no';
+				}
+			}
+
+			if ( $post_id && ! $meta_value ) {
+				$meta_key   = '_' . $this->config['plugin_prefix'] . $this->base_name . '_' . $cf_name;
+				$meta_value = get_post_meta( $post_id, $meta_key, true );
+			}
 
 			if ( 'yes' === $meta_value && ! in_array( $section, $sections, true ) ) {
 				$sections[] = $section;
