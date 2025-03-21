@@ -7,8 +7,8 @@
 
 namespace immonex\Kickstart\Team\Widgets;
 
-use \immonex\Kickstart\Kickstart;
-use \immonex\Kickstart\Team\Agent;
+use immonex\Kickstart\Kickstart;
+use immonex\Kickstart\Team\Agent;
 
 /**
  * The agent widget

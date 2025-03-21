@@ -1,9 +1,9 @@
 === immonex Kickstart Team ===
 Contributors: immonex
 Tags: immobilien, immobilienmakler, realestate, agent, agency
-Requires at least: 4.7
+Requires at least: 5.1
 Tested up to: 6.8
-Stable Tag: 1.5.2
+Stable Tag: 1.5.12
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -106,11 +106,13 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 
 == Changelog ==
 
-= 1.5.10-beta =
-* Release date: 2025-03-04
+= 1.5.12 =
+* Release date: 2025-03-21
 * Added filters for retrieving agent/agency frontend elements.
 * Updated default skin to support global Kickstart colors and the Elementor Add-on.
-* Updated dependencies (improved WP 6.8 compatibility).
+* Reworked frontend component spacing (default skin).
+* Fixed a location assignment bug related to OpenImmo Feedback XML data.
+* Updated dependencies and verified WP 6.8 compatibility.
 
 = 1.5.2 =
 * Release date: 2024-09-09

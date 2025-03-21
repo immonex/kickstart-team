@@ -21,7 +21,7 @@ $inx_skin_logo = isset( $template_data['elements']['logo'] ) ?
 	false;
 ?>
 <article class="inx-team-single-agency inx-team-single-agency--type--single inx-container">
-	<div class="uk-flex uk-flex-wrap uk-margin-large-bottom">
+	<div class="uk-flex uk-flex-wrap">
 		<div class="uk-width-1-3@s uk-width-1-4@m uk-width-2-6@l">
 			<div class="inx-team-single-agency__logo">
 				<?php
@@ -130,7 +130,7 @@ $inx_skin_logo = isset( $template_data['elements']['logo'] ) ?
 	</div>
 
 	<?php if ( in_array( 'agents', $template_data['single_view_optional_sections'], true ) && ! empty( $template_data['agent_count'] ) ) : ?>
-	<div class="inx-team-single-agency__agents uk-margin-large-bottom">
+	<div class="inx-team-single-agency__agents uk-margin-large-top">
 		<?php
 		echo wp_sprintf(
 			'<h%2$d class="inx-team-single-agency__list-headline uk-margin-small-bottom">%1$s</h%2$d>',
@@ -151,7 +151,7 @@ $inx_skin_logo = isset( $template_data['elements']['logo'] ) ?
 	<?php endif; ?>
 
 	<?php if ( in_array( 'properties', $template_data['single_view_optional_sections'], true ) && ! empty( $template_data['property_count'] ) ) : ?>
-	<div class="inx-team-single-agency__properties uk-margin-large-bottom">
+	<div class="inx-team-single-agency__properties uk-margin-large-top">
 		<?php
 		echo wp_sprintf(
 			'<h%2$d class="inx-team-single-agency__list-headline uk-margin-small-bottom">%1$s</h%2$d>',

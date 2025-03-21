@@ -7,7 +7,7 @@
 
 namespace immonex\Kickstart\Team;
 
-use \immonex\Kickstart\Kickstart;
+use immonex\Kickstart\Kickstart;
 
 /**
  * Contact form related actions and filters

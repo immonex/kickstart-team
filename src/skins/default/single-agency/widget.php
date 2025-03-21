@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
-<article class="inx-team-single-agency inx-team-single-agency--type--widget inx-container">
+<article class="inx-team-single-agency inx-team-single-agency--type--widget">
 	<?php if ( ! empty( $template_data['title'] ) ) : ?>
 	<div class="inx-team-single-agency__title">
 		<?php

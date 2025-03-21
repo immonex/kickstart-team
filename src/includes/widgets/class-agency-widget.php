@@ -7,9 +7,9 @@
 
 namespace immonex\Kickstart\Team\Widgets;
 
-use \immonex\Kickstart\Kickstart;
-use \immonex\Kickstart\Team\Agent;
-use \immonex\Kickstart\Team\Agency;
+use immonex\Kickstart\Kickstart;
+use immonex\Kickstart\Team\Agent;
+use immonex\Kickstart\Team\Agency;
 
 /**
  * The agency widget

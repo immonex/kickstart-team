@@ -21,7 +21,7 @@ $inx_skin_photo = isset( $template_data['elements']['photo'] ) ?
 	false;
 ?>
 <article class="inx-team-single-agent inx-team-single-agent--type--single inx-container">
-	<div class="uk-flex uk-flex-wrap uk-margin-large-bottom">
+	<div class="uk-flex uk-flex-wrap">
 		<div class="inx-team-single-agent__photo-wrap uk-width-1-3@s uk-width-1-4@m uk-width-2-6@l">
 			<div class="inx-team-single-agent__photo inx-squared-image"
 				<?php
@@ -137,7 +137,7 @@ $inx_skin_photo = isset( $template_data['elements']['photo'] ) ?
 	</div>
 
 	<?php if ( in_array( 'properties', $template_data['single_view_optional_sections'], true ) && ! empty( $template_data['property_count'] ) ) : ?>
-	<div class="inx-team-single-agent__properties uk-margin-large-bottom">
+	<div class="inx-team-single-agent__properties uk-margin-large-top">
 		<?php
 		echo wp_sprintf(
 			'<h%2$d class="inx-team-single-agent__list-headline uk-margin-small-bottom">%1$s</h%2$d>',
@@ -169,7 +169,7 @@ $inx_skin_photo = isset( $template_data['elements']['photo'] ) ?
 			$utils['string']->get_excerpt( $inx_skin_agency->post_content ) : '';
 		$inx_skin_agency_url     = get_permalink( $template_data['agency_id'] );
 		?>
-	<div class="inx-team-single-agent__footer inx-quiet-bg uk-padding-small uk-margin-large-bottom">
+	<div class="inx-team-single-agent__footer inx-quiet-bg uk-padding-small uk-margin-large-top">
 		<div class="inx-team-single-agent__agency-logo uk-padding-small">
 			<a href="<?php echo $inx_skin_agency_url; ?>">
 				<?php echo get_the_post_thumbnail( $inx_skin_agency->ID, 'thumbnail' ); ?>

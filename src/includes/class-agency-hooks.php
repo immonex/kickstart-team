@@ -7,7 +7,7 @@
 
 namespace immonex\Kickstart\Team;
 
-use \immonex\Kickstart\Kickstart;
+use immonex\Kickstart\Kickstart;
 
 /**
  * Agency CPT related actions and filters
@@ -304,7 +304,7 @@ class Agency_Hooks extends Base_CPT_Hooks {
 		if ( count( $agencies ) > 0 ) {
 			usort(
 				$agencies,
-				function( $a, $b ) {
+				function ( $a, $b ) {
 					if ( $a['similarity'] === $b['similarity'] ) {
 						return 0;
 					}

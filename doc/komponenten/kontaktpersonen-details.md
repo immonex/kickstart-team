@@ -20,7 +20,7 @@ Hier ein Beispiel – wie immer mit *TeamQuiwi-Skin* und dem WP-Standard-Theme *
 
 ### Optionale Abschnitte
 
-Die Liste der Immobilien-Angebote und die Box mit Logo und Link zur Detailseite der zugehörigen Agentur (sofern vorhanden und aktiviert) sind optional und können in der **Vollansicht** auch ausgeblendet werden – entweder individuell pro Kontaktperson im jeweiligen Backend-Bearbeitungsformular unter ***immonex → Kontaktpersonen*** in der Optionsbox *Sonstiges* oder per Übernahme der Standardvorgabe in den [Plugin-Optionen](../schnellstart/einrichtung?id=optionale-abschnitte-1) (***immonex → Einstellungen → Team <sup>ADD-ON</sup> → Kontaktpersonen***: *Optionale Abschnitte*).
+Die Liste der Immobilien-Angebote und die *Footer-Box* mit Logo, Kurzbeschreibung und Link zur Detailseite der zugehörigen Agentur (sofern vorhanden und aktiviert) sind optional und können in der **Vollansicht** auch ausgeblendet werden – entweder individuell pro Kontaktperson im jeweiligen Backend-Bearbeitungsformular unter ***immonex → Kontaktpersonen*** in der Optionsbox *Sonstiges* oder per Übernahme der Standardvorgabe in den [Plugin-Optionen](../schnellstart/einrichtung?id=optionale-abschnitte-1) (***immonex → Einstellungen → Team <sup>ADD-ON</sup> → Kontaktpersonen***: *Optionale Abschnitte*).
 
 Bei einer Einbindung per [Shortcode](#shortcode) kann die (explizite) Ein- oder Ausblendung auch mittels Attributen erfolgen (`show_property_list`/`show_agency_link`).
 
@@ -99,7 +99,7 @@ Alle folgenden Attribute sind **optional**.
 | `show_property_list` | nur Vollansicht: Liste der zugehörigen Immobilien explizit ein- oder aublenden (entsprechende Angabe in den Add-on-Optionen ([Optionale Abschnitte](#optionale-abschnitte)) und dem [Kontaktpersonen-Datensatz](/beitragsarten?id=verarbeitungspezial-flags-etc) überschreiben) |
 | | *1* oder *yes* : anzeigen |
 | | *0* oder *no* : nicht anzeigen |
-| `show_agency_link` | nur Vollansicht: *Mehr-über-Link* zur Agentur-Detailseite explizit ein- oder aublenden (entsprechende Angabe in den Add-on-Optionen ([Optionale Abschnitte](#optionale-abschnitte)) und dem [Kontaktpersonen-Datensatz](/beitragsarten?id=verarbeitungspezial-flags-etc) überschreiben) |
+| `show_agency_link` | nur Vollansicht: *Footer-Box* mit Logo (sofern vorhanden), Kurzbeschreibung und Link zur Agentur-Detailseite explizit ein- oder aublenden (entsprechende Angabe in den Add-on-Optionen ([Optionale Abschnitte](#optionale-abschnitte)) und dem [Kontaktpersonen-Datensatz](/beitragsarten?id=verarbeitungspezial-flags-etc) überschreiben) |
 | | *1* oder *yes* : anzeigen |
 | | *0* oder *no* : nicht anzeigen |
 

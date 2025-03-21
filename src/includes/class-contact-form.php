@@ -602,7 +602,7 @@ class Contact_Form {
 		$fields = array_merge( $filtered_fields, $mandatory_fields );
 		uasort(
 			$fields,
-			function( $a, $b ) {
+			function ( $a, $b ) {
 				if (
 					! isset( $a['order'] )
 					|| ! isset( $b['order'] )
@@ -1506,7 +1506,7 @@ class Contact_Form {
 					$data_html['merged_form_data'] .= $rendered_field_html . PHP_EOL;
 				}
 
-				$fields_inserted++;
+				++$fields_inserted;
 			}
 
 			$data['merged_form_data'] = trim( $data['merged_form_data'] );

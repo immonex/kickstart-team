@@ -10,7 +10,7 @@ use immonex\Kickstart\Team\Kickstart_Team;
 class Kickstart_Team_Test extends WP_UnitTestCase {
 	private $kickstart_team;
 
-	public function setUp() {
+	public function setUp(): void {
 		$this->kickstart_team = new Kickstart_Team( 'immonex-kickstart-team' );
 	} // setUp
 

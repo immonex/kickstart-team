@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: immonex Kickstart Team 1.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/src\n"
-"POT-Creation-Date: 2025-02-28T15:28:12+00:00\n"
-"PO-Revision-Date: 2025-02-28 16:28+0100\n"
+"POT-Creation-Date: 2025-03-21T10:33:09+00:00\n"
+"PO-Revision-Date: 2025-03-21 11:33+0100\n"
 "Last-Translator: \n"
 "Language-Team: Carsten Scheuer <scheuer@inveris.de>\n"
 "Language: de\n"
@@ -1105,8 +1105,8 @@ msgid "default title for the agent post type archive pages"
 msgstr "Standardtitel für Archivseiten des Kontaktpersonen-Beitragstyps"
 
 #: includes/class-kickstart-team.php:808
-msgid "Agency Link (More about…)"
-msgstr "Agentur-Link (Mehr über…)"
+msgid "Footer Box with Agency Details Link (Name/Logo and Short Description)"
+msgstr "Footer-Box mit Agentur-Details-Link (Name/Logo und Kurzbeschreibung)"
 
 #: includes/class-kickstart-team.php:816
 msgid "Default Contact Section Adaptation"
@@ -2220,6 +2220,9 @@ msgstr "Deine Ansprechpartnerin"
 msgctxt "gender neutral"
 msgid "Your contact"
 msgstr "Deine Kontaktperson"
+
+#~ msgid "Agency Link (More about…)"
+#~ msgstr "Agentur-Link (Mehr über…)"
 
 #~ msgid ""
 #~ "I have read the [cancellation_policy] and confirm that I have been "

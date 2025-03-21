@@ -180,7 +180,7 @@ class Quick_Openimmo_Feedback {
 				'nachname'         => $nachname,
 				'strasse'          => $int_strasse,
 				'plz'              => $int_plz,
-				'ort'              => $int_ort,
+				'int_ort'          => $int_ort,
 				'tel'              => $tel,
 				'email'            => $email,
 				'anfrage'          => $anfrage,
@@ -216,7 +216,7 @@ class Quick_Openimmo_Feedback {
 			<nachname>{$oi_fb_params['nachname']}</nachname>
 			<strasse>{$oi_fb_params['strasse']}</strasse>
 			<plz>{$oi_fb_params['plz']}</plz>
-			<ort>{$oi_fb_params['ort']}</ort>
+			<ort>{$oi_fb_params['int_ort']}</ort>
 			<tel>{$oi_fb_params['tel']}</tel>
 			<email>{$oi_fb_params['email']}</email>
 			<anfrage>{$oi_fb_params['anfrage']}</anfrage>
@@ -240,7 +240,7 @@ EOT
 	 */
 	public function create_temp_file( $xml_source ) {
 		$temp_dir = trailingslashit( get_temp_dir() ) . uniqid();
-		mkdir( $temp_dir );
+		wp_mkdir_p( $temp_dir );
 
 		$default_filename = 'kontakt-openimmo-feedback.xml';
 		$filename         = sanitize_file_name(
@@ -274,7 +274,7 @@ EOT
 	 */
 	public function delete_temp_file( $oi_file ) {
 		if ( file_exists( $oi_file ) ) {
-			unlink( $oi_file );
+			wp_delete_file( $oi_file );
 		}
 	} // delete_temp_file
 

@@ -1,5 +1,13 @@
 == Changelog ==
 
+= 1.5.12 =
+* Release date: 2025-03-21
+* Added filters for retrieving agent/agency frontend elements.
+* Updated default skin to support global Kickstart colors and the Elementor Add-on.
+* Reworked frontend component spacing (default skin).
+* Fixed a location assignment bug related to OpenImmo Feedback XML data.
+* Updated dependencies and verified WP 6.8 compatibility.
+
 = 1.5.2 =
 * Release date: 2024-09-09
 * Fixed possible PHP warnings during contact form processing.

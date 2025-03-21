@@ -20,7 +20,7 @@ get_header();
 ?>
 
 <div class="inx-team-agency-archive" role="main">
-	<header class="inx-page-header inx-container uk-container">
+	<header class="inx-page-header inx-container">
 		<?php
 		the_archive_title(
 			'<h' . $inx_skin_heading_level . ' class="inx-page-title">',
@@ -33,7 +33,7 @@ get_header();
 		?>
 	</header>
 
-	<div class="inx-team-agency-archive__main-content inx-container uk-container">
+	<div class="inx-team-agency-archive__main-content inx-container">
 		<?php
 		do_action(
 			'inx_team_render_agency_list',

@@ -75,7 +75,7 @@ if ( ! is_callable( __NAMESPACE__ . '\autoload' ) ) {
 		 * the $file_path array. The last index is always the file so we append
 		 * that at the end.
 		 */
-		$fully_qualified_path = trailingslashit( dirname( __FILE__ ) ) . 'includes/';
+		$fully_qualified_path = trailingslashit( __DIR__ ) . 'includes/';
 		$cnt_file_path        = count( $file_path ) - 1;
 
 		for ( $i = substr_count( __NAMESPACE__, '\\' ) + 1; $i < $cnt_file_path; $i++ ) {

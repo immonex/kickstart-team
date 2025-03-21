@@ -29,7 +29,7 @@ if (
 	$inx_skin_link_type = $template_data['link_type'];
 }
 ?>
-<article class="inx-team-single-agent inx-team-single-agent--type--widget inx-container">
+<article class="inx-team-single-agent inx-team-single-agent--type--widget">
 	<?php if ( ! empty( $template_data['title'] ) ) : ?>
 	<div class="inx-team-single-agent__title">
 		<?php
