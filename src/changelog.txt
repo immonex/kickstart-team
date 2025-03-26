@@ -1,5 +1,10 @@
 == Changelog ==
 
+= 1.6.0 =
+* Release date: 2025-03-26
+* Fixed a platform compatibility issue (new minimum PHP version: 7.4).
+* Updated dependencies.
+
 = 1.5.12 =
 * Release date: 2025-03-21
 * Added filters for retrieving agent/agency frontend elements.

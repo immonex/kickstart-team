@@ -1,9 +1,14 @@
 {
     "name": "immonex/kickstart-team",
+    "config": {
+        "platform": {
+            "php": "7.4.33"
+        }
+    },
     "repositories": [],
     "minimum-stability": "dev",
     "require": {
-        "immonex/wp-free-plugin-core": "2.2.0"
+        "immonex/wp-free-plugin-core": "2.2.2"
     },
     "require-dev": {
         "phpunit/phpunit": "^9",

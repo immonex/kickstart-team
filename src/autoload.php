@@ -8,11 +8,10 @@
 namespace immonex\Kickstart\Team;
 
 /**
- * OPTIONAL: Initialize the Composer autoloader first.
- *
- * For this, uncomment the following line:
- * require_once __DIR__ . '/vendor/autoload.php';
+ * Initialize the Composer autoloader first (optional).
  */
+// @codingStandardsIgnoreLine
+// require_once __DIR__ . '/vendor/autoload.php';
 
 /**
  * The base classes of immonex WP Free Plugin core have their own autoloader.
@@ -77,10 +76,11 @@ if ( ! is_callable( __NAMESPACE__ . '\autoload' ) ) {
 		 */
 		$fully_qualified_path = trailingslashit( __DIR__ ) . 'includes/';
 		$cnt_file_path        = count( $file_path ) - 1;
+		$cnt_ns_separators    = substr_count( __NAMESPACE__, '\\' );
 
-		for ( $i = substr_count( __NAMESPACE__, '\\' ) + 1; $i < $cnt_file_path; $i++ ) {
-			$dir                   = strtolower( $file_path[ $i ] );
-			$fully_qualified_path .= trailingslashit( $dir );
+		for ( $i = $cnt_ns_separators + 1; $i < $cnt_file_path; $i++ ) {
+			$dir                   = preg_replace( '/([a-z])([A-Z])/', '$1-$2', $file_path[ $i ] );
+			$fully_qualified_path .= trailingslashit( strtolower( $dir ) );
 		}
 		$fully_qualified_path .= $file_name;
 
