@@ -210,13 +210,13 @@ class Contact_Form {
 		}
 
 		$property_data = $property_post_id ?
-			$this->get_property_data( $form_data['property_post_id'] ) :
+			$this->get_property_data( $property_post_id ) :
 			false;
 
 		$template_data['property'] = $property_data;
 
 		$form_post_type        = $form_data['post_type'];
-		$form_post_id          = $form_data['post_id'];
+		$form_post_id          = (int) $form_data['post_id'];
 		$origin_form_post_type = $origin_post_id ? get_post_type( $origin_post_id ) : '';
 
 		if (
@@ -225,6 +225,14 @@ class Contact_Form {
 		) {
 			$form_post_type = $origin_form_post_type;
 			$form_post_id   = $origin_post_id;
+
+			if (
+				'inx_agent' === $form_post_type
+				&& ! empty( $property_data['agent_ids'] )
+				&& $form_post_id !== (int) $property_data['agent_ids'][0]
+			) {
+				$property_data['mail_recipients'] = array();
+			}
 		}
 
 		$recipient_lists = $this->compose_recipient_lists(
@@ -1039,6 +1047,7 @@ class Contact_Form {
 			'obid'                  => get_post_meta( $property->ID, '_openimmo_obid', true ),
 			'title'                 => $property->post_title,
 			'url'                   => get_permalink( $property->ID ),
+			'agent_ids'             => Agent::fetch_agent_ids( $property->ID ),
 			'primary_agent_name'    => '',
 			'primary_agent_company' => '',
 			'primary_agent_email'   => '',
@@ -1048,9 +1057,8 @@ class Contact_Form {
 		 * Retrieve recipient mail addresses from related agent/agency records.
 		 */
 
-		$agent_ids = Agent::fetch_agent_ids( $property_id );
-		if ( count( $agent_ids ) > 0 ) {
-			foreach ( $agent_ids as $i => $agent_id ) {
+		if ( ! empty( $property_data['agent_ids'] ) ) {
+			foreach ( $property_data['agent_ids'] as $i => $agent_id ) {
 				$agent = new Agent( $agent_id, $this->config, $this->utils );
 
 				if ( 0 === $i ) {

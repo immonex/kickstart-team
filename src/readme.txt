@@ -106,6 +106,11 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 
 == Changelog ==
 
+= 1.6.2-beta =
+* Release date: 2025-04-10
+* Improved inquiry mail recipient handling.
+* Fixed some minor CSS issues (link colors).
+
 = 1.6.0 =
 * Release date: 2025-03-26
 * Fixed a platform compatibility issue (new minimum PHP version: 7.4).
@@ -118,11 +123,5 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 * Reworked frontend component spacing (default skin).
 * Fixed a location assignment bug related to OpenImmo Feedback XML data.
 * Updated dependencies and verified WP 6.8 compatibility.
-
-= 1.5.2 =
-* Release date: 2024-09-09
-* Fixed possible PHP warnings during contact form processing.
-* Reverified WordPress 6.7 compatibility.
-* Updated dependencies.
 
 See changelog.txt for the complete version history.

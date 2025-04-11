@@ -69,3 +69,4 @@ apidoc
 
 # Miscellaneous
 .tmp
+*.cache

@@ -1,11 +1,11 @@
 .inx-team-single-agent {
-	a {
+	a:not(.inx-oi--inverted):not(.inx-inverse) {
 		text-decoration: none;
 		box-shadow: none;
 		color: var(--inx-color-action-element);
 	}
 
-	a:hover {
+	a:not(.inx-oi--inverted):not(.inx-inverse):hover {
 		color: var(--inx-color-action-element-lighter);
 	}
 }
