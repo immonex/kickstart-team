@@ -10,7 +10,7 @@ namespace immonex\Kickstart\Team;
 /**
  * Main plugin class
  */
-class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_2_2\Base {
+class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_3_0\Base {
 
 	const PLUGIN_NAME                = 'immonex Kickstart Team';
 	const ADDON_NAME                 = 'Team';
@@ -665,7 +665,7 @@ and conditions can be used in the related input fields:<br><br>
 				'args'    => array(
 					'plugin_slug' => $this->plugin_slug,
 					'option_name' => $this->plugin_options_name,
-					'description' => __( 'A skin is a set of connected templates for plugin related pages and elements.', 'immonex-kickstart-team' ),
+					'description' => __( 'A skin is a set of templates files (PHP, Twig, CSS, JS etc.) and related resources like images and fonts for plugin frontend elements and pages.', 'immonex-kickstart-team' ),
 					'options'     => $this->utils['template']->get_frontend_skins(),
 					'value'       => $this->plugin_options['skin'],
 				),

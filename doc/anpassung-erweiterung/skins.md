@@ -2,7 +2,7 @@
 
 Ein *Skin* ist - technisch gesehen - ein einfacher Ordner, der alle für die Darstellung im **Website-Frontend** maßgeblichen Ressourcen in (möglichst) einheitlicher, strukturierter Form enthält:
 
-- Templates (PHP)
+- Templates (PHP, Twig)
 - JavaScript-Dateien
 - CSS-Dateien
 - Bilddateien
@@ -43,10 +43,10 @@ Die zugehörige Ordner-Struktur könnte so aussehen:
 
 <strong>.../wp-content/themes/(CHILD-)THEME-NAME/immonex-kickstart-team</strong>
 ╷
-├── /denise
-├── /paula
-├── /agnus
-└── /one
+├── /team-denise
+├── /team-paula
+├── /team-agnus
+└── /team-one
 </pre>
 
 ## Aufbau

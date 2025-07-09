@@ -6,6 +6,8 @@ Die Übersetzungen von translate.wordpress.org werden automatisch in den globale
 
 <pre class="tree">
 <strong>.../wp-content/languages/plugins</strong>
+├── immonex-kickstart-team-de_DE.po
+├── immonex-kickstart-team-de_DE.mo
 ├── immonex-kickstart-team-de_DE_formal.po
 └── immonex-kickstart-team-de_DE_formal.mo
 </pre>

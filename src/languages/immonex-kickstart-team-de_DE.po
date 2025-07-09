@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the immonex Kickstart Team package.
 msgid ""
 msgstr ""
-"Project-Id-Version: immonex Kickstart Team 1.5\n"
+"Project-Id-Version: immonex Kickstart Team 1.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/src\n"
-"POT-Creation-Date: 2025-03-21T10:33:09+00:00\n"
-"PO-Revision-Date: 2025-03-21 11:33+0100\n"
+"POT-Creation-Date: 2025-06-18T15:05:53+00:00\n"
+"PO-Revision-Date: 2025-06-18 17:07+0200\n"
 "Last-Translator: \n"
 "Language-Team: Carsten Scheuer <scheuer@inveris.de>\n"
 "Language: de\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 
 #. Plugin Name of the plugin
 #: immonex-kickstart-team.php
@@ -57,8 +57,8 @@ msgstr "E-Mail"
 
 #: includes/class-agency-backend-form.php:89
 #: includes/class-agency-backend-form.php:211 includes/class-agency.php:481
-#: includes/class-agent.php:707 includes/class-contact-form.php:547
-#: includes/class-contact-form.php:548
+#: includes/class-agent.php:707 includes/class-contact-form.php:555
+#: includes/class-contact-form.php:556
 msgid "Phone"
 msgstr "Telefon"
 
@@ -69,7 +69,7 @@ msgstr "Fax"
 
 #: includes/class-agency-backend-form.php:107 includes/class-agency.php:508
 #: includes/class-agent-backend-form.php:203 includes/class-agent.php:802
-#: includes/class-contact-form.php:510 includes/class-contact-form.php:511
+#: includes/class-contact-form.php:518 includes/class-contact-form.php:519
 msgid "Street"
 msgstr "Straße"
 
@@ -85,7 +85,7 @@ msgstr "PLZ"
 
 #: includes/class-agency-backend-form.php:125 includes/class-agency.php:532
 #: includes/class-agent-backend-form.php:221 includes/class-agent.php:829
-#: includes/class-contact-form.php:528 includes/class-contact-form.php:529
+#: includes/class-contact-form.php:536 includes/class-contact-form.php:537
 msgid "City"
 msgstr "Ort"
 
@@ -352,7 +352,7 @@ msgstr "Über..."
 msgid "Gender"
 msgstr "Geschlecht"
 
-#: includes/class-agent-backend-form.php:87 includes/class-contact-form.php:483
+#: includes/class-agent-backend-form.php:87 includes/class-contact-form.php:491
 msgid "not specified"
 msgstr "keine Angabe"
 
@@ -371,12 +371,12 @@ msgid "Title"
 msgstr "Titel"
 
 #: includes/class-agent-backend-form.php:100 includes/class-agent.php:604
-#: includes/class-contact-form.php:494 includes/class-contact-form.php:495
+#: includes/class-contact-form.php:502 includes/class-contact-form.php:503
 msgid "First Name"
 msgstr "Vorname"
 
 #: includes/class-agent-backend-form.php:106 includes/class-agent.php:611
-#: includes/class-contact-form.php:502 includes/class-contact-form.php:503
+#: includes/class-contact-form.php:510 includes/class-contact-form.php:511
 msgid "Last Name"
 msgstr "Nachname"
 
@@ -599,85 +599,85 @@ msgstr "+49 3212 987654321"
 msgid "I am interested in the property &quot;%1$s&quot; (%2$s)."
 msgstr "Ich interessiere mich für die Immobilie &quot;%1$s&quot; (%2$s)."
 
-#: includes/class-contact-form.php:251
+#: includes/class-contact-form.php:259
 msgid "Inquiry"
 msgstr "Anfrage"
 
-#: includes/class-contact-form.php:253
+#: includes/class-contact-form.php:261
 msgid "for"
 msgstr "für"
 
-#: includes/class-contact-form.php:405
+#: includes/class-contact-form.php:413
 msgid ""
 "Uh-oh! A problem occured while sending your data. Please try again later!"
 msgstr ""
 "Hoppla! Bei Versenden deiner Angaben ist leider ein Problem aufgetreten - "
 "bitte etwas später erneut versuchen!"
 
-#: includes/class-contact-form.php:481
+#: includes/class-contact-form.php:489
 msgid "Salutation"
 msgstr "Anrede"
 
-#: includes/class-contact-form.php:484
+#: includes/class-contact-form.php:492
 msgid "Ms."
 msgstr "Frau"
 
-#: includes/class-contact-form.php:485
+#: includes/class-contact-form.php:493
 msgid "Mr."
 msgstr "Herr"
 
-#: includes/class-contact-form.php:519 includes/class-contact-form.php:520
+#: includes/class-contact-form.php:527 includes/class-contact-form.php:528
 msgid "Postal Code"
 msgstr "PLZ"
 
-#: includes/class-contact-form.php:537 includes/class-contact-form.php:539
+#: includes/class-contact-form.php:545 includes/class-contact-form.php:547
 msgid "Name"
 msgstr "Name"
 
-#: includes/class-contact-form.php:538
+#: includes/class-contact-form.php:546
 msgid "Prospect"
 msgstr "Interessent/in"
 
-#: includes/class-contact-form.php:556 includes/class-contact-form.php:557
+#: includes/class-contact-form.php:564 includes/class-contact-form.php:565
 msgid "Email Address"
 msgstr "E-Mail-Adresse"
 
-#: includes/class-contact-form.php:564 includes/class-contact-form.php:565
+#: includes/class-contact-form.php:572 includes/class-contact-form.php:573
 msgid "Message"
 msgstr "Nachricht"
 
-#: includes/class-contact-form.php:645
+#: includes/class-contact-form.php:653
 msgid "This is a required field!"
 msgstr "Dies ist ein Pflichtfeld!"
 
 #. translators: %s = caption of an alternative required field
-#: includes/class-contact-form.php:653
+#: includes/class-contact-form.php:661
 msgid "Please fill out this or the alternative field <strong>%s</strong>."
 msgstr "Bitte dieses oder das Alternativfeld <strong>%s</strong> ausfüllen."
 
-#: includes/class-contact-form.php:662
+#: includes/class-contact-form.php:670
 msgid "Please check the inputs!"
 msgstr "Bitte die Eingaben prüfen!"
 
-#: includes/class-contact-form.php:668
+#: includes/class-contact-form.php:676
 msgid "Your data could not be submitted. Please reload the page and try again!"
 msgstr ""
 "Deine Angaben konnten nicht übermittelt werden. Bitte lade die Seite neu und "
 "versuche es noch einmal!"
 
-#: includes/class-contact-form.php:773
+#: includes/class-contact-form.php:781
 msgid "Your inquiry for the property"
 msgstr "Deine Anfrage zur Immobilie"
 
-#: includes/class-contact-form.php:780 includes/class-kickstart-team.php:160
+#: includes/class-contact-form.php:788 includes/class-kickstart-team.php:160
 msgid "Confirmation of receipt"
 msgstr "Eingangsbestätigung"
 
-#: includes/class-contact-form.php:923 includes/class-contact-form.php:926
+#: includes/class-contact-form.php:931 includes/class-contact-form.php:934
 msgid "Privacy Policy"
 msgstr "Datenschutzerklärung"
 
-#: includes/class-contact-form.php:961
+#: includes/class-contact-form.php:969
 msgid "Cancellation Policy"
 msgstr "Widerrufsbelehrung"
 
@@ -1015,10 +1015,12 @@ msgstr "Skin"
 
 #: includes/class-kickstart-team.php:668
 msgid ""
-"A skin is a set of connected templates for plugin related pages and elements."
+"A skin is a set of templates files (PHP, Twig, CSS, JS etc.) and related "
+"resources like images and fonts for plugin frontend elements and pages."
 msgstr ""
-"Als Skin wird ein Reihe zusammengehöriger Plugin-Vorlagen (Templates) "
-"bezeichnet."
+"Ein Skin ist ein Satz von Template-Dateien (PHP, Twig, CSS, JS etc.) sowie "
+"zugehörigen Ressourcen wie Bildern und Fonts für Plugin-Frontend-Elemente "
+"und -Seiten."
 
 #: includes/class-kickstart-team.php:676 includes/class-kickstart-team.php:746
 msgid "Archive"
@@ -2220,6 +2222,13 @@ msgstr "Deine Ansprechpartnerin"
 msgctxt "gender neutral"
 msgid "Your contact"
 msgstr "Deine Kontaktperson"
+
+#~ msgid ""
+#~ "A skin is a set of connected templates for plugin related pages and "
+#~ "elements."
+#~ msgstr ""
+#~ "Als Skin wird ein Reihe zusammengehöriger Plugin-Vorlagen (Templates) "
+#~ "bezeichnet."
 
 #~ msgid "Agency Link (More about…)"
 #~ msgstr "Agentur-Link (Mehr über…)"

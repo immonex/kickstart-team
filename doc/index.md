@@ -1,6 +1,7 @@
-# Über dieses Plugin <!-- {docsify-ignore-all} -->
+<span class="home-page-plugin-logo element-light">![immonex Kickstart Team Logo](assets/immonex-kickstart-team-logo.png ':no-zoom')</span>
+<span class="home-page-plugin-logo element-dark">![immonex Kickstart Team Logo](assets/immonex-kickstart-team-logo-dark.png ':no-zoom')</span>
 
-<span style="float: right">![immonex Kickstart Team Logo](assets/kickstart-team-logo.png)</span>
+# Über dieses Plugin <!-- {docsify-ignore-all} -->
 
 **immonex Kickstart Team** ist ein *Add-on-Plugin*, das **WordPress-Immobilien-Websites** auf Basis von [immonex Kickstart](https://de.wordpress.org/plugins/immonex-kickstart/)<sup>1</sup> um folgende Funktionen und Inhalte erweitert:
 
@@ -27,10 +28,6 @@ immonex Kickstart Team ist **freie, quelloffene Software** (Open Source), die un
 
 Entwicklung und Support: [GitHub-Repository](https://github.com/immonex/kickstart-team)
 
-## Trivia
-
-Kickstart- und Add-on-Logos sind eine Hommage an die Entwickler des ersten **Amiga** (später bekannt als [Commodore Amiga 1000](https://en.wikipedia.org/wiki/Amiga_1000)) 😉
-
 ---
 
 <sup>1</sup> Das Plugin immonex Kickstart stellt - neben einem Framework für Erweiterungen - Basiskomponenten für die Einbindung von Immobilien-Angeboten bereit, die per *OpenImmo-Schnittstelle* importiert werden.
@@ -38,3 +35,34 @@ Kickstart- und Add-on-Logos sind eine Hommage an die Entwickler des ersten **Ami
 <sup>2</sup> [OpenImmo-XML](http://openimmo.de/) ist der De-facto-Standard für den Austausch von Immobiliendaten in den deutschsprachigen Ländern und wird hier von allen gängigen Softwarelösungen und Portalen für Immobilienmakler/innen durch entsprechende Import/Export-Schnittstellen unterstützt.
 
 <sup>3</sup> Die OpenImmo-Lösung für WordPress, die Kickstart und das Team-Add-on "out of the box" unterstützt, ist [immonex OpenImmo2WP](https://plugins.inveris.de/shop/immonex-openimmo2wp/) ([Dokumentation](https://plugins.inveris.de/de/shop/immonex-openimmo2wp/?target=dokumentation)). Eine uneingeschränkt funktionsfähige Version dieses und weiterer immonex-Plugins sowie passende Beispieldaten können nach einer kurzen Registrierung unter [immonex.dev](https://immonex.dev/) für Test- und Entwicklungszwecke kostenlos und unverbindlich heruntergeladen werden.
+
+<div class="home-page-footer">
+  <div>
+    <div class="home-page-immonex-wp-plugin-suite-logo element-light">
+      <a href="https://plugins.inveris.de/" target="_blank" class="no-icon">
+        <img src="assets/immonex-wordpress-plugin-suite-logo.png" alt="immonex WordPress Plugin Suite Logo" data-no-zoom>
+      </a>
+    </div>
+    <div class="home-page-immonex-wp-plugin-suite-logo element-dark">
+      <a href="https://plugins.inveris.de/" target="_blank" class="no-icon">
+        <img src="assets/immonex-wordpress-plugin-suite-logo-dark.png" alt="immonex WordPress Plugin Suite Logo" data-no-zoom>
+      </a>
+    </div>
+  </div>
+
+  <div>
+    <div class="home-page-kickstart-logo element-light">
+      <a href="https://de.wordpress.org/plugins/immonex-kickstart/" target="_blank" class="no-icon">
+        <img src="assets/immonex-kickstart-logo.png" alt="immonex Kickstart Logo" data-no-zoom></a>
+    </div>
+    <div class="home-page-kickstart-logo element-dark">
+      <a href="https://de.wordpress.org/plugins/immonex-kickstart/" target="_blank" class="no-icon">
+        <img src="assets/immonex-kickstart-logo-dark.png" alt="immonex Kickstart Logo" data-no-zoom></a>
+    </div>
+  </div>
+
+  <div>
+    <div class="home-page-immonex-logo element-light"><img src="assets/immonex-logo.png" alt="immonex Logo" data-no-zoom></div>
+    <div class="home-page-immonex-logo element-dark"><img src="assets/immonex-logo-dark.png" alt="immonex Logo" data-no-zoom></div>
+  </div>
+</div>

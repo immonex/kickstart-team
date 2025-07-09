@@ -2,11 +2,11 @@
 
 ## Automatisch
 
-Kickstart Team ist im [WordPress-Plugin-Repository](https://de.wordpress.org/plugins/immonex-kickstart-team/) verfügbar und kann unter ***Plugins → Installieren*** per Suche/Klick automatisiert heruntergeladen und installiert werden.
+immonex Kickstart Team ist im offiziellen [WordPress-Plugin-Verzeichnis](https://de.wordpress.org/plugins/immonex-kickstart-team/) verfügbar und kann über die Suche unter ***Plugins → Installieren*** automatisiert heruntergeladen und installiert werden.
 
 ## Manuell
 
-Das Plugin kann alternativ auch via ***Plugins > Installieren → Plugin hochladen*** als ZIP-Datei manuell installiert oder aktualisiert werden (bspw. eine noch nicht im WordPress-Plugin-Repository verfügbare Beta-Version, die via [immonex.dev](https://immonex.dev/) heruntergeladen wurde).
+Das Plugin kann alternativ auch via ***Plugins → Installieren → Plugin hochladen*** als ZIP-Datei manuell installiert oder aktualisiert werden (bspw. eine noch nicht im WordPress-Plugin-Verzeichnis verfügbare Beta-Version, die von [immonex.dev](https://immonex.dev/) heruntergeladen wurde).
 
 > Alle Agentur- und Kontaktpersonen-Datensätze sowie Plugin-Einstellungen bleiben auch beim Deaktivieren/Löschen erhalten und werden bei der Installation der neuen Version übernommen.
 
