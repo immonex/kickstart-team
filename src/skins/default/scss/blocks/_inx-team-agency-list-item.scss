@@ -1,3 +1,6 @@
+@use "../_config";
+@use "../_mixins";
+
 .inx-team-agency-list-item {
 	border-radius: var(--inx-signature-border-radius, 0 0 8px 0);
 	overflow: hidden;
@@ -56,7 +59,7 @@
 
 .inx-team-agency-list-item__element-icon {
 	margin-right: .5em;
-	@include hyphenate(auto);
+	@include mixins.hyphenate(auto);
 }
 
 .inx-team-agency-list-item__footer a:hover {
@@ -84,7 +87,7 @@
 	text-align: right;
 }
 
-@media screen and (min-width: $screen-m) {
+@media screen and (min-width: config.$screen-m) {
 	.inx-team-agency-list-item:not(.inx-team-agency-list-item--no-footer) {
 		padding-bottom: 36px;
 	}

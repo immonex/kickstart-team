@@ -1,5 +1,14 @@
 == Changelog ==
 
+= 1.6.8 =
+* Release date: 2025-08-25
+* Added optional legal notice section to agency detail views.
+* Added filter hooks inx_team_agent_element_value and inx_team_agency_element_value.
+* Improved inquiry mail recipient handling.
+* Improved contact form and list view WCAG conformity.
+* Reworked default skin SCSS code.
+* Fixed some minor CSS issues (link colors).
+
 = 1.6.0 =
 * Release date: 2025-03-26
 * Fixed a platform compatibility issue (new minimum PHP version: 7.4).

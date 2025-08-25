@@ -141,6 +141,19 @@ body:not(.dark) .markdown-section blockquote em {
 	content: "\1F6C8";
 }
 
+.two-column-layout {
+	display: flex;
+	gap: 32px;
+}
+
+.two-column-layout > div:first-child {
+	flex: 1 0 auto;
+}
+
+.two-column-layout > div:last-child {
+	flex: 1 1 100%;
+}
+
 .home-page-plugin-logo {
 	display: inline-block;
 	margin-left: 16px;
@@ -154,6 +167,10 @@ body:not(.dark) .markdown-section blockquote em {
 	gap: 16px;
 	flex-wrap: wrap;
 	margin-top: 64px;
+}
+
+.home-page-footer a.link-external::before {
+	content: "";
 }
 
 body.light .element-light,

@@ -1,3 +1,6 @@
+@use "../_config";
+@use "../_mixins";
+
 .inx-team-agent-list-item {
 	border-radius: var(--inx-signature-border-radius, 8px 0 0 0);
 	overflow: hidden;
@@ -49,7 +52,7 @@
 	display: flex;
 	align-items: stretch;
 	box-sizing: content-box;
-	@include hyphenate(auto);
+	@include mixins.hyphenate(auto);
 }
 
 .inx-team-agent-list-item__element-icon {
@@ -78,7 +81,7 @@
 	text-align: right;
 }
 
-@media screen and (min-width: $screen-m) {
+@media screen and (min-width: config.$screen-m) {
 	.inx-team-agent-list-item:not(.inx-team-agent-list-item--no-footer) {
 		padding-bottom: 36px;
 	}

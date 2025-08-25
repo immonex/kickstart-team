@@ -132,10 +132,6 @@ abstract class Base_CPT_List_Hooks {
 				$query->get( 'post_type' )
 				&& $query->get( 'post_type' ) !== $this->post_type_name
 			)
-			|| (
-				get_post_type()
-				&& get_post_type() !== $this->post_type_name
-			)
 		) {
 			return;
 		}

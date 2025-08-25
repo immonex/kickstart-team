@@ -80,11 +80,13 @@ class Agent_Hooks extends Base_CPT_Hooks {
 		 */
 
 		add_filter( 'inx_team_get_agent_template_data', array( $this, 'get_agent_data' ), 10, 2 );
-		add_filter( 'inx_team_get_agent_elements', array( $this, 'get_agent_elements' ) );
 
 		// Filters for "manually" creating and updating agents.
 		add_filter( 'inx_team_create_agent', array( $this, 'create_agent' ), 10, 2 );
 		add_filter( 'inx_team_update_agent', array( $this, 'update_agent' ), 10, 3 );
+
+		// Internal hook.
+		add_filter( 'inx_team_get_agent_elements', array( $this, 'get_agent_elements' ) );
 
 		/**
 		 * Shortcodes

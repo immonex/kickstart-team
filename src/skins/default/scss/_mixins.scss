@@ -1,5 +1,7 @@
 // Skin/Template mixins
 
+@use "_config";
+
 @mixin gradient($base-color) {
 	background-color: $base-color;
 	background: linear-gradient(60deg, lighten($base-color, 5%) 50%, darken($base-color, 10%) 100%);

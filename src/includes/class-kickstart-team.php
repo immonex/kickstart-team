@@ -10,7 +10,7 @@ namespace immonex\Kickstart\Team;
 /**
  * Main plugin class
  */
-class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_3_0\Base {
+class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_4_3\Base {
 
 	const PLUGIN_NAME                = 'immonex Kickstart Team';
 	const ADDON_NAME                 = 'Team';
@@ -18,7 +18,7 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_3_0\Base {
 	const PLUGIN_PREFIX              = 'inx_team_';
 	const PUBLIC_PREFIX              = 'inx-team-';
 	const TEXTDOMAIN                 = 'immonex-kickstart-team';
-	const PLUGIN_VERSION             = '1.6.2-beta';
+	const PLUGIN_VERSION             = '1.6.8';
 	const PLUGIN_HOME_URL            = 'https://de.wordpress.org/plugins/immonex-kickstart-team/';
 	const PLUGIN_DOC_URLS            = array(
 		'de' => 'https://docs.immonex.de/kickstart-team/',
@@ -47,7 +47,7 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_3_0\Base {
 		'enable_agency_archive'                => true,
 		'agency_archive_title'                 => 'INSERT_TRANSLATED_DEFAULT_VALUE',
 		'enable_agency_single_view'            => true,
-		'agency_single_view_optional_sections' => array( 'agents', 'properties' ),
+		'agency_single_view_optional_sections' => array( 'agents', 'properties', 'legal_notice' ),
 		'enable_agent_archive'                 => true,
 		'agent_archive_title'                  => 'INSERT_TRANSLATED_DEFAULT_VALUE',
 		'enable_agent_single_view'             => true,
@@ -444,13 +444,7 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_3_0\Base {
 	 * @return array Extended tab array.
 	 */
 	public function extend_tabs( $tabs ) {
-		$addon_footer_infos = implode(
-			' | ',
-			array_merge(
-				array( self::ADDON_NAME ),
-				$this->get_plugin_footer_infos()
-			)
-		);
+		$addon_footer_infos = implode( ' | ', $this->get_plugin_footer_infos() );
 
 		$addon_tabs = array(
 			self::ADDON_TAB_ID => array(
@@ -734,8 +728,9 @@ and conditions can be used in the related input fields:<br><br>
 						)
 						. ')',
 					'options'     => array(
-						'agents'     => __( 'Agents (Team)', 'immonex-kickstart-team' ),
-						'properties' => __( 'related Real Estate Offers', 'immonex-kickstart-team' ),
+						'agents'       => __( 'Agents (Team)', 'immonex-kickstart-team' ),
+						'properties'   => __( 'related Real Estate Offers', 'immonex-kickstart-team' ),
+						'legal_notice' => __( 'Legal Notice', 'immonex-kickstart-team' ),
 					),
 					'value'       => $this->plugin_options['agency_single_view_optional_sections'],
 				),
@@ -780,7 +775,7 @@ and conditions can be used in the related input fields:<br><br>
 					'description' => wp_sprintf(
 						/* translators: %1$s = post type name, %2$s = exception info */
 						__( 'Enable the default single view for <strong>%1$s</strong> posts. (%2$s)', 'immonex-kickstart-team' ),
-						__( 'agency', 'immonex-kickstart-team' ),
+						__( 'agent', 'immonex-kickstart-team' ),
 						__( 'This has no effect on views embedded via shortcode or widget.', 'immonex-kickstart-team' )
 					),
 					'value'       => $this->plugin_options['enable_agent_single_view'],

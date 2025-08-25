@@ -36,33 +36,4 @@ Entwicklung und Support: [GitHub-Repository](https://github.com/immonex/kickstar
 
 <sup>3</sup> Die OpenImmo-Lösung für WordPress, die Kickstart und das Team-Add-on "out of the box" unterstützt, ist [immonex OpenImmo2WP](https://plugins.inveris.de/shop/immonex-openimmo2wp/) ([Dokumentation](https://plugins.inveris.de/de/shop/immonex-openimmo2wp/?target=dokumentation)). Eine uneingeschränkt funktionsfähige Version dieses und weiterer immonex-Plugins sowie passende Beispieldaten können nach einer kurzen Registrierung unter [immonex.dev](https://immonex.dev/) für Test- und Entwicklungszwecke kostenlos und unverbindlich heruntergeladen werden.
 
-<div class="home-page-footer">
-  <div>
-    <div class="home-page-immonex-wp-plugin-suite-logo element-light">
-      <a href="https://plugins.inveris.de/" target="_blank" class="no-icon">
-        <img src="assets/immonex-wordpress-plugin-suite-logo.png" alt="immonex WordPress Plugin Suite Logo" data-no-zoom>
-      </a>
-    </div>
-    <div class="home-page-immonex-wp-plugin-suite-logo element-dark">
-      <a href="https://plugins.inveris.de/" target="_blank" class="no-icon">
-        <img src="assets/immonex-wordpress-plugin-suite-logo-dark.png" alt="immonex WordPress Plugin Suite Logo" data-no-zoom>
-      </a>
-    </div>
-  </div>
-
-  <div>
-    <div class="home-page-kickstart-logo element-light">
-      <a href="https://de.wordpress.org/plugins/immonex-kickstart/" target="_blank" class="no-icon">
-        <img src="assets/immonex-kickstart-logo.png" alt="immonex Kickstart Logo" data-no-zoom></a>
-    </div>
-    <div class="home-page-kickstart-logo element-dark">
-      <a href="https://de.wordpress.org/plugins/immonex-kickstart/" target="_blank" class="no-icon">
-        <img src="assets/immonex-kickstart-logo-dark.png" alt="immonex Kickstart Logo" data-no-zoom></a>
-    </div>
-  </div>
-
-  <div>
-    <div class="home-page-immonex-logo element-light"><img src="assets/immonex-logo.png" alt="immonex Logo" data-no-zoom></div>
-    <div class="home-page-immonex-logo element-dark"><img src="assets/immonex-logo-dark.png" alt="immonex Logo" data-no-zoom></div>
-  </div>
-</div>
+[](_home-page-footer.md ':include')

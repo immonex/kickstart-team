@@ -2,8 +2,8 @@
 Contributors: immonex
 Tags: immobilien, immobilienmakler, realestate, agent, agency
 Requires at least: 5.5
-Tested up to: 6.8
-Stable Tag: 1.6.0
+Tested up to: 6.9
+Stable Tag: 1.6.8
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -106,9 +106,13 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 
 == Changelog ==
 
-= 1.6.2-beta =
-* Release date: 2025-04-10
+= 1.6.8 =
+* Release date: 2025-08-25
+* Added optional legal notice section to agency detail views.
+* Added filter hooks inx_team_agent_element_value and inx_team_agency_element_value.
 * Improved inquiry mail recipient handling.
+* Improved contact form and list view WCAG conformity.
+* Reworked default skin SCSS code.
 * Fixed some minor CSS issues (link colors).
 
 = 1.6.0 =

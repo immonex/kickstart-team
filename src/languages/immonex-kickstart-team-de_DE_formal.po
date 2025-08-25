@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: immonex Kickstart Team 1.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/src\n"
-"POT-Creation-Date: 2025-06-18T15:05:53+00:00\n"
-"PO-Revision-Date: 2025-06-18 17:08+0200\n"
+"POT-Creation-Date: 2025-07-10T10:13:10+00:00\n"
+"PO-Revision-Date: 2025-07-10 12:17+0200\n"
 "Last-Translator: \n"
 "Language-Team: Carsten Scheuer <scheuer@inveris.de>\n"
 "Language: de_DE@formal\n"
@@ -2158,7 +2158,11 @@ msgstr "Meine Angebote"
 msgid "About Me"
 msgstr "Über mich"
 
-#: skins/default/contact-form.php:194
+#: skins/default/contact-form.php:169
+msgid "consent"
+msgstr "einwilligen"
+
+#: skins/default/contact-form.php:196
 msgid ""
 "Heads up! This is only sample data, the form data will <strong>not</strong> "
 "be submitted."
@@ -2166,15 +2170,15 @@ msgstr ""
 "Achtung! Dies sind nur Beispieldaten, die Angaben im Formular werden "
 "<strong>nicht</strong> übermittelt."
 
-#: skins/default/contact-form.php:202
+#: skins/default/contact-form.php:204
 msgid "Secure submission"
 msgstr "Sichere Übermittlung"
 
-#: skins/default/contact-form.php:202
+#: skins/default/contact-form.php:204
 msgid "Secure!"
 msgstr "Sicher!"
 
-#: skins/default/contact-form.php:208
+#: skins/default/contact-form.php:210
 msgid "Send"
 msgstr "Senden"
 

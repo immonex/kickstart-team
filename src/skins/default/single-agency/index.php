@@ -19,6 +19,10 @@ $inx_skin_heading_level = isset( $immonex_kickstart ) ?
 $inx_skin_logo = isset( $template_data['elements']['logo'] ) ?
 	$template_data['elements']['logo'] :
 	false;
+
+$inx_skin_legal_notice = in_array( 'legal_notice', $template_data['single_view_optional_sections'], true ) ?
+	apply_filters( 'inx_team_get_agency_legal_notice', '', 0, array( 'is_preview' => $template_data['is_preview'] ) ) :
+	false;
 ?>
 <article class="inx-team-single-agency inx-team-single-agency--type--single inx-container">
 	<div class="uk-flex uk-flex-wrap">
@@ -168,6 +172,22 @@ $inx_skin_logo = isset( $template_data['elements']['logo'] ) ?
 		);
 
 		do_action( 'inx_render_pagination' );
+		?>
+	</div>
+	<?php endif; ?>
+
+	<?php
+	if ( $inx_skin_legal_notice && ! empty( $inx_skin_legal_notice['html'] ) ) :
+		?>
+	<div class="inx-team-single-agency__legal-notice uk-margin-large-top">
+		<?php
+		echo wp_sprintf(
+			'<h%2$d class="inx-team-single-agency__list-headline uk-margin-small-bottom">%1$s</h%2$d>' . PHP_EOL,
+			__( 'Legal Notice', 'immonex-kickstart-team' ),
+			$inx_skin_heading_level + 1
+		);
+
+		echo $inx_skin_legal_notice['html'];
 		?>
 	</div>
 	<?php endif; ?>

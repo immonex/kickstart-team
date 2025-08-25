@@ -27,13 +27,6 @@ class Agency extends Base_CPT_Post {
 	protected $post_type_name = 'inx_agency';
 
 	/**
-	 * Element value cache
-	 *
-	 * @var mixed[]
-	 */
-	private $element_values = array();
-
-	/**
 	 * Render post details (PHP template).
 	 *
 	 * @since 1.0.0
@@ -294,7 +287,7 @@ class Agency extends Base_CPT_Post {
 			if (
 				empty( $element['meta_key'] )
 				|| ! isset( $element['xpath'] )
-				|| '//impressum_strukt' === substr( $element['xpath'], 0, 18 )
+				|| '//impressum' === substr( $element['xpath'], 0, 11 )
 			) {
 				continue;
 			}
@@ -314,11 +307,17 @@ class Agency extends Base_CPT_Post {
 		/**
 		 * Compile offerer based values (legal data).
 		 */
+		$textarea_element_keys = array(
+			'legal_notice',
+			'legal_address',
+			'legal_misc',
+		);
+
 		foreach ( $elements as $key => $element ) {
 			if (
 				empty( $element['meta_key'] )
 				|| ! isset( $element['xpath'] )
-				|| '//impressum_strukt' !== substr( $element['xpath'], 0, 18 )
+				|| '//impressum' !== substr( $element['xpath'], 0, 11 )
 			) {
 				continue;
 			}
@@ -327,14 +326,9 @@ class Agency extends Base_CPT_Post {
 				(string) $anbieter->xpath( $element['xpath'] )[0] : false;
 
 			if ( ! empty( $value ) ) {
-				if (
-					'legal_notice' === $key
-					|| 'legal_address' === $key
-				) {
-					$meta[ $element['meta_key'] ] = sanitize_textarea_field( $value );
-				} else {
-					$meta[ $element['meta_key'] ] = sanitize_text_field( $value );
-				}
+				$meta[ $element['meta_key'] ] = in_array( $key, $textarea_element_keys, true ) ?
+					sanitize_textarea_field( $value ) :
+					sanitize_text_field( $value );
 			}
 		}
 
@@ -440,268 +434,296 @@ class Agency extends Base_CPT_Post {
 	 * @return mixed[] Filtered elements.
 	 */
 	public function get_elements( $filter = 'all' ) {
-		$icon_mail     = '<span uk-icon="mail"></span>';
-		$icon_receiver = '<span uk-icon="receiver"></span>';
-		$icon_print    = '<span uk-icon="print"></span>';
-		$icon_location = '<span uk-icon="location"></span>';
+		if ( ! empty( $this->cache['elements'] ) ) {
+			$elements = $this->cache['elements'];
+		} else {
+			$icon_mail     = '<span uk-icon="mail"></span>';
+			$icon_receiver = '<span uk-icon="receiver"></span>';
+			$icon_print    = '<span uk-icon="print"></span>';
+			$icon_location = '<span uk-icon="location"></span>';
 
-		$elements = array(
-			'logo'                        => array(
-				'label'                 => __( 'Logo', 'immonex-kickstart-team' ),
-				'compose_cb'            => array( $this, 'get_featured_image' ),
-				'selectable_for_output' => true,
-				'default_show'          => array( 'widget' ),
-				'section_order'         => 10,
-			),
-			'company'                     => array(
-				'label'                 => __( 'Company', 'immonex-kickstart-team' ),
-				'compose_cb'            => array( $this, 'get_company' ),
-				'selectable_for_output' => true,
-				'default_show'          => array( 'widget' ),
-				'section_order'         => 20,
-			),
-			'about'                       => array(
-				'label'                 => __( 'About', 'immonex-kickstart-team' ),
-				'post_data'             => 'post_content',
-				'selectable_for_output' => true,
-				'default_show'          => array( 'single_agency_page' ),
-				'section_order'         => 30,
-			),
-			'email'                       => array(
-				'label'                 => __( 'Email', 'immonex-kickstart-team' ),
-				'show_label'            => true,
-				'icon'                  => $icon_mail,
-				'meta_key'              => "{$this->prefix}email",
-				'xpath'                 => '//kontaktperson/email_zentrale',
-				'selectable_for_output' => true,
-				'default_show'          => array( 'widget', 'single_agency_page', 'list_item' ),
-				'section_order'         => 40,
-			),
-			'phone'                       => array(
-				'label'                 => __( 'Phone', 'immonex-kickstart-team' ),
-				'show_label'            => true,
-				'icon'                  => $icon_receiver,
-				'meta_key'              => "{$this->prefix}phone",
-				'xpath'                 => '//kontaktperson/tel_zentrale',
-				'selectable_for_output' => true,
-				'default_show'          => array( 'widget', 'single_agency_page', 'list_item' ),
-				'section_order'         => 50,
-			),
-			'fax'                         => array(
-				'label'                 => __( 'Fax', 'immonex-kickstart-team' ),
-				'show_label'            => true,
-				'icon'                  => $icon_print,
-				'meta_key'              => "{$this->prefix}fax",
-				'xpath'                 => '//kontaktperson/tel_fax',
-				'selectable_for_output' => true,
-				'default_show'          => array( 'single_agency_page' ),
-				'section_order'         => 50,
-			),
-			'url'                         => array(
-				'label'                 => __( 'URL (Company)', 'immonex-kickstart-team' ),
-				'meta_key'              => "{$this->prefix}url",
-				'xpath'                 => '//kontaktperson/url',
-				'selectable_for_output' => false,
-				'default_show'          => array(),
-			),
-			'street'                      => array(
-				'label'                 => __( 'Street', 'immonex-kickstart-team' ),
-				'meta_key'              => "{$this->prefix}street",
-				'xpath'                 => '//kontaktperson/strasse',
-				'selectable_for_output' => false,
-				'default_show'          => array(),
-				'section_order'         => 60,
-			),
-			'house_number'                => array(
-				'label'                 => __( 'House Number', 'immonex-kickstart-team' ),
-				'meta_key'              => "{$this->prefix}house_number",
-				'xpath'                 => '//kontaktperson/hausnummer',
-				'selectable_for_output' => false,
-				'default_show'          => array(),
-				'section_order'         => 60,
-			),
-			'zip_code'                    => array(
-				'label'                 => __( 'ZIP Code', 'immonex-kickstart-team' ),
-				'meta_key'              => "{$this->prefix}zip_code",
-				'xpath'                 => '//kontaktperson/plz',
-				'selectable_for_output' => false,
-				'default_show'          => array(),
-				'section_order'         => 60,
-			),
-			'city'                        => array(
-				'label'                 => __( 'City', 'immonex-kickstart-team' ),
-				'meta_key'              => "{$this->prefix}city",
-				'xpath'                 => '//kontaktperson/ort',
-				'selectable_for_output' => true,
-				'default_show'          => array(),
-				'section_order'         => 20,
-			),
-			'po_box'                      => array(
-				'label'                 => __( 'P.O. Box', 'immonex-kickstart-team' ),
-				'meta_key'              => "{$this->prefix}po_box",
-				'xpath'                 => '//kontaktperson/postfach',
-				'selectable_for_output' => false,
-				'default_show'          => array(),
-				'section_order'         => 70,
-			),
-			'po_box_zip_code'             => array(
-				'label'                 => __( 'P.O. Box ZIP Code', 'immonex-kickstart-team' ),
-				'meta_key'              => "{$this->prefix}po_box_zip_code",
-				'xpath'                 => '//kontaktperson/postf_plz',
-				'selectable_for_output' => false,
-				'default_show'          => array(),
-				'section_order'         => 70,
-			),
-			'po_box_city'                 => array(
-				'label'                 => __( 'P.O. Box City', 'immonex-kickstart-team' ),
-				'meta_key'              => "{$this->prefix}po_box_city",
-				'xpath'                 => '//kontaktperson/postf_ort',
-				'selectable_for_output' => false,
-				'default_show'          => array(),
-				'section_order'         => 70,
-			),
-			'country_iso'                 => array(
-				'label'                 => __( 'Country (ISO3)', 'immonex-kickstart-team' ),
-				'meta_key'              => "{$this->prefix}country_iso",
-				'xpath'                 => '//kontaktperson/land/@iso_land',
-				'selectable_for_output' => false,
-				'default_show'          => array(),
-				'section_order'         => 80,
-			),
-			'address_publishing_approved' => array(
-				'label'                 => __( 'Address Publishing Approval', 'immonex-kickstart-team' ),
-				'meta_key'              => "{$this->prefix}address_publishing_approved",
-				'xpath'                 => '//kontaktperson/adressfreigabe',
-				'selectable_for_output' => false,
-				'default_show'          => array(),
-			),
-			'address'                     => array(
-				'label'                 => __( 'Full Address', 'immonex-kickstart-team' ),
-				'icon'                  => $icon_location,
-				'description'           => __( 'Disables &quot;City&quot; if set.', 'immonex-kickstart-team' ),
-				'compose_cb'            => array( $this, 'get_address_multi_line' ),
-				'selectable_for_output' => true,
-				'default_show'          => array( 'single_agency_page' ),
-				'section_order'         => 90,
-			),
-			'address_single_line'         => array(
-				'label'                 => __( 'Address (single line)', 'immonex-kickstart-team' ),
-				'icon'                  => $icon_location,
-				'compose_cb'            => array( $this, 'get_address_single_line' ),
-				'selectable_for_output' => false,
-				'default_show'          => array(),
-				'section_order'         => 90,
-			),
-			'legal_notice'                => array(
-				'label'                 => __( 'Legal Notice', 'immonex-kickstart-team' ),
-				'meta_key'              => "{$this->prefix}legal_notice",
-				'xpath'                 => '//impressum_strukt/impressum',
-				'selectable_for_output' => false,
-				'default_show'          => array(),
-				'section_order'         => 100,
-			),
-			'legal_company'               => array(
-				'label'                 => __( 'Company (Legal)', 'immonex-kickstart-team' ),
-				'meta_key'              => "{$this->prefix}legal_company",
-				'xpath'                 => '//impressum_strukt/firmenname',
-				'selectable_for_output' => false,
-				'default_show'          => array(),
-				'section_order'         => 100,
-			),
-			'legal_address'               => array(
-				'label'                 => __( 'Address (Legal)', 'immonex-kickstart-team' ),
-				'meta_key'              => "{$this->prefix}legal_address",
-				'xpath'                 => '//impressum_strukt/firmenanschrift',
-				'selectable_for_output' => false,
-				'default_show'          => array(),
-				'section_order'         => 100,
-			),
-			'legal_phone'                 => array(
-				'label'                 => __( 'Phone (Legal)', 'immonex-kickstart-team' ),
-				'meta_key'              => "{$this->prefix}legal_phone",
-				'xpath'                 => '//impressum_strukt/telefon',
-				'selectable_for_output' => false,
-				'default_show'          => array(),
-				'section_order'         => 100,
-			),
-			'representative'              => array(
-				'label'                 => __( 'Representative', 'immonex-kickstart-team' ),
-				'meta_key'              => "{$this->prefix}representative",
-				'xpath'                 => '//impressum_strukt/vertretungsberechtigter',
-				'selectable_for_output' => false,
-				'default_show'          => array(),
-				'section_order'         => 100,
-			),
-			'supervisory_authority'       => array(
-				'label'                 => __( 'Supervisory Authority', 'immonex-kickstart-team' ),
-				'meta_key'              => "{$this->prefix}supervisory_authority",
-				'xpath'                 => '//impressum_strukt/berufsaufsichtsbehoerde',
-				'selectable_for_output' => false,
-				'default_show'          => array(),
-				'section_order'         => 100,
-			),
-			'registry_court'              => array(
-				'label'                 => __( 'Registry Court', 'immonex-kickstart-team' ),
-				'meta_key'              => "{$this->prefix}registry_court",
-				'xpath'                 => '//impressum_strukt/handelsregister',
-				'selectable_for_output' => false,
-				'default_show'          => array(),
-				'section_order'         => 110,
-			),
-			'trade_register_number'       => array(
-				'label'                 => __( 'Trade Register Number', 'immonex-kickstart-team' ),
-				'meta_key'              => "{$this->prefix}trade_register_number",
-				'xpath'                 => '//impressum_strukt/handelsregister_nr',
-				'selectable_for_output' => false,
-				'default_show'          => array(),
-				'section_order'         => 110,
-			),
-			'vatin'                       => array(
-				'label'                 => __( 'VATIN', 'immonex-kickstart-team' ),
-				'meta_key'              => "{$this->prefix}vatin",
-				'xpath'                 => '//impressum_strukt/umsst-id',
-				'selectable_for_output' => false,
-				'default_show'          => array(),
-				'section_order'         => 120,
-			),
-			'legal_misc'                  => array(
-				'label'                 => __( 'Legal (Miscellaneous)', 'immonex-kickstart-team' ),
-				'meta_key'              => "{$this->prefix}legal_misc",
-				'xpath'                 => '//impressum_strukt/weiteres',
-				'selectable_for_output' => false,
-				'default_show'          => array(),
-				'section_order'         => 120,
-			),
-			'network_urls'                => array(
-				'label'                 => __( 'Business/Social Networks', 'immonex-kickstart-team' ),
-				'compose_cb'            => array( $this, 'get_network_urls' ),
-				'selectable_for_output' => false,
-				'default_show'          => array(),
-			),
-			'network_icons'               => array(
-				'label'                 => __( 'Business/Social Network Icons', 'immonex-kickstart-team' ),
-				'compose_cb'            => array( $this, 'get_network_icons' ),
-				'selectable_for_output' => true,
-				'default_show'          => array( 'widget', 'single_agency_page' ),
-				'section_order'         => 130,
-			),
-			'contact_form'                => array(
-				'label'                 => __( 'Contact Form', 'immonex-kickstart-team' ),
-				'compose_cb'            => array( $this, 'get_contact_form' ),
-				'selectable_for_output' => true,
-				'default_show'          => array( 'widget' ),
-				'section_order'         => 140,
-			),
-		);
+			$elements = array(
+				'logo'                        => array(
+					'label'                 => __( 'Logo', 'immonex-kickstart-team' ),
+					'compose_cb'            => array( '$this', 'get_featured_image' ),
+					'selectable_for_output' => true,
+					'default_show'          => array( 'widget' ),
+					'section_order'         => 10,
+				),
+				'company'                     => array(
+					'label'                 => __( 'Company', 'immonex-kickstart-team' ),
+					'compose_cb'            => array( '$this', 'get_company' ),
+					'selectable_for_output' => true,
+					'default_show'          => array( 'widget' ),
+					'section_order'         => 20,
+				),
+				'about'                       => array(
+					'label'                 => __( 'About', 'immonex-kickstart-team' ),
+					'post_data'             => 'post_content',
+					'selectable_for_output' => true,
+					'default_show'          => array( 'single_agency_page' ),
+					'section_order'         => 30,
+				),
+				'email'                       => array(
+					'label'                 => __( 'Email', 'immonex-kickstart-team' ),
+					'show_label'            => true,
+					'icon'                  => $icon_mail,
+					'meta_key'              => "{$this->prefix}email",
+					'xpath'                 => '//kontaktperson/email_zentrale',
+					'selectable_for_output' => true,
+					'default_show'          => array( 'widget', 'single_agency_page', 'list_item' ),
+					'section_order'         => 40,
+				),
+				'phone'                       => array(
+					'label'                 => __( 'Phone', 'immonex-kickstart-team' ),
+					'show_label'            => true,
+					'icon'                  => $icon_receiver,
+					'meta_key'              => "{$this->prefix}phone",
+					'xpath'                 => '//kontaktperson/tel_zentrale',
+					'selectable_for_output' => true,
+					'default_show'          => array( 'widget', 'single_agency_page', 'list_item' ),
+					'section_order'         => 50,
+				),
+				'fax'                         => array(
+					'label'                 => __( 'Fax', 'immonex-kickstart-team' ),
+					'show_label'            => true,
+					'icon'                  => $icon_print,
+					'meta_key'              => "{$this->prefix}fax",
+					'xpath'                 => '//kontaktperson/tel_fax',
+					'selectable_for_output' => true,
+					'default_show'          => array( 'single_agency_page' ),
+					'section_order'         => 50,
+				),
+				'url'                         => array(
+					'label'                 => __( 'URL (Company)', 'immonex-kickstart-team' ),
+					'meta_key'              => "{$this->prefix}url",
+					'xpath'                 => '//kontaktperson/url',
+					'selectable_for_output' => false,
+					'default_show'          => array(),
+				),
+				'street'                      => array(
+					'label'                 => __( 'Street', 'immonex-kickstart-team' ),
+					'meta_key'              => "{$this->prefix}street",
+					'xpath'                 => '//kontaktperson/strasse',
+					'selectable_for_output' => false,
+					'default_show'          => array(),
+					'section_order'         => 60,
+				),
+				'house_number'                => array(
+					'label'                 => __( 'House Number', 'immonex-kickstart-team' ),
+					'meta_key'              => "{$this->prefix}house_number",
+					'xpath'                 => '//kontaktperson/hausnummer',
+					'selectable_for_output' => false,
+					'default_show'          => array(),
+					'section_order'         => 60,
+				),
+				'zip_code'                    => array(
+					'label'                 => __( 'ZIP Code', 'immonex-kickstart-team' ),
+					'meta_key'              => "{$this->prefix}zip_code",
+					'xpath'                 => '//kontaktperson/plz',
+					'selectable_for_output' => false,
+					'default_show'          => array(),
+					'section_order'         => 60,
+				),
+				'city'                        => array(
+					'label'                 => __( 'City', 'immonex-kickstart-team' ),
+					'meta_key'              => "{$this->prefix}city",
+					'xpath'                 => '//kontaktperson/ort',
+					'selectable_for_output' => true,
+					'default_show'          => array(),
+					'section_order'         => 20,
+				),
+				'po_box'                      => array(
+					'label'                 => __( 'P.O. Box', 'immonex-kickstart-team' ),
+					'meta_key'              => "{$this->prefix}po_box",
+					'xpath'                 => '//kontaktperson/postfach',
+					'selectable_for_output' => false,
+					'default_show'          => array(),
+					'section_order'         => 70,
+				),
+				'po_box_zip_code'             => array(
+					'label'                 => __( 'P.O. Box ZIP Code', 'immonex-kickstart-team' ),
+					'meta_key'              => "{$this->prefix}po_box_zip_code",
+					'xpath'                 => '//kontaktperson/postf_plz',
+					'selectable_for_output' => false,
+					'default_show'          => array(),
+					'section_order'         => 70,
+				),
+				'po_box_city'                 => array(
+					'label'                 => __( 'P.O. Box City', 'immonex-kickstart-team' ),
+					'meta_key'              => "{$this->prefix}po_box_city",
+					'xpath'                 => '//kontaktperson/postf_ort',
+					'selectable_for_output' => false,
+					'default_show'          => array(),
+					'section_order'         => 70,
+				),
+				'country_iso'                 => array(
+					'label'                 => __( 'Country (ISO3)', 'immonex-kickstart-team' ),
+					'meta_key'              => "{$this->prefix}country_iso",
+					'xpath'                 => '//kontaktperson/land/@iso_land',
+					'selectable_for_output' => false,
+					'default_show'          => array(),
+					'section_order'         => 80,
+				),
+				'address_publishing_approved' => array(
+					'label'                 => __( 'Address Publishing Approval', 'immonex-kickstart-team' ),
+					'meta_key'              => "{$this->prefix}address_publishing_approved",
+					'xpath'                 => '//kontaktperson/adressfreigabe',
+					'selectable_for_output' => false,
+					'default_show'          => array(),
+				),
+				'address'                     => array(
+					'label'                 => __( 'Full Address', 'immonex-kickstart-team' ),
+					'icon'                  => $icon_location,
+					'description'           => __( 'Disables &quot;City&quot; if set.', 'immonex-kickstart-team' ),
+					'compose_cb'            => array( '$this', 'get_address_multi_line' ),
+					'selectable_for_output' => true,
+					'default_show'          => array( 'single_agency_page' ),
+					'section_order'         => 90,
+				),
+				'address_single_line'         => array(
+					'label'                 => __( 'Address (single line)', 'immonex-kickstart-team' ),
+					'icon'                  => $icon_location,
+					'compose_cb'            => array( '$this', 'get_address_single_line' ),
+					'selectable_for_output' => false,
+					'default_show'          => array(),
+					'section_order'         => 90,
+				),
+				'legal_notice_auto_select'    => array(
+					'label'                 => __( 'Legal Notice', 'immonex-kickstart-team' ),
+					'compose_cb'            => array( '$this', 'get_legal_notice_auto_select' ),
+					'selectable_for_output' => false,
+					'default_show'          => array(),
+					'section_order'         => 100,
+				),
+				'legal_notice'                => array(
+					'label'                 => __( 'Legal Notice', 'immonex-kickstart-team' ),
+					'meta_key'              => "{$this->prefix}legal_notice",
+					'xpath'                 => '//impressum',
+					'selectable_for_output' => false,
+					'default_show'          => array(),
+					'section_order'         => 100,
+				),
+				'legal_company'               => array(
+					'label'                 => __( 'Company (Legal)', 'immonex-kickstart-team' ),
+					'meta_key'              => "{$this->prefix}legal_company",
+					'xpath'                 => '//impressum_strukt/firmenname',
+					'selectable_for_output' => false,
+					'default_show'          => array(),
+					'section_order'         => 100,
+				),
+				'legal_address'               => array(
+					'label'                 => __( 'Address (Legal)', 'immonex-kickstart-team' ),
+					'meta_key'              => "{$this->prefix}legal_address",
+					'xpath'                 => '//impressum_strukt/firmenanschrift',
+					'selectable_for_output' => false,
+					'default_show'          => array(),
+					'section_order'         => 100,
+				),
+				'legal_phone'                 => array(
+					'label'                 => __( 'Phone (Legal)', 'immonex-kickstart-team' ),
+					'meta_key'              => "{$this->prefix}legal_phone",
+					'xpath'                 => '//impressum_strukt/telefon',
+					'selectable_for_output' => false,
+					'default_show'          => array(),
+					'section_order'         => 100,
+				),
+				'representative'              => array(
+					'label'                 => __( 'Representative', 'immonex-kickstart-team' ),
+					'meta_key'              => "{$this->prefix}representative",
+					'xpath'                 => '//impressum_strukt/vertretungsberechtigter',
+					'selectable_for_output' => false,
+					'default_show'          => array(),
+					'section_order'         => 100,
+				),
+				'supervisory_authority'       => array(
+					'label'                 => __( 'Supervisory Authority', 'immonex-kickstart-team' ),
+					'meta_key'              => "{$this->prefix}supervisory_authority",
+					'xpath'                 => '//impressum_strukt/berufsaufsichtsbehoerde',
+					'selectable_for_output' => false,
+					'default_show'          => array(),
+					'section_order'         => 100,
+				),
+				'registry_court'              => array(
+					'label'                 => __( 'Registry Court', 'immonex-kickstart-team' ),
+					'meta_key'              => "{$this->prefix}registry_court",
+					'xpath'                 => '//impressum_strukt/handelsregister',
+					'selectable_for_output' => false,
+					'default_show'          => array(),
+					'section_order'         => 110,
+				),
+				'trade_register_number'       => array(
+					'label'                 => __( 'Trade Register Number', 'immonex-kickstart-team' ),
+					'meta_key'              => "{$this->prefix}trade_register_number",
+					'xpath'                 => '//impressum_strukt/handelsregister_nr',
+					'selectable_for_output' => false,
+					'default_show'          => array(),
+					'section_order'         => 110,
+				),
+				'vatin'                       => array(
+					'label'                 => __( 'VATIN', 'immonex-kickstart-team' ),
+					'meta_key'              => "{$this->prefix}vatin",
+					'xpath'                 => '//impressum_strukt/umsst-id',
+					'selectable_for_output' => false,
+					'default_show'          => array(),
+					'section_order'         => 120,
+				),
+				'legal_misc'                  => array(
+					'label'                 => __( 'Legal (Miscellaneous)', 'immonex-kickstart-team' ),
+					'meta_key'              => "{$this->prefix}legal_misc",
+					'xpath'                 => '//impressum_strukt/weiteres',
+					'selectable_for_output' => false,
+					'default_show'          => array(),
+					'section_order'         => 120,
+				),
+				'network_urls'                => array(
+					'label'                 => __( 'Business/Social Networks', 'immonex-kickstart-team' ),
+					'compose_cb'            => array( $this, 'get_network_urls' ),
+					'selectable_for_output' => false,
+					'default_show'          => array(),
+				),
+				'network_icons'               => array(
+					'label'                 => __( 'Business/Social Network Icons', 'immonex-kickstart-team' ),
+					'compose_cb'            => array( $this, 'get_network_icons' ),
+					'selectable_for_output' => true,
+					'default_show'          => array( 'widget', 'single_agency_page' ),
+					'section_order'         => 130,
+				),
+				'contact_form'                => array(
+					'label'                 => __( 'Contact Form', 'immonex-kickstart-team' ),
+					'compose_cb'            => array( $this, 'get_contact_form' ),
+					'selectable_for_output' => true,
+					'default_show'          => array( 'widget' ),
+					'section_order'         => 140,
+				),
+			);
 
-		$order = 0;
-		foreach ( $elements as $key => $element ) {
-			if ( ! isset( $element['section_order'] ) ) {
-				$elements[ $key ]['section_order'] = 90;
+			$order = 0;
+			foreach ( $elements as $key => $element ) {
+				if ( ! isset( $element['section_order'] ) ) {
+					$elements[ $key ]['section_order'] = 90;
+				}
+
+				$order                    += 10;
+				$elements[ $key ]['order'] = $order;
 			}
 
-			$order                    += 10;
-			$elements[ $key ]['order'] = $order;
+			$elements = apply_filters(
+				'inx_team_agency_elements',
+				$elements,
+				is_a( $this->post, 'WP_Post' ) ? $this->post->ID : 0
+			);
+
+			array_multisort(
+				array_column( $elements, 'section_order' ),
+				SORT_ASC,
+				array_column( $elements, 'order' ),
+				SORT_ASC,
+				$elements
+			);
+
+			$elements                = $this->convert_callables( $elements );
+			$this->cache['elements'] = $elements;
 		}
 
 		if (
@@ -716,14 +738,6 @@ class Agency extends Base_CPT_Post {
 				}
 			);
 		}
-
-		array_multisort(
-			array_column( $elements, 'section_order' ),
-			SORT_ASC,
-			array_column( $elements, 'order' ),
-			SORT_ASC,
-			$elements
-		);
 
 		return $elements;
 	} // get_elements
@@ -743,8 +757,8 @@ class Agency extends Base_CPT_Post {
 			return false;
 		}
 
-		if ( ! empty( $this->element_values[ $key ] ) ) {
-			return $this->element_values[ $key ];
+		if ( ! empty( $this->cache['element_values'][ $key ] ) ) {
+			return $this->cache['element_values'][ $key ];
 		}
 
 		$elements = $this->get_elements();
@@ -778,8 +792,18 @@ class Agency extends Base_CPT_Post {
 			$value = "https://{$value}";
 		}
 
+		if ( empty( $atts['is_preview'] ) ) {
+			$value = apply_filters(
+				'inx_team_agency_element_value',
+				$value,
+				$key,
+				$this->post ? $this->post->ID : 0,
+				$atts
+			);
+		}
+
 		if ( $value ) {
-			$this->element_values[ $key ] = $value;
+			$this->cache['element_values'][ $key ] = $value;
 		}
 
 		return $value;
@@ -930,6 +954,46 @@ class Agency extends Base_CPT_Post {
 					. '<li><a href="https://x.com/immonexhq" title="X" target="_blank"><span uk-icon="x"></span></a></li>' . PHP_EOL
 					. '<li><a href="https://facebook.com/immonex" title="Facebook" target="_blank"><span uk-icon="facebook"></span></a></li>' . PHP_EOL
 					. '</ul>',
+				'legal_notice_auto_select'    => array(
+					'raw'  => __(
+						'Publisher
+
+ONE Realty Group
+123 Fake Street
+Demotown, 99999
+
+Email: hello@immonex.one
+Phone: +999 123 4567890
+
+Represented by Elena Example and Dave Demotown
+
+Supervisory Authority (§ 34c GewO)
+
+Demotown Chamber of Commerce and Industry',
+						'immonex-kickstart-team'
+					),
+					'html' => __(
+						'<strong>Publisher</strong>
+<p>
+	ONE Realty Group<br>
+	123 Fake Street<br>
+	Demotown, 99999
+</p>
+
+<p>
+	Email: <a href="mailto:hello@immonex.one">hello@immonex.one</a><br>
+	Phone: +999 123 4567890
+</p>
+
+<p>Represented by Elena Example and Dave Demotown</p>
+
+<strong>Supervisory Authority (§ 34c GewO)</strong>
+<p>
+	Demotown Chamber of Commerce and Industry
+</p>',
+						'immonex-kickstart-team'
+					),
+				),
 			);
 		}
 
@@ -943,7 +1007,8 @@ class Agency extends Base_CPT_Post {
 	 *
 	 * @param callable $value_getter Main value getter method.
 	 *
-	 * @return mixed[] Array containing raw company name and (eventually) a link tag.
+	 * @return mixed[]|string Array containing raw company name and (eventually) a link tag
+	 *                        or empty string if indeterminable.
 	 */
 	private function get_company( $value_getter ) {
 		if ( ! $this->post ) {
@@ -987,6 +1052,137 @@ class Agency extends Base_CPT_Post {
 			'link' => $link ? $link : $company,
 		);
 	} // get_company
+
+	/**
+	 * Special getter method for automatically selecting/composing the agency's
+	 * legal notice.
+	 *
+	 * @since 1.6.5-beta
+	 *
+	 * @param callable $value_getter Main value getter method.
+	 *
+	 * @return mixed[]|string Array containing plain text (raw) and HTML version
+	 *                        or empty string if indeterminable.
+	 */
+	private function get_legal_notice_auto_select( $value_getter ) {
+		$legal_notice = call_user_func( $value_getter, 'legal_notice' );
+
+		if ( $legal_notice ) {
+			return array(
+				'raw'  => trim( $legal_notice ) . PHP_EOL,
+				'html' => wpautop( trim( $this->utils['string']->convert_urls( $legal_notice ) ) ) . PHP_EOL,
+			);
+		}
+
+		$sections = array(
+			'company_address'       => array(),
+			'contact_data'          => array(),
+			'representative'        => array(),
+			'trade_register_vatin'  => array(),
+			'supervisory_authority' => array(),
+			'misc'                  => array(),
+		);
+
+		$section_headlines = array(
+			'company_address'       => __( 'Publisher', 'immonex-kickstart-team' ),
+			'supervisory_authority' => __( 'Supervisory Authority', 'immonex-kickstart-team' ) . ' (§ 34c GewO)',
+		);
+
+		$company = call_user_func( $value_getter, 'legal_company' );
+		if ( ! $company ) {
+			$company_data = call_user_func( $value_getter, 'company' );
+
+			if ( $company_data ) {
+				$company = $company_data['raw'];
+			}
+		}
+		if ( $company ) {
+			$sections['company_address'][] = $company;
+		}
+
+		$address = call_user_func( $value_getter, 'legal_address' );
+		if ( ! $address ) {
+			$address = $this->get_address( $value_getter, PHP_EOL );
+		}
+		if ( $address ) {
+			$sections['company_address'][] = $address;
+		}
+
+		$phone = call_user_func( $value_getter, 'legal_phone' );
+		if ( ! $phone ) {
+			$phone = call_user_func( $value_getter, 'phone' );
+		}
+		if ( $phone ) {
+			$sections['contact_data'][] = wp_sprintf( '%s: %s', __( 'Phone', 'immonex-kickstart-team' ), $phone );
+		}
+
+		$email = call_user_func( $value_getter, 'email' );
+		if ( $email ) {
+			$sections['contact_data'][] = wp_sprintf( '%s: %s', __( 'Email', 'immonex-kickstart-team' ), $email );
+		}
+
+		$representative = call_user_func( $value_getter, 'representative' );
+		if ( $representative ) {
+			$sections['representative'][] = wp_sprintf( '%s %s', __( 'Represented by', 'immonex-kickstart-team' ), $representative );
+		}
+
+		$trade_register = array();
+		$registry_court = call_user_func( $value_getter, 'registry_court' );
+		if ( $registry_court ) {
+			$trade_register[] = $registry_court;
+		}
+		$trade_register_number = call_user_func( $value_getter, 'trade_register_number' );
+		if ( $trade_register_number ) {
+			$trade_register[] = $trade_register_number;
+		}
+		if ( ! empty( $trade_register ) ) {
+			$sections['trade_register_vatin'][] = wp_sprintf(
+				'%s: %s',
+				__( 'Trade Register', 'immonex-kickstart-team' ),
+				implode( ', ', $trade_register )
+			);
+		}
+
+		$vatin = call_user_func( $value_getter, 'vatin' );
+		if ( $vatin ) {
+			$sections['trade_register_vatin'][] = wp_sprintf( '%s: %s', __( 'VATIN', 'immonex-kickstart-team' ), $vatin );
+		}
+
+		$supervisory_authority = call_user_func( $value_getter, 'supervisory_authority' );
+		if ( $supervisory_authority ) {
+			$sections['supervisory_authority'][] = $supervisory_authority;
+		}
+
+		$misc = call_user_func( $value_getter, 'legal_misc' );
+		if ( $misc ) {
+			$sections['misc'][] = $misc;
+		}
+
+		$raw  = '';
+		$html = '';
+
+		foreach ( $sections as $section => $contents ) {
+			if ( empty( $contents ) ) {
+				continue;
+			}
+
+			if ( ! empty( $section_headlines[ $section ] ) ) {
+				$raw  .= $section_headlines[ $section ] . PHP_EOL . PHP_EOL;
+				$html .= wp_sprintf( '<strong>%s</strong>', $section_headlines[ $section ] ) . PHP_EOL;
+			}
+
+			$joint_contents = implode( PHP_EOL, $contents );
+			$raw           .= $joint_contents . PHP_EOL . PHP_EOL;
+			$html          .= wpautop( $this->utils['string']->convert_urls( $joint_contents ) ) . PHP_EOL;
+		}
+
+		return trim( $raw ) ?
+			array(
+				'raw'  => $raw,
+				'html' => $html,
+			) :
+			'';
+	} // get_legal_notice_auto_select
 
 	/**
 	 * Calculate a simple checksum based on the length of serialized core
@@ -1100,6 +1296,7 @@ class Agency extends Base_CPT_Post {
 		$option_mapping = array(
 			'show_agent_list'    => 'agents',
 			'show_property_list' => 'properties',
+			'show_legal_notice'  => 'legal_notice',
 		);
 
 		foreach ( $option_mapping as $cf_name => $section ) {

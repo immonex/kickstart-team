@@ -76,6 +76,16 @@ class Base_CPT_Post {
 	protected $preview_data = array();
 
 	/**
+	 * Cache
+	 *
+	 * @var mixed[]
+	 */
+	protected $cache = array(
+		'elements'       => array(),
+		'element_values' => array(),
+	);
+
+	/**
 	 * Constructor
 	 *
 	 * @since 1.0.0
@@ -99,7 +109,11 @@ class Base_CPT_Post {
 	 * @param int|\WP_Post $post_or_id CPT post object or ID.
 	 */
 	public function set_post( $post_or_id ) {
-		$this->post = null;
+		$this->post  = null;
+		$this->cache = array(
+			'elements'       => array(),
+			'element_values' => array(),
+		);
 
 		if ( is_numeric( $post_or_id ) ) {
 			$this->post = get_post( $post_or_id );
@@ -488,5 +502,34 @@ class Base_CPT_Post {
 
 		return in_array( $key, $uk_brands, true ) ? $key : 'world';
 	} // get_network_icon_key
+
+	/**
+	 * Replace certain string-based object references (mainly $this)
+	 * of callback definitions in the given array column.
+	 *
+	 * @since 1.6.5-beta
+	 *
+	 * @param mixed[] $elements Elements.
+	 * @param string  $column Column name to be checked for callable strings.
+	 *
+	 * @return mixed[] Updated elements.
+	 */
+	protected function convert_callables( $elements, $column = 'compose_cb' ) {
+		if ( ! is_array( $elements ) || empty( $elements ) ) {
+			return $elements;
+		}
+
+		foreach ( $elements as $key => $element ) {
+			if ( empty( $element[ $column ] ) || ! is_array( $element[ $column ] ) ) {
+				continue;
+			}
+
+			if ( '$this' === $element[ $column ][0] ) {
+				$elements[ $key ][ $column ][0] = $this;
+			}
+		}
+
+		return $elements;
+	} // convert_callables
 
 } // Base_CPT_Post

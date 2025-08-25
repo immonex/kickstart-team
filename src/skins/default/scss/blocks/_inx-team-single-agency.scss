@@ -1,3 +1,5 @@
+@use "../_config";
+
 .inx-team-single-agency {
 	a:not(.inx-oi--inverted):not(.inx-inverse) {
 		text-decoration: none;
@@ -103,7 +105,7 @@
 	text-align: right;
 }
 
-@media screen and (min-width: $screen-s) {
+@media screen and (min-width: config.$screen-s) {
 	.inx-team-single-agency__logo {
 		margin-right: 2em;
 	}

@@ -23,7 +23,7 @@ $inx_skin_logo = isset( $template_data['elements']['logo'] ) ?
 			<?php
 			if ( $template_data['url'] ) :
 				?>
-			<a href="<?php echo $template_data['url']; ?>">
+			<a href="<?php echo $template_data['url']; ?>" tabindex="-1" aria-hidden="true">
 				<?php
 			endif;
 			echo ! empty( $inx_skin_logo['value'] ) ?

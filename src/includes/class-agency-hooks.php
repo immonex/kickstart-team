@@ -64,8 +64,11 @@ class Agency_Hooks extends Base_CPT_Hooks {
 		 */
 
 		add_filter( 'inx_team_get_agency_template_data', array( $this, 'get_agency_data' ), 10, 2 );
+
+		// Internal hooks.
 		add_filter( 'inx_team_get_agency_checksum', array( $this, 'get_agency_checksum' ), 10, 2 );
 		add_filter( 'inx_team_get_agency_elements', array( $this, 'get_agency_elements' ) );
+		add_filter( 'inx_team_get_agency_legal_notice', array( $this, 'get_agency_legal_notice' ), 10, 3 );
 
 		// Filters for "manually" creating and updating agencies.
 		add_filter( 'inx_team_create_agency', array( $this, 'create_agency' ), 10, 2 );
@@ -468,6 +471,41 @@ class Agency_Hooks extends Base_CPT_Hooks {
 	} // get_agency_data
 
 	/**
+	 * Return a checksum for the given agency XML data
+	 * (proxy filter callback).
+	 *
+	 * @since 1.4.7-beta
+	 *
+	 * @param int               $checksum Checksum value.
+	 * @param \SimpleXMLElement $anbieter Offerer XML object.
+	 *
+	 * @return int Checksum.
+	 */
+	public function get_agency_checksum( $checksum, $anbieter ) {
+		$agency = $this->get_post_instance();
+
+		return $agency ? $agency->get_checksum( $anbieter ) : 0;
+	} // get_agency_checksum
+
+	/**
+	 * Return the related agency's legal notice (filter callback).
+	 *
+	 * @since 1.6.5-beta
+	 *
+	 * @param string   $legal_notice Empty string.
+	 * @param int|bool $agency_id Agency post ID or false to use the current instance (optional).
+	 * @param mixed[]  $atts Rendering attributes (optional).
+	 *
+	 * @return mixed[]|string Legal notice as plain text (raw) and html version
+	 *                        or empty string if unavailable.
+	 */
+	public function get_agency_legal_notice( $legal_notice, $agency_id = false, $atts = array() ) {
+		$agency = $this->get_post_instance( $agency_id );
+
+		return $agency ? $agency->get_element_value( 'legal_notice_auto_select', $atts ) : '';
+	} // get_agency_legal_notice
+
+	/**
 	 * Return all agency display element data (filter callback).
 	 *
 	 * @since 1.5.7-beta
@@ -492,23 +530,6 @@ class Agency_Hooks extends Base_CPT_Hooks {
 
 		return $elements;
 	} // get_agency_elements
-
-	/**
-	 * Return a checksum for the given agency XML data
-	 * (proxy filter callback).
-	 *
-	 * @since 1.4.7-beta
-	 *
-	 * @param int               $checksum Checksum value.
-	 * @param \SimpleXMLElement $anbieter Offerer XML object.
-	 *
-	 * @return int Checksum.
-	 */
-	public function get_agency_checksum( $checksum, $anbieter ) {
-		$agency = $this->get_post_instance();
-
-		return $agency ? $agency->get_checksum( $anbieter ) : 0;
-	} // get_agency_checksum
 
 	/**
 	 * Return agency post default single view activation option value (filter callback).

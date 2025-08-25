@@ -205,7 +205,7 @@ class Agency_Backend_Form {
 				'name' => __( 'Address', 'immonex-kickstart-team' ),
 				'desc' => '',
 				'id'   => "{$prefix}legal_address",
-				'type' => 'text',
+				'type' => 'textarea',
 			),
 			array(
 				'name' => __( 'Phone', 'immonex-kickstart-team' ),
@@ -214,7 +214,7 @@ class Agency_Backend_Form {
 				'type' => 'text',
 			),
 			array(
-				'name' => __( 'Representative', 'immonex-kickstart-team' ),
+				'name' => __( 'Represented by', 'immonex-kickstart-team' ),
 				'desc' => '',
 				'id'   => "{$prefix}representative",
 				'type' => 'text',
@@ -244,10 +244,10 @@ class Agency_Backend_Form {
 				'type' => 'text',
 			),
 			array(
-				'name' => __( 'Other', 'immonex-kickstart-team' ),
+				'name' => __( 'Further Information', 'immonex-kickstart-team' ),
 				'desc' => '',
 				'id'   => "{$prefix}legal_misc",
-				'type' => 'text',
+				'type' => 'textarea',
 			),
 			array(
 				'name' => __( 'Legal Notice', 'immonex-kickstart-team' ),
@@ -299,7 +299,7 @@ class Agency_Backend_Form {
 				'description'      => wp_sprintf(
 					/* translators: %1$s: plugin options URL */
 					__( 'The default can be set in the <a href="%1$s">plugin options</a> (Optional sections).', 'immonex-kickstart-team' ),
-					admin_url( 'admin.php?page=immonex-kickstart_settings&tab=addon_team&section_tab=3' )
+					admin_url( 'admin.php?page=immonex-kickstart_settings&tab=addon_team&section_tab=2' )
 				),
 			),
 			array(
@@ -315,7 +315,23 @@ class Agency_Backend_Form {
 				'description'      => wp_sprintf(
 					/* translators: %1$s: plugin options URL */
 					__( 'The default can be set in the <a href="%1$s">plugin options</a> (Optional sections).', 'immonex-kickstart-team' ),
-					admin_url( 'admin.php?page=immonex-kickstart_settings&tab=addon_team&section_tab=3' )
+					admin_url( 'admin.php?page=immonex-kickstart_settings&tab=addon_team&section_tab=2' )
+				),
+			),
+			array(
+				'name'             => __( 'Show Legal Notice', 'immonex-kickstart-team' ),
+				'desc'             => '',
+				'id'               => "{$prefix}show_legal_notice",
+				'type'             => 'select',
+				'show_option_none' => __( 'use default', 'immonex-kickstart-team' ),
+				'options'          => array(
+					'yes' => __( 'Yes', 'immonex-kickstart-team' ),
+					'no'  => __( 'No', 'immonex-kickstart-team' ),
+				),
+				'description'      => wp_sprintf(
+					/* translators: %1$s: plugin options URL */
+					__( 'The default can be set in the <a href="%1$s">plugin options</a> (Optional sections).', 'immonex-kickstart-team' ),
+					admin_url( 'admin.php?page=immonex-kickstart_settings&tab=addon_team&section_tab=2' )
 				),
 			),
 			array(

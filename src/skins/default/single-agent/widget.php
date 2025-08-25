@@ -109,11 +109,11 @@ if (
 			}
 
 			if (
-				'none' !== $template_data['link_type']
+				$inx_skin_link_type
 				&& in_array( $inx_skin_element_key, array( 'photo', 'full_name', 'full_name_incl_title' ), true )
 				&& $template_data['url']
 			) {
-				if ( 'external' === $template_data['link_type'] ) {
+				if ( 'external' === $inx_skin_link_type ) {
 					$inx_skin_value = wp_sprintf(
 						'<a href="%s" target="_blank">%s</a>',
 						$template_data['url'],

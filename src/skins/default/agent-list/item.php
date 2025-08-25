@@ -22,7 +22,7 @@ $inx_skin_photo = isset( $template_data['elements']['photo'] ) ?
 			<?php
 			if ( $template_data['url'] ) :
 				?>
-			<a href="<?php echo $template_data['url']; ?>">
+			<a href="<?php echo $template_data['url']; ?>" tabindex="-1" aria-hidden="true">
 				<?php
 			endif;
 

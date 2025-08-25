@@ -39,7 +39,7 @@ foreach ( $template_data['fields'] as $inx_skin_field_name => $inx_skin_field ) 
 
 		<?php // Honeypot. ?>
 		<div class="inx-team-contact-form__input inx-team-contact-form__input--name--<?php echo $template_data['honeypot_field_name']; ?>" aria-hidden="true">
-			<input type="text" name="<?php echo $template_data['honeypot_field_name']; ?>" placeholder="First Name" tabindex="-1" autocomplete="off" class="uk-input">
+			<input type="text" name="<?php echo $template_data['honeypot_field_name']; ?>" placeholder="First Name" tabindex="-1" autocomplete="off" aria-label="First Name" class="uk-input">
 			<div class="inx-team-contact-form__input-error"></div>
 		</div>
 		<?php // /Honeypot. ?>
@@ -85,6 +85,7 @@ foreach ( $template_data['fields'] as $inx_skin_field_name => $inx_skin_field ) 
 				type="<?php echo $inx_skin_field_type; ?>"
 				name="<?php echo $inx_skin_field_name; ?>"
 				placeholder="<?php echo $inx_skin_placeholder; ?>"
+				aria-label="<?php echo $inx_skin_placeholder; ?>"
 				class="uk-input"<?php echo $inx_skin_required[ $inx_skin_field_name ]; ?>
 			>
 
@@ -94,6 +95,7 @@ foreach ( $template_data['fields'] as $inx_skin_field_name => $inx_skin_field ) 
 				name="<?php echo $inx_skin_field_name; ?>"
 				rows="4"
 				placeholder="<?php echo $inx_skin_placeholder; ?>"
+				aria-label="<?php echo $inx_skin_placeholder; ?>"
 				class="uk-textarea"<?php echo $inx_skin_required[ $inx_skin_field_name ]; ?>
 			><?php echo $inx_skin_default_value; ?></textarea>
 
@@ -155,7 +157,7 @@ foreach ( $template_data['fields'] as $inx_skin_field_name => $inx_skin_field ) 
 
 		<?php // Honeypot. ?>
 		<div class="inx-team-contact-form__input inx-team-contact-form__input--name--<?php echo $template_data['honeypot_field_name2']; ?>" aria-hidden="true">
-			<input type="email" name="<?php echo $template_data['honeypot_field_name2']; ?>" placeholder="Alternative E-Mail Address" tabindex="-1" autocomplete="off" class="uk-input">
+			<input type="email" name="<?php echo $template_data['honeypot_field_name2']; ?>" placeholder="Alternative E-Mail Address" tabindex="-1" autocomplete="off" aria-label="Alternative E-Mail Address" class="uk-input">
 			<div class="inx-team-contact-form__input-error"></div>
 		</div>
 		<?php // /Honeypot. ?>
@@ -164,8 +166,9 @@ foreach ( $template_data['fields'] as $inx_skin_field_name => $inx_skin_field ) 
 		<div class="inx-team-contact-form__input inx-team-contact-form__input--type--full inx-team-contact-form__input--name--consent">
 			<div class="inx-team-contact-form__consent-checkbox">
 				<label class="inx-switch">
-					<input type="checkbox" name="consent"<?php echo $inx_skin_required['consent']; ?>>
+					<input type="checkbox" name="consent" aria-label="<?php esc_attr_e( 'consent', 'immonex-kickstart-team' ); ?>"<?php echo $inx_skin_required['consent']; ?>>
 					<div class="inx-switch-slider"></div>
+					<span hidden><?php esc_attr_e( 'consent', 'immonex-kickstart-team' ); ?></span>
 				</label>
 			</div>
 
