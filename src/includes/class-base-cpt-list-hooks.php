@@ -115,8 +115,6 @@ abstract class Base_CPT_List_Hooks {
 	 * @param \WP_Query $query WP query object.
 	 */
 	public function adjust_frontend_query( $query ) {
-		global $post;
-
 		if (
 			(
 				! empty( $query->query_vars['suppress_pre_get_posts_filter'] )
@@ -131,6 +129,11 @@ abstract class Base_CPT_List_Hooks {
 			|| (
 				$query->get( 'post_type' )
 				&& $query->get( 'post_type' ) !== $this->post_type_name
+			)
+			|| (
+				! $query->get( 'post_type' )
+				&& get_post_type()
+				&& get_post_type() !== $this->post_type_name
 			)
 		) {
 			return;

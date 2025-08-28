@@ -1,5 +1,9 @@
 == Changelog ==
 
+= 1.6.9 =
+* Release date: 2025-08-28
+* Fixed a post sorting issue.
+
 = 1.6.8 =
 * Release date: 2025-08-25
 * Added optional legal notice section to agency detail views.
