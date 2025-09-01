@@ -10,7 +10,7 @@ namespace immonex\Kickstart\Team;
 /**
  * Main plugin class
  */
-class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_4_3\Base {
+class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_4_5\Base {
 
 	const PLUGIN_NAME                = 'immonex Kickstart Team';
 	const ADDON_NAME                 = 'Team';
@@ -18,7 +18,7 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_4_3\Base {
 	const PLUGIN_PREFIX              = 'inx_team_';
 	const PUBLIC_PREFIX              = 'inx-team-';
 	const TEXTDOMAIN                 = 'immonex-kickstart-team';
-	const PLUGIN_VERSION             = '1.6.9';
+	const PLUGIN_VERSION             = '1.6.10-beta';
 	const PLUGIN_HOME_URL            = 'https://de.wordpress.org/plugins/immonex-kickstart-team/';
 	const PLUGIN_DOC_URLS            = array(
 		'de' => 'https://docs.immonex.de/kickstart-team/',
@@ -97,9 +97,6 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_4_3\Base {
 
 		// Set up custom post types, taxonomies and backend menus.
 		new WP_Bootstrap( $this->bootstrap_data, $this );
-
-		// Add filter for retrieving core and add-on options.
-		add_filter( 'inx_options', array( $this, 'get_options' ), 20 );
 
 		add_filter( 'sanitize_option_immonex-kickstart_options', array( $this, 'synchronize_slugs_from_kickstart_options' ), 5 );
 	} // __construct
@@ -1011,7 +1008,7 @@ and conditions can be used in the related input fields:<br><br>
 						__( 'If this field is <strong>empty</strong>, a default template in the skin folder will be used instead.', 'immonex-kickstart-team' ),
 					'value'           => $this->plugin_options['admin_contact_form_mail_template'],
 					'editor_settings' => array(
-						'default_editor' => 'html',
+						'default_editor' => 'tinymce',
 						'teeny'          => true,
 						'quicktags'      => array( 'buttons' => 'strong,em,link,img,close' ),
 						'tinymce'        => true,
@@ -1160,7 +1157,7 @@ and conditions can be used in the related input fields:<br><br>
 						__( 'If this field is <strong>empty</strong>, a default template in the skin folder will be used instead.', 'immonex-kickstart-team' ),
 					'value'           => $this->plugin_options['rcpt_conf_mail_template'],
 					'editor_settings' => array(
-						'default_editor' => 'html',
+						'default_editor' => 'tinymce',
 						'teeny'          => true,
 						'quicktags'      => array( 'buttons' => 'strong,em,link,img,close' ),
 						'tinymce'        => true,
@@ -1179,7 +1176,7 @@ and conditions can be used in the related input fields:<br><br>
 						__( 'The Twig variables listed above can be used here, too.', 'immonex-kickstart-team' ),
 					'value'           => $this->plugin_options['rcpt_conf_mail_signature'],
 					'editor_settings' => array(
-						'default_editor' => 'html',
+						'default_editor' => 'tinymce',
 						'teeny'          => true,
 						'quicktags'      => array( 'buttons' => 'strong,em,link,img,close' ),
 						'tinymce'        => true,
@@ -1196,26 +1193,6 @@ and conditions can be used in the related input fields:<br><br>
 
 		return array_merge( $fields, $addon_fields );
 	} // extend_fields
-
-	/**
-	 * Return plugin options for use in other add-ons etc. (filter callback).
-	 *
-	 * @since 1.9.27-beta
-	 *
-	 * @param mixed[] $options Source options or empty array.
-	 *
-	 * @return mixed[] Extended array with plugin options in sub-array "team".
-	 */
-	public function get_options( $options ) {
-		$add_on_options = $this->plugin_options;
-
-		return array_merge(
-			$options,
-			array(
-				'team' => $add_on_options,
-			)
-		);
-	} // get_options
 
 	/**
 	 * Determine the ID of the site's withdrawal/cancellation policy page,

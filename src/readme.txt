@@ -106,6 +106,10 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 
 == Changelog ==
 
+= 1.6.10-beta =
+* Release date: ?
+* Updated dependencies.
+
 = 1.6.9 =
 * Release date: 2025-08-28
 * Fixed a post sorting issue.
@@ -118,10 +122,5 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 * Improved contact form and list view WCAG conformity.
 * Reworked default skin SCSS code.
 * Fixed some minor CSS issues (link colors).
-
-= 1.6.0 =
-* Release date: 2025-03-26
-* Fixed a platform compatibility issue (new minimum PHP version: 7.4).
-* Updated dependencies.
 
 See changelog.txt for the complete version history.
