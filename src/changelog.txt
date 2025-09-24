@@ -1,5 +1,10 @@
 == Changelog ==
 
+= 1.7.0 =
+* Release date: 2025-09-24
+* Added optional generation/embedding of structured real estate agency and agent data (Schema.org markup).
+* Updated dependencies.
+
 = 1.6.9 =
 * Release date: 2025-08-28
 * Fixed a post sorting issue.

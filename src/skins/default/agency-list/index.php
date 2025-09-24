@@ -12,6 +12,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <div class="inx-team-agency-list uk-grid-match" uk-grid>
 	<?php
+	do_action( 'inx_team_before_render_agency_list', have_posts() );
+
 	if ( have_posts() ) :
 		while ( have_posts() ) :
 			the_post();
@@ -19,6 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<div class="inx-team-agency-list__item-wrap uk-width-1-2@m">
 			<?php
+			do_action( 'inx_team_before_render_agency_list_item' );
 			do_action(
 				'inx_team_render_single_agency',
 				false,
@@ -27,6 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					'convert_links' => true,
 				)
 			);
+			do_action( 'inx_team_after_render_agency_list_item' );
 			?>
 	</div>
 
@@ -41,5 +45,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		<?php
 	endif;
+
+	do_action( 'inx_team_after_render_agency_list', have_posts() );
 	?>
 </div>

@@ -69,7 +69,7 @@ class Agency_Backend_Form {
 		$contact_data = new_cmb2_box(
 			array(
 				'id'           => "{$prefix}contact_data",
-				'title'        => __( 'Contact Data', 'immonex-kickstart-team' ),
+				'title'        => __( 'Contact Data', 'immonex-kickstart-team' ) . ' / Geo',
 				'object_types' => array( $this->post_type_name ),
 				'context'      => 'normal',
 				'priority'     => 'core',
@@ -149,6 +149,18 @@ class Agency_Backend_Form {
 				'name' => __( 'Country code (ISO3)', 'immonex-kickstart-team' ),
 				'desc' => __( 'Code according to <a href="https://en.wikipedia.org/wiki/ISO_3166-1" target="_blank">ISO-3166-1 Alpha-3</a>', 'immonex-kickstart-team' ),
 				'id'   => "{$prefix}country_iso",
+				'type' => 'text_small',
+			),
+			array(
+				'name' => __( 'Latitude', 'immonex-kickstart-team' ),
+				'desc' => '',
+				'id'   => '_inx_lat',
+				'type' => 'text_small',
+			),
+			array(
+				'name' => __( 'Longitude', 'immonex-kickstart-team' ),
+				'desc' => '',
+				'id'   => '_inx_lng',
 				'type' => 'text_small',
 			),
 		);

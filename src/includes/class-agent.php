@@ -123,7 +123,11 @@ class Agent extends Base_CPT_Post {
 			$this->is_public_agency = apply_filters( 'inx_agency_has_single_view', $post_types['inx_agency']->public );
 		}
 
-		$url = false;
+		$permalink_url = empty( $atts['is_preview'] ) ?
+			get_permalink( $this->post->ID ) :
+			$this->get_preview_value( 'url', $atts );
+		$url           = false;
+
 		if ( 'none' !== $this->link_type ) {
 			if ( ! empty( $atts['is_preview'] ) ) {
 				$url = $this->get_preview_value( 'url', $atts );
@@ -145,7 +149,8 @@ class Agent extends Base_CPT_Post {
 		) ? 'all' : $atts['type'];
 		$default_elements = array_keys( $this->get_elements( $default_filter ) );
 		$convert_links    = ! empty( $atts['convert_links'] );
-		$template_data    = array(
+
+		$template_data = array(
 			'type'                          => $atts['type'],
 			'before_title'                  => isset( $atts['before_title'] ) ? html_entity_decode( $atts['before_title'] ) : '',
 			'title'                         => isset( $atts['title'] ) ? $atts['title'] : $this->post->post_title,
@@ -159,6 +164,7 @@ class Agent extends Base_CPT_Post {
 			'is_public'                     => $this->is_public,
 			'is_public_agency'              => $this->is_public_agency,
 			'is_demo'                       => $this->post ? get_post_meta( $this->post->ID, '_immonex_is_demo', true ) : true,
+			'permalink_url'                 => $permalink_url,
 			'url'                           => $url,
 			'property_count'                => $this->get_property_count(),
 			'elements'                      => array(),
@@ -935,6 +941,13 @@ class Agent extends Base_CPT_Post {
 					'selectable_for_output' => true,
 					'default_show'          => array( 'widget', 'default_contact_element_replacement', 'single_agent_page' ),
 					'section_order'         => 60,
+				),
+				'coords'                      => array(
+					'label'                 => __( 'Geo Coordinates', 'immonex-kickstart-team' ),
+					'compose_cb'            => array( $this, 'get_coords' ),
+					'selectable_for_output' => false,
+					'default_show'          => array(),
+					'section_order'         => 200,
 				),
 			);
 

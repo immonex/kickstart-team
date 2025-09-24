@@ -24,6 +24,12 @@ Der **Seiten- und Dokumenttitel** der Archivseite kann in den Plugin-Optionen (*
 
 Der Shortcode für die Einbindung der Kontaktpersonen-Listen unterstützt zudem alle [allgemeinen Attribute](../schnellstart/listen-attribute#Shortcodes) zur Filterung, Sortierung und Begrenzung der anzuzeigenden Elemente.
 
+## Erweiterte Anpassungen
+
+- [Templates (Skin)](/anpassung-erweiterung/standard-skin?id=archiv-amp-listenansicht)
+- [Filter-Hooks](/anpassung-erweiterung/filters-actions?id=kontaktpersonen)
+- [Action-Hooks](/anpassung-erweiterung/filters-actions?id=actions)
+
 ---
 
 <sup>1</sup> abhängig von der aktuellen Website-Sprache (→ [Übersetzungen & Mehrsprachigkeit](../anpassung-erweiterung/uebersetzung-mehrsprachigkeit))

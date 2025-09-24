@@ -86,14 +86,18 @@ class Agency extends Base_CPT_Post {
 			$this->is_public = apply_filters( "{$this->post_type_name}_has_single_view", $post_types[ $this->post_type_name ]->public );
 		}
 
-		$url = false;
+		$permalink_url = empty( $atts['is_preview'] ) ?
+			get_permalink( $this->post->ID ) :
+			$this->get_preview_value( 'url', $atts );
+		$url           = false;
+
 		if ( 'none' !== $this->link_type ) {
 			if ( ! empty( $atts['is_preview'] ) ) {
 				$url = $this->get_preview_value( 'url', $atts );
 			} elseif ( 'external' === $this->link_type ) {
 				$url = $this->get_element_value( 'url', $atts );
 			} elseif ( $this->post && $this->is_public ) {
-				$url = get_permalink( $this->post->ID );
+				$url = $permalink_url;
 			}
 		}
 
@@ -111,6 +115,7 @@ class Agency extends Base_CPT_Post {
 			'agency_id'                     => $this->post ? $this->post->ID : 0,
 			'is_public'                     => $this->is_public,
 			'is_demo'                       => $this->post ? get_post_meta( $this->post->ID, '_immonex_is_demo', true ) : true,
+			'permalink_url'                 => $permalink_url,
 			'url'                           => $url,
 			'agent_count'                   => $this->get_agent_count(),
 			'property_count'                => $this->get_property_count(),
@@ -695,6 +700,13 @@ class Agency extends Base_CPT_Post {
 					'selectable_for_output' => true,
 					'default_show'          => array( 'widget' ),
 					'section_order'         => 140,
+				),
+				'coords'                      => array(
+					'label'                 => __( 'Geo Coordinates', 'immonex-kickstart-team' ),
+					'compose_cb'            => array( $this, 'get_coords' ),
+					'selectable_for_output' => false,
+					'default_show'          => array(),
+					'section_order'         => 200,
 				),
 			);
 

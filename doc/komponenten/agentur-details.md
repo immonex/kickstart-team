@@ -109,6 +109,12 @@ Widget mit Logo, Firma, Mailadresse (als Link) sowie externer Verlinkung (Logo/F
 Widget mit Standardumfang, aber erweitertem Kontaktformular (u. a. inkl. Adressfeldern):
 `[inx-team-agency type="widget" contact_form_scope="extended"]`
 
+## Erweiterte Anpassungen
+
+- [Templates (Skin)](/anpassung-erweiterung/standard-skin?id=detailansichten)
+- [Filter-Hooks](/anpassung-erweiterung/filters-actions?id=agenturen)
+- [Action-Hooks](/anpassung-erweiterung/filters-actions?id=actions)
+
 ---
 
 <sup>1</sup> abhängig von der aktuellen Website-Sprache (→ [Übersetzungen & Mehrsprachigkeit](../anpassung-erweiterung/uebersetzung-mehrsprachigkeit))

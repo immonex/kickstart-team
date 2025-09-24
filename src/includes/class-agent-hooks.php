@@ -850,11 +850,11 @@ class Agent_Hooks extends Base_CPT_Hooks {
 			$default_template = 'widget';
 		}
 
-		if ( ! empty( $atts['template'] ) ) {
-			$template = $atts['template'];
-		} else {
-			$template = "single-{$this->base_name}/{$default_template}";
-		}
+		$template = $this->utils['local_fs']->sanitize_path(
+			! empty( $atts['template'] ) ?
+				$atts['template'] :
+				"single-{$this->base_name}/{$default_template}"
+		);
 
 		$agent  = false;
 		$prefix = $this->get_post_instance()->prefix;

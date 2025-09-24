@@ -39,6 +39,7 @@
 		<exclude name="Generic.CodeAnalysis.UnusedFunctionParameter.Found"/>
 		<exclude name="Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed"/>
 		<exclude name="Generic.Commenting.DocComment.LongNotCapital"/>
+		<exclude name="Universal.Arrays.DisallowShortArraySyntax.Found"/>
 	</rule>
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
 		<properties>

@@ -47,6 +47,17 @@
 ### Rendering
 
 - [inx_team_render_agency_list](action-inx-team-render-agency-list) (Agentur-Listenansicht)
-- [inx_team_render_single_agency](action-inx-team-render-single-agency) (Agentur-Details)
+- [inx_team_render_single_(agency|agent)](action-inx-team-render-single-agency) (Agentur-Details)
 - [inx_team_render_agent_list](action-inx-team-render-agent-list) (Kontaktpersonen-Listenansicht)
 - [inx_team_render_single_agent](action-inx-team-render-single-agent) (Kontaktpersonen-Details)
+
+#### Ergänzung
+
+Mit diesen Hooks können beliebige **zusätzliche** Inhalte **vor oder nach** der Ausgabe von Agentur- oder Kontaktpersonen-Elementen eingefügt werden.
+
+- [inx_team_before_render_(agency|agent)_list](action-inx-team-before-render-list) (vor der Ausgabe einer Agentur-/Kontaktpersonenliste)
+- [inx_team_after_render_(agency|agent)_list](action-inx-team-after-render-list) (nach der Ausgabe einer Agentur-/Kontaktpersonenliste)
+- [inx_team_before_render_(agency|agent)_list_item](action-inx-team-before-render-list-item) (vor der Ausgabe eines Agentur-/Kontaktpersonen-Listenelements)
+- [inx_team_after_render_(agency|agent)_list_item](action-inx-team-after-render-list-item) (nach der Ausgabe eines Agentur-/Kontaktpersonen-Listenelements)
+- [inx_team_before_render_single_(agency|agent)](action-inx-team-before-render-single) (vor der Ausgabe der Detailansicht einer Agentur oder Kontaktperson)
+- [inx_team_after_render_single_(agency|agent)](action-inx-team-after-render-single) (nach der Ausgabe der Detailansicht einer Agentur oder Kontaktperson)

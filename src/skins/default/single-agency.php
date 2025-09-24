@@ -16,15 +16,22 @@ get_header();
 <?php
 while ( have_posts() ) {
 	the_post();
-	do_action(
-		'inx_team_render_single_agency',
-		false,
-		'',
-		array(
-			'is_regular_single_page' => true,
-			'convert_links'          => true,
-		)
-	);
+
+	if ( ! post_password_required() ) {
+		do_action( 'inx_team_before_render_single_agency' );
+		do_action(
+			'inx_team_render_single_agency',
+			false,
+			'',
+			array(
+				'is_regular_single_page' => true,
+				'convert_links'          => true,
+			)
+		);
+		do_action( 'inx_team_after_render_single_agency' );
+	} else {
+		echo get_the_password_form();
+	}
 }
 ?>
 </div>

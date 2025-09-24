@@ -10,7 +10,7 @@ namespace immonex\Kickstart\Team;
 /**
  * Main plugin class
  */
-class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_4_5\Base {
+class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_5_0\Base {
 
 	const PLUGIN_NAME                = 'immonex Kickstart Team';
 	const ADDON_NAME                 = 'Team';
@@ -18,7 +18,7 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_4_5\Base {
 	const PLUGIN_PREFIX              = 'inx_team_';
 	const PUBLIC_PREFIX              = 'inx-team-';
 	const TEXTDOMAIN                 = 'immonex-kickstart-team';
-	const PLUGIN_VERSION             = '1.6.10-beta';
+	const PLUGIN_VERSION             = '1.7.0';
 	const PLUGIN_HOME_URL            = 'https://de.wordpress.org/plugins/immonex-kickstart-team/';
 	const PLUGIN_DOC_URLS            = array(
 		'de' => 'https://docs.immonex.de/kickstart-team/',
@@ -267,7 +267,20 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_4_5\Base {
 
 		parent::init_plugin( $fire_before_hook, $fire_after_hook );
 
-		new Contact_Form_Hooks( array_merge( $this->bootstrap_data, $this->plugin_options ), $this->utils );
+		$core_options     = apply_filters( 'inx_options', array(), 'core' );
+		$component_config = array_merge(
+			$this->bootstrap_data,
+			$this->plugin_options,
+			array(
+				'plugin_home_url' => self::PLUGIN_HOME_URL,
+				'core_options'    => $core_options,
+			)
+		);
+
+		new Contact_Form_Hooks( $component_config, $this->utils );
+		if ( ! empty( $core_options['seo_schema_org'] ) ) {
+			new Structured_Data_Hooks( $component_config, $this->utils );
+		}
 
 		if ( is_admin() ) {
 			add_filter( 'immonex-kickstart_option_tabs', array( $this, 'extend_tabs' ), 15 );

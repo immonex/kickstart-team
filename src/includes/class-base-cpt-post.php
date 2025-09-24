@@ -99,6 +99,8 @@ class Base_CPT_Post {
 		$this->config = $config;
 		$this->utils  = $utils;
 		$this->prefix = '_' . $config['plugin_prefix'] . $this->base_name . '_';
+
+		$this->config['core_options'] = apply_filters( 'inx_options', array(), 'core' );
 	} // __construct
 
 	/**
@@ -419,6 +421,59 @@ class Base_CPT_Post {
 			'raw' => $tag,
 		);
 	} // get_featured_image
+
+	/**
+	 * Special getter method for retrieving/determining the agency's/agent's
+	 * geo coordinates.
+	 *
+	 * @since 1.7.0-beta2
+	 *
+	 * @param callable $value_getter Main value getter method.
+	 *
+	 * @return mixed[] Associative array containing latitude (lat) and longitude (lng).
+	 */
+	protected function get_coords( $value_getter ) {
+		if (
+			! in_array( $this->base_name, array( 'agent', 'agency' ), true )
+			|| ! is_a( $this->post, 'WP_Post' )
+		) {
+			return false;
+		}
+
+		$lat          = get_post_meta( $this->post->ID, '_inx_lat', true );
+		$lng          = get_post_meta( $this->post->ID, '_inx_lng', true );
+		$coords_check = implode( ',', array( $lat, $lng ) );
+
+		if (
+			! $lat
+			|| ! $lng
+			|| ( $coords_check && ! $this->utils['geo']->validate_coords( $coords_check ) )
+		) {
+			$address     = $this->get_address_single_line( $value_getter );
+			$country_iso = call_user_func( $value_getter, 'country_iso' );
+			$api_keys    = array();
+
+			if ( $country_iso ) {
+				$address .= ', ' . $country_iso;
+			}
+
+			if ( ! empty( $this->config['core_options']['google_api_key'] ) ) {
+				$api_keys['google_maps'] = $this->config['core_options']['google_api_key'];
+			}
+
+			$coords = $this->utils['geo']->geocode( $address, 'compact', false, $api_keys );
+
+			if ( $coords ) {
+				update_post_meta( $this->post->ID, '_inx_lat', $coords['lat'] );
+				update_post_meta( $this->post->ID, '_inx_lng', $coords['lng'] );
+			}
+		}
+
+		return array(
+			'lat' => $lat,
+			'lng' => $lng,
+		);
+	} // get_coords
 
 	/**
 	 * Add email and phone links to matching string parts.

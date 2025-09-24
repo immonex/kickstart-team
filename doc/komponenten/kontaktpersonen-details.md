@@ -117,6 +117,12 @@ Widget (Standardansicht), keine Anzeige bei Referenzobjekten
 Widget mit Standardumfang, aber erweitertem Kontaktformular (u. a. inkl. Adressfeldern):
 `[inx-team-agent type="widget" contact_form_scope="extended"]`
 
+## Erweiterte Anpassungen
+
+- [Templates (Skin)](/anpassung-erweiterung/standard-skin?id=detailansichten)
+- [Filter-Hooks](/anpassung-erweiterung/filters-actions?id=kontaktpersonen)
+- [Action-Hooks](/anpassung-erweiterung/filters-actions?id=actions)
+
 ---
 
 <sup>1</sup> abhängig von der aktuellen Website-Sprache (→ [Übersetzungen & Mehrsprachigkeit](../anpassung-erweiterung/uebersetzung-mehrsprachigkeit))

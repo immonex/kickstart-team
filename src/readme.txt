@@ -3,7 +3,7 @@ Contributors: immonex
 Tags: immobilien, immobilienmakler, realestate, agent, agency
 Requires at least: 5.5
 Tested up to: 6.9
-Stable Tag: 1.6.9
+Stable Tag: 1.7.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -45,6 +45,7 @@ immonex OpenImmo2WP [2], initially released in 2015, is a tried and tested solut
 * OpenImmo-Feedback XML attachments for property inquiry mails via contact form
 * Optional receipt confirmation mails on successful form submissions
 * Separate, editable form consent texts on withdrawal and privacy policies (EU GDPR compliance)
+* SEO/GEO: Extensive structured data (Schema.org markup) for agents and agencies
 * Translations provided via translate.wordpress.org (GlotPress)
 * Current POT file and German translations included as PO/MO files additionally
 * Plugin option strings translatable with Polylang or WPML
@@ -106,8 +107,9 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 
 == Changelog ==
 
-= 1.6.10-beta =
-* Release date: ?
+= 1.7.0 =
+* Release date: 2025-09-24
+* Added optional generation/embedding of structured real estate agency and agent data (Schema.org markup).
 * Updated dependencies.
 
 = 1.6.9 =
