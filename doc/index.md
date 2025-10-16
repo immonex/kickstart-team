@@ -3,7 +3,7 @@
 
 # Über dieses Plugin <!-- {docsify-ignore-all} -->
 
-**immonex Kickstart Team** ist ein *Add-on-Plugin*, das **WordPress-Immobilien-Websites** auf Basis von [immonex Kickstart](https://de.wordpress.org/plugins/immonex-kickstart/)<sup>1</sup> um folgende Funktionen und Inhalte erweitert:
+[immonex Kickstart Team](https://de.wordpress.org/plugins/immonex-kickstart-team/) ist ein *Add-on-Plugin*, das **WordPress-Immobilien-Websites** auf Basis von [immonex Kickstart](https://de.wordpress.org/plugins/immonex-kickstart/)<sup>1</sup> um folgende Funktionen und Inhalte erweitert:
 
 - [benutzerdefinierte Beitragsarten](beitragsarten) (*Custom Post Types*) inkl. passenden Archiv- und Detailseiten
   - **Immobilien-Agenturen** (Maklerbüros)
@@ -13,8 +13,10 @@
 - einheitliches **Mail-Kontaktformular** mit Spamschutz und OpenImmo-Feedback-Anhängen bei objektbezogenen Anfragen
 - Versand von HTML-Mails auf Basis von [Twig-Templates](https://twig.symfony.com/)
 - **Shortcodes** für die flexible Einbindung von Listen- und Detailansichten
-- direkt einsatzbereites, responsives Template-Set ("[Skin](anpassung-erweiterung/skins)")
+- direkt einsatzbereites, responsives Template-Set (*[Skin](anpassung-erweiterung/skins)*)
 - Möglichkeit der update-sicheren Anpassung vorhandener oder Ergänzung eigener Skins im (Child-)Theme-Ordner
+- **Strukturierte Daten/Rich Snippets** für die Suchmaschinen-, KI- und Social-Media-Optimierung ([SEO](https://de.wikipedia.org/wiki/Suchmaschinenoptimierung)/[GEO](https://en.wikipedia.org/wiki/Generative_engine_optimization))
+
 
 ## Zielgruppen dieser Dokumentation
 
@@ -24,13 +26,13 @@
 
 ## Lizenz & Entwicklung
 
-immonex Kickstart Team ist **freie, quelloffene Software** (Open Source), die unter der GNU GPL 2.0 (oder später) lizenziert ist.
+immonex Kickstart Team ist als **freie, quelloffene Software** (Open Source) im offiziellen [WP-Plugin-Verzeichnis](https://de.wordpress.org/plugins/immonex-kickstart-team/) verfügbar und unter der GNU GPL 2.0 (oder später) lizenziert.
 
 Entwicklung und Support: [GitHub-Repository](https://github.com/immonex/kickstart-team)
 
 ---
 
-<sup>1</sup> Das Plugin immonex Kickstart stellt - neben einem Framework für Erweiterungen - Basiskomponenten für die Einbindung von Immobilien-Angeboten bereit, die per *OpenImmo-Schnittstelle* importiert werden.
+<sup>1</sup> Das WP-Immobilien-Plugin [immonex Kickstart](https://de.wordpress.org/plugins/immonex-kickstart/) stellt - neben einem Framework für Erweiterungen - Basiskomponenten für die Einbindung von Immobilien-Angeboten bereit, die per *OpenImmo-Schnittstelle* importiert werden.
 
 <sup>2</sup> [OpenImmo-XML](http://openimmo.de/) ist der De-facto-Standard für den Austausch von Immobiliendaten in den deutschsprachigen Ländern und wird hier von allen gängigen Softwarelösungen und Portalen für Immobilienmakler/innen durch entsprechende Import/Export-Schnittstellen unterstützt.
 

@@ -98,7 +98,7 @@ class Base_Schema {
 	 *
 	 * @return mixed[]|string Schema graph.
 	 */
-	public function get_detail_page_graph( $as_script_block = false ): array|string {
+	public function get_detail_page_graph( $as_script_block = false ) {
 		if ( empty( $this->post ) ) {
 			return $as_script_block ? '' : [];
 		}
@@ -144,10 +144,12 @@ class Base_Schema {
 	 * @param mixed[] $schema_data Schema data.
 	 * @param bool    $add_info    Whether to add generator info as HTML comment
 	 *                             (optional, false by default).
+	 * @param bool    $add_wrap    Whether to add a wrapper div element
+	 *                             (optional, true by default).
 	 *
 	 * @return Script block with JSON-LD data.
 	 */
-	public function get_json_ld_script_block( $schema_data, $add_info = false ): string {
+	public function get_json_ld_script_block( $schema_data, $add_info = false, $add_wrap = true ): string {
 		$schema_data = array_merge(
 			[ '@context' => 'https://schema.org' ],
 			$schema_data
@@ -156,6 +158,10 @@ class Base_Schema {
 		$script_block  = '<script type="application/ld+json">' . PHP_EOL;
 		$script_block .= wp_json_encode( $schema_data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT );
 		$script_block .= PHP_EOL . '</script>' . PHP_EOL;
+
+		if ( $add_wrap ) {
+			$script_block = '<span class="inx-script-block">' . PHP_EOL . $script_block . PHP_EOL . '</span>';
+		}
 
 		if ( $add_info ) {
 			$info = wp_sprintf(

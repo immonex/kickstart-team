@@ -16,7 +16,7 @@
         "yoast/phpunit-polyfills": "^4"
     },
     "autoload": {
-        "psr-4": { "immonex\\Kickstart\\Team\\": ["includes", "src/includes"] }
+        "psr-4": { "immonex\\Kickstart\\Team\\": ["includes"] }
     },
     "autoload-dev": {
         "psr-4": { "immonex\\Kickstart\\Team\\tests\\": "tests/" }

@@ -87,7 +87,7 @@ class Structured_Data_Hooks {
 	 * @return mixed[]|string Main agency/agent schema entity element of the given type
 	 *                        as raw data array or "ready-rendered" JS block.
 	 */
-	public function get_schema_data( $schema_data, $args ): array|string {
+	public function get_schema_data( $schema_data, $args ) {
 		$entity_type = ! empty( $args['entity_type'] ) && in_array( $args['entity_type'], [ 'agency', 'agent' ], true ) ?
 			$args['entity_type'] : 'agency';
 		$entity_id   = ! empty( $args['entity_id'] ) ? $args['entity_id'] : 0;
@@ -113,7 +113,12 @@ class Structured_Data_Hooks {
 		$entity_schema = new $entity_class( $this->config, $this->utils );
 		$entity_schema->set_post_id( $entity_id );
 
-		$this->cache[ $entity_type ][ $scope ][ $entity_id ] = $entity_schema->get_main_entity_element( $scope );
+		$main_entity_element = $entity_schema->get_main_entity_element( $scope );
+		if ( empty( $main_entity_element ) ) {
+			return ! empty( $args['as_script_block'] ) ? '' : [];
+		}
+
+		$this->cache[ $entity_type ][ $scope ][ $entity_id ] = $main_entity_element;
 
 		return empty( $args['as_script_block'] ) ?
 			$this->cache[ $entity_type ][ $scope ][ $entity_id ]['raw'] :

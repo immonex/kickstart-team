@@ -1,5 +1,11 @@
 == Changelog ==
 
+= 1.7.3 =
+* Release date: 2025-10-16
+* Improved schema markup inline embedding compatibility.
+* Fixed a minor structured data issue.
+* Restored PHP 7.4 compatibility.
+
 = 1.7.0 =
 * Release date: 2025-09-24
 * Added optional generation/embedding of structured real estate agency and agent data (Schema.org markup).

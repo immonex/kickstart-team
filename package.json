@@ -1,6 +1,6 @@
 {
   "name": "@immonex/kickstart-team",
-  "version": "1.7.0",
+  "version": "1.7.3",
   "description": "immonex Kickstart add-on for handling, linking and integrating OpenImmo-XML based real estate agent/agency information and contact forms",
   "private": true,
   "dependencies": {
@@ -35,7 +35,7 @@
   },
   "scripts": {
     "clean": "rimraf --glob 'src/assets/@(js|css)' && rimraf --glob 'src/skins/**/assets/*' && rimraf --glob build/* && rimraf --glob dist/*",
-    "prebuild": "composer install --no-dev && npm run clean -s",
+    "prebuild": "composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader && npm run clean -s",
     "build:scripts": "webpack --config webpack.prod.js && find src -type f -empty -delete",
     "build:scripts-dev": "webpack --config webpack.dev.js",
     "build:copy": "mkdir -p build && cp -LR src/* build",
