@@ -408,15 +408,24 @@ class Base_CPT_Post {
 			return false;
 		}
 
-		$tag = get_the_post_thumbnail( $this->post, 'large' );
+		$thumbnail_id = get_post_thumbnail_id( $this->post, 'large' );
+		if ( ! $thumbnail_id ) {
+			return false;
+		}
 
+		$tag = get_the_post_thumbnail( $this->post, 'large' );
 		if ( ! $tag ) {
 			return false;
 		}
 
+		$matched = preg_match( '/src\s*=\s*"(.+?)"/', $tag, $matches );
+		$url     = $matched ?
+			$matches[1] :
+			get_the_post_thumbnail_url( $this->post, 'large' );
+
 		return array(
-			'id'  => get_post_thumbnail_id( $this->post, 'large' ),
-			'url' => get_the_post_thumbnail_url( $this->post, 'large' ),
+			'id'  => $thumbnail_id,
+			'url' => $url,
 			'tag' => $tag,
 			'raw' => $tag,
 		);

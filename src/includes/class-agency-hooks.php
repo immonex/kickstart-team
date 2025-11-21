@@ -69,6 +69,7 @@ class Agency_Hooks extends Base_CPT_Hooks {
 		add_filter( 'inx_team_get_agency_checksum', array( $this, 'get_agency_checksum' ), 10, 2 );
 		add_filter( 'inx_team_get_agency_elements', array( $this, 'get_agency_elements' ) );
 		add_filter( 'inx_team_get_agency_legal_notice', array( $this, 'get_agency_legal_notice' ), 10, 3 );
+		add_filter( 'inx_team_get_agency_count', array( $this, 'get_agency_count' ), 10, 2 );
 
 		// Filters for "manually" creating and updating agencies.
 		add_filter( 'inx_team_create_agency', array( $this, 'create_agency' ), 10, 2 );
@@ -573,6 +574,46 @@ class Agency_Hooks extends Base_CPT_Hooks {
 
 		return $template;
 	} // maybe_disable_single_view
+
+	/**
+	 * Determine the number of ALL agencies with a low-level DB query
+	 * (filter callback).
+	 *
+	 * @since 1.7.4
+	 *
+	 * @param int $count Current value (ignored).
+	 * @param int $limit Query record limit (optional, default: 0).
+	 *
+	 * @return int Agency count (0 if query failed).
+	 */
+	public function get_agency_count( $count, $limit = 0 ) {
+		global $wpdb;
+
+		$agency_count = apply_filters( 'inx_team_cache_get', 0, 'agency_count' );
+
+		if ( $agency_count ) {
+			return $agency_count;
+		}
+		// @codingStandardsIgnoreStart
+		$result = $wpdb->get_results(
+			$wpdb->prepare(
+				"SELECT post.ID
+					FROM $wpdb->posts post
+					WHERE post.post_type = %s
+					AND post.post_status = 'publish'" .
+					( $limit ? ' LIMIT %d' : '' ),
+				array( 'inx_agency', (int) $limit )
+			),
+			ARRAY_A
+		);
+		// @codingStandardsIgnoreEnd
+
+		$agency_count = ! empty( $result ) ? count( $result ) : 0;
+
+		do_action( 'inx_team_cache_set', 'agency_count', $agency_count );
+
+		return $agency_count;
+	} // get_agency_count
 
 	/**
 	 * Return a rendered agency single view (shortcode-based).

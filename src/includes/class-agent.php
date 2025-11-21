@@ -103,7 +103,7 @@ class Agent extends Base_CPT_Post {
 		}
 
 		if ( ! $this->post && empty( $atts['is_preview'] ) ) {
-			return '';
+			return array();
 		}
 
 		$template = isset( $atts['template'] ) ? $atts['template'] : '';
@@ -1185,12 +1185,13 @@ class Agent extends Base_CPT_Post {
 	 * @return mixed[] Array containing raw value and (eventually) a link tag.
 	 */
 	private function get_position_incl_company( $value_getter ) {
-		$position = call_user_func( $value_getter, 'position' );
-		$agency   = get_post( $this->agency_id );
+		$position     = call_user_func( $value_getter, 'position' );
+		$agency       = get_post( $this->agency_id );
+		$agency_count = apply_filters( 'inx_team_get_agency_count', 0, 2 );
 
 		if (
 			! get_query_var( Kickstart::PUBLIC_PREFIX . 'agency' )
-			&& $this->get_agency_count() > 1
+			&& $agency_count > 1
 			&& $this->agency_id
 			&& $agency
 		) {
@@ -1376,26 +1377,6 @@ class Agent extends Base_CPT_Post {
 			)
 		);
 	} // get_property_count
-
-	/**
-	 * Determine the number of ALL agencies.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @return int Agency count.
-	 */
-	private function get_agency_count() {
-		$agency_list = new Agency_List( $this->config, $this->utils );
-
-		return count(
-			$agency_list->get_items(
-				array(
-					'fields'                        => 'ids',
-					'suppress_pre_get_posts_filter' => false,
-				)
-			)
-		);
-	} // get_agency_count
 
 	/**
 	 * Determine the agent's gender by salutation and first name,

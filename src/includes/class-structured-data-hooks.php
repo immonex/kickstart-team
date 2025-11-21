@@ -35,10 +35,12 @@ class Structured_Data_Hooks {
 		'agency' => [
 			'internal'  => [],
 			'reference' => [],
+			'instance'  => [],
 		],
 		'agent'  => [
 			'internal'  => [],
 			'reference' => [],
+			'instance'  => [],
 		],
 	];
 
@@ -109,9 +111,29 @@ class Structured_Data_Hooks {
 				$this->cache[ $entity_type ][ $scope ][ $entity_id ]['script_block'];
 		}
 
-		$entity_class  = __NAMESPACE__ . '\\' . ucfirst( $entity_type ) . '_Schema';
-		$entity_schema = new $entity_class( $this->config, $this->utils );
-		$entity_schema->set_post_id( $entity_id );
+		$transient_name = "inx_team_{$entity_type}_schema_{$scope}_{$entity_id}";
+		$transient_data = get_transient( $transient_name );
+
+		if (
+			! empty( $transient_data['raw'] )
+			&& ! empty( ! empty( $transient_data['script_block'] ) )
+		) {
+			$this->cache[ $entity_type ][ $scope ][ $entity_id ] = $transient_data;
+
+			return empty( $args['as_script_block'] ) ?
+				$transient_data['raw'] :
+				$transient_data['script_block'];
+		}
+
+		if ( ! empty( $this->cache[ $entity_type ]['instance'][ $entity_id ] ) ) {
+			$entity_schema = $this->cache[ $entity_type ]['instance'][ $entity_id ];
+		} else {
+			$entity_class  = __NAMESPACE__ . '\\' . ucfirst( $entity_type ) . '_Schema';
+			$entity_schema = new $entity_class( $this->config, $this->utils );
+			$entity_schema->set_post_id( $entity_id );
+
+			$this->cache[ $entity_type ]['instance'][ $entity_id ] = $entity_schema;
+		}
 
 		$main_entity_element = $entity_schema->get_main_entity_element( $scope );
 		if ( empty( $main_entity_element ) ) {
@@ -119,6 +141,14 @@ class Structured_Data_Hooks {
 		}
 
 		$this->cache[ $entity_type ][ $scope ][ $entity_id ] = $main_entity_element;
+
+		$transient_expiration = apply_filters(
+			'inx_team_schema_data_transient_expiration',
+			MONTH_IN_SECONDS * 2,
+			$entity_type,
+			$scope
+		);
+		set_transient( $transient_name, $main_entity_element, $transient_expiration );
 
 		return empty( $args['as_script_block'] ) ?
 			$this->cache[ $entity_type ][ $scope ][ $entity_id ]['raw'] :

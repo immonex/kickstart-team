@@ -1,5 +1,10 @@
 == Changelog ==
 
+= 1.7.5 =
+* Release date: 2025-11-03
+* Optimized schema markup generation performance and caching.
+* Updated dependencies.
+
 = 1.7.3 =
 * Release date: 2025-10-16
 * Improved schema markup inline embedding compatibility.
