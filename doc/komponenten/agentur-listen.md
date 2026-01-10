@@ -16,7 +16,11 @@ Der **Seiten- und Dokumenttitel** der Archivseiten kann in den Plugin-Optionen (
 
 `[inx-team-agency-list]`
 
-Der Shortcode für die Einbindung der Agentur-Listen unterstützt alle [allgemeinen Attribute](../schnellstart/listen-attribute#Shortcodes) zur Filterung, Sortierung und Begrenzung der anzuzeigenden Elemente.
+Der Shortcode für die Einbindung der Agentur-Listen unterstützt alle [allgemeinen Attribute](../schnellstart/listen-attribute#Shortcodes) zur Filterung, Sortierung und Begrenzung der anzuzeigenden Elemente. Im Vergleich zur Archivseite gibt es hier eine Besonderheit:
+
+Bei Agenturlisten, die mittels Shortcode eingebunden werden, ist generell **keine Seitennavigation** verfügbar. Bei einer größeren Anzahl wird aber alternativ ein Link zur Archivseite angezeigt, sofern die Anzahl der **pro Seite** anzuzeigenden Agentureinträge per [Attribut](/schnellstart/listen-attribute?id=shortcodes) `limit-page` begrenzt wird **und** das Agenturen-Archiv in den [Plugin-Optionen](/schnellstart/einrichtung?id=archiv3) aktiviert ist. Beispiel:
+
+`[inx-team-agency-list limit-page=8]`
 
 ## Erweiterte Anpassungen
 

@@ -42,6 +42,13 @@ get_header();
 				'inx-order'               => 'title ASC',
 			)
 		);
+		do_action(
+			'inx_team_render_pagination',
+			array(
+				'is_regular_archive_page' => true,
+				'cpt'                     => 'agency',
+			)
+		);
 		?>
 	</div>
 </div>

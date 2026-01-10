@@ -175,7 +175,8 @@ class Structured_Data_Hooks {
 
 			// @codingStandardsIgnoreStart
 			if (
-				get_post_type() === $cpt['post_type_name']
+				! $type
+				&& get_post_type() === $cpt['post_type_name']
 				&& apply_filters( "{$cpt['post_type_name']}_has_single_view", $this->config["enable_{$key}_single_view"] )
 			) {
 				$type = "{$key}_single";

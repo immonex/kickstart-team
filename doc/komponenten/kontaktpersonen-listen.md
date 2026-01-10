@@ -16,6 +16,10 @@ Der **Seiten- und Dokumenttitel** der Archivseite kann in den Plugin-Optionen (*
 
 `[inx-team-agent-list]`
 
+Im Vergleich zur Archivseite gibt es hier eine Besonderheit: Bei Listen, die mittels Shortcode eingebunden werden, ist generell **keine Seitennavigation** verfügbar. Bei einer größeren Anzahl wird aber alternativ ein Link zur Archivseite angezeigt, sofern die Anzahl der **pro Seite** anzuzeigenden Kontaktpersonen-Einträge per [Attribut](/schnellstart/listen-attribute?id=shortcodes) `limit-page` begrenzt wird **und** das Kontaktpersonen-Archiv in den [Plugin-Optionen](/schnellstart/einrichtung?id=archiveinzelansicht3) aktiviert ist. Beispiel:
+
+`[inx-team-agent-list limit-page=8]`
+
 #### Attribute
 
 | Name | Beschreibung / Attributwerte |

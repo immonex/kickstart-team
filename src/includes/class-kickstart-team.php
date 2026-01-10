@@ -10,14 +10,14 @@ namespace immonex\Kickstart\Team;
 /**
  * Main plugin class
  */
-class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_6_1\Base {
+class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_6_3\Base {
 
 	const PLUGIN_NAME                = 'immonex Kickstart Team';
 	const ADDON_NAME                 = 'Team';
 	const ADDON_TAB_ID               = 'addon_team';
 	const PLUGIN_PREFIX              = 'inx_team_';
 	const PUBLIC_PREFIX              = 'inx-team-';
-	const PLUGIN_VERSION             = '1.7.5';
+	const PLUGIN_VERSION             = '1.8.0';
 	const PLUGIN_HOME_URL            = 'https://de.wordpress.org/plugins/immonex-kickstart-team/';
 	const PLUGIN_DOC_URLS            = array(
 		'de' => 'https://docs.immonex.de/kickstart-team/',
@@ -276,6 +276,7 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_6_1\Base {
 			)
 		);
 
+		new Pagination( $component_config, $this->utils );
 		new Contact_Form_Hooks( $component_config, $this->utils );
 		if ( ! empty( $core_options['seo_schema_org'] ) ) {
 			new Structured_Data_Hooks( $component_config, $this->utils );

@@ -41,6 +41,13 @@ get_header();
 				'is_regular_archive_page' => true,
 			)
 		);
+		do_action(
+			'inx_team_render_pagination',
+			array(
+				'is_regular_archive_page' => true,
+				'cpt'                     => 'agent',
+			)
+		);
 		?>
 	</div>
 </div>

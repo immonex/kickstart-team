@@ -1,5 +1,13 @@
 == Changelog ==
 
+= 1.8.0 =
+* Release date: 2026-01-10
+* Added optional archive links to shortcode-based agency and agent lists.
+* Added pagination to agency and agent archive pages.
+* Fixed an OpenImmo-Feedback XML special character encoding issue.
+* Fixed partially duplicate structured data embedding in archive pages.
+* Updated dependencies.
+
 = 1.7.5 =
 * Release date: 2025-11-03
 * Optimized schema markup generation performance and caching.

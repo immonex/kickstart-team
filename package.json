@@ -1,6 +1,6 @@
 {
   "name": "@immonex/kickstart-team",
-  "version": "1.7.5",
+  "version": "1.8.0",
   "description": "immonex Kickstart add-on for handling, linking and integrating OpenImmo-XML based real estate agent/agency information and contact forms",
   "private": true,
   "dependencies": {
@@ -16,7 +16,7 @@
     "browser-sync-webpack-plugin": "^2.4.0",
     "cross-var": "^1.1.0",
     "css-loader": "^7.1.2",
-    "css-minimizer-webpack-plugin": "^7.0.2",
+    "css-minimizer-webpack-plugin": "^7.0.4",
     "dotenv": "^17.2.3",
     "dotenv-cli": "^11.0.0",
     "file-loader": "^6.2.0",
@@ -26,10 +26,10 @@
     "lws-static": "^3.1.1",
     "mini-css-extract-plugin": "^2.9.4",
     "rimraf": "^6.1.2",
-    "sass": "^1.94.2",
+    "sass": "^1.97.2",
     "sass-loader": "^16.0.6",
     "style-loader": "^4.0.0",
-    "webpack": "^5.103.0",
+    "webpack": "^5.104.1",
     "webpack-cli": "^6.0.1",
     "webpack-merge": "^6.0.1"
   },

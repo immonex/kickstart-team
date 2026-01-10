@@ -130,11 +130,11 @@ class Quick_Openimmo_Feedback {
 
 		if ( isset( $prospect['first_name'] ) || isset( $prospect['last_name'] ) ) {
 			$vorname  = ! empty( $prospect['first_name'] ) ?
-				trim( sanitize_text_field( $prospect['first_name'] ) ) : '';
+				htmlspecialchars( trim( sanitize_text_field( $prospect['first_name'] ) ), ENT_XML1 ) : '';
 			$nachname = ! empty( $prospect['last_name'] ) ?
-				trim( sanitize_text_field( $prospect['last_name'] ) ) : '';
+				htmlspecialchars( trim( sanitize_text_field( $prospect['last_name'] ) ), ENT_XML1 ) : '';
 		} elseif ( ! empty( $prospect['name'] ) ) {
-			$raw_name  = trim( sanitize_text_field( $prospect['name'] ) );
+			$raw_name  = htmlspecialchars( trim( sanitize_text_field( $prospect['name'] ) ), ENT_XML1 );
 			$full_name = explode( ' ', $raw_name );
 			$vorname   = count( $full_name ) > 1 ? trim( $full_name[0] ) : '';
 			$nachname  = count( $full_name ) > 1 ?
@@ -143,21 +143,21 @@ class Quick_Openimmo_Feedback {
 		}
 
 		$anrede      = ! empty( $prospect['salutation'] ) ? $prospect['salutation'] : $this->get_salutation( $vorname );
-		$int_strasse = ! empty( $prospect['street'] ) ? sanitize_text_field( $prospect['street'] ) : '';
-		$int_plz     = ! empty( $prospect['postal_code'] ) ? sanitize_text_field( $prospect['postal_code'] ) : '';
-		$int_ort     = ! empty( $prospect['city'] ) ? sanitize_text_field( $prospect['city'] ) : '';
-		$tel         = ! empty( $prospect['phone'] ) ? sanitize_text_field( $prospect['phone'] ) : '';
+		$int_strasse = ! empty( $prospect['street'] ) ? htmlspecialchars( sanitize_text_field( $prospect['street'] ), ENT_XML1 ) : '';
+		$int_plz     = ! empty( $prospect['postal_code'] ) ? htmlspecialchars( sanitize_text_field( $prospect['postal_code'] ), ENT_XML1 ) : '';
+		$int_ort     = ! empty( $prospect['city'] ) ? htmlspecialchars( sanitize_text_field( $prospect['city'] ), ENT_XML1 ) : '';
+		$tel         = ! empty( $prospect['phone'] ) ? htmlspecialchars( sanitize_text_field( $prospect['phone'] ), ENT_XML1 ) : '';
 		$email       = ! empty( $prospect['email'] ) ? sanitize_text_field( $prospect['email'] ) : '';
-		$anfrage     = ! empty( $prospect['message'] ) ? stripslashes( sanitize_textarea_field( $prospect['message'] ) ) : '';
+		$anfrage     = ! empty( $prospect['message'] ) ? htmlspecialchars( stripslashes( sanitize_textarea_field( $prospect['message'] ) ), ENT_XML1 ) : '';
 
 		$marketing_type_sale = strtolower( (string) $immobilie->objektkategorie->vermarktungsart['KAUF'] );
 		$is_sale             = in_array( (string) $marketing_type_sale, array( 'true', '1' ), true );
 		$vermarktungsart     = $is_sale ? 'Verkauf' : 'Vermietung/Verpachtung';
 
-		$bezeichnung = $property->post_title;
-		$ort         = (string) $immobilie->geo->ort;
-		$land        = (string) $immobilie->geo->land['iso_land'];
-		$preis       = get_post_meta( $property->ID, '_inx_primary_price', true );
+		$bezeichnung = htmlspecialchars( $property->post_title, ENT_XML1 );
+		$ort         = htmlspecialchars( (string) $immobilie->geo->ort, ENT_XML1 );
+		$land        = htmlspecialchars( (string) $immobilie->geo->land['iso_land'], ENT_XML1 );
+		$preis       = htmlspecialchars( get_post_meta( $property->ID, '_inx_primary_price', true ), ENT_XML1 );
 
 		$oi_fb_params = apply_filters(
 			'inx_team_openimmo_feedback_params',
