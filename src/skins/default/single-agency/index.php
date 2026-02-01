@@ -96,7 +96,7 @@ $inx_skin_legal_notice = in_array( 'legal_notice', $template_data['single_view_o
 					if ( 'do_action:' === substr( $inx_skin_value, 0, 10 ) ) {
 						$inx_skin_action = substr( $inx_skin_value, 10 );
 						do_action(
-							// @codingStandardsIgnoreLine
+							// phpcs:ignore
 							$inx_skin_action,
 							'',
 							array(

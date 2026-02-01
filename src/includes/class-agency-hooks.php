@@ -376,7 +376,7 @@ class Agency_Hooks extends Base_CPT_Hooks {
 
 		delete_post_meta( $post_id, '_inx_team_agency_id' );
 
-		$agent_ids            = get_post_meta( $post_id, '_inx_team_agent_primary' );
+		$agent_ids            = get_post_meta( $post_id, '_inx_team_agent_primary', false );
 		$additional_agent_ids = get_post_meta( $post_id, '_inx_team_agents', true );
 		if (
 			is_array( $additional_agent_ids ) &&
@@ -594,7 +594,7 @@ class Agency_Hooks extends Base_CPT_Hooks {
 		if ( $agency_count ) {
 			return $agency_count;
 		}
-		// @codingStandardsIgnoreStart
+		// phpcs:disable
 		$result = $wpdb->get_results(
 			$wpdb->prepare(
 				"SELECT post.ID
@@ -606,7 +606,7 @@ class Agency_Hooks extends Base_CPT_Hooks {
 			),
 			ARRAY_A
 		);
-		// @codingStandardsIgnoreEnd
+		// phpcs:enable
 
 		$agency_count = ! empty( $result ) ? count( $result ) : 0;
 

@@ -82,7 +82,7 @@ class Agency extends Base_CPT_Post {
 
 		$post_types = get_post_types( array( 'name' => $this->post_type_name ), 'objects' );
 		if ( isset( $post_types[ $this->post_type_name ] ) ) {
-			// @codingStandardsIgnoreLine
+			// phpcs:ignore
 			$this->is_public = apply_filters( "{$this->post_type_name}_has_single_view", $post_types[ $this->post_type_name ]->public );
 		}
 
@@ -106,9 +106,9 @@ class Agency extends Base_CPT_Post {
 		$default_elements = array_keys( $this->get_elements( $default_filter ) );
 		$convert_links    = ! empty( $atts['convert_links'] );
 		$template_data    = array(
-			'before_title'                  => isset( $atts['before_title'] ) ? html_entity_decode( $atts['before_title'] ) : '',
+			'before_title'                  => isset( $atts['before_title'] ) ? html_entity_decode( $atts['before_title'], ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401 ) : '',
 			'title'                         => isset( $atts['title'] ) ? $atts['title'] : $this->post->post_title,
-			'after_title'                   => isset( $atts['after_title'] ) ? html_entity_decode( $atts['after_title'] ) : '',
+			'after_title'                   => isset( $atts['after_title'] ) ? html_entity_decode( $atts['after_title'], ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401 ) : '',
 			'link_type'                     => $this->link_type,
 			'convert_links'                 => $convert_links,
 			'contact_form_scope'            => ! empty( $atts['contact_form_scope'] ) ? $atts['contact_form_scope'] : '',
@@ -895,7 +895,7 @@ class Agency extends Base_CPT_Post {
 			);
 		} else {
 			$temp = tmpfile();
-			// @codingStandardsIgnoreLine
+			// phpcs:ignore
 			fwrite( $temp, file_get_contents( $path_or_url ) );
 
 			$file_data = array(
@@ -908,7 +908,7 @@ class Agency extends Base_CPT_Post {
 		$result = media_handle_sideload( $file_data, $this->post->ID, $desc );
 
 		if ( ! empty( $temp ) && is_string( $temp ) && file_exists( $temp ) ) {
-			// @codingStandardsIgnoreLine
+			// phpcs:ignore
 			@unlink( $temp );
 		}
 

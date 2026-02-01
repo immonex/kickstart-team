@@ -50,7 +50,7 @@ class Contact_Form {
 	public function __construct( $config, $utils ) {
 		$this->config = $config;
 		$this->utils  = $utils;
-		// @codingStandardsIgnoreLine
+		// phpcs:ignore
 		$this->obfuscated_timestamp = base64_encode( $this->utils['string']->xor_string( (string) time(), self::OBFUSCATION_KEY ) );
 	} // __construct
 
@@ -136,6 +136,17 @@ class Contact_Form {
 	 * @return mixed[] Send Result (status, user message).
 	 */
 	public function send( $form_data ) {
+		if ( ! empty( $form_data['autofilled'] ) ) {
+			foreach ( $form_data['autofilled'] as $field_name ) {
+				if (
+					self::HONEYPOT_FIELD_NAME === $field_name
+					|| self::HONEYPOT_FIELD_NAME2 === $field_name
+				) {
+					$form_data[ $field_name ] = '';
+				}
+			}
+		}
+
 		$result = $this->validate( $form_data );
 		if ( ! $result['valid'] ) {
 			return $result;
@@ -451,7 +462,7 @@ class Contact_Form {
 		}
 
 		$form_creation_timestamp = (int) $this->utils['string']->xor_string(
-			// @codingStandardsIgnoreLine
+			// phpcs:ignore
 			base64_decode( $form_data[ self::TS_CHECK_FIELD_NAME ] ),
 			self::OBFUSCATION_KEY
 		);
@@ -689,7 +700,7 @@ class Contact_Form {
 	public function get_user_form_data() {
 		$form_data = array();
 
-		// @codingStandardsIgnoreLine
+		// phpcs:ignore
 		$scope  = $this->get_scope( $_POST );
 		$fields = $this->get_fields( false, $scope );
 
@@ -704,9 +715,9 @@ class Contact_Form {
 
 		if ( count( $fields ) > 0 ) {
 			foreach ( $fields as $field_name => $field ) {
-				// @codingStandardsIgnoreLine
+				// phpcs:ignore
 				$value = isset( $_POST[ $field_name ] ) ?
-					// @codingStandardsIgnoreLine
+					// phpcs:ignore
 					wp_unslash( $_POST[ $field_name ] ) : '';
 
 				if ( ! empty( $field['is_honeypot'] ) ) {
@@ -1005,7 +1016,7 @@ class Contact_Form {
 		if ( ! empty( $atts['recipients'] ) ) {
 			$recipients = $this->utils['string']->split_mail_address_string( $atts['recipients'] );
 			if ( count( $recipients ) > 0 ) {
-				// @codingStandardsIgnoreLine
+				// phpcs:ignore
 				$recipients_enc = base64_encode( $this->utils['string']->xor_string( implode( ',', $recipients ), self::OBFUSCATION_KEY ) );
 			}
 		}
@@ -1014,7 +1025,7 @@ class Contact_Form {
 		if ( ! empty( $atts['cc'] ) ) {
 			$cc_recipients = $this->utils['string']->split_mail_address_string( $atts['cc'] );
 			if ( count( $cc_recipients ) > 0 ) {
-				// @codingStandardsIgnoreLine
+				// phpcs:ignore
 				$cc_enc = base64_encode( $this->utils['string']->xor_string( implode( ',', $cc_recipients ), self::OBFUSCATION_KEY ) );
 			}
 		}
@@ -1274,7 +1285,7 @@ class Contact_Form {
 
 		if ( $form_recipient_string ) {
 			$form_recipients_string_decode = $this->utils['string']->xor_string(
-				// @codingStandardsIgnoreLine
+				// phpcs:ignore
 				base64_decode( $form_recipient_string ),
 				self::OBFUSCATION_KEY
 			);
@@ -1285,7 +1296,7 @@ class Contact_Form {
 
 		if ( $form_cc_string ) {
 			$form_cc_string_decode = $this->utils['string']->xor_string(
-				// @codingStandardsIgnoreLine
+				// phpcs:ignore
 				base64_decode( $form_cc_string ),
 				self::OBFUSCATION_KEY
 			);

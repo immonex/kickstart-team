@@ -1,7 +1,7 @@
 # Systemvoraussetzungen
 
-- selbst-gehostete [WordPress-Installation](https://de.wordpress.org/download/)<sup>1</sup> ab Version 4.7 (empfohlen: 5.5 oder höher)
-- PHP ab Version 5.6 (empfohlen: 7.4 oder höher)
+- betriebsbereite [WordPress-Installation](https://de.wordpress.org/download/)<sup>1</sup> ab Version 5.5
+- PHP ab Version 7.4 (empfohlen: 8.3 oder höher)
 - mindestens 128 MB Arbeitsspeicher pro PHP-Prozess (OpenImmo-Import)
 - installiertes/aktives [immonex-Kickstart-Plugin](https://de.wordpress.org/plugins/immonex-kickstart/) ab Version 1.1.0
 
@@ -13,4 +13,4 @@ Für die **automatisierte** Erstellung von Agentur- und Ansprechpartner-Beiträg
 
 ---
 
-<sup>1</sup> Eingeschränkte Installationen bei **WordPress.com** oder vergleichbaren Anbietern werden **nicht** unterstützt.
+<sup>1</sup> Die Möglichkeit zur Installation beliebiger Plugins muss gegeben sein.

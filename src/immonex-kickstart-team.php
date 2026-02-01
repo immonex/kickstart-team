@@ -3,7 +3,7 @@
  * Plugin Name:       immonex Kickstart Team
  * Plugin URI:        https://wordpress.org/plugins/immonex-kickstart-team/
  * Description:       immonex Kickstart add-on for handling, linking and embedding OpenImmo-XML-based real estate agent/agency information and contact forms
- * Version:           1.8.0
+ * Version:           1.8.1-beta
  * Text Domain:       immonex-kickstart-team
  * Domain Path:       /languages
  * Requires at least: 5.5

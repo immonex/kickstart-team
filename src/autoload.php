@@ -10,7 +10,7 @@ namespace immonex\Kickstart\Team;
 /**
  * Initialize the Composer autoloader first (optional).
  */
-// @codingStandardsIgnoreLine
+// phpcs:ignore
 // require_once __DIR__ . '/vendor/autoload.php';
 
 /**

@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
-<ruleset name="WordPress Coding Standards based custom ruleset for your plugin">
-	<description>Generally-applicable sniffs for WordPress plugins.</description>
+<ruleset name="immonexWPStandard">
+	<description>Custom coding standard for immonex WordPress plugins</description>
 
 	<!-- What to scan -->
-	<file>src/</file>
+	<file>./src/</file>
 	<exclude-pattern>/lib/</exclude-pattern>
 	<exclude-pattern>/vendor/</exclude-pattern>
 	<exclude-pattern>/third_party/</exclude-pattern>
@@ -22,13 +22,13 @@
 	<!-- https://github.com/PHPCompatibility/PHPCompatibility#sniffing-your-code-for-compatibility-with-specific-php-versions -->
 	<config name="testVersion" value="7.4-"/>
 	<!-- https://github.com/PHPCompatibility/PHPCompatibilityWP -->
-	<rule ref="PHPCompatibilityWP">
+	<rule ref="PHPCompatibility">
 		<exclude name="PSR2.Classes.ClassDeclaration.CloseBraceAfterBody"/>
 	</rule>
 
 	<!-- Rules: WordPress Coding Standards -->
-	<!-- https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards -->
-	<!-- https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/wiki/Customizable-sniff-properties -->
+	<!-- https://github.com/WordPress/WordPress-Coding-Standards -->
+	<!-- https://github.com/WordPress/WordPress-Coding-Standards/wiki/Customizable-sniff-properties -->
 	<config name="minimum_supported_wp_version" value="5.5"/>
 	<rule ref="WordPress">
 		<exclude name="WordPress.Security.EscapeOutput.OutputNotEscaped"/>
@@ -36,25 +36,31 @@
 		<exclude name="WordPress.DB.SlowDBQuery.slow_db_query_meta_query"/>
 		<exclude name="WordPress.Security.NonceVerification.Recommended"/>
 		<exclude name="WordPress.DB.SlowDBQuery.slow_db_query_meta_key"/>
+		<exclude name="Universal.Arrays.DisallowShortArraySyntax.Found"/>
 		<exclude name="Generic.CodeAnalysis.UnusedFunctionParameter.Found"/>
 		<exclude name="Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed"/>
 		<exclude name="Generic.Commenting.DocComment.LongNotCapital"/>
-		<exclude name="Universal.Arrays.DisallowShortArraySyntax.Found"/>
 	</rule>
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
 		<properties>
-			<!-- Value: replace the function, class, and variable prefixes used. Separate multiple prefixes with a comma. -->
+			<!-- Value: replace the function, class, and variable prefixes used. -->
 			<property name="prefixes" type="array">
 				<element value="immonex"/>
 				<element value="inx"/>
+				<element value="inx_skin"/>
 				<element value="immonex_kickstart_team"/>
 			</property>
 		</properties>
+		<exclude name="WordPress.NamingConventions.PrefixAllGlobals.ShortPrefixPassed"/>
+		<exclude name="WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound"/>
 	</rule>
 	<rule ref="WordPress.WP.I18n">
 		<properties>
 			<!-- Value: replace the text domain used. -->
-			<property name="text_domain" type="array" value="immonex-kickstart-team"/>
+			<property name="text_domain" type="array">
+				<element value="immonex-kickstart-team"/>
+				<element value="tgmpa"/>
+			</property>
 		</properties>
 	</rule>
 	<rule ref="WordPress.WhiteSpace.ControlStructureSpacing">

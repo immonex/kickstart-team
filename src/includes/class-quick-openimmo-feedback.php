@@ -256,11 +256,11 @@ EOT
 
 		$oi_file = "{$temp_dir}/{$filename}";
 
-		// @codingStandardsIgnoreStart
+		// phpcs:disable
 		$f = fopen( $oi_file, 'w+' );
 		fwrite( $f, $xml_source );
 		fclose( $f );
-		// @codingStandardsIgnoreEnd
+		// phpcs:enable
 
 		return $oi_file;
 	} // mysite_send_oi_feedback

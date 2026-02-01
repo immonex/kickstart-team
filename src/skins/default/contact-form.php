@@ -157,7 +157,7 @@ foreach ( $template_data['fields'] as $inx_skin_field_name => $inx_skin_field ) 
 
 		<?php // Honeypot. ?>
 		<div class="inx-team-contact-form__input inx-team-contact-form__input--name--<?php echo $template_data['honeypot_field_name2']; ?>" aria-hidden="true">
-			<input type="email" name="<?php echo $template_data['honeypot_field_name2']; ?>" placeholder="Alternative E-Mail Address" tabindex="-1" autocomplete="off" aria-label="Alternative E-Mail Address" class="uk-input">
+			<input name="<?php echo $template_data['honeypot_field_name2']; ?>" placeholder="Alternative E-Mail Address" tabindex="-1" autocomplete="off" aria-label="Alternative E-Mail Address" class="uk-input">
 			<div class="inx-team-contact-form__input-error"></div>
 		</div>
 		<?php // /Honeypot. ?>
@@ -186,7 +186,7 @@ foreach ( $template_data['fields'] as $inx_skin_field_name => $inx_skin_field ) 
 		</div>
 		<?php endif; ?>
 
-		<?php // @codingStandardsIgnoreStart ?>
+		<?php // phpcs:disable ?>
 
 		<div class="inx-team-contact-form__input inx-team-contact-form__input--type--full inx-team-contact-form__result-wrap">
 			<div class="inx-team-contact-form__result"></div>
@@ -213,7 +213,7 @@ foreach ( $template_data['fields'] as $inx_skin_field_name => $inx_skin_field ) 
 			</div>
 		</div>
 
-		<?php // @codingStandardsIgnoreEnd ?>
+		<?php // phpcs:enable ?>
 
 		<div class="inx-team-contact-form__spinner uk-overlay-default uk-position-cover">
 			<div class="uk-position-center" uk-spinner="ratio: 2"></div>

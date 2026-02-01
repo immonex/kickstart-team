@@ -173,7 +173,7 @@ class Structured_Data_Hooks {
 			$type = is_post_type_archive( $cpt['post_type_name'] ) ?
 				"{$key}_archive" : '';
 
-			// @codingStandardsIgnoreStart
+			// phpcs:disable
 			if (
 				! $type
 				&& get_post_type() === $cpt['post_type_name']
@@ -181,7 +181,7 @@ class Structured_Data_Hooks {
 			) {
 				$type = "{$key}_single";
 			}
-			// @codingStandardsIgnoreEnd
+			// phpcs:enable
 
 			if ( $type ) {
 				break;

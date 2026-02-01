@@ -21,13 +21,22 @@ function init() {
 			var submitEl = resultEl.parentsUntil('.inx-team-contact-form').parent().find('.inx-team-contact-form__submit')
 			var spinner = form.children('.inx-team-contact-form__spinner').first()
 
+			const autofilled = []
+			form.find('input[data-com-onepassword-filled]').each((index, element) => {
+				autofilled.push(element.name)
+			})
+
+			const formData = new FormData(form[0])
+			formData.append('autofilled', JSON.stringify(autofilled))
+			const serializedFormData = new URLSearchParams(formData).toString()
+
 			form.find('.inx-team-contact-form__input--has-error').removeClass('inx-team-contact-form__input--has-error')
 			resultEl[0].className = 'inx-team-contact-form__result uk-margin'
 			spinner.show()
 
 			$.post(
 				form.attr('action'),
-				form.serialize(),
+				serializedFormData,
 				function (response) {
 					var data = 'string' === typeof response ? JSON.parse( response.match( /{.*}/ ) ) : response
 

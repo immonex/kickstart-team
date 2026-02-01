@@ -124,7 +124,7 @@ class Agent_Widget extends \WP_Widget {
 
 		$instance = wp_parse_args( (array) $instance, array_merge( $selectable_elements['defaults'], $options ) );
 		$title    = isset( $instance['title'] ) ? $instance['title'] : 'auto';
-		// @codingStandardsIgnoreStart
+		// phpcs:disable
 		?>
 <div class="immonex-be-widget-form">
 
@@ -210,7 +210,7 @@ class Agent_Widget extends \WP_Widget {
 
 </div><!-- .immonex-be-widget-form -->
 		<?php
-		// @codingStandardsIgnoreEnd
+		// phpcs:enable
 	} // form
 
 	/**

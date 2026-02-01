@@ -16,7 +16,7 @@ Der **Seiten- und Dokumenttitel** der Archivseite kann in den Plugin-Optionen (*
 
 `[inx-team-agent-list]`
 
-Im Vergleich zur Archivseite gibt es hier eine Besonderheit: Bei Listen, die mittels Shortcode eingebunden werden, ist generell **keine Seitennavigation** verfügbar. Bei einer größeren Anzahl wird aber alternativ ein Link zur Archivseite angezeigt, sofern die Anzahl der **pro Seite** anzuzeigenden Kontaktpersonen-Einträge per [Attribut](/schnellstart/listen-attribute?id=shortcodes) `limit-page` begrenzt wird **und** das Kontaktpersonen-Archiv in den [Plugin-Optionen](/schnellstart/einrichtung?id=archiveinzelansicht3) aktiviert ist. Beispiel:
+Im Gegensatz zur *Archivseite* ist bei der Shortcode-basierten Listenvariante **keine Seitennavigation** verfügbar. Stattdessen wird ggf. ein Link zur Archivseite angezeigt, sofern die Anzahl der **pro Seite** anzuzeigenden Kontaktpersonen-Einträge per [Attribut](/schnellstart/listen-attribute?id=shortcodes) `limit-page` begrenzt wird **und** das Kontaktpersonen-Archiv in den [Plugin-Optionen](/schnellstart/einrichtung?id=archiveinzelansicht3) nicht deaktiviert wurde. Beispiel:
 
 `[inx-team-agent-list limit-page=8]`
 
@@ -27,6 +27,20 @@ Im Vergleich zur Archivseite gibt es hier eine Besonderheit: Bei Listen, die mit
 | `agency` | optionale **Agentur-ID**, wenn nur Ansprechpartner einer bestimmten [Immobilien-Agentur](../beitragsarten?id=agentur-→-kontaktperson) angezeigt werden sollen |
 
 Der Shortcode für die Einbindung der Kontaktpersonen-Listen unterstützt zudem alle [allgemeinen Attribute](../schnellstart/listen-attribute#Shortcodes) zur Filterung, Sortierung und Begrenzung der anzuzeigenden Elemente.
+
+## Elementor
+
+<div class="two-column-layout"><div>
+
+![Screenshot: Optionen des Kontaktpersonen-Listen-Widgets im Elementor-Editor](../assets/scst-widget-kontaktpersonen-liste-optionen.png)
+
+</div><div>
+
+Wurde die Website auf Basis von [Elementor](https://de.wordpress.org/plugins/elementor/) umgesetzt, kann das Listenelement auch per [Elementor-Widget](https://docs.immonex.de/kickstart-elementor/#/elementor-immobilien-widgets/kontaktpersonen-liste) eingebunden und konfiguriert werden.
+
+Voraussetzung hierfür ist die Installation des kostenfreien [Kickstart-Elementor-Add-ons](https://immonex.dev/wordpress-immobilien-plugin/immonex-kickstart-elementor).
+
+</div></div>
 
 ## Erweiterte Anpassungen
 

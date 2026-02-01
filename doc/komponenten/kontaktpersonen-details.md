@@ -117,6 +117,20 @@ Widget (Standardansicht), keine Anzeige bei Referenzobjekten
 Widget mit Standardumfang, aber erweitertem Kontaktformular (u. a. inkl. Adressfeldern):
 `[inx-team-agent type="widget" contact_form_scope="extended"]`
 
+## Elementor
+
+<div class="two-column-layout"><div>
+
+![Screenshot: Elementauswahl des Kontaktperson/-formular-Widgets im Elementor-Editor](../assets/scst-widget-kontaktperson-formular-optionen.png)
+
+</div><div>
+
+Wurde die Website auf Basis von [Elementor](https://de.wordpress.org/plugins/elementor/) umgesetzt, können Ansprechpartner-Detailansicht und -Formular auch per [Elementor-Widget](https://docs.immonex.de/kickstart-elementor/#/elementor-immobilien-widgets/kontaktperson-formular) eingebunden und konfiguriert werden.
+
+Voraussetzung hierfür ist die Installation des kostenfreien [Kickstart-Elementor-Add-ons](https://immonex.dev/wordpress-immobilien-plugin/immonex-kickstart-elementor).
+
+</div></div>
+
 ## Erweiterte Anpassungen
 
 - [Templates (Skin)](/anpassung-erweiterung/standard-skin?id=detailansichten)

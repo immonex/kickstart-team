@@ -179,7 +179,7 @@ class WP_Bootstrap {
 	 */
 	public function extend_user_form( $user ) {
 		$plugin_options_access_capability = apply_filters(
-			// @codingStandardsIgnoreLine
+			// phpcs:ignore
 			"{$this->data['plugin_slug']}_plugin_options_access_capability",
 			''
 		);
@@ -191,7 +191,7 @@ class WP_Bootstrap {
 			return;
 		}
 
-		// @codingStandardsIgnoreStart
+		// phpcs:disable
 		?>
 		<h3>immonex Kickstart Team</h3>
 
@@ -206,7 +206,7 @@ class WP_Bootstrap {
 			</tr>
 		</table>
 		<?php
-		// @codingStandardsIgnoreEnd
+		// phpcs:enable
 	} // extend_user_form
 
 	/**
@@ -218,7 +218,7 @@ class WP_Bootstrap {
 	 */
 	public function save_extended_user_contents( $user_id ) {
 		$plugin_options_access_capability = apply_filters(
-			// @codingStandardsIgnoreLine
+			// phpcs:ignore
 			"{$this->data['plugin_slug']}_plugin_options_access_capability",
 			''
 		);
@@ -230,14 +230,14 @@ class WP_Bootstrap {
 			return;
 		}
 
-		// @codingStandardsIgnoreStart
+		// phpcs:disable
 		if ( isset( $_POST['inx_team_agency_id'] ) ) {
 			update_user_meta( $user_id, 'inx_team_agency_id', (int) sanitize_key( $_POST['inx_team_agency_id'] ) );
 		}
 		if ( isset( $_POST['inx_team_agent_id'] ) ) {
 			update_user_meta( $user_id, 'inx_team_agent_id', (int) sanitize_key( $_POST['inx_team_agent_id'] ) );
 		}
-		// @codingStandardsIgnoreEnd
+		// phpcs:enable
 	} // save_extended_user_contents
 
 } // class WP_Bootstrap

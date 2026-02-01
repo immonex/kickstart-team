@@ -1,6 +1,6 @@
-<img src="assets/immonex-kickstart-team-logo.png" width="286" height="286" align="right" alt="immonex Kickstart Team Logo">
-
 # immonex Kickstart Team
+
+<img src="assets/immonex-kickstart-team-logo.png" width="286" height="286" align="right" alt="immonex Kickstart Team Logo">
 
 Kickstart Team is an **add-on plugin** that extends real-estate websites based on **WordPress**, [immonex Kickstart](https://de.wordpress.org/plugins/immonex-kickstart/) and [immonex OpenImmo2WP](https://immonex.dev/).
 
@@ -12,7 +12,9 @@ It adds functionality for automated creating, updating, linking and integrating 
 
 ## Basics & Scope
 
-Kickstart Team itself will be available in the official [WordPress Plugin Repository](https://wordpress.org/plugins/) soon. A **user documentation** including detailed instructions how to install, setup and customize the plugin (in German) is available here:
+Kickstart Team is available in the official [WordPress Plugin Repository](https://wordpress.org/plugins/immonex-kickstart-team).
+
+A **user/dev documentation** including detailed instructions how to install, setup and customize the plugin (in German) is available here:
 
 https://docs.immonex.de/kickstart-team/
 
@@ -164,7 +166,7 @@ $ npm run doc:publish
 
 [GPLv2 or later](LICENSE)
 
-Copyright (C) 2014, 2020 [inveris OHG](https://inveris.de/) / [immonex](https://immonex.dev/)
+Copyright (C) 2014, 2026 [inveris OHG](https://inveris.de/) / [immonex](https://immonex.dev/)
 
 This plugin is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
 

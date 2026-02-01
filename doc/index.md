@@ -3,7 +3,7 @@
 
 # Über dieses Plugin <!-- {docsify-ignore-all} -->
 
-[immonex Kickstart Team](https://de.wordpress.org/plugins/immonex-kickstart-team/) ist ein *Add-on-Plugin*, das **WordPress-Immobilien-Websites** auf Basis von [immonex Kickstart](https://de.wordpress.org/plugins/immonex-kickstart/)<sup>1</sup> um folgende Funktionen und Inhalte erweitert:
+[immonex Kickstart Team](https://de.wordpress.org/plugins/immonex-kickstart-team/) ist ein kostenfreies *Add-on-Plugin*, das **WordPress-Immobilien-Websites** auf Basis von [immonex Kickstart](https://de.wordpress.org/plugins/immonex-kickstart/)<sup>1</sup> um folgende Funktionen und Inhalte erweitert:
 
 - [benutzerdefinierte Beitragsarten](beitragsarten) (*Custom Post Types*) inkl. passenden Archiv- und Detailseiten
   - **Immobilien-Agenturen** (Maklerbüros)

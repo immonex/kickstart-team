@@ -26,7 +26,15 @@ Der Shortcode dient zur Einbindung von Agentur-Listen in beliebige Seiten oder P
 Agenturliste mit maximal vier Einträgen, denen der WordPress-Benutzer mit der ID *128* als Autor zugeordnet ist
 `[inx-team-agency-list author=128 limit=4]`
 
-Details: [Komponenten → Agentur-Listen](../komponenten/agentur-listen)
+### Elementor
+
+Wurde die Website auf Basis von [Elementor](https://de.wordpress.org/plugins/elementor/) umgesetzt, kann das Listenelement auch per [Elementor-Widget](https://docs.immonex.de/kickstart-elementor/#/elementor-immobilien-widgets/agenturliste) eingebunden werden.
+
+Voraussetzung hierfür ist die Installation des kostenfreien [Kickstart-Elementor-Add-ons](https://immonex.dev/wordpress-immobilien-plugin/immonex-kickstart-elementor).
+
+### Details
+
+siehe [Komponenten → Agentur-Listen](../komponenten/agentur-listen)
 
 ## Agentur-Details
 
@@ -71,7 +79,13 @@ Agentur-Widget mit Standardumfang innerhalb einer Immobilien-Detailseite einfüg
 Agentur-Widget nur mit angegebenen Elementen rendern
 `[inx-team-agency type="widget" elements="logo, company, email, phone"]`
 
-Details und vollständige Attribut-/Elementliste: [Komponenten → Agentur-Details](../komponenten/agentur-details)
+### Elementor
+
+Auch für die Einbindung der Agentur-Details ist ein passendes [Elementor-Widget](https://docs.immonex.de/kickstart-elementor/#/elementor-immobilien-widgets/agentur) verfügbar, wenn das [Kickstart-Elementor-Add-ons](https://immonex.dev/wordpress-immobilien-plugin/immonex-kickstart-elementor) installiert ist.
+
+### Details
+
+... und vollständige Attribut-/Elementliste: [Komponenten → Agentur-Details](../komponenten/agentur-details)
 
 ## Kontaktpersonen-Listen
 
@@ -92,7 +106,13 @@ Auch dieser Shortcode dient der Einbindung von Listen – in diesem Fall von Kon
 Ansprechpartnerliste mit maximal vier Einträgen, denen die Agentur mit der ID 128 zugeordnet ist
 `[inx-team-agent-list agency=128 limit=4]`
 
-Details: [Komponenten → Kontaktpersonen-Listen](../komponenten/kontaktpersonen-listen)
+### Elementor
+
+Die Ansprechpartnerlisten sind ebenfalls per [Elementor-Widget](https://docs.immonex.de/kickstart-elementor/#/elementor-immobilien-widgets/kontaktpersonen-liste) des [Kickstart-Elementor-Add-ons](https://immonex.dev/wordpress-immobilien-plugin/immonex-kickstart-elementor) integrierbar.
+
+### Details
+
+siehe [Komponenten → Kontaktpersonen-Listen](../komponenten/kontaktpersonen-listen)
 
 ## Kontaktpersonen-Details
 
@@ -132,7 +152,13 @@ Kontaktpersonen-Widget mit Standardumfang innerhalb einer Immobilien-Detailseite
 Kontaktpersonen-Widget nur mit angegebenen Elementen rendern
 `[inx-team-agent type="widget" elements="photo, full_name_incl_title, position, email_auto_select, phone_auto_select"]`
 
-Details und vollständige Attribut-/Elementliste: [Komponenten → Kontaktpersonen-Details](../komponenten/kontaktpersonen-details)
+### Elementor
+
+Das [Kickstart-Elementor-Add-on](https://immonex.dev/wordpress-immobilien-plugin/immonex-kickstart-elementor) stellt auch für die Kontaktpersonen-Details und Anfrageformulare ein dediziertes [Elementor-Widget](https://docs.immonex.de/kickstart-elementor/#/elementor-immobilien-widgets/kontaktperson-formular) bereit.
+
+### Details
+
+... und vollständige Attribut-/Elementliste: [Komponenten → Kontaktpersonen-Details](../komponenten/kontaktpersonen-details)
 
 ---
 

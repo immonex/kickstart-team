@@ -109,6 +109,20 @@ Widget mit Logo, Firma, Mailadresse (als Link) sowie externer Verlinkung (Logo/F
 Widget mit Standardumfang, aber erweitertem Kontaktformular (u. a. inkl. Adressfeldern):
 `[inx-team-agency type="widget" contact_form_scope="extended"]`
 
+## Elementor
+
+<div class="two-column-layout"><div>
+
+![Screenshot: Optionen des Immobilien-Agentur-Widgets im Elementor-Editor](../assets/scst-widget-agentur-optionen.png)
+
+</div><div>
+
+Wurde die Website auf Basis von [Elementor](https://de.wordpress.org/plugins/elementor/) umgesetzt, kann die Agentur-Detailansicht auch per [Elementor-Widget](https://docs.immonex.de/kickstart-elementor/#/elementor-immobilien-widgets/agentur) eingebunden und konfiguriert werden.
+
+Voraussetzung hierfür ist die Installation des kostenfreien [Kickstart-Elementor-Add-ons](https://immonex.dev/wordpress-immobilien-plugin/immonex-kickstart-elementor).
+
+</div></div>
+
 ## Erweiterte Anpassungen
 
 - [Templates (Skin)](/anpassung-erweiterung/standard-skin?id=detailansichten)

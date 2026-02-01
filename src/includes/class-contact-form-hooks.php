@@ -100,7 +100,8 @@ class Contact_Form_Hooks {
 	public function process_submission() {
 		$form          = $this->get_form_instance();
 		$nonce_context = $this->config['plugin_prefix'] . 'submit_contact_form';
-		// @codingStandardsIgnoreStart
+
+		// phpcs:disable
 		$form_data     = array_merge(
 			array(
 				'nonce'            => array(
@@ -116,10 +117,11 @@ class Contact_Form_Hooks {
 				'property_post_id' => isset( $_POST['property_post_id'] ) ? (int) sanitize_key( $_POST['property_post_id'] ) : 0,
 				'recipients_enc'   => isset( $_POST['recipients_enc'] ) ? sanitize_text_field( $_POST['recipients_enc'] ) : '',
 				'cc_enc'           => isset( $_POST['cc_enc'] ) ? sanitize_text_field( $_POST['cc_enc'] ) : '',
+				'autofilled'       => ! empty( $_POST['autofilled'] ) ? json_decode( wp_unslash( $_POST['autofilled'] ) ) : [],
 			),
 			$form->get_user_form_data()
 		);
-		// @codingStandardsIgnoreEnd
+		// phpcs:enable
 
 		$result = $form->send( $form_data );
 

@@ -99,7 +99,7 @@ $inx_skin_photo = isset( $template_data['elements']['photo'] ) ?
 					if ( 'do_action:' === substr( $inx_skin_value, 0, 10 ) ) {
 						$inx_skin_action = substr( $inx_skin_value, 10 );
 						do_action(
-							// @codingStandardsIgnoreLine
+							// phpcs:ignore
 							$inx_skin_action,
 							'',
 							array(
