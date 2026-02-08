@@ -125,9 +125,9 @@ Widget mit Standardumfang, aber erweitertem Kontaktformular (u. a. inkl. Adressf
 
 </div><div>
 
-Wurde die Website auf Basis von [Elementor](https://de.wordpress.org/plugins/elementor/) umgesetzt, können Ansprechpartner-Detailansicht und -Formular auch per [Elementor-Widget](https://docs.immonex.de/kickstart-elementor/#/elementor-immobilien-widgets/kontaktperson-formular) eingebunden und konfiguriert werden.
+Wurde die Website auf Basis von [Elementor](https://de.wordpress.org/plugins/elementor/) umgesetzt, können Ansprechpartner-Detailansicht und -Formular auch per [Elementor-Widget](https://docs.immonex.de/kickstart-for-elementor/#/elementor-immobilien-widgets/kontaktperson-formular) eingebunden und konfiguriert werden.
 
-Voraussetzung hierfür ist die Installation des kostenfreien [Kickstart-Elementor-Add-ons](https://immonex.dev/wordpress-immobilien-plugin/immonex-kickstart-elementor).
+Voraussetzung hierfür ist die Installation des kostenfreien [Kickstart-Elementor-Add-ons](https://immonex.dev/wordpress-immobilien-plugin/immonex-kickstart-for-elementor).
 
 </div></div>
 

@@ -7,6 +7,13 @@
 
 namespace immonex\Kickstart\Team;
 
+if ( ! defined( 'UTEST' ) ) {
+	// Prevent direct access.
+	if ( ! defined( 'ABSPATH' ) ) {
+		exit;
+	}
+}
+
 /**
  * Initialize the Composer autoloader first (optional).
  */

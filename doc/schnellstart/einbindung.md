@@ -28,9 +28,9 @@ Agenturliste mit maximal vier Einträgen, denen der WordPress-Benutzer mit der I
 
 ### Elementor
 
-Wurde die Website auf Basis von [Elementor](https://de.wordpress.org/plugins/elementor/) umgesetzt, kann das Listenelement auch per [Elementor-Widget](https://docs.immonex.de/kickstart-elementor/#/elementor-immobilien-widgets/agenturliste) eingebunden werden.
+Wurde die Website auf Basis von [Elementor](https://de.wordpress.org/plugins/elementor/) umgesetzt, kann das Listenelement auch per [Elementor-Widget](https://docs.immonex.de/kickstart-for-elementor/#/elementor-immobilien-widgets/agenturliste) eingebunden werden.
 
-Voraussetzung hierfür ist die Installation des kostenfreien [Kickstart-Elementor-Add-ons](https://immonex.dev/wordpress-immobilien-plugin/immonex-kickstart-elementor).
+Voraussetzung hierfür ist die Installation des kostenfreien [Kickstart-Elementor-Add-ons](https://immonex.dev/wordpress-immobilien-plugin/immonex-kickstart-for-elementor).
 
 ### Details
 
@@ -81,7 +81,7 @@ Agentur-Widget nur mit angegebenen Elementen rendern
 
 ### Elementor
 
-Auch für die Einbindung der Agentur-Details ist ein passendes [Elementor-Widget](https://docs.immonex.de/kickstart-elementor/#/elementor-immobilien-widgets/agentur) verfügbar, wenn das [Kickstart-Elementor-Add-ons](https://immonex.dev/wordpress-immobilien-plugin/immonex-kickstart-elementor) installiert ist.
+Auch für die Einbindung der Agentur-Details ist ein passendes [Elementor-Widget](https://docs.immonex.de/kickstart-for-elementor/#/elementor-immobilien-widgets/agentur) verfügbar, wenn das [Kickstart-Elementor-Add-ons](https://immonex.dev/wordpress-immobilien-plugin/immonex-kickstart-for-elementor) installiert ist.
 
 ### Details
 
@@ -108,7 +108,7 @@ Ansprechpartnerliste mit maximal vier Einträgen, denen die Agentur mit der ID 1
 
 ### Elementor
 
-Die Ansprechpartnerlisten sind ebenfalls per [Elementor-Widget](https://docs.immonex.de/kickstart-elementor/#/elementor-immobilien-widgets/kontaktpersonen-liste) des [Kickstart-Elementor-Add-ons](https://immonex.dev/wordpress-immobilien-plugin/immonex-kickstart-elementor) integrierbar.
+Die Ansprechpartnerlisten sind ebenfalls per [Elementor-Widget](https://docs.immonex.de/kickstart-for-elementor/#/elementor-immobilien-widgets/kontaktpersonen-liste) des [Kickstart-Elementor-Add-ons](https://immonex.dev/wordpress-immobilien-plugin/immonex-kickstart-for-elementor) integrierbar.
 
 ### Details
 
@@ -154,7 +154,7 @@ Kontaktpersonen-Widget nur mit angegebenen Elementen rendern
 
 ### Elementor
 
-Das [Kickstart-Elementor-Add-on](https://immonex.dev/wordpress-immobilien-plugin/immonex-kickstart-elementor) stellt auch für die Kontaktpersonen-Details und Anfrageformulare ein dediziertes [Elementor-Widget](https://docs.immonex.de/kickstart-elementor/#/elementor-immobilien-widgets/kontaktperson-formular) bereit.
+Das [Kickstart-Elementor-Add-on](https://immonex.dev/wordpress-immobilien-plugin/immonex-kickstart-for-elementor) stellt auch für die Kontaktpersonen-Details und Anfrageformulare ein dediziertes [Elementor-Widget](https://docs.immonex.de/kickstart-for-elementor/#/elementor-immobilien-widgets/kontaktperson-formular) bereit.
 
 ### Details
 

@@ -3,7 +3,7 @@
 	<description>Custom coding standard for immonex WordPress plugins</description>
 
 	<!-- What to scan -->
-	<file>./src/</file>
+	<file>src/</file>
 	<exclude-pattern>/lib/</exclude-pattern>
 	<exclude-pattern>/vendor/</exclude-pattern>
 	<exclude-pattern>/third_party/</exclude-pattern>
@@ -46,9 +46,7 @@
 			<!-- Value: replace the function, class, and variable prefixes used. -->
 			<property name="prefixes" type="array">
 				<element value="immonex"/>
-				<element value="inx"/>
-				<element value="inx_skin"/>
-				<element value="immonex_kickstart_team"/>
+				<element value="inx_"/>
 			</property>
 		</properties>
 		<exclude name="WordPress.NamingConventions.PrefixAllGlobals.ShortPrefixPassed"/>
