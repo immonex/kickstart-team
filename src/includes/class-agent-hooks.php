@@ -478,6 +478,8 @@ class Agent_Hooks extends Base_CPT_Hooks {
 		$agency_id     = false;
 		$agency        = $agency_hooks ? $agency_hooks->get_post_instance() : false;
 		$company       = $agency->get_company_from_xml( $this->anbieter, $immobilie );
+		$anid          = trim( (string) $this->anbieter->openimmo_anid );
+		$email         = trim( (string) $immobilie->kontaktperson->email_zentrale );
 
 		if ( $agent_id ) {
 			$agency_id = get_post_meta( $agent_id, '_inx_team_agency_id', true );
@@ -515,6 +517,8 @@ class Agent_Hooks extends Base_CPT_Hooks {
 				$core_data['user_id'],
 				$core_data['import_folder'],
 				$company,
+				$anid,
+				$email,
 				true
 			);
 
@@ -529,7 +533,7 @@ class Agent_Hooks extends Base_CPT_Hooks {
 			$agency->post
 			&& (
 				! get_post_meta( $agency->post->ID, "{$agency_prefix}auto_update", true )
-				|| (int) get_post_meta( $agency_id, "{$agent_prefix}update_checksum", true ) === $agency->get_checksum( $this->anbieter )
+				|| (int) get_post_meta( $agency_id, "{$agency_prefix}update_checksum", true ) === $agency->get_checksum( $this->anbieter )
 			)
 		) {
 			return $agency_id;

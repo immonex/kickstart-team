@@ -373,7 +373,7 @@ class Agency extends Base_CPT_Post {
 	} // update_by_openimmo_xml
 
 	/**
-	 * Determine the company name from different XML elements.
+	 * Determine the company name based on different XML elements.
 	 *
 	 * @since 1.0.0
 	 *
@@ -391,7 +391,7 @@ class Agency extends Base_CPT_Post {
 			}
 		}
 
-		return sanitize_text_field( $company );
+		return trim( sanitize_text_field( $company ) );
 	} // get_company_from_xml
 
 	/**

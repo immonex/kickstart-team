@@ -1,5 +1,11 @@
 == Changelog ==
 
+= 1.8.3 =
+* Release date: 2026-02-11
+* Added filtering of autofilled honeypot form fields.
+* Reworked automated agency assignment.
+* Updated dependencies.
+
 = 1.8.0 =
 * Release date: 2026-01-10
 * Added optional archive links to shortcode-based agency and agent lists.

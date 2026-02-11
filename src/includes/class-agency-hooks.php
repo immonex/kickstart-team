@@ -241,14 +241,15 @@ class Agency_Hooks extends Base_CPT_Hooks {
 	} // is_valid_agency_id
 
 	/**
-	 * Find an agency post based on the given parameters (including company name
-	 * vs. post title similarity check).
+	 * Find an agency post based on the given parameters.
 	 *
 	 * @since 1.0.0
 	 *
 	 * @param int|string|bool $author_id Author ID.
-	 * @param string|bool     $import_folder Related import folder.
-	 * @param string|bool     $company Agency company name.
+	 * @param string          $import_folder Related import folder.
+	 * @param string          $company Agency company name.
+	 * @param string          $anid OpenImmo Agency ID (ANID).
+	 * @param string          $email Agency email address.
 	 * @param bool            $best_match_only Indicate if one ("best matching")
 	 *                                         agency post shall be returned only.
 	 *
@@ -258,7 +259,9 @@ class Agency_Hooks extends Base_CPT_Hooks {
 	public function find(
 		$author_id = false,
 		$import_folder = 'global',
-		$company = false,
+		$company = '',
+		$anid = '',
+		$email = '',
 		$best_match_only = false
 	) {
 		$meta_query = array(
@@ -268,6 +271,20 @@ class Agency_Hooks extends Base_CPT_Hooks {
 				'value' => $import_folder,
 			),
 		);
+
+		if ( $anid ) {
+			$meta_query[] = array(
+				'key'   => '_openimmo_anid',
+				'value' => sanitize_text_field( $anid ),
+			);
+		}
+
+		if ( $email ) {
+			$meta_query[] = array(
+				'key'   => '_inx_team_agency_email',
+				'value' => sanitize_email( $email ),
+			);
+		}
 
 		$args = array(
 			'post_type'        => $this->post_type_name,
@@ -281,6 +298,7 @@ class Agency_Hooks extends Base_CPT_Hooks {
 		}
 
 		$posts = get_posts( $args );
+
 		if ( 0 === count( $posts ) ) {
 			return $best_match_only ? false : array();
 		}
@@ -292,40 +310,15 @@ class Agency_Hooks extends Base_CPT_Hooks {
 		$agencies = array();
 
 		foreach ( $posts as $post ) {
-			$similarity = 0;
-			similar_text( $post->post_title, $company, $similarity );
-
-			if ( $similarity > 85 ) {
-				$agencies[] = array(
-					'post'       => $post,
-					'similarity' => $similarity,
-				);
-			}
-		}
-
-		$agencies_return = array();
-
-		if ( count( $agencies ) > 0 ) {
-			usort(
-				$agencies,
-				function ( $a, $b ) {
-					if ( $a['similarity'] === $b['similarity'] ) {
-						return 0;
-					}
-
-					return $a['similarity'] < $b['similarity'] ? -1 : 1;
-				}
-			);
-
-			foreach ( $agencies as $agency_data ) {
-				$agencies_return[] = $agency_data['post'];
+			if ( $post->post_title === $company ) {
+				$agencies[] = $post;
 			}
 		}
 
 		if ( $best_match_only ) {
-			return count( $agencies_return ) > 0 ? $agencies_return[0] : false;
+			return ! empty( $agencies ) ? $agencies[0] : false;
 		} else {
-			return $agencies_return;
+			return $agencies;
 		}
 	} // find
 
