@@ -445,6 +445,7 @@ class Base_CPT_Post {
 		if (
 			! in_array( $this->base_name, array( 'agent', 'agency' ), true )
 			|| ! is_a( $this->post, 'WP_Post' )
+			|| get_post_meta( $this->post->ID, '_immonex_is_demo', true )
 		) {
 			return false;
 		}
@@ -454,9 +455,12 @@ class Base_CPT_Post {
 		$coords_check = implode( ',', array( $lat, $lng ) );
 
 		if (
-			! $lat
-			|| ! $lng
-			|| ( $coords_check && ! $this->utils['geo']->validate_coords( $coords_check ) )
+			'0,0' !== $coords_check
+			&& (
+				! $lat
+				|| ! $lng
+				|| ( strlen( $coords_check ) > 1 && ! $this->utils['geo']->validate_coords( $coords_check ) )
+			)
 		) {
 			$address     = $this->get_address_single_line( $value_getter );
 			$country_iso = call_user_func( $value_getter, 'country_iso' );
@@ -475,6 +479,9 @@ class Base_CPT_Post {
 			if ( $coords ) {
 				update_post_meta( $this->post->ID, '_inx_lat', $coords['lat'] );
 				update_post_meta( $this->post->ID, '_inx_lng', $coords['lng'] );
+			} else {
+				update_post_meta( $this->post->ID, '_inx_lat', 0 );
+				update_post_meta( $this->post->ID, '_inx_lng', 0 );
 			}
 		}
 

@@ -109,6 +109,12 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 
 == Changelog ==
 
+= 1.8.6-beta =
+* Release date: ?
+* Added spam protection controls to plugin options.
+* Removed unneccessary geocoding requests.
+* Updated dependencies.
+
 = 1.8.3 =
 * Release date: 2026-02-11
 * Added filtering of autofilled honeypot form fields.
@@ -121,11 +127,6 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 * Added pagination to agency and agent archive pages.
 * Fixed an OpenImmo-Feedback XML special character encoding issue.
 * Fixed partially duplicate structured data embedding in archive pages.
-* Updated dependencies.
-
-= 1.7.5 =
-* Release date: 2025-11-03
-* Optimized schema markup generation performance and caching.
 * Updated dependencies.
 
 See changelog.txt for the complete version history.

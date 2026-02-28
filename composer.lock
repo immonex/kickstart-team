@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "265b0aca47bf6f450a65d2e4940ca3fd",
+    "content-hash": "0dc1a2d9ac50c0d1bfad27c7d42134de",
     "packages": [
         {
             "name": "html2text/html2text",
@@ -47,17 +47,11 @@
         },
         {
             "name": "immonex/wp-free-plugin-core",
-            "version": "2.7.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/immonex/wp-free-plugin-core.git",
-                "reference": "eb67e5c76773ecc4ae2179eb3b0f47e4e73ad9e5"
-            },
+            "version": "2.9.0",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/immonex/wp-free-plugin-core/zipball/eb67e5c76773ecc4ae2179eb3b0f47e4e73ad9e5",
-                "reference": "eb67e5c76773ecc4ae2179eb3b0f47e4e73ad9e5",
-                "shasum": ""
+                "type": "path",
+                "url": "/Users/splash/Projekte/immonex-wp-free-plugin-core",
+                "reference": "716a1c486f53b604258283ba8d6d0eadc682ef96"
             },
             "require": {
                 "html2text/html2text": "dev-master",
@@ -70,7 +64,11 @@
                 "yoast/phpunit-polyfills": "^4"
             },
             "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "immonex\\WordPressFreePluginCore\\tests\\": "tests/"
+                }
+            },
             "license": [
                 "GPL-2.0-or-later"
             ],
@@ -85,11 +83,9 @@
                 "wordpress",
                 "wp"
             ],
-            "support": {
-                "issues": "https://github.com/immonex/wp-free-plugin-core/issues",
-                "source": "https://github.com/immonex/wp-free-plugin-core/tree/2.7.0"
-            },
-            "time": "2026-02-10T06:08:41+00:00"
+            "transport-options": {
+                "relative": false
+            }
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -920,12 +916,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "8c360e27327c8bd29e1c57721574709d0d706118"
+                "reference": "50f0d9c9d0e3cff1163c959c50aaaaa4a7115f08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/8c360e27327c8bd29e1c57721574709d0d706118",
-                "reference": "8c360e27327c8bd29e1c57721574709d0d706118",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/50f0d9c9d0e3cff1163c959c50aaaaa4a7115f08",
+                "reference": "50f0d9c9d0e3cff1163c959c50aaaaa4a7115f08",
                 "shasum": ""
             },
             "require": {
@@ -971,7 +967,7 @@
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
                 "source": "https://github.com/nikic/PHP-Parser/tree/master"
             },
-            "time": "2025-12-06T20:24:35+00:00"
+            "time": "2026-02-26T13:20:22+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -1429,12 +1425,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "f9f31a35f726beaab98d1efe3b640e9b40c80baf"
+                "reference": "a8ed8c5d85b7cb6768e2829b4ee507e880e9f22e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/f9f31a35f726beaab98d1efe3b640e9b40c80baf",
-                "reference": "f9f31a35f726beaab98d1efe3b640e9b40c80baf",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/a8ed8c5d85b7cb6768e2829b4ee507e880e9f22e",
+                "reference": "a8ed8c5d85b7cb6768e2829b4ee507e880e9f22e",
                 "shasum": ""
             },
             "require": {
@@ -1532,7 +1528,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-02-01T08:24:05+00:00"
+            "time": "2026-02-23T16:12:28+00:00"
         },
         {
             "name": "sebastian/cli-parser",

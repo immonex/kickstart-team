@@ -172,18 +172,37 @@ class Contact_Form {
 			}
 		}
 
-		if (
-			$this->is_demo_context( $origin_post_id, $property_post_id )
-			|| ! empty( $form_data[ self::HONEYPOT_FIELD_NAME ] )
-			|| ! empty( $form_data[ self::HONEYPOT_FIELD_NAME2 ] )
-		) {
-			// Don't submit data when in demo context or if honeypot fields are filled.
-			return $result;
+		if ( $this->is_demo_context( $origin_post_id, $property_post_id ) ) {
+			// Don't submit data when in demo context.
+			return array(
+				'valid'        => true,
+				'message'      => __( "If this wasn't a demo form, the inquiry would have been sent now!", 'immonex-kickstart-team' ),
+				'field_errors' => array(),
+			);
 		}
 
-		if ( ! $this->timestamp_check( $form_data ) ) {
+		if (
+			$this->config['spam_prot_enable_honeypot']
+			&& (
+				! empty( $form_data[ self::HONEYPOT_FIELD_NAME ] )
+				|| ! empty( $form_data[ self::HONEYPOT_FIELD_NAME2 ] )
+			)
+		) {
+			// Don't submit data if honeypot fields are filled.
+			return array(
+				'valid'        => false,
+				'message'      => __( 'A problem occured while processing your inquiry data. Please try again later!', 'immonex-kickstart-team' ),
+				'field_errors' => array(),
+			);
+		}
+
+		if ( $this->config['spam_prot_enable_time_threshold'] && ! $this->timestamp_check( $form_data ) ) {
 			// Don't submit data if the timestamp check threshold has not been exceeded yet.
-			return $result;
+			return array(
+				'valid'        => false,
+				'message'      => __( 'Uh-oh! A problem occured while processing your inquiry data. Please try again later!', 'immonex-kickstart-team' ),
+				'field_errors' => array(),
+			);
 		}
 
 		$scope         = $this->get_scope( $form_data );
@@ -421,7 +440,7 @@ class Contact_Form {
 
 		if ( ! $send_result ) {
 			$result['valid']   = false;
-			$result['message'] = __( 'Uh-oh! A problem occured while sending your data. Please try again later!', 'immonex-kickstart-team' );
+			$result['message'] = __( 'Uh-oh! A problem occured while sending your inquiry data. Please try again later!', 'immonex-kickstart-team' );
 		} elseif (
 			$this->config['send_receipt_confirmation']
 			&& ! empty( $receipt_conf_recipient )
@@ -451,12 +470,12 @@ class Contact_Form {
 			return true;
 		}
 
-		$timestamp_check_threshold = apply_filters( 'inx_team_contact_form_timestamp_check_threshold', self::TS_CHECK_THRESHOLD );
-		if ( ! is_int( $timestamp_check_threshold ) || $timestamp_check_threshold < 0 ) {
-			$timestamp_check_threshold = self::TS_CHECK_THRESHOLD;
-		}
+		$timestamp_check_threshold = (int) apply_filters(
+			'inx_team_contact_form_timestamp_check_threshold',
+			$this->config['spam_prot_enable_time_threshold']
+		);
 
-		if ( 0 === $timestamp_check_threshold ) {
+		if ( ! $timestamp_check_threshold ) {
 			// Threshold must have been zeroed by a filter function: skip check.
 			return true;
 		}

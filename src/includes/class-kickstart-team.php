@@ -10,14 +10,14 @@ namespace immonex\Kickstart\Team;
 /**
  * Main plugin class
  */
-class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_7_0\Base {
+class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_9_0\Base {
 
 	const PLUGIN_NAME                = 'immonex Kickstart Team';
 	const ADDON_NAME                 = 'Team';
 	const ADDON_TAB_ID               = 'addon_team';
 	const PLUGIN_PREFIX              = 'inx_team_';
 	const PUBLIC_PREFIX              = 'inx-team-';
-	const PLUGIN_VERSION             = '1.8.3';
+	const PLUGIN_VERSION             = '1.8.6-beta';
 	const PLUGIN_HOME_URL            = 'https://de.wordpress.org/plugins/immonex-kickstart-team/';
 	const PLUGIN_DOC_URLS            = array(
 		'de' => 'https://docs.immonex.de/kickstart-team/',
@@ -61,6 +61,8 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_7_0\Base {
 		'form_confirmation_page'               => '',
 		'send_receipt_confirmation'            => false,
 		'hide_form_after_submit'               => true,
+		'spam_prot_enable_honeypot'            => true,
+		'spam_prot_enable_time_threshold'      => Contact_Form::TS_CHECK_THRESHOLD,
 		'form_mail_sender_name'                => '',
 		'form_mail_sender_email'               => '',
 		'fallback_form_mail_recipients'        => '',
@@ -934,6 +936,44 @@ and conditions can be used in the related input fields:<br><br>
 					'plugin_slug' => $this->plugin_slug,
 					'option_name' => $this->plugin_options_name,
 					'value'       => $this->plugin_options['hide_form_after_submit'],
+				),
+			),
+			array(
+				'name'    => 'header_spam_protection',
+				'type'    => 'subsection_header',
+				'label'   => wp_sprintf( __( 'Spam Protection', 'immonex-kickstart-team' ) ),
+				'section' => "{$prefix}contact_form",
+				'args'    => array(
+					'plugin_slug' => $this->plugin_slug,
+					'option_name' => $this->plugin_options_name,
+					'description' => '',
+				),
+			),
+			array(
+				'name'    => 'spam_prot_enable_honeypot',
+				'type'    => 'checkbox',
+				'label'   => wp_sprintf( __( 'Honeypot', 'immonex-kickstart-team' ) ),
+				'section' => "{$prefix}contact_form",
+				'args'    => array(
+					'plugin_slug' => $this->plugin_slug,
+					'option_name' => $this->plugin_options_name,
+					'value'       => $this->plugin_options['spam_prot_enable_honeypot'],
+				),
+			),
+			array(
+				'name'    => 'spam_prot_enable_time_threshold',
+				'type'    => 'number',
+				'label'   => __( 'Time Threshold', 'immonex-kickstart-team' ),
+				'section' => "{$prefix}contact_form",
+				'args'    => array(
+					'plugin_slug'  => $this->plugin_slug,
+					'option_name'  => $this->plugin_options_name,
+					'description'  => __( 'Block form submissions that are "too fast", that is, within the stated number of seconds after the page has loaded (0 to disable).', 'immonex-kickstart-team' ),
+					'field_suffix' => __( 'Seconds', 'immonex-kickstart-team' ),
+					'class'        => 'small-text',
+					'min'          => 0,
+					'max'          => 20,
+					'value'        => $this->plugin_options['spam_prot_enable_time_threshold'],
 				),
 			),
 			array(
