@@ -941,11 +941,11 @@ and conditions can be used in the related input fields:<br><br>
 			array(
 				'name'    => 'header_spam_protection',
 				'type'    => 'subsection_header',
-				'label'   => wp_sprintf( __( 'Spam Protection', 'immonex-kickstart-team' ) ),
 				'section' => "{$prefix}contact_form",
 				'args'    => array(
 					'plugin_slug' => $this->plugin_slug,
 					'option_name' => $this->plugin_options_name,
+					'title'       => wp_sprintf( __( 'Spam Protection', 'immonex-kickstart-team' ) ),
 					'description' => '',
 				),
 			),
