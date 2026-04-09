@@ -4,7 +4,7 @@ Bei aktiviertem [Kickstart-Plugin](https://de.wordpress.org/plugins/immonex-kick
 
 Die Einstellungen des Team-Add-ons sind im gleichnamigen Tab enthalten: ***immonex → Einstellungen → Team <sup>ADD-ON</sup>***
 
-![Plugin-Optionen](../assets/scst-options-1.gif)
+![Plugin-Optionen](../assets/scst-immobilien-add-on-plugin-optionen.gif)
 
 ## Add-on-Optionen
 
@@ -74,6 +74,10 @@ Werden die Kontaktdaten an einer anderen Position per Widget ([Ansprechpartner/i
 
 ### Kontaktformular
 
+#### Anfragen speichern
+
+Neben der Übermittlung per E-Mail werden alle via Kontaktformular übermittelten Anfragen standardmäßig auch in der WP-Datenbank ([*Custom Post Type* `inx_inquiry`](../beitragsarten?id=anfrage-inx_inquiry)) gespeichert und sind im Backend unter ***[immonex → Anfragen](../komponenten/kontaktformular?id=gespeicherte-anfragen)*** abrufbar.
+
 #### Erweitertes Formular
 
 Das Kontaktformular umfasst in der Standardvariante Eingabefelder für Name, Telefonnummer, Mailadresse sowie für die Nachricht. Ist diese Option aktiviert, werden eine Auswahlmöglichkeit für die Anrede, separate Felder für Vor- und Nachname sowie zusätzliche **Pflichtfelder** für die Adresse des Absenders ergänzt.
@@ -103,6 +107,26 @@ Hier kann die ID einer lokalen Seite oder eine URL angegeben werden, zu der nach
 Ist das Ziel eine Seite der WP-Installation, kann hier per Shortcode die o. g. Bestätigungsmeldung eingefügt werden:
 
 `[inx-team-contact-form-confirmation-message]`
+
+#### Spamschutz
+
+Zum Schutz der Formulare vor Spam, Bots & Co. können folgende Optionen aktiviert werden:
+
+##### Honeypot
+
+Als Honeypot wird ein "verborgenes" Formularfeld bezeichnet, das für menschliche Nutzer nicht sichtbar ist, von Spam-Bots aber in der Regel ausgefüllt wird. Sobald ein Wert in diesem Feld erkannt wird, erfolgt keine weitere Verarbeitung und kein Mailversand.
+
+##### Zeitschwelle
+
+Diese Option verhindert die Verarbeitung von Anfragen, die – im Regelfall per Script o. ä. – "zu schnell" abgesendet werden. Der hierfür einstellbare Schwellenwert in Sekunden<sup>4</sup> bezieht sich auf den Zeitrahmen unmittelbar nach dem Laden der Seite.
+
+##### Cloudflare Turnstile
+
+[Turnstile](https://www.cloudflare.com/de-de/application-services/products/turnstile/) ist ein *Verifizierungstool* für Formulare und stellt damit eine Alternative zu *CAPTCHAs* dar, die im [Free-Tarif](https://www.cloudflare.com/de-de/application-services/products/turnstile/#turnstile-pricing) kostenfrei genutzt werden kann.
+
+Bevor der Dienst aktiviert werden kann, müssen im Tab *Integrationen* der [allgemeinen Kickstart-Optionen](https://docs.immonex.de/kickstart/#/schnellstart/einrichtung?id=cloudflare-turnstile) ein *Sitekey* sowie ein *Secret Key* hinterlegt werden. Diese werden bei der Erstellung eines [Turnstile-Widgets](https://developers.cloudflare.com/turnstile/get-started/) – speziell für den Einsatz in der WordPress-Website – generiert. Sofern noch nicht vorhanden, muss vorab ein [Cloudflare-Benutzerkonto angelegt](https://developers.cloudflare.com/fundamentals/account/create-account/) werden.
+
+?> Beim Einsatz von *Turnstile* sollte ein entsprechender Absatz in die Datenschutzerklärung der Website aufgenommen werden (siehe auch die [EU-DSGVO-Info- und FAQ-Seite von Cloudflare](https://www.cloudflare.com/de-de/trust-hub/gdpr/)). Ein Mustertext ist bspw. bei [eRecht24](https://www.e-recht24.de/dsg/13110-cloudflare-turnstile.html) zu finden.
 
 ### Kontaktformular-Mails
 
@@ -177,3 +201,5 @@ Der eigentliche Inhalt der Eingangsbestätigung sowie die (bei Bedarf) ergänzen
 <sup>2</sup> Detaillierte Infos zur Erstellung von *Twig*-Templates sind in der [Dokumentation](https://twig.symfony.com/doc/3.x/templates) hierzu verfügbar.
 
 <sup>3</sup> Diese Optionen waren vor Version 1.4 im Tab *Layout & Design* enthalten.
+
+<sup>4</sup> Der Schwellenwert der Zeitprüfung kann alternativ auch über den Filter-Hook [`inx_team_contact_form_timestamp_check_threshold`](../anpassung-erweiterung/filter-inx-team-contact-form-timestamp-check-threshold) angepasst werden.

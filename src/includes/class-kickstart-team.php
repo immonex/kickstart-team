@@ -10,14 +10,14 @@ namespace immonex\Kickstart\Team;
 /**
  * Main plugin class
  */
-class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_9_0\Base {
+class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_11_2\Base {
 
 	const PLUGIN_NAME                = 'immonex Kickstart Team';
 	const ADDON_NAME                 = 'Team';
 	const ADDON_TAB_ID               = 'addon_team';
 	const PLUGIN_PREFIX              = 'inx_team_';
 	const PUBLIC_PREFIX              = 'inx-team-';
-	const PLUGIN_VERSION             = '1.8.6-beta';
+	const PLUGIN_VERSION             = '1.9.0';
 	const PLUGIN_HOME_URL            = 'https://de.wordpress.org/plugins/immonex-kickstart-team/';
 	const PLUGIN_DOC_URLS            = array(
 		'de' => 'https://docs.immonex.de/kickstart-team/',
@@ -30,8 +30,9 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_9_0\Base {
 	);
 	const OPTIONS_LINK_MENU_LOCATION = false;
 	const CUSTOM_POST_TYPES          = array(
-		'agency' => 'inx_agency',
-		'agent'  => 'inx_agent',
+		'agency'  => 'inx_agency',
+		'agent'   => 'inx_agent',
+		'inquiry' => 'inx_inquiry',
 	);
 	const PARENT_PLUGIN_MAIN_CLASS   = 'immonex\Kickstart\Kickstart';
 
@@ -53,6 +54,7 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_9_0\Base {
 		'agent_single_view_optional_sections'  => array( 'properties', 'agency_link' ),
 		'default_contact_section_adaptation'   => 'replace',
 		'default_contact_section_title'        => 'auto',
+		'save_inquiries'                       => true,
 		'extended_form'                        => false,
 		'cancellation_page_id'                 => 0,
 		'consent_text_cancellation'            => 'INSERT_TRANSLATED_DEFAULT_VALUE',
@@ -63,6 +65,7 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_9_0\Base {
 		'hide_form_after_submit'               => true,
 		'spam_prot_enable_honeypot'            => true,
 		'spam_prot_enable_time_threshold'      => Contact_Form::TS_CHECK_THRESHOLD,
+		'spam_prot_enable_turnstile'           => false,
 		'form_mail_sender_name'                => '',
 		'form_mail_sender_email'               => '',
 		'fallback_form_mail_recipients'        => '',
@@ -119,8 +122,7 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_9_0\Base {
 
 		$update_options = false;
 
-		// Set plugin-specific option values that contain content
-		// to be translated (only on first activation).
+		// Set plugin-specific option values that contain content to be translated (only on first activation).
 		foreach ( $this->plugin_options as $option_name => $option_value ) {
 			if ( 'INSERT_TRANSLATED_DEFAULT_VALUE' === $option_value ) {
 				switch ( $option_name ) {
@@ -133,7 +135,7 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_9_0\Base {
 						$update_options                       = true;
 						break;
 					case 'consent_text_cancellation':
-						$this->plugin_options[ $option_name ] = __( "According to the [cancellation_policy], I expressly wish that the real estate agency's services can be provided before the statutory cancellation period expires. I am aware that I thereby lose my right of cancellation if the contract is fully fulfilled.", 'immonex-kickstart-team' );
+						$this->plugin_options[ $option_name ] = __( 'According to the [cancellation_policy], I expressly wish that services I have commissioned can be provided even before the statutory cancellation period expires. I am aware that I thereby lose my right of cancellation if the contract is fully fulfilled.', 'immonex-kickstart-team' );
 						$update_options                       = true;
 						break;
 					case 'consent_text_privacy':
@@ -209,6 +211,13 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_9_0\Base {
 
 		if ( ! $this->plugin_options['cancellation_page_id'] && $page_id ) {
 			$this->plugin_options['cancellation_page_id'] = $page_id;
+			$update_options                               = true;
+		}
+
+		$facepalm_sigh = 'Mit dem Absenden stimme der Verarbeitung und Speicherung meiner Daten gemäß der [privacy_policy] zwecks Beantwortung meiner Anfrage zu. Diese Einwilligung kann jederzeit widerrufen werden.';
+		if ( $facepalm_sigh === $this->plugin_options['consent_text_privacy'] ) {
+			// TEMPORARY fix.
+			$this->plugin_options['consent_text_privacy'] = str_replace( 'stimme der', 'stimme ich der', $facepalm_sigh );
 			$update_options                               = true;
 		}
 
@@ -289,6 +298,14 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_9_0\Base {
 			add_filter( 'immonex-kickstart_option_sections', array( $this, 'extend_sections' ), 15 );
 			add_filter( 'immonex-kickstart_option_fields', array( $this, 'extend_fields' ), 15 );
 		}
+
+		// Internal filter.
+		add_filter(
+			'inxkicktm_get_utils',
+			function ( $utils ) { // phpcs:ignore
+				return $this->utils;
+			}
+		);
 	} // init_plugin
 
 	/**
@@ -351,11 +368,31 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_9_0\Base {
 	public function frontend_scripts_and_styles() {
 		parent::frontend_scripts_and_styles();
 
+		$core_options  = apply_filters( 'inx_options', [], 'core' );
+		$ts_sitekey    = ! empty( $core_options['turnstile_sitekey'] ) ? $core_options['turnstile_sitekey'] : false;
+		$ts_secret_key = ! empty( $core_options['turnstile_secret_key'] ) ? $core_options['turnstile_secret_key'] : false;
+
 		wp_localize_script(
 			$this->frontend_base_js_handle,
 			'inx_team',
 			array(
-				'hide_form_after_submit' => $this->plugin_options['hide_form_after_submit'],
+				'hide_form_after_submit'  => $this->plugin_options['hide_form_after_submit'],
+				'enable_ts'               => $this->plugin_options['spam_prot_enable_turnstile']
+					&& $ts_sitekey
+					&& $ts_secret_key,
+				'ts_sitekey'              => $ts_sitekey,
+				'ts_error_msg_refresh'    => __( 'Please refresh the page and try again.', 'immonex-kickstart-team' ),
+				'ts_error_msg_config'     => wp_sprintf(
+					/* translators: %s = admin email address */
+					__( 'Configuration error, please contact the <a href="mailto:%s">website admin</a>.', 'immonex-kickstart-team' ),
+					get_bloginfo( 'admin_email' )
+				),
+				'ts_error_msg_security'   => __( 'Security check failed. Please try refreshing or using a different browser.', 'immonex-kickstart-team' ),
+				'ts_error_msg_unexpected' => wp_sprintf(
+					/* translators: %s = admin email address */
+					__( 'An unexpected error occurred, please contact the <a href="mailto:%s">website admin</a>.', 'immonex-kickstart-team' ),
+					get_bloginfo( 'admin_email' )
+				),
 			)
 		);
 	} // frontend_scripts_and_styles
@@ -848,6 +885,22 @@ and conditions can be used in the related input fields:<br><br>
 				),
 			),
 			array(
+				'name'    => 'save_inquiries',
+				'type'    => 'checkbox',
+				'label'   => __( 'Save Inquiries', 'immonex-kickstart-team' ),
+				'section' => "{$prefix}contact_form",
+				'args'    => array(
+					'plugin_slug' => $this->plugin_slug,
+					'option_name' => $this->plugin_options_name,
+					'description' => wp_sprintf(
+						/* translators: %s = backend URL */
+						__( 'If activated, inquiries and messages sent via contact forms are will also be stored in the WP database and will be available in the <a href="%s">backend</a>.', 'immonex-kickstart-team' ),
+						admin_url( 'edit.php?post_type=' . self::CUSTOM_POST_TYPES['inquiry'] )
+					),
+					'value'       => $this->plugin_options['save_inquiries'],
+				),
+			),
+			array(
 				'name'    => 'extended_form',
 				'type'    => 'checkbox',
 				'label'   => __( 'Extended Form', 'immonex-kickstart-team' ),
@@ -974,6 +1027,41 @@ and conditions can be used in the related input fields:<br><br>
 					'min'          => 0,
 					'max'          => 20,
 					'value'        => $this->plugin_options['spam_prot_enable_time_threshold'],
+				),
+			),
+			array(
+				'name'    => 'spam_prot_enable_turnstile',
+				'type'    => 'checkbox',
+				'label'   => 'Cloudflare Turnstile',
+				'section' => "{$prefix}contact_form",
+				'args'    => array(
+					'plugin_slug' => $this->plugin_slug,
+					'option_name' => $this->plugin_options_name,
+					'description' => wp_sprintf(
+						/* translators: %1$s = Turnstile product page URL, %2$s = Turnstile options tab URL */
+						__( '<a href="%1$s" target="_blank">Turnstile</a> is a <em>CAPTCHA</em> alternative to protect forms from spam and bots (see tab <a href="%2$s">General → Integrations</a> for configuration options).', 'immonex-kickstart-team' ),
+						'https://www.cloudflare.com/application-services/products/turnstile/',
+						admin_url( 'admin.php?page=immonex-kickstart_settings&tab=tab_general&section_tab=7#immonex-kickstart_turnstile_sitekey' )
+					),
+					'value'       => $this->plugin_options['spam_prot_enable_turnstile'],
+					'doc_url'     => 'https://docs.immonex.de/kickstart/#/schnellstart/einrichtung?id=cloudflare-turnstile',
+					'condition'   => function () {
+						$options   = apply_filters( 'inx_options', array(), 'core' );
+						$is_active = ! empty( $options['turnstile_sitekey'] )
+							&& strlen( $options['turnstile_sitekey'] ) >= 20
+							&& ! empty( $options['turnstile_secret_key'] )
+							&& strlen( $options['turnstile_secret_key'] ) >= 24;
+
+						return array(
+							'is_active' => $is_active,
+							'info'      => wp_sprintf(
+								/* translators: %s = Turnstile options tab URL */
+								__( 'To activate this option, the corresponding <strong>site and secret keys</strong> must be entered in the <em>Cloudflare Turnstile</em> section of the <a href="%s">Integrations tab</a>.', 'immonex-kickstart-team' ),
+								admin_url( 'admin.php?page=immonex-kickstart_settings&tab=tab_general&section_tab=7#immonex-kickstart_turnstile_sitekey' )
+							),
+							'value'     => 0,
+						);
+					},
 				),
 			),
 			array(

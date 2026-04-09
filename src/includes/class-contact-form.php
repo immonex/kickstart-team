@@ -69,6 +69,8 @@ class Contact_Form {
 			$template = 'contact-form';
 		}
 
+		$core_options = apply_filters( 'inx_options', array(), 'core' );
+
 		$scope            = $this->get_scope( $atts );
 		$origin_post_id   = ! empty( $atts['origin_post_id'] ) ? $atts['origin_post_id'] : false;
 		$post_id          = $this->utils['general']->get_the_ID();
@@ -113,6 +115,7 @@ class Contact_Form {
 				'honeypot_field_name2'      => self::HONEYPOT_FIELD_NAME2,
 				'ts_check_field_name'       => self::TS_CHECK_FIELD_NAME,
 				'obfuscated_timestamp'      => $this->obfuscated_timestamp,
+				'turnstile_sitekey'         => ! empty( $core_options['turnstile_sitekey'] ) ? $core_options['turnstile_sitekey'] : '',
 				'is_preview'                => ! empty( $atts['is_preview'] ),
 			)
 		);
@@ -136,6 +139,8 @@ class Contact_Form {
 	 * @return mixed[] Send Result (status, user message).
 	 */
 	public function send( $form_data ) {
+		$core_options = apply_filters( 'inx_options', array(), 'core' );
+
 		if ( ! empty( $form_data['autofilled'] ) ) {
 			foreach ( $form_data['autofilled'] as $field_name ) {
 				if (
@@ -144,6 +149,27 @@ class Contact_Form {
 				) {
 					$form_data[ $field_name ] = '';
 				}
+			}
+		}
+
+		if (
+			$this->config['spam_prot_enable_turnstile']
+			&& $core_options['turnstile_sitekey']
+			&& $core_options['turnstile_secret_key']
+		) {
+			// phpcs:disable WordPress.Security.NonceVerification.Missing -- Nonce verification is performed later to allow for a more generic error message in case of failed Turnstile verification.
+			$token = ! empty( $_POST['cf-turnstile-response'] ) ?
+				sanitize_text_field( wp_unslash( $_POST['cf-turnstile-response'] ) ) : '';
+			// phpcs:enable
+
+			$ts_verify = $token ? Turnstile::verify( $token ) : false;
+
+			if ( ! $ts_verify ) {
+				return array(
+					'valid'        => false,
+					'message'      => __( 'Your submission could not be verified.', 'immonex-kickstart-team' ),
+					'field_errors' => array(),
+				);
 			}
 		}
 
@@ -436,6 +462,11 @@ class Contact_Form {
 				$attachments,
 				$html_frame_template_data
 			);
+		}
+
+		if ( $this->config['save_inquiries'] ) {
+			$inquiry = new Inquiry( $this->config, $form_data );
+			$inquiry->save( $send_result );
 		}
 
 		if ( ! $send_result ) {
@@ -948,6 +979,7 @@ class Contact_Form {
 	 * @return string Requested consent text.
 	 */
 	private function get_consent_text( $type = false ) {
+		$core_options      = apply_filters( 'inx_options', [], 'core' );
 		$privacy_text      = '';
 		$cancellation_text = '';
 
@@ -1007,10 +1039,14 @@ class Contact_Form {
 					$this->config['consent_text_cancellation']
 				)
 			);
+		}
 
-			if ( 'cancellation' === $type ) {
-				return $cancellation_text;
-			}
+		if ( $this->config['spam_prot_enable_turnstile'] ) {
+			Turnstile::add_consent_note( $cancellation_text );
+		}
+
+		if ( 'cancellation' === $type ) {
+			return $cancellation_text;
 		}
 
 		$combined = $privacy_text;

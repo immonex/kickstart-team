@@ -1,5 +1,13 @@
 == Changelog ==
 
+= 1.9.0 =
+* Release date: 2026-03-27
+* Added the option to save form-based inquiry data in the WP database (new CPT).
+* Added support for Cloudflare Turnstile for form spam and bot protection.
+* Added spam protection controls to plugin options.
+* Removed unneccessary geocoding requests.
+* Updated dependencies.
+
 = 1.8.3 =
 * Release date: 2026-02-11
 * Added filtering of autofilled honeypot form fields.

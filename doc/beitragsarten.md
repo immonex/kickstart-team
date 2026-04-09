@@ -2,10 +2,11 @@
 
 ## Custom Post Types
 
-Für **Immobilien-Agenturen** und **Kontaktpersonen** werden die folgenden benutzerdefinierten Beitragsarten (*Custom Post Types* oder kurz *CPT*) registriert:
+Für **Immobilien-Agenturen**, **Kontaktpersonen** und **Formularanfragen** werden die folgenden benutzerdefinierten Beitragsarten (*Custom Post Types* oder kurz *CPT*) registriert:
 
 - *inx_agency* (Agenturen)
 - *inx_agent* (Kontaktpersonen nachfolgend auch als *Immobilienmakler/innen*, *Ansprechpartner/innen* oder *Agenten* bezeichnet)
+- *inx_inquiry* (Anfragen/Nachrichten, die über ein Kontaktformular gesendet wurden)
 
 ### Agentur → Kontaktperson
 
@@ -151,3 +152,27 @@ Auch hier gilt: Anpassung/Erweiterung per [Filterfunktion](anpassung-erweiterung
 | `_inx_team_agent_misc` | Hinweise/sonstige Angaben |
 | `_immonex_is_demo`<sup>Flag</sup> | Demo/Beispieldaten? Wenn aktiv (*1*), werden entsprechende Meldungen bzw. Labels im Frontend angezeigt, zudem erfolgt kein Versand von zugehörigen Kontaktformular-Daten. |
 
+### Anfrage (inx_inquiry)
+
+#### Kontaktdaten (Absender)
+
+| Feldname | Beschreibung |
+| -------- | ------------ |
+| `_inx_team_inquiry_salutation` | Anrede |
+| `_inx_team_inquiry_first_name` | Vorname |
+| `_inx_team_inquiry_last_name` | Nachname |
+| `_inx_team_inquiry_full_name` | Vollständiger Name |
+| `_inx_team_inquiry_street` | Straße und Hausnummer |
+| `_inx_team_inquiry_postal_code` | PLZ |
+| `_inx_team_inquiry_city` | Ort |
+| `_inx_team_inquiry_phone` | Telefonnummer |
+| `_inx_team_inquiry_email` | E-Mail-Adresse |
+
+#### Immobilie (angefragtes Objekt)
+
+| Feldname | Beschreibung |
+| -------- | ------------ |
+| `_inx_team_inquiry_property_post_id` | Beitrags-ID |
+| `_inx_team_inquiry_property_id_ext` | Objektnummer (extern) |
+| `_inx_team_inquiry_property_id_int` | Objektnummer (intern) |
+| `_inx_team_inquiry_property_title` | Bezeichnung |

@@ -5,12 +5,14 @@
 
 [immonex Kickstart Team](https://de.wordpress.org/plugins/immonex-kickstart-team/) ist ein kostenfreies *Add-on-Plugin*, das **WordPress-Immobilien-Websites** auf Basis von [immonex Kickstart](https://de.wordpress.org/plugins/immonex-kickstart/)<sup>1</sup> um folgende Funktionen und Inhalte erweitert:
 
-- [benutzerdefinierte Beitragsarten](beitragsarten) (*Custom Post Types*) inkl. passenden Archiv- und Detailseiten
+- [individuelle Beitragsarten](beitragsarten) (*Custom Post Types*) inkl. passenden Archiv- und Detailseiten
   - **Immobilien-Agenturen** (Maklerbüros)
   - **Kontaktpersonen** (Immobilienmakler/innen)
+- Beitragsart für **Formularanfragen**
 - **automatisierte** Erstellung und Aktualisierung der Agentur- und Makler-Datensätze beim [OpenImmo®-basierten Import](systemvoraussetzungen#datenimport-openimmo-xml)<sup>2, 3</sup> von Immobilien-Angeboten
 - **Widgets** für die Einbindung von Agentur/Makler-Informationen und Kontaktformularen
-- einheitliches **Mail-Kontaktformular** mit Spamschutz und OpenImmo-Feedback-Anhängen bei objektbezogenen Anfragen
+- einheitliches **Mail-Kontaktformular** mit OpenImmo-Feedback-Anhängen bei objektbezogenen Anfragen
+- **Formular-Spamschutz** mit Honeypot-Feldern, Zeitschwelle und [Cloudflare Turnstile](https://www.cloudflare.com/de-de/application-services/products/turnstile/)
 - Versand von HTML-Mails auf Basis von [Twig-Templates](https://twig.symfony.com/)
 - **Shortcodes** für die flexible Einbindung von Listen- und Detailansichten
 - direkt einsatzbereites, responsives Template-Set (*[Skin](anpassung-erweiterung/skins)*)

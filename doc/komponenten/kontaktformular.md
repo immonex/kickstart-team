@@ -42,10 +42,20 @@ Beim [OpenImmo-Import](../systemvoraussetzungen#datenimport-openimmo-xml) wird h
 
 ### Spamschutz
 
-Um Spammern das Leben so schwer wie möglich zu machen, sind alle Kontaktformulare sowohl mit *Honeypot-Feldern* als auch mit einer Zeitprüfung geschützt: Beträgt die Zeitspanne zwischen dem Aufruf der Seite, in dem sich ein Formular befindet, und dem Absenden weniger als bzw. genau **8 Sekunden**<sup>2</sup>, erfolgt keine weitere Verbeitung und kein Mailversand.
+Um Spammern und Bots das Leben so schwer wie möglich zu machen, sind alle Kontaktformulare gem. Standardvorgabe sowohl mit *Honeypot-Feldern* als auch mit einer Zeitprüfung geschützt: Bei einem zu schnellen Absenden der Formularinhalte unmittelbar nach dem Laden der Seite erfolgt kein Mailversand und keine weitere Verarbeitung.
+
+Darüber hinaus können die Kontaktformulare (zusätzlich) auch mit der *CAPTCHA-Alternative* [Cloudflare Turnstile](https://www.cloudflare.com/de-de/application-services/products/turnstile/) abgesichert werden.
+
+Die Spamschutz-Einstellungen können in den [Add-on-Optionen](../schnellstart/einrichtung?id=spamschutz) angepasst werden.
+
+## Gespeicherte Anfragen
+
+Ist die Option *[Anfragen speichern](../schnellstart/einrichtung?id=anfragen-speichern)* (***immonex → Einstellungen → Team <sup>ADD-ON</sup> → Kontaktformular***) aktiviert, sind die via Kontaktformular übermittelten Nachrichten inkl. der zugehörigen Kontakt- und Objektdaten im WP-Backend unter ***immonex → Anfragen*** verfügbar.
+
+!> Bei Anfragen, die in der Liste mit einem ⚠️ vor dem Titel markiert sind, ist ein Problem im Zusammenhang mit dem Mailversand aufgetreten, d. h. dieses wurden möglicherweise nicht per Mail übermittelt.
+
+![Immobilien-Anfragenliste im WP-Backend](../assets/scst-immobilien-anfragen-im-wordpress-backend.webp)
 
 ---
 
 <sup>1</sup> Beim Versand von HTML-Mails kommt ein **Rahmentemplate** zum Einsatz, das neben einem Abschnitt für die eigentlichen, per Formular übermittelten Inhalte auch Bereiche für die Einbettung eines Logos sowie einer Signatur enthält. Eine alternative, benutzerdefinierte Rahmenvorlage kann per Filterfunktion (Hook: [`immonex-kickstart-team_html_mail_twig_template_file`](../anpassung-erweiterung/immonex-kickstart-team-html-mail-twig-template-file)) definiert werden.
-
-<sup>2</sup> Der Schwellenwert der Zeitprüfung kann via Filter-Hook [`inx_team_contact_form_timestamp_check_threshold`](../anpassung-erweiterung/filter-inx-team-contact-form-timestamp-check-threshold) angepasst werden.

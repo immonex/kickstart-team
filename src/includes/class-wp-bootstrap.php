@@ -109,7 +109,7 @@ class WP_Bootstrap {
 		$post_type_args = apply_filters(
 			'inx_team_custom_post_type_args',
 			array(
-				'agency' => array(
+				'agency'  => array(
 					'labels'       => array(
 						'name'               => __( 'Agencies', 'immonex-kickstart-team' ),
 						'singular_name'      => __( 'Agency', 'immonex-kickstart-team' ),
@@ -132,7 +132,7 @@ class WP_Bootstrap {
 						'slug' => $this->plugin->agency_post_type_slug_rewrite,
 					),
 				),
-				'agent'  => array(
+				'agent'   => array(
 					'labels'       => array(
 						'name'               => __( 'Agents', 'immonex-kickstart-team' ),
 						'singular_name'      => __( 'Agent', 'immonex-kickstart-team' ),
@@ -154,6 +154,26 @@ class WP_Bootstrap {
 					'rewrite'      => array(
 						'slug' => $this->plugin->agent_post_type_slug_rewrite,
 					),
+				),
+				'inquiry' => array(
+					'labels'       => array(
+						'name'               => __( 'Inquiries', 'immonex-kickstart-team' ),
+						'singular_name'      => __( 'Inquiry', 'immonex-kickstart-team' ),
+						'add_new_item'       => __( 'Add New Inquiry', 'immonex-kickstart-team' ),
+						'edit_item'          => __( 'Edit Inquiry', 'immonex-kickstart-team' ),
+						'new_item'           => __( 'New Inquiry', 'immonex-kickstart-team' ),
+						'view_item'          => __( 'View Inquiry', 'immonex-kickstart-team' ),
+						'search_items'       => __( 'Search Inquiries', 'immonex-kickstart-team' ),
+						'not_found'          => __( 'No inquiries found', 'immonex-kickstart-team' ),
+						'not_found_in_trash' => __( 'No inquiries found in Trash', 'immonex-kickstart-team' ),
+					),
+					'public'       => false,
+					'has_archive'  => false,
+					'show_ui'      => true,
+					'show_in_menu' => 'inx_menu',
+					'show_in_rest' => false,
+					'supports'     => array( 'title', 'editor' ),
+					'map_meta_cap' => true,
 				),
 			)
 		);

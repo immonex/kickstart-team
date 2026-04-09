@@ -3,7 +3,7 @@ Contributors: immonex
 Tags: immobilien, immobilienmakler, realestate, agent, openimmo
 Requires at least: 5.5
 Tested up to: 7.0
-Stable Tag: 1.8.3
+Stable Tag: 1.9.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -15,6 +15,8 @@ immonex Kickstart add-on for handling, linking and embedding OpenImmo-XML-based 
 This **add-on** plugin extends sites using the [immonex Kickstart base plugin](https://wordpress.org/plugins/immonex-kickstart/) by functions for automatically creating, updating, linking and integrating real estate agency and agent posts. All relevant data is collected on **importing OpenImmo-XML real estate offers** [2] and assigned to the associated property, agency and agent posts. Alternatively, these data records can also be created and updated manually in the WordPress backend.
 
 Widgets for displaying agent/agency contact data and forms in property detail pages are also included, as well as ready-to-use, customizable templates for CPT archive pages and list views etc. Property related inquiry mails that are sent via the included, **unified contact form** contain an auto-generated **OpenImmo-Feedback XML attachment** usable for further processing steps, e.g. within the real estate management software that is used by the agency.
+
+Form submissions are protected against spam and bots and can be saved in the WP database.
 
 tl;dr
 - See it in action at [base.immonex.one](https://base.immonex.one/unser-team/)!
@@ -39,11 +41,13 @@ immonex OpenImmo2WP [2], initially released in 2015, is a tried and tested solut
 = Main Features =
 
 * Custom post types for real estate agents and agencies (automatic creation/update on property import processing)
+* Custom post type for inquiries/messages sent via contact forms
 * Lists, single views and widgets for embedding agent and agency contact data (including agent photo and company logo)
 * Clean, responsive and fully customizable template set ("Skin")
 * Possibility to add individual custom skins update-safe in the (child) theme folder
 * Shortcodes for embedding list and single views (agent or agency details)
-* Unified and simple (mail) contact form, usable in agent/agency single views and widgets and protected by multiple anti-spam checks
+* Unified and simple (mail) contact form, usable in agent/agency single views and widgets
+* Spam and bot protection via honeypot fields, time threshold and Cloudflare Turnstile
 * OpenImmo-Feedback XML attachments for property inquiry mails via contact form
 * Optional receipt confirmation mails on successful form submissions
 * Separate, editable form consent texts on withdrawal and privacy policies (EU GDPR compliance)
@@ -104,13 +108,18 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 6. Agency list view in default archive page (Twenty Sixteen theme)
 7. Agent list view in default archive page (Twenty Sixteen theme)
 8. Agency and agent CPT provided by this add-on plugin
-9. Agent widget configuration in Customizer
-10. Add-on options
+9. Inquiry (CPT) list view in WP backend
+10. Agent widget configuration in Customizer
+11. Add-on options (agencies tab)
+12. Add-on options (contact form tab)
+13. Add-on options (form spam protection)
 
 == Changelog ==
 
-= 1.8.6-beta =
-* Release date: ?
+= 1.9.0 =
+* Release date: 2026-03-27
+* Added the option to save form-based inquiry data in the WP database (new CPT).
+* Added support for Cloudflare Turnstile for form spam and bot protection.
 * Added spam protection controls to plugin options.
 * Removed unneccessary geocoding requests.
 * Updated dependencies.

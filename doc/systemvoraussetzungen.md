@@ -3,7 +3,7 @@
 - betriebsbereite [WordPress-Installation](https://de.wordpress.org/download/)<sup>1</sup> ab Version 5.5
 - PHP ab Version 7.4 (empfohlen: 8.3 oder höher)
 - mindestens 128 MB Arbeitsspeicher pro PHP-Prozess (OpenImmo-Import)
-- installiertes/aktives [immonex-Kickstart-Plugin](https://de.wordpress.org/plugins/immonex-kickstart/) ab Version 1.1.0
+- installiertes/aktives [immonex-Kickstart-Plugin](https://de.wordpress.org/plugins/immonex-kickstart/) ab Version 1.15.0
 
 ## Datenimport (OpenImmo-XML)
 
