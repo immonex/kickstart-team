@@ -1,5 +1,10 @@
 == Changelog ==
 
+= 1.9.1 =
+* Release date: 2026-04-09
+* Improved inquiry form compatibility with different autofill solutions.
+* Updated dependencies.
+
 = 1.9.0 =
 * Release date: 2026-03-27
 * Added the option to save form-based inquiry data in the WP database (new CPT).

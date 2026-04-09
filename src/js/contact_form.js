@@ -43,7 +43,7 @@ function init() {
 			const spinner = form.children('.inx-team-contact-form__spinner').first()
 
 			const autofilled = []
-			form.find('input[data-com-onepassword-filled]').each((index, element) => {
+			form.find('input[data-com-onepassword-filled],input:autofill').each((index, element) => {
 				autofilled.push(element.name)
 			})
 

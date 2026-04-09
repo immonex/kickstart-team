@@ -3,7 +3,7 @@ Contributors: immonex
 Tags: immobilien, immobilienmakler, realestate, agent, openimmo
 Requires at least: 5.5
 Tested up to: 7.0
-Stable Tag: 1.9.0
+Stable Tag: 1.9.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -116,6 +116,11 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 
 == Changelog ==
 
+= 1.9.1 =
+* Release date: 2026-04-09
+* Improved inquiry form compatibility with different autofill solutions.
+* Updated dependencies.
+
 = 1.9.0 =
 * Release date: 2026-03-27
 * Added the option to save form-based inquiry data in the WP database (new CPT).
@@ -128,14 +133,6 @@ immonex Kickstart Team is free software. Sources, development docs/support and i
 * Release date: 2026-02-11
 * Added filtering of autofilled honeypot form fields.
 * Reworked automated agency assignment.
-* Updated dependencies.
-
-= 1.8.0 =
-* Release date: 2026-01-10
-* Added optional archive links to shortcode-based agency and agent lists.
-* Added pagination to agency and agent archive pages.
-* Fixed an OpenImmo-Feedback XML special character encoding issue.
-* Fixed partially duplicate structured data embedding in archive pages.
 * Updated dependencies.
 
 See changelog.txt for the complete version history.
