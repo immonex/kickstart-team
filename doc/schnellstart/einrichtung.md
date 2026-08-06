@@ -158,6 +158,10 @@ Sollen Kopien **aller** via [Kontaktformular](../komponenten/kontaktformular) ve
 
 Anstelle von reinen Textmails (Standardvorgabe) können die per Kontaktformular übermittelten Daten auch als HTML-formatierte Nachrichten gesendet werden. (Eine alternative, automatisiert generierte Klartext-Version wird immer mitgesendet.)
 
+#### Betreff (allgemein / Immobilien-Anfragen)
+
+Für allgemeine und objektbezogene Anfragen kann jeweils ein eigener Mail-Betreff angegeben werden.
+
 #### Kontaktformular-Mailtext
 
 Der Inhalt der Mails, die beim Absenden eines Kontaktformulars im Website-Frontend an die jeweilige Kontaktperson (oder einen Admin-Benutzer) gesendet werden, kann in diesem Feld hinterlegt werden. Hierbei kann auf alle im Infoabschnitt unterhalb der Subtab-Navigation genannten *Twig*-Variablen<sup>2</sup> (*Platzhalter*) bzw. Abfragemöglichkeiten zurückgegriffen werden. Am wichtigsten ist hier die Variable `{{ form_data }}`, die in den Mails durch die Formulardaten ersetzt wird. Auch eine HTML-basierte Formatierung ist möglich.
@@ -180,7 +184,7 @@ Bei erfolgreicher Übermittlung von Formulardaten **kann** eine Eingangsbestäti
 
 #### Betreff (allgemein / Immobilien-Anfragen)
 
-Für allgemeine und objektbezogene Anfragen kann jeweils ein eigener Mail-Betreff angegeben werden.
+Auch für die Eingangsbestätigungen kann ein allgemeiner und ein objektbezogener Mail-Betreff angegeben werden.
 
 #### HTML-Mails senden
 

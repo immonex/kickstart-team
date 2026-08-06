@@ -148,7 +148,10 @@ $inx_skin_photo = isset( $template_data['elements']['photo'] ) ?
 		do_action(
 			'inx_render_property_list',
 			array(
-				'inx-agent' => $template_data['agent_id'],
+				'inx-agent'      => $template_data['agent_id'],
+				'inx-limit'      => ! empty( $template_data['limit'] ) ? (int) $template_data['limit'] : null,
+				'inx-limit-page' => ! empty( $template_data['limit-page'] ) ? (int) $template_data['limit-page'] : null,
+				'is_preview'     => ! empty( $template_data['is_preview'] ),
 			)
 		);
 

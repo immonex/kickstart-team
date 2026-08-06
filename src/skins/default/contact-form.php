@@ -69,7 +69,7 @@ foreach ( $template_data['fields'] as $inx_skin_field_name => $inx_skin_field ) 
 			$inx_skin_placeholder    = ! empty( $inx_skin_field['placeholder'] ) ?
 				$inx_skin_field['placeholder'] : '';
 			if ( $inx_skin_mark_req_fields && $inx_skin_placeholder && $inx_skin_field_required ) {
-				$inx_skin_placeholder .= '*';
+				$inx_skin_placeholder .= ' *';
 			}
 			$inx_skin_default_value = isset( $inx_skin_field['default_value'] ) ?
 				$inx_skin_field['default_value'] : '';
@@ -108,7 +108,7 @@ foreach ( $template_data['fields'] as $inx_skin_field_name => $inx_skin_field ) 
 					value="<?php echo ! empty( $inx_skin_field['value'] ) ? $inx_skin_field['value'] : 'X'; ?>"
 					class="uk-checkbox"<?php echo $inx_skin_required[ $inx_skin_field_name ]; ?>
 				>
-				<?php echo $inx_skin_field['caption'] . ( $inx_skin_mark_req_fields && $inx_skin_field_required ? '*' : '' ); ?>
+				<?php echo $inx_skin_field['caption'] . ( $inx_skin_mark_req_fields && $inx_skin_field_required ? ' *' : '' ); ?>
 			</label>
 
 				<?php
@@ -130,11 +130,11 @@ foreach ( $template_data['fields'] as $inx_skin_field_name => $inx_skin_field ) 
 					<?php
 				endforeach;
 				if ( $inx_skin_mark_req_fields && $inx_skin_field_required ) :
-					echo '*';
+					echo ' *';
 				endif;
 			elseif ( 'select' === $inx_skin_field_type && ! empty( $inx_skin_field['options'] ) ) :
 				if ( $inx_skin_mark_req_fields && $inx_skin_field_required ) :
-					$inx_skin_field['options'][ array_keys( $inx_skin_field['options'] )[0] ] .= '*';
+					$inx_skin_field['options'][ array_keys( $inx_skin_field['options'] )[0] ] .= ' *';
 				endif;
 				?>
 

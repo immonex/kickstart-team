@@ -10,14 +10,14 @@ namespace immonex\Kickstart\Team;
 /**
  * Main plugin class
  */
-class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_11_2\Base {
+class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_13_4\Base {
 
 	const PLUGIN_NAME                = 'immonex Kickstart Team';
 	const ADDON_NAME                 = 'Team';
 	const ADDON_TAB_ID               = 'addon_team';
 	const PLUGIN_PREFIX              = 'inx_team_';
 	const PUBLIC_PREFIX              = 'inx-team-';
-	const PLUGIN_VERSION             = '1.9.1';
+	const PLUGIN_VERSION             = '1.10.0';
 	const PLUGIN_HOME_URL            = 'https://de.wordpress.org/plugins/immonex-kickstart-team/';
 	const PLUGIN_DOC_URLS            = array(
 		'de' => 'https://docs.immonex.de/kickstart-team/',
@@ -70,7 +70,9 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_11_2\Base {
 		'form_mail_sender_email'               => '',
 		'fallback_form_mail_recipients'        => '',
 		'form_mail_cc_recipients'              => '',
-		'admin_mails_as_html'                  => false,
+		'form_mail_subject_general'            => 'INSERT_TRANSLATED_DEFAULT_VALUE',
+		'form_mail_subject_property'           => 'INSERT_TRANSLATED_DEFAULT_VALUE',
+		'admin_mails_as_html'                  => true,
 		'oi_feedback_type'                     => 'attachment',
 		'oi_feedback_auto_salutation'          => true,
 		'admin_contact_form_mail_template'     => '{% if is_property_inquiry %}' . PHP_EOL .
@@ -78,7 +80,7 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_11_2\Base {
 			'{% endif %}' . PHP_EOL . '{{ form_data }}',
 		'rcpt_conf_mail_subject_general'       => 'INSERT_TRANSLATED_DEFAULT_VALUE',
 		'rcpt_conf_mail_subject_property'      => 'INSERT_TRANSLATED_DEFAULT_VALUE',
-		'rcpt_conf_mails_as_html'              => false,
+		'rcpt_conf_mails_as_html'              => true,
 		'rcpt_conf_logo_id'                    => '',
 		'rcpt_conf_logo_position'              => 'top_center',
 		'rcpt_conf_mail_template'              => 'INSERT_TRANSLATED_DEFAULT_VALUE',
@@ -142,6 +144,21 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_11_2\Base {
 						$this->plugin_options[ $option_name ] = __( 'By submitting I consent to my data being processed and stored in accordance with the [privacy_policy] in order to answer my request. This consent can be revoked at any time.', 'immonex-kickstart-team' );
 						$update_options                       = true;
 						break;
+					case 'form_mail_subject_general':
+						$this->plugin_options[ $option_name ] = wp_sprintf(
+							'[{{ site_title }}] %s',
+							__( 'Inquiry', 'immonex-kickstart-team' )
+						);
+						$update_options                       = true;
+						break;
+					case 'form_mail_subject_property':
+						$this->plugin_options[ $option_name ] = wp_sprintf(
+							'[{{ site_title }}] %s %s',
+							__( 'Inquiry for', 'immonex-kickstart-team' ),
+							'{{ property_title_ext_id }}'
+						);
+						$update_options                       = true;
+						break;
 					case 'form_confirmation_message':
 						$this->plugin_options[ $option_name ] = __( 'Thank you for the inquiry!', 'immonex-kickstart-team' );
 						$update_options                       = true;
@@ -158,6 +175,14 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_11_2\Base {
 						$this->plugin_options[ $option_name ] = wp_sprintf(
 							'[{{ site_title }}] %s',
 							__( 'Confirmation of receipt', 'immonex-kickstart-team' )
+						);
+						$update_options                       = true;
+						break;
+					case 'rcpt_conf_mail_subject_property':
+						$this->plugin_options[ $option_name ] = wp_sprintf(
+							'[{{ site_title }}] %s %s',
+							__( 'Your inquiry for the property', 'immonex-kickstart-team' ),
+							'{{ property_title_ext_id }}'
 						);
 						$update_options                       = true;
 						break;
@@ -196,13 +221,6 @@ class Kickstart_Team extends \immonex\WordPressFreePluginCore\V2_11_2\Base {
 						);
 						$update_options                       = true;
 						break;
-					case 'rcpt_conf_mail_subject_property':
-						$this->plugin_options[ $option_name ] = wp_sprintf(
-							'[{{ site_title }}] %s %s',
-							__( 'Inquiry for the property', 'immonex-kickstart-team' ),
-							'{{ property_title_ext_id }}'
-						);
-						$update_options                       = true;
 				}
 			}
 		}
@@ -998,8 +1016,7 @@ and conditions can be used in the related input fields:<br><br>
 				'args'    => array(
 					'plugin_slug' => $this->plugin_slug,
 					'option_name' => $this->plugin_options_name,
-					'title'       => wp_sprintf( __( 'Spam Protection', 'immonex-kickstart-team' ) ),
-					'description' => '',
+					'title'       => __( 'Spam Protection', 'immonex-kickstart-team' ),
 				),
 			),
 			array(
@@ -1130,6 +1147,31 @@ and conditions can be used in the related input fields:<br><br>
 						__( 'contact form messages/inquiries', 'immonex-kickstart-team' )
 					),
 					'value'       => $this->plugin_options['admin_mails_as_html'],
+				),
+			),
+			array(
+				'name'    => 'form_mail_subject_general',
+				'type'    => 'text',
+				'label'   => __( 'Subject (General)', 'immonex-kickstart-team' ),
+				'section' => "{$prefix}contact_form_mails",
+				'args'    => array(
+					'plugin_slug' => $this->plugin_slug,
+					'option_name' => $this->plugin_options_name,
+					'description' => __( 'The Twig variables listed above can be used here and in the following field.', 'immonex-kickstart-team' ),
+					'value'       => $this->plugin_options['form_mail_subject_general'],
+					'class'       => 'large-text',
+				),
+			),
+			array(
+				'name'    => 'form_mail_subject_property',
+				'type'    => 'text',
+				'label'   => __( 'Subject (Property Inquiries)', 'immonex-kickstart-team' ),
+				'section' => "{$prefix}contact_form_mails",
+				'args'    => array(
+					'plugin_slug' => $this->plugin_slug,
+					'option_name' => $this->plugin_options_name,
+					'value'       => $this->plugin_options['form_mail_subject_property'],
+					'class'       => 'large-text',
 				),
 			),
 			array(

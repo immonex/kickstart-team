@@ -109,6 +109,8 @@ class Agency extends Base_CPT_Post {
 			'before_title'                  => isset( $atts['before_title'] ) ? html_entity_decode( $atts['before_title'], ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401 ) : '',
 			'title'                         => isset( $atts['title'] ) ? $atts['title'] : $this->post->post_title,
 			'after_title'                   => isset( $atts['after_title'] ) ? html_entity_decode( $atts['after_title'], ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401 ) : '',
+			'limit'                         => ! empty( $atts['limit'] ) ? (int) $atts['limit'] : null,
+			'limit-page'                    => ! empty( $atts['limit-page'] ) ? (int) $atts['limit-page'] : null,
 			'link_type'                     => $this->link_type,
 			'convert_links'                 => $convert_links,
 			'contact_form_scope'            => ! empty( $atts['contact_form_scope'] ) ? $atts['contact_form_scope'] : '',

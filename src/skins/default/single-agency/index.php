@@ -166,8 +166,10 @@ $inx_skin_legal_notice = in_array( 'legal_notice', $template_data['single_view_o
 		do_action(
 			'inx_render_property_list',
 			array(
-				'inx-agency' => $template_data['agency_id'],
-				'is_preview' => ! empty( $template_data['is_preview'] ),
+				'inx-agency'     => $template_data['agency_id'],
+				'inx-limit'      => ! empty( $template_data['limit'] ) ? (int) $template_data['limit'] : null,
+				'inx-limit-page' => ! empty( $template_data['limit-page'] ) ? (int) $template_data['limit-page'] : null,
+				'is_preview'     => ! empty( $template_data['is_preview'] ),
 			)
 		);
 

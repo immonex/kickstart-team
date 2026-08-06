@@ -78,7 +78,7 @@ function mysite_maybe_add_cc( $recipients_and_conf_sender, $form_data, $property
 		$recipients_and_conf_sender['cc'][] = 'finanzierung@immobilienmakler-website.de';
 	}
 
-	return $recipients;
+	return $recipients_and_conf_sender;
 } // mysite_maybe_add_cc
 ```
 

@@ -404,7 +404,11 @@ class Base_CPT_Post {
 	 *                      or false if inexistent.
 	 */
 	protected function get_featured_image( $value_getter ) {
-		if ( ! in_array( $this->base_name, array( 'agent', 'agency' ), true ) ) {
+		if (
+			! in_array( $this->base_name, array( 'agent', 'agency' ), true )
+			|| ! is_a( $this->post, 'WP_Post' )
+			|| ! $this->post->ID
+		) {
 			return false;
 		}
 

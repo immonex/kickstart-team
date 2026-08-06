@@ -8,7 +8,7 @@
 namespace immonex\Kickstart\Team;
 
 /**
- * Contact form rendering
+ * Contact form rendering and processing
  */
 class Contact_Form {
 
@@ -235,7 +235,7 @@ class Contact_Form {
 		$site_title    = get_bloginfo( 'name' );
 		$fields        = $this->get_fields( false, $scope );
 		$template_data = array(
-			'site_title'              => $site_title,
+			'site_title'              => $this->utils['string']->get_excerpt( $site_title, 32, '…' ),
 			'form_data'               => array(),
 			'inline_oi_feedback'      => '',
 			'admin_mails_as_html'     => $this->config['admin_mails_as_html'],
@@ -312,19 +312,28 @@ class Contact_Form {
 			);
 		}
 
-		$subject = "[{$site_title}] " . __( 'Inquiry', 'immonex-kickstart-team' );
-		if ( $property_data ) {
-			$subject .= ' ' . __( 'for', 'immonex-kickstart-team' ) . ' ' . $property_data['title'];
-			if ( $property_data['external_id'] ) {
-				$subject .= ' (' . $property_data['external_id'] . ')';
-			}
-		}
+		$subject = ! empty( $template_data['property'] ) ?
+			$this->config['form_mail_subject_property'] :
+			$this->config['form_mail_subject_general'];
 		$subject = apply_filters(
 			'inx_team_contact_form_notification_subject',
 			htmlspecialchars( $subject, ENT_NOQUOTES ),
 			'admin',
 			$template_data
 		);
+
+		if ( ! trim( $subject ) ) {
+			/**
+			 * Fallback subject
+			 */
+			$subject = "[{$site_title}] " . __( 'Inquiry', 'immonex-kickstart-team' );
+			if ( $property_data ) {
+				$subject .= ' ' . __( 'for', 'immonex-kickstart-team' ) . ' ' . $property_data['title'];
+				if ( $property_data['external_id'] ) {
+					$subject .= ' (' . $property_data['external_id'] . ')';
+				}
+			}
+		}
 
 		// This type of variable replacement is DEPRECATED, see Twig variant below.
 		$subject = $this->replace_vars( $subject, 'admin', $template_data );
@@ -536,7 +545,7 @@ class Contact_Form {
 	 * @param bool        $names_only Indicate if only the element names shall be returned.
 	 * @param string|bool $scope      Scope of fields: "basic"/false (default) or "extended".
 	 *
-	 * @return mixed[] Full element data or names only.
+	 * @return mixed[] Full field data or names only.
 	 */
 	public function get_fields( $names_only = false, $scope = false ) {
 		if ( ! $scope ) {
@@ -833,7 +842,7 @@ class Contact_Form {
 
 		if ( ! trim( $subject ) ) {
 			/**
-			 * Fallback subject creation
+			 * Fallback subject
 			 */
 			if ( ! empty( $template_data['property'] ) ) {
 				$subject = wp_sprintf(
@@ -1407,6 +1416,7 @@ class Contact_Form {
 	 * by the corresponding template data values.
 	 *
 	 * @since 1.1.0
+	 * @deprecated Replaced by Twig-based variables/rendering.
 	 *
 	 * @param string  $text Source text.
 	 * @param string  $context Mail context/recipient (admin or prospect).
@@ -1485,8 +1495,8 @@ class Contact_Form {
 			'property_title_ext_id'     => '',
 			'property_title_ext_id_url' => '',
 			'property_url'              => '',
-			'merged_form_data'          => '',
 			'form_data'                 => '',
+			'merged_form_data'          => '',
 			'inline_oi_feedback'        => $template_data['inline_oi_feedback'],
 			'admin_mails_as_html'       => $template_data['admin_mails_as_html'],
 			'rcpt_conf_mails_as_html'   => $template_data['rcpt_conf_mails_as_html'],

@@ -1,6 +1,6 @@
 # inx_team_contact_form_mail_headers (Filter)
 
-Über diesen Filter-Hook können die Header-Zeilen der via [Kontaktformular](../komponenten/kontaktformular) generierten Mails modifiziert werden. Der Versand erfolgt regulär per WordPress-Funktion [wp_mail](https://developer.wordpress.org/reference/functions/wp_mail/).
+Über diesen Filter-Hook können die Header-Zeilen der via [Kontaktformular](../komponenten/kontaktformular) generierten Mails modifiziert werden. Der Versand erfolgt mittels der regulären WordPress-Funktion [wp_mail](https://developer.wordpress.org/reference/functions/wp_mail/).
 
 !> Die Header-Angaben sollten nur in Ausnahmefällen angepasst werden, vor allem wenn in den [mailbezogenen Plugin-Optionen](../schnellstart/einrichtung#Kontaktformular-Mails) der Versand als HTML-Mails aktiviert ist.
 
@@ -8,7 +8,7 @@
 
 | Name (Typ) | Beschreibung |
 | ---------- | ------------ |
-| `$headers` (array) | Mail-Header (eine Zeile pro Array-Element) |
+| `$headers` (array) | Mail-Header (ein Array-Element pro Zeile) |
 | `$context` (string) | Kontext/Art (z. B. Empfängergruppe) der Mail (aktuell immer *admin*) |
 
 ## Rückgabewert

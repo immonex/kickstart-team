@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the immonex Kickstart Team package.
 msgid ""
 msgstr ""
-"Project-Id-Version: immonex Kickstart Team 1.9\n"
+"Project-Id-Version: immonex Kickstart Team 1.10\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/src\n"
-"POT-Creation-Date: 2026-03-24T14:21:28+00:00\n"
-"PO-Revision-Date: 2026-03-24 15:27+0100\n"
+"POT-Creation-Date: 2026-08-06T09:37:14+00:00\n"
+"PO-Revision-Date: 2026-08-06 11:38+0200\n"
 "Last-Translator: \n"
 "Language-Team: Carsten Scheuer <scheuer@inveris.de>\n"
 "Language: de_DE@formal\n"
@@ -16,17 +16,17 @@ msgstr ""
 "X-Generator: Poedit 3.9\n"
 
 #. Plugin Name of the plugin
-#: immonex-kickstart-team.php
+#: immonex-kickstart-team.php:3
 msgid "immonex Kickstart Team"
 msgstr "immonex Kickstart Team"
 
 #. Plugin URI of the plugin
-#: immonex-kickstart-team.php
+#: immonex-kickstart-team.php:5
 msgid "https://wordpress.org/plugins/immonex-kickstart-team/"
 msgstr "https://de.wordpress.org/plugins/immonex-kickstart-team/"
 
 #. Description of the plugin
-#: immonex-kickstart-team.php
+#: immonex-kickstart-team.php:6
 msgid ""
 "immonex Kickstart add-on for handling, linking and embedding OpenImmo-XML-"
 "based real estate agent/agency information and contact forms"
@@ -36,12 +36,12 @@ msgstr ""
 "Kontaktformularen"
 
 #. Author of the plugin
-#: immonex-kickstart-team.php
+#: immonex-kickstart-team.php:12
 msgid "inveris OHG / immonex"
 msgstr "inveris OHG / immonex"
 
 #. Author URI of the plugin
-#: immonex-kickstart-team.php
+#: immonex-kickstart-team.php:13
 msgid "https://immonex.dev/"
 msgstr "https://immonex.dev/"
 
@@ -51,61 +51,61 @@ msgstr "https://immonex.dev/"
 msgid "Contact Data"
 msgstr "Kontaktdaten"
 
-#: includes/class-agency-backend-form.php:83 includes/class-agency.php:473
-#: includes/class-agency.php:1133 includes/class-agent-backend-form.php:137
-#: includes/class-agent.php:659 includes/class-inquiry-backend-form.php:122
+#: includes/class-agency-backend-form.php:83 includes/class-agency.php:475
+#: includes/class-agency.php:1135 includes/class-agent-backend-form.php:137
+#: includes/class-agent.php:661 includes/class-inquiry-backend-form.php:122
 msgid "Email"
 msgstr "E-Mail"
 
 #: includes/class-agency-backend-form.php:89
-#: includes/class-agency-backend-form.php:223 includes/class-agency.php:483
-#: includes/class-agency.php:1128 includes/class-agent.php:709
-#: includes/class-contact-form.php:616 includes/class-contact-form.php:617
+#: includes/class-agency-backend-form.php:223 includes/class-agency.php:485
+#: includes/class-agency.php:1130 includes/class-agent.php:711
+#: includes/class-contact-form.php:625 includes/class-contact-form.php:626
 #: includes/class-inquiry-backend-form.php:116
 msgid "Phone"
 msgstr "Telefon"
 
-#: includes/class-agency-backend-form.php:95 includes/class-agency.php:493
-#: includes/class-agent-backend-form.php:185 includes/class-agent.php:769
+#: includes/class-agency-backend-form.php:95 includes/class-agency.php:495
+#: includes/class-agent-backend-form.php:185 includes/class-agent.php:771
 msgid "Fax"
 msgstr "Fax"
 
-#: includes/class-agency-backend-form.php:107 includes/class-agency.php:510
-#: includes/class-agent-backend-form.php:203 includes/class-agent.php:804
-#: includes/class-contact-form.php:579 includes/class-contact-form.php:580
+#: includes/class-agency-backend-form.php:107 includes/class-agency.php:512
+#: includes/class-agent-backend-form.php:203 includes/class-agent.php:806
+#: includes/class-contact-form.php:588 includes/class-contact-form.php:589
 #: includes/class-inquiry-backend-form.php:98
 msgid "Street"
 msgstr "Straße"
 
-#: includes/class-agency-backend-form.php:113 includes/class-agency.php:518
-#: includes/class-agent-backend-form.php:209 includes/class-agent.php:813
+#: includes/class-agency-backend-form.php:113 includes/class-agency.php:520
+#: includes/class-agent-backend-form.php:209 includes/class-agent.php:815
 msgid "House Number"
 msgstr "Hausnummer"
 
-#: includes/class-agency-backend-form.php:119 includes/class-agency.php:526
-#: includes/class-agent-backend-form.php:215 includes/class-agent.php:822
+#: includes/class-agency-backend-form.php:119 includes/class-agency.php:528
+#: includes/class-agent-backend-form.php:215 includes/class-agent.php:824
 msgid "ZIP Code"
 msgstr "PLZ"
 
-#: includes/class-agency-backend-form.php:125 includes/class-agency.php:534
-#: includes/class-agent-backend-form.php:221 includes/class-agent.php:831
-#: includes/class-contact-form.php:597 includes/class-contact-form.php:598
+#: includes/class-agency-backend-form.php:125 includes/class-agency.php:536
+#: includes/class-agent-backend-form.php:221 includes/class-agent.php:833
+#: includes/class-contact-form.php:606 includes/class-contact-form.php:607
 #: includes/class-inquiry-backend-form.php:110
 msgid "City"
 msgstr "Ort"
 
-#: includes/class-agency-backend-form.php:131 includes/class-agency.php:542
-#: includes/class-agent-backend-form.php:227 includes/class-agent.php:840
+#: includes/class-agency-backend-form.php:131 includes/class-agency.php:544
+#: includes/class-agent-backend-form.php:227 includes/class-agent.php:842
 msgid "P.O. Box"
 msgstr "Postfach"
 
-#: includes/class-agency-backend-form.php:137 includes/class-agency.php:550
-#: includes/class-agent-backend-form.php:233 includes/class-agent.php:848
+#: includes/class-agency-backend-form.php:137 includes/class-agency.php:552
+#: includes/class-agent-backend-form.php:233 includes/class-agent.php:850
 msgid "P.O. Box ZIP Code"
 msgstr "Postfach-PLZ"
 
-#: includes/class-agency-backend-form.php:143 includes/class-agency.php:558
-#: includes/class-agent-backend-form.php:239 includes/class-agent.php:856
+#: includes/class-agency-backend-form.php:143 includes/class-agency.php:560
+#: includes/class-agent-backend-form.php:239 includes/class-agent.php:858
 msgid "P.O. Box City"
 msgstr "Postfach-Ort"
 
@@ -133,9 +133,9 @@ msgstr "Breitengrad"
 msgid "Longitude"
 msgstr "Längengrad"
 
-#: includes/class-agency-backend-form.php:179 includes/class-agency.php:685
+#: includes/class-agency-backend-form.php:179 includes/class-agency.php:687
 #: includes/class-agent-backend-form.php:263
-#: includes/class-agent-backend-form.php:280 includes/class-agent.php:926
+#: includes/class-agent-backend-form.php:280 includes/class-agent.php:928
 msgid "Business/Social Networks"
 msgstr "Netzwerke (Business/Social)"
 
@@ -143,8 +143,8 @@ msgstr "Netzwerke (Business/Social)"
 msgid "Legal Information"
 msgstr "Rechtliche Informationen"
 
-#: includes/class-agency-backend-form.php:211 includes/class-agency.php:459
-#: includes/class-agent-backend-form.php:191 includes/class-agent.php:788
+#: includes/class-agency-backend-form.php:211 includes/class-agency.php:461
+#: includes/class-agent-backend-form.php:191 includes/class-agent.php:790
 msgid "Company"
 msgstr "Firma"
 
@@ -152,25 +152,25 @@ msgstr "Firma"
 msgid "Address"
 msgstr "Adresse"
 
-#: includes/class-agency-backend-form.php:229 includes/class-agency.php:1138
+#: includes/class-agency-backend-form.php:229 includes/class-agency.php:1140
 msgid "Represented by"
 msgstr "Vertreten durch"
 
-#: includes/class-agency-backend-form.php:235 includes/class-agency.php:645
-#: includes/class-agency.php:1100
+#: includes/class-agency-backend-form.php:235 includes/class-agency.php:647
+#: includes/class-agency.php:1102
 msgid "Supervisory Authority"
 msgstr "Aufsichtsbehörde"
 
-#: includes/class-agency-backend-form.php:241 includes/class-agency.php:653
+#: includes/class-agency-backend-form.php:241 includes/class-agency.php:655
 msgid "Registry Court"
 msgstr "Registergericht"
 
-#: includes/class-agency-backend-form.php:247 includes/class-agency.php:661
+#: includes/class-agency-backend-form.php:247 includes/class-agency.php:663
 msgid "Trade Register Number"
 msgstr "Handelsregister-Nr."
 
-#: includes/class-agency-backend-form.php:253 includes/class-agency.php:669
-#: includes/class-agency.php:1160
+#: includes/class-agency-backend-form.php:253 includes/class-agency.php:671
+#: includes/class-agency.php:1162
 msgid "VATIN"
 msgstr "USt-ID"
 
@@ -178,14 +178,14 @@ msgstr "USt-ID"
 msgid "Further Information"
 msgstr "Weitere Angaben"
 
-#: includes/class-agency-backend-form.php:265 includes/class-agency.php:598
-#: includes/class-agency.php:605 includes/class-kickstart-team.php:782
-#: skins/default/single-agency/index.php:186
+#: includes/class-agency-backend-form.php:265 includes/class-agency.php:600
+#: includes/class-agency.php:607 includes/class-kickstart-team.php:800
+#: skins/default/single-agency/index.php:188
 msgid "Legal Notice"
 msgstr "Impressum"
 
 #: includes/class-agency-backend-form.php:279
-#: includes/class-agent-backend-form.php:301 includes/class-agent.php:919
+#: includes/class-agent-backend-form.php:301 includes/class-agent.php:921
 msgid "Miscellaneous"
 msgstr "Sonstiges"
 
@@ -194,8 +194,8 @@ msgstr "Sonstiges"
 msgid "Auto Update"
 msgstr "Auto-Update"
 
-#: includes/class-agency-backend-form.php:296 includes/class-agency.php:574
-#: includes/class-agent.php:873
+#: includes/class-agency-backend-form.php:296 includes/class-agency.php:576
+#: includes/class-agent.php:875
 msgid "Address Publishing Approval"
 msgstr "Adressveröffentlichung"
 
@@ -269,77 +269,77 @@ msgstr ""
 "handelt. Zugehörige Kontaktformulardaten werden in diesem Fall "
 "<strong>nicht</strong> übermittelt."
 
-#: includes/class-agency.php:452 includes/class-agency.php:907
-#: includes/class-kickstart-team.php:1248
+#: includes/class-agency.php:454 includes/class-agency.php:909
+#: includes/class-kickstart-team.php:1290
 msgid "Logo"
 msgstr "Logo"
 
-#: includes/class-agency.php:466
+#: includes/class-agency.php:468
 msgid "About"
 msgstr "Über"
 
-#: includes/class-agency.php:503 includes/class-agent.php:780
+#: includes/class-agency.php:505 includes/class-agent.php:782
 msgid "URL (Company)"
 msgstr "URL (Unternehmen)"
 
-#: includes/class-agency.php:566 includes/class-agent.php:864
+#: includes/class-agency.php:568 includes/class-agent.php:866
 msgid "Country (ISO3)"
 msgstr "Land (ISO3)"
 
-#: includes/class-agency.php:581 includes/class-agent.php:880
+#: includes/class-agency.php:583 includes/class-agent.php:882
 msgid "Full Address"
 msgstr "Vollständige Adresse"
 
-#: includes/class-agency.php:583 includes/class-agent.php:882
+#: includes/class-agency.php:585 includes/class-agent.php:884
 msgid "Disables &quot;City&quot; if set."
 msgstr "Deaktiviert &quot;Ort&quot;, sofern markiert."
 
-#: includes/class-agency.php:590 includes/class-agent.php:889
+#: includes/class-agency.php:592 includes/class-agent.php:891
 msgid "Address (single line)"
 msgstr "Adresse (einzelne Zeile)"
 
-#: includes/class-agency.php:613
+#: includes/class-agency.php:615
 msgid "Company (Legal)"
 msgstr "Firma (Impressum)"
 
-#: includes/class-agency.php:621
+#: includes/class-agency.php:623
 msgid "Address (Legal)"
 msgstr "Adresse (Impressum)"
 
-#: includes/class-agency.php:629
+#: includes/class-agency.php:631
 msgid "Phone (Legal)"
 msgstr "Telefon (Impressum)"
 
-#: includes/class-agency.php:637
+#: includes/class-agency.php:639
 msgid "Representative"
 msgstr "Vertretungsberechtigte Person"
 
-#: includes/class-agency.php:677
+#: includes/class-agency.php:679
 msgid "Legal (Miscellaneous)"
 msgstr "Impressum (Sonstiges)"
 
-#: includes/class-agency.php:691 includes/class-agent.php:932
+#: includes/class-agency.php:693 includes/class-agent.php:934
 msgid "Business/Social Network Icons"
 msgstr "Netzwerk-Icons (Business/Social)"
 
-#: includes/class-agency.php:698 includes/class-agent.php:939
-#: includes/class-kickstart-team.php:650
+#: includes/class-agency.php:700 includes/class-agent.php:941
+#: includes/class-kickstart-team.php:668
 msgid "Contact Form"
 msgstr "Kontaktformular"
 
-#: includes/class-agency.php:705 includes/class-agent.php:946
+#: includes/class-agency.php:707 includes/class-agent.php:948
 msgid "Geo Coordinates"
 msgstr "Geo-Koordinaten"
 
-#: includes/class-agency.php:933 includes/class-agency.php:936
-#: includes/class-agent.php:1128 includes/class-agent.php:1133
-#: includes/class-agent.php:1144 includes/class-agent.php:1146
-#: includes/class-agent.php:1147
+#: includes/class-agency.php:935 includes/class-agency.php:938
+#: includes/class-agent.php:1130 includes/class-agent.php:1135
+#: includes/class-agent.php:1146 includes/class-agent.php:1148
+#: includes/class-agent.php:1149
 msgctxt "Sample data"
 msgid "ONE Realty Group"
 msgstr "ONE Immobiliengruppe"
 
-#: includes/class-agency.php:939
+#: includes/class-agency.php:941
 msgctxt "Sample data"
 msgid ""
 "ONE Realty Group is a leading real estate company in the region. We offer a "
@@ -349,37 +349,37 @@ msgstr ""
 "bieten eine breite Palette von Dienstleistungen rund um den Kauf, Verkauf "
 "und die Vermietung von Immobilien an."
 
-#: includes/class-agency.php:944
+#: includes/class-agency.php:946
 msgctxt "Sample data"
 msgid "hello@immonex.one"
 msgstr "hallo@immonex.one"
 
-#: includes/class-agency.php:945 includes/class-agent.php:1142
+#: includes/class-agency.php:947 includes/class-agent.php:1144
 msgctxt "Sample data"
 msgid "+999 123 4567890"
 msgstr "+49 123 4567890"
 
-#: includes/class-agency.php:947 includes/class-agent.php:1149
+#: includes/class-agency.php:949 includes/class-agent.php:1151
 msgctxt "Sample data"
 msgid "Fake Street"
 msgstr "Beispielstraße"
 
-#: includes/class-agency.php:950 includes/class-agent.php:1152
+#: includes/class-agency.php:952 includes/class-agent.php:1154
 msgctxt "Sample data"
 msgid "Demotown"
 msgstr "Demostadt"
 
-#: includes/class-agency.php:952 includes/class-agent.php:1154
+#: includes/class-agency.php:954 includes/class-agent.php:1156
 msgctxt "Sample data"
 msgid "Fake Street 123<br>99999 Demotown"
 msgstr "Beispielstraße 123<br>99999 Demostadt"
 
-#: includes/class-agency.php:953 includes/class-agent.php:1155
+#: includes/class-agency.php:955 includes/class-agent.php:1157
 msgctxt "Sample data"
 msgid "Fake Street 123, 99999 Demotown"
 msgstr "Beispielstraße 123, 99999 Demostadt"
 
-#: includes/class-agency.php:970
+#: includes/class-agency.php:972
 msgid ""
 "Publisher\n"
 "\n"
@@ -411,7 +411,7 @@ msgstr ""
 "\n"
 "IHK Demostadt"
 
-#: includes/class-agency.php:987
+#: includes/class-agency.php:989
 msgid ""
 "<strong>Publisher</strong>\n"
 "<p>\n"
@@ -451,11 +451,11 @@ msgstr ""
 "\tIHK Demostadt\n"
 "</p>"
 
-#: includes/class-agency.php:1099
+#: includes/class-agency.php:1101
 msgid "Publisher"
 msgstr "Herausgeber"
 
-#: includes/class-agency.php:1153
+#: includes/class-agency.php:1155
 msgid "Trade Register"
 msgstr "Handelsregister"
 
@@ -463,11 +463,11 @@ msgstr "Handelsregister"
 msgid "About..."
 msgstr "Über..."
 
-#: includes/class-agent-backend-form.php:83 includes/class-agent.php:592
+#: includes/class-agent-backend-form.php:83 includes/class-agent.php:594
 msgid "Gender"
 msgstr "Geschlecht"
 
-#: includes/class-agent-backend-form.php:87 includes/class-contact-form.php:552
+#: includes/class-agent-backend-form.php:87 includes/class-contact-form.php:561
 #: includes/class-inquiry-backend-form.php:73
 msgid "not specified"
 msgstr "keine Angabe"
@@ -480,25 +480,25 @@ msgstr "männlich"
 msgid "female"
 msgstr "weiblich"
 
-#: includes/class-agent-backend-form.php:94 includes/class-agent.php:599
+#: includes/class-agent-backend-form.php:94 includes/class-agent.php:601
 #: includes/widgets/class-agency-widget.php:139
 #: includes/widgets/class-agent-widget.php:132
 msgid "Title"
 msgstr "Titel"
 
-#: includes/class-agent-backend-form.php:100 includes/class-agent.php:606
-#: includes/class-contact-form.php:563 includes/class-contact-form.php:564
+#: includes/class-agent-backend-form.php:100 includes/class-agent.php:608
+#: includes/class-contact-form.php:572 includes/class-contact-form.php:573
 #: includes/class-inquiry-backend-form.php:80
 msgid "First Name"
 msgstr "Vorname"
 
-#: includes/class-agent-backend-form.php:106 includes/class-agent.php:613
-#: includes/class-contact-form.php:571 includes/class-contact-form.php:572
+#: includes/class-agent-backend-form.php:106 includes/class-agent.php:615
+#: includes/class-contact-form.php:580 includes/class-contact-form.php:581
 #: includes/class-inquiry-backend-form.php:86
 msgid "Last Name"
 msgstr "Nachname"
 
-#: includes/class-agent-backend-form.php:112 includes/class-agent.php:636
+#: includes/class-agent-backend-form.php:112 includes/class-agent.php:638
 msgid "Position"
 msgstr "Position"
 
@@ -510,15 +510,15 @@ msgstr "E-Mail (Zentrale)"
 msgid "Email (feedback)"
 msgstr "E-Mail (Feedback)"
 
-#: includes/class-agent-backend-form.php:155 includes/class-agent.php:699
+#: includes/class-agent-backend-form.php:155 includes/class-agent.php:701
 msgid "Email (private)"
 msgstr "E-Mail (privat)"
 
-#: includes/class-agent-backend-form.php:161 includes/class-agent.php:718
+#: includes/class-agent-backend-form.php:161 includes/class-agent.php:720
 msgid "Phone (call-through)"
 msgstr "Telefon (Durchwahl)"
 
-#: includes/class-agent-backend-form.php:167 includes/class-agent.php:739
+#: includes/class-agent-backend-form.php:167 includes/class-agent.php:741
 msgid "Phone (mobile)"
 msgstr "Telefon (mobil)"
 
@@ -526,7 +526,7 @@ msgstr "Telefon (mobil)"
 msgid "Phone (main office)"
 msgstr "Telefon (Zentrale)"
 
-#: includes/class-agent-backend-form.php:179 includes/class-agent.php:749
+#: includes/class-agent-backend-form.php:179 includes/class-agent.php:751
 msgid "Phone (private)"
 msgstr "Telefon (privat)"
 
@@ -564,15 +564,15 @@ msgstr "Agentur-Link anzeigen"
 msgid "Import folder"
 msgstr "Importordner"
 
-#: includes/class-agent-backend-form.php:370 includes/class-agent.php:897
+#: includes/class-agent-backend-form.php:370 includes/class-agent.php:899
 msgid "Personal Number"
 msgstr "Personennummer"
 
-#: includes/class-agent-backend-form.php:376 includes/class-agent.php:904
+#: includes/class-agent-backend-form.php:376 includes/class-agent.php:906
 msgid "Property Trustee ID"
 msgstr "Immobilien-Treuhänder-ID"
 
-#: includes/class-agent-backend-form.php:382 includes/class-agent.php:912
+#: includes/class-agent-backend-form.php:382 includes/class-agent.php:914
 msgid "Reference ID"
 msgstr "Referenz-ID"
 
@@ -602,31 +602,31 @@ msgid "Agent (primary)"
 msgstr "Kontaktperson (primär)"
 
 #: includes/class-agent-backend-form.php:427
-#: includes/class-kickstart-team.php:640 includes/class-wp-bootstrap.php:137
+#: includes/class-kickstart-team.php:658 includes/class-wp-bootstrap.php:137
 msgid "Agents"
 msgstr "Kontaktpersonen"
 
-#: includes/class-agent.php:585
+#: includes/class-agent.php:587
 msgid "Photo"
 msgstr "Foto"
 
-#: includes/class-agent.php:620
+#: includes/class-agent.php:622
 msgid "Full Name"
 msgstr "Name"
 
-#: includes/class-agent.php:627
+#: includes/class-agent.php:629
 msgid "Full Name incl. Title"
 msgstr "Name inkl. Titel"
 
-#: includes/class-agent.php:628
+#: includes/class-agent.php:630
 msgid "Disables &quot;Full Name&quot; if set."
 msgstr "Deaktiviert &quot;Name&quot;, sofern markiert."
 
-#: includes/class-agent.php:644
+#: includes/class-agent.php:646
 msgid "Position incl. Company"
 msgstr "Position inkl. Unternehmen"
 
-#: includes/class-agent.php:645
+#: includes/class-agent.php:647
 msgid ""
 "Position plus Company link <strong>if more than one agency exists</strong>. "
 "Disables &quot;Position&quot; if set."
@@ -634,65 +634,65 @@ msgstr ""
 "Position + Link zum Unternehmen <strong>bei mehr als einer Agentur</strong>. "
 "Deaktiviert &quot;Position&quot;, sofern markiert."
 
-#: includes/class-agent.php:652
+#: includes/class-agent.php:654
 msgid "Short Biography"
 msgstr "Kurzbeschreibung/Biographie"
 
-#: includes/class-agent.php:668
+#: includes/class-agent.php:670
 msgid "Email (direct)"
 msgstr "E-Mail (direkt)"
 
-#: includes/class-agent.php:678
+#: includes/class-agent.php:680
 msgid "Email (Main Office)"
 msgstr "E-Mail (Zentrale)"
 
-#: includes/class-agent.php:689
+#: includes/class-agent.php:691
 msgid "Email (Feedback)"
 msgstr "E-Mail (Feedback)"
 
-#: includes/class-agent.php:728
+#: includes/class-agent.php:730
 msgid "Phone (Main Office)"
 msgstr "Telefon (Zentrale)"
 
-#: includes/class-agent.php:759
+#: includes/class-agent.php:761
 msgid "Phone (other)"
 msgstr "Telefon (weitere)"
 
-#: includes/class-agent.php:797
+#: includes/class-agent.php:799
 msgid "Company (Link)"
 msgstr "Firma (Link)"
 
-#: includes/class-agent.php:1108
+#: includes/class-agent.php:1110
 msgid "Demo Photo by"
 msgstr "Beispielfoto von"
 
-#: includes/class-agent.php:1120
+#: includes/class-agent.php:1122
 msgctxt "Sample data"
 msgid "Elena"
 msgstr "Bettina"
 
-#: includes/class-agent.php:1121
+#: includes/class-agent.php:1123
 msgctxt "Sample data"
 msgid "Example"
 msgstr "Beispiel"
 
-#: includes/class-agent.php:1122 includes/class-agent.php:1123
+#: includes/class-agent.php:1124 includes/class-agent.php:1125
 msgctxt "Sample data"
 msgid "Elena Example"
 msgstr "Bettina Beispiel"
 
-#: includes/class-agent.php:1124 includes/class-agent.php:1126
-#: includes/class-agent.php:1131
+#: includes/class-agent.php:1126 includes/class-agent.php:1128
+#: includes/class-agent.php:1133
 msgctxt "Sample data"
 msgid "Real Estate Agent"
 msgstr "Immobilienmaklerin"
 
-#: includes/class-agent.php:1127 includes/class-agent.php:1132
-#: includes/class-agent.php:1198
+#: includes/class-agent.php:1129 includes/class-agent.php:1134
+#: includes/class-agent.php:1200
 msgid "at"
 msgstr "bei"
 
-#: includes/class-agent.php:1136
+#: includes/class-agent.php:1138
 msgctxt "Sample data"
 msgid ""
 "I am a specialist in the marketing of high-quality properties with more than "
@@ -701,17 +701,17 @@ msgstr ""
 "Mein Spezialgebiet ist die Vermarktung hochwertiger Immobilien. Hierbei kann "
 "ich auf meine Erfahrungen aus über zehn Jahren in der Praxis zurückgreifen."
 
-#: includes/class-agent.php:1137 includes/class-agent.php:1138
+#: includes/class-agent.php:1139 includes/class-agent.php:1140
 msgctxt "Sample data"
 msgid "elena@immonex.one"
 msgstr "bettina@immonex.one"
 
-#: includes/class-agent.php:1140 includes/class-agent.php:1141
+#: includes/class-agent.php:1142 includes/class-agent.php:1143
 msgctxt "Sample data"
 msgid "+999 123 4567891"
 msgstr "+49 123 4567891"
 
-#: includes/class-agent.php:1143
+#: includes/class-agent.php:1145
 msgctxt "Sample data"
 msgid "+999 3212 987654321"
 msgstr "+49 3212 987654321"
@@ -755,16 +755,16 @@ msgstr ""
 "Hoppla! Bei der Verarbeitung der Anfragedaten ist ein Problem aufgetreten - "
 "bitte etwas später erneut versuchen!"
 
-#: includes/class-contact-form.php:315 includes/class-inquiry.php:107
-#: includes/class-wp-bootstrap.php:161
+#: includes/class-contact-form.php:329 includes/class-inquiry.php:117
+#: includes/class-kickstart-team.php:150 includes/class-wp-bootstrap.php:161
 msgid "Inquiry"
 msgstr "Anfrage"
 
-#: includes/class-contact-form.php:317
+#: includes/class-contact-form.php:331
 msgid "for"
 msgstr "für"
 
-#: includes/class-contact-form.php:474
+#: includes/class-contact-form.php:483
 msgid ""
 "Uh-oh! A problem occured while sending your inquiry data. Please try again "
 "later!"
@@ -772,75 +772,75 @@ msgstr ""
 "Hoppla! Beim Versenden der Anfragedaten ist ein Problem aufgetreten - bitte "
 "etwas später erneut versuchen!"
 
-#: includes/class-contact-form.php:550
+#: includes/class-contact-form.php:559
 #: includes/class-inquiry-backend-form.php:69
 msgid "Salutation"
 msgstr "Anrede"
 
-#: includes/class-contact-form.php:553
+#: includes/class-contact-form.php:562
 #: includes/class-inquiry-backend-form.php:75
 msgid "Ms."
 msgstr "Frau"
 
-#: includes/class-contact-form.php:554
+#: includes/class-contact-form.php:563
 #: includes/class-inquiry-backend-form.php:76
 msgid "Mr."
 msgstr "Herr"
 
-#: includes/class-contact-form.php:588 includes/class-contact-form.php:589
+#: includes/class-contact-form.php:597 includes/class-contact-form.php:598
 #: includes/class-inquiry-backend-form.php:104
 msgid "Postal Code"
 msgstr "PLZ"
 
-#: includes/class-contact-form.php:606 includes/class-contact-form.php:608
+#: includes/class-contact-form.php:615 includes/class-contact-form.php:617
 msgid "Name"
 msgstr "Name"
 
-#: includes/class-contact-form.php:607
+#: includes/class-contact-form.php:616
 msgid "Prospect"
 msgstr "Interessent/in"
 
-#: includes/class-contact-form.php:625 includes/class-contact-form.php:626
+#: includes/class-contact-form.php:634 includes/class-contact-form.php:635
 msgid "Email Address"
 msgstr "E-Mail-Adresse"
 
-#: includes/class-contact-form.php:633 includes/class-contact-form.php:634
+#: includes/class-contact-form.php:642 includes/class-contact-form.php:643
 msgid "Message"
 msgstr "Nachricht"
 
-#: includes/class-contact-form.php:714
+#: includes/class-contact-form.php:723
 msgid "This is a required field!"
 msgstr "Dies ist ein Pflichtfeld!"
 
 #. translators: %s = caption of an alternative required field
-#: includes/class-contact-form.php:722
+#: includes/class-contact-form.php:731
 #, php-format
 msgid "Please fill out this or the alternative field <strong>%s</strong>."
 msgstr "Bitte dieses oder das Alternativfeld <strong>%s</strong> ausfüllen."
 
-#: includes/class-contact-form.php:731
+#: includes/class-contact-form.php:740
 msgid "Please check the inputs!"
 msgstr "Bitte die Eingaben prüfen!"
 
-#: includes/class-contact-form.php:737
+#: includes/class-contact-form.php:746
 msgid "Your data could not be submitted. Please reload the page and try again!"
 msgstr ""
 "Ihre Angaben konnten nicht übermittelt werden. Bitte laden Sie die Seite neu "
 "und versuchen Sie es noch einmal!"
 
-#: includes/class-contact-form.php:842
+#: includes/class-contact-form.php:851 includes/class-kickstart-team.php:184
 msgid "Your inquiry for the property"
 msgstr "Ihre Anfrage zur Immobilie"
 
-#: includes/class-contact-form.php:849 includes/class-kickstart-team.php:160
+#: includes/class-contact-form.php:858 includes/class-kickstart-team.php:177
 msgid "Confirmation of receipt"
 msgstr "Eingangsbestätigung"
 
-#: includes/class-contact-form.php:993 includes/class-contact-form.php:996
+#: includes/class-contact-form.php:1002 includes/class-contact-form.php:1005
 msgid "Privacy Policy"
 msgstr "Datenschutzerklärung"
 
-#: includes/class-contact-form.php:1031
+#: includes/class-contact-form.php:1040
 msgid "Cancellation Policy"
 msgstr "Widerrufsbelehrung"
 
@@ -876,20 +876,20 @@ msgstr "intern"
 msgid "Post ID"
 msgstr "Beitrags-ID"
 
-#: includes/class-inquiry.php:110
+#: includes/class-inquiry.php:120
 msgctxt "…inquiry for property 123…"
 msgid "for property"
 msgstr "zum Objekt"
 
-#: includes/class-kickstart-team.php:130
+#: includes/class-kickstart-team.php:132
 msgid "Real Estate Agencies"
 msgstr "Immobilien-Agenturen"
 
-#: includes/class-kickstart-team.php:134
+#: includes/class-kickstart-team.php:136
 msgid "Real Estate Agents"
 msgstr "Immobilienmakler/innen"
 
-#: includes/class-kickstart-team.php:138
+#: includes/class-kickstart-team.php:140
 msgid ""
 "According to the [cancellation_policy], I expressly wish that services I "
 "have commissioned can be provided even before the statutory cancellation "
@@ -901,7 +901,7 @@ msgstr ""
 "Widerrufsfrist erbracht werden können. (Mein Widerrufsrecht erlischt bei "
 "vollständiger Vertragserfüllung vor dem Fristende.)"
 
-#: includes/class-kickstart-team.php:142
+#: includes/class-kickstart-team.php:144
 msgid ""
 "By submitting I consent to my data being processed and stored in accordance "
 "with the [privacy_policy] in order to answer my request. This consent can be "
@@ -911,61 +911,61 @@ msgstr ""
 "gemäß der [privacy_policy] zwecks Beantwortung meiner Anfrage zu. Diese "
 "Einwilligung kann jederzeit widerrufen werden."
 
-#: includes/class-kickstart-team.php:146
+#: includes/class-kickstart-team.php:157
+msgid "Inquiry for"
+msgstr "Anfrage zu"
+
+#: includes/class-kickstart-team.php:163
 msgid "Thank you for the inquiry!"
 msgstr "Vielen Dank für die Anfrage!"
 
-#: includes/class-kickstart-team.php:150 includes/class-wp-bootstrap.php:75
+#: includes/class-kickstart-team.php:167 includes/class-wp-bootstrap.php:75
 msgctxt "Custom Post Type Slug (plural only!)"
 msgid "real-estate-agencies"
 msgstr "Immobilienmakler-agenturen"
 
-#: includes/class-kickstart-team.php:154 includes/class-wp-bootstrap.php:79
+#: includes/class-kickstart-team.php:171 includes/class-wp-bootstrap.php:79
 msgctxt "Custom Post Type Slug (plural only!)"
 msgid "real-estate-agents"
 msgstr "Immobilienmakler"
 
-#: includes/class-kickstart-team.php:190
+#: includes/class-kickstart-team.php:215
 #: skins/default/mail/receipt-confirmation.php:9
 msgid "Good day!"
 msgstr "Guten Tag!"
 
-#: includes/class-kickstart-team.php:191
+#: includes/class-kickstart-team.php:216
 #: skins/default/mail/receipt-confirmation.php:13
 msgid "Thanks for the inquiry on the following property:"
 msgstr "Vielen Dank für die Anfrage zu folgendem Objekt:"
 
-#: includes/class-kickstart-team.php:192
+#: includes/class-kickstart-team.php:217
 #: skins/default/mail/receipt-confirmation.php:18
 msgid "Thanks for the message!"
 msgstr "Vielen Dank für die Nachricht!"
 
-#: includes/class-kickstart-team.php:193
+#: includes/class-kickstart-team.php:218
 #: skins/default/mail/receipt-confirmation.php:27
 msgid "I will get in touch with you as soon as possible."
 msgstr "Wir melden uns schnellstmöglich."
 
-#: includes/class-kickstart-team.php:194
+#: includes/class-kickstart-team.php:219
 #: skins/default/mail/receipt-confirmation.php:29
 #: skins/default/mail/receipt-confirmation.php:48
 msgid "Best regards,"
 msgstr "Freundliche Grüße"
 
-#: includes/class-kickstart-team.php:195
+#: includes/class-kickstart-team.php:220
 #: skins/default/mail/receipt-confirmation.php:46
 msgid "We will get in touch with you as soon as possible."
 msgstr "Wir melden uns schnellstmöglich."
 
-#: includes/class-kickstart-team.php:202
-msgid "Inquiry for the property"
-msgstr "Anfrage zur Immobilie"
-
-#: includes/class-kickstart-team.php:384
+#: includes/class-kickstart-team.php:402
 msgid "Please refresh the page and try again."
 msgstr "Bitte versuchen Sie es nach einer Aktualisierung der Seite erneut."
 
 #. translators: %s = admin email address
-#: includes/class-kickstart-team.php:387
+#: includes/class-kickstart-team.php:405
 #, php-format
 msgid ""
 "Configuration error, please contact the <a href=\"mailto:%s\">website admin</"
@@ -974,7 +974,7 @@ msgstr ""
 "Konfigurationsfehler, bitte kontaktieren Sie den <a href=\"mailto:"
 "%s\">Website-Administrator</a>."
 
-#: includes/class-kickstart-team.php:390
+#: includes/class-kickstart-team.php:408
 msgid ""
 "Security check failed. Please try refreshing or using a different browser."
 msgstr ""
@@ -982,7 +982,7 @@ msgstr ""
 "oder verwenden Sie einen alternativen Browser."
 
 #. translators: %s = admin email address
-#: includes/class-kickstart-team.php:393
+#: includes/class-kickstart-team.php:411
 #, php-format
 msgid ""
 "An unexpected error occurred, please contact the <a href=\"mailto:"
@@ -991,28 +991,28 @@ msgstr ""
 "Ein unerwarteter Fehler ist aufgetreten, bitte kontaktieren Sie den <a "
 "href=\"mailto:%s\">Website-Administrator</a>."
 
-#: includes/class-kickstart-team.php:414
+#: includes/class-kickstart-team.php:432
 msgid "all properties"
 msgstr "alle Immobilien"
 
-#: includes/class-kickstart-team.php:417
+#: includes/class-kickstart-team.php:435
 msgid "all properties except references"
 msgstr "alle Immobilien außer Referenzobjekte"
 
-#: includes/class-kickstart-team.php:420
+#: includes/class-kickstart-team.php:438
 msgid "available properties only"
 msgstr "nur verfügbare Immobilien"
 
-#: includes/class-kickstart-team.php:423
+#: includes/class-kickstart-team.php:441
 msgid "references only"
 msgstr "nur Referenzobjekte"
 
-#: includes/class-kickstart-team.php:426
+#: includes/class-kickstart-team.php:444
 msgid "unavailable properties only"
 msgstr "nur nicht verfügbare Immobilien"
 
 #. translators: %1$s, %2$s and %3$s are placeholders for URLs.
-#: includes/class-kickstart-team.php:530
+#: includes/class-kickstart-team.php:548
 #, php-format
 msgid ""
 "All mail <strong>subject, body and signature contents</strong> can be "
@@ -1070,7 +1070,7 @@ msgstr ""
 "\t<dd><a href=\"%3$s\">Agenturname</a> (wenn verfügbar)</dd>\n"
 "</dl>"
 
-#: includes/class-kickstart-team.php:560
+#: includes/class-kickstart-team.php:578
 msgid ""
 "<strong>User Form Data</strong>\n"
 "\n"
@@ -1214,37 +1214,37 @@ msgstr ""
 "<strong>Absender-Typs</strong> (Kontaktperson oder Agentur)</dd>\n"
 "</dl>"
 
-#: includes/class-kickstart-team.php:630
+#: includes/class-kickstart-team.php:648
 msgid "Layout & Design"
 msgstr "Layout & Design"
 
-#: includes/class-kickstart-team.php:635 includes/class-wp-bootstrap.php:114
+#: includes/class-kickstart-team.php:653 includes/class-wp-bootstrap.php:114
 msgid "Agencies"
 msgstr "Agenturen"
 
-#: includes/class-kickstart-team.php:645
+#: includes/class-kickstart-team.php:663
 msgid "Property Details"
 msgstr "Objektdetails"
 
-#: includes/class-kickstart-team.php:655
+#: includes/class-kickstart-team.php:673
 msgid "Contact Form Mails"
 msgstr "Kontaktformular-Mails"
 
-#: includes/class-kickstart-team.php:660
+#: includes/class-kickstart-team.php:678
 msgid "Receipt Confirmation Mails"
 msgstr "Eingangsbestätigungsmails"
 
-#: includes/class-kickstart-team.php:700
+#: includes/class-kickstart-team.php:718
 #: includes/widgets/class-agency-widget.php:164
 #: includes/widgets/class-agent-widget.php:158
 msgid "none"
 msgstr "keine"
 
-#: includes/class-kickstart-team.php:706
+#: includes/class-kickstart-team.php:724
 msgid "Skin"
 msgstr "Skin"
 
-#: includes/class-kickstart-team.php:711
+#: includes/class-kickstart-team.php:729
 msgid ""
 "A skin is a set of templates files (PHP, Twig, CSS, JS etc.) and related "
 "resources like images and fonts for plugin frontend elements and pages."
@@ -1253,59 +1253,59 @@ msgstr ""
 "zugehörigen Ressourcen wie Bildern und Fonts für Plugin-Frontend-Elemente "
 "und -Seiten."
 
-#: includes/class-kickstart-team.php:719 includes/class-kickstart-team.php:790
+#: includes/class-kickstart-team.php:737 includes/class-kickstart-team.php:808
 msgid "Archive"
 msgstr "Archiv"
 
 #. translators: %1$s = post type name, %2$s = exception info
-#: includes/class-kickstart-team.php:726 includes/class-kickstart-team.php:797
+#: includes/class-kickstart-team.php:744 includes/class-kickstart-team.php:815
 #, php-format
 msgid "Enable the default archive view for <strong>%1$s</strong> posts. (%2$s)"
 msgstr ""
 "Standard-Archivansicht für <strong>%1$s-Beiträge</strong> aktivieren. (%2$s)"
 
-#: includes/class-kickstart-team.php:727 includes/class-kickstart-team.php:756
-#: includes/class-kickstart-team.php:776
+#: includes/class-kickstart-team.php:745 includes/class-kickstart-team.php:774
+#: includes/class-kickstart-team.php:794
 msgid "agency"
 msgstr "Agentur"
 
-#: includes/class-kickstart-team.php:728 includes/class-kickstart-team.php:799
+#: includes/class-kickstart-team.php:746 includes/class-kickstart-team.php:817
 msgid "This has no effect on lists embedded via shortcode or widget."
 msgstr ""
 "Das hat keine Auswirkungen auf Listen, die per Shortcode oder Widget "
 "eingebunden werden."
 
-#: includes/class-kickstart-team.php:736 includes/class-kickstart-team.php:807
+#: includes/class-kickstart-team.php:754 includes/class-kickstart-team.php:825
 msgid "Archive Title"
 msgstr "Archiv-Titel"
 
-#: includes/class-kickstart-team.php:741
+#: includes/class-kickstart-team.php:759
 msgid "default title for the agency post type archive pages"
 msgstr "Standardtitel für Archivseiten des Agentur-Beitragstyps"
 
-#: includes/class-kickstart-team.php:748 includes/class-kickstart-team.php:819
+#: includes/class-kickstart-team.php:766 includes/class-kickstart-team.php:837
 msgid "Single View"
 msgstr "Einzelansicht"
 
 #. translators: %1$s = post type name, %2$s = exception info
-#: includes/class-kickstart-team.php:755 includes/class-kickstart-team.php:826
+#: includes/class-kickstart-team.php:773 includes/class-kickstart-team.php:844
 #, php-format
 msgid "Enable the default single view for <strong>%1$s</strong> posts. (%2$s)"
 msgstr ""
 "Standard-Einzelansicht (Single) für <strong>%1$s-Beiträge</strong> "
 "aktivieren. (%2$s)"
 
-#: includes/class-kickstart-team.php:757 includes/class-kickstart-team.php:828
+#: includes/class-kickstart-team.php:775 includes/class-kickstart-team.php:846
 msgid "This has no effect on views embedded via shortcode or widget."
 msgstr ""
 "Das hat keine Auswirkungen auf Ansichten, die per Shortcode oder Widget "
 "eingebunden werden."
 
-#: includes/class-kickstart-team.php:765 includes/class-kickstart-team.php:836
+#: includes/class-kickstart-team.php:783 includes/class-kickstart-team.php:854
 msgid "Optional Sections"
 msgstr "Optionale Abschnitte"
 
-#: includes/class-kickstart-team.php:770 includes/class-kickstart-team.php:841
+#: includes/class-kickstart-team.php:788 includes/class-kickstart-team.php:859
 msgid ""
 "Enable or disable sections to appear in addition to the contact information "
 "in the <strong>single views</strong> (depending on the skin)."
@@ -1314,7 +1314,7 @@ msgstr ""
 "(Single)</strong> zusätzlich zu den Kontaktdaten angezeigt werden sollen."
 
 #. translators: %1$s = post type backend URL, %2$s = post type name
-#: includes/class-kickstart-team.php:774 includes/class-kickstart-team.php:845
+#: includes/class-kickstart-team.php:792 includes/class-kickstart-team.php:863
 #, php-format
 msgid ""
 "This <strong>default</strong> can be overridden by the corresponding "
@@ -1324,32 +1324,32 @@ msgstr ""
 "individuellen Einstellungen jedes <a href=\"%1$s\">%2$s-Datensatzes</a> "
 "überschrieben werden."
 
-#: includes/class-kickstart-team.php:780
+#: includes/class-kickstart-team.php:798
 msgid "Agents (Team)"
 msgstr "Kontaktpersonen (Team)"
 
-#: includes/class-kickstart-team.php:781 includes/class-kickstart-team.php:851
+#: includes/class-kickstart-team.php:799 includes/class-kickstart-team.php:869
 msgid "related Real Estate Offers"
 msgstr "zugehörige Immobilien-Angebote"
 
-#: includes/class-kickstart-team.php:798 includes/class-kickstart-team.php:827
-#: includes/class-kickstart-team.php:847
+#: includes/class-kickstart-team.php:816 includes/class-kickstart-team.php:845
+#: includes/class-kickstart-team.php:865
 msgid "agent"
 msgstr "Kontaktperson"
 
-#: includes/class-kickstart-team.php:812
+#: includes/class-kickstart-team.php:830
 msgid "default title for the agent post type archive pages"
 msgstr "Standardtitel für Archivseiten des Kontaktpersonen-Beitragstyps"
 
-#: includes/class-kickstart-team.php:852
+#: includes/class-kickstart-team.php:870
 msgid "Footer Box with Agency Details Link (Name/Logo and Short Description)"
 msgstr "Footer-Box mit Agentur-Details-Link (Name/Logo und Kurzbeschreibung)"
 
-#: includes/class-kickstart-team.php:860
+#: includes/class-kickstart-team.php:878
 msgid "Default Contact Section Adaptation"
 msgstr "Anpassung des Standard-Kontaktabschnitts"
 
-#: includes/class-kickstart-team.php:865
+#: includes/class-kickstart-team.php:883
 msgid ""
 "The default contact data section in <strong>property detail pages</strong> "
 "can optionally be disabled or replaced by the related primary agent contact "
@@ -1360,23 +1360,23 @@ msgstr ""
 "Kontaktdaten (inkl. Formular) ersetzt werden, die von diesem Add-on "
 "bereitgestellt werden."
 
-#: includes/class-kickstart-team.php:867
+#: includes/class-kickstart-team.php:885
 msgid "no change"
 msgstr "keine Änderung"
 
-#: includes/class-kickstart-team.php:868
+#: includes/class-kickstart-team.php:886
 msgid "replace"
 msgstr "ersetzen"
 
-#: includes/class-kickstart-team.php:869
+#: includes/class-kickstart-team.php:887
 msgid "disable"
 msgstr "ausblenden"
 
-#: includes/class-kickstart-team.php:877
+#: includes/class-kickstart-team.php:895
 msgid "Default Contact Section Headline"
 msgstr "Standard-Überschrift des Kontaktabschnitts"
 
-#: includes/class-kickstart-team.php:882
+#: includes/class-kickstart-team.php:900
 msgid ""
 "default headline for the contact section/form in property detail pages if "
 "<strong>replace</strong> is selected above"
@@ -1384,17 +1384,17 @@ msgstr ""
 "Standard-Überschrift für den Kontakt/Formular-Abschnitt in Immobilien-"
 "Detailseiten, wenn oben <strong>ersetzen</strong> ausgewählt ist"
 
-#: includes/class-kickstart-team.php:883
+#: includes/class-kickstart-team.php:901
 #: includes/widgets/class-agent-widget.php:135
 msgid "Use \"auto\" for a gender-related default title."
 msgstr "Für einen genderkonformen Standardtitel \"auto\" hinterlegen."
 
-#: includes/class-kickstart-team.php:890
+#: includes/class-kickstart-team.php:908
 msgid "Save Inquiries"
 msgstr "Anfragen speichern"
 
 #. translators: %s = backend URL
-#: includes/class-kickstart-team.php:897
+#: includes/class-kickstart-team.php:915
 #, php-format
 msgid ""
 "If activated, inquiries and messages sent via contact forms are will also be "
@@ -1405,11 +1405,11 @@ msgstr ""
 "gesendet werden, auch in der WP-Datenbank gespeichert und sind im <a "
 "href=\"%s\">Backend</a> verfügbar."
 
-#: includes/class-kickstart-team.php:906
+#: includes/class-kickstart-team.php:924
 msgid "Extended Form"
 msgstr "Erweitertes Formular"
 
-#: includes/class-kickstart-team.php:911
+#: includes/class-kickstart-team.php:929
 msgid ""
 "Add salutation, street, postal code and city as required fields in contact "
 "forms by default (can be overridden by widget option or shortcode attribute)."
@@ -1418,11 +1418,11 @@ msgstr ""
 "zusätzliche Pflichtfelder ergänzen (Überschreiben per Widget-Option oder "
 "Shortcode-Attribut möglich)."
 
-#: includes/class-kickstart-team.php:918
+#: includes/class-kickstart-team.php:936
 msgid "Cancellation Policy Page"
 msgstr "Seite der Widerrufsbelehrung"
 
-#: includes/class-kickstart-team.php:923
+#: includes/class-kickstart-team.php:941
 msgid ""
 "If a cancellation policy page is selected, the following consent text will "
 "be added to the form."
@@ -1430,7 +1430,7 @@ msgstr ""
 "Wenn eine Seite ausgewählt ist, die Infos und Bedingungen zum Widerrufsrecht "
 "enthält, wird der folgende Einwilligungstext zum Formular hinzugefügt."
 
-#: includes/class-kickstart-team.php:924
+#: includes/class-kickstart-team.php:942
 msgid ""
 "If the page is available in multiple languages, please select the version in "
 "the <strong>site's primary language</strong> here."
@@ -1438,11 +1438,11 @@ msgstr ""
 "Sollte die Seite in mehreren Sprachen verfügbar sein, hier bitte die Version "
 "in der <strong>primären Sprache der Website</strong> auswählen."
 
-#: includes/class-kickstart-team.php:932
+#: includes/class-kickstart-team.php:950
 msgid "Cancellation Consent Text"
 msgstr "Einwilligungstext zum Widerrufsrecht"
 
-#: includes/class-kickstart-team.php:937
+#: includes/class-kickstart-team.php:955
 msgid ""
 "This text must be confirmed by the user if a cancellation policy page has "
 "been selected above (insert <code>[cancellation_policy]</code> to add a "
@@ -1452,12 +1452,12 @@ msgstr ""
 "ausgewählt wurde, die eine Widerrufsbelehrung enthält (mit "
 "<code>[cancellation_policy]</code> kann ein Link eingefügt werden)."
 
-#: includes/class-kickstart-team.php:944
+#: includes/class-kickstart-team.php:962
 msgid "Privacy Note"
 msgstr "Datenschutzhinweis"
 
 #. translators: %s = privacy options page URL
-#: includes/class-kickstart-team.php:951
+#: includes/class-kickstart-team.php:969
 #, php-format
 msgid ""
 "The privacy policy notice is mandatory, but does <strong>not</strong> have "
@@ -1469,11 +1469,11 @@ msgstr ""
 "zur Seite der Datenschutzerklärung eingefügt werden, die in den <a "
 "href=\"%s\">Website-Einstellungen</a> definiert wurde.)"
 
-#: includes/class-kickstart-team.php:960
+#: includes/class-kickstart-team.php:978
 msgid "Confirmation Message"
 msgstr "Bestätigungsmeldung"
 
-#: includes/class-kickstart-team.php:965
+#: includes/class-kickstart-team.php:983
 msgid ""
 "This message is being displayed when the form data have been successfully "
 "submitted."
@@ -1481,7 +1481,7 @@ msgstr ""
 "Diese Meldung wird angezeigt, wenn die Formulardaten erfolgreich übermittelt "
 "wurden."
 
-#: includes/class-kickstart-team.php:966
+#: includes/class-kickstart-team.php:984
 msgid ""
 "Embedding in a (local) confirmation page is possbile with the shortcode "
 "<code>[inx-team-contact-form-confirmation-message]</code>."
@@ -1489,11 +1489,11 @@ msgstr ""
 "Die Einbindung in eine (lokale) Bestätigungsseite ist mit dem Shortcode "
 "<code>[inx-team-contact-form-confirmation-message]</code> möglich."
 
-#: includes/class-kickstart-team.php:973
+#: includes/class-kickstart-team.php:991
 msgid "Confirmation Page ID/URL"
 msgstr "Eingangsbestätigungsseite ID/URL"
 
-#: includes/class-kickstart-team.php:978
+#: includes/class-kickstart-team.php:996
 msgid ""
 "Redirect to this page (<strong>ID</strong>) or full URL on successful form "
 "submissions."
@@ -1501,7 +1501,7 @@ msgstr ""
 "Nach erfolgreicher Übermittlung der Formulardaten zu dieser Seite "
 "(<strong>ID</strong>) oder URL weiterleiten."
 
-#: includes/class-kickstart-team.php:979
+#: includes/class-kickstart-team.php:997
 msgid ""
 "Enter the ID of the page in the <strong>primary language</strong> in "
 "multilingual sites."
@@ -1509,23 +1509,23 @@ msgstr ""
 "Im mehrsprachigen Installationen muss hier die ID der Seite in der "
 "<strong>primären Sprache</strong> hinterlegt werden."
 
-#: includes/class-kickstart-team.php:986
+#: includes/class-kickstart-team.php:1004
 msgid "Hide form after submit"
 msgstr "Formular nach Absenden ausblenden"
 
-#: includes/class-kickstart-team.php:1001
+#: includes/class-kickstart-team.php:1019
 msgid "Spam Protection"
 msgstr "Spamschutz"
 
-#: includes/class-kickstart-team.php:1008
+#: includes/class-kickstart-team.php:1025
 msgid "Honeypot"
 msgstr "Honeypot"
 
-#: includes/class-kickstart-team.php:1019
+#: includes/class-kickstart-team.php:1036
 msgid "Time Threshold"
 msgstr "Zeitschwelle"
 
-#: includes/class-kickstart-team.php:1024
+#: includes/class-kickstart-team.php:1041
 msgid ""
 "Block form submissions that are \"too fast\", that is, within the stated "
 "number of seconds after the page has loaded (0 to disable)."
@@ -1534,12 +1534,12 @@ msgstr ""
 "innerhalb der angegebenen Anzahl von Sekunden nach dem Laden der Seite (0 "
 "zum Deaktivieren)."
 
-#: includes/class-kickstart-team.php:1025
+#: includes/class-kickstart-team.php:1042
 msgid "Seconds"
 msgstr "Sekunden"
 
 #. translators: %1$s = Turnstile product page URL, %2$s = Turnstile options tab URL
-#: includes/class-kickstart-team.php:1042
+#: includes/class-kickstart-team.php:1059
 #, php-format
 msgid ""
 "<a href=\"%1$s\" target=\"_blank\">Turnstile</a> is a <em>CAPTCHA</em> "
@@ -1551,7 +1551,7 @@ msgstr ""
 "href=\"%2$s\">Allgemein → Integrationen</a> für Konfigurationsoptionen)."
 
 #. translators: %s = Turnstile options tab URL
-#: includes/class-kickstart-team.php:1059
+#: includes/class-kickstart-team.php:1076
 #, php-format
 msgid ""
 "To activate this option, the corresponding <strong>site and secret keys</"
@@ -1562,11 +1562,11 @@ msgstr ""
 "und Secret-Keys</strong> im Abschnitt <em>Cloudflare Turnstile</em> des <a "
 "href=\"%s\">Integrationen-Tabs</a> hinterlegt werden."
 
-#: includes/class-kickstart-team.php:1070
+#: includes/class-kickstart-team.php:1087
 msgid "Sender Name"
 msgstr "Absendername"
 
-#: includes/class-kickstart-team.php:1075
+#: includes/class-kickstart-team.php:1092
 msgid ""
 "sender <strong>name</strong> for form mails (default: <em>WordPress</em> – "
 "may be overridden by an SMTP plugin if installed)"
@@ -1574,12 +1574,12 @@ msgstr ""
 "Absender<strong>name</strong> für Formularmails (Standard: <em>WordPress</"
 "em> – könnte von einem SMTP-Plugin überschrieben werden, falls installiert)"
 
-#: includes/class-kickstart-team.php:1082
+#: includes/class-kickstart-team.php:1099
 msgid "Sender Email"
 msgstr "Absender-E-Mail"
 
 #. translators: %s = default sender email address
-#: includes/class-kickstart-team.php:1089
+#: includes/class-kickstart-team.php:1106
 #, php-format
 msgid ""
 "sender <strong>address</strong> for form mails (default: <em>%s</em> – may "
@@ -1588,11 +1588,11 @@ msgstr ""
 "Absender-<strong>Mailadresse</strong> für Formularmails (Standard: <em>%s</"
 "em> – könnte von einem SMTP-Plugin überschrieben werden, falls installiert)"
 
-#: includes/class-kickstart-team.php:1098
+#: includes/class-kickstart-team.php:1115
 msgid "Fallback Recipient Mail Addresses"
 msgstr "Fallback-Empfänger-Mailadressen"
 
-#: includes/class-kickstart-team.php:1103
+#: includes/class-kickstart-team.php:1120
 msgid ""
 "comma-separated list of <strong>fallback</strong> recipient addresses used "
 "if no property related agent/agency address is determinable (default: main "
@@ -1603,11 +1603,11 @@ msgstr ""
 "Agenturenadresse ermittelbar ist (Standard: Haupt-Admin-Mailadresse der "
 "Website)"
 
-#: includes/class-kickstart-team.php:1110
+#: includes/class-kickstart-team.php:1127
 msgid "CC Mail Addresses"
 msgstr "CC-Mailadressen"
 
-#: includes/class-kickstart-team.php:1115
+#: includes/class-kickstart-team.php:1132
 msgid ""
 "comma-separated list of addresses to which <strong>copies of all inquiry "
 "mails</strong> should be sent"
@@ -1615,13 +1615,13 @@ msgstr ""
 "kommagetrennte Liste von Mailadressen, an die <strong>Kopien aller "
 "Anfragemails</strong> gesendet werden sollen"
 
-#: includes/class-kickstart-team.php:1122
-#: includes/class-kickstart-team.php:1232
+#: includes/class-kickstart-team.php:1139
+#: includes/class-kickstart-team.php:1274
 msgid "Send HTML Mails"
 msgstr "HTML-Mails senden"
 
 #. translators: %s = placeholder for the message type
-#: includes/class-kickstart-team.php:1129
+#: includes/class-kickstart-team.php:1146
 #, php-format
 msgid ""
 "Activate to send %s as <strong>HTML-formatted</strong> mails. (An "
@@ -1630,17 +1630,35 @@ msgstr ""
 "Aktivieren, um %s als <strong>HTML-formatierte</strong> Mails zu versenden. "
 "(Eine alternative Klartext-Version wird automatisch generiert.)"
 
-#: includes/class-kickstart-team.php:1130
+#: includes/class-kickstart-team.php:1147
 msgid "contact form messages/inquiries"
 msgstr "Kontaktformular-Nachrichten/Anfragen"
 
-#: includes/class-kickstart-team.php:1138
+#: includes/class-kickstart-team.php:1155
+#: includes/class-kickstart-team.php:1249
+msgid "Subject (General)"
+msgstr "Betreff (allgemein)"
+
+#: includes/class-kickstart-team.php:1160
+#: includes/class-kickstart-team.php:1254
+msgid ""
+"The Twig variables listed above can be used here and in the following field."
+msgstr ""
+"Die oben gelisteten Twig-Variablen können in diesem sowie im folgenden Feld "
+"verwendet werden."
+
+#: includes/class-kickstart-team.php:1168
+#: includes/class-kickstart-team.php:1262
+msgid "Subject (Property Inquiries)"
+msgstr "Betreff (Immobilien-Anfragen)"
+
+#: includes/class-kickstart-team.php:1180
 msgid "Contact Form Mail Body"
 msgstr "Kontaktformular-Mailtext"
 
 #. translators: %s = URL placeholder
-#: includes/class-kickstart-team.php:1145
-#: includes/class-kickstart-team.php:1295
+#: includes/class-kickstart-team.php:1187
+#: includes/class-kickstart-team.php:1337
 #, php-format
 msgid ""
 "HTML and Twig 3 markup can be used here (see info section above and the <a "
@@ -1650,15 +1668,15 @@ msgstr ""
 "oben sowie die <a href=\"%s\" target=\"_blank\">Twig-Dokumentation</a> für "
 "Details)."
 
-#: includes/class-kickstart-team.php:1148
+#: includes/class-kickstart-team.php:1190
 msgid ""
 "The variable <code>{{ form_data }}</code> <strong>must</strong> be included."
 msgstr ""
 "Die Variable <code>{{ form_data }}</code> <strong>muss</strong> enthalten "
 "sein."
 
-#: includes/class-kickstart-team.php:1149
-#: includes/class-kickstart-team.php:1298
+#: includes/class-kickstart-team.php:1191
+#: includes/class-kickstart-team.php:1340
 msgid ""
 "If this field is <strong>empty</strong>, a default template in the skin "
 "folder will be used instead."
@@ -1666,11 +1684,11 @@ msgstr ""
 "Bei einem <strong>leeren</strong> Feld wird stattdessen eine Standard-"
 "Vorlage aus dem Skin-Ordner übernommen."
 
-#: includes/class-kickstart-team.php:1162
+#: includes/class-kickstart-team.php:1204
 msgid "OpenImmo-Feedback Type"
 msgstr "OpenImmo-Feedback-Typ"
 
-#: includes/class-kickstart-team.php:1167
+#: includes/class-kickstart-team.php:1209
 msgid ""
 "This option defines if and how <strong>OpenImmo-Feedback-XML data</strong> "
 "are attached to contact form mails sent to admin/agent recipients (e.g. for "
@@ -1681,26 +1699,26 @@ msgstr ""
 "Benutzer angehangen werden (z. B. für die Weiterverarbeitung in einer "
 "externen Software-Lösung)."
 
-#: includes/class-kickstart-team.php:1169
+#: includes/class-kickstart-team.php:1211
 msgctxt "as a synonym for \"without\""
 msgid "none"
 msgstr "ohne"
 
-#: includes/class-kickstart-team.php:1170
+#: includes/class-kickstart-team.php:1212
 msgid "Attachment"
 msgstr "Anhang"
 
-#: includes/class-kickstart-team.php:1171
-#: includes/class-kickstart-team.php:1288
+#: includes/class-kickstart-team.php:1213
+#: includes/class-kickstart-team.php:1330
 msgid "Mail Body"
 msgstr "Mailtext"
 
-#: includes/class-kickstart-team.php:1179
+#: includes/class-kickstart-team.php:1221
 msgid "Auto Salutation"
 msgstr "Auto-Anrede"
 
 #. translators: %s = genderize.io URL
-#: includes/class-kickstart-team.php:1186
+#: includes/class-kickstart-team.php:1228
 #, php-format
 msgid ""
 "If not specified, automatically determine a suitable salutation for the "
@@ -1711,11 +1729,11 @@ msgstr ""
 "Feedback-Anhang anhand des Interessenten-Vornamens via <a href=\"%s\" "
 "target=\"_blank\">genderize.io</a> ermitteln."
 
-#: includes/class-kickstart-team.php:1195
+#: includes/class-kickstart-team.php:1237
 msgid "Receipt Confirmation"
 msgstr "Eingangsbestätigung"
 
-#: includes/class-kickstart-team.php:1200
+#: includes/class-kickstart-team.php:1242
 msgid ""
 "Activate if prospects shall receive a receipt confirmation mail on "
 "successful contact form submissions."
@@ -1723,98 +1741,83 @@ msgstr ""
 "Aktivieren, wenn Interessenten nach erfolgreicher Übermittlung der "
 "Formulardaten eine Empfangsbestätigung per Mail erhalten sollen."
 
-#: includes/class-kickstart-team.php:1207
-msgid "Subject (General)"
-msgstr "Betreff (allgemein)"
-
-#: includes/class-kickstart-team.php:1212
-msgid ""
-"The Twig variables listed above can be used here and in the following field."
-msgstr ""
-"Die oben gelisteten Twig-Variablen können in diesem sowie im folgenden Feld "
-"verwendet werden."
-
-#: includes/class-kickstart-team.php:1220
-msgid "Subject (Property Inquiries)"
-msgstr "Betreff (Immobilien-Anfragen)"
-
 #. translators: %s = placholder for the message type
-#: includes/class-kickstart-team.php:1239
+#: includes/class-kickstart-team.php:1281
 #, php-format
 msgid "Activate to send %s as HTML-formatted mails."
 msgstr "Aktivieren, um %s als HTML-formatierte Mails zu versenden."
 
-#: includes/class-kickstart-team.php:1240
+#: includes/class-kickstart-team.php:1282
 msgid "receipt confirmations"
 msgstr "Eingangsbestätigungen"
 
-#: includes/class-kickstart-team.php:1249
-#: includes/class-kickstart-team.php:1262
+#: includes/class-kickstart-team.php:1291
+#: includes/class-kickstart-team.php:1304
 msgid "HTML Mails"
 msgstr "HTML-Mails"
 
-#: includes/class-kickstart-team.php:1254
+#: includes/class-kickstart-team.php:1296
 msgid "If the sending of HTML mails is activated, a logo can be inserted."
 msgstr ""
 "Wenn der Versand von HTML-Mails aktiviert ist, kann ein Logo eingefügt "
 "werden."
 
-#: includes/class-kickstart-team.php:1261
+#: includes/class-kickstart-team.php:1303
 msgid "Logo Position"
 msgstr "Logo-Position"
 
-#: includes/class-kickstart-team.php:1267
+#: includes/class-kickstart-team.php:1309
 msgid ""
 "If selected, you can specify where the logo should appear in the mail here."
 msgstr ""
 "Sofern ausgewählt, kann hier festgelegt werden, wo das Logo in der Mail "
 "erscheinen soll."
 
-#: includes/class-kickstart-team.php:1269
-#: includes/class-kickstart-team.php:1271
-#: includes/class-kickstart-team.php:1273
+#: includes/class-kickstart-team.php:1311
+#: includes/class-kickstart-team.php:1313
+#: includes/class-kickstart-team.php:1315
 msgid "top"
 msgstr "oben"
 
-#: includes/class-kickstart-team.php:1270
-#: includes/class-kickstart-team.php:1276
+#: includes/class-kickstart-team.php:1312
+#: includes/class-kickstart-team.php:1318
 msgid "centered"
 msgstr "zentriert"
 
-#: includes/class-kickstart-team.php:1272
-#: includes/class-kickstart-team.php:1278
+#: includes/class-kickstart-team.php:1314
+#: includes/class-kickstart-team.php:1320
 msgid "left"
 msgstr "links"
 
-#: includes/class-kickstart-team.php:1274
-#: includes/class-kickstart-team.php:1280
+#: includes/class-kickstart-team.php:1316
+#: includes/class-kickstart-team.php:1322
 msgid "right"
 msgstr "rechts"
 
-#: includes/class-kickstart-team.php:1275
-#: includes/class-kickstart-team.php:1277
-#: includes/class-kickstart-team.php:1279
+#: includes/class-kickstart-team.php:1317
+#: includes/class-kickstart-team.php:1319
+#: includes/class-kickstart-team.php:1321
 msgid "bottom"
 msgstr "unten"
 
-#: includes/class-kickstart-team.php:1311
+#: includes/class-kickstart-team.php:1353
 msgid "Signature"
 msgstr "Signatur"
 
-#: includes/class-kickstart-team.php:1316
+#: includes/class-kickstart-team.php:1358
 msgid "The (optional) signature is added below the main content of the email."
 msgstr ""
 "Die (optionale) Signatur wird unterhalb des Hauptinhalts der Mail eingefügt."
 
-#: includes/class-kickstart-team.php:1317
+#: includes/class-kickstart-team.php:1359
 msgid "The Twig variables listed above can be used here, too."
 msgstr "Die o. g. Twig-Variablen können hier ebenfalls genutzt werden."
 
-#: includes/class-kickstart-team.php:1349
+#: includes/class-kickstart-team.php:1391
 msgid "Withdrawal"
 msgstr "Widerruf"
 
-#: includes/class-kickstart-team.php:1350
+#: includes/class-kickstart-team.php:1392
 msgid "Cancellation"
 msgstr "Widerruf"
 
@@ -2607,7 +2610,7 @@ msgctxt "gender neutral"
 msgid "Your contact with us"
 msgstr "Ihre Kontaktperson bei uns"
 
-#: skins/default/single-agent/index.php:187
+#: skins/default/single-agent/index.php:190
 msgid "More about"
 msgstr "Mehr über"
 
@@ -2625,6 +2628,9 @@ msgstr "Ihre Ansprechpartnerin"
 msgctxt "gender neutral"
 msgid "Your contact"
 msgstr "Ihre Kontaktperson"
+
+#~ msgid "Inquiry for the property"
+#~ msgstr "Anfrage zur Immobilie"
 
 #~ msgid ""
 #~ "A skin is a set of connected templates for plugin related pages and "

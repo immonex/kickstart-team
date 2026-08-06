@@ -26,7 +26,6 @@ function init() {
 				submitEl.attr('disabled', true)
 			} else {
 				submitEl.attr('disabled', !el.prop('checked'))
-
 			}
 
 			if (!submitEl.attr('disabled')) {
@@ -96,23 +95,23 @@ function init() {
 } // init
 
 function handleTurnstileError(errorCode, resultEl) {
-  const errorFamily = Math.floor(errorCode / 1000);
+	const errorFamily = Math.floor(errorCode / 1000);
 
-  switch(errorFamily) {
-    case 100:
-      showError(inx_team.ts_error_msg_refresh, resultEl);
-      break;
-    case 110:
-      showError(inx_team.ts_error_msg_config, resultEl);
-      break;
-    case 300:
-    case 600:
-      showError(inx_team.ts_error_msg_security, resultEl);
-      break;
-    default:
-      showError(inx_team.ts_error_msg_unexpected, resultEl);
-  }
-}
+	switch(errorFamily) {
+		case 100:
+			showError(inx_team.ts_error_msg_refresh, resultEl);
+			break;
+		case 110:
+			showError(inx_team.ts_error_msg_config, resultEl);
+			break;
+		case 300:
+		case 600:
+			showError(inx_team.ts_error_msg_security, resultEl);
+			break;
+		default:
+			showError(inx_team.ts_error_msg_unexpected, resultEl);
+	}
+} // handleTurnstileError
 
 function showError(message, resultEl) {
 	resultEl.html('<span uk-icon="icon: warning; ratio: 2"></span> <span>' + message + '</span>')

@@ -56,7 +56,7 @@ class Inquiry_Backend_Form {
 			[
 				'id'           => "{$prefix}contact_data",
 				'title'        => __( 'Contact Data', 'immonex-kickstart-team' ),
-				'object_types' => [ INQUIRY::POST_TYPE_NAME ],
+				'object_types' => [ Inquiry::POST_TYPE_NAME ],
 				'context'      => 'normal',
 				'priority'     => 'core',
 				'show_names'   => true,

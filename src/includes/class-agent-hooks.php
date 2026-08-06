@@ -868,7 +868,7 @@ class Agent_Hooks extends Base_CPT_Hooks {
 		}
 
 		if ( ! $agent || empty( $agent->post ) ) {
-			$agent = $this->get_primary_agent_for_current_property();
+			$agent = $this->get_primary_agent_for_current_property( $atts );
 		}
 
 		if ( ( ! $agent || empty( $agent->post ) ) && empty( $atts['is_preview'] ) ) {
@@ -906,15 +906,26 @@ class Agent_Hooks extends Base_CPT_Hooks {
 	 *
 	 * @since 1.0.0
 	 *
+	 * @param mixed[] $atts Rendering Attributes (optional).
+	 *
 	 * @return Agent|bool Agent object or false if inexistent/indeterminable.
 	 */
-	private function get_primary_agent_for_current_property() {
+	private function get_primary_agent_for_current_property( &$atts = array() ) {
 		$agent       = false;
 		$prefix      = $this->get_post_instance()->prefix;
 		$property_id = apply_filters(
 			'inx_current_property_post_id',
 			$this->utils['general']->get_the_ID()
 		);
+
+		if ( ! $property_id && ! empty( $atts['is_preview'] ) ) {
+			$property_id = get_the_ID();
+
+			if ( get_post_type( $property_id ) === Kickstart::PROPERTY_POST_TYPE_NAME ) {
+				$atts['is_preview']      = false;
+				$atts['is_real_preview'] = true;
+			}
+		}
 
 		$agent_id = get_post_meta( $property_id, "{$prefix}primary", true );
 

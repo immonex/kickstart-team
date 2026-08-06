@@ -57,6 +57,8 @@ class Inquiry {
 	/**
 	 * Extract form data to be saved with the inquiry and add related meta data.
 	 *
+	 * @since 1.9.0
+	 *
 	 * @param mixed[] $form_data Form data to save.
 	 */
 	public function set_form_data( $form_data ) {
@@ -98,6 +100,8 @@ class Inquiry {
 
 	/**
 	 * Save the inquiry as a post with meta data.
+	 *
+	 * @since 1.9.0
 	 *
 	 * @param bool $mail_send_result Result of the email sending process.
 	 *

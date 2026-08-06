@@ -6,7 +6,7 @@ Mit diesem Filter können die Felder des [einheitlichen Kontaktformulars](../kom
 
 | Name (Typ) | Beschreibung |
 | ---------- | ------------ |
-| `$fields` (array) | Array mit vollständigen Felddaten oder nur den Namen (Keys) |
+| `$fields` (array) | vollständige Felddefinitionen oder nur Namen (Keys) |
 | `$names_only` (bool) | *true*, wenn – kontextabhängig – nur die Feldnamen (Keys) zurückgeliefert werden sollen, ansonsten *false* (Standardvorgabe) |
 | `$scope`\* (string) | für die Ausgabe vorgesehener Feldumfang: *basic* (Standardvorgabe: einfaches Formular) oder *extended* (erweitertes Formular) |
 
@@ -17,31 +17,32 @@ Mit diesem Filter können die Felder des [einheitlichen Kontaktformulars](../kom
 Die folgenden Optionen können pro Feld definiert werden:
 
 | Name (Typ) | Beschreibung / mögliche Werte |
-| ---------- | ------------ |
+| ---------- | ----------------------------- |
 | `type` (string) | **Typ** des Formularelements |
-| | *text*: normales Textfeld |
-| | *email*: Textfeld für die Eingabe einer E-Mail-Adresse (mit entsprechender Validierung) |
+| | *text*: einzeiliges Textfeld |
+| | *email*: HTML5-Textfeld mit E-Mail-Validierung |
 | | *textarea*: mehrzeiliges Textfeld – siehe `default_value` |
-| | *checkbox*: einzelne Checkbox – siehe `value` |
-| | *radio*: Radio-Auswahlelemente (Gruppe) – siehe `options` |
+| | *checkbox*: einzelne Checkbox – siehe `caption` und `value` |
+| | *radio*: Radio-Auswahlelemente (Gruppe) – siehe `options`und `default_value` |
 | | *select*: Dropdown-Auswahlbox – siehe `options` |
 | `required` (bool) | *true* bei Pflichtfeldern, ansonsten *false* |
 | `required_or` (string) | **alternative** Pflichtangabe (entweder das aktuelle **oder** das Feld mit dem angegebenen Namen/Key muss ausgefüllt sein – siehe Beispiel email/phone) |
-| `caption` (string) | Feldbezeichnung im Frontend |
+| `caption` (string) | Feldbezeichnung/Label – wird im **Frontend** bei Nutzung des Standard-Skins nur bei Elementen des Typs `checkbox` angezeigt. |
 | `caption_mail` (string) | **alternative** Feldbezeichnung in Mails, sofern abweichend |
-| `placeholder` (string) | Platzhaltertext |
+| `placeholder` (string) | Platzhaltertext (meistens identisch mit `caption`) |
 | `value` (string) | zu übermittelnder **Wert** eines aktivierten *checkbox*-Elements (optional, Standard: *X*) |
-| `default_value` (string) | Standardinhalt eines *textarea*-Elements (optional) |
+| `default_value` (string) | Standardinhalt eines *textarea*-Elements oder vorausgewähltes Element einer `radio`-Gruppe (optional) |
 | `options` (array) | Key-Value-Array der Auswahloptionen für die Feldtypen *radio* und *select* |
-| `layout_type` (string) | **optionale** Mindestbeite des Elements |
-| | *half*: mindestens 50 % des Rahmenelements |
+| `layout_type` (string) | **optionale** Sollbreite des Elements |
+| | *half*: 50 % des Rahmenelements |
 | | *full*: komplette Breite des Rahmenelements |
 | `scope` (array) | Liste von *Scopes*, in denen das Element enthalten ist (enthält im Regelfall *basic*, *extended* oder beide Angaben) |
-| `order` (int) | Sortierindex für die Reihenfolge der Ausgabe |
+| `order` (int) | Sortierindex (Ausgabereihenfolge) |
 
 #### Standardkonfiguration
 
 ##### vollständige Daten (`$names_only === false` – siehe Parameter)
+
 ```php
 $fields = [
 	'salutation'  => [

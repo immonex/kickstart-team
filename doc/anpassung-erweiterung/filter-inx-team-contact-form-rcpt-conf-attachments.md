@@ -1,6 +1,6 @@
 # inx_team_contact_form_rcpt_conf_attachments (Filter)
 
-Mit diesem Filter können Dateianhänge für [Eingangsbestätigungsmails](../schnellstart/einrichtung?id=eingangsbestätigungsmails) definiert werden, die nach dem Übermitteln von [Kontaktformulardaten](../komponenten/kontaktformular) versendet weren.
+Mit diesem Filter können Dateianhänge für [Eingangsbestätigungsmails](../schnellstart/einrichtung?id=eingangsbestätigungsmails) definiert werden, die nach dem Übermitteln von [Kontaktformulardaten](../komponenten/kontaktformular) versendet werden.
 
 ## Parameter
 

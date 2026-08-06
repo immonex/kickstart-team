@@ -1,7 +1,20 @@
 @use "../_config";
 @use "../_mixins";
 
+.inx-team-agency-list__item-wrap {
+	position: relative;
+
+	> .inx-team-agency-list-item__labels {
+		left: initial;
+		right: -.15rem !important;
+		padding-top: .18em;
+		font-size: .765em;
+		text-align: right;
+	}
+}
+
 .inx-team-agency-list-item {
+	flex: 0 1 auto;
 	border-radius: var(--inx-signature-border-radius, 0 0 8px 0);
 	overflow: hidden;
 

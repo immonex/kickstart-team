@@ -1,5 +1,13 @@
 == Changelog ==
 
+= 1.10.0 =
+* Release date: 2026-08-06
+* Added admin mail subject options.
+* Added support for limit and limit-page attributes to agent/agency list shortcodes.
+* Improved compatibility with WP 7.1.
+* Changed minimum PHP version to 8.1.
+* Updated dependencies.
+
 = 1.9.1 =
 * Release date: 2026-04-09
 * Improved inquiry form compatibility with different autofill solutions.

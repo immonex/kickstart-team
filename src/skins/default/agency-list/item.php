@@ -125,10 +125,10 @@ $inx_skin_logo = isset( $template_data['elements']['logo'] ) ?
 		<a class="inx-link inx-gradient--type--action inx-inverse" href="<?php echo get_permalink(); ?>"><?php echo $inx_skin_link_text; ?></a>
 	</div><!-- .inx-team-agency-list-item__footer -->
 	<?php endif; ?>
-
-	<?php if ( $template_data['is_demo'] ) : ?>
-	<div class="inx-team-agency-list-item__labels uk-position-top-left">
-		<div class="inx-team-label inx-team-label--type--demo">Demo</div>
-	</div>
-	<?php endif; ?>
 </article>
+
+<?php if ( $template_data['is_demo'] ) : ?>
+<div class="inx-team-agency-list-item__labels uk-position-top-left">
+	<div class="inx-team-label inx-team-label--type--demo">Demo</div>
+</div>
+<?php endif; ?>

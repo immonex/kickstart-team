@@ -97,6 +97,8 @@ Alle folgenden Attribute sind **optional**.
 | `show_property_list` | nur Vollansicht: Liste der zugehörigen Immobilien explizit ein- oder aublenden (entsprechende Angabe in den Add-on-Optionen ([Optionale Abschnitte](#optionale-abschnitte)) und dem [Agentur-Datensatz](/beitragsarten?id=verarbeitungspezial-flags) überschreiben) |
 | | *1* oder *yes* : anzeigen |
 | | *0* oder *no* : nicht anzeigen |
+| `limit` | nur Vollansicht: maximale Anzahl der zugehörigen Immobilien, die **insgesamt** angezeigt werden sollen |
+| `limit-page` | nur Vollansicht: maximale Anzahl der zugehörigen Immobilien, die **pro Seite** angezeigt werden sollen (Standard: ***immonex → Einstellungen → Listen → [Allgemein] Immobilien pro Seite***) |
 
 #### Beispiele
 

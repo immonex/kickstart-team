@@ -46,7 +46,6 @@ class Contact_Form_Hooks {
 	public function __construct( $config, $utils ) {
 		$this->config  = $config;
 		$this->utils   = $utils;
-		$plugin_slug   = $config['plugin_slug'];
 		$plugin_prefix = $config['plugin_prefix'];
 
 		/**
@@ -138,7 +137,10 @@ class Contact_Form_Hooks {
 	 * @return string Rendered shortcode contents.
 	 */
 	public function shortcode_confirmation_message( $atts = array() ) {
-		return $this->config['form_confirmation_message'];
+		return wp_sprintf(
+			'<div class="inx-team-contact-form-confirmation-message">%s</div>',
+			$this->config['form_confirmation_message']
+		);
 	} // shortcode_confirmation_message
 
 	/**

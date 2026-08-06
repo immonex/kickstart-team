@@ -102,6 +102,8 @@ Alle folgenden Attribute sind **optional**.
 | `show_agency_link` | nur Vollansicht: *Footer-Box* mit Logo (sofern vorhanden), Kurzbeschreibung und Link zur Agentur-Detailseite explizit ein- oder aublenden (entsprechende Angabe in den Add-on-Optionen ([Optionale Abschnitte](#optionale-abschnitte)) und dem [Kontaktpersonen-Datensatz](/beitragsarten?id=verarbeitungspezial-flags-etc) überschreiben) |
 | | *1* oder *yes* : anzeigen |
 | | *0* oder *no* : nicht anzeigen |
+| `limit` | nur Vollansicht: maximale Anzahl der zugehörigen Immobilien, die **insgesamt** angezeigt werden sollen |
+| `limit-page` | nur Vollansicht: maximale Anzahl der zugehörigen Immobilien, die **pro Seite** angezeigt werden sollen (Standard: ***immonex → Einstellungen → Listen → [Allgemein] Immobilien pro Seite***) |
 
 #### Beispiele
 
